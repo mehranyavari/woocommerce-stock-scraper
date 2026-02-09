@@ -1,0 +1,36 @@
+name: Scrape Stock Data
+
+on:
+  # اجرا هر 6 ساعت یک بار
+  schedule:
+    - cron: '0 */6 * * *'
+  
+  # امکان اجرای دستی
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run scraper
+        run: node scraper.js
+      
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add stock-data.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update stock data - $(date '+%Y-%m-%d %H:%M:%S')"
+          git push
