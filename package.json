@@ -1,0 +1,12 @@
+{
+  "name": "woocommerce-stock-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes stock data from external websites",
+  "main": "scraper.js",
+  "scripts": {
+    "scrape": "node scraper.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
