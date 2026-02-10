@@ -87,22 +87,32 @@ async function scrapeProduct(browser, product) {
                 
                 // استخراج قیمت از satisFiyatiStr
                 // استخراج قیمت
+                // استخراج قیمت (اول تخفیف‌دار، بعد قیمت عادی)
                 let price = null;
                 
                 if (data.products && data.products.length > 0) {
                     const p = data.products[0];
                 
-                    if (p.satisFiyatiStr) {
-                        const cleanPrice = p.satisFiyatiStr.replace(/[^\d,\.]/g, '');
-                        const priceFloat = parseFloat(
-                            cleanPrice.replace(/\./g, '').replace(',', '.')
-                        );
+                    // اول قیمت تخفیف‌دار
+                    let rawPrice = p.indirimliFiyatiStr || p.satisFiyatiStr;
+                
+                    if (rawPrice) {
+                        // حذف نماد پولی و کاراکترهای اضافی
+                        let clean = rawPrice.replace(/[^\d,\.]/g, '');
+                
+                        // تبدیل فرمت ترکیه‌ای به عدد استاندارد
+                        clean = clean
+                            .replace(/\./g, '') // حذف جداکننده هزارگان
+                            .replace(',', '.'); // تبدیل اعشار
+                
+                        const priceFloat = parseFloat(clean);
                 
                         if (!isNaN(priceFloat)) {
-                            price = priceFloat;
+                            price = Math.ceil(priceFloat); // رند به بالا و حذف اعشار
                         }
                     }
                 }
+
 
                 
                 return { 
