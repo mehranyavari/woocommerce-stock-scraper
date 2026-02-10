@@ -40,7 +40,7 @@ function normalizeSize(rawSize, hostname) {
 }
 
 /**
- * استخراج موجودی از یک URL
+ * استخراج موجودی و قیمت از یک URL
  */
 async function scrapeProduct(browser, product) {
     console.log(`Scraping product ${product.id}: ${product.url}`);
@@ -85,7 +85,23 @@ async function scrapeProduct(browser, product) {
                     });
                 }
                 
-                return { success: true, stocks: stocks };
+                // استخراج قیمت از satisFiyatiStr
+                let price = null;
+                if (data.satisFiyatiStr) {
+                    // حذف نمادهای پولی و فاصله‌ها و هر چیز غیر عددی به جز کاما و نقطه
+                    const cleanPrice = data.satisFiyatiStr.replace(/[^\d,\.]/g, '');
+                    // تبدیل ویرگول به نقطه برای اعداد اعشاری
+                    const priceFloat = parseFloat(cleanPrice.replace(',', '.'));
+                    if (!isNaN(priceFloat)) {
+                        price = priceFloat;
+                    }
+                }
+                
+                return { 
+                    success: true, 
+                    stocks: stocks,
+                    price: price
+                };
                 
             } catch (e) {
                 return { success: false, error: e.message };
@@ -107,8 +123,12 @@ async function scrapeProduct(browser, product) {
             }
         }
         
-        console.log(`  ✅ Success: ${Object.keys(normalizedStocks).length} variants`);
-        return normalizedStocks;
+        console.log(`  ✅ Success: ${Object.keys(normalizedStocks).length} variants, Price: ${result.price || 'N/A'}`);
+        
+        return {
+            stocks: normalizedStocks,
+            price: result.price
+        };
         
     } catch (error) {
         await page.close();
@@ -126,25 +146,27 @@ async function processProductWithDualSource(browser, product) {
         url: product.url,
         success: false,
         stocks: {},
+        price: null,
         lastUpdated: new Date().toISOString()
     };
     
     // مرحله 1: دریافت از URL اصلی
-    const primaryStocks = await scrapeProduct(browser, product);
+    const primaryData = await scrapeProduct(browser, product);
     
-    if (!primaryStocks) {
+    if (!primaryData) {
         result.error = 'Failed to fetch from primary URL';
         return result;
     }
     
-    result.stocks = { ...primaryStocks };
+    result.stocks = { ...primaryData.stocks };
+    result.price = primaryData.price; // قیمت را از تامین‌کننده اول می‌گیریم
     result.success = true;
     
     // مرحله 2: بررسی سایزهای ناموجود و چک کردن URL دوم
     if (product.secondary_url) {
         const outOfStockSizes = [];
         
-        for (const [size, stock] of Object.entries(primaryStocks)) {
+        for (const [size, stock] of Object.entries(primaryData.stocks)) {
             if (stock === 0) {
                 outOfStockSizes.push(size);
             }
@@ -153,17 +175,17 @@ async function processProductWithDualSource(browser, product) {
         if (outOfStockSizes.length > 0) {
             console.log(`  🔄 Checking secondary URL for ${outOfStockSizes.length} out-of-stock sizes`);
             
-            const secondaryStocks = await scrapeProduct(browser, {
+            const secondaryData = await scrapeProduct(browser, {
                 id: product.id,
                 url: product.secondary_url
             });
             
-            if (secondaryStocks) {
+            if (secondaryData) {
                 let foundInSecondary = 0;
                 
                 for (const size of outOfStockSizes) {
-                    if (secondaryStocks[size] && secondaryStocks[size] > 0) {
-                        result.stocks[size] = secondaryStocks[size];
+                    if (secondaryData.stocks[size] && secondaryData.stocks[size] > 0) {
+                        result.stocks[size] = secondaryData.stocks[size];
                         foundInSecondary++;
                     }
                 }
@@ -171,6 +193,8 @@ async function processProductWithDualSource(browser, product) {
                 if (foundInSecondary > 0) {
                     console.log(`  ✅ Found ${foundInSecondary} sizes in stock from secondary URL`);
                 }
+                
+                // قیمت را فقط از تامین‌کننده اول می‌گیریم، secondary را نادیده می‌گیریم
             }
         }
     }
@@ -183,7 +207,7 @@ async function processProductWithDualSource(browser, product) {
  */
 async function main() {
     console.log('='.repeat(60));
-    console.log('Stock Scraper Started (Dual Source Support)');
+    console.log('Stock Scraper Started (Dual Source + Price Support)');
     console.log('='.repeat(60));
     
     // خواندن لیست محصولات
@@ -225,6 +249,7 @@ async function main() {
     const results = {};
     let successCount = 0;
     let failCount = 0;
+    let priceCount = 0;
     
     // پردازش به صورت دسته‌ای
     for (let i = 0; i < products.length; i += CONFIG.BATCH_SIZE) {
@@ -240,6 +265,9 @@ async function main() {
             if (result.success) {
                 results[product.id] = result;
                 successCount++;
+                if (result.price) {
+                    priceCount++;
+                }
             } else {
                 failCount++;
             }
@@ -263,9 +291,10 @@ async function main() {
     
     console.log('\n' + '='.repeat(60));
     console.log('✅ Scraping Complete!');
-    console.log(`   Success: ${successCount} products`);
-    console.log(`   Failed:  ${failCount} products`);
-    console.log(`   Total:   ${products.length} products`);
+    console.log(`   Success:      ${successCount} products`);
+    console.log(`   With Price:   ${priceCount} products`);
+    console.log(`   Failed:       ${failCount} products`);
+    console.log(`   Total:        ${products.length} products`);
     console.log('='.repeat(60));
 }
 
