@@ -3,11 +3,11 @@ const fs = require('fs');
 
 // تنظیمات
 const CONFIG = {
-    CONCURRENT_SCRAPES: 2,  // تعداد صفحاتی که همزمان باز می‌شوند
-    BATCH_SIZE: 10,         // تعداد محصولات در هر دسته
-    BATCH_DELAY: 3000,      // تأخیر بین هر دسته (میلی‌ثانیه)
-    PAGE_TIMEOUT: 30000,    // Timeout هر صفحه
-    WAIT_AFTER_LOAD: 4000   // صبر بعد از لود صفحه
+    CONCURRENT_SCRAPES: 2,
+    BATCH_SIZE: 10,
+    BATCH_DELAY: 3000,
+    PAGE_TIMEOUT: 30000,
+    WAIT_AFTER_LOAD: 4000
 };
 
 /**
@@ -96,11 +96,7 @@ async function scrapeProduct(browser, product) {
         
         if (!result || !result.success) {
             console.log(`  ❌ Failed: ${result ? result.error : 'No data'}`);
-            return {
-                id: product.id,
-                success: false,
-                error: result ? result.error : 'No data found'
-            };
+            return null;
         }
         
         const normalizedStocks = {};
@@ -112,24 +108,74 @@ async function scrapeProduct(browser, product) {
         }
         
         console.log(`  ✅ Success: ${Object.keys(normalizedStocks).length} variants`);
-        
-        return {
-            id: product.id,
-            url: product.url,
-            success: true,
-            stocks: normalizedStocks,
-            lastUpdated: new Date().toISOString()
-        };
+        return normalizedStocks;
         
     } catch (error) {
         await page.close();
         console.log(`  ❌ Error: ${error.message}`);
-        return {
-            id: product.id,
-            success: false,
-            error: error.message
-        };
+        return null;
     }
+}
+
+/**
+ * پردازش یک محصول با دو URL (primary و secondary)
+ */
+async function processProductWithDualSource(browser, product) {
+    const result = {
+        id: product.id,
+        url: product.url,
+        success: false,
+        stocks: {},
+        lastUpdated: new Date().toISOString()
+    };
+    
+    // مرحله 1: دریافت از URL اصلی
+    const primaryStocks = await scrapeProduct(browser, product);
+    
+    if (!primaryStocks) {
+        result.error = 'Failed to fetch from primary URL';
+        return result;
+    }
+    
+    result.stocks = { ...primaryStocks };
+    result.success = true;
+    
+    // مرحله 2: بررسی سایزهای ناموجود و چک کردن URL دوم
+    if (product.secondary_url) {
+        const outOfStockSizes = [];
+        
+        for (const [size, stock] of Object.entries(primaryStocks)) {
+            if (stock === 0) {
+                outOfStockSizes.push(size);
+            }
+        }
+        
+        if (outOfStockSizes.length > 0) {
+            console.log(`  🔄 Checking secondary URL for ${outOfStockSizes.length} out-of-stock sizes`);
+            
+            const secondaryStocks = await scrapeProduct(browser, {
+                id: product.id,
+                url: product.secondary_url
+            });
+            
+            if (secondaryStocks) {
+                let foundInSecondary = 0;
+                
+                for (const size of outOfStockSizes) {
+                    if (secondaryStocks[size] && secondaryStocks[size] > 0) {
+                        result.stocks[size] = secondaryStocks[size];
+                        foundInSecondary++;
+                    }
+                }
+                
+                if (foundInSecondary > 0) {
+                    console.log(`  ✅ Found ${foundInSecondary} sizes in stock from secondary URL`);
+                }
+            }
+        }
+    }
+    
+    return result;
 }
 
 /**
@@ -137,7 +183,7 @@ async function scrapeProduct(browser, product) {
  */
 async function main() {
     console.log('='.repeat(60));
-    console.log('Stock Scraper Started');
+    console.log('Stock Scraper Started (Dual Source Support)');
     console.log('='.repeat(60));
     
     // خواندن لیست محصولات
@@ -158,6 +204,10 @@ async function main() {
         fs.writeFileSync('stock-data.json', JSON.stringify({}, null, 2));
         return;
     }
+    
+    // شمارش محصولاتی که secondary URL دارند
+    const withSecondary = products.filter(p => p.secondary_url).length;
+    console.log(`ℹ️  ${withSecondary} products have secondary URL for fallback`);
     
     // راه‌اندازی مرورگر
     console.log('\n🚀 Launching browser...');
@@ -185,7 +235,7 @@ async function main() {
         console.log(`\n📦 Processing batch ${batchNum}/${totalBatches} (${batch.length} products)`);
         
         for (const product of batch) {
-            const result = await scrapeProduct(browser, product);
+            const result = await processProductWithDualSource(browser, product);
             
             if (result.success) {
                 results[product.id] = result;
