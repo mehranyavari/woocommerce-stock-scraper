@@ -85,41 +85,49 @@ async function scrapeProduct(browser, product) {
                     });
                 }
                 
-                // استخراج قیمت از satisFiyatiStr
-                // استخراج قیمت
-                // استخراج قیمت (اول تخفیف‌دار، بعد قیمت عادی)
-                let price = null;
+                // استخراج قیمت اصلی و تخفیف‌دار
+                let regularPrice = null;
+                let offerPrice = null;
                 
                 if (data.products && data.products.length > 0) {
                     const p = data.products[0];
                 
-                    // اول قیمت تخفیف‌دار
-                    let rawPrice = p.indirimliFiyatiStr || p.satisFiyatiStr;
+                    function parseTurkishPrice(rawPrice) {
+                        if (!rawPrice) return null;
                 
-                    if (rawPrice) {
-                        // حذف نماد پولی و کاراکترهای اضافی
                         let clean = rawPrice.replace(/[^\d,\.]/g, '');
-                
-                        // تبدیل فرمت ترکیه‌ای به عدد استاندارد
                         clean = clean
-                            .replace(/\./g, '') // حذف جداکننده هزارگان
-                            .replace(',', '.'); // تبدیل اعشار
+                            .replace(/\./g, '') // حذف هزارگان
+                            .replace(',', '.'); // اعشار
                 
-                        const priceFloat = parseFloat(clean);
+                        const num = parseFloat(clean);
+                        if (isNaN(num)) return null;
                 
-                        if (!isNaN(priceFloat)) {
-                            price = Math.ceil(priceFloat); // رند به بالا و حذف اعشار
-                        }
+                        return Math.ceil(num); // رند به بالا
+                    }
+                
+                    // قیمت اصلی
+                    regularPrice = parseTurkishPrice(p.satisFiyatiStr);
+                
+                    // قیمت تخفیف‌دار
+                    offerPrice = parseTurkishPrice(p.indirimliFiyatiStr);
+                
+                    // اگر تخفیف واقعی وجود نداشت
+                    if (regularPrice && offerPrice && offerPrice >= regularPrice) {
+                        offerPrice = null;
                     }
                 }
+
 
 
                 
                 return { 
                     success: true, 
                     stocks: stocks,
-                    price: price
+                    regularPrice: regularPrice,
+                    offerPrice: offerPrice
                 };
+
                 
             } catch (e) {
                 return { success: false, error: e.message };
