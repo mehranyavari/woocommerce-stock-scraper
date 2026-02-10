@@ -86,16 +86,24 @@ async function scrapeProduct(browser, product) {
                 }
                 
                 // استخراج قیمت از satisFiyatiStr
+                // استخراج قیمت
                 let price = null;
-                if (data.satisFiyatiStr) {
-                    // حذف نمادهای پولی و فاصله‌ها و هر چیز غیر عددی به جز کاما و نقطه
-                    const cleanPrice = data.satisFiyatiStr.replace(/[^\d,\.]/g, '');
-                    // تبدیل ویرگول به نقطه برای اعداد اعشاری
-                    const priceFloat = parseFloat(cleanPrice.replace(',', '.'));
-                    if (!isNaN(priceFloat)) {
-                        price = priceFloat;
+                
+                if (data.products && data.products.length > 0) {
+                    const p = data.products[0];
+                
+                    if (p.satisFiyatiStr) {
+                        const cleanPrice = p.satisFiyatiStr.replace(/[^\d,\.]/g, '');
+                        const priceFloat = parseFloat(
+                            cleanPrice.replace(/\./g, '').replace(',', '.')
+                        );
+                
+                        if (!isNaN(priceFloat)) {
+                            price = priceFloat;
+                        }
                     }
                 }
+
                 
                 return { 
                     success: true, 
