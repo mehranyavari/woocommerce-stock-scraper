@@ -1,0 +1,34 @@
+name: Debug Scraper
+
+on:
+  workflow_dispatch: # فقط دستی اجرا می‌شود
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Debug Scraper
+        run: node debug-scraper.js
+      
+      # این مرحله فایل‌های تولید شده را آپلود می‌کند تا شما دانلود کنید
+      - name: Upload Debug Artifacts
+        uses: actions/upload-artifact@v4
+        if: always() # حتی اگر اسکرپت ارور داد، این اجرا شود
+        with:
+          name: debug-results
+          path: |
+            debug_screenshot.png
+            debug_source.html
+            debug_variable.json
