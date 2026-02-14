@@ -268,15 +268,18 @@ async function main() {
     for (const product of products) {
         const result = await processProductWithDualSource(browser, product);
 
-        if (result.success) {
-            results[product.id] = result;
-            successCount++;
+        // تغییر مهم: همیشه نتیجه را ذخیره کن، چه موفق چه ناموفق
+        results[product.id] = result;
 
+        if (result.success) {
+            successCount++;
             if (result.regular_price || result.offer_price) {
                 priceCount++;
             }
         } else {
             failCount++;
+            // لاگ کردن خطای محصول برای بررسی راحت‌تر در گیت‌هاب
+            console.log(`⚠️ Product ${product.id} Failed: ${result.error || 'Unknown Error'}`);
         }
 
         await new Promise(r => setTimeout(r, 1000));
