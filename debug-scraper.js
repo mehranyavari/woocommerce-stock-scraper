@@ -5,7 +5,7 @@ async function debug() {
     console.log('🐞 Starting Debug Scraper...');
     
     // لینک مشکل‌دار
-    const url = "https://www.meritspor.com.tr/nike-elite-doublewide-2li-tenis-bilekligi";
+    const url = "https://www.asics.com.tr/gel-resolution-x-664";
     
     const browser = await puppeteer.launch({
         headless: 'new',
