@@ -6,9 +6,24 @@ const CONFIG = {
     CONCURRENT_SCRAPES: 2,
     BATCH_SIZE: 10,
     BATCH_DELAY: 3000,
-    PAGE_TIMEOUT: 60000, // افزایش تایم‌اوت برای اطمینان بیشتر
-    WAIT_AFTER_LOAD: 4000
+    PAGE_TIMEOUT: 90000, // تایم‌اوت ۹۰ ثانیه برای اطمینان
+    WAIT_AFTER_LOAD: 5000
 };
+
+/**
+ * دریافت آرگومان‌های ورودی
+ * مثال: node scraper.js --ids=101,102,105
+ */
+function getArgs() {
+    const args = {};
+    process.argv.slice(2).forEach(arg => {
+        if (arg.startsWith('--')) {
+            const [key, value] = arg.slice(2).split('=');
+            args[key] = value;
+        }
+    });
+    return args;
+}
 
 /**
  * نرمال‌سازی سایز
@@ -30,7 +45,7 @@ function normalizeSize(rawSize, hostname) {
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
     if (numbers && numbers.length > 0) {
-        if (hostname === 'www.meritspor.com.tr') {
+        if (hostname && hostname.includes('meritspor')) {
             return numbers[0].replace(',', '.');
         } else {
             return numbers[numbers.length - 1].replace(',', '.');
@@ -54,7 +69,7 @@ function parseTurkishPrice(rawPrice) {
     const num = parseFloat(clean);
     if (isNaN(num)) return null;
 
-    return Math.ceil(num); // رند به بالا
+    return Math.ceil(num);
 }
 
 /**
@@ -71,18 +86,22 @@ async function scrapeProduct(browser, product) {
         );
         await page.setViewport({ width: 1920, height: 1080 });
 
-        await page.goto(product.url, {
-            waitUntil: 'networkidle2',
-            timeout: CONFIG.PAGE_TIMEOUT
-        });
+        try {
+            await page.goto(product.url, {
+                waitUntil: 'networkidle2',
+                timeout: CONFIG.PAGE_TIMEOUT
+            });
+        } catch (navError) {
+            throw new Error(`Navigation Timeout/Error: ${navError.message}`);
+        }
 
         await page.waitForTimeout(CONFIG.WAIT_AFTER_LOAD);
 
-        const hostname = new URL(product.url).hostname;
+        const hostname = new URL(page.url()).hostname;
 
         const result = await page.evaluate(() => {
             const match = document.body.innerHTML.match(/var productDetailModel = (.*?);/);
-            if (!match) return null;
+            if (!match) return { success: false, error: "Variable 'productDetailModel' NOT found" };
 
             try {
                 const data = JSON.parse(match[1]);
@@ -90,18 +109,15 @@ async function scrapeProduct(browser, product) {
                 let regularPrice = null;
                 let offerPrice = null;
 
-                // حالت ۱: محصول دارای واریانت (مثل سایز کفش)
+                // حالت ۱: محصول دارای واریانت
                 if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
                     const stockMap = {};
-                    
                     if (data.products && Array.isArray(data.products)) {
                         data.products.forEach(p => {
                             if (p.id !== undefined && p.stokAdedi !== undefined) {
                                 stockMap[p.id] = parseInt(p.stokAdedi);
                             }
                         });
-
-                        // قیمت‌ها را از اولین محصول لیست برمی‌داریم
                         if (data.products.length > 0) {
                             const p = data.products[0];
                             regularPrice = p.satisFiyatiStr || null;
@@ -115,14 +131,13 @@ async function scrapeProduct(browser, product) {
                         }
                     });
                 } 
-                // حالت ۲: محصول تکی (مثل مچ‌بند یا محصولات فری‌سایز)
+                // حالت ۲: محصول تکی
                 else if (data.product) {
-                    // تمام موجودی را به یک سایز فرضی "Standart" اختصاص می‌دهیم
-                    const qty = parseInt(data.product.stokAdedi) || 0;
-                    stocks['Standart'] = qty;
-
+                    stocks['Standart'] = parseInt(data.product.stokAdedi) || 0;
                     regularPrice = data.product.satisFiyatiStr || null;
                     offerPrice = data.product.indirimliFiyatiStr || null;
+                } else {
+                    return { success: false, error: "Unknown JSON structure" };
                 }
 
                 return {
@@ -133,15 +148,14 @@ async function scrapeProduct(browser, product) {
                 };
 
             } catch (e) {
-                return { success: false, error: e.message };
+                return { success: false, error: "JSON Parse Error: " + e.message };
             }
         });
 
         await page.close();
 
-        if (!result || !result.success) {
-            console.log(`  ❌ Failed (Data extraction failed)`);
-            return null;
+        if (!result.success) {
+            return { success: false, error: result.error };
         }
 
         const normalizedStocks = {};
@@ -155,33 +169,31 @@ async function scrapeProduct(browser, product) {
         const regular = parseTurkishPrice(result.regularPrice);
         let offer = parseTurkishPrice(result.offerPrice);
 
-        // اگر قیمت تخفیف‌خورده با قیمت اصلی برابر یا بیشتر بود، یعنی تخفیفی نداریم
         if (regular && offer && offer >= regular) {
             offer = null;
         }
 
         console.log(
-            `  ✅ Success: ${Object.keys(normalizedStocks).length} variants, ` +
-            `Regular: ${regular || 'N/A'}, Offer: ${offer || 'N/A'}`
+            `  ✅ Success: ${Object.keys(normalizedStocks).length} variants`
         );
 
         return {
+            success: true,
             stocks: normalizedStocks,
             regular_price: regular,
             offer_price: offer
         };
 
     } catch (error) {
-        await page.close();
-        console.log(`  ❌ Error: ${error.message}`);
-        return null;
+        try { await page.close(); } catch(e){}
+        return { success: false, error: error.message };
     }
 }
 
 /**
- * پردازش محصول با primary و secondary
+ * پردازش محصول
  */
-async function processProductWithDualSource(browser, product) {
+async function processProduct(browser, product) {
     const result = {
         id: product.id,
         url: product.url,
@@ -189,13 +201,14 @@ async function processProductWithDualSource(browser, product) {
         stocks: {},
         regular_price: null,
         offer_price: null,
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
+        error: null
     };
 
     const primaryData = await scrapeProduct(browser, product);
 
-    if (!primaryData) {
-        result.error = 'Failed to fetch from primary URL';
+    if (!primaryData.success) {
+        result.error = primaryData.error;
         return result;
     }
 
@@ -204,34 +217,8 @@ async function processProductWithDualSource(browser, product) {
     result.offer_price = primaryData.offer_price;
     result.success = true;
 
-    if (product.secondary_url) {
-        const outOfStockSizes = [];
-
-        // بررسی سایزهای ناموجود در لینک اول
-        for (const [size, stock] of Object.entries(primaryData.stocks)) {
-            if (stock === 0) {
-                outOfStockSizes.push(size);
-            }
-        }
-
-        if (outOfStockSizes.length > 0) {
-            console.log(`  🔄 Checking secondary URL for ${outOfStockSizes.length} sizes`);
-
-            const secondaryData = await scrapeProduct(browser, {
-                id: product.id,
-                url: product.secondary_url
-            });
-
-            if (secondaryData) {
-                for (const size of outOfStockSizes) {
-                    // اگر در لینک دوم موجودی داشت، جایگزین کن
-                    if (secondaryData.stocks[size] && secondaryData.stocks[size] > 0) {
-                        result.stocks[size] = secondaryData.stocks[size];
-                    }
-                }
-            }
-        }
-    }
+    // اگر نیاز به لینک دوم بود اینجا کدش اضافه می‌شود
+    // (فعلاً حذف شده چون استفاده نمی‌شد و کد را شلوغ می‌کرد)
 
     return result;
 }
@@ -240,19 +227,42 @@ async function processProductWithDualSource(browser, product) {
  * اجرای اصلی
  */
 async function main() {
+    const args = getArgs();
+    
+    // دریافت لیست IDها از ورودی (اگر وجود داشته باشد)
+    const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
+
     console.log('='.repeat(60));
-    console.log('Stock Scraper Started (Dual Source + Price Support)');
+    console.log(targetIds ? `Stock Scraper - Batch Mode (${targetIds.length} items)` : 'Stock Scraper - Full Mode');
     console.log('='.repeat(60));
 
     let products = [];
+    let currentData = {};
+
     try {
-        const data = fs.readFileSync('products.json', 'utf8');
-        products = JSON.parse(data);
-        console.log(`✅ Loaded ${products.length} products`);
+        products = JSON.parse(fs.readFileSync('products.json', 'utf8'));
+        
+        // خواندن دیتای قبلی برای اینکه اطلاعات سایر محصولات پاک نشود
+        if (fs.existsSync('stock-data.json')) {
+            const raw = fs.readFileSync('stock-data.json', 'utf8');
+            try {
+                currentData = JSON.parse(raw);
+            } catch(e) {
+                currentData = {};
+            }
+        }
     } catch (error) {
-        console.error('❌ Error loading products.json');
-        fs.writeFileSync('stock-data.json', JSON.stringify({}, null, 2));
+        console.error('❌ Error loading files:', error);
         return;
+    }
+
+    // فیلتر کردن محصولات اگر لیست ID داده شده باشد
+    if (targetIds) {
+        products = products.filter(p => targetIds.includes(String(p.id)));
+        if (products.length === 0) {
+            console.log('⚠️ No matching products found for the provided IDs.');
+            return;
+        }
     }
 
     const browser = await puppeteer.launch({
@@ -260,29 +270,26 @@ async function main() {
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
-    const results = {};
+    // استفاده از دیتای قبلی به عنوان پایه (Merge)
+    const results = { ...currentData };
+    
     let successCount = 0;
     let failCount = 0;
-    let priceCount = 0;
 
     for (const product of products) {
-        const result = await processProductWithDualSource(browser, product);
-
-        // تغییر مهم: همیشه نتیجه را ذخیره کن، چه موفق چه ناموفق
+        const result = await processProduct(browser, product);
+        
+        // ذخیره نتیجه (چه موفق چه ناموفق)
         results[product.id] = result;
 
         if (result.success) {
             successCount++;
-            if (result.regular_price || result.offer_price) {
-                priceCount++;
-            }
         } else {
             failCount++;
-            // لاگ کردن خطای محصول برای بررسی راحت‌تر در گیت‌هاب
-            console.log(`⚠️ Product ${product.id} Failed: ${result.error || 'Unknown Error'}`);
+            console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
         }
-
-        await new Promise(r => setTimeout(r, 1000));
+        
+        await new Promise(r => setTimeout(r, CONFIG.BATCH_DELAY));
     }
 
     await browser.close();
@@ -292,9 +299,7 @@ async function main() {
     console.log('\n' + '='.repeat(60));
     console.log('✅ Scraping Complete!');
     console.log(`Success: ${successCount}`);
-    console.log(`With Price: ${priceCount}`);
     console.log(`Failed: ${failCount}`);
-    console.log(`Total: ${products.length}`);
     console.log('='.repeat(60));
 }
 
