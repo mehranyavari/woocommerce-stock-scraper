@@ -6,7 +6,7 @@ const CONFIG = {
     CONCURRENT_SCRAPES: 2,
     BATCH_SIZE: 10,
     BATCH_DELAY: 3000,
-    PAGE_TIMEOUT: 30000,
+    PAGE_TIMEOUT: 60000, // افزایش تایم‌اوت برای اطمینان بیشتر
     WAIT_AFTER_LOAD: 4000
 };
 
@@ -21,6 +21,7 @@ function normalizeSize(rawSize, hostname) {
 
     if (lower === 's-m') return 'S/M';
     if (lower === 'm-l') return 'M/L';
+    if (lower === 'standart' || lower === 'one size' || lower === 'os') return 'Standart';
 
     const rangeMatch = trimmed.match(/^(\d+)\s*-\s*(\d+)$/);
     if (rangeMatch) {
@@ -85,32 +86,43 @@ async function scrapeProduct(browser, product) {
 
             try {
                 const data = JSON.parse(match[1]);
-
-                const stockMap = {};
-                if (data.products && Array.isArray(data.products)) {
-                    data.products.forEach(p => {
-                        if (p.id !== undefined && p.stokAdedi !== undefined) {
-                            stockMap[p.id] = parseInt(p.stokAdedi);
-                        }
-                    });
-                }
-
                 const stocks = {};
-                if (data.productVariantData && Array.isArray(data.productVariantData)) {
+                let regularPrice = null;
+                let offerPrice = null;
+
+                // حالت ۱: محصول دارای واریانت (مثل سایز کفش)
+                if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
+                    const stockMap = {};
+                    
+                    if (data.products && Array.isArray(data.products)) {
+                        data.products.forEach(p => {
+                            if (p.id !== undefined && p.stokAdedi !== undefined) {
+                                stockMap[p.id] = parseInt(p.stokAdedi);
+                            }
+                        });
+
+                        // قیمت‌ها را از اولین محصول لیست برمی‌داریم
+                        if (data.products.length > 0) {
+                            const p = data.products[0];
+                            regularPrice = p.satisFiyatiStr || null;
+                            offerPrice = p.indirimliFiyatiStr || null;
+                        }
+                    }
+
                     data.productVariantData.forEach(variant => {
                         if (variant.tanim && variant.urunID !== undefined) {
                             stocks[variant.tanim] = stockMap[variant.urunID] || 0;
                         }
                     });
-                }
+                } 
+                // حالت ۲: محصول تکی (مثل مچ‌بند یا محصولات فری‌سایز)
+                else if (data.product) {
+                    // تمام موجودی را به یک سایز فرضی "Standart" اختصاص می‌دهیم
+                    const qty = parseInt(data.product.stokAdedi) || 0;
+                    stocks['Standart'] = qty;
 
-                let regularPrice = null;
-                let offerPrice = null;
-
-                if (data.products && data.products.length > 0) {
-                    const p = data.products[0];
-                    regularPrice = p.satisFiyatiStr || null;
-                    offerPrice = p.indirimliFiyatiStr || null;
+                    regularPrice = data.product.satisFiyatiStr || null;
+                    offerPrice = data.product.indirimliFiyatiStr || null;
                 }
 
                 return {
@@ -128,7 +140,7 @@ async function scrapeProduct(browser, product) {
         await page.close();
 
         if (!result || !result.success) {
-            console.log(`  ❌ Failed`);
+            console.log(`  ❌ Failed (Data extraction failed)`);
             return null;
         }
 
@@ -143,6 +155,7 @@ async function scrapeProduct(browser, product) {
         const regular = parseTurkishPrice(result.regularPrice);
         let offer = parseTurkishPrice(result.offerPrice);
 
+        // اگر قیمت تخفیف‌خورده با قیمت اصلی برابر یا بیشتر بود، یعنی تخفیفی نداریم
         if (regular && offer && offer >= regular) {
             offer = null;
         }
@@ -194,6 +207,7 @@ async function processProductWithDualSource(browser, product) {
     if (product.secondary_url) {
         const outOfStockSizes = [];
 
+        // بررسی سایزهای ناموجود در لینک اول
         for (const [size, stock] of Object.entries(primaryData.stocks)) {
             if (stock === 0) {
                 outOfStockSizes.push(size);
@@ -210,7 +224,8 @@ async function processProductWithDualSource(browser, product) {
 
             if (secondaryData) {
                 for (const size of outOfStockSizes) {
-                    if (secondaryData.stocks[size] > 0) {
+                    // اگر در لینک دوم موجودی داشت، جایگزین کن
+                    if (secondaryData.stocks[size] && secondaryData.stocks[size] > 0) {
                         result.stocks[size] = secondaryData.stocks[size];
                     }
                 }
