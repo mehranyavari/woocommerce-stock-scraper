@@ -6,13 +6,12 @@ const CONFIG = {
     CONCURRENT_SCRAPES: 2,
     BATCH_SIZE: 10,
     BATCH_DELAY: 3000,
-    PAGE_TIMEOUT: 90000, // تایم‌اوت ۹۰ ثانیه برای اطمینان
+    PAGE_TIMEOUT: 90000,
     WAIT_AFTER_LOAD: 5000
 };
 
 /**
  * دریافت آرگومان‌های ورودی
- * مثال: node scraper.js --ids=101,102,105
  */
 function getArgs() {
     const args = {};
@@ -105,6 +104,13 @@ async function scrapeProduct(browser, product) {
 
             try {
                 const data = JSON.parse(match[1]);
+                
+                // --- فیلتر کردن برند دکتلون (سطح ۲: بررسی داده‌های صفحه) ---
+                if (data.brandName && data.brandName.toLowerCase().includes('decathlon')) {
+                    return { success: false, error: "Skipped: Brand is Decathlon" };
+                }
+                // ------------------------------
+
                 const stocks = {};
                 let regularPrice = null;
                 let offerPrice = null;
@@ -205,6 +211,13 @@ async function processProduct(browser, product) {
         error: null
     };
 
+    // --- فیلتر کردن لینک‌های دکتلون (سطح ۱: بررسی URL) ---
+    if (product.url && product.url.toLowerCase().includes('decathlon')) {
+        result.error = "Skipped: Decathlon URL";
+        return result;
+    }
+    // -----------------------------------------------------------
+
     const primaryData = await scrapeProduct(browser, product);
 
     if (!primaryData.success) {
@@ -217,9 +230,6 @@ async function processProduct(browser, product) {
     result.offer_price = primaryData.offer_price;
     result.success = true;
 
-    // اگر نیاز به لینک دوم بود اینجا کدش اضافه می‌شود
-    // (فعلاً حذف شده چون استفاده نمی‌شد و کد را شلوغ می‌کرد)
-
     return result;
 }
 
@@ -228,8 +238,6 @@ async function processProduct(browser, product) {
  */
 async function main() {
     const args = getArgs();
-    
-    // دریافت لیست IDها از ورودی (اگر وجود داشته باشد)
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
 
     console.log('='.repeat(60));
@@ -242,21 +250,15 @@ async function main() {
     try {
         products = JSON.parse(fs.readFileSync('products.json', 'utf8'));
         
-        // خواندن دیتای قبلی برای اینکه اطلاعات سایر محصولات پاک نشود
         if (fs.existsSync('stock-data.json')) {
             const raw = fs.readFileSync('stock-data.json', 'utf8');
-            try {
-                currentData = JSON.parse(raw);
-            } catch(e) {
-                currentData = {};
-            }
+            try { currentData = JSON.parse(raw); } catch(e) { currentData = {}; }
         }
     } catch (error) {
         console.error('❌ Error loading files:', error);
         return;
     }
 
-    // فیلتر کردن محصولات اگر لیست ID داده شده باشد
     if (targetIds) {
         products = products.filter(p => targetIds.includes(String(p.id)));
         if (products.length === 0) {
@@ -270,26 +272,42 @@ async function main() {
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 
-    // استفاده از دیتای قبلی به عنوان پایه (Merge)
     const results = { ...currentData };
     
     let successCount = 0;
     let failCount = 0;
+    let skippedCount = 0;
 
     for (const product of products) {
         const result = await processProduct(browser, product);
         
-        // ذخیره نتیجه (چه موفق چه ناموفق)
-        results[product.id] = result;
+        // --- تغییر اصلی: مدیریت حذف و عدم ذخیره محصولات دکتلون ---
+        const isSkipped = result.error && result.error.toString().includes('Skipped');
 
-        if (result.success) {
-            successCount++;
+        if (isSkipped) {
+            // ۱. اگر محصول قبلاً در فایل بوده، حذفش کن
+            if (results[product.id]) {
+                delete results[product.id];
+            }
+            // ۲. در لیست جدید هم ذخیره نکن
+            console.log(`⏩ Skipped & Removed: ${product.id} (Decathlon)`);
+            skippedCount++;
         } else {
-            failCount++;
-            console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
+            // ذخیره محصولات عادی (چه موفق چه ناموفق)
+            results[product.id] = result;
+
+            if (result.success) {
+                successCount++;
+            } else {
+                failCount++;
+                console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
+            }
         }
+        // --------------------------------------------------------
         
-        await new Promise(r => setTimeout(r, CONFIG.BATCH_DELAY));
+        // اگر اسکیپ شده، تاخیر ننداز تا سریع‌تر پیش بره
+        const delay = isSkipped ? 0 : CONFIG.BATCH_DELAY;
+        await new Promise(r => setTimeout(r, delay));
     }
 
     await browser.close();
@@ -300,6 +318,7 @@ async function main() {
     console.log('✅ Scraping Complete!');
     console.log(`Success: ${successCount}`);
     console.log(`Failed: ${failCount}`);
+    console.log(`Skipped (Removed): ${skippedCount}`);
     console.log('='.repeat(60));
 }
 
