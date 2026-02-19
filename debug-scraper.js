@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 // لینک محصول برای تست
-const TEST_URL = "https://www.asics.com.tr/gel-resolution-x-664";
+const TEST_URL = "https://www.tenisshop.com/nikecourt-lite-4-toprak-kort-kadin-tenis-ayakkabisi-3347";
 
 // --- توابع کمکی (دقیقاً کپی شده از اسکرپر اصلی) ---
 
