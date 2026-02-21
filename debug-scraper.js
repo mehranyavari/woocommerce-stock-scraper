@@ -38,23 +38,37 @@ async function debug() {
     console.log('🐞 Starting Advanced Debug Scraper...');
     console.log(`🎯 Target: ${TEST_URL}\n`);
     
+    // ۱. اضافه شدن پروکسی به تنظیمات مرورگر
     const browser = await puppeteer.launch({
         headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: [
+            '--no-sandbox', 
+            '--disable-setuid-sandbox',
+            '--proxy-server=http://45.145.20.148:3128' // <--- آدرس سرور پروکسی ترکیه
+        ]
     });
 
     const page = await browser.newPage();
-    await page.setExtraHTTPHeaders({
-            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
-        });
 
-        // ۲. تنظیم منطقه زمانی روی استانبول
-        await page.emulateTimezone('Europe/Istanbul');
+    // ۲. وارد کردن یوزرنیم و پسورد پروکسی
+    await page.authenticate({
+        username: 'mehran',
+        password: 'mehran75'
+    });
+
+    await page.setExtraHTTPHeaders({
+        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
+    });
+
+    // تنظیم منطقه زمانی روی استانبول
+    await page.emulateTimezone('Europe/Istanbul');
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
     await page.setViewport({ width: 1920, height: 1080 });
 
     try {
         await page.goto(TEST_URL, { waitUntil: 'networkidle2', timeout: 60000 });
+        
+        // جایگزین استاندارد waitForTimeout
         await new Promise(r => setTimeout(r, 4000));
 
         // 1. استخراج متغیر خام
