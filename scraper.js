@@ -80,6 +80,13 @@ async function scrapeProduct(browser, product) {
     const page = await browser.newPage();
 
     try {
+        // --- 🔐 اتصال به پروکسی شما 🔐 ---
+        await page.authenticate({
+            username: 'mehran',
+            password: 'mehran75'
+        });
+        // ---------------------------------
+
         await page.setUserAgent(
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         );
@@ -94,7 +101,9 @@ async function scrapeProduct(browser, product) {
             throw new Error(`Navigation Timeout/Error: ${navError.message}`);
         }
 
-        await page.waitForTimeout(CONFIG.WAIT_AFTER_LOAD);
+        // --- 🛠️ اینجا مشکل برطرف شد 🛠️ ---
+        // جایگزینی waitForTimeout با استاندارد جاوااسکریپت
+        await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
 
         const hostname = new URL(page.url()).hostname;
 
@@ -105,17 +114,15 @@ async function scrapeProduct(browser, product) {
             try {
                 const data = JSON.parse(match[1]);
                 
-                // --- فیلتر کردن برند دکتلون (سطح ۲: بررسی داده‌های صفحه) ---
+                // فیلتر کردن برند دکتلون
                 if (data.brandName && data.brandName.toLowerCase().includes('decathlon')) {
                     return { success: false, error: "Skipped: Brand is Decathlon" };
                 }
-                // ------------------------------
 
                 const stocks = {};
                 let regularPrice = null;
                 let offerPrice = null;
 
-                // حالت ۱: محصول دارای واریانت
                 if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
                     const stockMap = {};
                     if (data.products && Array.isArray(data.products)) {
@@ -137,7 +144,6 @@ async function scrapeProduct(browser, product) {
                         }
                     });
                 } 
-                // حالت ۲: محصول تکی
                 else if (data.product) {
                     stocks['Standart'] = parseInt(data.product.stokAdedi) || 0;
                     regularPrice = data.product.satisFiyatiStr || null;
@@ -211,12 +217,10 @@ async function processProduct(browser, product) {
         error: null
     };
 
-    // --- فیلتر کردن لینک‌های دکتلون (سطح ۱: بررسی URL) ---
     if (product.url && product.url.toLowerCase().includes('decathlon')) {
         result.error = "Skipped: Decathlon URL";
         return result;
     }
-    // -----------------------------------------------------------
 
     const primaryData = await scrapeProduct(browser, product);
 
@@ -267,10 +271,16 @@ async function main() {
         }
     }
 
+    // --- 🌍 تنظیم مرورگر برای استفاده از پروکسی ترکیه ---
     const browser = await puppeteer.launch({
         headless: 'new',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--proxy-server=http://45.145.20.148:3128' // آدرس سرور شما
+        ]
     });
+    // ----------------------------------------------------
 
     const results = { ...currentData };
     
@@ -281,19 +291,15 @@ async function main() {
     for (const product of products) {
         const result = await processProduct(browser, product);
         
-        // --- تغییر اصلی: مدیریت حذف و عدم ذخیره محصولات دکتلون ---
         const isSkipped = result.error && result.error.toString().includes('Skipped');
 
         if (isSkipped) {
-            // ۱. اگر محصول قبلاً در فایل بوده، حذفش کن
             if (results[product.id]) {
                 delete results[product.id];
             }
-            // ۲. در لیست جدید هم ذخیره نکن
             console.log(`⏩ Skipped & Removed: ${product.id} (Decathlon)`);
             skippedCount++;
         } else {
-            // ذخیره محصولات عادی (چه موفق چه ناموفق)
             results[product.id] = result;
 
             if (result.success) {
@@ -303,9 +309,7 @@ async function main() {
                 console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
             }
         }
-        // --------------------------------------------------------
         
-        // اگر اسکیپ شده، تاخیر ننداز تا سریع‌تر پیش بره
         const delay = isSkipped ? 0 : CONFIG.BATCH_DELAY;
         await new Promise(r => setTimeout(r, delay));
     }
