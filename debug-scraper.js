@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 // لینک محصول برای تست
-const TEST_URL = "https://www.tenisshop.com/nikecourt-lite-4-toprak-kort-kadin-tenis-ayakkabisi-3347";
+const TEST_URL = "https://www.raketspor.com.tr/nikecourt-io6234-323-dri-fit-max90-erkek-tisort-yesil-10584";
 
 // --- توابع کمکی (دقیقاً کپی شده از اسکرپر اصلی) ---
 
