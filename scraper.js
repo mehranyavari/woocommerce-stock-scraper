@@ -62,8 +62,8 @@ function parseTurkishPrice(rawPrice) {
 
     let clean = rawPrice.replace(/[^\d,\.]/g, '');
     clean = clean
-        .replace(/\./g, '') // حذف هزارگان
-        .replace(',', '.'); // اعشار
+        .replace(/\./g, '') 
+        .replace(',', '.'); 
 
     const num = parseFloat(clean);
     if (isNaN(num)) return null;
@@ -81,12 +81,10 @@ async function scrapeProduct(browser, product, isSecondary = false) {
     const page = await browser.newPage();
 
     try {
-        // --- 🔐 اتصال به پروکسی شما 🔐 ---
         await page.authenticate({
             username: 'mehran',
             password: 'mehran75'
         });
-        // ---------------------------------
 
         await page.setUserAgent(
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -102,7 +100,6 @@ async function scrapeProduct(browser, product, isSecondary = false) {
             throw new Error(`Navigation Timeout/Error: ${navError.message}`);
         }
 
-        // مکث برای لود کامل جاوااسکریپت سایت
         await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
 
         const hostname = new URL(page.url()).hostname;
@@ -114,7 +111,6 @@ async function scrapeProduct(browser, product, isSecondary = false) {
             try {
                 const data = JSON.parse(match[1]);
                 
-                // فیلتر کردن برند دکتلون
                 if (data.brandName && data.brandName.toLowerCase().includes('decathlon')) {
                     return { success: false, error: "Skipped: Brand is Decathlon" };
                 }
@@ -201,15 +197,6 @@ async function scrapeProduct(browser, product, isSecondary = false) {
 }
 
 /**
- * بررسی موجودی
- */
-function hasStock(scrapeData) {
-    if (!scrapeData || !scrapeData.success) return false;
-    const totalStock = Object.values(scrapeData.stocks || {}).reduce((a, b) => a + b, 0);
-    return totalStock > 0;
-}
-
-/**
  * محاسبه قیمت نهایی برای مقایسه
  */
 function getEffectivePrice(scrapeData) {
@@ -218,21 +205,11 @@ function getEffectivePrice(scrapeData) {
 }
 
 /**
- * پردازش هوشمند محصول (مقایسه سایت‌ها)
+ * پردازش هوشمند محصول (ادغام سایزها و قیمت)
  */
 async function processProduct(browser, product) {
-    const result = {
-        id: product.id,
-        success: false,
-        stocks: {},
-        regular_price: null,
-        offer_price: null,
-        lastUpdated: new Date().toISOString(),
-        error: null
-    };
-
-    let primaryData = { success: false, error: "No Primary URL" };
-    let secondaryData = { success: false, error: "No Secondary URL" };
+    let primaryData = { success: false, error: "No Primary URL", stocks: {} };
+    let secondaryData = { success: false, error: "No Secondary URL", stocks: {} };
 
     // 1. بررسی سایت اصلی
     if (product.url && !product.url.toLowerCase().includes('decathlon')) {
@@ -241,70 +218,72 @@ async function processProduct(browser, product) {
         primaryData.error = "Skipped: Decathlon Primary URL";
     }
 
-    // 2. بررسی سایت دوم (اگر وجود داشت)
+    // 2. بررسی سایت دوم
     if (product.secondary_url && !product.secondary_url.toLowerCase().includes('decathlon')) {
         secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
     } else if (product.secondary_url && product.secondary_url.toLowerCase().includes('decathlon')) {
         secondaryData.error = "Skipped: Decathlon Secondary URL";
     }
 
-    const primaryHasStock = hasStock(primaryData);
-    const secondaryHasStock = hasStock(secondaryData);
+    const primarySuccess = primaryData.success;
+    const secondarySuccess = secondaryData.success;
 
-    let winnerData = null;
+    // اگر هر دو سایت خطا دادند
+    if (!primarySuccess && !secondarySuccess) {
+        return {
+            id: product.id,
+            success: false,
+            error: `Primary: ${primaryData.error} | Secondary: ${secondaryData.error}`,
+            lastUpdated: new Date().toISOString()
+        };
+    }
 
-    // 3. قضاوت نهایی (Business Logic)
-    if (primaryHasStock && secondaryHasStock) {
-        // اگر هر دو موجود بودند: اونی که گرون‌تره برنده میشه
+    // 3. انتخاب قیمت پایه (سایتی که گران‌تر است برنده قیمت می‌شود)
+    let priceWinner = null;
+    if (primarySuccess && secondarySuccess) {
         const price1 = getEffectivePrice(primaryData);
         const price2 = getEffectivePrice(secondaryData);
+        priceWinner = (price2 > price1) ? secondaryData : primaryData;
+        console.log(`  ⚖️ Comparing Prices: Primary=${price1}₺, Secondary=${price2}₺ -> Selected higher price.`);
+    } else if (primarySuccess) {
+        priceWinner = primaryData;
+    } else {
+        priceWinner = secondaryData;
+    }
+
+    // 4. ادغام هوشمندانه موجودی سایزها (Variant-Level Merging)
+    const mergedStocks = {};
+    const allSizes = new Set([
+        ...Object.keys(primaryData.stocks || {}),
+        ...Object.keys(secondaryData.stocks || {})
+    ]);
+
+    allSizes.forEach(size => {
+        const stock1 = (primaryData.stocks && primaryData.stocks[size]) || 0;
+        const stock2 = (secondaryData.stocks && secondaryData.stocks[size]) || 0;
         
-        console.log(`  ⚖️ Both have stock! Primary Price: ${price1}₺ | Secondary Price: ${price2}₺`);
-        if (price2 > price1) {
-            console.log(`  🏆 Secondary URL won (Higher Price).`);
-            winnerData = secondaryData;
+        if (stock1 > 0) {
+            // اگر در سایت اصلی موجود بود، همون رو برمیداریم
+            mergedStocks[size] = stock1;
+        } else if (stock2 > 0) {
+            // اگر سایت اصلی ناموجود بود ولی سایت دوم داشت، از سایت دوم برمیداریم!
+            mergedStocks[size] = stock2;
         } else {
-            console.log(`  🏆 Primary URL won (Higher or Equal Price).`);
-            winnerData = primaryData;
+            // در هر دو سایت ناموجود است
+            mergedStocks[size] = 0;
         }
-    } else if (primaryHasStock) {
-        console.log(`  🏆 Primary URL won (Only one in stock).`);
-        winnerData = primaryData;
-    } else if (secondaryHasStock) {
-        console.log(`  🏆 Secondary URL won (Only one in stock).`);
-        winnerData = secondaryData;
-    } else {
-        // هیچکدوم موجودی نداشتند
-        if (primaryData.success && secondaryData.success) {
-            // هر دو موفق به اسکرپ شدن ولی ناموجودند. قیمت گرون‌تر رو می‌گیریم که تو سایت قیمت افت نکنه
-            const price1 = getEffectivePrice(primaryData);
-            const price2 = getEffectivePrice(secondaryData);
-            winnerData = (price2 > price1) ? secondaryData : primaryData;
-            console.log(`  📉 Both out of stock. Selected higher price variant.`);
-        } else if (primaryData.success) {
-            winnerData = primaryData;
-        } else if (secondaryData.success) {
-            winnerData = secondaryData;
-        } else {
-            // هر دو سایت کلا خراب بودن یا ارور دادن
-            winnerData = primaryData;
-            if (product.secondary_url) {
-                winnerData.error = `Primary Error: ${primaryData.error} | Secondary Error: ${secondaryData.error}`;
-            }
-        }
-    }
+    });
 
-    if (winnerData && winnerData.success) {
-        result.success = true;
-        result.stocks = { ...winnerData.stocks };
-        result.regular_price = winnerData.regular_price;
-        result.offer_price = winnerData.offer_price;
-    } else {
-        result.success = false;
-        result.error = winnerData ? winnerData.error : "Unknown error";
-    }
+    console.log(`  🤝 Merged Stocks: ${Object.keys(mergedStocks).length} total sizes processed.`);
 
-    return result;
+    return {
+        id: product.id,
+        success: true,
+        stocks: mergedStocks,
+        regular_price: priceWinner.regular_price,
+        offer_price: priceWinner.offer_price,
+        lastUpdated: new Date().toISOString()
+    };
 }
 
 /**
@@ -341,16 +320,14 @@ async function main() {
         }
     }
 
-    // --- 🌍 تنظیم مرورگر برای استفاده از پروکسی ترکیه ---
     const browser = await puppeteer.launch({
         headless: 'new',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--proxy-server=http://45.145.20.148:3128' // آدرس سرور شما
+            '--proxy-server=http://45.145.20.148:3128'
         ]
     });
-    // ----------------------------------------------------
 
     const results = { ...currentData };
     
