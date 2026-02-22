@@ -74,8 +74,9 @@ function parseTurkishPrice(rawPrice) {
 /**
  * استخراج موجودی و قیمت از یک URL
  */
-async function scrapeProduct(browser, product) {
-    console.log(`Scraping product ${product.id}: ${product.url}`);
+async function scrapeProduct(browser, product, isSecondary = false) {
+    const urlLabel = isSecondary ? "Secondary URL" : "Primary URL";
+    console.log(`Scraping ${urlLabel} for product ${product.id}: ${product.url}`);
 
     const page = await browser.newPage();
 
@@ -101,8 +102,7 @@ async function scrapeProduct(browser, product) {
             throw new Error(`Navigation Timeout/Error: ${navError.message}`);
         }
 
-        // --- 🛠️ اینجا مشکل برطرف شد 🛠️ ---
-        // جایگزینی waitForTimeout با استاندارد جاوااسکریپت
+        // مکث برای لود کامل جاوااسکریپت سایت
         await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
 
         const hostname = new URL(page.url()).hostname;
@@ -185,9 +185,7 @@ async function scrapeProduct(browser, product) {
             offer = null;
         }
 
-        console.log(
-            `  ✅ Success: ${Object.keys(normalizedStocks).length} variants`
-        );
+        console.log(`  ✅ ${urlLabel} Success: ${Object.keys(normalizedStocks).length} variants found.`);
 
         return {
             success: true,
@@ -203,12 +201,28 @@ async function scrapeProduct(browser, product) {
 }
 
 /**
- * پردازش محصول
+ * بررسی موجودی
+ */
+function hasStock(scrapeData) {
+    if (!scrapeData || !scrapeData.success) return false;
+    const totalStock = Object.values(scrapeData.stocks || {}).reduce((a, b) => a + b, 0);
+    return totalStock > 0;
+}
+
+/**
+ * محاسبه قیمت نهایی برای مقایسه
+ */
+function getEffectivePrice(scrapeData) {
+    if (!scrapeData || !scrapeData.success) return 0;
+    return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
+}
+
+/**
+ * پردازش هوشمند محصول (مقایسه سایت‌ها)
  */
 async function processProduct(browser, product) {
     const result = {
         id: product.id,
-        url: product.url,
         success: false,
         stocks: {},
         regular_price: null,
@@ -217,22 +231,78 @@ async function processProduct(browser, product) {
         error: null
     };
 
-    if (product.url && product.url.toLowerCase().includes('decathlon')) {
-        result.error = "Skipped: Decathlon URL";
-        return result;
+    let primaryData = { success: false, error: "No Primary URL" };
+    let secondaryData = { success: false, error: "No Secondary URL" };
+
+    // 1. بررسی سایت اصلی
+    if (product.url && !product.url.toLowerCase().includes('decathlon')) {
+        primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
+    } else if (product.url && product.url.toLowerCase().includes('decathlon')) {
+        primaryData.error = "Skipped: Decathlon Primary URL";
     }
 
-    const primaryData = await scrapeProduct(browser, product);
-
-    if (!primaryData.success) {
-        result.error = primaryData.error;
-        return result;
+    // 2. بررسی سایت دوم (اگر وجود داشت)
+    if (product.secondary_url && !product.secondary_url.toLowerCase().includes('decathlon')) {
+        secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
+    } else if (product.secondary_url && product.secondary_url.toLowerCase().includes('decathlon')) {
+        secondaryData.error = "Skipped: Decathlon Secondary URL";
     }
 
-    result.stocks = { ...primaryData.stocks };
-    result.regular_price = primaryData.regular_price;
-    result.offer_price = primaryData.offer_price;
-    result.success = true;
+    const primaryHasStock = hasStock(primaryData);
+    const secondaryHasStock = hasStock(secondaryData);
+
+    let winnerData = null;
+
+    // 3. قضاوت نهایی (Business Logic)
+    if (primaryHasStock && secondaryHasStock) {
+        // اگر هر دو موجود بودند: اونی که گرون‌تره برنده میشه
+        const price1 = getEffectivePrice(primaryData);
+        const price2 = getEffectivePrice(secondaryData);
+        
+        console.log(`  ⚖️ Both have stock! Primary Price: ${price1}₺ | Secondary Price: ${price2}₺`);
+        if (price2 > price1) {
+            console.log(`  🏆 Secondary URL won (Higher Price).`);
+            winnerData = secondaryData;
+        } else {
+            console.log(`  🏆 Primary URL won (Higher or Equal Price).`);
+            winnerData = primaryData;
+        }
+    } else if (primaryHasStock) {
+        console.log(`  🏆 Primary URL won (Only one in stock).`);
+        winnerData = primaryData;
+    } else if (secondaryHasStock) {
+        console.log(`  🏆 Secondary URL won (Only one in stock).`);
+        winnerData = secondaryData;
+    } else {
+        // هیچکدوم موجودی نداشتند
+        if (primaryData.success && secondaryData.success) {
+            // هر دو موفق به اسکرپ شدن ولی ناموجودند. قیمت گرون‌تر رو می‌گیریم که تو سایت قیمت افت نکنه
+            const price1 = getEffectivePrice(primaryData);
+            const price2 = getEffectivePrice(secondaryData);
+            winnerData = (price2 > price1) ? secondaryData : primaryData;
+            console.log(`  📉 Both out of stock. Selected higher price variant.`);
+        } else if (primaryData.success) {
+            winnerData = primaryData;
+        } else if (secondaryData.success) {
+            winnerData = secondaryData;
+        } else {
+            // هر دو سایت کلا خراب بودن یا ارور دادن
+            winnerData = primaryData;
+            if (product.secondary_url) {
+                winnerData.error = `Primary Error: ${primaryData.error} | Secondary Error: ${secondaryData.error}`;
+            }
+        }
+    }
+
+    if (winnerData && winnerData.success) {
+        result.success = true;
+        result.stocks = { ...winnerData.stocks };
+        result.regular_price = winnerData.regular_price;
+        result.offer_price = winnerData.offer_price;
+    } else {
+        result.success = false;
+        result.error = winnerData ? winnerData.error : "Unknown error";
+    }
 
     return result;
 }
@@ -297,7 +367,7 @@ async function main() {
             if (results[product.id]) {
                 delete results[product.id];
             }
-            console.log(`⏩ Skipped & Removed: ${product.id} (Decathlon)`);
+            console.log(`⏩ Skipped & Removed: ${product.id}`);
             skippedCount++;
         } else {
             results[product.id] = result;
