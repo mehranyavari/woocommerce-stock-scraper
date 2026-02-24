@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 // لینک محصول برای تست
-const TEST_URL = "https://www.tenisshop.com/nike-zoom-gp-mucadelesi-1-sert-kort-kadin-tenis-ayakkabisi-3306";
+const TEST_URL = "https://www.decathlon.com.tr/p/kadin-tenis-etegi-beyaz-essentiel-100/_/R-p-305841?mc=8547381&c=BEYAZ";
 
 // --- توابع کمکی (دقیقاً کپی شده از اسکرپر اصلی) ---
 
