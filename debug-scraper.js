@@ -47,68 +47,38 @@ async function debug() {
         console.log('🚀 Navigating to Decathlon...');
         await page.goto(TEST_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
-        console.log('⏳ Waiting for page to process (12 seconds)...');
+        console.log('⏳ Waiting for Cloudflare to process (12 seconds)...');
+        // صبر کردن طولانی‌تر برای عبور از کلودفلر
         await new Promise(r => setTimeout(r, 12000));
 
-        // ۲. روش ضدخطا برای بریدن متن جیسون از داخل HTML
+        // 1. قیچی کردن مستقیم اطلاعات
         console.log('📥 Extracting __DKT data directly from HTML source...');
         const dktString = await page.evaluate(() => {
             const scriptNode = document.getElementById('__dkt');
-            if (!scriptNode) return null;
-            
-            const html = scriptNode.innerHTML;
-            const startStr = '__DKT = ';
-            const endStr = '__CONF =';
-            
-            const startIdx = html.indexOf(startStr);
-            const endIdx = html.indexOf(endStr);
-            
-            if (startIdx !== -1 && endIdx !== -1) {
-                // بریدن دقیق متن از شروع جیسون تا قبل از کلمه __CONF
-                let jsonText = html.substring(startIdx + startStr.length, endIdx).trim();
-                if (jsonText.endsWith(';')) {
-                    jsonText = jsonText.slice(0, -1);
-                }
-                return jsonText;
+            if (scriptNode) {
+                const html = scriptNode.innerHTML;
+                const match = html.match(/__DKT\s*=\s*(\{[\s\S]*?\});\s*__CONF/);
+                return match ? match[1] : null;
             }
             return null;
         });
 
         if (!dktString) {
             console.error("❌ Critical: '__DKT' text NOT found!");
-            console.log("📸 Taking a new screenshot to see what happened...");
+            console.log("📸 Taking a new screenshot to see if Cloudflare is still there...");
+            
+            // گرفتن عکس بعد از ۱۲ ثانیه برای دیدن نتیجه
             await page.screenshot({ path: 'debug_screenshot.png', fullPage: true });
+            
             const html = await page.content();
             fs.writeFileSync('debug_source.html', html);
+            
             await browser.close();
             return;
         }
         
+        // ... (بقیه کدهای قبلی برای پردازش قیمت و سایز دقیقاً همینجا قرار می‌گیرد) ...
         console.log("✅ Decathlon JSON string extracted successfully!");
-        const dktData = JSON.parse(dktString);
-
-        // --- پردازش دیتا ---
-        const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
-        const urlObj = new URL(TEST_URL);
-        const targetModelId = urlObj.searchParams.get('mc'); 
-        const targetModel = supermodelNode.data.models.find(m => m.modelId === targetModelId) || supermodelNode.data.models[0];
-        
-        console.log(`🎯 Target Model ID: ${targetModel.modelId}`);
-        console.log(`🎨 Web Label: ${targetModel.webLabel}`);
-
-        let extractedStocks = {};
-        let finalPrice = null;
-
-        targetModel.skus.forEach(sku => {
-            if (!finalPrice && sku.price) finalPrice = sku.price;
-            const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
-            extractedStocks[sku.size] = isOut ? 0 : 5; 
-        });
-
-        console.log('\n--- EXTRACTED VALUES ---');
-        console.log(`💰 Final Price: ${finalPrice} TL`);
-        console.log('\n📦 Stocks (Raw):');
-        console.table(extractedStocks);
 
     } catch (error) {
         console.error('❌ Error:', error);
