@@ -68,88 +68,66 @@ async function debug() {
     try {
         await page.goto(TEST_URL, { waitUntil: 'networkidle2', timeout: 60000 });
         
-        // جایگزین استاندارد waitForTimeout
         await new Promise(r => setTimeout(r, 4000));
 
-        // 1. استخراج متغیر خام
-        console.log('📥 Extracting raw data from page...');
-        const variableContent = await page.evaluate(() => {
-            const match = document.body.innerHTML.match(/var productDetailModel = (.*?);/);
-            return match ? match[1] : null;
+        // 1. استخراج آبجکت طلایی دکتلون از روی صفحه
+        console.log('📥 Extracting raw __DKT data from Decathlon...');
+        const dktData = await page.evaluate(() => {
+            // مرورگر مستقیماً آبجکت را به ما برمی‌گرداند
+            return typeof window.__DKT !== 'undefined' ? window.__DKT : null;
         });
 
-        if (!variableContent) {
-            console.error("❌ Critical: 'productDetailModel' variable NOT found!");
+        if (!dktData) {
+            console.error("❌ Critical: '__DKT' object NOT found! Page might be blocked or structure changed.");
+            await browser.close();
+            return;
+        }
+        console.log("✅ Decathlon JSON (__DKT) found.\n");
+
+        // 2. پیدا کردن بخش اطلاعات محصول (Supermodel)
+        const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
+        if (!supermodelNode || !supermodelNode.data || !supermodelNode.data.models) {
+            console.error("❌ Critical: Product models not found in JSON.");
             await browser.close();
             return;
         }
 
-        console.log("✅ Raw JSON found.\n");
-
-        // 2. پردازش داده‌ها (شبیه‌سازی منطق اسکرپر)
-        const data = JSON.parse(variableContent);
+        // گرفتن ID رنگ مورد نظر از لینک (مثلا mc=8547381)
+        const urlObj = new URL(TEST_URL);
+        const targetModelId = urlObj.searchParams.get('mc'); 
         
-        console.log('--- RAW DATA ANALYSIS ---');
+        // پیدا کردن رنگ دقیق داخل دیتا
+        const targetModel = supermodelNode.data.models.find(m => m.modelId === targetModelId) || supermodelNode.data.models[0];
         
-        // بررسی نوع محصول
-        let isVariantProduct = false;
-        let isSingleProduct = false;
+        console.log(`🎯 Target Model ID: ${targetModel.modelId}`);
+        console.log(`🎨 Web Label: ${targetModel.webLabel}`);
 
-        if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
-            isVariantProduct = true;
-            console.log("Type: Multi-Variant Product (Like Shoes)");
-            console.log(`Variants Found: ${data.productVariantData.length}`);
-        } else if (data.product) {
-            isSingleProduct = true;
-            console.log("Type: Single Product (Like Wristbands)");
-        } else {
-            console.log("Type: Unknown Structure ⚠️");
-        }
+        // 3. استخراج قیمت و موجودی سایزها
+        let extractedStocks = {};
+        let finalPrice = null;
+
+        targetModel.skus.forEach(sku => {
+            // استخراج قیمت (از اولین سایز موجود می‌گیریم)
+            if (!finalPrice && sku.price) {
+                finalPrice = sku.price;
+            }
+            
+            // دکتلون عدد موجودی نمیده، فقط اگه ناموجود باشه مینویسه isNotAvailable: true
+            const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
+            
+            // اگر موجود بود، به صورت فرضی عدد ۵ رو میذاریم تا وردپرس بفهمه موجوده
+            extractedStocks[sku.size] = isOut ? 0 : 5; 
+        });
 
         console.log('\n--- EXTRACTED VALUES ---');
-
-        let extractedStocks = {};
-        let rawRegPrice = null;
-        let rawOffPrice = null;
-
-        if (isVariantProduct) {
-            // منطق واریانت
-            const stockMap = {};
-            if (data.products) {
-                data.products.forEach(p => stockMap[p.id] = parseInt(p.stokAdedi));
-                if (data.products.length > 0) {
-                    rawRegPrice = data.products[0].satisFiyatiStr;
-                    rawOffPrice = data.products[0].indirimliFiyatiStr;
-                }
-            }
-            data.productVariantData.forEach(variant => {
-                extractedStocks[variant.tanim] = stockMap[variant.urunID] || 0;
-            });
-        } else if (isSingleProduct) {
-            // منطق تکی (جدید)
-            const qty = parseInt(data.product.stokAdedi) || 0;
-            extractedStocks['Standart'] = qty;
-            rawRegPrice = data.product.satisFiyatiStr;
-            rawOffPrice = data.product.indirimliFiyatiStr;
-        }
-
-        // نمایش قیمت‌ها
-        console.log(`🏷️  Raw Regular Price:  "${rawRegPrice}"`);
-        console.log(`🏷️  Raw Offer Price:    "${rawOffPrice}"`);
+        console.log(`💰 Final Price: ${finalPrice} TL`);
         
-        const finalReg = parseTurkishPrice(rawRegPrice);
-        const finalOff = parseTurkishPrice(rawOffPrice);
-
-        console.log(`💰 Parsed Regular:     ${finalReg}`);
-        console.log(`💰 Parsed Offer:       ${finalOff}`);
-
-        // نمایش موجودی
-        console.log('\n📦 Stocks:');
+        console.log('\n📦 Stocks (Raw from Decathlon):');
         console.table(extractedStocks);
 
-        // نرمال‌سازی
+        // 4. نرمال‌سازی برای وردپرس
         console.log('\n✨ Normalized Stocks (Final Output):');
-        const hostname = new URL(TEST_URL).hostname;
+        const hostname = urlObj.hostname;
         const normalized = {};
         for (const [key, val] of Object.entries(extractedStocks)) {
             const normKey = normalizeSize(key, hostname);
