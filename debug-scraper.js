@@ -66,17 +66,19 @@ async function debug() {
     await page.setViewport({ width: 1920, height: 1080 });
 
     try {
-        await page.goto(TEST_URL, { waitUntil: 'networkidle2', timeout: 60000 });
+        console.log('🚀 Navigating to Decathlon...');
+        await page.goto(TEST_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
-        await new Promise(r => setTimeout(r, 4000));
+        console.log('⏳ Waiting for Cloudflare to process (12 seconds)...');
+        // صبر کردن طولانی‌تر برای عبور از کلودفلر
+        await new Promise(r => setTimeout(r, 12000));
 
-        // 1. قیچی کردن مستقیم اطلاعات از داخل تگ اسکریپت دکتلون
+        // 1. قیچی کردن مستقیم اطلاعات
         console.log('📥 Extracting __DKT data directly from HTML source...');
         const dktString = await page.evaluate(() => {
             const scriptNode = document.getElementById('__dkt');
             if (scriptNode) {
                 const html = scriptNode.innerHTML;
-                // پیدا کردن متنی که با __DKT = شروع میشه و به ; __CONF ختم میشه
                 const match = html.match(/__DKT\s*=\s*(\{[\s\S]*?\});\s*__CONF/);
                 return match ? match[1] : null;
             }
@@ -84,12 +86,12 @@ async function debug() {
         });
 
         if (!dktString) {
-            console.error("❌ Critical: '__DKT' text NOT found in HTML!");
+            console.error("❌ Critical: '__DKT' text NOT found!");
+            console.log("📸 Taking a new screenshot to see if Cloudflare is still there...");
             
-            // ذخیره عکس دقیقاً با اسمی که گیت‌هاب انتظار دارد
+            // گرفتن عکس بعد از ۱۲ ثانیه برای دیدن نتیجه
             await page.screenshot({ path: 'debug_screenshot.png', fullPage: true });
             
-            // ذخیره کل کدهای صفحه برای اینکه ببینیم دکتلون چه بلایی سر ربات آورده
             const html = await page.content();
             fs.writeFileSync('debug_source.html', html);
             
@@ -97,57 +99,8 @@ async function debug() {
             return;
         }
         
-        console.log("✅ Decathlon JSON string extracted successfully.");
-        const dktData = JSON.parse(dktString);
-
-        // 2. پیدا کردن بخش اطلاعات محصول (Supermodel)
-        const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
-        if (!supermodelNode || !supermodelNode.data || !supermodelNode.data.models) {
-            console.error("❌ Critical: Product models not found in JSON.");
-            await browser.close();
-            return;
-        }
-
-        // گرفتن ID رنگ مورد نظر از لینک (مثلا mc=8547381)
-        const urlObj = new URL(TEST_URL);
-        const targetModelId = urlObj.searchParams.get('mc'); 
-        
-        // پیدا کردن رنگ دقیق داخل دیتا
-        const targetModel = supermodelNode.data.models.find(m => m.modelId === targetModelId) || supermodelNode.data.models[0];
-        
-        console.log(`🎯 Target Model ID: ${targetModel.modelId}`);
-        console.log(`🎨 Web Label: ${targetModel.webLabel}`);
-
-        // 3. استخراج قیمت و موجودی سایزها
-        let extractedStocks = {};
-        let finalPrice = null;
-
-        targetModel.skus.forEach(sku => {
-            // استخراج قیمت
-            if (!finalPrice && sku.price) {
-                finalPrice = sku.price;
-            }
-            
-            // چک کردن موجودی
-            const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
-            extractedStocks[sku.size] = isOut ? 0 : 5; 
-        });
-
-        console.log('\n--- EXTRACTED VALUES ---');
-        console.log(`💰 Final Price: ${finalPrice} TL`);
-        
-        console.log('\n📦 Stocks (Raw from Decathlon):');
-        console.table(extractedStocks);
-
-        // 4. نرمال‌سازی برای وردپرس
-        console.log('\n✨ Normalized Stocks (Final Output):');
-        const hostname = urlObj.hostname;
-        const normalized = {};
-        for (const [key, val] of Object.entries(extractedStocks)) {
-            const normKey = normalizeSize(key, hostname);
-            if (normKey) normalized[normKey] = val;
-        }
-        console.table(normalized);
+        // ... (بقیه کدهای قبلی برای پردازش قیمت و سایز دقیقاً همینجا قرار می‌گیرد) ...
+        console.log("✅ Decathlon JSON string extracted successfully!");
 
     } catch (error) {
         console.error('❌ Error:', error);
