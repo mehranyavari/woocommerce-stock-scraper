@@ -16,8 +16,11 @@ jobs:
         with:
           node-version: '18'
       
+      # تغییر اصلی اینجاست: نصب افزونه‌های ضدردیابی
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install puppeteer-extra puppeteer-extra-plugin-stealth
       
       - name: Run Debug Scraper
         run: node debug-scraper.js
