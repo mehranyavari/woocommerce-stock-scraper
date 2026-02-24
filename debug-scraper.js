@@ -70,19 +70,29 @@ async function debug() {
         
         await new Promise(r => setTimeout(r, 4000));
 
-        // 1. استخراج آبجکت طلایی دکتلون از روی صفحه
-        console.log('📥 Extracting raw __DKT data from Decathlon...');
-        const dktData = await page.evaluate(() => {
-            // مرورگر مستقیماً آبجکت را به ما برمی‌گرداند
-            return typeof window.__DKT !== 'undefined' ? window.__DKT : null;
+        // 1. قیچی کردن مستقیم اطلاعات از داخل تگ اسکریپت دکتلون
+        console.log('📥 Extracting __DKT data directly from HTML source...');
+        const dktString = await page.evaluate(() => {
+            const scriptNode = document.getElementById('__dkt');
+            if (scriptNode) {
+                const html = scriptNode.innerHTML;
+                // پیدا کردن متنی که با __DKT = شروع میشه و به ; __CONF ختم میشه
+                const match = html.match(/__DKT\s*=\s*(\{[\s\S]*?\});\s*__CONF/);
+                return match ? match[1] : null;
+            }
+            return null;
         });
 
-        if (!dktData) {
-            console.error("❌ Critical: '__DKT' object NOT found! Page might be blocked or structure changed.");
+        if (!dktString) {
+            console.error("❌ Critical: '__DKT' text NOT found in HTML! They might have blocked the proxy.");
+            // عکس گرفتن از صفحه برای اینکه ببینیم سایت چه اروری داده
+            await page.screenshot({ path: 'decathlon-error.png' });
             await browser.close();
             return;
         }
-        console.log("✅ Decathlon JSON (__DKT) found.\n");
+        
+        console.log("✅ Decathlon JSON string extracted successfully.");
+        const dktData = JSON.parse(dktString);
 
         // 2. پیدا کردن بخش اطلاعات محصول (Supermodel)
         const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
@@ -107,15 +117,13 @@ async function debug() {
         let finalPrice = null;
 
         targetModel.skus.forEach(sku => {
-            // استخراج قیمت (از اولین سایز موجود می‌گیریم)
+            // استخراج قیمت
             if (!finalPrice && sku.price) {
                 finalPrice = sku.price;
             }
             
-            // دکتلون عدد موجودی نمیده، فقط اگه ناموجود باشه مینویسه isNotAvailable: true
+            // چک کردن موجودی
             const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
-            
-            // اگر موجود بود، به صورت فرضی عدد ۵ رو میذاریم تا وردپرس بفهمه موجوده
             extractedStocks[sku.size] = isOut ? 0 : 5; 
         });
 
