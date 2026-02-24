@@ -1,35 +1,39 @@
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 const TEST_URL = "https://www.decathlon.com.tr/p/kadin-tenis-etegi-beyaz-essentiel-100/_/R-p-305841?mc=8547381&c=BEYAZ";
 
-// ... توابع کمکی (normalizeSize و parseTurkishPrice) ...
+// --- توابع کمکی ---
+function normalizeSize(rawSize, hostname) {
+    const trimmed = rawSize.trim();
+    if (!trimmed) return null;
+    const lower = trimmed.toLowerCase();
+    if (lower === 's-m') return 'S/M';
+    if (lower === 'm-l') return 'M/L';
+    if (lower === 'standart' || lower === 'one size' || lower === 'os') return 'Standart';
+    const rangeMatch = trimmed.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
+    const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
+    if (numbers && numbers.length > 0) {
+        return numbers[numbers.length - 1].replace(',', '.');
+    }
+    return trimmed;
+}
 
 async function debug() {
-    console.log('🐞 Starting Advanced Debug Scraper (NO PROXY)...');
+    console.log('🐞 Starting Advanced Debug Scraper (NO PROXY, STANDARD PUPPETEER)...');
     console.log(`🎯 Target: ${TEST_URL}\n`);
     
-    // ۱. مرورگر بدون پروکسی اجرا می‌شود
+    // ۱. اجرای مرورگر استاندارد بدون پروکسی و بدون افزونه‌های اضافی
     const browser = await puppeteer.launch({
         headless: 'new',
         args: [
             '--no-sandbox', 
             '--disable-setuid-sandbox'
-            // '--proxy-server=...' // پروکسی غیرفعال شد
         ]
     });
 
     const page = await browser.newPage();
-
-    // ۲. احراز هویت پروکسی هم غیرفعال شد
-    /*
-    await page.authenticate({
-        username: 'mehran',
-        password: 'mehran75'
-    });
-    */
 
     await page.setExtraHTTPHeaders({
         'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
@@ -43,16 +47,29 @@ async function debug() {
         console.log('🚀 Navigating to Decathlon...');
         await page.goto(TEST_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
-        console.log('⏳ Waiting for page to process (10 seconds)...');
-        await new Promise(r => setTimeout(r, 10000));
+        console.log('⏳ Waiting for page to process (12 seconds)...');
+        await new Promise(r => setTimeout(r, 12000));
 
+        // ۲. روش ضدخطا برای بریدن متن جیسون از داخل HTML
         console.log('📥 Extracting __DKT data directly from HTML source...');
         const dktString = await page.evaluate(() => {
             const scriptNode = document.getElementById('__dkt');
-            if (scriptNode) {
-                const html = scriptNode.innerHTML;
-                const match = html.match(/__DKT\s*=\s*(\{[\s\S]*?\});\s*__CONF/);
-                return match ? match[1] : null;
+            if (!scriptNode) return null;
+            
+            const html = scriptNode.innerHTML;
+            const startStr = '__DKT = ';
+            const endStr = '__CONF =';
+            
+            const startIdx = html.indexOf(startStr);
+            const endIdx = html.indexOf(endStr);
+            
+            if (startIdx !== -1 && endIdx !== -1) {
+                // بریدن دقیق متن از شروع جیسون تا قبل از کلمه __CONF
+                let jsonText = html.substring(startIdx + startStr.length, endIdx).trim();
+                if (jsonText.endsWith(';')) {
+                    jsonText = jsonText.slice(0, -1);
+                }
+                return jsonText;
             }
             return null;
         });
@@ -70,7 +87,7 @@ async function debug() {
         console.log("✅ Decathlon JSON string extracted successfully!");
         const dktData = JSON.parse(dktString);
 
-        // --- پردازش دیتا (مثل قبل) ---
+        // --- پردازش دیتا ---
         const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
         const urlObj = new URL(TEST_URL);
         const targetModelId = urlObj.searchParams.get('mc'); 
