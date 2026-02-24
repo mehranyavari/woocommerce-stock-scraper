@@ -84,9 +84,15 @@ async function debug() {
         });
 
         if (!dktString) {
-            console.error("❌ Critical: '__DKT' text NOT found in HTML! They might have blocked the proxy.");
-            // عکس گرفتن از صفحه برای اینکه ببینیم سایت چه اروری داده
-            await page.screenshot({ path: 'decathlon-error.png' });
+            console.error("❌ Critical: '__DKT' text NOT found in HTML!");
+            
+            // ذخیره عکس دقیقاً با اسمی که گیت‌هاب انتظار دارد
+            await page.screenshot({ path: 'debug_screenshot.png', fullPage: true });
+            
+            // ذخیره کل کدهای صفحه برای اینکه ببینیم دکتلون چه بلایی سر ربات آورده
+            const html = await page.content();
+            fs.writeFileSync('debug_source.html', html);
+            
             await browser.close();
             return;
         }
