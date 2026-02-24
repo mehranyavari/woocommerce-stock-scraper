@@ -35,12 +35,12 @@ async function debug() {
 
     const page = await browser.newPage();
 
-    await page.setExtraHTTPHeaders({
-        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
-    });
+    // await page.setExtraHTTPHeaders({
+    //     'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
+    // });
 
-    await page.emulateTimezone('Europe/Istanbul');
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    // await page.emulateTimezone('Europe/Istanbul');
+    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
     await page.setViewport({ width: 1920, height: 1080 });
 
     try {
