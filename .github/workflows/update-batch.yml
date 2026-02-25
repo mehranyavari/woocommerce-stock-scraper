@@ -21,8 +21,11 @@ jobs:
         with:
           node-version: '18'
       
+      # ⚠️ تغییر مهم: اضافه شدن افزونه‌های ضد‌ردیابی دکتلون
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install puppeteer-extra puppeteer-extra-plugin-stealth
       
       - name: Run Scraper (Batch Mode)
         # ارسال لیست ID ها به اسکرپر
