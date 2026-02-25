@@ -1,4 +1,77 @@
 {
+  "1484": {
+    "id": 1484,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:22:03.856Z"
+  },
+  "1492": {
+    "id": 1492,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:21:47.834Z"
+  },
+  "1569": {
+    "id": 1569,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:13:27.375Z"
+  },
+  "1777": {
+    "id": 1777,
+    "success": true,
+    "stocks": {
+      "......": 5
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:21:31.764Z"
+  },
+  "2239": {
+    "id": 2239,
+    "success": true,
+    "stocks": {
+      "36": 5,
+      "37": 5,
+      "38": 5,
+      "39": 5,
+      "40": 5,
+      "41": 5
+    },
+    "regular_price": 1890,
+    "offer_price": 1890,
+    "lastUpdated": "2026-02-25T11:31:29.113Z"
+  },
+  "2272": {
+    "id": 2272,
+    "success": true,
+    "stocks": {
+      "......": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:21:15.487Z"
+  },
+  "2757": {
+    "id": 2757,
+    "success": false,
+    "error": "Primary: Decathlon __DKT not found (Cloudflare Blocked) | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:06:58.197Z"
+  },
   "2852": {
     "id": 2852,
     "success": true,
@@ -130,6 +203,52 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T05:19:40.322Z"
   },
+  "3156": {
+    "id": 3156,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 240,
+    "offer_price": 240,
+    "lastUpdated": "2026-02-25T11:20:59.215Z"
+  },
+  "3653": {
+    "id": 3653,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:20:43.188Z"
+  },
+  "3820": {
+    "id": 3820,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:20:26.913Z"
+  },
+  "4060": {
+    "id": 4060,
+    "success": true,
+    "stocks": {
+      "40": 5,
+      "41": 5,
+      "42": 5,
+      "43": 5,
+      "44": 5,
+      "45": 5,
+      "46": 5
+    },
+    "regular_price": 3490,
+    "offer_price": 3490,
+    "lastUpdated": "2026-02-25T11:09:40.165Z"
+  },
   "4387": {
     "id": 4387,
     "success": true,
@@ -152,6 +271,18 @@
     "regular_price": 7200,
     "offer_price": 6200,
     "lastUpdated": "2026-02-25T02:21:55.467Z"
+  },
+  "4448": {
+    "id": 4448,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:20:10.731Z"
+  },
+  "4455": {
+    "id": 4455,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:19:54.562Z"
   },
   "4497": {
     "id": 4497,
@@ -181,6 +312,40 @@
     "offer_price": 0,
     "lastUpdated": "2026-02-25T03:32:39.479Z"
   },
+  "4987": {
+    "id": 4987,
+    "success": true,
+    "stocks": {
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "regular_price": 3490,
+    "offer_price": 3490,
+    "lastUpdated": "2026-02-25T11:24:28.896Z"
+  },
+  "5381": {
+    "id": 5381,
+    "success": true,
+    "stocks": {
+      "36": 5,
+      "39": 0
+    },
+    "regular_price": 1690,
+    "offer_price": 1690,
+    "lastUpdated": "2026-02-25T11:06:42.580Z"
+  },
+  "5428": {
+    "id": 5428,
+    "success": true,
+    "stocks": {
+      "2": 0,
+      "3": 5
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:11:50.328Z"
+  },
   "5593": {
     "id": 5593,
     "success": true,
@@ -205,6 +370,29 @@
     "regular_price": 1050,
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:52:22.426Z"
+  },
+  "5647": {
+    "id": 5647,
+    "success": true,
+    "stocks": {
+      "1": 5,
+      "2": 0,
+      "3": 0
+    },
+    "regular_price": 4990,
+    "offer_price": 4990,
+    "lastUpdated": "2026-02-25T11:11:33.704Z"
+  },
+  "6069": {
+    "id": 6069,
+    "success": true,
+    "stocks": {
+      "10": 0,
+      "13": 5
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:08:51.678Z"
   },
   "6219": {
     "id": 6219,
@@ -247,6 +435,19 @@
     "regular_price": 8000,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T02:21:31.568Z"
+  },
+  "6366": {
+    "id": 6366,
+    "success": true,
+    "stocks": {
+      "6": 5,
+      "11": 5,
+      "13": 0,
+      "15": 5
+    },
+    "regular_price": 590,
+    "offer_price": 590,
+    "lastUpdated": "2026-02-25T11:28:14.583Z"
   },
   "6548": {
     "id": 6548,
@@ -308,6 +509,24 @@
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T01:29:44.928Z"
   },
+  "6948": {
+    "id": 6948,
+    "success": true,
+    "stocks": {
+      "39": 0,
+      "40": 5,
+      "41": 5,
+      "42": 5,
+      "43": 5,
+      "44": 5,
+      "45": 5,
+      "46": 5,
+      "47": 0
+    },
+    "regular_price": 1290,
+    "offer_price": 1290,
+    "lastUpdated": "2026-02-25T11:09:23.858Z"
+  },
   "7012": {
     "id": 7012,
     "success": false,
@@ -349,6 +568,21 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T01:29:00.499Z"
+  },
+  "8047": {
+    "id": 8047,
+    "success": true,
+    "stocks": {
+      "36": 5,
+      "37": 5,
+      "38": 5,
+      "39": 5,
+      "40": 5,
+      "41": 5
+    },
+    "regular_price": 3490,
+    "offer_price": 3490,
+    "lastUpdated": "2026-02-25T11:29:03.100Z"
   },
   "8220": {
     "id": 8220,
@@ -788,6 +1022,32 @@
     "offer_price": 6200,
     "lastUpdated": "2026-02-25T02:18:31.492Z"
   },
+  "10147": {
+    "id": 10147,
+    "success": false,
+    "error": "Primary: Decathlon __DKT not found (Cloudflare Blocked) | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:05:54.290Z"
+  },
+  "10221": {
+    "id": 10221,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:29:19.163Z"
+  },
+  "10227": {
+    "id": 10227,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:29:35.327Z"
+  },
   "10273": {
     "id": 10273,
     "success": true,
@@ -838,6 +1098,41 @@
     "regular_price": 5800,
     "offer_price": null,
     "lastUpdated": "2026-02-25T02:32:43.475Z"
+  },
+  "10621": {
+    "id": 10621,
+    "success": true,
+    "stocks": {
+      "2": 0,
+      "3": 5
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:11:17.693Z"
+  },
+  "10637": {
+    "id": 10637,
+    "success": true,
+    "stocks": {
+      "0": 5,
+      "1": 5,
+      "2": 5
+    },
+    "regular_price": 3490,
+    "offer_price": 3490,
+    "lastUpdated": "2026-02-25T11:11:01.275Z"
+  },
+  "10651": {
+    "id": 10651,
+    "success": true,
+    "stocks": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "regular_price": 2590,
+    "offer_price": 2590,
+    "lastUpdated": "2026-02-25T11:10:44.875Z"
   },
   "10686": {
     "id": 10686,
@@ -1022,6 +1317,56 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T02:32:10.280Z"
+  },
+  "12446": {
+    "id": 12446,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:08:35.411Z"
+  },
+  "12453": {
+    "id": 12453,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:08:19.107Z"
+  },
+  "12459": {
+    "id": 12459,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:29:51.863Z"
+  },
+  "12467": {
+    "id": 12467,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 990,
+    "offer_price": 990,
+    "lastUpdated": "2026-02-25T11:30:08.143Z"
+  },
+  "12474": {
+    "id": 12474,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 990,
+    "offer_price": 990,
+    "lastUpdated": "2026-02-25T11:30:24.694Z"
   },
   "12532": {
     "id": 12532,
@@ -1209,6 +1554,26 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:01:51.726Z"
   },
+  "12855": {
+    "id": 12855,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:08:02.834Z"
+  },
+  "12932": {
+    "id": 12932,
+    "success": true,
+    "stocks": {
+      "0": 0
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:07:46.339Z"
+  },
   "13119": {
     "id": 13119,
     "success": false,
@@ -1360,6 +1725,53 @@
     "regular_price": 2399,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T01:55:20.132Z"
+  },
+  "13583": {
+    "id": 13583,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:31:45.430Z"
+  },
+  "13595": {
+    "id": 13595,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 280,
+    "offer_price": 280,
+    "lastUpdated": "2026-02-25T11:19:38.442Z"
+  },
+  "13649": {
+    "id": 13649,
+    "success": true,
+    "stocks": {
+      "6": 0,
+      "9": 5,
+      "11": 5,
+      "13": 5
+    },
+    "regular_price": 590,
+    "offer_price": 590,
+    "lastUpdated": "2026-02-25T11:27:26.113Z"
+  },
+  "13668": {
+    "id": 13668,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:19:22.285Z"
   },
   "13730": {
     "id": 13730,
@@ -1785,6 +2197,20 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T03:20:31.320Z"
+  },
+  "15778": {
+    "id": 15778,
+    "success": true,
+    "stocks": {
+      "35": 0,
+      "36": 5,
+      "37": 5,
+      "38": 5,
+      "39": 5
+    },
+    "regular_price": 1290,
+    "offer_price": 1290,
+    "lastUpdated": "2026-02-25T11:06:26.398Z"
   },
   "16396": {
     "id": 16396,
@@ -2314,6 +2740,20 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:43:21.488Z"
   },
+  "20132": {
+    "id": 20132,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5,
+      "2XL": 5
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:10:28.528Z"
+  },
   "20146": {
     "id": 20146,
     "success": true,
@@ -2336,11 +2776,27 @@
     "offer_price": 0,
     "lastUpdated": "2026-02-25T02:14:03.685Z"
   },
+  "20221": {
+    "id": 20221,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1790,
+    "offer_price": 1790,
+    "lastUpdated": "2026-02-25T11:31:13.068Z"
+  },
   "20230": {
     "id": 20230,
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T04:45:57.206Z"
+  },
+  "20234": {
+    "id": 20234,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:19:06.161Z"
   },
   "20265": {
     "id": 20265,
@@ -2576,6 +3032,52 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T04:08:44.037Z"
   },
+  "20917": {
+    "id": 20917,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:18:50.053Z"
+  },
+  "20925": {
+    "id": 20925,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:18:33.800Z"
+  },
+  "20942": {
+    "id": 20942,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 180,
+    "offer_price": 180,
+    "lastUpdated": "2026-02-25T11:18:17.592Z"
+  },
+  "20974": {
+    "id": 20974,
+    "success": true,
+    "stocks": {
+      "......": 0
+    },
+    "regular_price": 180,
+    "offer_price": 180,
+    "lastUpdated": "2026-02-25T11:18:01.409Z"
+  },
+  "21006": {
+    "id": 21006,
+    "success": true,
+    "stocks": {
+      ".": 5
+    },
+    "regular_price": 5490,
+    "offer_price": 5490,
+    "lastUpdated": "2026-02-25T11:17:45.431Z"
+  },
   "21130": {
     "id": 21130,
     "success": true,
@@ -2626,6 +3128,40 @@
     "regular_price": 3200,
     "offer_price": null,
     "lastUpdated": "2026-02-25T02:29:42.732Z"
+  },
+  "21303": {
+    "id": 21303,
+    "success": true,
+    "stocks": {
+      "S / W30 L33": 5,
+      "M / W32 L33": 5,
+      "L / W34 L34": 5,
+      "XL / W37 L34": 5,
+      "2XL / W41 L34": 0
+    },
+    "regular_price": 1090,
+    "offer_price": 1090,
+    "lastUpdated": "2026-02-25T11:12:06.559Z"
+  },
+  "21415": {
+    "id": 21415,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:17:29.353Z"
+  },
+  "21424": {
+    "id": 21424,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:17:13.146Z"
   },
   "21481": {
     "id": 21481,
@@ -2766,6 +3302,32 @@
     "regular_price": 5000,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T03:38:58.066Z"
+  },
+  "21866": {
+    "id": 21866,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 240,
+    "offer_price": 240,
+    "lastUpdated": "2026-02-25T11:30:40.853Z"
+  },
+  "21890": {
+    "id": 21890,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:16:56.911Z"
+  },
+  "21913": {
+    "id": 21913,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:16:40.651Z"
   },
   "21933": {
     "id": 21933,
@@ -3398,6 +3960,53 @@
     "regular_price": 550,
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:51:20.200Z"
+  },
+  "23380": {
+    "id": 23380,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 240,
+    "offer_price": 240,
+    "lastUpdated": "2026-02-25T11:16:24.490Z"
+  },
+  "23404": {
+    "id": 23404,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 1390,
+    "offer_price": 1390,
+    "lastUpdated": "2026-02-25T11:16:08.516Z"
+  },
+  "23419": {
+    "id": 23419,
+    "success": true,
+    "stocks": {
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "13": 0
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:07:30.240Z"
+  },
+  "23466": {
+    "id": 23466,
+    "success": true,
+    "stocks": {
+      "8": 0,
+      "9": 0,
+      "11": 0,
+      "13": 0,
+      "15": 5
+    },
+    "regular_price": 990,
+    "offer_price": 990,
+    "lastUpdated": "2026-02-25T11:07:14.198Z"
   },
   "23500": {
     "id": 23500,
@@ -4201,6 +4810,12 @@
     "offer_price": 0,
     "lastUpdated": "2026-02-25T01:51:06.989Z"
   },
+  "25440": {
+    "id": 25440,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:09:07.800Z"
+  },
   "25497": {
     "id": 25497,
     "success": true,
@@ -4313,6 +4928,12 @@
     "regular_price": 3300,
     "offer_price": null,
     "lastUpdated": "2026-02-25T02:10:23.770Z"
+  },
+  "25675": {
+    "id": 25675,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:37:55.731Z"
   },
   "25742": {
     "id": 25742,
@@ -4435,6 +5056,12 @@
     "regular_price": 500,
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:51:08.168Z"
+  },
+  "25888": {
+    "id": 25888,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:13:59.912Z"
   },
   "25903": {
     "id": 25903,
@@ -5530,6 +6157,26 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T02:26:55.288Z"
   },
+  "28549": {
+    "id": 28549,
+    "success": true,
+    "stocks": {
+      "56cm": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:15:52.478Z"
+  },
+  "28555": {
+    "id": 28555,
+    "success": true,
+    "stocks": {
+      "56cm": 5
+    },
+    "regular_price": 440,
+    "offer_price": 440,
+    "lastUpdated": "2026-02-25T11:12:22.634Z"
+  },
   "28582": {
     "id": 28582,
     "success": true,
@@ -6006,6 +6653,31 @@
     "regular_price": 3400,
     "offer_price": 2550,
     "lastUpdated": "2026-02-25T01:47:20.198Z"
+  },
+  "30254": {
+    "id": 30254,
+    "success": true,
+    "stocks": {
+      "S.": 5,
+      "M.": 5,
+      "L.": 5,
+      "XL.": 5,
+      "2XL.": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:10:12.459Z"
+  },
+  "30268": {
+    "id": 30268,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5
+    },
+    "regular_price": 640,
+    "offer_price": 640,
+    "lastUpdated": "2026-02-25T11:36:03.252Z"
   },
   "30581": {
     "id": 30581,
@@ -6762,6 +7434,17 @@
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T02:03:25.573Z"
   },
+  "33035": {
+    "id": 33035,
+    "success": true,
+    "stocks": {
+      "M": 5,
+      "L": 5
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:09:56.311Z"
+  },
   "33186": {
     "id": 33186,
     "success": false,
@@ -7474,6 +8157,21 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T01:44:04.954Z"
+  },
+  "35917": {
+    "id": 35917,
+    "success": true,
+    "stocks": {
+      "36": 0,
+      "37": 5,
+      "38": 0,
+      "39": 0,
+      "40": 5,
+      "41": 5
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:30:57.029Z"
   },
   "35953": {
     "id": 35953,
@@ -8452,6 +9150,16 @@
     "regular_price": 2500,
     "offer_price": 1875,
     "lastUpdated": "2026-02-25T02:44:40.990Z"
+  },
+  "38327": {
+    "id": 38327,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:15:36.234Z"
   },
   "38358": {
     "id": 38358,
@@ -9746,11 +10454,51 @@
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T01:26:19.488Z"
   },
+  "42245": {
+    "id": 42245,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 340,
+    "offer_price": 340,
+    "lastUpdated": "2026-02-25T11:15:04.152Z"
+  },
+  "42253": {
+    "id": 42253,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 340,
+    "offer_price": 340,
+    "lastUpdated": "2026-02-25T11:14:48.100Z"
+  },
+  "42272": {
+    "id": 42272,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 340,
+    "offer_price": 340,
+    "lastUpdated": "2026-02-25T11:14:32.075Z"
+  },
   "42277": {
     "id": 42277,
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T04:53:53.288Z"
+  },
+  "42281": {
+    "id": 42281,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1990,
+    "offer_price": 1990,
+    "lastUpdated": "2026-02-25T11:14:15.980Z"
   },
   "42296": {
     "id": 42296,
@@ -10192,6 +10940,16 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:14:57.409Z"
   },
+  "43513": {
+    "id": 43513,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:06:10.327Z"
+  },
   "43562": {
     "id": 43562,
     "success": false,
@@ -10343,6 +11101,36 @@
     "offer_price": 2325,
     "lastUpdated": "2026-02-25T03:35:57.523Z"
   },
+  "43855": {
+    "id": 43855,
+    "success": true,
+    "stocks": {
+      "2XS": 0,
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:12:38.898Z"
+  },
+  "43868": {
+    "id": 43868,
+    "success": true,
+    "stocks": {
+      "2XS": 5,
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:12:55.061Z"
+  },
   "43903": {
     "id": 43903,
     "success": true,
@@ -10369,6 +11157,35 @@
     "regular_price": 4699,
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:36:10.977Z"
+  },
+  "43960": {
+    "id": 43960,
+    "success": true,
+    "stocks": {
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 1090,
+    "offer_price": 1090,
+    "lastUpdated": "2026-02-25T11:13:11.266Z"
+  },
+  "44044": {
+    "id": 44044,
+    "success": true,
+    "stocks": {
+      "2XS": 5,
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 550,
+    "offer_price": 550,
+    "lastUpdated": "2026-02-25T11:13:43.433Z"
   },
   "44111": {
     "id": 44111,
@@ -10492,6 +11309,114 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:57:55.142Z"
   },
+  "44811": {
+    "id": 44811,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:22:19.971Z"
+  },
+  "45031": {
+    "id": 45031,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 540,
+    "offer_price": 540,
+    "lastUpdated": "2026-02-25T11:22:36.042Z"
+  },
+  "45037": {
+    "id": 45037,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 440,
+    "offer_price": 440,
+    "lastUpdated": "2026-02-25T11:22:52.081Z"
+  },
+  "45043": {
+    "id": 45043,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 540,
+    "offer_price": 540,
+    "lastUpdated": "2026-02-25T11:23:08.277Z"
+  },
+  "45057": {
+    "id": 45057,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 2390,
+    "offer_price": 2390,
+    "lastUpdated": "2026-02-25T11:23:24.348Z"
+  },
+  "45068": {
+    "id": 45068,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 4490,
+    "offer_price": 4490,
+    "lastUpdated": "2026-02-25T11:23:40.363Z"
+  },
+  "45075": {
+    "id": 45075,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1590,
+    "offer_price": 1590,
+    "lastUpdated": "2026-02-25T11:23:56.470Z"
+  },
+  "45108": {
+    "id": 45108,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1990,
+    "offer_price": 1990,
+    "lastUpdated": "2026-02-25T11:24:12.467Z"
+  },
+  "45120": {
+    "id": 45120,
+    "success": true,
+    "stocks": {
+      "35": 5,
+      "36": 5,
+      "37": 5,
+      "38": 0,
+      "39": 0
+    },
+    "regular_price": 1690,
+    "offer_price": 1690,
+    "lastUpdated": "2026-02-25T11:24:44.961Z"
+  },
+  "45137": {
+    "id": 45137,
+    "success": true,
+    "stocks": {
+      "35": 5,
+      "36": 5,
+      "37": 5,
+      "38": 0,
+      "39": 0
+    },
+    "regular_price": 1690,
+    "offer_price": 1690,
+    "lastUpdated": "2026-02-25T11:25:01.021Z"
+  },
   "45152": {
     "id": 45152,
     "success": true,
@@ -10501,6 +11426,61 @@
     "regular_price": 869,
     "offer_price": null,
     "lastUpdated": "2026-02-25T03:58:09.418Z"
+  },
+  "45159": {
+    "id": 45159,
+    "success": true,
+    "stocks": {
+      "S.": 0,
+      "M.": 0,
+      "L.": 0,
+      "XL.": 0,
+      "2XL.": 0
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:25:17.044Z"
+  },
+  "45171": {
+    "id": 45171,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5,
+      "2XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:25:33.366Z"
+  },
+  "45184": {
+    "id": 45184,
+    "success": true,
+    "stocks": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:25:49.594Z"
+  },
+  "45196": {
+    "id": 45196,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 0,
+      "L": 0,
+      "2XL": 0
+    },
+    "regular_price": 620,
+    "offer_price": 620,
+    "lastUpdated": "2026-02-25T11:26:05.720Z"
   },
   "45218": {
     "id": 45218,
@@ -10592,6 +11572,46 @@
     "regular_price": 2500,
     "offer_price": 1875,
     "lastUpdated": "2026-02-25T03:59:36.725Z"
+  },
+  "45305": {
+    "id": 45305,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:26:21.912Z"
+  },
+  "45318": {
+    "id": 45318,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:26:37.688Z"
+  },
+  "45328": {
+    "id": 45328,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 370,
+    "offer_price": 370,
+    "lastUpdated": "2026-02-25T11:26:53.770Z"
+  },
+  "45336": {
+    "id": 45336,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:27:10.037Z"
   },
   "45402": {
     "id": 45402,
@@ -10939,6 +11959,57 @@
     "regular_price": 4800,
     "offer_price": 3600,
     "lastUpdated": "2026-02-25T04:08:57.523Z"
+  },
+  "46073": {
+    "id": 46073,
+    "success": true,
+    "stocks": {
+      "8": 5,
+      "9": 5,
+      "11": 5,
+      "13": 5,
+      "15": 0
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:27:42.313Z"
+  },
+  "46089": {
+    "id": 46089,
+    "success": true,
+    "stocks": {
+      "6": 0,
+      "8": 0,
+      "9": 5,
+      "11": 0,
+      "13": 0,
+      "15": 5
+    },
+    "regular_price": 590,
+    "offer_price": 590,
+    "lastUpdated": "2026-02-25T11:27:58.427Z"
+  },
+  "46126": {
+    "id": 46126,
+    "success": true,
+    "stocks": {
+      "13": 5,
+      "15": 5
+    },
+    "regular_price": 590,
+    "offer_price": 590,
+    "lastUpdated": "2026-02-25T11:28:30.813Z"
+  },
+  "46139": {
+    "id": 46139,
+    "success": true,
+    "stocks": {
+      "10": 0,
+      "13": 5
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:28:47.000Z"
   },
   "46173": {
     "id": 46173,
@@ -11957,6 +13028,177 @@
     "offer_price": 2400,
     "lastUpdated": "2026-02-25T04:32:37.365Z"
   },
+  "47848": {
+    "id": 47848,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:32:01.583Z"
+  },
+  "47859": {
+    "id": 47859,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:32:17.847Z"
+  },
+  "47877": {
+    "id": 47877,
+    "success": true,
+    "stocks": {
+      "30": 0,
+      "34": 0,
+      "38": 0
+    },
+    "regular_price": 190,
+    "offer_price": 190,
+    "lastUpdated": "2026-02-25T11:32:33.659Z"
+  },
+  "47889": {
+    "id": 47889,
+    "success": true,
+    "stocks": {
+      "38": 5
+    },
+    "regular_price": 180,
+    "offer_price": 180,
+    "lastUpdated": "2026-02-25T11:32:49.874Z"
+  },
+  "47900": {
+    "id": 47900,
+    "success": true,
+    "stocks": {
+      "30": 0,
+      "34": 0,
+      "38": 0
+    },
+    "regular_price": 190,
+    "offer_price": 190,
+    "lastUpdated": "2026-02-25T11:33:06.067Z"
+  },
+  "47938": {
+    "id": 47938,
+    "success": true,
+    "stocks": {
+      "6": 0,
+      "8": 5,
+      "9": 5,
+      "11": 5,
+      "13": 5,
+      "15": 5
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:33:22.199Z"
+  },
+  "47969": {
+    "id": 47969,
+    "success": true,
+    "stocks": {
+      "6": 0,
+      "8": 5,
+      "9": 5,
+      "11": 5,
+      "13": 5
+    },
+    "regular_price": 590,
+    "offer_price": 590,
+    "lastUpdated": "2026-02-25T11:33:38.257Z"
+  },
+  "48009": {
+    "id": 48009,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:33:54.414Z"
+  },
+  "48020": {
+    "id": 48020,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:34:10.512Z"
+  },
+  "48038": {
+    "id": 48038,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 190,
+    "offer_price": 190,
+    "lastUpdated": "2026-02-25T11:34:26.771Z"
+  },
+  "48050": {
+    "id": 48050,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 230,
+    "offer_price": 230,
+    "lastUpdated": "2026-02-25T11:34:42.526Z"
+  },
+  "48077": {
+    "id": 48077,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 230,
+    "offer_price": 230,
+    "lastUpdated": "2026-02-25T11:34:58.680Z"
+  },
+  "48088": {
+    "id": 48088,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:35:14.951Z"
+  },
+  "48099": {
+    "id": 48099,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:35:31.020Z"
+  },
   "48109": {
     "id": 48109,
     "success": true,
@@ -11969,6 +13211,20 @@
     "regular_price": 900,
     "offer_price": 675,
     "lastUpdated": "2026-02-25T04:33:38.243Z"
+  },
+  "48121": {
+    "id": 48121,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5,
+      "2XL": 5
+    },
+    "regular_price": 1190,
+    "offer_price": 1190,
+    "lastUpdated": "2026-02-25T11:35:47.078Z"
   },
   "48125": {
     "id": 48125,
@@ -12048,6 +13304,18 @@
     "offer_price": 750,
     "lastUpdated": "2026-02-25T04:34:51.583Z"
   },
+  "48193": {
+    "id": 48193,
+    "success": true,
+    "stocks": {
+      "11": 5,
+      "13": 5,
+      "15": 5
+    },
+    "regular_price": 310,
+    "offer_price": 310,
+    "lastUpdated": "2026-02-25T11:36:18.846Z"
+  },
   "48199": {
     "id": 48199,
     "success": true,
@@ -12125,6 +13393,73 @@
     "regular_price": 1000,
     "offer_price": 750,
     "lastUpdated": "2026-02-25T04:36:17.537Z"
+  },
+  "48289": {
+    "id": 48289,
+    "success": true,
+    "stocks": {
+      "6": 5,
+      "8": 5,
+      "9": 5,
+      "11": 5,
+      "13": 5,
+      "15": 5
+    },
+    "regular_price": 495,
+    "offer_price": 495,
+    "lastUpdated": "2026-02-25T11:36:35.039Z"
+  },
+  "48313": {
+    "id": 48313,
+    "success": true,
+    "stocks": {
+      "6": 0,
+      "8": 0,
+      "9": 5,
+      "10": 0,
+      "13": 0,
+      "15": 5
+    },
+    "regular_price": 395,
+    "offer_price": 395,
+    "lastUpdated": "2026-02-25T11:36:51.139Z"
+  },
+  "48430": {
+    "id": 48430,
+    "success": true,
+    "stocks": {
+      "2XS": 5,
+      "L": 0,
+      "XL": 0
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:37:07.236Z"
+  },
+  "48452": {
+    "id": 48452,
+    "success": true,
+    "stocks": {
+      "XS": 0,
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "regular_price": 1190,
+    "offer_price": 1190,
+    "lastUpdated": "2026-02-25T11:37:23.351Z"
+  },
+  "48465": {
+    "id": 48465,
+    "success": true,
+    "stocks": {
+      "XS": 5,
+      "L": 0
+    },
+    "regular_price": 990,
+    "offer_price": 990,
+    "lastUpdated": "2026-02-25T11:37:39.532Z"
   },
   "48494": {
     "id": 48494,
@@ -12834,6 +14169,16 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T04:55:26.782Z"
+  },
+  "49910": {
+    "id": 49910,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 3990,
+    "offer_price": 3990,
+    "lastUpdated": "2026-02-25T11:38:11.868Z"
   },
   "49993": {
     "id": 49993,
@@ -14071,6 +15416,88 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T05:23:41.108Z"
   },
+  "53023": {
+    "id": 53023,
+    "success": true,
+    "stocks": {
+      "6": 5,
+      "8": 5,
+      "9": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:38:28.014Z"
+  },
+  "53038": {
+    "id": 53038,
+    "success": true,
+    "stocks": {
+      "8": 5,
+      "9": 5,
+      "11": 5,
+      "13": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:38:44.180Z"
+  },
+  "53050": {
+    "id": 53050,
+    "success": true,
+    "stocks": {
+      "42": 0,
+      "44": 0
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:39:00.450Z"
+  },
+  "53064": {
+    "id": 53064,
+    "success": true,
+    "stocks": {
+      "42": 5,
+      "44": 5,
+      "46": 5
+    },
+    "regular_price": 850,
+    "offer_price": 850,
+    "lastUpdated": "2026-02-25T11:39:16.622Z"
+  },
+  "53076": {
+    "id": 53076,
+    "success": true,
+    "stocks": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 960,
+    "offer_price": 960,
+    "lastUpdated": "2026-02-25T11:39:32.800Z"
+  },
+  "53089": {
+    "id": 53089,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 960,
+    "offer_price": 960,
+    "lastUpdated": "2026-02-25T11:39:48.946Z"
+  },
+  "53102": {
+    "id": 53102,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:40:05.266Z"
+  },
   "53143": {
     "id": 53143,
     "success": true,
@@ -14368,6 +15795,62 @@
     "offer_price": 10240,
     "lastUpdated": "2026-02-25T05:29:53.323Z"
   },
+  "53482": {
+    "id": 53482,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 960,
+    "offer_price": 960,
+    "lastUpdated": "2026-02-25T11:40:21.376Z"
+  },
+  "53501": {
+    "id": 53501,
+    "success": true,
+    "stocks": {
+      "S / W30 L33": 0,
+      "M / W32 L33": 0,
+      "L / W34 L34": 0,
+      "XL / W37 L34": 0,
+      "2XL / W41 L34": 0
+    },
+    "regular_price": 1590,
+    "offer_price": 1590,
+    "lastUpdated": "2026-02-25T11:40:37.753Z"
+  },
+  "53512": {
+    "id": 53512,
+    "success": true,
+    "stocks": {
+      "S / W30 L33": 5,
+      "M / W32 L33": 0,
+      "L / W34 L34": 0,
+      "XL / W37 L34": 0,
+      "2XL / W41 L34": 0
+    },
+    "regular_price": 1090,
+    "offer_price": 1090,
+    "lastUpdated": "2026-02-25T11:40:54.104Z"
+  },
+  "53524": {
+    "id": 53524,
+    "success": true,
+    "stocks": {
+      "S / W30 L33": 5,
+      "M / W32 L33": 5,
+      "L / W34 L34": 5,
+      "XL / W37 L34": 5,
+      "2XL / W41 L34": 0
+    },
+    "regular_price": 1090,
+    "offer_price": 1090,
+    "lastUpdated": "2026-02-25T11:41:10.294Z"
+  },
   "53538": {
     "id": 53538,
     "success": true,
@@ -14380,6 +15863,34 @@
     "regular_price": 3100,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T05:30:07.799Z"
+  },
+  "53567": {
+    "id": 53567,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:41:26.614Z"
+  },
+  "53578": {
+    "id": 53578,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:41:42.871Z"
+  },
+  "53612": {
+    "id": 53612,
+    "success": true,
+    "stocks": {
+      "40": 0,
+      "41": 5,
+      "42": 0,
+      "43": 5,
+      "44": 5,
+      "45": 0,
+      "46": 5
+    },
+    "regular_price": 2490,
+    "offer_price": 2490,
+    "lastUpdated": "2026-02-25T11:41:59.040Z"
   },
   "53652": {
     "id": 53652,
@@ -14404,6 +15915,220 @@
     "regular_price": 3999,
     "offer_price": null,
     "lastUpdated": "2026-02-25T05:30:22.662Z"
+  },
+  "53735": {
+    "id": 53735,
+    "success": true,
+    "stocks": {
+      "2XS": 0,
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:42:15.330Z"
+  },
+  "53745": {
+    "id": 53745,
+    "success": true,
+    "stocks": {
+      "2XS": 0,
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 0
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:42:31.684Z"
+  },
+  "53770": {
+    "id": 53770,
+    "success": true,
+    "stocks": {
+      "XS": 0,
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "regular_price": 1490,
+    "offer_price": 1490,
+    "lastUpdated": "2026-02-25T11:42:47.809Z"
+  },
+  "53788": {
+    "id": 53788,
+    "success": true,
+    "stocks": {
+      "XS": 0,
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 1490,
+    "offer_price": 1490,
+    "lastUpdated": "2026-02-25T11:43:04.003Z"
+  },
+  "53849": {
+    "id": 53849,
+    "success": true,
+    "stocks": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "regular_price": 1690,
+    "offer_price": 1690,
+    "lastUpdated": "2026-02-25T11:43:20.060Z"
+  },
+  "53863": {
+    "id": 53863,
+    "success": true,
+    "stocks": {
+      "0": 5,
+      "1": 5,
+      "2": 5,
+      "3": 5
+    },
+    "regular_price": 1690,
+    "offer_price": 1690,
+    "lastUpdated": "2026-02-25T11:43:36.201Z"
+  },
+  "53877": {
+    "id": 53877,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1790,
+    "offer_price": 1790,
+    "lastUpdated": "2026-02-25T11:43:52.199Z"
+  },
+  "53890": {
+    "id": 53890,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 1790,
+    "offer_price": 1790,
+    "lastUpdated": "2026-02-25T11:44:08.214Z"
+  },
+  "53943": {
+    "id": 53943,
+    "success": true,
+    "stocks": {
+      "XS": 0,
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "regular_price": 1190,
+    "offer_price": 1190,
+    "lastUpdated": "2026-02-25T11:44:24.375Z"
+  },
+  "54013": {
+    "id": 54013,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 950,
+    "offer_price": 950,
+    "lastUpdated": "2026-02-25T11:44:40.608Z"
+  },
+  "54059": {
+    "id": 54059,
+    "success": true,
+    "stocks": {
+      "M": 0,
+      "2XL": 5
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:44:56.611Z"
+  },
+  "54079": {
+    "id": 54079,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 0,
+      "XL": 5
+    },
+    "regular_price": 550,
+    "offer_price": 550,
+    "lastUpdated": "2026-02-25T11:45:12.626Z"
+  },
+  "54096": {
+    "id": 54096,
+    "success": true,
+    "stocks": {
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5
+    },
+    "regular_price": 550,
+    "offer_price": 550,
+    "lastUpdated": "2026-02-25T11:45:28.636Z"
+  },
+  "54110": {
+    "id": 54110,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "44": 0
+    },
+    "regular_price": 550,
+    "offer_price": 550,
+    "lastUpdated": "2026-02-25T11:45:44.721Z"
+  },
+  "54121": {
+    "id": 54121,
+    "success": true,
+    "stocks": {
+      "XS": 5,
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:46:00.738Z"
+  },
+  "54138": {
+    "id": 54138,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 0,
+      "L": 5,
+      "XL": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:46:16.829Z"
+  },
+  "54145": {
+    "id": 54145,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:46:33.109Z"
   },
   "54187": {
     "id": 54187,
@@ -14495,6 +16220,16 @@
     "offer_price": 0,
     "lastUpdated": "2026-02-25T05:32:26.927Z"
   },
+  "54307": {
+    "id": 54307,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 790,
+    "offer_price": 790,
+    "lastUpdated": "2026-02-25T11:46:48.832Z"
+  },
   "54318": {
     "id": 54318,
     "success": true,
@@ -14507,6 +16242,16 @@
     "regular_price": 3100,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T05:32:40.325Z"
+  },
+  "54329": {
+    "id": 54329,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 1790,
+    "offer_price": 1790,
+    "lastUpdated": "2026-02-25T11:47:04.884Z"
   },
   "54331": {
     "id": 54331,
@@ -14781,6 +16526,212 @@
     "regular_price": 3600,
     "offer_price": 2700,
     "lastUpdated": "2026-02-25T05:37:49.897Z"
+  },
+  "54663": {
+    "id": 54663,
+    "success": true,
+    "stocks": {
+      "......": 5
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:47:21.075Z"
+  },
+  "54669": {
+    "id": 54669,
+    "success": true,
+    "stocks": {
+      "......": 5
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:47:37.207Z"
+  },
+  "54676": {
+    "id": 54676,
+    "success": true,
+    "stocks": {
+      "......": 5
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:47:53.366Z"
+  },
+  "54682": {
+    "id": 54682,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:48:09.553Z"
+  },
+  "54689": {
+    "id": 54689,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:48:25.723Z"
+  },
+  "54696": {
+    "id": 54696,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 200,
+    "offer_price": 200,
+    "lastUpdated": "2026-02-25T11:48:42.023Z"
+  },
+  "54701": {
+    "id": 54701,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 390,
+    "offer_price": 390,
+    "lastUpdated": "2026-02-25T11:48:58.099Z"
+  },
+  "54707": {
+    "id": 54707,
+    "success": false,
+    "error": "Primary: Product models not found in Decathlon JSON | Secondary: No Secondary URL",
+    "lastUpdated": "2026-02-25T11:49:14.233Z"
+  },
+  "54714": {
+    "id": 54714,
+    "success": true,
+    "stocks": {
+      "......": 0
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:49:30.299Z"
+  },
+  "54720": {
+    "id": 54720,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 890,
+    "offer_price": 890,
+    "lastUpdated": "2026-02-25T11:49:46.301Z"
+  },
+  "54726": {
+    "id": 54726,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 490,
+    "offer_price": 490,
+    "lastUpdated": "2026-02-25T11:50:02.384Z"
+  },
+  "54739": {
+    "id": 54739,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 170,
+    "offer_price": 170,
+    "lastUpdated": "2026-02-25T11:50:18.557Z"
+  },
+  "54750": {
+    "id": 54750,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 170,
+    "offer_price": 170,
+    "lastUpdated": "2026-02-25T11:50:34.996Z"
+  },
+  "54757": {
+    "id": 54757,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 170,
+    "offer_price": 170,
+    "lastUpdated": "2026-02-25T11:50:51.131Z"
+  },
+  "54764": {
+    "id": 54764,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 170,
+    "offer_price": 170,
+    "lastUpdated": "2026-02-25T11:51:07.233Z"
+  },
+  "54771": {
+    "id": 54771,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:51:23.282Z"
+  },
+  "54778": {
+    "id": 54778,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 440,
+    "offer_price": 440,
+    "lastUpdated": "2026-02-25T11:51:39.373Z"
+  },
+  "54787": {
+    "id": 54787,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 440,
+    "offer_price": 440,
+    "lastUpdated": "2026-02-25T11:51:55.644Z"
+  },
+  "54795": {
+    "id": 54795,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:52:11.878Z"
+  },
+  "54803": {
+    "id": 54803,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 150,
+    "offer_price": 150,
+    "lastUpdated": "2026-02-25T11:52:28.001Z"
+  },
+  "54807": {
+    "id": 54807,
+    "success": true,
+    "stocks": {
+      "TEK BEDEN": 0
+    },
+    "regular_price": 150,
+    "offer_price": 150,
+    "lastUpdated": "2026-02-25T11:52:44.309Z"
   },
   "54825": {
     "id": 54825,
@@ -15286,6 +17237,34 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T05:46:32.224Z"
   },
+  "56744": {
+    "id": 56744,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5,
+      "2XL": 5
+    },
+    "regular_price": 320,
+    "offer_price": 320,
+    "lastUpdated": "2026-02-25T11:53:00.454Z"
+  },
+  "56761": {
+    "id": 56761,
+    "success": true,
+    "stocks": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0,
+      "2XL": 0
+    },
+    "regular_price": 850,
+    "offer_price": 850,
+    "lastUpdated": "2026-02-25T11:53:16.508Z"
+  },
   "56804": {
     "id": 56804,
     "success": true,
@@ -15362,6 +17341,20 @@
     "regular_price": 7699,
     "offer_price": 6160,
     "lastUpdated": "2026-02-25T05:48:13.826Z"
+  },
+  "56970": {
+    "id": 56970,
+    "success": true,
+    "stocks": {
+      "S": 5,
+      "M": 5,
+      "L": 5,
+      "XL": 5,
+      "2XL": 0
+    },
+    "regular_price": 1090,
+    "offer_price": 1090,
+    "lastUpdated": "2026-02-25T11:53:32.724Z"
   },
   "57019": {
     "id": 57019,
@@ -15743,6 +17736,20 @@
     "offer_price": null,
     "lastUpdated": "2026-02-25T05:58:28.734Z"
   },
+  "57674": {
+    "id": 57674,
+    "success": true,
+    "stocks": {
+      "XS": 0,
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
+    "regular_price": 1290,
+    "offer_price": 1290,
+    "lastUpdated": "2026-02-25T11:53:48.952Z"
+  },
   "57948": {
     "id": 57948,
     "success": false,
@@ -15856,6 +17863,18 @@
     "success": false,
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T06:03:32.797Z"
+  },
+  "58277": {
+    "id": 58277,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 190,
+    "offer_price": 190,
+    "lastUpdated": "2026-02-25T11:54:05.108Z"
   },
   "58294": {
     "id": 58294,
@@ -16195,6 +18214,163 @@
     "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
     "lastUpdated": "2026-02-25T06:09:26.305Z"
   },
+  "63964": {
+    "id": 63964,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:54:21.431Z"
+  },
+  "63976": {
+    "id": 63976,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 210,
+    "offer_price": 210,
+    "lastUpdated": "2026-02-25T11:54:37.631Z"
+  },
+  "63998": {
+    "id": 63998,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 280,
+    "offer_price": 280,
+    "lastUpdated": "2026-02-25T11:54:53.878Z"
+  },
+  "64001": {
+    "id": 64001,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5,
+      "50": 0
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:55:10.104Z"
+  },
+  "64028": {
+    "id": 64028,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 280,
+    "offer_price": 280,
+    "lastUpdated": "2026-02-25T11:55:26.274Z"
+  },
+  "64038": {
+    "id": 64038,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 270,
+    "offer_price": 270,
+    "lastUpdated": "2026-02-25T11:55:42.539Z"
+  },
+  "64054": {
+    "id": 64054,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 280,
+    "offer_price": 280,
+    "lastUpdated": "2026-02-25T11:55:58.822Z"
+  },
+  "64064": {
+    "id": 64064,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 280,
+    "offer_price": 280,
+    "lastUpdated": "2026-02-25T11:56:14.936Z"
+  },
+  "64073": {
+    "id": 64073,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:56:31.086Z"
+  },
+  "64085": {
+    "id": 64085,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 5,
+      "46": 5
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:56:47.172Z"
+  },
+  "64092": {
+    "id": 64092,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 0,
+      "46": 0
+    },
+    "regular_price": 230,
+    "offer_price": 230,
+    "lastUpdated": "2026-02-25T11:57:03.365Z"
+  },
+  "64103": {
+    "id": 64103,
+    "success": true,
+    "stocks": {
+      "38": 5,
+      "42": 5,
+      "46": 5,
+      "50": 0
+    },
+    "regular_price": 220,
+    "offer_price": 220,
+    "lastUpdated": "2026-02-25T11:57:19.508Z"
+  },
+  "64113": {
+    "id": 64113,
+    "success": true,
+    "stocks": {
+      "38": 0,
+      "42": 0,
+      "46": 0
+    },
+    "regular_price": 230,
+    "offer_price": 230,
+    "lastUpdated": "2026-02-25T11:57:35.749Z"
+  },
   "64129": {
     "id": 64129,
     "success": true,
@@ -16307,5 +18483,19 @@
     "regular_price": 3200,
     "offer_price": 0,
     "lastUpdated": "2026-02-25T06:12:33.497Z"
+  },
+  "64525": {
+    "id": 64525,
+    "success": true,
+    "stocks": {
+      "S.": 5,
+      "M.": 5,
+      "L.": 5,
+      "XL.": 5,
+      "2XL.": 5
+    },
+    "regular_price": 690,
+    "offer_price": 690,
+    "lastUpdated": "2026-02-25T11:57:51.987Z"
   }
 }
