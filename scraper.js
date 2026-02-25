@@ -1,5 +1,7 @@
-const puppeteer = require('puppeteer');
 const fs = require('fs');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 
 // تنظیمات
 const CONFIG = {
@@ -30,27 +32,19 @@ function getArgs() {
 function normalizeSize(rawSize, hostname) {
     const trimmed = rawSize.trim();
     if (!trimmed) return null;
-
     const lower = trimmed.toLowerCase();
-
     if (lower === 's-m') return 'S/M';
     if (lower === 'm-l') return 'M/L';
     if (lower === 'standart' || lower === 'one size' || lower === 'os') return 'Standart';
 
     const rangeMatch = trimmed.match(/^(\d+)\s*-\s*(\d+)$/);
-    if (rangeMatch) {
-        return rangeMatch[1] + '-' + rangeMatch[2];
-    }
+    if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
     if (numbers && numbers.length > 0) {
-        if (hostname && hostname.includes('meritspor')) {
-            return numbers[0].replace(',', '.');
-        } else {
-            return numbers[numbers.length - 1].replace(',', '.');
-        }
+        if (hostname && hostname.includes('meritspor')) return numbers[0].replace(',', '.');
+        else return numbers[numbers.length - 1].replace(',', '.');
     }
-
     return trimmed;
 }
 
@@ -59,45 +53,102 @@ function normalizeSize(rawSize, hostname) {
  */
 function parseTurkishPrice(rawPrice) {
     if (!rawPrice) return null;
-
-    let clean = rawPrice.replace(/[^\d,\.]/g, '');
-    clean = clean
-        .replace(/\./g, '') 
-        .replace(',', '.'); 
-
+    let clean = String(rawPrice).replace(/[^\d,\.]/g, '').replace(/\./g, '').replace(',', '.');
     const num = parseFloat(clean);
     if (isNaN(num)) return null;
-
     return Math.ceil(num);
 }
 
-/**
- * استخراج موجودی و قیمت از یک URL
- */
-async function scrapeProduct(browser, product, isSecondary = false) {
+// ==========================================
+// 🚀 اسکرپر مخصوص دکتلون
+// ==========================================
+async function scrapeDecathlon(browser, url) {
+    const page = await browser.newPage();
+    try {
+        await page.setExtraHTTPHeaders({ 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' });
+        await page.emulateTimezone('Europe/Istanbul');
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        // صبر کردن برای عبور از کلودفلر
+        await new Promise(resolve => setTimeout(resolve, 12000));
+
+        const dktString = await page.evaluate(() => {
+            const scriptNode = document.getElementById('__dkt');
+            if (!scriptNode) return null;
+            const html = scriptNode.innerHTML;
+            const startStr = '__DKT = ';
+            const endStr = '__CONF =';
+            const startIdx = html.indexOf(startStr);
+            const endIdx = html.indexOf(endStr);
+            if (startIdx !== -1 && endIdx !== -1) {
+                let jsonText = html.substring(startIdx + startStr.length, endIdx).trim();
+                if (jsonText.endsWith(';')) jsonText = jsonText.slice(0, -1);
+                return jsonText;
+            }
+            return null;
+        });
+
+        await page.close();
+
+        if (!dktString) return { success: false, error: "Decathlon __DKT not found (Cloudflare Blocked)" };
+
+        const dktData = JSON.parse(dktString);
+        const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
+        
+        if (!supermodelNode || !supermodelNode.data || !supermodelNode.data.models) {
+            return { success: false, error: "Product models not found in Decathlon JSON" };
+        }
+
+        const urlObj = new URL(url);
+        const targetModelId = urlObj.searchParams.get('mc'); 
+        const targetModel = supermodelNode.data.models.find(m => m.modelId === targetModelId) || supermodelNode.data.models[0];
+
+        let extractedStocks = {};
+        let finalPrice = null;
+
+        targetModel.skus.forEach(sku => {
+            if (!finalPrice && sku.price) finalPrice = sku.price;
+            const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
+            extractedStocks[sku.size] = isOut ? 0 : 5; 
+        });
+
+        const normalizedStocks = {};
+        const hostname = urlObj.hostname;
+        for (const [key, val] of Object.entries(extractedStocks)) {
+            const normKey = normalizeSize(key, hostname);
+            if (normKey) normalizedStocks[normKey] = val;
+        }
+
+        const price = parseTurkishPrice(finalPrice);
+        console.log(`  ✅ Decathlon URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: price, offer_price: price };
+
+    } catch (error) {
+        try { await page.close(); } catch(e){}
+        return { success: false, error: "Decathlon Error: " + error.message };
+    }
+}
+
+// ==========================================
+// 🛒 اسکرپر استاندارد (سایر سایت‌ها)
+// ==========================================
+async function scrapeProduct(browser, productObj, isSecondary = false) {
     const urlLabel = isSecondary ? "Secondary URL" : "Primary URL";
-    console.log(`Scraping ${urlLabel} for product ${product.id}: ${product.url}`);
+    console.log(`Scraping ${urlLabel} for product ${productObj.id}: ${productObj.url}`);
 
     const page = await browser.newPage();
 
     try {
-        await page.authenticate({
-            username: 'mehran',
-            password: 'mehran75'
-        });
-
-        await page.setUserAgent(
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        );
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
         try {
-            await page.goto(product.url, {
-                waitUntil: 'networkidle2',
-                timeout: CONFIG.PAGE_TIMEOUT
-            });
+            await page.goto(productObj.url, { waitUntil: 'networkidle2', timeout: CONFIG.PAGE_TIMEOUT });
         } catch (navError) {
-            throw new Error(`Navigation Timeout/Error: ${navError.message}`);
+            throw new Error(`Navigation Error: ${navError.message}`);
         }
 
         await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
@@ -110,37 +161,24 @@ async function scrapeProduct(browser, product, isSecondary = false) {
 
             try {
                 const data = JSON.parse(match[1]);
-                
-                if (data.brandName && data.brandName.toLowerCase().includes('decathlon')) {
-                    return { success: false, error: "Skipped: Brand is Decathlon" };
-                }
-
                 const stocks = {};
-                let regularPrice = null;
-                let offerPrice = null;
+                let regularPrice = null, offerPrice = null;
 
                 if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
                     const stockMap = {};
                     if (data.products && Array.isArray(data.products)) {
                         data.products.forEach(p => {
-                            if (p.id !== undefined && p.stokAdedi !== undefined) {
-                                stockMap[p.id] = parseInt(p.stokAdedi);
-                            }
+                            if (p.id !== undefined && p.stokAdedi !== undefined) stockMap[p.id] = parseInt(p.stokAdedi);
                         });
                         if (data.products.length > 0) {
-                            const p = data.products[0];
-                            regularPrice = p.satisFiyatiStr || null;
-                            offerPrice = p.indirimliFiyatiStr || null;
+                            regularPrice = data.products[0].satisFiyatiStr || null;
+                            offerPrice = data.products[0].indirimliFiyatiStr || null;
                         }
                     }
-
                     data.productVariantData.forEach(variant => {
-                        if (variant.tanim && variant.urunID !== undefined) {
-                            stocks[variant.tanim] = stockMap[variant.urunID] || 0;
-                        }
+                        if (variant.tanim && variant.urunID !== undefined) stocks[variant.tanim] = stockMap[variant.urunID] || 0;
                     });
-                } 
-                else if (data.product) {
+                } else if (data.product) {
                     stocks['Standart'] = parseInt(data.product.stokAdedi) || 0;
                     regularPrice = data.product.satisFiyatiStr || null;
                     offerPrice = data.product.indirimliFiyatiStr || null;
@@ -148,13 +186,7 @@ async function scrapeProduct(browser, product, isSecondary = false) {
                     return { success: false, error: "Unknown JSON structure" };
                 }
 
-                return {
-                    success: true,
-                    stocks: stocks,
-                    regularPrice: regularPrice,
-                    offerPrice: offerPrice
-                };
-
+                return { success: true, stocks, regularPrice, offerPrice };
             } catch (e) {
                 return { success: false, error: "JSON Parse Error: " + e.message };
             }
@@ -162,34 +194,20 @@ async function scrapeProduct(browser, product, isSecondary = false) {
 
         await page.close();
 
-        if (!result.success) {
-            return { success: false, error: result.error };
-        }
+        if (!result.success) return { success: false, error: result.error };
 
         const normalizedStocks = {};
         for (const [rawSize, stock] of Object.entries(result.stocks)) {
             const normalized = normalizeSize(rawSize, hostname);
-            if (normalized) {
-                normalizedStocks[normalized] = stock;
-            }
+            if (normalized) normalizedStocks[normalized] = stock;
         }
 
         const regular = parseTurkishPrice(result.regularPrice);
         let offer = parseTurkishPrice(result.offerPrice);
-
-        if (regular && offer && offer >= regular) {
-            offer = null;
-        }
+        if (regular && offer && offer >= regular) offer = null;
 
         console.log(`  ✅ ${urlLabel} Success: ${Object.keys(normalizedStocks).length} variants found.`);
-
-        return {
-            success: true,
-            stocks: normalizedStocks,
-            regular_price: regular,
-            offer_price: offer
-        };
-
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
     } catch (error) {
         try { await page.close(); } catch(e){}
         return { success: false, error: error.message };
@@ -205,30 +223,35 @@ function getEffectivePrice(scrapeData) {
 }
 
 /**
- * پردازش هوشمند محصول (ادغام سایزها و قیمت)
+ * پردازش هوشمند محصول (مسیریابی به ربات دکتلون یا معمولی)
  */
 async function processProduct(browser, product) {
     let primaryData = { success: false, error: "No Primary URL", stocks: {} };
     let secondaryData = { success: false, error: "No Secondary URL", stocks: {} };
 
     // 1. بررسی سایت اصلی
-    if (product.url && !product.url.toLowerCase().includes('decathlon')) {
-        primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
-    } else if (product.url && product.url.toLowerCase().includes('decathlon')) {
-        primaryData.error = "Skipped: Decathlon Primary URL";
+    if (product.url) {
+        if (product.url.toLowerCase().includes('decathlon')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Decathlon Engine)`);
+            primaryData = await scrapeDecathlon(browser, product.url);
+        } else {
+            primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
+        }
     }
 
     // 2. بررسی سایت دوم
-    if (product.secondary_url && !product.secondary_url.toLowerCase().includes('decathlon')) {
-        secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
-    } else if (product.secondary_url && product.secondary_url.toLowerCase().includes('decathlon')) {
-        secondaryData.error = "Skipped: Decathlon Secondary URL";
+    if (product.secondary_url) {
+        if (product.secondary_url.toLowerCase().includes('decathlon')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Decathlon Engine)`);
+            secondaryData = await scrapeDecathlon(browser, product.secondary_url);
+        } else {
+            secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
+        }
     }
 
     const primarySuccess = primaryData.success;
     const secondarySuccess = secondaryData.success;
 
-    // اگر هر دو سایت خطا دادند
     if (!primarySuccess && !secondarySuccess) {
         return {
             id: product.id,
@@ -238,7 +261,7 @@ async function processProduct(browser, product) {
         };
     }
 
-    // 3. انتخاب قیمت پایه (سایتی که گران‌تر است برنده قیمت می‌شود)
+    // 3. مقایسه قیمت‌ها (همیشه قیمت بالاتر رو میگیریم)
     let priceWinner = null;
     if (primarySuccess && secondarySuccess) {
         const price1 = getEffectivePrice(primaryData);
@@ -251,7 +274,7 @@ async function processProduct(browser, product) {
         priceWinner = secondaryData;
     }
 
-    // 4. ادغام هوشمندانه موجودی سایزها (Variant-Level Merging)
+    // 4. ادغام موجودی‌ها
     const mergedStocks = {};
     const allSizes = new Set([
         ...Object.keys(primaryData.stocks || {}),
@@ -262,16 +285,9 @@ async function processProduct(browser, product) {
         const stock1 = (primaryData.stocks && primaryData.stocks[size]) || 0;
         const stock2 = (secondaryData.stocks && secondaryData.stocks[size]) || 0;
         
-        if (stock1 > 0) {
-            // اگر در سایت اصلی موجود بود، همون رو برمیداریم
-            mergedStocks[size] = stock1;
-        } else if (stock2 > 0) {
-            // اگر سایت اصلی ناموجود بود ولی سایت دوم داشت، از سایت دوم برمیداریم!
-            mergedStocks[size] = stock2;
-        } else {
-            // در هر دو سایت ناموجود است
-            mergedStocks[size] = 0;
-        }
+        if (stock1 > 0) mergedStocks[size] = stock1;
+        else if (stock2 > 0) mergedStocks[size] = stock2;
+        else mergedStocks[size] = 0;
     });
 
     console.log(`  🤝 Merged Stocks: ${Object.keys(mergedStocks).length} total sizes processed.`);
@@ -302,7 +318,6 @@ async function main() {
 
     try {
         products = JSON.parse(fs.readFileSync('products.json', 'utf8'));
-        
         if (fs.existsSync('stock-data.json')) {
             const raw = fs.readFileSync('stock-data.json', 'utf8');
             try { currentData = JSON.parse(raw); } catch(e) { currentData = {}; }
@@ -320,38 +335,33 @@ async function main() {
         }
     }
 
+    // پروکسی غیرفعال شد تا دکتلون ارور Cloudflare ندهد!
     const browser = await puppeteer.launch({
         headless: 'new',
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--proxy-server=http://45.145.20.148:3128'
+            '--disable-blink-features=AutomationControlled'
         ]
     });
 
     const results = { ...currentData };
-    
     let successCount = 0;
     let failCount = 0;
     let skippedCount = 0;
 
     for (const product of products) {
         const result = await processProduct(browser, product);
-        
         const isSkipped = result.error && result.error.toString().includes('Skipped');
 
         if (isSkipped) {
-            if (results[product.id]) {
-                delete results[product.id];
-            }
+            if (results[product.id]) delete results[product.id];
             console.log(`⏩ Skipped & Removed: ${product.id}`);
             skippedCount++;
         } else {
             results[product.id] = result;
-
-            if (result.success) {
-                successCount++;
-            } else {
+            if (result.success) successCount++;
+            else {
                 failCount++;
                 console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
             }
@@ -362,7 +372,6 @@ async function main() {
     }
 
     await browser.close();
-
     fs.writeFileSync('stock-data.json', JSON.stringify(results, null, 2));
 
     console.log('\n' + '='.repeat(60));
