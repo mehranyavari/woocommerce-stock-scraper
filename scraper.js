@@ -223,7 +223,7 @@ function getEffectivePrice(scrapeData) {
 }
 
 /**
- * پردازش هوشمند محصول (مسیریابی به ربات دکتلون یا معمولی)
+ * پردازش هوشمند محصول
  */
 async function processProduct(browser, product) {
     let primaryData = { success: false, error: "No Primary URL", stocks: {} };
@@ -302,40 +302,22 @@ async function processProduct(browser, product) {
     };
 }
 
-/**
- * اجرای اصلی
- */
+// ==========================================
+// 🚀 موتور پردازش Multi-site (جدید)
+// ==========================================
 async function main() {
     const args = getArgs();
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
 
-    console.log('='.repeat(60));
-    console.log(targetIds ? `Stock Scraper - Batch Mode (${targetIds.length} items)` : 'Stock Scraper - Full Mode');
-    console.log('='.repeat(60));
+    // پیدا کردن تمام فایل‌هایی که با products_ شروع می‌شوند
+    const files = fs.readdirSync('.').filter(fn => fn.startsWith('products_') && fn.endsWith('.json'));
 
-    let products = [];
-    let currentData = {};
-
-    try {
-        products = JSON.parse(fs.readFileSync('products.json', 'utf8'));
-        if (fs.existsSync('stock-data.json')) {
-            const raw = fs.readFileSync('stock-data.json', 'utf8');
-            try { currentData = JSON.parse(raw); } catch(e) { currentData = {}; }
-        }
-    } catch (error) {
-        console.error('❌ Error loading files:', error);
+    if (files.length === 0) {
+        console.log('⚠️ هیچ فایلی با فرمت products_*.json یافت نشد.');
         return;
     }
 
-    if (targetIds) {
-        products = products.filter(p => targetIds.includes(String(p.id)));
-        if (products.length === 0) {
-            console.log('⚠️ No matching products found for the provided IDs.');
-            return;
-        }
-    }
-
-    // پروکسی غیرفعال شد تا دکتلون ارور Cloudflare ندهد!
+    // راه‌اندازی مرورگر (یک بار برای تمام سایت‌ها)
     const browser = await puppeteer.launch({
         headless: 'new',
         args: [
@@ -345,41 +327,72 @@ async function main() {
         ]
     });
 
-    const results = { ...currentData };
-    let successCount = 0;
-    let failCount = 0;
-    let skippedCount = 0;
+    // پردازش هر سایت به صورت جداگانه
+    for (const file of files) {
+        const siteName = file.replace('products_', '').replace('.json', '');
+        const outputFile = `stock-data_${siteName}.json`;
 
-    for (const product of products) {
-        const result = await processProduct(browser, product);
-        const isSkipped = result.error && result.error.toString().includes('Skipped');
+        console.log('\n' + '='.repeat(60));
+        console.log(`🌍 در حال اسکرپ سایت: ${siteName}`);
+        console.log('='.repeat(60));
 
-        if (isSkipped) {
-            if (results[product.id]) delete results[product.id];
-            console.log(`⏩ Skipped & Removed: ${product.id}`);
-            skippedCount++;
-        } else {
-            results[product.id] = result;
-            if (result.success) successCount++;
-            else {
-                failCount++;
-                console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
+        let products = [];
+        let currentData = {};
+
+        try {
+            products = JSON.parse(fs.readFileSync(file, 'utf8'));
+            if (fs.existsSync(outputFile)) {
+                currentData = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+            }
+        } catch (error) {
+            console.error(`❌ خطا در خواندن فایل‌های سایت ${siteName}:`, error);
+            continue; // پرش به سایت بعدی در صورت خطا
+        }
+
+        if (targetIds) {
+            products = products.filter(p => targetIds.includes(String(p.id)));
+            if (products.length === 0) {
+                console.log(`⚠️ هیچ محصولی با این آیدی‌ها در سایت ${siteName} پیدا نشد.`);
+                continue;
             }
         }
-        
-        const delay = isSkipped ? 0 : CONFIG.BATCH_DELAY;
-        await new Promise(r => setTimeout(r, delay));
+
+        const results = { ...currentData };
+        let successCount = 0;
+        let failCount = 0;
+        let skippedCount = 0;
+
+        for (const product of products) {
+            const result = await processProduct(browser, product);
+            const isSkipped = result.error && result.error.toString().includes('Skipped');
+
+            if (isSkipped) {
+                if (results[product.id]) delete results[product.id];
+                console.log(`⏩ Skipped & Removed: ${product.id}`);
+                skippedCount++;
+            } else {
+                results[product.id] = result;
+                if (result.success) successCount++;
+                else {
+                    failCount++;
+                    console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
+                }
+            }
+            
+            const delay = isSkipped ? 0 : CONFIG.BATCH_DELAY;
+            await new Promise(r => setTimeout(r, delay));
+        }
+
+        // ذخیره فایل اختصاصی همین سایت
+        fs.writeFileSync(outputFile, JSON.stringify(results, null, 2));
+
+        console.log(`\n✅ پایان اسکرپ سایت: ${siteName}`);
+        console.log(`موفق: ${successCount} | ناموفق: ${failCount} | رد شده: ${skippedCount}`);
+        console.log(`فایل ذخیره شد: ${outputFile}\n`);
     }
 
     await browser.close();
-    fs.writeFileSync('stock-data.json', JSON.stringify(results, null, 2));
-
-    console.log('\n' + '='.repeat(60));
-    console.log('✅ Scraping Complete!');
-    console.log(`Success: ${successCount}`);
-    console.log(`Failed: ${failCount}`);
-    console.log(`Skipped (Removed): ${skippedCount}`);
-    console.log('='.repeat(60));
+    console.log('🎉 تمام سایت‌ها با موفقیت پردازش شدند.');
 }
 
 main().catch(error => {
