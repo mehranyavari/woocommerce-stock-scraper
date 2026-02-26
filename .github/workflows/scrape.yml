@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '18'
       
-      # ⚠️ تغییر مهم: اضافه شدن افزونه‌های ضد‌ردیابی دکتلون
+      # ⚠️ نصب افزونه‌های ضد‌ردیابی دکتلون
       - name: Install dependencies
         run: |
           npm install
@@ -34,6 +34,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add stock-data.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update stock data - $(date '+%Y-%m-%d %H:%M:%S')"
+          
+          # 🌟 تغییر مهم مالتی‌سایت: اضافه کردن تمام فایل‌هایی که با stock-data شروع می‌شوند
+          git add stock-data*.json
+          
+          # کامیت کردن فایل‌ها در صورت وجود تغییرات
+          git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Update stock data for all sites - $(date '+%Y-%m-%d %H:%M:%S')"
+          
+          # پوش کردن به مخزن
           git push
