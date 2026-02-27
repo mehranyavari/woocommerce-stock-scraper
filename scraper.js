@@ -305,11 +305,13 @@ async function processProduct(browser, product) {
 // ==========================================
 // 🚀 موتور پردازش Multi-site (جدید)
 // ==========================================
+// ==========================================
+// 🚀 موتور پردازش Multi-site (با پردازش همزمان - Turbo Mode)
+// ==========================================
 async function main() {
     const args = getArgs();
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
 
-    // پیدا کردن تمام فایل‌هایی که با products_ شروع می‌شوند
     const files = fs.readdirSync('.').filter(fn => fn.startsWith('products_') && fn.endsWith('.json'));
 
     if (files.length === 0) {
@@ -317,7 +319,6 @@ async function main() {
         return;
     }
 
-    // راه‌اندازی مرورگر (یک بار برای تمام سایت‌ها)
     const browser = await puppeteer.launch({
         headless: 'new',
         args: [
@@ -327,7 +328,6 @@ async function main() {
         ]
     });
 
-    // پردازش هر سایت به صورت جداگانه
     for (const file of files) {
         const siteName = file.replace('products_', '').replace('.json', '');
         const outputFile = `stock-data_${siteName}.json`;
@@ -346,15 +346,12 @@ async function main() {
             }
         } catch (error) {
             console.error(`❌ خطا در خواندن فایل‌های سایت ${siteName}:`, error);
-            continue; // پرش به سایت بعدی در صورت خطا
+            continue; 
         }
 
         if (targetIds) {
             products = products.filter(p => targetIds.includes(String(p.id)));
-            if (products.length === 0) {
-                console.log(`⚠️ هیچ محصولی با این آیدی‌ها در سایت ${siteName} پیدا نشد.`);
-                continue;
-            }
+            if (products.length === 0) continue;
         }
 
         const results = { ...currentData };
@@ -362,28 +359,39 @@ async function main() {
         let failCount = 0;
         let skippedCount = 0;
 
-        for (const product of products) {
-            const result = await processProduct(browser, product);
-            const isSkipped = result.error && result.error.toString().includes('Skipped');
-
-            if (isSkipped) {
-                if (results[product.id]) delete results[product.id];
-                console.log(`⏩ Skipped & Removed: ${product.id}`);
-                skippedCount++;
-            } else {
-                results[product.id] = result;
-                if (result.success) successCount++;
-                else {
-                    failCount++;
-                    console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
-                }
-            }
+        // 🌟 تغییر کلیدی: پردازش دسته‌ای (Chunking) برای سرعت ۳ برابری
+        const CONCURRENCY = 3; // باز کردن همزمان ۳ تب (بیشتر از این ممکن است رم گیت‌هاب پر شود)
+        
+        for (let i = 0; i < products.length; i += CONCURRENCY) {
+            const chunk = products.slice(i, i + CONCURRENCY);
+            console.log(`\n⏳ پردازش همزمان محصولات ${i + 1} تا ${i + chunk.length} از ${products.length}...`);
             
-            const delay = isSkipped ? 0 : CONFIG.BATCH_DELAY;
-            await new Promise(r => setTimeout(r, delay));
+            // پردازش همزمان محصولات داخل این دسته
+            const chunkPromises = chunk.map(async (product) => {
+                const result = await processProduct(browser, product);
+                const isSkipped = result.error && result.error.toString().includes('Skipped');
+
+                if (isSkipped) {
+                    if (results[product.id]) delete results[product.id];
+                    console.log(`⏩ Skipped & Removed: ${product.id}`);
+                    skippedCount++;
+                } else {
+                    results[product.id] = result;
+                    if (result.success) successCount++;
+                    else {
+                        failCount++;
+                        console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
+                    }
+                }
+            });
+
+            // صبر می‌کنیم تا هر ۳ محصول با هم تمام شوند
+            await Promise.all(chunkPromises);
+            
+            // یک استراحت کوتاه بین هر ۳ تب برای جلوگیری از مسدود شدن آی‌پی
+            await new Promise(r => setTimeout(r, 2000));
         }
 
-        // ذخیره فایل اختصاصی همین سایت
         fs.writeFileSync(outputFile, JSON.stringify(results, null, 2));
 
         console.log(`\n✅ پایان اسکرپ سایت: ${siteName}`);
@@ -394,6 +402,7 @@ async function main() {
     await browser.close();
     console.log('🎉 تمام سایت‌ها با موفقیت پردازش شدند.');
 }
+
 
 main().catch(error => {
     console.error('Fatal error:', error);
