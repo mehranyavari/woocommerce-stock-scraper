@@ -1,23 +1,21 @@
 name: 🧱 LEGO.tr Scraper
 
 on:
-  # اجرای دستی
   workflow_dispatch:
     inputs:
       mode:
         description: 'حالت اسکرپ'
         required: true
-        default: 'all'
+        default: 'category'
         type: choice
         options:
-          - all          # همه کتگوری‌ها
-          - category     # یک کتگوری مشخص
+          - category
+          - all
       category_url:
-        description: 'URL کتگوری (فقط برای حالت category)'
+        description: 'URL کتگوری (برای حالت category)'
         required: false
         default: 'https://lego.tr/themes/lego-city'
 
-  # اجرای زمان‌بندی‌شده — هفته‌ای یکبار (شنبه ساعت ۳ صبح)
   schedule:
     - cron: '0 3 * * 6'
 
@@ -35,53 +33,53 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 📦 بدون نیاز به npm install (فقط built-in modules)
-        run: echo "No dependencies needed - using built-in https/http modules"
+      - name: 📦 Install dependencies
+        run: npm install
 
-      - name: 🧱 اسکرپ همه محصولات
-        if: ${{ github.event.inputs.mode == 'all' || github.event_name == 'schedule' }}
-        run: node lego-scraper.js --all --delay 1000 --output ./output
-        timeout-minutes: 100
+      - name: 🌐 Install Chromium for Puppeteer
+        run: npx puppeteer browsers install chrome
 
       - name: 🧱 اسکرپ کتگوری مشخص
-        if: ${{ github.event.inputs.mode == 'category' }}
-        run: node lego-scraper.js --url "${{ github.event.inputs.category_url }}" --delay 800 --output ./output
+        if: ${{ github.event.inputs.mode == 'category' || github.event_name == 'schedule' }}
+        run: |
+          URL="${{ github.event.inputs.category_url }}"
+          if [ -z "$URL" ]; then
+            URL="https://lego.tr/themes/lego-city"
+          fi
+          node lego-scraper.js --url "$URL" --output ./output
         timeout-minutes: 60
 
-      - name: 📊 نمایش آمار
+      - name: 🧱 اسکرپ همه کتگوری‌ها
+        if: ${{ github.event.inputs.mode == 'all' }}
+        run: node lego-scraper.js --all --output ./output
+        timeout-minutes: 100
+
+      - name: 📊 نمایش خروجی
         run: |
           echo "=== فایل‌های تولید شده ==="
-          ls -lh ./output/
-          echo ""
-          echo "=== تعداد محصولات در XML ==="
-          grep -c "<wp:post_type>" ./output/*.xml 2>/dev/null || echo "0"
+          ls -lh ./output/ || echo "پوشه output خالی است"
 
-      - name: 📤 آپلود به GitHub Artifacts
+      - name: 📤 آپلود Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: lego-products-${{ github.run_number }}
-          path: ./output/
+          name: lego-xml-${{ github.run_number }}
+          path: ./output/*.xml
           retention-days: 30
 
-      - name: 💾 Commit فایل‌ها به ریپو
+      - name: 💾 Commit فایل XML به ریپو
         run: |
           git config user.name  "GitHub Actions"
           git config user.email "actions@github.com"
-
-          # فقط آخرین فایل رو نگه داریم (حجم کمتر)
           mkdir -p output
-          
-          # نام ثابت برای آسانی دانلود
+
           LATEST_XML=$(ls -t ./output/*.xml 2>/dev/null | head -1)
-          LATEST_JSON=$(ls -t ./output/*.json 2>/dev/null | grep -v temp | head -1)
-
           if [ -n "$LATEST_XML" ]; then
-            cp "$LATEST_XML"  ./output/lego-latest.xml
-            cp "$LATEST_JSON" ./output/lego-latest.json
+            cp "$LATEST_XML" ./output/lego-latest.xml
+            git add output/lego-latest.xml
+            git diff --staged --quiet || git commit -m "🧱 LEGO products updated $(date '+%Y-%m-%d %H:%M')"
+            git push
+          else
+            echo "فایل XML تولید نشد"
           fi
-
-          git add output/lego-latest.xml output/lego-latest.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "🧱 LEGO products updated - $(date '+%Y-%m-%d %H:%M')"
-          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
