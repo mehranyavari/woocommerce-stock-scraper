@@ -4,26 +4,32 @@
  * اسکرپر محصولات lego.tr
  * خروجی: فایل XML استاندارد WooCommerce برای import مستقیم
  *
- * نصب: npm install axios
+ * نصب: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth axios
  * اجرا: node lego-scraper.js --url "https://lego.tr/themes/lego-city"
  *    یا: node lego-scraper.js --product "https://lego.tr/43033-xxx"
  *    یا: node lego-scraper.js --all   (همه کتگوری‌ها)
  */
 
-const https  = require('https');
-const http   = require('http');
-const fs     = require('fs');
-const path   = require('path');
-const url    = require('url');
+const fs   = require('fs');
+const path = require('path');
+const url  = require('url');
+
+// --- Puppeteer Imports ---
+const puppeteer    = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+
+puppeteer.use(StealthPlugin());
+
+let browser = null; // برای نگهداری نمونه مرورگر باز شده
 
 // ─── تنظیمات ──────────────────────────────────────────────────────────────────
 const CONFIG = {
-  base_url:    'https://lego.tr',
-  delay_ms:    800,          // تاخیر بین درخواست‌ها (میلی‌ثانیه)
-  max_pages:   50,           // حداکثر صفحات هر کتگوری
-  output_dir:  './output',   // پوشه خروجی
-  user_agent:  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
-  timeout:     20000,
+  base_url:   'https://lego.tr',
+  delay_ms:   800,          // تاخیر بین درخواست‌ها (میلی‌ثانیه)
+  max_pages:  50,           // حداکثر صفحات هر کتگوری
+  output_dir: './output',   // پوشه خروجی
+  user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+  timeout:    60000,
 
   // دسته‌بندی‌های پیش‌فرض lego.tr (برای --all)
   categories: [
@@ -40,47 +46,95 @@ const CONFIG = {
   ]
 };
 
-// ─── Helper: HTTP GET ──────────────────────────────────────────────────────────
-function fetchHTML(targetUrl) {
-  return new Promise((resolve, reject) => {
-    const parsedUrl = new url.URL(targetUrl);
-    const lib = parsedUrl.protocol === 'https:' ? https : http;
+// ─── Helper: تاخیر ────────────────────────────────────────────────────────────
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-    const options = {
-      hostname: parsedUrl.hostname,
-      path:     parsedUrl.pathname + parsedUrl.search,
-      method:   'GET',
-      timeout:  CONFIG.timeout,
-      headers: {
-        'User-Agent':      CONFIG.user_agent,
-        'Accept':          'text/html,application/xhtml+xml',
-        'Accept-Language': 'tr-TR,tr;q=0.9,en;q=0.8',
-        'Accept-Encoding': 'identity',
-        'Connection':      'keep-alive',
-      }
-    };
+// ─── Helper: Initialize Puppeteer Browser ──────────────────────────────────
+async function initBrowser() {
+  if (browser) return browser;
 
-    const req = lib.request(options, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        return resolve(fetchHTML(res.headers.location));
-      }
-      if (res.statusCode !== 200) {
-        return reject(new Error(`HTTP ${res.statusCode} for ${targetUrl}`));
-      }
-
-      const chunks = [];
-      res.on('data', chunk => chunks.push(chunk));
-      res.on('end',  ()    => resolve(Buffer.concat(chunks).toString('utf8')));
-    });
-
-    req.on('timeout', () => { req.destroy(); reject(new Error('Timeout')); });
-    req.on('error',   err => reject(err));
-    req.end();
+  console.log('Initializing Puppeteer browser...');
+  browser = await puppeteer.launch({
+    headless: 'new',
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-blink-features=AutomationControlled',
+      '--disable-dev-shm-usage',
+    ],
   });
+  console.log('Browser initialized.');
+  return browser;
 }
 
-// ─── تاخیر ────────────────────────────────────────────────────────────────────
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+// ─── Helper: Close Puppeteer Browser ──────────────────────────────────────
+async function closeBrowser() {
+  if (browser) {
+    try {
+      await browser.close();
+      console.log('Browser closed.');
+    } catch (e) {
+      console.error('Error closing browser:', e.message);
+    }
+    browser = null;
+  }
+}
+
+// ─── Helper: HTTP GET via Puppeteer ───────────────────────────────────────
+async function fetchHTML(targetUrl) {
+  await initBrowser();
+
+  const page = await browser.newPage();
+
+  try {
+    await page.setUserAgent(CONFIG.user_agent);
+
+    await page.setViewport({ width: 1920, height: 1080 });
+
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+      'Upgrade-Insecure-Requests': '1',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+    });
+
+    await page.setRequestInterception(true);
+    page.on('request', (request) => {
+      const type = request.resourceType();
+      if (
+        type === 'image' ||
+        type === 'stylesheet' ||
+        type === 'font' ||
+        type === 'media' ||
+        type === 'other'
+      ) {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
+
+    console.log(`Navigating to ${targetUrl}...`);
+    await page.goto(targetUrl, {
+      waitUntil: 'networkidle2',
+      timeout: CONFIG.timeout,
+    });
+    console.log('Page loaded, waiting for scripts...');
+    await sleep(5000);
+
+    const html = await page.content();
+    console.log('HTML content extracted.');
+
+    await page.close();
+    return html;
+  } catch (err) {
+    console.error(`Error fetching ${targetUrl}: ${err.message}`);
+    try {
+      await page.close();
+    } catch (_) {}
+    throw err;
+  }
+}
 
 // ─── استخراج اطلاعات محصول از HTML ───────────────────────────────────────────
 function parseProductPage(html, sourceUrl) {
@@ -104,7 +158,7 @@ function parseProductPage(html, sourceUrl) {
     attributes:   {},
   };
 
-  // ── ۱. PRODUCT_DATA (اصلی‌ترین منبع) ────────────────────────────────────
+  // 1. PRODUCT_DATA
   const pdMatch = html.match(/PRODUCT_DATA\.push\(JSON\.parse\('(.+?)'\)\)/s);
   if (pdMatch) {
     try {
@@ -119,10 +173,10 @@ function parseProductPage(html, sourceUrl) {
       product.category_path = pd.category_path ? pd.category_path.replace(/\s*>\s*/g, ' > ') : '';
       product.brand     = pd.brand    || 'LEGO';
       if (pd.image) product.images.push(pd.image);
-    } catch(e) { /* devam */ }
+    } catch(e) { console.error('Error parsing PRODUCT_DATA:', e.message); }
   }
 
-  // ── ۲. JSON-LD (توضیحات + تصاویر + قیمت دقیق) ──────────────────────────
+  // 2. JSON-LD
   const ldMatches = [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   for (const m of ldMatches) {
     try {
@@ -135,7 +189,6 @@ function parseProductPage(html, sourceUrl) {
       if (!product.barcode && ld.gtin13)    product.barcode = ld.gtin13;
       if (ld.description) product.description = ld.description.trim();
 
-      // قیمت
       if (ld.offers) {
         const offers = Array.isArray(ld.offers) ? ld.offers[0] : ld.offers;
         if (!product.price_try && offers.price) {
@@ -143,7 +196,6 @@ function parseProductPage(html, sourceUrl) {
         }
       }
 
-      // تصاویر
       if (ld.image) {
         const imgs = Array.isArray(ld.image) ? ld.image : [ld.image];
         for (const img of imgs) {
@@ -152,7 +204,6 @@ function parseProductPage(html, sourceUrl) {
         }
       }
 
-      // دسته‌بندی
       if (!product.category && ld.category) {
         const parts = ld.category.split('>');
         product.category = parts[parts.length - 1].trim();
@@ -161,18 +212,17 @@ function parseProductPage(html, sourceUrl) {
         }
       }
       break;
-    } catch(e) { /* skip */ }
+    } catch(e) { console.error('Error parsing JSON-LD:', e.message); }
   }
 
-  // ── ۳. تصاویر گالری ─────────────────────────────────────────────────────
+  // 3. گالری تصاویر
   const galleryRe = /data-id="0"\s+href="(https:\/\/lego\.witcdn\.net[^"]+(?:-B|-O)\.jpg)"/g;
   for (const m of html.matchAll(galleryRe)) {
     const oImg = m[1].replace(/-[BK]\.jpg$/, '-O.jpg');
     if (!product.images.includes(oImg)) product.images.push(oImg);
   }
 
-  // ── ۴. ابعاد از توضیحات ─────────────────────────────────────────────────
-  // "yüksekliği 21 cm, genişliği 14 cm, derinliği 8 cm"
+  // 4. ابعاد از توضیحات
   if (product.description) {
     const dimMatch = product.description.match(/yüksekliği\s+(\d+)\s*cm.*?genişliği\s+(\d+)\s*cm.*?derinliği\s+(\d+)\s*cm/i);
     if (dimMatch) {
@@ -182,525 +232,276 @@ function parseProductPage(html, sourceUrl) {
     }
   }
 
-  // ── ۵. تعداد قطعات (Parça) ──────────────────────────────────────────────
+  // 5. تعداد قطعات
   const parcaMatch = html.match(/<strong>(\d+)<\/strong>\s*<span[^>]*>Parça<\/span>/);
   if (parcaMatch) {
     product.attributes['Parça Sayısı'] = parcaMatch[1];
   }
 
-  // ── ۶. آیتم نامبر ──────────────────────────────────────────────────────
-  const itemMatch = html.match(/<strong>(\d{5,6})<\/strong>\s*<span[^>]*>Öğe<\/span>/);
-  if (itemMatch) {
-    product.attributes['Set Numarası'] = itemMatch[1];
-    if (!product.sku) product.sku = itemMatch[1];
-  }
-
-  // ── ۷. موجودی از hidden input (fallback) ────────────────────────────────
+  // 6. موجودی / وضعیت
   if (!product.available) {
-    const stockMatch = html.match(/id="product-stock-status"\s+value="(\d+)"/);
-    if (stockMatch) product.available = parseInt(stockMatch[1]) > 0;
+    const stokMatch = html.match(/Stokta var|Stokta yok|Tükendi/i);
+    if (stokMatch) {
+      product.available = /Stokta var/i.test(stokMatch[0]);
+    }
   }
-  if (product.quantity === 0 && product.available) product.quantity = 1;
-
-  // حذف تصاویر تکراری
-  product.images = [...new Set(product.images.filter(Boolean))];
-
-  // اعتبارسنجی
-  if (!product.name && !product.sku) return null;
 
   return product;
 }
 
-// ─── استخراج URL محصولات از صفحه فهرست ───────────────────────────────────────
+// ─── استخراج URL محصولات از صفحه لیست ──────────────────────────────────────
 function extractProductUrlsFromListing(html) {
   const urls = new Set();
 
-  // لینک‌های محصول: آدرس‌هایی که عدد ۴-۵ رقمی دارند و بعدش slug است
-  const re = /href="(https:\/\/lego\.tr\/(\d{4,6})-[a-z0-9-]+)"/g;
+  const re = /<a[^>]+href="(https:\/\/lego\.tr\/\d{3,}-[^"]+)"[^>]*class="product-image"/g;
   for (const m of html.matchAll(re)) {
     urls.add(m[1]);
   }
 
-  // همچنین از card-link و product-link
-  const re2 = /href="(\/(\d{4,6})-[a-z0-9-]+)"/g;
-  for (const m of html.matchAll(re2)) {
-    urls.add('https://lego.tr' + m[1]);
-  }
-
-  return [...urls];
+  return Array.from(urls);
 }
 
-// ─── گرفتن تعداد صفحات ─────────────────────────────────────────────────────
+// ─── تشخیص تعداد صفحات کتگوری ───────────────────────────────────────────────
 function getTotalPages(html) {
-  const pageNums = [...html.matchAll(/[?&]pg=(\d+)/g)].map(m => parseInt(m[1]));
-  return pageNums.length ? Math.max(...pageNums) : 1;
+  const match = html.match(/href="[^"]*[\?&]pg=(\d+)[^"]*".*?>\s*Son\s*<\/a>/i);
+  if (match) {
+    return parseInt(match[1], 10) || 1;
+  }
+  return 1;
 }
 
-// ─── فرار از کاراکترهای XML ──────────────────────────────────────────────────
+// ─── Helper: XML Escape ─────────────────────────────────────────────────────
 function xmlEscape(str) {
-  if (!str && str !== 0) return '';
+  if (str == null) return '';
   return String(str)
-    .replace(/&/g,  '&amp;')
-    .replace(/</g,  '&lt;')
-    .replace(/>/g,  '&gt;')
-    .replace(/"/g,  '&quot;')
-    .replace(/'/g,  '&apos;')
-    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, ''); // کنترل کاراکترها
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
-// ─── HTML entities decode ────────────────────────────────────────────────────
+// ─── Helper: Decode HTML Entities ───────────────────────────────────────────
 function decodeHtmlEntities(str) {
+  if (!str) return '';
   return str
-    .replace(/&amp;/g,  '&')
-    .replace(/&lt;/g,   '<')
-    .replace(/&gt;/g,   '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g,  '<')
+    .replace(/&gt;/g,  '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/\\u00ae/gi, '®')
-    .replace(/\\u([0-9a-f]{4})/gi, (_, code) => String.fromCharCode(parseInt(code, 16)));
+    .replace(/&#39;/g, '\'');
 }
 
-// ─── ساخت XML یک محصول ──────────────────────────────────────────────────────
+// ─── ساخت XML هر محصول ─────────────────────────────────────────────────────
 function buildProductXml(p, index) {
-  // ساخت مسیر دسته‌بندی کامل
-  let fullCategory = '';
-  if (p.category_path && p.category) {
-    fullCategory = `${p.category_path} > ${p.category}`;
-  } else if (p.category) {
-    fullCategory = p.category;
-  } else {
-    fullCategory = 'LEGO';
+  const id = index + 1;
+  const sku = xmlEscape(p.sku || `lego-${id}`);
+
+  const price = p.price_try || 0;
+
+  let imagesXml = '';
+  if (p.images && p.images.length) {
+    p.images.forEach((img, idx) => {
+      imagesXml += `
+      <image position="${idx}">${xmlEscape(img)}</image>`;
+    });
   }
 
-  // تصاویر
-  const mainImage    = p.images[0] || '';
-  const galleryImgs  = p.images.slice(1).join(',');
-
-  // توضیحات: تبدیل newline به <br>
-  const descHtml = p.description
-    ? p.description.replace(/\n/g, '<br />\n')
-    : '';
-
-  // متا attributes
-  let metaXml = '';
-  metaXml += `
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_lego_source_url]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.source_url}]]></wp:meta_value>
-      </wp:postmeta>
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_external_stock_url]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.source_url}]]></wp:meta_value>
-      </wp:postmeta>`;
-
-  if (p.barcode) {
-    metaXml += `
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_lego_barcode]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.barcode}]]></wp:meta_value>
-      </wp:postmeta>`;
-  }
-
-  if (p.price_try) {
-    metaXml += `
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[lir_price]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${Math.round(p.price_try)}]]></wp:meta_value>
-      </wp:postmeta>`;
-  }
-
-  // ابعاد
-  if (p.dimensions.length) {
-    metaXml += `
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_length]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.dimensions.length}]]></wp:meta_value>
-      </wp:postmeta>
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_width]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.dimensions.width}]]></wp:meta_value>
-      </wp:postmeta>
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[_height]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${p.dimensions.height}]]></wp:meta_value>
-      </wp:postmeta>`;
-  }
-
-  // گالری تصاویر — WooCommerce آنها را از product_image_gallery می‌خواند
-  // ولی در XML import باید به صورت attachment باشند.
-  // راه‌حل: تصاویر رو در images[] می‌نویسیم، ووکامرس آنها را import می‌کند.
-
-  const now = new Date().toISOString().replace('T', ' ').substr(0, 19);
-
-  // Attributes
   let attrsXml = '';
-  let attrIdx  = 1;
-  for (const [key, val] of Object.entries(p.attributes)) {
-    attrsXml += `
-      <wp:postmeta>
-        <wp:meta_key><![CDATA[attribute_${key.toLowerCase().replace(/\s+/g, '_')}]]></wp:meta_key>
-        <wp:meta_value><![CDATA[${val}]]></wp:meta_value>
-      </wp:postmeta>`;
+  if (p.attributes) {
+    Object.entries(p.attributes).forEach(([name, value]) => {
+      attrsXml += `
+    <attribute>
+      <name>${xmlEscape(name)}</name>
+      <value>${xmlEscape(value)}</value>
+      <position>0</position>
+      <visible>1</visible>
+      <variation>0</variation>
+    </attribute>`;
+    });
   }
+
+  const shortDesc = p.description ? xmlEscape(p.description.slice(0, 400)) : '';
+  const fullDesc  = p.description ? xmlEscape(p.description) : '';
+
+  const categoryName = xmlEscape(p.category || 'LEGO');
 
   return `
   <item>
-    <title><![CDATA[${p.name}]]></title>
-    <link>${xmlEscape(p.source_url)}</link>
-    <pubDate>${new Date().toUTCString()}</pubDate>
-    <dc:creator><![CDATA[admin]]></dc:creator>
-    <guid isPermaLink="false">${xmlEscape(p.source_url)}</guid>
-    <description></description>
-    <content:encoded><![CDATA[${descHtml}]]></content:encoded>
-    <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-    <wp:post_id>${10000 + index}</wp:post_id>
-    <wp:post_date><![CDATA[${now}]]></wp:post_date>
-    <wp:post_date_gmt><![CDATA[${now}]]></wp:post_date_gmt>
-    <wp:comment_status><![CDATA[open]]></wp:comment_status>
-    <wp:ping_status><![CDATA[closed]]></wp:ping_status>
-    <wp:post_name><![CDATA[${p.sku ? p.sku.toLowerCase() : ''}]]></wp:post_name>
-    <wp:status><![CDATA[publish]]></wp:status>
-    <wp:post_parent>0</wp:post_parent>
-    <wp:menu_order>0</wp:menu_order>
-    <wp:post_type><![CDATA[product]]></wp:post_type>
-    <wp:post_password></wp:post_password>
-    <wp:is_sticky>0</wp:is_sticky>
-
-    <!-- دسته‌بندی -->
-    <category domain="product_cat" nicename="${xmlEscape(p.category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''))}">
-      <![CDATA[${p.category || 'LEGO'}]]>
-    </category>
-
-    <!-- WooCommerce product data -->
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_visibility]]></wp:meta_key>
-      <wp:meta_value><![CDATA[visible]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.available && p.quantity > 0 ? 'instock' : 'outofstock'}]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_stock]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.quantity}]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_manage_stock]]></wp:meta_key>
-      <wp:meta_value><![CDATA[yes]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_backorders]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.available && p.quantity > 0 ? 'notify' : 'no'}]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_regular_price]]></wp:meta_key>
-      <wp:meta_value><![CDATA[0]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_price]]></wp:meta_key>
-      <wp:meta_value><![CDATA[0]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_sku]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.sku}]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
-      <wp:meta_value><![CDATA[]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_product_url]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.source_url}]]></wp:meta_value>
-    </wp:postmeta>
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[total_sales]]></wp:meta_key>
-      <wp:meta_value><![CDATA[0]]></wp:meta_value>
-    </wp:postmeta>
-    ${metaXml}
-    ${attrsXml}
-
-    <!-- تصویر شاخص -->
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_thumbnail_url]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${mainImage}]]></wp:meta_value>
-    </wp:postmeta>
-
-    <!-- تصاویر گالری — برای import دستی -->
-    <wp:postmeta>
-      <wp:meta_key><![CDATA[_lego_gallery_urls]]></wp:meta_key>
-      <wp:meta_value><![CDATA[${p.images.join('|')}]]></wp:meta_value>
-    </wp:postmeta>
+    <title>${xmlEscape(p.name || sku)}</title>
+    <link>${xmlEscape(p.source_url || '')}</link>
+    <sku>${sku}</sku>
+    <regular_price>${price}</regular_price>
+    <stock_status>${p.available && p.quantity > 0 ? 'instock' : 'outofstock'}</stock_status>
+    <manage_stock>1</manage_stock>
+    <stock_quantity>${p.quantity || 0}</stock_quantity>
+    <description>${fullDesc}</description>
+    <short_description>${shortDesc}</short_description>
+    <category>${categoryName}</category>
+    <images>${imagesXml}
+    </images>
+    <attributes>${attrsXml}
+    </attributes>
   </item>`;
 }
 
-// ─── ساخت فایل XML کامل ────────────────────────────────────────────────────
-function buildXmlFile(products) {
-  const header = `<?xml version="1.0" encoding="UTF-8"?>
-<!-- WooCommerce Product Import XML -->
-<!-- Generated by LEGO.tr Scraper on ${new Date().toISOString()} -->
-<!-- تعداد محصولات: ${products.length} -->
-<rss version="2.0"
-  xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:wp="http://wordpress.org/export/1.2/">
-<channel>
-  <title>LEGO.tr Products</title>
-  <link>https://lego.tr</link>
-  <description>Scraped from lego.tr</description>
-  <pubDate>${new Date().toUTCString()}</pubDate>
-  <language>tr-TR</language>
-  <wp:wxr_version>1.2</wp:wxr_version>
-  <wp:base_site_url>https://lego.tr</wp:base_site_url>
-  <wp:base_blog_url>https://lego.tr</wp:base_blog_url>
-
-  <!-- دسته‌بندی‌ها -->
-`;
-
-  // جمع‌آوری دسته‌بندی‌های یکتا
-  const cats = new Set(products.map(p => p.category).filter(Boolean));
-  let catsXml = '';
-  for (const cat of cats) {
-    const slug = cat.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    catsXml += `  <wp:category>
-    <wp:term_id>${Math.abs(cat.split('').reduce((a,c)=>a+c.charCodeAt(0),0)) % 9000 + 1000}</wp:term_id>
-    <wp:category_nicename><![CDATA[${slug}]]></wp:category_nicename>
-    <wp:category_parent></wp:category_parent>
-    <wp:cat_name><![CDATA[${cat}]]></wp:cat_name>
-  </wp:category>\n`;
-  }
-
-  const items = products.map((p, i) => buildProductXml(p, i)).join('\n');
-  const footer = `\n</channel>\n</rss>`;
-
-  return header + catsXml + items + footer;
+// ─── Scraper: یک محصول ─────────────────────────────────────────────────────
+async function scrapeProductUrl(productUrl) {
+  console.log(`Scraping product: ${productUrl}`);
+  const html = await fetchHTML(productUrl);
+  const product = parseProductPage(html, productUrl);
+  return product;
 }
 
-// ─── اسکرپ یک کتگوری ────────────────────────────────────────────────────────
-async function scrapeCategory(categoryPath) {
-  const baseUrl = `${CONFIG.base_url}/${categoryPath}`;
-  console.log(`\n📂 کتگوری: ${baseUrl}`);
+// ─── Scraper: یک کتگوری ───────────────────────────────────────────────────
+async function scrapeCategory(categoryPathOrUrl) {
+  const isFullUrl = /^https?:\/\//i.test(categoryPathOrUrl);
+  const firstUrl = isFullUrl
+    ? categoryPathOrUrl
+    : `${CONFIG.base_url.replace(/\/+$/, '')}/${categoryPathOrUrl.replace(/^\/+/, '')}`;
 
-  let allUrls = [];
+  console.log(`Scraping category: ${firstUrl}`);
 
-  // گرفتن صفحه اول برای فهمیدن تعداد صفحات
-  let firstHtml;
-  try {
-    firstHtml = await fetchHTML(baseUrl);
-  } catch(e) {
-    console.error(`  ❌ خطا در گرفتن صفحه اول: ${e.message}`);
-    return [];
+  const firstHtml = await fetchHTML(firstUrl);
+  let totalPages  = getTotalPages(firstHtml);
+  if (totalPages > CONFIG.max_pages) {
+    console.log(`Total pages (${totalPages}) > max_pages (${CONFIG.max_pages}), limiting.`);
+    totalPages = CONFIG.max_pages;
   }
 
-  const totalPages = Math.min(getTotalPages(firstHtml), CONFIG.max_pages);
-  console.log(`  📄 تعداد صفحات: ${totalPages}`);
+  const allProducts = [];
 
-  // صفحه اول
-  const firstPageUrls = extractProductUrlsFromListing(firstHtml);
-  allUrls.push(...firstPageUrls);
-  console.log(`  🔗 صفحه 1: ${firstPageUrls.length} محصول`);
-
-  // بقیه صفحات
-  for (let page = 2; page <= totalPages; page++) {
-    await sleep(CONFIG.delay_ms);
-    try {
-      const pageHtml = await fetchHTML(`${baseUrl}?pg=${page}`);
-      const pageUrls = extractProductUrlsFromListing(pageHtml);
-      allUrls.push(...pageUrls);
-      console.log(`  🔗 صفحه ${page}: ${pageUrls.length} محصول`);
-    } catch(e) {
-      console.error(`  ❌ صفحه ${page}: ${e.message}`);
-    }
-  }
-
-  // حذف تکراری
-  allUrls = [...new Set(allUrls)];
-  console.log(`  ✅ جمع: ${allUrls.length} URL یکتا`);
-
-  return allUrls;
-}
-
-// ─── اسکرپ محصولات از لیست URL ───────────────────────────────────────────────
-async function scrapeProducts(productUrls) {
-  const products = [];
-  let success = 0, failed = 0;
-
-  console.log(`\n🛒 شروع اسکرپ ${productUrls.length} محصول...\n`);
-
-  for (let i = 0; i < productUrls.length; i++) {
-    const productUrl = productUrls[i];
-    process.stdout.write(`  [${i+1}/${productUrls.length}] ${productUrl.split('/').pop()} ... `);
-
-    await sleep(CONFIG.delay_ms);
-
-    try {
-      const html    = await fetchHTML(productUrl);
-      const product = parseProductPage(html, productUrl);
-
-      if (product) {
-        products.push(product);
-        success++;
-        console.log(`✅ ${product.sku} | ${product.quantity} موجود | ${product.price_try} TL`);
+  async function scrapeListingPage(pageNum) {
+    let pageUrl = firstUrl;
+    if (pageNum > 1) {
+      const parsed = new url.URL(firstUrl);
+      if (parsed.searchParams.has('pg')) {
+        parsed.searchParams.set('pg', pageNum);
       } else {
-        failed++;
-        console.log(`⚠️  اطلاعات پیدا نشد`);
+        parsed.searchParams.append('pg', pageNum);
       }
-    } catch(e) {
-      failed++;
-      console.log(`❌ ${e.message}`);
+      pageUrl = parsed.toString();
     }
 
-    // ذخیره موقت هر ۵۰ محصول
-    if (products.length > 0 && products.length % 50 === 0) {
-      saveProgress(products, 'temp');
+    console.log(`Listing page ${pageNum}/${totalPages}: ${pageUrl}`);
+    const html = pageNum === 1 ? firstHtml : await fetchHTML(pageUrl);
+    const productUrls = extractProductUrlsFromListing(html);
+    console.log(`Found ${productUrls.length} products on page ${pageNum}.`);
+
+    for (const pUrl of productUrls) {
+      try {
+        const product = await scrapeProductUrl(pUrl);
+        allProducts.push(product);
+        await sleep(CONFIG.delay_ms);
+      } catch (e) {
+        console.error(`Error scraping product ${pUrl}:`, e.message);
+      }
     }
   }
 
-  console.log(`\n📊 نتیجه: ${success} موفق، ${failed} خطا`);
-  return products;
+  for (let pg = 1; pg <= totalPages; pg++) {
+    await scrapeListingPage(pg);
+    await sleep(CONFIG.delay_ms);
+  }
+
+  return allProducts;
 }
 
-// ─── ذخیره فایل‌های خروجی ────────────────────────────────────────────────────
-function saveProgress(products, prefix = 'lego') {
+// ─── Scraper: همه کتگوری‌های پیش‌فرض ─────────────────────────────────────
+async function scrapeAllCategories() {
+  const results = [];
+  for (const cat of CONFIG.categories) {
+    try {
+      const products = await scrapeCategory(cat);
+      results.push(...products);
+    } catch (e) {
+      console.error(`Error scraping category ${cat}:`, e.message);
+    }
+  }
+  return results;
+}
+
+// ─── خروجی XML ─────────────────────────────────────────────────────────────
+function wrapXml(products) {
+  const itemsXml = products.map((p, idx) => buildProductXml(p, idx)).join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:g="http://base.google.com/ns/1.0"
+  xmlns:wpsc="http://wordpress.org/export/1.1/">
+<channel>
+  <title>LEGO TR Products</title>
+  <link>${xmlEscape(CONFIG.base_url)}</link>
+  <description>Exported from lego.tr</description>
+${itemsXml}
+</channel>
+</rss>`;
+}
+
+// ─── ذخیره خروجی ───────────────────────────────────────────────────────────
+function ensureOutputDir() {
   if (!fs.existsSync(CONFIG.output_dir)) {
     fs.mkdirSync(CONFIG.output_dir, { recursive: true });
   }
-
-  const ts = new Date().toISOString().replace(/[:.]/g, '-').substr(0, 19);
-
-  // XML برای ووکامرس
-  const xmlContent = buildXmlFile(products);
-  const xmlPath    = path.join(CONFIG.output_dir, `${prefix}-products-${ts}.xml`);
-  fs.writeFileSync(xmlPath, xmlContent, 'utf8');
-  console.log(`\n💾 XML ذخیره شد: ${xmlPath}`);
-
-  // JSON برای backup و stock-sync
-  const jsonData = {};
-  for (const p of products) {
-    if (p.sku) {
-      jsonData[p.sku] = {
-        name:          p.name,
-        source_url:    p.source_url,
-        price_try:     p.price_try,
-        quantity:      p.quantity,
-        available:     p.available,
-        images:        p.images,
-        category:      p.category,
-        barcode:       p.barcode,
-      };
-    }
-  }
-  const jsonPath = path.join(CONFIG.output_dir, `${prefix}-products-${ts}.json`);
-  fs.writeFileSync(jsonPath, JSON.stringify(jsonData, null, 2), 'utf8');
-  console.log(`💾 JSON ذخیره شد: ${jsonPath}`);
-
-  return xmlPath;
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+function saveXmlToFile(xml, filenamePrefix = 'lego-tr') {
+  ensureOutputDir();
+  const ts = new Date().toISOString().replace(/[:.]/g, '-');
+  const outPath = path.join(CONFIG.output_dir, `${filenamePrefix}-${ts}.xml`);
+  fs.writeFileSync(outPath, xml, 'utf8');
+  console.log(`XML saved to: ${outPath}`);
+}
+
+// ─── CLI / main ────────────────────────────────────────────────────────────
+function parseArgs(argv) {
+  const args = { url: null, product: null, all: false };
+  for (let i = 2; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === '--url' && argv[i + 1]) {
+      args.url = argv[++i];
+    } else if (arg === '--product' && argv[i + 1]) {
+      args.product = argv[++i];
+    } else if (arg === '--all') {
+      args.all = true;
+    }
+  }
+  return args;
+}
+
 async function main() {
-  const args = process.argv.slice(2);
+  const args = parseArgs(process.argv);
 
-  console.log('='.repeat(60));
-  console.log('  🧱 LEGO.tr Product Scraper → WooCommerce XML');
-  console.log('='.repeat(60));
-
-  let productUrls = [];
-
-  // حالت ۱: یک محصول
-  if (args.includes('--product')) {
-    const idx = args.indexOf('--product');
-    const productUrl = args[idx + 1];
-    if (!productUrl) { console.error('URL محصول را وارد کنید'); process.exit(1); }
-    productUrls = [productUrl];
+  if (!args.url && !args.product && !args.all) {
+    console.log('Usage: node lego-scraper.js [--url CATEGORY_URL] [--product PRODUCT_URL] [--all]');
+    process.exit(1);
   }
 
-  // حالت ۲: یک کتگوری
-  else if (args.includes('--url')) {
-    const idx        = args.indexOf('--url');
-    const listingUrl = args[idx + 1];
-    if (!listingUrl) { console.error('URL کتگوری را وارد کنید'); process.exit(1); }
+  let products = [];
 
-    // استخراج path از URL
-    const parsed = new url.URL(listingUrl);
-    const catPath = parsed.pathname.replace(/^\//, '');
-    productUrls = await scrapeCategory(catPath);
-  }
-
-  // حالت ۳: همه کتگوری‌ها
-  else if (args.includes('--all')) {
-    for (const cat of CONFIG.categories) {
-      const urls = await scrapeCategory(cat);
-      productUrls.push(...urls);
-      await sleep(1000);
+  try {
+    if (args.product) {
+      const p = await scrapeProductUrl(args.product);
+      products = [p];
+    } else if (args.url) {
+      products = await scrapeCategory(args.url);
+    } else if (args.all) {
+      products = await scrapeAllCategories();
     }
-    productUrls = [...new Set(productUrls)];
-    console.log(`\n🌐 جمع کل: ${productUrls.length} URL یکتا از همه کتگوری‌ها`);
+
+    console.log(`Total products scraped: ${products.length}`);
+
+    const xml = wrapXml(products);
+    saveXmlToFile(xml, 'lego-tr');
+  } catch (err) {
+    console.error('Error in main:', err);
+  } finally {
+    await closeBrowser();
   }
-
-  // حالت ۴: خواندن از فایل
-  else if (args.includes('--file')) {
-    const idx      = args.indexOf('--file');
-    const filePath = args[idx + 1];
-    if (!filePath || !fs.existsSync(filePath)) { console.error('فایل پیدا نشد'); process.exit(1); }
-    const content  = fs.readFileSync(filePath, 'utf8');
-    productUrls    = content.split('\n').map(l => l.trim()).filter(l => l.startsWith('http'));
-    console.log(`📄 ${productUrls.length} URL از فایل خوانده شد`);
-  }
-
-  else {
-    console.log(`
-استفاده:
-  node lego-scraper.js --product "https://lego.tr/43033-..."    یک محصول
-  node lego-scraper.js --url "https://lego.tr/themes/lego-city" یک کتگوری
-  node lego-scraper.js --all                                     همه کتگوری‌ها
-  node lego-scraper.js --file urls.txt                           از لیست فایل
-
-گزینه‌های اضافی:
-  --delay 1000     تاخیر بین درخواست‌ها به میلی‌ثانیه (پیش‌فرض: 800)
-  --output ./out   پوشه خروجی (پیش‌فرض: ./output)
-    `);
-    process.exit(0);
-  }
-
-  // تنظیمات اضافی
-  if (args.includes('--delay')) {
-    CONFIG.delay_ms = parseInt(args[args.indexOf('--delay') + 1]) || 800;
-  }
-  if (args.includes('--output')) {
-    CONFIG.output_dir = args[args.indexOf('--output') + 1] || './output';
-  }
-
-  if (productUrls.length === 0) {
-    console.error('\n❌ هیچ URL محصولی پیدا نشد.');
-    process.exit(1);
-  }
-
-  // اسکرپ محصولات
-  const products = await scrapeProducts(productUrls);
-
-  if (products.length === 0) {
-    console.error('\n❌ هیچ محصولی اسکرپ نشد.');
-    process.exit(1);
-  }
-
-  // ذخیره فایل‌های خروجی
-  const xmlPath = saveProgress(products, 'lego');
-
-  console.log('\n' + '='.repeat(60));
-  console.log(`✅ ${products.length} محصول آماده import است`);
-  console.log(`📂 فایل XML: ${xmlPath}`);
-  console.log('\nمراحل import در ووکامرس:');
-  console.log('  ۱. WooCommerce → Products → Import');
-  console.log('  ۲. فایل XML را آپلود کنید');
-  console.log('  ۳. Map fields را تایید کنید');
-  console.log('  ۴. Run the Importer');
-  console.log('='.repeat(60));
 }
 
-main().catch(err => {
-  console.error('\n❌ خطای کلی:', err);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}
