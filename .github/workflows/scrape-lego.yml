@@ -1,4 +1,4 @@
-name: 🧱 LEGO.tr Scraper
+name: 🧱 LEGO.tr Scraper + Auto Import
 
 on:
   workflow_dispatch:
@@ -12,17 +12,25 @@ on:
           - category
           - all
       category_url:
-        description: 'URL کتگوری (برای حالت category)'
+        description: 'URL کتگوری'
         required: false
         default: 'https://lego.tr/themes/lego-city'
+      download_images:
+        description: 'دانلود تصاویر و ساخت ZIP'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
   schedule:
-    - cron: '0 3 * * 6'
+    - cron: '0 2 * * 6'
 
 jobs:
-  scrape:
+  scrape-and-import:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
 
     steps:
       - name: ⬇️ Checkout
@@ -36,50 +44,99 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 🌐 Install Chromium for Puppeteer
+      - name: 🌐 Install Chromium
         run: npx puppeteer browsers install chrome
 
-      - name: 🧱 اسکرپ کتگوری مشخص
-        if: ${{ github.event.inputs.mode == 'category' || github.event_name == 'schedule' }}
+      # ── اسکرپ ─────────────────────────────────────────────────────────────
+      - name: 🧱 اسکرپ کتگوری
+        if: ${{ github.event.inputs.mode != 'all' }}
         run: |
           URL="${{ github.event.inputs.category_url }}"
-          if [ -z "$URL" ]; then
-            URL="https://lego.tr/themes/lego-city"
+          if [ -z "$URL" ]; then URL="https://lego.tr/themes/lego-city"; fi
+          IMGS="${{ github.event.inputs.download_images }}"
+          if [ "$IMGS" = "false" ]; then
+            node lego-scraper.js --url "$URL" --no-images --output ./output
+          else
+            node lego-scraper.js --url "$URL" --output ./output
           fi
-          node lego-scraper.js --url "$URL" --output ./output
-        timeout-minutes: 60
+        timeout-minutes: 90
 
       - name: 🧱 اسکرپ همه کتگوری‌ها
         if: ${{ github.event.inputs.mode == 'all' }}
-        run: node lego-scraper.js --all --output ./output
-        timeout-minutes: 100
-
-      - name: 📊 نمایش خروجی
         run: |
-          echo "=== فایل‌های تولید شده ==="
-          ls -lh ./output/ || echo "پوشه output خالی است"
-
-      - name: 📤 آپلود Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: lego-xml-${{ github.run_number }}
-          path: ./output/*.xml
-          retention-days: 30
-
-      - name: 💾 Commit فایل XML به ریپو
-        run: |
-          git config user.name  "GitHub Actions"
-          git config user.email "actions@github.com"
-          mkdir -p output
-
-          LATEST_XML=$(ls -t ./output/*.xml 2>/dev/null | head -1)
-          if [ -n "$LATEST_XML" ]; then
-            cp "$LATEST_XML" ./output/lego-latest.xml
-            git add output/lego-latest.xml
-            git diff --staged --quiet || git commit -m "🧱 LEGO products updated $(date '+%Y-%m-%d %H:%M')"
-            git push
+          IMGS="${{ github.event.inputs.download_images }}"
+          if [ "$IMGS" = "false" ]; then
+            node lego-scraper.js --all --no-images --output ./output
           else
-            echo "فایل XML تولید نشد"
+            node lego-scraper.js --all --output ./output
           fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        timeout-minutes: 150
+
+      # ── آمار ──────────────────────────────────────────────────────────────
+      - name: 📊 نمایش آمار
+        run: |
+          echo "=== فایل‌های خروجی ==="
+          ls -lh ./output/ 2>/dev/null || echo "خالی"
+          echo ""
+          echo "=== تعداد محصولات ==="
+          grep -c "<item>" ./output/lego-latest.xml 2>/dev/null || echo "0"
+          echo ""
+          echo "=== تعداد پوشه‌های تصاویر ==="
+          ls ./output/images/ 2>/dev/null | wc -l || echo "0"
+          echo ""
+          echo "=== حجم فایل ZIP تصاویر ==="
+          ls -lh ./output/lego-images.zip 2>/dev/null || echo "ZIP موجود نیست"
+
+      # ── آپلود XML از طریق FTP ─────────────────────────────────────────────
+      - name: 📤 آپلود XML به هاست
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:      ${{ secrets.FTP_SERVER }}
+          username:    ${{ secrets.FTP_USERNAME }}
+          password:    ${{ secrets.FTP_PASSWORD }}
+          port:        ${{ secrets.FTP_PORT || 21 }}
+          protocol:    ftps
+          local-dir:   ./output/
+          server-dir:  ${{ secrets.FTP_UPLOAD_PATH }}
+          include:     lego-latest.xml
+
+      # ── آپلود ZIP تصاویر از طریق FTP ─────────────────────────────────────
+      - name: 📤 آپلود ZIP تصاویر به هاست
+        if: ${{ github.event.inputs.download_images != 'false' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:      ${{ secrets.FTP_SERVER }}
+          username:    ${{ secrets.FTP_USERNAME }}
+          password:    ${{ secrets.FTP_PASSWORD }}
+          port:        ${{ secrets.FTP_PORT || 21 }}
+          protocol:    ftps
+          local-dir:   ./output/
+          server-dir:  ${{ secrets.FTP_UPLOAD_PATH }}
+          include:     lego-images.zip
+
+      # ── تریگر import خودکار ───────────────────────────────────────────────
+      - name: 🚀 تریگر auto-import
+        run: |
+          SITE_URL="${{ secrets.WP_SITE_URL }}"
+          SECRET="${{ secrets.LEGO_IMPORT_SECRET }}"
+          if [ -z "$SITE_URL" ] || [ -z "$SECRET" ]; then
+            echo "⚠️  WP_SITE_URL یا SECRET تنظیم نشده"
+            exit 0
+          fi
+          echo "📡 ارسال درخواست به $SITE_URL ..."
+          curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" \
+            --max-time 300 -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"secret\": \"$SECRET\"}" \
+            "${SITE_URL}/wp-json/lego-importer/v1/trigger" || echo "⚠️ import بعداً دستی انجام شود"
+
+      # ── آپلود Artifact برای دانلود مستقیم از GitHub ───────────────────────
+      - name: 📤 آپلود Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lego-output-${{ github.run_number }}
+          path: |
+            ./output/lego-latest.xml
+            ./output/lego-images.zip
+          retention-days: 30
