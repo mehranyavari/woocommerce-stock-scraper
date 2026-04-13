@@ -231,6 +231,9 @@ function parseProductPage(html, sourceUrl) {
     available:   false,
     attributes:  {},
     dimensions:  { length: '', width: '', height: '' },
+    age:         '',
+    parts:       '',
+    item_no:     '',
   };
 
   const pdM = html.match(/PRODUCT_DATA\.push\(JSON\.parse\('(.+?)'\)\)/s);
@@ -285,8 +288,17 @@ function parseProductPage(html, sourceUrl) {
   const dim = p.description.match(/yüksekliği\s+(\d+)\s*cm.*?genişliği\s+(\d+)\s*cm.*?derinliği\s+(\d+)\s*cm/i);
   if (dim) p.dimensions = { height: dim[1], width: dim[2], length: dim[3] };
 
+  // تعداد قطعات
   const parça = html.match(/<strong>(\d+)<\/strong>\s*<span[^>]*>Parça<\/span>/);
-  if (parça) p.attributes['Parça Sayısı'] = parça[1];
+  if (parça) p.parts = parça[1];
+
+  // حداقل سن
+  const yaş = html.match(/<strong>(\d+\+?)<\/strong>\s*<span[^>]*>Yaş<\/span>/);
+  if (yaş) p.age = yaş[1];
+
+  // شماره آیتم (Set No)
+  const öğe = html.match(/<strong>(\d{4,6})<\/strong>\s*<span[^>]*>Öğe<\/span>/);
+  if (öğe) p.item_no = öğe[1];
 
   p.images = [...new Set(p.images.filter(Boolean))];
   return (p.name || p.sku) ? p : null;
@@ -343,6 +355,9 @@ function buildProductXml(p, idx) {
       <meta><key>_lego_barcode</key><value>${xe(p.barcode)}</value></meta>
       <meta><key>_lego_gallery_urls</key><value>${xe(p.images.join('|'))}</value></meta>
       <meta><key>_lego_local_folder</key><value>${xe(p.sku || p.source_url.split('/').pop().slice(0,50))}</value></meta>
+      <meta><key>_lego_age</key><value>${xe(p.age)}</value></meta>
+      <meta><key>_lego_parts</key><value>${xe(p.parts)}</value></meta>
+      <meta><key>_lego_item_no</key><value>${xe(p.item_no)}</value></meta>
     </meta_data>
   </item>`;
 }
