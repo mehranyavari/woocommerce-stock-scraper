@@ -3,7 +3,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 const fs = require('fs');
 
-const TEST_URL = "https://www.decathlon.com.tr/p/kadin-tenis-etegi-beyaz-essentiel-100/_/R-p-305841?mc=8547381&c=BEYAZ";
+const TEST_URL = "https://www.meritspor.com.tr/nike-vapor-pro-3-toprak-kort-clay-kadin-tenis-ayakkabisi-pale-ivory";
 
 // --- توابع کمکی ---
 function normalizeSize(rawSize, hostname) {
