@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * lego-scraper.js — نسخه نهایی با دانلود تصاویر
+ * lego-scraper.js — نسخه نهایی با infinite scroll + دانلود تصاویر
  */
 
 const fs    = require('fs');
@@ -19,7 +19,7 @@ const CONFIG = {
   delay_ms:    1200,
   max_pages:   50,
   output_dir:  './output',
-  images_dir:  './output/images',   // تصاویر اینجا ذخیره می‌شن
+  images_dir:  './output/images',
   timeout:     60000,
 
   categories: [
@@ -82,17 +82,16 @@ async function fetchHTML(targetUrl, waitMs = 3000) {
     });
     await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: CONFIG.timeout });
     await sleep(waitMs);
-    const html = await page.content();
-    return html;
+    return await page.content();
   } finally {
     await page.close();
   }
 }
 
-// ─── دانلود یک فایل (بدون puppeteer) ────────────────────────────────────────
+// ─── دانلود یک فایل ───────────────────────────────────────────────────────────
 function downloadFile(fileUrl, destPath) {
   return new Promise((resolve, reject) => {
-    const lib = fileUrl.startsWith('https') ? https : http;
+    const lib  = fileUrl.startsWith('https') ? https : http;
     const file = fs.createWriteStream(destPath);
 
     const req = lib.get(fileUrl, {
@@ -132,8 +131,7 @@ function downloadFile(fileUrl, destPath) {
 async function downloadProductImages(product) {
   if (!product.images || product.images.length === 0) return [];
 
-  // نام پوشه: SKU + اول slug URL
-  const folderName = product.sku
+  const folderName   = product.sku
     ? product.sku
     : product.source_url.split('/').pop().slice(0, 50);
 
@@ -143,11 +141,10 @@ async function downloadProductImages(product) {
   const downloaded = [];
 
   for (let i = 0; i < product.images.length; i++) {
-    const imgUrl  = product.images[i];
-    const ext     = path.extname(imgUrl.split('?')[0]) || '.jpg';
+    const imgUrl   = product.images[i];
+    const ext      = path.extname(imgUrl.split('?')[0]) || '.jpg';
     const destPath = path.join(productImgDir, `${i + 1}${ext}`);
 
-    // اگر قبلاً دانلود شده skip کن
     if (fs.existsSync(destPath)) {
       downloaded.push(destPath);
       continue;
@@ -158,28 +155,25 @@ async function downloadProductImages(product) {
       downloaded.push(destPath);
       await sleep(200);
     } catch(e) {
-      process.stdout.write(`⚠️ `);
+      process.stdout.write(`⚠️  `);
     }
   }
 
   return downloaded;
 }
 
-// ─── ساخت فایل ZIP تصاویر ────────────────────────────────────────────────────
-function createImagesZip(outputPath) {
+// ─── ساخت ZIP تصاویر ─────────────────────────────────────────────────────────
+function createImagesZip() {
   const imagesDir = CONFIG.images_dir;
-
   if (!fs.existsSync(imagesDir)) {
     console.log('  پوشه تصاویر خالی است');
     return null;
   }
 
-  const zipPath = outputPath || path.join(CONFIG.output_dir, 'lego-images.zip');
-
+  const zipPath = path.join(CONFIG.output_dir, 'lego-images.zip');
   try {
-    // استفاده از zip دستور سیستم (موجود در Ubuntu/GitHub Actions)
     execSync(`cd "${CONFIG.output_dir}" && zip -r "lego-images.zip" "images/"`, {
-      stdio: 'pipe',
+      stdio:   'pipe',
       timeout: 120000,
     });
     console.log(`\n📦 ZIP تصاویر: ${zipPath}`);
@@ -191,7 +185,7 @@ function createImagesZip(outputPath) {
   }
 }
 
-// ─── استخراج URL محصولات از صفحه لیست ───────────────────────────────────────
+// ─── استخراج URL محصولات از HTML ─────────────────────────────────────────────
 function extractProductUrls(html) {
   const urls = new Set();
   const patterns = [
@@ -207,12 +201,6 @@ function extractProductUrls(html) {
     }
   }
   return [...urls];
-}
-
-function getTotalPages(html) {
-  const pgNums = [...html.matchAll(/[?&]pg=(\d+)/g)].map(m => parseInt(m[1]));
-  if (pgNums.length) return Math.max(...pgNums);
-  return 1;
 }
 
 // ─── Parse محصول ─────────────────────────────────────────────────────────────
@@ -240,14 +228,14 @@ function parseProductPage(html, sourceUrl) {
   if (pdM) {
     try {
       const pd = JSON.parse(pdM[1].replace(/\\'/g, "'"));
-      p.name      = pd.name            ? htmlDecode(pd.name) : '';
-      p.sku       = pd.code            || '';
-      p.barcode   = pd.supplier_code   || '';
+      p.name      = pd.name             ? htmlDecode(pd.name) : '';
+      p.sku       = pd.code             || '';
+      p.barcode   = pd.supplier_code    || '';
       p.price_try = pd.total_sale_price || pd.total_price || 0;
       p.quantity  = typeof pd.quantity === 'number' ? pd.quantity : 0;
       p.available = !!pd.available;
-      p.category  = pd.category        ? htmlDecode(pd.category) : '';
-      p.brand     = pd.brand           || 'LEGO';
+      p.category  = pd.category         ? htmlDecode(pd.category) : '';
+      p.brand     = pd.brand            || 'LEGO';
       if (pd.image) p.images.push(pd.image.replace(/\\/g, ''));
     } catch(e) {}
   }
@@ -257,10 +245,10 @@ function parseProductPage(html, sourceUrl) {
       let ld = JSON.parse(m[1]);
       if (Array.isArray(ld)) ld = ld[0];
       if (!ld || ld['@type'] !== 'Product') continue;
-      if (!p.name    && ld.name)    p.name    = ld.name;
-      if (!p.sku     && ld.sku)     p.sku     = ld.sku;
-      if (!p.barcode && ld.gtin13)  p.barcode = ld.gtin13;
-      if (ld.description)           p.description = ld.description.trim();
+      if (!p.name    && ld.name)   p.name    = ld.name;
+      if (!p.sku     && ld.sku)    p.sku     = ld.sku;
+      if (!p.barcode && ld.gtin13) p.barcode = ld.gtin13;
+      if (ld.description)          p.description = ld.description.trim();
       if (ld.offers) {
         const off = Array.isArray(ld.offers) ? ld.offers[0] : ld.offers;
         if (!p.price_try && off.price) p.price_try = parseFloat(off.price);
@@ -288,15 +276,12 @@ function parseProductPage(html, sourceUrl) {
   const dim = p.description.match(/yüksekliği\s+(\d+)\s*cm.*?genişliği\s+(\d+)\s*cm.*?derinliği\s+(\d+)\s*cm/i);
   if (dim) p.dimensions = { height: dim[1], width: dim[2], length: dim[3] };
 
-  // تعداد قطعات
   const parça = html.match(/<strong>(\d+)<\/strong>\s*<span[^>]*>Parça<\/span>/);
   if (parça) p.parts = parça[1];
 
-  // حداقل سن
   const yaş = html.match(/<strong>(\d+\+?)<\/strong>\s*<span[^>]*>Yaş<\/span>/);
   if (yaş) p.age = yaş[1];
 
-  // شماره آیتم (Set No)
   const öğe = html.match(/<strong>(\d{4,6})<\/strong>\s*<span[^>]*>Öğe<\/span>/);
   if (öğe) p.item_no = öğe[1];
 
@@ -320,7 +305,7 @@ function htmlDecode(s) {
     .replace(/\\u([0-9a-f]{4})/gi, (_, c) => String.fromCharCode(parseInt(c, 16)));
 }
 
-function buildProductXml(p, idx) {
+function buildProductXml(p) {
   const imgsXml = p.images.map((img, i) =>
     `\n      <image position="${i}">${xe(img)}</image>`
   ).join('');
@@ -370,117 +355,152 @@ function wrapXml(products) {
 <channel>
   <title>LEGO.tr Products</title>
   <link>https://lego.tr</link>
-${products.map((p, i) => buildProductXml(p, i)).join('\n')}
+${products.map(p => buildProductXml(p)).join('\n')}
 </channel>
 </rss>`;
 }
 
-// ─── ذخیره خروجی‌ها ──────────────────────────────────────────────────────────
+// ─── ذخیره خروجی نهایی ───────────────────────────────────────────────────────
 function saveOutput(products) {
   fs.mkdirSync(CONFIG.output_dir, { recursive: true });
 
-  const xml     = wrapXml(products);
-  const xmlPath = path.join(CONFIG.output_dir, 'lego-latest.xml');
-  fs.writeFileSync(xmlPath, xml, 'utf8');
-
+  const xmlPath  = path.join(CONFIG.output_dir, 'lego-latest.xml');
   const jsonPath = path.join(CONFIG.output_dir, 'lego-latest.json');
+
+  fs.writeFileSync(xmlPath,  wrapXml(products),                 'utf8');
   fs.writeFileSync(jsonPath, JSON.stringify(products, null, 2), 'utf8');
 
   console.log(`\n✅ XML  → ${xmlPath}`);
   console.log(`✅ JSON → ${jsonPath}`);
 }
 
-// ─── اسکرپ کتگوری ────────────────────────────────────────────────────────────
-async function scrapeCategory(catUrl, downloadImages = true) {
-  console.log(`\n📂 ${catUrl}`);
+// ─── ذخیره خروجی هر صفحه جداگانه ────────────────────────────────────────────
+function savePageOutput(pageProducts, pageIndex, catUrl) {
+  fs.mkdirSync(CONFIG.output_dir, { recursive: true });
 
-  let firstHtml;
-  try { firstHtml = await fetchHTML(catUrl, 4000); }
-  catch(e) { console.error(`  ❌ ${e.message}`); return []; }
+  const catSlug = catUrl
+    .replace(/https?:\/\/[^/]+\//, '')
+    .replace(/\//g, '-')
+    .replace(/[^a-z0-9\-]/gi, '')
+    .slice(0, 50);
 
-  const totalPages = Math.min(getTotalPages(firstHtml), CONFIG.max_pages);
-  console.log(`  📄 ${totalPages} صفحه`);
+  const xmlPath  = path.join(CONFIG.output_dir, `${catSlug}-page${pageIndex}.xml`);
+  const jsonPath = path.join(CONFIG.output_dir, `${catSlug}-page${pageIndex}.json`);
 
-  const allUrls = new Set();
-  extractProductUrls(firstHtml).forEach(u => allUrls.add(u));
+  fs.writeFileSync(xmlPath,  wrapXml(pageProducts),                 'utf8');
+  fs.writeFileSync(jsonPath, JSON.stringify(pageProducts, null, 2), 'utf8');
 
-  for (let pg = 2; pg <= totalPages; pg++) {
+  console.log(`  💾 ذخیره شد: ${path.basename(xmlPath)} (${pageProducts.length} محصول)`);
+}
+
+// ─── اسکرپ یک صفحه از URL با پارامتر ps ──────────────────────────────────────
+async function scrapeProductsOnPage(pageUrl, knownUrls, downloadImages) {
+  const html       = await fetchHTML(pageUrl, 4000);
+  const allOnPage  = extractProductUrls(html);
+
+  // فقط URLهایی که قبلاً ندیدیم
+  const freshUrls  = allOnPage.filter(u => !knownUrls.has(u));
+  freshUrls.forEach(u => knownUrls.add(u));
+
+  const pageProducts = [];
+
+  for (let i = 0; i < freshUrls.length; i++) {
+    const productUrl = freshUrls[i];
+    process.stdout.write(
+      `    [${i + 1}/${freshUrls.length}] ${productUrl.split('/').pop().slice(0, 40)} ... `
+    );
     await sleep(CONFIG.delay_ms);
-    const pageUrl = `${catUrl}${catUrl.includes('?') ? '&' : '?'}pg=${pg}`;
-    try {
-      const html = await fetchHTML(pageUrl, 3000);
-      extractProductUrls(html).forEach(u => allUrls.add(u));
-      console.log(`  📄 صفحه ${pg}: ${allUrls.size} محصول تا اینجا`);
-    } catch(e) {
-      console.error(`  ❌ صفحه ${pg}: ${e.message}`);
-    }
-  }
-
-  console.log(`  🔗 ${allUrls.size} URL یکتا`);
-
-  const products = [];
-  const urls     = [...allUrls];
-
-  for (let i = 0; i < urls.length; i++) {
-    const productUrl = urls[i];
-    process.stdout.write(`  [${i+1}/${urls.length}] ${productUrl.split('/').pop().slice(0, 45)} ... `);
-    await sleep(CONFIG.delay_ms);
 
     try {
-      const html    = await fetchHTML(productUrl, 3000);
-      const product = parseProductPage(html, productUrl);
+      const pHtml   = await fetchHTML(productUrl, 3000);
+      const product = parseProductPage(pHtml, productUrl);
 
       if (product) {
-        // دانلود تصاویر
         if (downloadImages && product.images.length > 0) {
-          process.stdout.write(`📸 ${product.images.length} تصویر ... `);
-          const downloaded = await downloadProductImages(product);
-          console.log(`✅ ${product.sku} | ${downloaded.length}/${product.images.length} تصویر | ${product.quantity} موجود`);
+          process.stdout.write(`📸 ${product.images.length} ... `);
+          const dl = await downloadProductImages(product);
+          console.log(`✅ ${product.sku} | ${dl.length} تصویر | موجودی: ${product.quantity}`);
         } else {
-          console.log(`✅ ${product.sku} | ${product.quantity} موجود`);
+          console.log(`✅ ${product.sku} | موجودی: ${product.quantity}`);
         }
-        products.push(product);
+        pageProducts.push(product);
       } else {
         console.log(`⚠️  اطلاعات پیدا نشد`);
       }
     } catch(e) {
       console.log(`❌ ${e.message}`);
     }
-
-    // ذخیره موقت هر ۲۰ محصول
-    if (products.length > 0 && products.length % 20 === 0) {
-      saveOutput(products);
-    }
   }
 
-  return products;
+  return pageProducts;
+}
+
+// ─── اسکرپ کامل یک کتگوری با ps pagination ───────────────────────────────────
+async function scrapeCategory(catUrl, downloadImages = true) {
+  console.log(`\n📂 ${catUrl}`);
+
+  // URL پایه بدون پارامتر ps
+  const baseUrl    = catUrl.split('?')[0].replace(/\/+$/, '');
+  const knownUrls  = new Set();
+  const allProducts = [];
+
+  for (let ps = 1; ps <= CONFIG.max_pages; ps++) {
+    // صفحه اول بدون پارامتر، بقیه با ?ps=N
+    const pageUrl = ps === 1 ? baseUrl : `${baseUrl}?ps=${ps}`;
+
+    console.log(`\n  📄 صفحه ${ps} → ${pageUrl}`);
+
+    let pageProducts;
+    try {
+      pageProducts = await scrapeProductsOnPage(pageUrl, knownUrls, downloadImages);
+    } catch(e) {
+      console.error(`  ❌ خطا در صفحه ${ps}: ${e.message}`);
+      break;
+    }
+
+    if (pageProducts.length === 0) {
+      console.log(`  🏁 صفحه ${ps} خالی بود — پایان کتگوری`);
+      break;
+    }
+
+    allProducts.push(...pageProducts);
+
+    // ذخیره خروجی این صفحه
+    savePageOutput(allProducts, ps, baseUrl);
+
+    console.log(`  📊 مجموع تا اینجا: ${allProducts.length} محصول`);
+    await sleep(CONFIG.delay_ms);
+  }
+
+  console.log(`\n  ✅ کتگوری تموم شد: ${allProducts.length} محصول`);
+  return allProducts;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
-  const args      = process.argv.slice(2);
-  const get       = flag => { const i = args.indexOf(flag); return i !== -1 ? args[i+1] : null; };
-  const hasFlag   = flag => args.includes(flag);
+  const args    = process.argv.slice(2);
+  const get     = flag => { const i = args.indexOf(flag); return i !== -1 ? args[i + 1] : null; };
+  const hasFlag = flag => args.includes(flag);
 
-  if (get('--output'))  CONFIG.output_dir = get('--output');
-  if (get('--delay'))   CONFIG.delay_ms   = parseInt(get('--delay')) || CONFIG.delay_ms;
+  if (get('--output')) CONFIG.output_dir = get('--output');
+  if (get('--delay'))  CONFIG.delay_ms   = parseInt(get('--delay')) || CONFIG.delay_ms;
   CONFIG.images_dir = path.join(CONFIG.output_dir, 'images');
 
-  // آیا تصاویر هم دانلود بشن؟ (پیش‌فرض: بله)
   const downloadImages = !hasFlag('--no-images');
 
   console.log('='.repeat(60));
-  console.log('  🧱 LEGO.tr Scraper → XML + Images ZIP');
+  console.log('  🧱 LEGO.tr Scraper — ps pagination + Images ZIP');
   console.log('='.repeat(60));
-  if (downloadImages) {
-    console.log('  📸 حالت: اسکرپ + دانلود تصاویر + ساخت ZIP');
-  } else {
-    console.log('  📄 حالت: فقط اسکرپ (بدون تصویر)');
-  }
+  console.log(downloadImages
+    ? '  📸 حالت: اسکرپ + دانلود تصاویر + ساخت ZIP'
+    : '  📄 حالت: فقط اسکرپ (بدون تصویر)'
+  );
 
   let products = [];
 
   try {
+
+    // ── یک محصول مستقیم ─────────────────────────────────────────────────────
     if (hasFlag('--product')) {
       const productUrl = get('--product');
       const html = await fetchHTML(productUrl, 3000);
@@ -490,16 +510,19 @@ async function main() {
         products = [p];
       }
 
+    // ── یک کتگوری ────────────────────────────────────────────────────────────
     } else if (hasFlag('--url')) {
       products = await scrapeCategory(get('--url'), downloadImages);
 
+    // ── همه کتگوری‌ها ─────────────────────────────────────────────────────────
     } else if (hasFlag('--all')) {
       for (const cat of CONFIG.categories) {
         const catProducts = await scrapeCategory(`${CONFIG.base_url}/${cat}`, downloadImages);
         products.push(...catProducts);
         await sleep(2000);
       }
-      // حذف تکراری
+
+      // حذف تکراری بر اساس SKU
       const seen = new Set();
       products = products.filter(p => {
         if (!p.sku || seen.has(p.sku)) return false;
@@ -507,15 +530,16 @@ async function main() {
         return true;
       });
 
+    // ── راهنما ───────────────────────────────────────────────────────────────
     } else {
       console.log(`
 استفاده:
-  node lego-scraper.js --product "https://lego.tr/43033-..."     یک محصول
-  node lego-scraper.js --url "https://lego.tr/themes/lego-city"  یک کتگوری
-  node lego-scraper.js --all                                      همه کتگوری‌ها
+  node lego-scraper.js --product "https://lego.tr/43033-..."       یک محصول
+  node lego-scraper.js --url "https://lego.tr/themes/lego-city"    یک کتگوری
+  node lego-scraper.js --all                                        همه کتگوری‌ها
 
 گزینه‌ها:
-  --no-images    فقط XML بساز (بدون دانلود تصویر)
+  --no-images    فقط XML (بدون دانلود تصویر)
   --delay 1200   تاخیر به ms
   --output ./out پوشه خروجی
       `);
@@ -527,7 +551,7 @@ async function main() {
       process.exit(1);
     }
 
-    // ذخیره XML و JSON
+    // ذخیره XML و JSON نهایی (همه محصولات)
     saveOutput(products);
 
     // ساخت ZIP تصاویر
@@ -538,12 +562,10 @@ async function main() {
 
     // آمار نهایی
     const totalImages = products.reduce((s, p) => s + p.images.length, 0);
-    const imagesDir   = CONFIG.images_dir;
     let downloadedCount = 0;
-    if (fs.existsSync(imagesDir)) {
-      const folders = fs.readdirSync(imagesDir);
-      for (const folder of folders) {
-        const fPath = path.join(imagesDir, folder);
+    if (fs.existsSync(CONFIG.images_dir)) {
+      for (const folder of fs.readdirSync(CONFIG.images_dir)) {
+        const fPath = path.join(CONFIG.images_dir, folder);
         if (fs.statSync(fPath).isDirectory()) {
           downloadedCount += fs.readdirSync(fPath).length;
         }
