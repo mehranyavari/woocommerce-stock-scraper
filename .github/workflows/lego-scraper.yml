@@ -47,11 +47,6 @@ jobs:
             out_stock=$((total - in_stock))
             avg_price=$(jq '[.[] | .price] | add / length | round' output/lego-products-full.json)
             
-            echo "total=$total" >> $GITHUB_OUTPUT
-            echo "in_stock=$in_stock" >> $GITHUB_OUTPUT
-            echo "out_stock=$out_stock" >> $GITHUB_OUTPUT
-            echo "avg_price=$avg_price" >> $GITHUB_OUTPUT
-            
             echo "📊 **Özet**" >> $GITHUB_STEP_SUMMARY
             echo "- 🧱 Toplam: **$total** ürün" >> $GITHUB_STEP_SUMMARY
             echo "- ✅ Mevcut: **$in_stock** ürün" >> $GITHUB_STEP_SUMMARY
@@ -68,31 +63,9 @@ jobs:
 
       - name: ذخیره JSON در ریپو (commit)
         run: |
-          # ساخت فایل آمار
-          if [ -f output/lego-products-full.json ]; then
-            cat > STATS.md << 'EOF'
-# 📊 آمار lego.tr
-
-**آخرین بروزرسانی:** $(date +'%Y-%m-%d %H:%M UTC')
-
-| متریک | مقدار |
-|---|---|
-| 🧱 کل محصولات | $(jq 'length' output/lego-products-full.json) |
-| ✅ موجود | $(jq '[.[] | select(.in_stock == true)] | length' output/lego-products-full.json) |
-| ❌ ناموجود | $(jq '[.[] | select(.in_stock == false)] | length' output/lego-products-full.json) |
-| 💰 میانگین قیمت | $(jq '[.[] | .price] | add / length | round' output/lego-products-full.json) TL |
-
----
-
-## پرفروش‌ترین دسته‌بندی‌ها
-
-$(jq -r 'group_by(.category) | map({category: .[0].category, count: length}) | sort_by(-.count) | limit(10; .[]) | "- **\(.category)**: \(.count) محصول"' output/lego-products-full.json)
-EOF
-          fi
-          
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/ STATS.md
+          git add output/
           git diff --staged --quiet || git commit -m "🧱 stok güncellendi: $(date +'%Y-%m-%d %H:%M')"
           git push
         env:
