@@ -62,18 +62,91 @@ function parseTurkishPrice(rawPrice) {
 // ==========================================
 // 🚀 اسکرپر مخصوص دکتلون
 // ==========================================
+// ==========================================
+// 🚀 اسکرپر مخصوص دکتلون (نسخه ضد-Cloudflare)
+// ==========================================
 async function scrapeDecathlon(browser, url) {
     const page = await browser.newPage();
     try {
-        await page.setExtraHTTPHeaders({ 'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7' });
+        // ۱. Fingerprint کامل مثل Chrome واقعی
+        await page.evaluateOnNewDocument(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            Object.defineProperty(navigator, 'plugins', {
+                get: () => {
+                    const arr = [
+                        { name: 'Chrome PDF Plugin', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
+                        { name: 'Chrome PDF Viewer', filename: 'mhjfbmdgcfjbbpaeojofohoefgiehjai', description: '' },
+                        { name: 'Native Client', filename: 'internal-nacl-plugin', description: '' },
+                    ];
+                    arr.__proto__ = PluginArray.prototype;
+                    return arr;
+                }
+            });
+            Object.defineProperty(navigator, 'languages', { get: () => ['tr-TR', 'tr', 'en-US', 'en'] });
+            Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
+            Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+            Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
+            window.chrome = {
+                runtime: {},
+                loadTimes: function() {},
+                csi: function() {},
+                app: {}
+            };
+            // جلوگیری از تشخیص headless با Permissions API
+            const originalQuery = window.navigator.permissions.query;
+            window.navigator.permissions.query = (parameters) =>
+                parameters.name === 'notifications'
+                    ? Promise.resolve({ state: Notification.permission })
+                    : originalQuery(parameters);
+        });
+
+        // ۲. هدرهای کامل مثل مرورگر واقعی
+        await page.setExtraHTTPHeaders({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Cache-Control': 'max-age=0',
+            'Sec-Ch-Ua': '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"',
+            'Sec-Ch-Ua-Mobile': '?0',
+            'Sec-Ch-Ua-Platform': '"Windows"',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1',
+        });
+
         await page.emulateTimezone('Europe/Istanbul');
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
+        // ۳. اول صفحه اصلی (رفتار طبیعی کاربر)
+        console.log(`  🔄 Visiting Decathlon homepage first...`);
+        await page.goto('https://www.decathlon.com.tr', {
+            waitUntil: 'domcontentloaded',
+            timeout: 30000
+        });
+        // تاخیر رندوم ۲-۴ ثانیه
+        await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
+
+        // ۴. حالا رفتن به URL محصول
+        console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-        
-        // صبر کردن برای عبور از کلودفلر
-        await new Promise(resolve => setTimeout(resolve, 12000));
+
+        // تاخیر رندوم ۸-۱۲ ثانیه (Cloudflare challenge time)
+        await new Promise(r => setTimeout(r, 8000 + Math.random() * 4000));
+
+        // ۵. چک کردن اینکه Cloudflare هنوز بلاک می‌کنه یا نه
+        const isBlocked = await page.evaluate(() => {
+            const title = document.title.toLowerCase();
+            return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare');
+        });
+
+        if (isBlocked) {
+            // یه بار دیگه صبر می‌کنیم
+            console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
+            await new Promise(r => setTimeout(r, 10000));
+        }
 
         const dktString = await page.evaluate(() => {
             const scriptNode = document.getElementById('__dkt');
@@ -97,13 +170,13 @@ async function scrapeDecathlon(browser, url) {
 
         const dktData = JSON.parse(dktString);
         const supermodelNode = dktData._ctx.data.find(item => item.type === 'Supermodel');
-        
+
         if (!supermodelNode || !supermodelNode.data || !supermodelNode.data.models) {
             return { success: false, error: "Product models not found in Decathlon JSON" };
         }
 
         const urlObj = new URL(url);
-        const targetModelId = urlObj.searchParams.get('mc'); 
+        const targetModelId = urlObj.searchParams.get('mc');
         const targetModel = supermodelNode.data.models.find(m => m.modelId === targetModelId) || supermodelNode.data.models[0];
 
         let extractedStocks = {};
@@ -112,7 +185,7 @@ async function scrapeDecathlon(browser, url) {
         targetModel.skus.forEach(sku => {
             if (!finalPrice && sku.price) finalPrice = sku.price;
             const isOut = sku.isNotAvailable === true || sku.isNotAvailableOnline === true;
-            extractedStocks[sku.size] = isOut ? 0 : 5; 
+            extractedStocks[sku.size] = isOut ? 0 : 5;
         });
 
         const normalizedStocks = {};
@@ -127,7 +200,7 @@ async function scrapeDecathlon(browser, url) {
         return { success: true, stocks: normalizedStocks, regular_price: price, offer_price: price };
 
     } catch (error) {
-        try { await page.close(); } catch(e){}
+        try { await page.close(); } catch(e) {}
         return { success: false, error: "Decathlon Error: " + error.message };
     }
 }
@@ -320,13 +393,18 @@ async function main() {
     }
 
     const browser = await puppeteer.launch({
-        headless: 'new',
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-blink-features=AutomationControlled'
-        ]
-    });
+    headless: 'new',
+    args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled',
+        '--disable-features=IsolateOrigins,site-per-process',
+        '--flag-switches-begin',
+        '--disable-site-isolation-trials',
+        '--flag-switches-end'
+    ],
+    ignoreDefaultArgs: ['--enable-automation'],  // 🔑 این مهمه
+});
 
     for (const file of files) {
         const siteName = file.replace('products_', '').replace('.json', '');
