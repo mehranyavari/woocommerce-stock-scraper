@@ -5,11 +5,10 @@
   "main": "scraper.js",
   "scripts": {
     "scrape": "node scraper.js",
-    "lego": "node lego-scraper.js"
+    "lego": "node lego-scraper.js",
+    "debug:decathlon": node decathlon_debug_playwright.js"
   },
   "dependencies": {
-    "puppeteer": "^24.15.0",
-    "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "playwright": "^1.43.0"
   }
 }
