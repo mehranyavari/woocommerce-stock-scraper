@@ -12,15 +12,16 @@ async function debugDecathlon() {
 
     // Chrome واقعی (نه Chromium)
     const browser = await chromium.launch({
-        headless: false,  // توصیه: برای تست اول، headless=false
-        channel: "chrome",
-        args: [
-            "--disable-blink-features=AutomationControlled",
-            "--no-sandbox",
-            "--disable-web-security",
-            "--disable-features=IsolateOrigins,site-per-process"
-        ]
-    });
+    channel: "chrome",
+    headless: "new",
+    args: [
+        "--disable-dev-shm-usage",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-software-rasterizer",
+    ]
+});
+
 
     const context = await browser.newContext({
         viewport: { width: 1366, height: 900 },
