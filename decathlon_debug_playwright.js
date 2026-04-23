@@ -1,140 +1,91 @@
-const { chromium } = require('playwright');
-const fs = require('fs');
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
-const TEST_URL = "https://www.decathlon.com.tr/p/kadin-tenis-ayakkabisi-pembe-tum-zeminler-artengo-fast/_/R-p-333408?mc=8646590";
+puppeteer.use(StealthPlugin());
 
-/**
- * تست واقعی Playwright + Chrome برای عبور از Cloudflare Decathlon
- */
-async function debugDecathlon() {
-    console.log("🚀 Starting Decathlon Debug (Playwright + Real Chrome)");
-    console.log("🎯 URL:", TEST_URL);
+async function start() {
+    const proxyHost = "45.145.20.148:3128";
+    const proxyUser = "mehran";
+    const proxyPass = "mehran75";
 
-    // Chrome واقعی (نه Chromium)
-    const browser = await chromium.launch({
-    channel: "chrome",
-    args: [
-        "--headless=new",
-        "--no-sandbox",
-        "--disable-dev-shm-usage"
-    ],
-    proxy: {
-        server: "http://45.145.20.148:3128",
-        username: "mehran",
-        password: "mehran75"
-    }
-});
+    console.log("Launching Chrome with proxy...");
 
-
-
-    const context = await browser.newContext({
-        viewport: { width: 1366, height: 900 },
-        userAgent:
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-        timezoneId: "Europe/Istanbul",
-        locale: "tr-TR",
-        javaScriptEnabled: true,
+    const browser = await puppeteer.launch({
+        headless: "new",
+        channel: "chrome",
+        args: [
+            `--proxy-server=http://${proxyHost}`,
+            "--no-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
+            "--disable-blink-features=AutomationControlled",
+            "--disable-features=IsolateOrigins,site-per-process",
+            "--disable-software-rasterizer",
+            "--window-size=1280,800"
+        ]
     });
 
-    const page = await context.newPage();
+    const page = await browser.newPage();
+
+    // Proxy authentication (Puppeteer ONLY — Playwright doesn’t have this)
+    await page.authenticate({
+        username: proxyUser,
+        password: proxyPass
+    });
+
+    // Fake user agent (Chrome real)
+    await page.setUserAgent(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+    );
+
+    // Small anti-Cloudflare tweaks
+    await page.setExtraHTTPHeaders({
+        "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8"
+    });
+
+    console.log("Visiting Decathlon TR…");
 
     try {
-        console.log("\n🏠 Visiting Decathlon homepage...");
-        await page.goto("https://www.decathlon.com.tr", { waitUntil: "load" });
-        await page.waitForTimeout(5000);
+        const url = "https://www.decathlon.com.tr/sd/er-fsk-cerceve-adi-151231.html";
 
-        console.log("\n🚀 Navigating to product page...");
-        await page.goto(TEST_URL, { waitUntil: "load", timeout: 0 });
-
-        // Cloudflare challenge check
-        for (let i = 0; i < 10; i++) {
-            const title = await page.title();
-            console.log(`⏳ Checking challenge... title="${title}"`);
-
-            if (!title.includes("Cloudflare") && !title.includes("Just a moment")) break;
-
-            await page.waitForTimeout(2000);
-        }
-
-        const pageTitle = await page.title();
-        console.log(`📄 Final Page Title: ${pageTitle}`);
-
-        if (pageTitle.includes("Cloudflare") || pageTitle.includes("Just a moment")) {
-            console.log("❌ Cloudflare still blocking!");
-            await page.screenshot({ path: "blocked.png", fullPage: true });
-            fs.writeFileSync("blocked_source.html", await page.content());
-            await browser.close();
-            return;
-        }
-
-        console.log("\n📥 Extracting __DKT JSON...");
-        const dktJson = await page.evaluate(() => {
-            const s = document.querySelector("#__dkt");
-            if (!s) return null;
-
-            const html = s.innerText;
-            const start = html.indexOf("__DKT = ");
-            const end = html.indexOf("__CONF =");
-
-            if (start === -1 || end === -1) return null;
-
-            return html.substring(start + 8, end).trim().replace(/;$/, "");
+        await page.goto(url, {
+            waitUntil: "domcontentloaded",
+            timeout: 60000
         });
 
-        if (!dktJson) {
-            console.log("❌ __DKT NOT FOUND!");
+        console.log("Waiting 7 seconds for Cloudflare…");
+        await page.waitForTimeout(7000);
+
+        // Check IP inside Puppeteer (IMPORTANT!)
+        try {
+            const ip = await page.evaluate(async () => {
+                const r = await fetch("https://api.ipify.org?format=json");
+                return await r.json();
+            });
+            console.log("Puppeteer IP:", ip);
+        } catch (e) {
+            console.log("Cannot get IP inside Puppeteer:", e.message);
+        }
+
+        // Try reading __DKT
+        const dkt = await page.evaluate(() => window.__DKT || null);
+        console.log("__DKT:", dkt);
+
+        if (!dkt) {
             await page.screenshot({ path: "no_dkt.png", fullPage: true });
-            fs.writeFileSync("no_dkt_source.html", await page.content());
-            return;
+            await page.content().then(html => {
+                require("fs").writeFileSync("no_dkt_source.html", html);
+            });
+        } else {
+            require("fs").writeFileSync("dkt_raw.json", JSON.stringify(dkt, null, 2));
         }
-
-        console.log("✅ __DKT Extracted!");
-        fs.writeFileSync("dkt_raw.json", dktJson);
-
-        const dkt = JSON.parse(dktJson);
-
-        // پیدا کردن مدل درست
-        const supermodel = dkt._ctx.data.find((x) => x.type === "Supermodel");
-        if (!supermodel) {
-            console.log("❌ Supermodel not found!");
-            return;
-        }
-
-        const urlObj = new URL(TEST_URL);
-        const mc = urlObj.searchParams.get("mc");
-
-        const model =
-            supermodel.data.models.find((m) => m.modelId === mc) ||
-            supermodel.data.models[0];
-
-        console.log("\n🎯 MODEL:", model.modelId, model.webLabel);
-
-        const stockMap = {};
-        let price = null;
-
-        model.skus.forEach((sku) => {
-            if (!price && sku.price) price = sku.price;
-            stockMap[sku.size] =
-                sku.isNotAvailable || sku.isNotAvailableOnline ? 0 : 5;
-        });
-
-        console.log("\n📦 STOCKS:");
-        console.table(stockMap);
-
-        console.log("\n💰 PRICE:", price);
-
-        fs.writeFileSync("result.json", JSON.stringify({ price, stockMap }, null, 2));
-
-        console.log("\n🎉 DONE! Files saved:");
-        console.log("- dkt_raw.json");
-        console.log("- result.json");
 
     } catch (err) {
-        console.error("⚠ Error:", err);
+        console.error("ERROR:", err.message);
         await page.screenshot({ path: "error.png", fullPage: true });
     }
 
     await browser.close();
 }
 
-debugDecathlon();
+start();
