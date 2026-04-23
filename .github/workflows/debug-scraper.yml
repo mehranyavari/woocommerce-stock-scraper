@@ -1,4 +1,4 @@
-name: Debug Decathlon Scraper
+name: Debug Decathlon Puppeteer
 
 on:
   workflow_dispatch:
@@ -16,36 +16,24 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install Puppeteer
         run: |
-          npm install playwright
-          npx playwright install chrome
+          npm install puppeteer-extra puppeteer-extra-plugin-stealth
+          npm install puppeteer
 
-      # 🔍 مرحله ۱: تست ipinfo از طریق پروکسی ترکیه
-      - name: Test Turkey Proxy Connection
+      - name: Test Turkey Proxy
         run: |
-          echo "Testing proxy via curl..."
-          curl -v --proxy http://mehran:mehran75@45.145.20.148:3128 https://ipinfo.io || echo "Proxy connection FAILED"
+          curl -v --proxy http://mehran:mehran75@45.145.20.148:3128 https://ipinfo.io
 
-      # 🔍 مرحله ۲: تست پورت خام (تشخیص فایروال/بلاک بودن)
-      - name: Check Proxy Raw Port
-        run: |
-          echo "Testing raw port..."
-          nc -vz 45.145.20.148 3128 || echo "Port 3128 unreachable"
-
-      - name: Run Debug Decathlon Scraper
-        run: node decathlon_debug_playwright.js
+      - name: Run Puppeteer Script
+        run: node decathlon_debug_puppeteer.js
 
       - name: Upload Debug Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: decathlon-debug-results
+          name: puppeteer-debug-results
           path: |
-            blocked.png
-            blocked_source.html
-            no_dkt.png
-            no_dkt_source.html
-            error.png
-            dkt_raw.json
-            result.json
+            *.png
+            *.html
+            *.json
