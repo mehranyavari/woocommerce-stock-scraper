@@ -15,13 +15,14 @@ async function debugDecathlon() {
     channel: "chrome",
     args: [
         "--headless=new",
-        "--disable-gpu",
         "--no-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-software-rasterizer",
-        "--disable-background-networking",
-        "--remote-debugging-port=0"
-    ]
+        "--disable-dev-shm-usage"
+    ],
+    proxy: {
+        server: "http://45.145.20.148:3128",
+        username: "mehran",
+        password: "mehran75"
+    }
 });
 
 
