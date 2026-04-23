@@ -1,0 +1,39 @@
+name: Debug Decathlon Scraper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install playwright
+          npx playwright install chrome
+
+      - name: Run Debug Decathlon Scraper
+        run: node decathlon_debug_playwright.js
+
+      - name: Upload Debug Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: decathlon-debug-results
+          path: |
+            blocked.png
+            blocked_source.html
+            no_dkt.png
+            no_dkt_source.html
+            error.png
+            dkt_raw.json
+            result.json
