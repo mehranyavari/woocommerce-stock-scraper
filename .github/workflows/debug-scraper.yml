@@ -21,6 +21,18 @@ jobs:
           npm install playwright
           npx playwright install chrome
 
+      # 🔍 مرحله ۱: تست ipinfo از طریق پروکسی ترکیه
+      - name: Test Turkey Proxy Connection
+        run: |
+          echo "Testing proxy via curl..."
+          curl -v --proxy http://mehran:mehran75@45.145.20.148:3128 https://ipinfo.io || echo "Proxy connection FAILED"
+
+      # 🔍 مرحله ۲: تست پورت خام (تشخیص فایروال/بلاک بودن)
+      - name: Check Proxy Raw Port
+        run: |
+          echo "Testing raw port..."
+          nc -vz 45.145.20.148 3128 || echo "Port 3128 unreachable"
+
       - name: Run Debug Decathlon Scraper
         run: node decathlon_debug_playwright.js
 
