@@ -13,14 +13,17 @@ async function debugDecathlon() {
     // Chrome واقعی (نه Chromium)
     const browser = await chromium.launch({
     channel: "chrome",
-    headless: "new",
     args: [
-        "--disable-dev-shm-usage",
-        "--no-sandbox",
+        "--headless=new",
         "--disable-gpu",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
         "--disable-software-rasterizer",
+        "--disable-background-networking",
+        "--remote-debugging-port=0"
     ]
 });
+
 
 
     const context = await browser.newContext({
