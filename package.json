@@ -5,7 +5,8 @@
   "main": "scraper.js",
   "scripts": {
     "scrape": "node scraper.js",
-    "lego": "node lego-scraper.js"
+    "lego": "node lego-scraper.js",
+    "lego:single": "node lego-single.js"
   },
   "dependencies": {
     "puppeteer": "^24.15.0",
