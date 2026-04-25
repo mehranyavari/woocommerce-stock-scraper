@@ -7,13 +7,12 @@ on:
         description: 'لینک محصول lego.tr'
         required: true
         type: string
-        # مثال: https://lego.tr/43033-orta-boy-...
 
 jobs:
   scrape:
-    name: دریافت و تبدیل به XML
+    name: دریافت و تبدیل به XML + ZIP تصاویر
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
@@ -23,13 +22,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: نصب وابستگی‌ها
-        run: npm ci
+        run: npm install
 
       - name: نصب Chromium برای Puppeteer
         run: npx puppeteer browsers install chrome
+
+      - name: نصب zip
+        run: sudo apt-get install -y zip
 
       - name: اجرای اسکریپت
         env:
@@ -37,10 +38,18 @@ jobs:
           OUTPUT_DIR: ./output
         run: node lego-single.js "${{ inputs.product_url }}"
 
-      - name: آپلود XML به عنوان Artifact
+      - name: آپلود XML
         uses: actions/upload-artifact@v4
         with:
           name: lego-product-xml
           path: output/*.xml
           retention-days: 30
           if-no-files-found: error
+
+      - name: آپلود ZIP تصاویر
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-product-images
+          path: output/*-images.zip
+          retention-days: 30
+          if-no-files-found: warn
