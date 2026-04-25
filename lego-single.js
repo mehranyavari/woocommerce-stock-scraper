@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 /**
- * lego-single.js — دریافت اطلاعات یک محصول از lego.tr
+ * lego-single.js — دریافت اطلاعات یک محصول از lego.tr + دانلود تصاویر + ZIP
  * استفاده: node lego-single.js "https://lego.tr/43033-..."
  */
 
-const fs   = require('fs');
-const path = require('path');
+'use strict';
+
+const fs           = require('fs');
+const path         = require('path');
+const https        = require('https');
+const http         = require('http');
+const { execSync } = require('child_process');
 
 const puppeteer     = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
 const OUTPUT_DIR = process.env.OUTPUT_DIR || './output';
+const IMAGES_DIR = path.join(OUTPUT_DIR, 'images');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // ─── Browser ──────────────────────────────────────────────────────────────────
@@ -26,7 +32,6 @@ async function fetchHTML(targetUrl) {
       '--window-size=1920,1080',
     ],
   });
-
   const page = await browser.newPage();
   try {
     await page.setViewport({ width: 1920, height: 1080 });
@@ -48,7 +53,78 @@ async function fetchHTML(targetUrl) {
   }
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
+// ─── دانلود فایل ─────────────────────────────────────────────────────────────
+function downloadFile(fileUrl, destPath) {
+  return new Promise((resolve, reject) => {
+    const lib  = fileUrl.startsWith('https') ? https : http;
+    const file = fs.createWriteStream(destPath);
+    const req  = lib.get(fileUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'Referer':    'https://lego.tr/',
+      },
+      timeout: 30000,
+    }, res => {
+      if (res.statusCode === 301 || res.statusCode === 302) {
+        file.close();
+        fs.unlink(destPath, () => {});
+        return resolve(downloadFile(res.headers.location, destPath));
+      }
+      if (res.statusCode !== 200) {
+        file.close();
+        fs.unlink(destPath, () => {});
+        return reject(new Error(`HTTP ${res.statusCode}`));
+      }
+      res.pipe(file);
+      file.on('finish', () => file.close(() => resolve(destPath)));
+    });
+    req.on('error', err => { file.close(); fs.unlink(destPath, () => {}); reject(err); });
+    req.on('timeout', () => { req.destroy(); reject(new Error('Download timeout')); });
+  });
+}
+
+// ─── دانلود تصاویر محصول ─────────────────────────────────────────────────────
+async function downloadProductImages(product) {
+  if (!product.images || product.images.length === 0) return [];
+
+  const folderName    = product.sku || product.source_url.split('/').pop().slice(0, 50);
+  const productImgDir = path.join(IMAGES_DIR, folderName);
+  fs.mkdirSync(productImgDir, { recursive: true });
+
+  const downloaded = [];
+  for (let i = 0; i < product.images.length; i++) {
+    const imgUrl   = product.images[i];
+    const ext      = path.extname(imgUrl.split('?')[0]) || '.jpg';
+    const destPath = path.join(productImgDir, `${i + 1}${ext}`);
+    try {
+      await downloadFile(imgUrl, destPath);
+      downloaded.push(destPath);
+      console.log(`  📸 تصویر ${i + 1}/${product.images.length} دانلود شد`);
+      await sleep(200);
+    } catch(e) {
+      console.warn(`  ⚠️  تصویر ${i + 1} خطا: ${e.message}`);
+    }
+  }
+  return downloaded;
+}
+
+// ─── ساخت ZIP ────────────────────────────────────────────────────────────────
+function createZip(slug) {
+  const zipPath = path.join(OUTPUT_DIR, `${slug}-images.zip`);
+  try {
+    execSync(`cd "${OUTPUT_DIR}" && zip -r "${slug}-images.zip" "images/"`, {
+      stdio: 'pipe', timeout: 120000,
+    });
+    const sizeMB = (fs.statSync(zipPath).size / 1024 / 1024).toFixed(1);
+    console.log(`📦 ZIP: ${zipPath} (${sizeMB} MB)`);
+    return zipPath;
+  } catch(e) {
+    console.error('خطا در ساخت ZIP:', e.message);
+    return null;
+  }
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 function htmlDecode(s) {
   return (s || '')
     .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
@@ -64,27 +140,15 @@ function xe(s) {
     .replace(/"/g, '&quot;').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '');
 }
 
-// ─── Parser ───────────────────────────────────────────────────────────────────
+// ─── Parser ──────────────────────────────────────────────────────────────────
 function parseProductPage(html, sourceUrl) {
   const p = {
-    source_url:  sourceUrl,
-    name:        '',
-    sku:         '',
-    barcode:     '',
-    description: '',
-    price_try:   0,
-    quantity:    0,
-    images:      [],
-    category:    '',
-    brand:       'LEGO',
-    available:   false,
-    age:         '',
-    parts:       '',
-    item_no:     '',
-    dimensions:  { length: '', width: '', height: '' },
+    source_url: sourceUrl, name: '', sku: '', barcode: '', description: '',
+    price_try: 0, quantity: 0, images: [], category: '', brand: 'LEGO',
+    available: false, attributes: {}, dimensions: { length: '', width: '', height: '' },
+    age: '', parts: '', item_no: '',
   };
 
-  // PRODUCT_DATA
   const pdM = html.match(/PRODUCT_DATA\.push\(JSON\.parse\('(.+?)'\)\)/s);
   if (pdM) {
     try {
@@ -101,7 +165,6 @@ function parseProductPage(html, sourceUrl) {
     } catch(e) {}
   }
 
-  // JSON-LD
   for (const m of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
       let ld = JSON.parse(m[1]);
@@ -130,13 +193,11 @@ function parseProductPage(html, sourceUrl) {
     } catch(e) {}
   }
 
-  // CDN images
   for (const m of html.matchAll(/href="(https:\/\/lego\.witcdn\.net[^"]+(?:-B|-O)\.jpg)"/g)) {
     const img = m[1].replace(/-[BK]\.jpg$/, '-O.jpg');
     if (!p.images.includes(img)) p.images.push(img);
   }
 
-  // Extra fields
   const dim = p.description.match(/yüksekliği\s+(\d+)\s*cm.*?genişliği\s+(\d+)\s*cm.*?derinliği\s+(\d+)\s*cm/i);
   if (dim) p.dimensions = { height: dim[1], width: dim[2], length: dim[3] };
 
@@ -153,14 +214,12 @@ function parseProductPage(html, sourceUrl) {
   return (p.name || p.sku) ? p : null;
 }
 
-// ─── XML Builder ──────────────────────────────────────────────────────────────
+// ─── XML Builder ─────────────────────────────────────────────────────────────
 function buildXml(p) {
   const imgsXml = p.images.map((img, i) =>
     `\n      <image position="${i}">${xe(img)}</image>`
   ).join('');
-
   const instock = p.available && p.quantity > 0;
-
   return `<?xml version="1.0" encoding="UTF-8"?>
 <!-- WooCommerce Product Import — lego.tr — ${new Date().toISOString()} -->
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
@@ -198,14 +257,13 @@ function buildXml(p) {
 </rss>`;
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+// ─── Main ────────────────────────────────────────────────────────────────────
 async function main() {
   const productUrl = process.argv[2] || process.env.PRODUCT_URL;
 
   if (!productUrl) {
     console.error('❌ لینک محصول را وارد کنید:');
     console.error('   node lego-single.js "https://lego.tr/43033-..."');
-    console.error('   یا: PRODUCT_URL="https://lego.tr/43033-..." node lego-single.js');
     process.exit(1);
   }
 
@@ -229,30 +287,44 @@ async function main() {
 
   const slug    = product.sku || productUrl.split('/').pop().slice(0, 50);
   const xmlPath = path.join(OUTPUT_DIR, `${slug}.xml`);
-
   fs.writeFileSync(xmlPath, buildXml(product), 'utf8');
 
-  // خروجی برای GitHub Actions summary
-  console.log(`✅ نام:      ${product.name}`);
-  console.log(`✅ SKU:      ${product.sku}`);
-  console.log(`✅ قیمت:     ${product.price_try} ₺`);
-  console.log(`✅ موجودی:   ${product.quantity}`);
-  console.log(`✅ تصاویر:   ${product.images.length}`);
-  console.log(`✅ XML:      ${xmlPath}`);
+  // دانلود تصاویر
+  console.log(`\n📸 در حال دانلود ${product.images.length} تصویر...`);
+  const downloaded = await downloadProductImages(product);
 
-  // GitHub Actions output
+  // ساخت ZIP
+  let zipPath = null;
+  if (downloaded.length > 0) {
+    console.log('\n📦 در حال ساخت ZIP...');
+    zipPath = createZip(slug);
+  }
+
+  // لاگ نهایی
+  console.log('\n' + '='.repeat(50));
+  console.log(`✅ نام:       ${product.name}`);
+  console.log(`✅ SKU:       ${product.sku}`);
+  console.log(`✅ قیمت:      ${product.price_try} ₺`);
+  console.log(`✅ موجودی:    ${product.quantity}`);
+  console.log(`✅ تصاویر:    ${downloaded.length}/${product.images.length}`);
+  console.log(`✅ XML:       ${xmlPath}`);
+  if (zipPath) console.log(`✅ ZIP:       ${zipPath}`);
+  console.log('='.repeat(50));
+
+  // GitHub Actions outputs
   if (process.env.GITHUB_OUTPUT) {
     fs.appendFileSync(process.env.GITHUB_OUTPUT,
       `sku=${product.sku}\n` +
       `name=${product.name}\n` +
       `price=${product.price_try}\n` +
-      `xml_file=${xmlPath}\n`
+      `xml_file=${xmlPath}\n` +
+      `zip_file=${zipPath || ''}\n`
     );
   }
 
-  // GitHub Actions step summary
+  // GitHub Step Summary
   if (process.env.GITHUB_STEP_SUMMARY) {
-    const summary = `## 🧱 محصول دریافت شد
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## 🧱 محصول دریافت شد
 
 | فیلد | مقدار |
 |------|-------|
@@ -263,10 +335,10 @@ async function main() {
 | دسته‌بندی | ${product.category} |
 | سن | ${product.age || '—'} |
 | تعداد قطعات | ${product.parts || '—'} |
-| تصاویر | ${product.images.length} عکس |
+| تصاویر دانلود شده | ${downloaded.length} از ${product.images.length} |
 | فایل XML | \`${slug}.xml\` |
-`;
-    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+| فایل ZIP | \`${slug}-images.zip\` |
+`);
   }
 }
 
