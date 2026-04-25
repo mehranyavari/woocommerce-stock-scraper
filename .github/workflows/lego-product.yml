@@ -1,0 +1,46 @@
+name: 🧱 LEGO — دریافت محصول تکی
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_url:
+        description: 'لینک محصول lego.tr'
+        required: true
+        type: string
+        # مثال: https://lego.tr/43033-orta-boy-...
+
+jobs:
+  scrape:
+    name: دریافت و تبدیل به XML
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: نصب وابستگی‌ها
+        run: npm ci
+
+      - name: نصب Chromium برای Puppeteer
+        run: npx puppeteer browsers install chrome
+
+      - name: اجرای اسکریپت
+        env:
+          PRODUCT_URL: ${{ inputs.product_url }}
+          OUTPUT_DIR: ./output
+        run: node lego-single.js "${{ inputs.product_url }}"
+
+      - name: آپلود XML به عنوان Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-product-xml
+          path: output/*.xml
+          retention-days: 30
+          if-no-files-found: error
