@@ -2,16 +2,14 @@
   "name": "woocommerce-stock-scraper",
   "version": "1.0.0",
   "description": "WooCommerce stock scraper + LEGO.tr importer",
-  "type": "module",
   "main": "scraper.js",
   "scripts": {
     "scrape": "node scraper.js",
-    "lego": "node lego-scraper.js",
-    "debug:decathlon": "node decathlon_debug_puppeteer.js"
+    "lego": "node lego-scraper.js"
   },
   "dependencies": {
-    "puppeteer": "^22.0.0",
-    "puppeteer-extra": "^3.3.4",
-    "puppeteer-extra-plugin-stealth": "^2.11.1"
+    "puppeteer": "^24.15.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   }
 }
