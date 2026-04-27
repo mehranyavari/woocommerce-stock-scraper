@@ -6,10 +6,11 @@ const TEST_URL = "https://www.decathlon.com.tr/p/kadin-tenis-ayakkabisi-pembe-tu
 
 async function scrape() {
     console.log("🚀 Starting ScraperAPI...");
-    
+    console.log("🔑 API Key exists:", !!API_KEY);
+
     const response = await axios.get('https://api.scraperapi.com', {
         params: {
-            api_key: '2UPfHNPgk3TaBV112d6b026c42bb7f7822c3731260d48f929',
+            api_key: API_KEY,
             url: TEST_URL,
             render: true,
             country_code: 'tr'
