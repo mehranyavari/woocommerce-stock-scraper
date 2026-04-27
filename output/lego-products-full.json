@@ -1371,7 +1371,7 @@
     "id": "21028",
     "name": "21028 LEGO Architecture New York City",
     "price": 3099,
-    "quantity": 7,
+    "quantity": 6,
     "in_stock": true,
     "category": "Architecture",
     "url": "https://lego.tr/product\\/21028-lego-architecture-new-york-city"
@@ -1380,7 +1380,7 @@
     "id": "21044",
     "name": "21044 LEGO Architecture Paris",
     "price": 3099,
-    "quantity": 61,
+    "quantity": 60,
     "in_stock": true,
     "category": "Architecture",
     "url": "https://lego.tr/product\\/21044-lego-architecture-paris"
@@ -3171,7 +3171,7 @@
     "id": "11025",
     "name": "11025 LEGO Classic Mavi Plaka (Zemin)",
     "price": 499,
-    "quantity": 232,
+    "quantity": 231,
     "in_stock": true,
     "category": "Classic",
     "url": "https://lego.tr/product\\/11025-lego-classic-mavi-plaka-zemin"
@@ -4314,7 +4314,7 @@
     "id": "31166",
     "name": "31166 LEGO® Creator Güzel At",
     "price": 2849,
-    "quantity": 42,
+    "quantity": 43,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/product\\/31166-lego-creator-guzel-at"
@@ -8382,7 +8382,7 @@
     "id": "40954",
     "name": "40954 LEGO® Iconic Almanya Kartpostalı",
     "price": 999,
-    "quantity": 176,
+    "quantity": 180,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/40954-lego-iconic-almanya-kartpostali"
@@ -9363,7 +9363,7 @@
     "id": "10325",
     "name": "10325 LEGO® Icons Alp Kabini",
     "price": 5999,
-    "quantity": 6,
+    "quantity": 5,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/product\\/10325-lego-icons-alp-kabini"
@@ -10263,7 +10263,7 @@
     "id": "76307",
     "name": "76307 LEGO® Marvel Iron Man Robotu, Ultron’a Karşı",
     "price": 819,
-    "quantity": 2,
+    "quantity": 1,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76307-lego-marvel-iron-man-robotu-ultrona-karsi"
@@ -10551,7 +10551,7 @@
     "id": "76321",
     "name": "76321 LEGO® | Marvel Örümcek Adam ile Doktor Oktopus Metro Sahnesi",
     "price": 2849,
-    "quantity": 16,
+    "quantity": 14,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76321-lego-marvel-orumcek-adam-ile-doktor-oktopus-metro-sahnesi"
@@ -11646,15 +11646,6 @@
     "url": "https://lego.tr/product\\/71848-lego-ninjago-tapinak-odulu"
   },
   {
-    "id": "71846",
-    "name": "71846 LEGO® NINJAGO® Ateş Şövalyesi Robotu",
-    "price": 6799,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "NINJAGO®",
-    "url": "https://lego.tr/product\\/71846-lego-ninjago-ates-sovalyesi-robotu"
-  },
-  {
     "id": "71844",
     "name": "71844 LEGO® NINJAGO® Ninja Savaş Aracı",
     "price": 4999,
@@ -11860,6 +11851,15 @@
     "in_stock": false,
     "category": "NINJAGO®",
     "url": "https://lego.tr/product\\/71847-lego-ninjago-muhafiz-ejderha"
+  },
+  {
+    "id": "71846",
+    "name": "71846 LEGO® NINJAGO® Ateş Şövalyesi Robotu",
+    "price": 6799,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "NINJAGO®",
+    "url": "https://lego.tr/product\\/71846-lego-ninjago-ates-sovalyesi-robotu"
   },
   {
     "id": "71842",
@@ -13161,7 +13161,7 @@
     "id": "75372",
     "name": "75372 LEGO® Star Wars™ Klon Trooper ve Savaş Droidi Savaş Paketi",
     "price": 1699,
-    "quantity": 10,
+    "quantity": 9,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75372-lego-star-wars-klon-trooper-ve-savas-droidi-savas-paketi"
@@ -14151,7 +14151,7 @@
     "id": "42207",
     "name": "42207 LEGO® Technic Ferrari SF-24 F1 Araba",
     "price": 13199,
-    "quantity": 11,
+    "quantity": 12,
     "in_stock": true,
     "category": "Technic™",
     "url": "https://lego.tr/product\\/42207-lego-technic-ferrari-sf-24-f1-araba"
@@ -14232,7 +14232,7 @@
     "id": "42224",
     "name": "42224 LEGO® Technic Porsche 911 GT3 R REXY AO Racing Araba",
     "price": 7999,
-    "quantity": 37,
+    "quantity": 34,
     "in_stock": true,
     "category": "Technic™",
     "url": "https://lego.tr/42224-lego-technic-porsche-911-gt3-r-rexy-ao-racing-araba"
@@ -14322,7 +14322,7 @@
     "id": "42177",
     "name": "42177 LEGO® Technic Mercedes-Benz G 500 PROFESSIONAL Line",
     "price": 14299,
-    "quantity": 4,
+    "quantity": 2,
     "in_stock": true,
     "category": "Technic™",
     "url": "https://lego.tr/product\\/42177-lego-technic-mercedes-benz-g-500-professional-line"
