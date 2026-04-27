@@ -9,7 +9,7 @@ async function scrape() {
     
     const response = await axios.get('https://api.scraperapi.com', {
         params: {
-            api_key: API_KEY,
+            api_key: '2UPfHNPgk3TaBV112d6b026c42bb7f7822c3731260d48f929',
             url: TEST_URL,
             render: true,
             country_code: 'tr'
