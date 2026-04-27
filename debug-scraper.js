@@ -12,7 +12,7 @@ async function scrape() {
         params: {
             api_key: API_KEY,
             url: TEST_URL,
-            render: true,
+            render: false,
             country_code: 'tr'
         },
         timeout: 120000
