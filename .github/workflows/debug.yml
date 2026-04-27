@@ -1,34 +1,30 @@
-name: Debug Scraper
-
+name: Decathlon Scraper
 on:
-  workflow_dispatch: # فقط دستی اجرا می‌شود
+  workflow_dispatch:
 
 jobs:
-  debug:
+  scrape:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
-      # تغییر اصلی اینجاست: نصب افزونه‌های ضدردیابی
+
       - name: Install dependencies
-        run: |
-          npm install
-          npm install puppeteer-extra puppeteer-extra-plugin-stealth
-      
-      - name: Run Debug Scraper
-        run: node debug-scraper.js
-      
-      # این مرحله فایل‌های تولید شده را آپلود می‌کند تا شما دانلود کنید
-      - name: Upload Debug Artifacts
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Run scraper
+        run: node scraper.js
+
+      - name: Upload results
         uses: actions/upload-artifact@v4
-        if: always() # حتی اگر اسکرپت ارور داد، این اجرا شود
+        if: always()
         with:
           name: debug-results
           path: |
