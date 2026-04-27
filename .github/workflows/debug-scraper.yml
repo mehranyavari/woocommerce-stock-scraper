@@ -1,39 +1,31 @@
-name: Debug Decathlon Puppeteer
-
+name: Debug Scraper
 on:
   workflow_dispatch:
 
 jobs:
-  debug:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install Puppeteer
-        run: |
-          npm install puppeteer-extra puppeteer-extra-plugin-stealth
-          npm install puppeteer
+      - name: Install dependencies
+        run: npm install
 
-      - name: Test Turkey Proxy
-        run: |
-          curl -v --proxy http://mehran:mehran75@45.145.20.148:3128 https://ipinfo.io
+      - name: Run scraper
+        env:
+          SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+        run: node debug-scraper.js
 
-      - name: Run Puppeteer Script
-        run: node decathlon_debug_puppeteer.js
-
-      - name: Upload Debug Artifacts
+      - name: Upload results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: puppeteer-debug-results
+          name: debug-results
           path: |
-            *.png
-            *.html
-            *.json
+            debug_source.html
+            debug_variable.json
