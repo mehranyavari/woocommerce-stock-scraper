@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -401,11 +402,11 @@ async function main() {
         '--disable-features=IsolateOrigins,site-per-process',
         '--flag-switches-begin',
         '--disable-site-isolation-trials',
-        '--flag-switches-end'
+        '--flag-switches-end',
+        '--proxy-server=http://mehran:mehran75@45.145.20.148:3128'
     ],
-    ignoreDefaultArgs: ['--enable-automation'],  // 🔑 این مهمه
+    ignoreDefaultArgs: ['--enable-automation'],
 });
-
     for (const file of files) {
         const siteName = file.replace('products_', '').replace('.json', '');
         const outputFile = `stock-data_${siteName}.json`;
