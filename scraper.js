@@ -216,6 +216,10 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
     const page = await browser.newPage();
 
     try {
+        await page.authenticate({
+            username: 'mehran',
+            password: 'mehran75'
+        });
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
@@ -403,7 +407,7 @@ async function main() {
         '--flag-switches-begin',
         '--disable-site-isolation-trials',
         '--flag-switches-end',
-        '--proxy-server=http://mehran:mehran75@45.145.20.148:3128'
+        '--proxy-server=http://45.145.20.148:3128'
     ],
     ignoreDefaultArgs: ['--enable-automation'],
 });
