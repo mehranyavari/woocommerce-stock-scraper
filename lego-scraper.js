@@ -189,15 +189,19 @@ function createImagesZip() {
 function extractProductUrls(html) {
   const urls = new Set();
   const patterns = [
-    /href="(https:\/\/lego\.tr\/\d{3,6}-[a-z0-9\-]+)"/gi,
-    /href="(\/\d{3,6}-[a-z0-9\-]+)"/gi,
-    /href="(\/product\/\d{3,6}-[a-z0-9\-]+)"/gi,
+    // FIX: \d{3,6}[a-z]? به جای \d{3,6} — برای slugهایی مثل 20207b یا 20042a
+    /href="(https:\/\/lego\.tr\/\d{3,6}[a-z]?-[a-z0-9\-]+)"/gi,
+    /href="(\/\d{3,6}[a-z]?-[a-z0-9\-]+)"/gi,
+    /href="(\/product\/\d{3,6}[a-z]?-[a-z0-9\-]+)"/gi,
+    // pattern برای /product/slug (بدون عدد — از fix قبلی)
+    /href="(https:\/\/lego\.tr\/product\/[a-z0-9\-]+)"/gi,
+    /href="(/product\/[a-z0-9\-]+)"/gi,
   ];
   for (const re of patterns) {
     for (const m of html.matchAll(re)) {
       let u = m[1];
       if (u.startsWith('/')) u = CONFIG.base_url + u;
-      if (/\/\d{3,6}-/.test(u)) urls.add(u);
+      urls.add(u);
     }
   }
   return [...urls];
