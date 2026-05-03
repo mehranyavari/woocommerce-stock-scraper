@@ -82,10 +82,34 @@ async function fetchHTML(targetUrl, waitMs = 3000) {
     });
     await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: CONFIG.timeout });
     await sleep(waitMs);
+
+    // ✅ FIX: اسکرول تا انتها برای لود infinite scroll
+    await autoScroll(page);
+
     return await page.content();
   } finally {
     await page.close();
   }
+}
+
+// ✅ FIX: تابع جدید — اسکرول تدریجی تا انتهای صفحه
+async function autoScroll(page) {
+  await page.evaluate(async () => {
+    await new Promise(resolve => {
+      let totalHeight = 0;
+      const distance  = 800;
+      const timer = setInterval(() => {
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+        if (totalHeight >= document.body.scrollHeight) {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 300);
+    });
+  });
+  // صبر برای لود محتوای جدید
+  await sleep(2000);
 }
 
 // ─── دانلود یک فایل ───────────────────────────────────────────────────────────
@@ -186,18 +210,23 @@ function createImagesZip() {
 }
 
 // ─── استخراج URL محصولات از HTML ─────────────────────────────────────────────
+// ─── FIX 1: extractProductUrls — اضافه کردن pattern جدید ───────────────────
 function extractProductUrls(html) {
   const urls = new Set();
   const patterns = [
+    // الگوی قدیمی: /NNN-slug
     /href="(https:\/\/lego\.tr\/\d{3,6}-[a-z0-9\-]+)"/gi,
     /href="(\/\d{3,6}-[a-z0-9\-]+)"/gi,
     /href="(\/product\/\d{3,6}-[a-z0-9\-]+)"/gi,
+    // ✅ FIX: الگوی جدید /product/slug (بدون عدد اول)
+    /href="(https:\/\/lego\.tr\/product\/[a-z0-9\-]+)"/gi,
+    /href="(\/product\/[a-z0-9\-]+)"/gi,
   ];
   for (const re of patterns) {
     for (const m of html.matchAll(re)) {
       let u = m[1];
       if (u.startsWith('/')) u = CONFIG.base_url + u;
-      if (/\/\d{3,6}-/.test(u)) urls.add(u);
+      urls.add(u);
     }
   }
   return [...urls];
