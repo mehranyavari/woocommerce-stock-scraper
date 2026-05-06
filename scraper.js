@@ -42,10 +42,11 @@ function normalizeSize(rawSize, hostname) {
     if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
-    if (numbers && numbers.length > 0) {
-        if (hostname && hostname.includes('meritspor')) return numbers[0].replace(',', '.');
-        else return numbers[numbers.length - 1].replace(',', '.');
-    }
+    const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
+if (numbers && numbers.length > 0) {
+    const parsed = numbers.map(n => parseFloat(n.replace(',', '.')));
+    return String(Math.max(...parsed));
+}
     return trimmed;
 }
 
