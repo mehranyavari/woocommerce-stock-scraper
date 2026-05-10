@@ -9,6 +9,7 @@
     "lego:single": "node lego-single.js"
   },
   "dependencies": {
+    "openai": "^4.0.0",
     "puppeteer": "^24.15.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
