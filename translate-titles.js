@@ -1,100 +1,110 @@
 const fs = require('fs');
 const path = require('path');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { translate } = require('@vitalets/google-translate-api');
 
 const CONFIG = {
   inputJson:  path.join(__dirname, 'output', 'lego-latest.json'),
   outputJson: path.join(__dirname, 'output', 'lego-translated.json'),
-  model:      'gemini-2.0-flash',  // سریع و رایگان
 };
 
-function buildPrompt(product) {
-  return `You are a product title translator and formatter for LEGO items scraped from a Turkish store.
+// نگاشت رنگ‌های ترکی به فارسی
+const colorMap = {
+  'siyah': 'مشکی',
+  'beyaz': 'سفید',
+  'kırmızı': 'قرمز',
+  'mavi': 'آبی',
+  'yeşil': 'سبز',
+  'sarı': 'زرد',
+  'turuncu': 'نارنجی',
+  'mor': 'بنفش',
+  'pembe': 'صورتی',
+  'kahverengi': 'قهوه‌ای',
+  'gri': 'خاکستری',
+  'altın': 'طلایی',
+  'gümüş': 'نقره‌ای',
+  'çok renkli': 'چندرنگ',
+  'çok renklı': 'چندرنگ',
+  'şeffaf': 'شفاف',
+  'lacivert': 'سرمه‌ای',
+  'bordo': 'زرشکی',
+  'krem': 'کرم',
+  'bej': 'بژ',
+  'turkuaz': 'فیروزه‌ای',
+};
 
-Convert the Turkish LEGO product title into this EXACT Persian pattern:
+function translateColor(turkishColor) {
+  const lower = turkishColor.toLowerCase().trim();
+  return colorMap[lower] || lower;
+}
 
-"[دسته‌بندی فارسی] مدل لکو LEGO® [نام انگلیسی محصول] - [رنگ فارسی]"
+async function translateProductTitle(product) {
+  if (!product.name) return '';
 
-Rules:
-- Determine the correct Persian category (e.g., کوله پشتی, ماشین, ایستگاه فضایی, ساختمان, هواپیما, قطار, کشتی, ربات, مجسمه, گل, قلعه, مزرعه, ایستگاه پلیس, ایستگاه آتش نشانی, آزمایشگاه, کارخانه, هتل, رستوران, موتور, کامیون, هلیکوپتر, زیردریایی, سفینه, ماهواره, تلسکوپ, پیانو, گیتار, موتور سیکلت, دوچرخه, قایق, جرثقیل, بیل مکانیکی, تراکتور, تانک, جنگنده, شوالیه, دایناسور, اژدها, روباه, خرگوش, سگ, گربه, شیر, ببر, خرس, پنگوئن, دلفین, کوسه, عقاب, جغد, طوطی, پروانه, زنبور, عنکبوت, مار, لاک پشت, قورباغه, میمون, فیل, زرافه, اسب, گاو, گوسفند, مرغ, خروس, اردک, غاز, قو, ماهی, ستاره دریایی, اختاپوس, خرچنگ, حلزون, کفشدوزک, سنجاقک, ملخ, مورچه, سوسک, کرم, پروانه, پشه, مگس, زنبور عسل, کک, شپش, کنه, عنکبوت, رتیل, عقرب, مارمولک, سوسمار, تمساح, لاک پشت, مار, افعی, کبرا, پیتون, آناکوندا, نهنگ, کوسه, دلفین, نهنگ قاتل, فک, شیر دریایی, خرس قطبی, پنگوئن, مرغ ماهیخوار, پلیکان, فلامینگو, طاووس, قرقاول, بلدرچین, کبک، کبوتر, یاکریم, کلاغ, زاغ, گنجشک, سار, دارکوب, هدهد, شاهین, عقاب, کرکس, جغد, خفاش, سنجاب, خرگوش, موش, همستر, خوکچه هندی, چینچیلا, راسو, سمور, گورکن, خارپشت, تشی, آرمادیلو, تنبل, مورچه خوار, پانگولین, کوالا, کانگورو, والابی, وامبت, شیطان تاسمانی, پلاتیپوس, اکیدنا, کیوی, شترمرغ, امو, کاسواری, ناندو, پنگوئن, آلباتروس, مرغ طوفان, باکلان, بوبی, ناوچه, پلیکان, لک لک, حواصیل, اکرت, فلامینگو, اکراس, کفچه نوک, قاشقک, اردک, غاز, قو، اردک ماندارین, اردک سرسبز, اردک نوک پهن, اردک بلوطی, اردک سرحنایی, اردک تاجدار, اردک ماهیخوار, اردک غواص, اردک چشم طلایی, اردک دم دراز, اردک سرسفید, اردک سیاه, اردک خالدار, اردک مرمری, اردک بلوطی, اردک تاجدار, اردک ماندارین, اردک کارولینا, اردک جنگلی, اردک آفریقایی, اردک هاوایی, اردک لکه دار, اردک ابرو سفید, اردک سرخ, اردک تاجدار, اردک کاکلی, اردک شانه به سر) based on the Turkish title.
-- The English name must be the official LEGO set name or a natural English translation. Keep the ® symbol.
-- The color(s) at the end must be in Persian (مشکی, سفید, قرمز, آبی, سبز, زرد, نارنجی, بنفش, صورتی, قهوه ای, خاکستری, طلایی, نقره ای, چندرنگ). Combine multiple colors with "و".
-- Do NOT include any SKU, product codes, or numbers.
-- Do NOT repeat "LEGO" in the Persian category.
-- Output ONLY the final Persian title, nothing else.
+  const title = product.name;
 
-Examples:
-Input: "LEGO® Yapım Parçası Sırt Çantası – Siyah – Çok Renkli 2025.345-2.258"
-Output: کوله پشتی مدل لکو LEGO® Brick Backpack Multicolored - مشکی
+  try {
+    // ترجمه کل عنوان از ترکی به فارسی
+    const result = await translate(title, { from: 'tr', to: 'fa' });
+    let faTitle = result.text;
 
-Input: "LEGO® Creator Expert NASA Apollo 11 Lunar Lander 10266 – Gri – Sarı"
-Output: کاوشگر ماه مدل لکو LEGO® Creator Expert NASA Apollo 11 Lunar Lander - خاکستری و زرد
+    // اطمینان از وجود LEGO®
+    if (!faTitle.includes('LEGO') && !faTitle.includes('لگو')) {
+      faTitle = 'LEGO® ' + faTitle;
+    }
 
-Input: "LEGO® City İtfaiye İstasyonu 60320 – Kırmızı – Beyaz"
-Output: ایستگاه آتش نشانی مدل لکو LEGO® City Fire Station - قرمز و سفید
+    // جایگزینی LEGO به LEGO® (اگر حذف شده باشد)
+    faTitle = faTitle.replace(/LEGO(?!®)/g, 'LEGO®');
 
-Now process this product:
-Turkish title: ${product.name}
-SKU: ${product.sku || '-'}
-Item number: ${product.item_no || '-'}
-Age: ${product.age || '-'}
-Pieces: ${product.parts || '-'}
-Category (Turkish): ${product.category || '-'}
+    // ترجمه رنگ‌های رایج داخل متن
+    for (const [trColor, faColor] of Object.entries(colorMap)) {
+      const regex = new RegExp(`\\b${trColor}\\b`, 'gi');
+      faTitle = faTitle.replace(regex, faColor);
+    }
 
-Persian title:`;
+    return faTitle;
+  } catch (err) {
+    console.error(`⚠️ خطا در ترجمه: ${err.message}`);
+    return title; // برگشت به عنوان اصلی در صورت خطا
+  }
 }
 
 async function translateAll() {
   if (!fs.existsSync(CONFIG.inputJson)) {
-    console.error('❌ فایل lego-latest.json پیدا نشد. ابتدا اسکرپ را اجرا کنید.');
+    console.error('❌ فایل lego-latest.json پیدا نشد.');
     process.exit(1);
   }
 
   const products = JSON.parse(fs.readFileSync(CONFIG.inputJson, 'utf8'));
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  const model = genAI.getGenerativeModel({ model: CONFIG.model });
-
-  console.log(`🔄 ترجمه ${products.length} عنوان با ${CONFIG.model}...\n`);
+  console.log(`🔄 ترجمه ${products.length} عنوان با Google Translate (رایگان)...\n`);
 
   const translated = [];
 
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
-    
+
     if (!product.name) {
-      translated.push({ ...product, name_fa: product.name || '', name_original: '' });
+      translated.push({ ...product, name_fa: '', name_original: '' });
       continue;
     }
 
-    const prompt = buildPrompt(product);
+    process.stdout.write(`[${i + 1}/${products.length}] ${product.sku || '???'} ... `);
+    
+    const faTitle = await translateProductTitle(product);
+    console.log(`✅ ${faTitle.slice(0, 60)}${faTitle.length > 60 ? '...' : ''}`);
 
-    try {
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      const newTitle = response.text().trim();
-      
-      console.log(`✅ [${i + 1}/${products.length}] ${product.sku || product.name.slice(0, 40)} → ${newTitle}`);
+    translated.push({
+      ...product,
+      name_fa: faTitle,
+      name_original: product.name,
+    });
 
-      translated.push({
-        ...product,
-        name_fa: newTitle,
-        name_original: product.name,
-      });
-    } catch (err) {
-      console.error(`❌ خطا برای ${product.sku}: ${err.message}`);
-      translated.push({ ...product, name_fa: product.name, name_original: product.name });
-    }
-
-    // تأخیر برای رعایت محدودیت نرخ (رایگان: 15 درخواست در دقیقه)
-    await new Promise(r => setTimeout(r, 4000));  // 4 ثانیه = 15 تا تو دقیقه
+    // تأخیر کوتاه برای جلوگیری از بن شدن (۱ ثانیه)
+    await new Promise(r => setTimeout(r, 1000));
   }
 
   fs.mkdirSync(path.dirname(CONFIG.outputJson), { recursive: true });
   fs.writeFileSync(CONFIG.outputJson, JSON.stringify(translated, null, 2), 'utf8');
-  console.log(`\n🎉 ذخیره شد: ${CONFIG.outputJson}`);
+  console.log(`\n🎉 تمام! ${translated.length} عنوان ترجمه شد: ${CONFIG.outputJson}`);
 }
 
-translateAll().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+translateAll().catch(err => console.error('❌', err.message));
