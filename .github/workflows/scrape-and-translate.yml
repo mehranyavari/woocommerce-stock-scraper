@@ -1,0 +1,96 @@
+name: LEGO Scrape & Translate
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    outputs:
+      product_count: ${{ steps.count.outputs.num }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run scraper
+        run: node lego-scraper.js --all --no-images --delay 1000
+        
+      - name: Count products
+        id: count
+        run: echo "num=$(node -e "console.log(JSON.parse(require('fs').readFileSync('./output/lego-latest.json','utf8')).length)")" >> $GITHUB_OUTPUT
+        
+      - name: Upload raw data
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-raw-data
+          path: output/lego-latest.json
+
+  translate:
+    needs: scrape
+    if: needs.scrape.outputs.product_count > 0
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+          
+      - name: Download raw data
+        uses: actions/download-artifact@v4
+        with:
+          name: lego-raw-data
+          path: output
+          
+      - name: Install OpenAI
+        run: npm install openai
+        
+      - name: Translate titles
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node translate-titles.js
+        
+      - name: Upload translated data
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-translated
+          path: output/lego-translated.json
+
+  generate-xml:
+    needs: translate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+          
+      - name: Download translated data
+        uses: actions/download-artifact@v4
+        with:
+          name: lego-translated
+          path: output
+          
+      - name: Generate WooCommerce XML
+        run: node generate-fa-xml.js
+        
+      - name: Upload final XML
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-fa-xml
+          path: output/lego-fa-products.xml
+          
+      - name: Upload final JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: lego-fa-json
+          path: output/lego-translated.json
