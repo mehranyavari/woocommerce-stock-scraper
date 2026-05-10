@@ -9,7 +9,7 @@
     "lego:single": "node lego-single.js"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.21.0",
+    "@vitalets/google-translate-api": "^9.2.0",
     "puppeteer": "^24.15.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
