@@ -1,0 +1,91 @@
+name: LEGO.tr SKU Comparison
+
+on:
+  schedule:
+    # هر روز ساعت 08:00 ترکیه (UTC 05:00)
+    - cron: '0 5 * * *'
+
+  workflow_dispatch:
+    inputs:
+      category_url:
+        description: 'URL سفارشی (پیش‌فرض: yeni-urunler — همه محصولات)'
+        required: false
+        default: 'https://lego.tr/yeni-urunler'
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: نصب وابستگی‌ها
+        run: npm install puppeteer-extra puppeteer-extra-plugin-stealth
+
+      - name: اسکرپ LEGO.tr — فقط SKU
+        run: |
+          if [ -n "${{ github.event.inputs.category_url }}" ]; then
+            node lego-sku-scraper.js --url "${{ github.event.inputs.category_url }}" --output ./output --delay 800
+          else
+            node lego-sku-scraper.js --output ./output --delay 800
+          fi
+
+      - name: گرفتن SKUهای WooCommerce
+        run: node woo-skus.js --output ./output
+        env:
+          WOO_URL:    ${{ secrets.WOO_URL }}
+          WOO_KEY:    ${{ secrets.WOO_KEY }}
+          WOO_SECRET: ${{ secrets.WOO_SECRET }}
+
+      - name: مقایسه کدها
+        run: node compare-skus.js --lego ./output/lego-skus.json --woo ./output/woo-skus.json --output ./output
+
+      - name: نمایش خلاصه
+        run: |
+          if [ -f output/comparison-result.json ]; then
+            total_lego=$(jq '.lego_total'           output/comparison-result.json)
+            total_woo=$(jq '.woo_total'             output/comparison-result.json)
+            missing=$(jq '.missing_in_woo_count'    output/comparison-result.json)
+            extra=$(jq '.extra_in_woo_count'        output/comparison-result.json)
+            common=$(jq '.common_count'             output/comparison-result.json)
+
+            echo "## 🧱 نتیجه مقایسه LEGO.tr vs WooCommerce" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| وضعیت | تعداد |" >> $GITHUB_STEP_SUMMARY
+            echo "|-------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| کدهای LEGO.tr | $total_lego |" >> $GITHUB_STEP_SUMMARY
+            echo "| کدهای WooCommerce | $total_woo |" >> $GITHUB_STEP_SUMMARY
+            echo "| ✅ مشترک | $common |" >> $GITHUB_STEP_SUMMARY
+            echo "| 🆕 باید اضافه بشه | $missing |" >> $GITHUB_STEP_SUMMARY
+            echo "| 🗑️ شاید حذف بشه | $extra |" >> $GITHUB_STEP_SUMMARY
+
+            if [ "$missing" -gt "0" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### 🆕 اولین ۱۰ کد گمشده:" >> $GITHUB_STEP_SUMMARY
+              jq -r '.missing_in_woo[:10][]' output/comparison-result.json | \
+                while read sku; do echo "- \`$sku\`"; done >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+
+      - name: آپلود نتایج
+        uses: actions/upload-artifact@v4
+        with:
+          name: sku-comparison-${{ github.run_number }}
+          path: output/
+          retention-days: 30
+
+      - name: ذخیره در ریپو
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --staged --quiet || git commit -m "🔍 مقایسه SKU: $(date +'%Y-%m-%d %H:%M')"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
