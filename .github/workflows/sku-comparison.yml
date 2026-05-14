@@ -2,15 +2,8 @@ name: LEGO.tr SKU Comparison
 
 on:
   schedule:
-    # هر روز ساعت 08:00 ترکیه (UTC 05:00)
     - cron: '0 5 * * *'
-
   workflow_dispatch:
-    inputs:
-      category_url:
-        description: 'URL سفارشی (پیش‌فرض: yeni-urunler — همه محصولات)'
-        required: false
-        default: 'https://lego.tr/yeni-urunler'
 
 jobs:
   compare:
@@ -29,31 +22,19 @@ jobs:
         run: npm install puppeteer-extra puppeteer-extra-plugin-stealth
 
       - name: اسکرپ LEGO.tr — فقط SKU
-        run: |
-          if [ -n "${{ github.event.inputs.category_url }}" ]; then
-            node lego-sku-scraper.js --url "${{ github.event.inputs.category_url }}" --output ./output --delay 800
-          else
-            node lego-sku-scraper.js --output ./output --delay 800
-          fi
-
-      - name: گرفتن SKUهای WooCommerce
-        run: node woo-skus.js --output ./output
-        env:
-          WOO_URL:    ${{ secrets.WOO_URL }}
-          WOO_KEY:    ${{ secrets.WOO_KEY }}
-          WOO_SECRET: ${{ secrets.WOO_SECRET }}
+        run: node lego-sku-scraper.js --output ./output --delay 800
 
       - name: مقایسه کدها
-        run: node compare-skus.js --lego ./output/lego-skus.json --woo ./output/woo-skus.json --output ./output
+        run: node compare-skus.js --lego ./output/lego-skus.json --woo ./woo-skus-export.json --output ./output
 
       - name: نمایش خلاصه
         run: |
           if [ -f output/comparison-result.json ]; then
-            total_lego=$(jq '.lego_total'           output/comparison-result.json)
-            total_woo=$(jq '.woo_total'             output/comparison-result.json)
-            missing=$(jq '.missing_in_woo_count'    output/comparison-result.json)
-            extra=$(jq '.extra_in_woo_count'        output/comparison-result.json)
-            common=$(jq '.common_count'             output/comparison-result.json)
+            total_lego=$(jq '.lego_total'        output/comparison-result.json)
+            total_woo=$(jq '.woo_total'          output/comparison-result.json)
+            missing=$(jq '.missing_in_woo_count' output/comparison-result.json)
+            extra=$(jq '.extra_in_woo_count'     output/comparison-result.json)
+            common=$(jq '.common_count'          output/comparison-result.json)
 
             echo "## 🧱 نتیجه مقایسه LEGO.tr vs WooCommerce" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
