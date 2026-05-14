@@ -1,0 +1,12 @@
+name: Test WooCommerce Connection
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: تست اتصال به WooCommerce
+        run: |
+          curl -s "https://legocity.co/wp-json/wc/v3/products?per_page=1&consumer_key=ck_6db65f6c00547d75ae039ffb113c4d79b3d6e572&consumer_secret=cs_d065450ceb5e702c85a42e917af418d0b50693dd" | head -c 500
