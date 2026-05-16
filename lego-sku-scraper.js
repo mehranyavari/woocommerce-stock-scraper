@@ -63,34 +63,53 @@ async function fetchHTML(targetUrl, waitMs = 3000) {
 }
 
 // ─── استخراج کد محصول مستقیم از URL ──────────────────────────────────────────
-// مثال: /20290-0199-lego-yapim-parcasi  →  20290
 // مثال: /10425-lego-duplo-tren          →  10425
+// مثال: /20290-0199-lego-yapim-parcasi  →  20290-0199
+// مثال: /20205B-0354-lego-sirt-cantasi  →  20205B-0354
 function extractSkuFromUrl(url) {
   const slug = url.split('/').pop().split('?')[0];
-  const m = slug.match(/^(\d{4,6})/);
-  return m ? m[1] : null;
+  // همه چیز قبل از -lego- رو بگیر
+  const m = slug.match(/^(.+?)-lego-/i);
+  return m ? m[1].toUpperCase() : null;
 }
 
 // ─── استخراج URL محصولات از HTML ──────────────────────────────────────────────
-function extractProductData(html) {
+function extractProductData(html, pageNum) {
   const results = new Map(); // sku → source_url
+  const skipped = []; // URLهایی که SKU ازشون گرفته نشد
 
   const patterns = [
-    /href="(https:\/\/lego\.tr\/\d{3,6}[a-z0-9\-]+)"/gi,
-    /href="(\/\d{3,6}[a-z0-9\-]+)"/gi,
-    /href="(\/product\/\d{3,6}[a-z0-9\-]+)"/gi,
+    /href="(https:\/\/lego\.tr\/[^"]+)"/gi,
+    /href="(\/[^"]+)"/gi,
   ];
 
+  const allUrls = new Set();
   for (const re of patterns) {
     for (const m of html.matchAll(re)) {
       let u = m[1];
       if (u.startsWith('/')) u = 'https://lego.tr' + u;
-
-      const sku = extractSkuFromUrl(u);
-      if (sku && !results.has(sku)) {
-        results.set(sku, u);
+      // فقط URLهایی که به نظر محصول میرسن
+      if (u.includes('lego.tr/') && !u.includes('/themes/') && !u.includes('/wp-') 
+          && !u.includes('?') && !u.match(/lego\.tr\/(cart|checkout|my-account|blog|about|contact)/)) {
+        allUrls.add(u);
       }
     }
+  }
+
+  for (const u of allUrls) {
+    const sku = extractSkuFromUrl(u);
+    if (sku && !results.has(sku)) {
+      results.set(sku, u);
+    } else if (!sku) {
+      skipped.push(u);
+    }
+  }
+
+  // لاگ URLهایی که SKU ازشون گرفته نشد
+  if (skipped.length > 0) {
+    console.log(`\n  ⚠️  ${skipped.length} URL بدون SKU در صفحه ${pageNum}:`);
+    skipped.slice(0, 10).forEach(u => console.log(`      → ${u.replace('https://lego.tr', '')}`));
+    if (skipped.length > 10) console.log(`      ... و ${skipped.length - 10} تا دیگه`);
   }
 
   return results;
@@ -136,7 +155,7 @@ async function main() {
         break;
       }
 
-      const found   = extractProductData(html);
+      const found   = extractProductData(html, ps);
       const freshMap = new Map([...found].filter(([sku]) => !seenSkus.has(sku)));
 
       if (freshMap.size === 0) {
