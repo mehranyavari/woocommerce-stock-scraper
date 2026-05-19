@@ -6,7 +6,7 @@ on:
       no_images:
         description: 'فقط XML (بدون دانلود تصویر)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       delay_ms:
         description: 'تاخیر بین محصولات (ms)'
@@ -15,21 +15,20 @@ on:
       resume:
         description: 'ادامه از checkpoint قبلی'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
   schedule:
-    # هر روز ساعت ۳ صبح UTC
     - cron: '0 3 * * *'
 
   push:
     paths:
-      - 'urls.txt'   # هر وقت فایل لیست URL تغییر کرد اجرا بشه
+      - 'urls.txt'
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 360   # ۶ ساعت برای لیست‌های بزرگ
+    timeout-minutes: 360
 
     steps:
       - name: Checkout
@@ -39,10 +38,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Install Chromium dependencies
         run: |
@@ -51,32 +49,29 @@ jobs:
             libatk-bridge2.0-0 libdrm2 libxkbcommon0 \
             libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
             libgbm1 libasound2 libpango-1.0-0 libcairo2 \
+            zip \
             --no-install-recommends
 
-      - name: Install zip
-        run: sudo apt-get install -y zip --no-install-recommends
-
-      # برای resume: دانلود خروجی قبلی از artifact
       - name: Download previous output (for resume)
-        if: ${{ github.event.inputs.resume == 'true' }}
+        if: ${{ inputs.resume == true }}
         uses: actions/download-artifact@v4
         with:
           name: lego-output
           path: output/
-        continue-on-error: true   # اگه artifact نبود مشکلی نیست
+        continue-on-error: true
 
       - name: Run scraper
         run: |
-          FLAGS="--list urls.txt --output ./output --delay ${{ github.event.inputs.delay_ms || '1500' }}"
-          if [ "${{ github.event.inputs.no_images }}" = "true" ]; then FLAGS="$FLAGS --no-images"; fi
-          if [ "${{ github.event.inputs.resume }}" = "true" ]; then FLAGS="$FLAGS --resume"; fi
+          FLAGS="--list urls.txt --output ./output --delay ${{ inputs.delay_ms || '1500' }}"
+          if ${{ inputs.no_images }}; then FLAGS="$FLAGS --no-images"; fi
+          if ${{ inputs.resume }};   then FLAGS="$FLAGS --resume";    fi
           node lego-list-scraper.js $FLAGS
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Upload XML + JSON output
         uses: actions/upload-artifact@v4
-        if: always()   # حتی اگه scraper با خطا تموم شد، خروجی رو آپلود کن
+        if: always()
         with:
           name: lego-output
           path: |
@@ -86,9 +81,9 @@ jobs:
 
       - name: Upload images ZIP
         uses: actions/upload-artifact@v4
-        if: ${{ github.event.inputs.no_images != 'true' }}
+        if: ${{ inputs.no_images == false }}
         with:
           name: lego-images
           path: output/lego-images.zip
           retention-days: 7
-        continue-on-error: true   # اگه ZIP ساخته نشد workflow رو fail نکن
+        continue-on-error: true
