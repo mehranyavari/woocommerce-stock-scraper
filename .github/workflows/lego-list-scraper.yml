@@ -42,13 +42,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Chromium dependencies
+      - name: Install Chromium + zip dependencies
         run: |
           sudo apt-get update -qq
+          # Ubuntu 24 (noble) نام پکیج‌ها رو عوض کرده — t64 suffix اضافه شده
           sudo apt-get install -y \
-            libatk-bridge2.0-0 libdrm2 libxkbcommon0 \
-            libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
-            libgbm1 libasound2 libpango-1.0-0 libcairo2 \
+            libatk-bridge2.0-0 \
+            libdrm2 \
+            libxkbcommon0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxrandr2 \
+            libgbm1 \
+            libasound2t64 \
+            libpango-1.0-0 \
+            libcairo2 \
             zip \
             --no-install-recommends
 
