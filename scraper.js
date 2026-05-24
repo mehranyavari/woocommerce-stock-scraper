@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
@@ -13,9 +12,6 @@ const CONFIG = {
     WAIT_AFTER_LOAD: 5000
 };
 
-/**
- * دریافت آرگومان‌های ورودی
- */
 function getArgs() {
     const args = {};
     process.argv.slice(2).forEach(arg => {
@@ -27,9 +23,6 @@ function getArgs() {
     return args;
 }
 
-/**
- * نرمال‌سازی سایز
- */
 function normalizeSize(rawSize, hostname) {
     const trimmed = rawSize.trim();
     if (!trimmed) return null;
@@ -42,16 +35,13 @@ function normalizeSize(rawSize, hostname) {
     if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
-if (numbers && numbers.length > 0) {
-    const parsed = numbers.map(n => parseFloat(n.replace(',', '.')));
-    return String(Math.max(...parsed));
-}
+    if (numbers && numbers.length > 0) {
+        const parsed = numbers.map(n => parseFloat(n.replace(',', '.')));
+        return String(Math.max(...parsed));
+    }
     return trimmed;
 }
 
-/**
- * تبدیل قیمت ترکیه‌ای به عدد
- */
 function parseTurkishPrice(rawPrice) {
     if (!rawPrice) return null;
     let clean = String(rawPrice).replace(/[^\d,\.]/g, '').replace(/\./g, '').replace(',', '.');
@@ -63,13 +53,9 @@ function parseTurkishPrice(rawPrice) {
 // ==========================================
 // 🚀 اسکرپر مخصوص دکتلون
 // ==========================================
-// ==========================================
-// 🚀 اسکرپر مخصوص دکتلون (نسخه ضد-Cloudflare)
-// ==========================================
 async function scrapeDecathlon(browser, url) {
     const page = await browser.newPage();
     try {
-        // ۱. Fingerprint کامل مثل Chrome واقعی
         await page.evaluateOnNewDocument(() => {
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
             Object.defineProperty(navigator, 'plugins', {
@@ -93,7 +79,6 @@ async function scrapeDecathlon(browser, url) {
                 csi: function() {},
                 app: {}
             };
-            // جلوگیری از تشخیص headless با Permissions API
             const originalQuery = window.navigator.permissions.query;
             window.navigator.permissions.query = (parameters) =>
                 parameters.name === 'notifications'
@@ -101,7 +86,6 @@ async function scrapeDecathlon(browser, url) {
                     : originalQuery(parameters);
         });
 
-        // ۲. هدرهای کامل مثل مرورگر واقعی
         await page.setExtraHTTPHeaders({
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -121,30 +105,23 @@ async function scrapeDecathlon(browser, url) {
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
-        // ۳. اول صفحه اصلی (رفتار طبیعی کاربر)
         console.log(`  🔄 Visiting Decathlon homepage first...`);
         await page.goto('https://www.decathlon.com.tr', {
             waitUntil: 'domcontentloaded',
             timeout: 30000
         });
-        // تاخیر رندوم ۲-۴ ثانیه
         await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
 
-        // ۴. حالا رفتن به URL محصول
         console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-
-        // تاخیر رندوم ۸-۱۲ ثانیه (Cloudflare challenge time)
         await new Promise(r => setTimeout(r, 8000 + Math.random() * 4000));
 
-        // ۵. چک کردن اینکه Cloudflare هنوز بلاک می‌کنه یا نه
         const isBlocked = await page.evaluate(() => {
             const title = document.title.toLowerCase();
             return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare');
         });
 
         if (isBlocked) {
-            // یه بار دیگه صبر می‌کنیم
             console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
             await new Promise(r => setTimeout(r, 10000));
         }
@@ -240,7 +217,14 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
             try {
                 const data = JSON.parse(match[1]);
                 const stocks = {};
-                let regularPrice = null, offerPrice = null;
+
+                // ✅ FIX: از productPriceKDVIncluded استفاده می‌کنیم
+                // این فیلد مستقیماً قیمت نمایشی صفحه رو داره (با KDV)
+                // و وابسته به ترتیب products[] نیست
+                let regularPrice = data.productPriceKDVIncluded
+                    ? String(data.productPriceKDVIncluded)
+                    : null;
+                let offerPrice = null;
 
                 if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
                     const stockMap = {};
@@ -248,9 +232,13 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
                         data.products.forEach(p => {
                             if (p.id !== undefined && p.stokAdedi !== undefined) stockMap[p.id] = parseInt(p.stokAdedi);
                         });
-                        if (data.products.length > 0) {
-                            regularPrice = data.products[0].satisFiyatiStr || null;
-                            offerPrice = data.products[0].indirimliFiyatiStr || null;
+
+                        // بررسی تخفیف: اگر anaUrun داشت indirimliFiyati کمتر از satisFiyati بود
+                        const anaUrun = data.products.find(p => p.anaUrun === true) || data.products[0];
+                        if (anaUrun && anaUrun.indirimliFiyati < anaUrun.satisFiyati) {
+                            // تخفیف واقعی وجود داره — offer price رو با همون نسبت حساب می‌کنیم
+                            const ratio = anaUrun.indirimliFiyati / anaUrun.satisFiyati;
+                            offerPrice = String(Math.ceil(data.productPriceKDVIncluded * ratio));
                         }
                     }
                     data.productVariantData.forEach(variant => {
@@ -258,8 +246,6 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
                     });
                 } else if (data.product) {
                     stocks['Standart'] = parseInt(data.product.stokAdedi) || 0;
-                    regularPrice = data.product.satisFiyatiStr || null;
-                    offerPrice = data.product.indirimliFiyatiStr || null;
                 } else {
                     return { success: false, error: "Unknown JSON structure" };
                 }
@@ -284,7 +270,7 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
         let offer = parseTurkishPrice(result.offerPrice);
         if (regular && offer && offer >= regular) offer = null;
 
-        console.log(`  ✅ ${urlLabel} Success: ${Object.keys(normalizedStocks).length} variants found.`);
+        console.log(`  ✅ ${urlLabel} Success: ${Object.keys(normalizedStocks).length} variants found. Price: ${regular} ₺`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
     } catch (error) {
         try { await page.close(); } catch(e){}
@@ -292,22 +278,15 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
     }
 }
 
-/**
- * محاسبه قیمت نهایی برای مقایسه
- */
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
 }
 
-/**
- * پردازش هوشمند محصول
- */
 async function processProduct(browser, product) {
     let primaryData = { success: false, error: "No Primary URL", stocks: {} };
     let secondaryData = { success: false, error: "No Secondary URL", stocks: {} };
 
-    // 1. بررسی سایت اصلی
     if (product.url) {
         if (product.url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Primary URL for product ${product.id} (Decathlon Engine)`);
@@ -317,7 +296,6 @@ async function processProduct(browser, product) {
         }
     }
 
-    // 2. بررسی سایت دوم
     if (product.secondary_url) {
         if (product.secondary_url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Decathlon Engine)`);
@@ -339,7 +317,6 @@ async function processProduct(browser, product) {
         };
     }
 
-    // 3. مقایسه قیمت‌ها (همیشه قیمت بالاتر رو میگیریم)
     let priceWinner = null;
     if (primarySuccess && secondarySuccess) {
         const price1 = getEffectivePrice(primaryData);
@@ -352,7 +329,6 @@ async function processProduct(browser, product) {
         priceWinner = secondaryData;
     }
 
-    // 4. ادغام موجودی‌ها
     const mergedStocks = {};
     const allSizes = new Set([
         ...Object.keys(primaryData.stocks || {}),
@@ -362,7 +338,7 @@ async function processProduct(browser, product) {
     allSizes.forEach(size => {
         const stock1 = (primaryData.stocks && primaryData.stocks[size]) || 0;
         const stock2 = (secondaryData.stocks && secondaryData.stocks[size]) || 0;
-        
+
         if (stock1 > 0) mergedStocks[size] = stock1;
         else if (stock2 > 0) mergedStocks[size] = stock2;
         else mergedStocks[size] = 0;
@@ -380,12 +356,6 @@ async function processProduct(browser, product) {
     };
 }
 
-// ==========================================
-// 🚀 موتور پردازش Multi-site (جدید)
-// ==========================================
-// ==========================================
-// 🚀 موتور پردازش Multi-site (با پردازش همزمان - Turbo Mode)
-// ==========================================
 async function main() {
     const args = getArgs();
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
@@ -398,19 +368,20 @@ async function main() {
     }
 
     const browser = await puppeteer.launch({
-    headless: 'new',
-    args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-blink-features=AutomationControlled',
-        '--disable-features=IsolateOrigins,site-per-process',
-        '--flag-switches-begin',
-        '--disable-site-isolation-trials',
-        '--flag-switches-end',
-        '--proxy-server=http://45.145.20.148:3128'
-    ],
-    ignoreDefaultArgs: ['--enable-automation'],
-});
+        headless: 'new',
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-blink-features=AutomationControlled',
+            '--disable-features=IsolateOrigins,site-per-process',
+            '--flag-switches-begin',
+            '--disable-site-isolation-trials',
+            '--flag-switches-end',
+            '--proxy-server=http://45.145.20.148:3128'
+        ],
+        ignoreDefaultArgs: ['--enable-automation'],
+    });
+
     for (const file of files) {
         const siteName = file.replace('products_', '').replace('.json', '');
         const outputFile = `stock-data_${siteName}.json`;
@@ -429,7 +400,7 @@ async function main() {
             }
         } catch (error) {
             console.error(`❌ خطا در خواندن فایل‌های سایت ${siteName}:`, error);
-            continue; 
+            continue;
         }
 
         if (targetIds) {
@@ -442,14 +413,12 @@ async function main() {
         let failCount = 0;
         let skippedCount = 0;
 
-        // 🌟 تغییر کلیدی: پردازش دسته‌ای (Chunking) برای سرعت ۳ برابری
-        const CONCURRENCY = 3; // باز کردن همزمان ۳ تب (بیشتر از این ممکن است رم گیت‌هاب پر شود)
-        
+        const CONCURRENCY = 3;
+
         for (let i = 0; i < products.length; i += CONCURRENCY) {
             const chunk = products.slice(i, i + CONCURRENCY);
             console.log(`\n⏳ پردازش همزمان محصولات ${i + 1} تا ${i + chunk.length} از ${products.length}...`);
-            
-            // پردازش همزمان محصولات داخل این دسته
+
             const chunkPromises = chunk.map(async (product) => {
                 const result = await processProduct(browser, product);
                 const isSkipped = result.error && result.error.toString().includes('Skipped');
@@ -468,10 +437,7 @@ async function main() {
                 }
             });
 
-            // صبر می‌کنیم تا هر ۳ محصول با هم تمام شوند
             await Promise.all(chunkPromises);
-            
-            // یک استراحت کوتاه بین هر ۳ تب برای جلوگیری از مسدود شدن آی‌پی
             await new Promise(r => setTimeout(r, 2000));
         }
 
@@ -485,7 +451,6 @@ async function main() {
     await browser.close();
     console.log('🎉 تمام سایت‌ها با موفقیت پردازش شدند.');
 }
-
 
 main().catch(error => {
     console.error('Fatal error:', error);
