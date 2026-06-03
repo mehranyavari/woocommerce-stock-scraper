@@ -6,7 +6,7 @@ puppeteer.use(StealthPlugin());
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.tenisshop.com/en/nike-zoom-gp-challenge-pro-toprak-kort-erkek-tenis-ayakkabisi-3353";
+const TEST_URL = "https://www.yuxel.com.tr/nike-zoom-gp-challenge-pro-toprak-tenis-ayakkabisi-fj7767-001";
 
 // ==========================================
 // تنظیمات
