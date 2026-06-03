@@ -44,7 +44,29 @@ function normalizeSize(rawSize, hostname) {
 
 function parseTurkishPrice(rawPrice) {
     if (!rawPrice) return null;
-    let clean = String(rawPrice).replace(/[^\d,\.]/g, '').replace(/\./g, '').replace(',', '.');
+    const str = String(rawPrice).trim();
+
+    // اگه عدد خالص بود (از JSON، بدون فرمت‌بندی)
+    const plain = parseFloat(str);
+    if (!isNaN(plain) && !str.includes(',')) {
+        return Math.ceil(plain);
+    }
+
+    // فرمت ترکی: 1.234,56 → 1234.56
+    // اول نقطه‌های هزارگان رو حذف کن، بعد کاما رو به نقطه تبدیل کن
+    let clean = str.replace(/[^\d,\.]/g, '');
+
+    const commaIdx = clean.lastIndexOf(',');
+    const dotIdx = clean.lastIndexOf('.');
+
+    if (commaIdx > dotIdx) {
+        // فرمت ترکی: 1.234,56
+        clean = clean.replace(/\./g, '').replace(',', '.');
+    } else if (dotIdx > commaIdx) {
+        // فرمت انگلیسی: 1,234.56
+        clean = clean.replace(/,/g, '');
+    }
+
     const num = parseFloat(clean);
     if (isNaN(num)) return null;
     return Math.ceil(num);
