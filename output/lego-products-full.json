@@ -1344,7 +1344,7 @@
     "id": "21066",
     "name": "21066 LEGO® Architecture New York City – Büyük Elma",
     "price": 7999,
-    "quantity": 92,
+    "quantity": 91,
     "in_stock": true,
     "category": "Architecture",
     "url": "https://lego.tr/21066-lego-architecture-new-york-city-buyuk-elma"
@@ -1384,15 +1384,6 @@
     "in_stock": true,
     "category": "Architecture",
     "url": "https://lego.tr/product\\/21061-lego-architecture-notre-dame-katedrali"
-  },
-  {
-    "id": "21044",
-    "name": "21044 LEGO Architecture Paris",
-    "price": 3099,
-    "quantity": 15,
-    "in_stock": true,
-    "category": "Architecture",
-    "url": "https://lego.tr/product\\/21044-lego-architecture-paris"
   },
   {
     "id": "21063",
@@ -1438,6 +1429,15 @@
     "in_stock": false,
     "category": "Architecture",
     "url": "https://lego.tr/product\\/21028-lego-architecture-new-york-city"
+  },
+  {
+    "id": "21044",
+    "name": "21044 LEGO Architecture Paris",
+    "price": 3099,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Architecture",
+    "url": "https://lego.tr/product\\/21044-lego-architecture-paris"
   },
   {
     "id": "2943",
@@ -1497,7 +1497,7 @@
     "id": "31220",
     "name": "31220 LEGO® Art Claude Monet – Nilüfer Gölü Üzerinde Köprü",
     "price": 11499,
-    "quantity": 85,
+    "quantity": 83,
     "in_stock": true,
     "category": "LEGO® Art",
     "url": "https://lego.tr/31220-lego-art-claude-monet-nilufer-golu-uzerinde-kopru"
@@ -1641,7 +1641,7 @@
     "id": "76270",
     "name": "76270 LEGO® DC Batman™ Robot Zırhı",
     "price": 899,
-    "quantity": 37,
+    "quantity": 36,
     "in_stock": true,
     "category": "DC",
     "url": "https://lego.tr/product\\/76270-lego-dc-batman-robot-zirhi"
@@ -1902,7 +1902,7 @@
     "id": "11514",
     "name": "11514 LEGO® Botanicals Kozmos Çiçekleri",
     "price": 819,
-    "quantity": 192,
+    "quantity": 190,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/11514-lego-botanicals-kozmos-cicekleri"
@@ -1911,7 +1911,7 @@
     "id": "11511",
     "name": "11511 LEGO® Botanicals Nilüferler",
     "price": 2249,
-    "quantity": 382,
+    "quantity": 381,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/11511-lego-botanicals-niluferler"
@@ -1920,7 +1920,7 @@
     "id": "11505",
     "name": "11505 LEGO® Botanicals Orman Mantarları",
     "price": 4499,
-    "quantity": 160,
+    "quantity": 159,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/11505-lego-botanicals-orman-mantarlari"
@@ -1983,7 +1983,7 @@
     "id": "10311",
     "name": "10311 LEGO® Botanicals Orkide",
     "price": 2899,
-    "quantity": 46,
+    "quantity": 45,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10311-lego-creator-expert-orkide"
@@ -2046,19 +2046,10 @@
     "id": "40573",
     "name": "40573 LEGO Iconic Yılbaşı Ağacı",
     "price": 1987,
-    "quantity": 376,
+    "quantity": 375,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/40573-lego-iconic-yilbasi-agaci"
-  },
-  {
-    "id": "21346",
-    "name": "21346 LEGO® Ideas Aile Ağacı",
-    "price": 5299,
-    "quantity": 19,
-    "in_stock": true,
-    "category": "Ideas",
-    "url": "https://lego.tr/product\\/21346-lego-ideas-aile-agaci"
   },
   {
     "id": "40747",
@@ -2223,6 +2214,15 @@
     "url": "https://lego.tr/product\\/40638-lego-iconic-kalp-susu"
   },
   {
+    "id": "21346",
+    "name": "21346 LEGO® Ideas Aile Ağacı",
+    "price": 5299,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Ideas",
+    "url": "https://lego.tr/product\\/21346-lego-ideas-aile-agaci"
+  },
+  {
     "id": "40725",
     "name": "40725 LEGO® Botanicals Kiraz Çiçekleri",
     "price": 879,
@@ -2262,7 +2262,7 @@
     "id": "40793",
     "name": "40793 LEGO® BrickHeadz Tom ve Jerry Figürleri",
     "price": 1299,
-    "quantity": 130,
+    "quantity": 129,
     "in_stock": true,
     "category": "BrickHeadz",
     "url": "https://lego.tr/product\\/40793-lego-brickheadz-tom-ve-jerry-figurleri"
@@ -2352,7 +2352,7 @@
     "id": "40879",
     "name": "40879 LEGO® Stranger Things Eleven, Max, Demogorgon ve Holly Figürleri",
     "price": 2599,
-    "quantity": 37,
+    "quantity": 35,
     "in_stock": true,
     "category": "BrickHeadz",
     "url": "https://lego.tr/40879-lego-stranger-things-eleven-max-demogorgon-ve-holly-figurleri"
@@ -2397,7 +2397,7 @@
     "id": "40669",
     "name": "40669 LEGO® Marvel Iron Man MK5 Figürü",
     "price": 879,
-    "quantity": 170,
+    "quantity": 169,
     "in_stock": true,
     "category": "BrickHeadz",
     "url": "https://lego.tr/product\\/40669-lego-marvel-iron-man-mk5-figuru"
@@ -2457,15 +2457,6 @@
     "url": "https://lego.tr/product\\/40675-lego-star-wars-klon-komutani-cody"
   },
   {
-    "id": "40677",
-    "name": "40677 LEGO® Harry Potter Azkaban™ Tutsağı Figürleri",
-    "price": 3299,
-    "quantity": 4,
-    "in_stock": true,
-    "category": "BrickHeadz",
-    "url": "https://lego.tr/product\\/40677-lego-harry-potter-azkaban-tutsagi-figurleri"
-  },
-  {
     "id": "40674",
     "name": "40674 LEGO® Disney Classic Stiç",
     "price": 879,
@@ -2487,7 +2478,7 @@
     "id": "40670",
     "name": "40670 LEGO® Marvel Iron Örümcek Adam",
     "price": 879,
-    "quantity": 49,
+    "quantity": 47,
     "in_stock": true,
     "category": "BrickHeadz",
     "url": "https://lego.tr/product\\/40670-lego-marvel-iron-orumcek-adam"
@@ -2601,6 +2592,15 @@
     "url": "https://lego.tr/product\\/40615-lego-star-wars-tusken-yagmacisi"
   },
   {
+    "id": "40677",
+    "name": "40677 LEGO® Harry Potter Azkaban™ Tutsağı Figürleri",
+    "price": 3299,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "BrickHeadz",
+    "url": "https://lego.tr/product\\/40677-lego-harry-potter-azkaban-tutsagi-figurleri"
+  },
+  {
     "id": "40672",
     "name": "40672 LEGO® Sonic: Knuckles ve Shadow",
     "price": 1399,
@@ -2676,7 +2676,7 @@
     "id": "60463",
     "name": "60463 LEGO® City Merdivenli İtfaiye Kamyonu",
     "price": 1099,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "category": "City",
     "url": "https://lego.tr/product\\/60463-lego-city-merdivenli-itfaiye-kamyonu"
@@ -2703,7 +2703,7 @@
     "id": "60461",
     "name": "60461 LEGO® City Römorklu Kırmızı Çiftlik Traktörü ve Koyun",
     "price": 1099,
-    "quantity": 44,
+    "quantity": 43,
     "in_stock": true,
     "category": "City",
     "url": "https://lego.tr/product\\/60461-lego-city-romorklu-kirmizi-ciftlik-traktoru-ve-koyun"
@@ -2955,7 +2955,7 @@
     "id": "60492",
     "name": "60492 LEGO® City Yolcu Jeti",
     "price": 1699,
-    "quantity": 65,
+    "quantity": 64,
     "in_stock": true,
     "category": "City",
     "url": "https://lego.tr/60492-lego-city-yolcu-jeti"
@@ -2964,7 +2964,7 @@
     "id": "60480",
     "name": "60480 LEGO® City Sarı Kazıcı Yükleyici",
     "price": 1699,
-    "quantity": 67,
+    "quantity": 66,
     "in_stock": true,
     "category": "City",
     "url": "https://lego.tr/60480-lego-city-sari-kazici-yukleyici"
@@ -3346,15 +3346,6 @@
     "in_stock": true,
     "category": "City",
     "url": "https://lego.tr/product\\/60401-lego-city-yol-silindiri"
-  },
-  {
-    "id": "60351",
-    "name": "60351 LEGO City Roket Fırlatma Merkezi",
-    "price": 9999,
-    "quantity": 2,
-    "in_stock": true,
-    "category": "City",
-    "url": "https://lego.tr/product\\/60351-lego-city-roket-firlatma-merkezi"
   },
   {
     "id": "4878",
@@ -4050,6 +4041,15 @@
     "url": "https://lego.tr/product\\/30663-lego-city-ucan-uzay-motosikleti"
   },
   {
+    "id": "60351",
+    "name": "60351 LEGO City Roket Fırlatma Merkezi",
+    "price": 9999,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "City",
+    "url": "https://lego.tr/product\\/60351-lego-city-roket-firlatma-merkezi"
+  },
+  {
     "id": "60325",
     "name": "60325 LEGO City Beton Mikseri",
     "price": 1019,
@@ -4575,7 +4575,7 @@
     "id": "31392",
     "name": "31392 LEGO® Creator Müzikal Dekor Kedili Piyano",
     "price": 2249,
-    "quantity": 64,
+    "quantity": 63,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/31392-lego-creator-muzikal-dekor-kedili-piyano"
@@ -4602,7 +4602,7 @@
     "id": "31389",
     "name": "31389 LEGO® Creator İkonik Dönme Dolap",
     "price": 4999,
-    "quantity": 31,
+    "quantity": 29,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/31389-lego-creator-ikonik-donme-dolap"
@@ -4881,7 +4881,7 @@
     "id": "4302",
     "name": "31109 LEGO Creator Korsan Gemisi",
     "price": 7999,
-    "quantity": 32,
+    "quantity": 31,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/product\\/31109-lego-creator-korsan-gemisi"
@@ -5151,7 +5151,7 @@
     "id": "76302",
     "name": "76302 LEGO® DC Superman™ Robotu, Lex Luthor™’a Karşı",
     "price": 899,
-    "quantity": 77,
+    "quantity": 76,
     "in_stock": true,
     "category": "DC",
     "url": "https://lego.tr/product\\/76302-lego-dc-superman-robotu-lex-luthora-karsi"
@@ -5223,7 +5223,7 @@
     "id": "43300",
     "name": "43300 LEGO® │ Disney Ayı Winnie",
     "price": 8499,
-    "quantity": 129,
+    "quantity": 137,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/43300-lego-disney-ayi-winnie"
@@ -5277,7 +5277,7 @@
     "id": "43259",
     "name": "43259 LEGO® Disney Princess Dönen Ariel",
     "price": 599,
-    "quantity": 64,
+    "quantity": 62,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/43259-lego-disney-princess-donen-ariel"
@@ -5358,7 +5358,7 @@
     "id": "43302",
     "name": "43302 LEGO® │ Disney Main Street, U.S.A.",
     "price": 19999,
-    "quantity": 27,
+    "quantity": 25,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/43302-lego-disney-main-street-u"
@@ -5439,7 +5439,7 @@
     "id": "43307",
     "name": "43307 LEGO® │ Disney Pizza Gezegeni Roketli Uzaylı",
     "price": 3399,
-    "quantity": 14,
+    "quantity": 12,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/43307-lego-disney-pizza-gezegeni-roketli-uzayli"
@@ -5526,15 +5526,6 @@
     "url": "https://lego.tr/43286-lego-disney-aristokediler-sevimli-marie"
   },
   {
-    "id": "43284",
-    "name": "43284 LEGO® │ Disney Princess Mini Anna ve Elsa",
-    "price": 539,
-    "quantity": 60,
-    "in_stock": true,
-    "category": "Disney™",
-    "url": "https://lego.tr/43284-lego-disney-princess-mini-anna-ve-elsa"
-  },
-  {
     "id": "43273",
     "name": "43273 LEGO® │ Disney 2025 Yılbaşı Takvimi",
     "price": 1999,
@@ -5556,19 +5547,10 @@
     "id": "4571",
     "name": "853998 Mickey Key Chain",
     "price": 349,
-    "quantity": 405,
+    "quantity": 403,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/853998-mickey-key-chain"
-  },
-  {
-    "id": "43221",
-    "name": "43221 LEGO® | Disney: Disney Animasyon İkonlarının 100 Yılı",
-    "price": 3249,
-    "quantity": 4,
-    "in_stock": true,
-    "category": "Disney™",
-    "url": "https://lego.tr/product\\/43221-lego-disney-disney-animasyon-ikonlarinin-100-yili"
   },
   {
     "id": "43215",
@@ -5772,7 +5754,7 @@
     "id": "5058",
     "name": "853999 LEGO Disney Minnie Anahtarlık",
     "price": 349,
-    "quantity": 1295,
+    "quantity": 1292,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/853999-lego-disney-minnie-anahtarlik"
@@ -5821,6 +5803,15 @@
     "in_stock": false,
     "category": "Disney™",
     "url": "https://lego.tr/43305-lego-disney-pigletin-dogum-gunu-eglencesi"
+  },
+  {
+    "id": "43284",
+    "name": "43284 LEGO® │ Disney Princess Mini Anna ve Elsa",
+    "price": 539,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Disney™",
+    "url": "https://lego.tr/43284-lego-disney-princess-mini-anna-ve-elsa"
   },
   {
     "id": "43279",
@@ -5902,6 +5893,15 @@
     "in_stock": false,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/43226-lego-disney-disney-ikilileri"
+  },
+  {
+    "id": "43221",
+    "name": "43221 LEGO® | Disney: Disney Animasyon İkonlarının 100 Yılı",
+    "price": 3249,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Disney™",
+    "url": "https://lego.tr/product\\/43221-lego-disney-disney-animasyon-ikonlarinin-100-yili"
   },
   {
     "id": "43223",
@@ -6267,7 +6267,7 @@
     "id": "10474",
     "name": "10474 LEGO® DUPLO® Yaratıcı Araçlar",
     "price": 1099,
-    "quantity": 77,
+    "quantity": 89,
     "in_stock": true,
     "category": "LEGO® DUPLO®",
     "url": "https://lego.tr/10474-lego-duplo-yaratici-araclar"
@@ -6501,7 +6501,7 @@
     "id": "10467",
     "name": "10467 LEGO® DUPLO® Aile Evi",
     "price": 3999,
-    "quantity": 67,
+    "quantity": 77,
     "in_stock": true,
     "category": "LEGO® DUPLO®",
     "url": "https://lego.tr/10467-lego-duplo-aile-evi"
@@ -7140,7 +7140,7 @@
     "id": "77079",
     "name": "77079 LEGO® Fortnite® Domates Kafa",
     "price": 819,
-    "quantity": 81,
+    "quantity": 80,
     "in_stock": true,
     "category": "LEGO® Fortnite",
     "url": "https://lego.tr/77079-lego-fortnite-domates-kafa"
@@ -8409,7 +8409,7 @@
     "id": "76462",
     "name": "76462 LEGO® Harry Potter™ Hogwarts™ Bina Arması",
     "price": 2849,
-    "quantity": 57,
+    "quantity": 56,
     "in_stock": true,
     "category": "Harry Potter™",
     "url": "https://lego.tr/76462-lego-harry-potter-hogwarts-bina-armasi"
@@ -8985,7 +8985,7 @@
     "id": "40954",
     "name": "40954 LEGO® Iconic Almanya Kartpostalı",
     "price": 999,
-    "quantity": 12,
+    "quantity": 11,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/40954-lego-iconic-almanya-kartpostali"
@@ -9003,7 +9003,7 @@
     "id": "40955",
     "name": "40955 LEGO® LEGO Iconic Maersk Çift Yakıtlı Konteyner Gemisi",
     "price": 9499,
-    "quantity": 85,
+    "quantity": 109,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/40955-lego-lego-iconic-maersk-cift-yakitli-konteyner-gemisi"
@@ -9849,7 +9849,7 @@
     "id": "11380",
     "name": "11380 LEGO® Icons Yol Bisikleti",
     "price": 6799,
-    "quantity": 93,
+    "quantity": 91,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/11380-lego-icons-yol-bisikleti"
@@ -9858,7 +9858,7 @@
     "id": "11378",
     "name": "11378 LEGO® Icons Douglas™ DC-3™ PAN AM® Uçağı",
     "price": 12699,
-    "quantity": 17,
+    "quantity": 20,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/11378-lego-icons-douglas-dc-3-pan-am-ucagi"
@@ -10020,7 +10020,7 @@
     "id": "10317",
     "name": "10317 LEGO® Icons Land Rover Klasik Defender 90",
     "price": 14499,
-    "quantity": 47,
+    "quantity": 43,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/product\\/10317-lego-icons-land-rover-klasik-defender-90"
@@ -10335,7 +10335,7 @@
     "id": "21360",
     "name": "21360 LEGO® LEGO Ideas Willy Wonka ve Çikolata Fabrikası",
     "price": 12499,
-    "quantity": 256,
+    "quantity": 258,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/product\\/21360-lego-lego-ideas-willy-wonka-ve-cikolata-fabrikasi"
@@ -10344,7 +10344,7 @@
     "id": "21353",
     "name": "21353 LEGO® Ideas Botanik Bahçesi",
     "price": 18999,
-    "quantity": 21,
+    "quantity": 20,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/product\\/21353-lego-ideas-botanik-bahcesi"
@@ -10389,7 +10389,7 @@
     "id": "21366",
     "name": "21366 LEGO® Ideas Yüzen Deniz Samurları",
     "price": 6299,
-    "quantity": 301,
+    "quantity": 311,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/21366-lego-ideas-yuzen-deniz-samurlari"
@@ -10407,7 +10407,7 @@
     "id": "21363",
     "name": "21363 LEGO® Ideas Define Avcıları",
     "price": 16999,
-    "quantity": 153,
+    "quantity": 158,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/21363-lego-ideas-define-avcilari"
@@ -10677,7 +10677,7 @@
     "id": "77984",
     "name": "77984 LEGO® Jurassic World Jurassic Park Jeep® Wrangler",
     "price": 11499,
-    "quantity": 89,
+    "quantity": 99,
     "in_stock": true,
     "category": "Jurassic World",
     "url": "https://lego.tr/77984-lego-jurassic-world-jurassic-park-jeep-wrangler"
@@ -11001,7 +11001,7 @@
     "id": "76350",
     "name": "76350 LEGO® | Marvel Örümcek Adam ve Hulk’ın Destansı Çarpışması",
     "price": 4999,
-    "quantity": 27,
+    "quantity": 26,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/76350-lego-marvel-orumcek-adam-ve-hulkin-destansi-carpismasi"
@@ -11019,7 +11019,7 @@
     "id": "76346",
     "name": "76346 LEGO® | Marvel Örümcek Adam Kahraman Figürü",
     "price": 5699,
-    "quantity": 30,
+    "quantity": 29,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/76346-lego-marvel-orumcek-adam-kahraman-figuru"
@@ -11133,15 +11133,6 @@
     "url": "https://lego.tr/product\\/76295-lego-marvel-avengers-helikoptasir"
   },
   {
-    "id": "76291",
-    "name": "76291 LEGO® Marvel Avengers Assemble: Ultron Çağı",
-    "price": 5799,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "Marvel",
-    "url": "https://lego.tr/product\\/76291-lego-marvel-avengers-assemble-ultron-cagi"
-  },
-  {
     "id": "76290",
     "name": "76290 LEGO® Marvel Avengers, Leviathan’a Karşı",
     "price": 2899,
@@ -11190,7 +11181,7 @@
     "id": "854240",
     "name": "854240 LEGO® Marvel Iron Man Anahtarlık",
     "price": 349,
-    "quantity": 444,
+    "quantity": 443,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/854240-lego-marvel-iron-man-anahtarlik"
@@ -11298,7 +11289,7 @@
     "id": "76276",
     "name": "76276 LEGO® Marvel Venom Robot Zırhı Miles Morales’e Karşı",
     "price": 899,
-    "quantity": 130,
+    "quantity": 129,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76276-lego-marvel-venom-robot-zirhi-miles-moralese-karsi"
@@ -11482,6 +11473,15 @@
     "in_stock": false,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76297-lego-marvel-dans-eden-groot"
+  },
+  {
+    "id": "76291",
+    "name": "76291 LEGO® Marvel Avengers Assemble: Ultron Çağı",
+    "price": 5799,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Marvel",
+    "url": "https://lego.tr/product\\/76291-lego-marvel-avengers-assemble-ultron-cagi"
   },
   {
     "id": "76287",
@@ -11856,7 +11856,7 @@
     "id": "21594",
     "name": "21594 LEGO® Minecraft® İskelet",
     "price": 2549,
-    "quantity": 64,
+    "quantity": 63,
     "in_stock": true,
     "category": "Minecraft®",
     "url": "https://lego.tr/21594-lego-minecraft-iskelet"
@@ -11923,15 +11923,6 @@
     "in_stock": true,
     "category": "Minecraft®",
     "url": "https://lego.tr/product\\/21268-lego-minecraft-yavru-domuz-evi"
-  },
-  {
-    "id": "21263",
-    "name": "21263 LEGO® Minecraft Çorak Arazi Maden Kuyusu",
-    "price": 3449,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "Minecraft®",
-    "url": "https://lego.tr/product\\/21263-lego-minecraft-corak-arazi-maden-kuyusu"
   },
   {
     "id": "21262",
@@ -12094,6 +12085,15 @@
     "in_stock": false,
     "category": "Minecraft®",
     "url": "https://lego.tr/product\\/21264-lego-minecraft-ender-ejderhasi-ve-end-gemisi"
+  },
+  {
+    "id": "21263",
+    "name": "21263 LEGO® Minecraft Çorak Arazi Maden Kuyusu",
+    "price": 3449,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Minecraft®",
+    "url": "https://lego.tr/product\\/21263-lego-minecraft-corak-arazi-maden-kuyusu"
   },
   {
     "id": "21261",
@@ -12378,7 +12378,7 @@
     "id": "43025",
     "name": "43025 LEGO® Editions Nike Air Max 95 x LEGO® Seti",
     "price": 5799,
-    "quantity": 102,
+    "quantity": 107,
     "in_stock": true,
     "category": "LEGO® Editions",
     "url": "https://lego.tr/43025-lego-editions-nike-air-max-95-x-lego-seti"
@@ -12454,15 +12454,6 @@
     "in_stock": true,
     "category": "NINJAGO®",
     "url": "https://lego.tr/product\\/30699-lego-ninjago-mini-ninja-kombo-mech"
-  },
-  {
-    "id": "71848",
-    "name": "71848 LEGO® NINJAGO® Tapınak Ödülü",
-    "price": 11499,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "NINJAGO®",
-    "url": "https://lego.tr/product\\/71848-lego-ninjago-tapinak-odulu"
   },
   {
     "id": "71844",
@@ -12567,7 +12558,7 @@
     "id": "71862",
     "name": "71862 LEGO® NINJAGO® Lloyd’un Ejderha Robotu Savaş Paketi",
     "price": 539,
-    "quantity": 223,
+    "quantity": 222,
     "in_stock": true,
     "category": "NINJAGO®",
     "url": "https://lego.tr/71862-lego-ninjago-lloydun-ejderha-robotu-savas-paketi"
@@ -12576,7 +12567,7 @@
     "id": "71861",
     "name": "71861 LEGO® NINJAGO® Eski Şehir 15. Yıl Dönümü",
     "price": 16999,
-    "quantity": 19,
+    "quantity": 21,
     "in_stock": true,
     "category": "NINJAGO®",
     "url": "https://lego.tr/71861-lego-ninjago-eski-sehir-15-yil-donumu"
@@ -12585,7 +12576,7 @@
     "id": "71858",
     "name": "71858 LEGO® NINJAGO® Dört Silah Demircisi 15. Yıl Dönümü",
     "price": 5699,
-    "quantity": 14,
+    "quantity": 15,
     "in_stock": true,
     "category": "NINJAGO®",
     "url": "https://lego.tr/71858-lego-ninjago-dort-silah-demircisi-15-yil-donumu"
@@ -12733,6 +12724,15 @@
     "in_stock": false,
     "category": "NINJAGO®",
     "url": "https://lego.tr/product\\/71795-lego-ninjago-ejderha-enerji-kureleri-tapinagi"
+  },
+  {
+    "id": "71848",
+    "name": "71848 LEGO® NINJAGO® Tapınak Ödülü",
+    "price": 11499,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "NINJAGO®",
+    "url": "https://lego.tr/product\\/71848-lego-ninjago-tapinak-odulu"
   },
   {
     "id": "71847",
@@ -13152,7 +13152,7 @@
     "id": "77261",
     "name": "77261 LEGO® Speed Champions Ferrari 499P",
     "price": 1599,
-    "quantity": 131,
+    "quantity": 128,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/77261-lego-speed-champions-ferrari-499p"
@@ -13197,7 +13197,7 @@
     "id": "77255",
     "name": "77255 LEGO® Speed Champions│ Disney Şimşek McQueen",
     "price": 1599,
-    "quantity": 372,
+    "quantity": 371,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/77255-lego-speed-champions-disney-simsek-mcqueen"
@@ -13224,7 +13224,7 @@
     "id": "77252",
     "name": "77252 LEGO® Speed Champions F1® Filminden APXGP Team Yarış Arabası",
     "price": 1599,
-    "quantity": 428,
+    "quantity": 427,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/77252-lego-speed-champions-f1-filminden-apxgp-team-yaris-arabasi"
@@ -13458,7 +13458,7 @@
     "id": "75417",
     "name": "75417 LEGO® Star Wars™ AT-ST™ Walker",
     "price": 11499,
-    "quantity": 50,
+    "quantity": 55,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75417-lego-star-wars-at-st-walker"
@@ -13503,7 +13503,7 @@
     "id": "75428",
     "name": "75428 LEGO® Star Wars™ STAP ile Savaş Droidi",
     "price": 7399,
-    "quantity": 163,
+    "quantity": 172,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/product\\/75428-lego-star-wars-stap-ile-savas-droidi"
@@ -13602,7 +13602,7 @@
     "id": "75458",
     "name": "75458 LEGO® Star Wars™ İmparatorluk Kalıntısı AT-RT Sürücüsü Kaskı",
     "price": 3999,
-    "quantity": 2,
+    "quantity": 1,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/75458-lego-star-wars-imparatorluk-kalintisi-at-rt-surucusu-kaski"
@@ -13611,7 +13611,7 @@
     "id": "75442",
     "name": "75442 LEGO® Star Wars™ Mandalorian’ın N-1 Starfighter™’ı",
     "price": 14499,
-    "quantity": 38,
+    "quantity": 37,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/75442-lego-star-wars-mandalorianin-n-1-starfighteri"
@@ -13638,7 +13638,7 @@
     "id": "75446",
     "name": "75446 LEGO® Star Wars™ Grogu™ (Mandalorlu Çırak)",
     "price": 7399,
-    "quantity": 42,
+    "quantity": 41,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/75446-lego-star-wars-grogu-mandalorlu-cirak"
@@ -13845,7 +13845,7 @@
     "id": "75397",
     "name": "75397 LEGO® Star Wars™ Jabba’nın Yelkenlisi",
     "price": 28499,
-    "quantity": 13,
+    "quantity": 10,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75397-lego-star-wars-jabbanin-yelkenlisi"
@@ -13863,7 +13863,7 @@
     "id": "75347",
     "name": "75347 LEGO® Star Wars™ TIE Bombacısı",
     "price": 3699,
-    "quantity": 2,
+    "quantity": 1,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75347-lego-star-wars-tie-bombacisi"
@@ -13881,7 +13881,7 @@
     "id": "854289",
     "name": "854289 LEGO® Star Wars™ İmparator Palpatine™ Anahtarlık",
     "price": 349,
-    "quantity": 472,
+    "quantity": 471,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/854289-lego-star-wars-imparator-palpatine-anahtarlik"
@@ -14002,15 +14002,6 @@
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75384-lego-star-wars-crimson-firehawk"
-  },
-  {
-    "id": "75372",
-    "name": "75372 LEGO® Star Wars™ Klon Trooper ve Savaş Droidi Savaş Paketi",
-    "price": 1699,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "Star Wars™",
-    "url": "https://lego.tr/product\\/75372-lego-star-wars-klon-trooper-ve-savas-droidi-savas-paketi"
   },
   {
     "id": "30680",
@@ -14454,6 +14445,15 @@
     "url": "https://lego.tr/product\\/75328-lego-star-wars-mandalorian-kaski"
   },
   {
+    "id": "75372",
+    "name": "75372 LEGO® Star Wars™ Klon Trooper ve Savaş Droidi Savaş Paketi",
+    "price": 1699,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Star Wars™",
+    "url": "https://lego.tr/product\\/75372-lego-star-wars-klon-trooper-ve-savas-droidi-savas-paketi"
+  },
+  {
     "id": "5448",
     "name": "854187 LEGO Star Wars Grogu™ Anahtarlık",
     "price": 349,
@@ -14619,7 +14619,7 @@
     "id": "72050",
     "name": "72050 LEGO® Super Mario™ Mario Kart™ – Luigi ve Mach 8",
     "price": 10199,
-    "quantity": 31,
+    "quantity": 30,
     "in_stock": true,
     "category": "LEGO® Super Mario™",
     "url": "https://lego.tr/72050-lego-super-mario-mario-kart-luigi-ve-mach-8"
@@ -14637,7 +14637,7 @@
     "id": "72046",
     "name": "72046 LEGO® Super Mario™ Game Boy™",
     "price": 3399,
-    "quantity": 13,
+    "quantity": 11,
     "in_stock": true,
     "category": "LEGO® Super Mario™",
     "url": "https://lego.tr/product\\/72046-lego-super-mario-game-boy"
@@ -14758,15 +14758,6 @@
     "in_stock": true,
     "category": "LEGO® Super Mario™",
     "url": "https://lego.tr/product\\/71405-lego-super-mario-fuzzy-firlaticilar-ek-macera-seti"
-  },
-  {
-    "id": "71430",
-    "name": "71430 LEGO® Super Mario Penguin Ailesi Kar Macerası Ek Macera Seti",
-    "price": 1199,
-    "quantity": 2,
-    "in_stock": true,
-    "category": "LEGO® Super Mario™",
-    "url": "https://lego.tr/product\\/71430-lego-super-mario-penguin-ailesi-kar-macerasi-ek-macera-seti"
   },
   {
     "id": "72043",
@@ -14893,6 +14884,15 @@
     "in_stock": false,
     "category": "LEGO® Super Mario™",
     "url": "https://lego.tr/product\\/71409-lego-super-mario-big-spikein-bulut-engeli-ek-macera-seti"
+  },
+  {
+    "id": "71430",
+    "name": "71430 LEGO® Super Mario Penguin Ailesi Kar Macerası Ek Macera Seti",
+    "price": 1199,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "LEGO® Super Mario™",
+    "url": "https://lego.tr/product\\/71430-lego-super-mario-penguin-ailesi-kar-macerasi-ek-macera-seti"
   },
   {
     "id": "5221",
@@ -15132,7 +15132,7 @@
     "id": "42159",
     "name": "42159 LEGO® Technic Yamaha MT-10 SP",
     "price": 13499,
-    "quantity": 145,
+    "quantity": 144,
     "in_stock": true,
     "category": "Technic™",
     "url": "https://lego.tr/product\\/42159-lego-technic-yamaha-mt-10-sp"
@@ -15154,15 +15154,6 @@
     "in_stock": true,
     "category": "Technic™",
     "url": "https://lego.tr/product\\/42182-lego-technic-nasa-apollo-ay-tasiti-lrv"
-  },
-  {
-    "id": "42177",
-    "name": "42177 LEGO® Technic Mercedes-Benz G 500 PROFESSIONAL Line",
-    "price": 14299,
-    "quantity": 6,
-    "in_stock": true,
-    "category": "Technic™",
-    "url": "https://lego.tr/product\\/42177-lego-technic-mercedes-benz-g-500-professional-line"
   },
   {
     "id": "42172",
@@ -15433,6 +15424,15 @@
     "in_stock": false,
     "category": "Technic™",
     "url": "https://lego.tr/product\\/42184-lego-technic-koenigsegg-jesko-absolut-beyaz-hiper-araba"
+  },
+  {
+    "id": "42177",
+    "name": "42177 LEGO® Technic Mercedes-Benz G 500 PROFESSIONAL Line",
+    "price": 14299,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Technic™",
+    "url": "https://lego.tr/product\\/42177-lego-technic-mercedes-benz-g-500-professional-line"
   },
   {
     "id": "42176",
