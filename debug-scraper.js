@@ -72,12 +72,77 @@ async function scrapeKorayspor(browser, url) {
     const page = await browser.newPage();
 
     try {
-        await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        await page.evaluateOnNewDocument(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            Object.defineProperty(navigator, 'plugins', {
+                get: () => {
+                    const arr = [
+                        { name: 'Chrome PDF Plugin', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
+                        { name: 'Chrome PDF Viewer', filename: 'mhjfbmdgcfjbbpaeojofohoefgiehjai', description: '' },
+                        { name: 'Native Client', filename: 'internal-nacl-plugin', description: '' },
+                    ];
+                    arr.__proto__ = PluginArray.prototype;
+                    return arr;
+                }
+            });
+            Object.defineProperty(navigator, 'languages', { get: () => ['tr-TR', 'tr', 'en-US', 'en'] });
+            Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
+            Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+            Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
+            window.chrome = {
+                runtime: {},
+                loadTimes: function() {},
+                csi: function() {},
+                app: {}
+            };
+            const originalQuery = window.navigator.permissions.query;
+            window.navigator.permissions.query = (parameters) =>
+                parameters.name === 'notifications'
+                    ? Promise.resolve({ state: Notification.permission })
+                    : originalQuery(parameters);
+        });
+
+        await page.setExtraHTTPHeaders({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Cache-Control': 'max-age=0',
+            'Sec-Ch-Ua': '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"',
+            'Sec-Ch-Ua-Mobile': '?0',
+            'Sec-Ch-Ua-Platform': '"Windows"',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1',
+        });
+
+        await page.emulateTimezone('Europe/Istanbul');
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: CONFIG.PAGE_TIMEOUT });
-        await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
+        await page.authenticate({ username: 'mehran', password: 'mehran75' });
+
+        console.log(`  🔄 Visiting Korayspor homepage first...`);
+        await page.goto('https://www.korayspor.com', {
+            waitUntil: 'domcontentloaded',
+            timeout: 30000
+        });
+        await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
+
+        console.log(`  🔄 Navigating to product page...`);
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 8000 + Math.random() * 4000));
+
+        const isBlocked = await page.evaluate(() => {
+            const title = document.title.toLowerCase();
+            return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare');
+        });
+
+        if (isBlocked) {
+            console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
+            await new Promise(r => setTimeout(r, 10000));
+        }
 
         const hostname = new URL(page.url()).hostname;
 
