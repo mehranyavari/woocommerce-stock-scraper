@@ -64,6 +64,31 @@ function parseTurkishPrice(rawPrice) {
     return Math.ceil(num);
 }
 
+async function waitForCloudflare(page, timeoutMs = 30000) {
+    const startTime = Date.now();
+    let isBlocked = true;
+
+    while (Date.now() - startTime < timeoutMs) {
+        const title = (await page.title()).toLowerCase();
+        isBlocked = title.includes('just a moment') || 
+                    title.includes('attention required') || 
+                    title.includes('cloudflare') || 
+                    title.includes('bir dakika') || 
+                    title.includes('lütfen');
+
+        if (!isBlocked) {
+            console.log(`  🎉 Cloudflare bypassed! Title changed to: "${await page.title()}"`);
+            return true;
+        }
+
+        console.log(`  ⏳ Cloudflare challenge active (Title: "${await page.title()}"). Waiting 2s...`);
+        await new Promise(r => setTimeout(r, 2000));
+    }
+
+    console.log(`  ⚠️ Cloudflare bypass timed out after ${timeoutMs / 1000}s.`);
+    return false;
+}
+
 // ==========================================
 // 👟 اسکرپر مخصوص کورای اسپور
 // ==========================================
@@ -128,21 +153,11 @@ async function scrapeKorayspor(browser, url) {
             waitUntil: 'domcontentloaded',
             timeout: 30000
         });
-        await new Promise(r => setTimeout(r, 2000 + Math.random() * 2000));
+        await waitForCloudflare(page, 20000);
 
         console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await new Promise(r => setTimeout(r, 8000 + Math.random() * 4000));
-
-        const isBlocked = await page.evaluate(() => {
-            const title = document.title.toLowerCase();
-            return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare');
-        });
-
-        if (isBlocked) {
-            console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
-            await new Promise(r => setTimeout(r, 10000));
-        }
+        await waitForCloudflare(page, 25000);
 
         const hostname = new URL(page.url()).hostname;
 
