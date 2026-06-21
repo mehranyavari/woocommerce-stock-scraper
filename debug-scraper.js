@@ -151,11 +151,15 @@ async function scrapeKorayspor(browser, url) {
             return scriptNode ? scriptNode.innerHTML : null;
         });
 
-        await page.close();
-
         if (!nextDataString) {
-            return { success: false, error: "Korayspor: __NEXT_DATA__ not found (Cloudflare Blocked or structure changed)" };
+            const bodyHtml = await page.evaluate(() => document.body ? document.body.innerHTML : '');
+            const title = await page.title();
+            fs.writeFileSync('korayspor_debug_dump.html', `<!-- Title: ${title} -->\n` + bodyHtml);
+            await page.close();
+            return { success: false, error: `Korayspor: __NEXT_DATA__ not found. Saved page source to korayspor_debug_dump.html. Title: ${title}` };
         }
+
+        await page.close();
 
         const nextData = JSON.parse(nextDataString);
         const product = nextData.props?.pageProps?.data?.response?.product;
@@ -294,7 +298,7 @@ async function main() {
     console.log('🔗 URL:', TEST_URL);
 
     const browser = await puppeteer.launch({
-        headless: 'new',
+        headless: false,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
