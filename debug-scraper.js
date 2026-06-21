@@ -6,7 +6,7 @@ puppeteer.use(StealthPlugin());
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.yuxel.com.tr/nike-zoom-gp-challenge-pro-toprak-tenis-ayakkabisi-fj7767-001";
+const TEST_URL = "https://www.korayspor.com/asics-tenis-ayakkabisi-solution-speed-ff-3-1041a438-300/";
 
 // ==========================================
 // تنظیمات
@@ -64,7 +64,87 @@ function parseTurkishPrice(rawPrice) {
     return Math.ceil(num);
 }
 
+// ==========================================
+// 👟 اسکرپر مخصوص کورای اسپور
+// ==========================================
+async function scrapeKorayspor(browser, url) {
+    console.log(`\n🔄 Scraping Korayspor: ${url}`);
+    const page = await browser.newPage();
+
+    try {
+        await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: CONFIG.PAGE_TIMEOUT });
+        await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
+
+        const hostname = new URL(page.url()).hostname;
+
+        const nextDataString = await page.evaluate(() => {
+            const scriptNode = document.getElementById('__NEXT_DATA__');
+            return scriptNode ? scriptNode.innerHTML : null;
+        });
+
+        await page.close();
+
+        if (!nextDataString) {
+            return { success: false, error: "Korayspor: __NEXT_DATA__ not found (Cloudflare Blocked or structure changed)" };
+        }
+
+        const nextData = JSON.parse(nextDataString);
+        const product = nextData.props?.pageProps?.data?.response?.product;
+
+        if (!product || !product.barcodes || !product.stocksByBarcode) {
+            return { success: false, error: "Korayspor: Product, barcodes, or stocks not found in JSON" };
+        }
+
+        const regularPrice = product.basePrice || product.salesPrice || null;
+        const discountPrice = product.discountPrice || null;
+
+        // مرتب‌سازی بارکدها بر اساس مقدار بارکد به صورت عددی/رشته‌ای صعودی
+        const sortedBarcodes = [...product.barcodes].sort((a, b) => {
+            return String(a.barcode).localeCompare(String(b.barcode), undefined, { numeric: true });
+        });
+
+        // مرتب‌سازی کلیدهای استوک به صورت عددی صعودی
+        const sortedStockKeys = Object.keys(product.stocksByBarcode).sort((a, b) => {
+            return parseInt(a) - parseInt(b);
+        });
+
+        const extractedStocks = {};
+        sortedBarcodes.forEach((bc, idx) => {
+            if (bc.stockTypeValues && bc.stockTypeValues[0]) {
+                const rawSize = bc.stockTypeValues[0].name;
+                const stockKey = sortedStockKeys[idx];
+                const stockVal = product.stocksByBarcode[stockKey] !== undefined ? product.stocksByBarcode[stockKey] : 0;
+                extractedStocks[rawSize] = stockVal;
+            }
+        });
+
+        const normalizedStocks = {};
+        for (const [key, val] of Object.entries(extractedStocks)) {
+            const normKey = normalizeSize(key, hostname);
+            if (normKey) normalizedStocks[normKey] = val;
+        }
+
+        const regular = parseTurkishPrice(regularPrice);
+        let offer = parseTurkishPrice(discountPrice);
+        if (regular && offer && offer >= regular) offer = null;
+
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Korayspor Error: " + error.message };
+    }
+}
+
 async function scrapeProduct(browser, url) {
+    if (url.toLowerCase().includes('korayspor')) {
+        return scrapeKorayspor(browser, url);
+    }
+
     console.log(`\n🔄 Scraping: ${url}`);
     const page = await browser.newPage();
 
