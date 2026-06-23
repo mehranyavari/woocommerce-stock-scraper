@@ -1,7 +1,7 @@
 const fs = require('fs');
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const { connect } = require('puppeteer-real-browser');
+
+let useProxy = true;
 
 // ==========================================
 // 🔗 لینک تست
@@ -92,72 +92,21 @@ async function waitForCloudflare(page, timeoutMs = 30000) {
 // ==========================================
 // 👟 اسکرپر مخصوص کورای اسپور
 // ==========================================
-async function scrapeKorayspor(browser, url) {
+async function scrapeKorayspor(page, url) {
     console.log(`\n🔄 Scraping Korayspor: ${url}`);
-    const page = await browser.newPage();
 
     try {
-        await page.evaluateOnNewDocument(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            Object.defineProperty(navigator, 'plugins', {
-                get: () => {
-                    const arr = [
-                        { name: 'Chrome PDF Plugin', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
-                        { name: 'Chrome PDF Viewer', filename: 'mhjfbmdgcfjbbpaeojofohoefgiehjai', description: '' },
-                        { name: 'Native Client', filename: 'internal-nacl-plugin', description: '' },
-                    ];
-                    arr.__proto__ = PluginArray.prototype;
-                    return arr;
-                }
-            });
-            Object.defineProperty(navigator, 'languages', { get: () => ['tr-TR', 'tr', 'en-US', 'en'] });
-            Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-            Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
-            Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
-            window.chrome = {
-                runtime: {},
-                loadTimes: function() {},
-                csi: function() {},
-                app: {}
-            };
-            const originalQuery = window.navigator.permissions.query;
-            window.navigator.permissions.query = (parameters) =>
-                parameters.name === 'notifications'
-                    ? Promise.resolve({ state: Notification.permission })
-                    : originalQuery(parameters);
-        });
+        // حذف setExtraHTTPHeaders و setViewport برای جلوگیری از خراب شدن فینگرپرینت PRB
 
-        await page.setExtraHTTPHeaders({
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Cache-Control': 'max-age=0',
-            'Sec-Ch-Ua': '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"',
-            'Sec-Ch-Ua-Mobile': '?0',
-            'Sec-Ch-Ua-Platform': '"Windows"',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'none',
-            'Sec-Fetch-User': '?1',
-            'Upgrade-Insecure-Requests': '1',
-        });
-
-        await page.emulateTimezone('Europe/Istanbul');
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-        await page.setViewport({ width: 1920, height: 1080 });
-
-        await page.authenticate({ username: 'mehran', password: 'mehran75' });
-
-        console.log(`  🔄 Visiting Korayspor homepage first...`);
-        await page.goto('https://www.korayspor.com', {
-            waitUntil: 'domcontentloaded',
-            timeout: 30000
-        });
-        await waitForCloudflare(page, 20000);
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
 
         console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-        await waitForCloudflare(page, 25000);
+        
+        console.log(`  ⏳ Waiting 15s to let Cloudflare pass...`);
+        await new Promise(r => setTimeout(r, 15000));
 
         const hostname = new URL(page.url()).hostname;
 
@@ -170,6 +119,7 @@ async function scrapeKorayspor(browser, url) {
             const bodyHtml = await page.evaluate(() => document.body ? document.body.innerHTML : '');
             const title = await page.title();
             fs.writeFileSync('korayspor_debug_dump.html', `<!-- Title: ${title} -->\n` + bodyHtml);
+            try { await page.screenshot({ path: 'korayspor_cloudflare_block.png', fullPage: true }); } catch (e) {}
             await page.close();
             return { success: false, error: `Korayspor: __NEXT_DATA__ not found. Saved page source to korayspor_debug_dump.html. Title: ${title}` };
         }
@@ -224,18 +174,17 @@ async function scrapeKorayspor(browser, url) {
     }
 }
 
-async function scrapeProduct(browser, url) {
+async function scrapeProduct(page, url) {
     if (url.toLowerCase().includes('korayspor')) {
-        return scrapeKorayspor(browser, url);
+        return scrapeKorayspor(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
-    const page = await browser.newPage();
 
     try {
-        await page.authenticate({ username: 'mehran', password: 'mehran75' });
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-        await page.setViewport({ width: 1920, height: 1080 });
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
 
         await page.goto(url, { waitUntil: 'networkidle2', timeout: CONFIG.PAGE_TIMEOUT });
         await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
@@ -307,23 +256,27 @@ async function scrapeProduct(browser, url) {
 }
 
 async function main() {
+    useProxy = !process.argv.includes('--no-proxy');
     console.log('='.repeat(60));
     console.log('🧪 TEST SINGLE PRODUCT');
     console.log('='.repeat(60));
     console.log('🔗 URL:', TEST_URL);
+    console.log('🔌 Proxy Enabled:', useProxy);
 
-    const browser = await puppeteer.launch({
-        headless: 'new',
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-blink-features=AutomationControlled',
-            '--proxy-server=http://45.145.20.148:3128'
-        ],
-        ignoreDefaultArgs: ['--enable-automation'],
+    const launchArgs = [];
+    if (useProxy) {
+        launchArgs.push('--proxy-server=http://45.145.20.148:3128');
+    }
+
+    console.log('🚀 Launching puppeteer-real-browser...');
+    const { browser, page } = await connect({
+        headless: false,
+        turnstile: true,
+        disableXvfb: false,
+        args: launchArgs
     });
 
-    const result = await scrapeProduct(browser, TEST_URL);
+    const result = await scrapeProduct(page, TEST_URL);
     await browser.close();
 
     console.log('\n' + '='.repeat(60));
