@@ -1,7 +1,7 @@
 const fs = require('fs');
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const { connect } = require('puppeteer-real-browser');
+
+let useProxy = true;
 
 // تنظیمات
 const CONFIG = {
@@ -78,53 +78,13 @@ function parseTurkishPrice(rawPrice) {
 async function scrapeDecathlon(browser, url) {
     const page = await browser.newPage();
     try {
-        await page.evaluateOnNewDocument(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            Object.defineProperty(navigator, 'plugins', {
-                get: () => {
-                    const arr = [
-                        { name: 'Chrome PDF Plugin', filename: 'internal-pdf-viewer', description: 'Portable Document Format' },
-                        { name: 'Chrome PDF Viewer', filename: 'mhjfbmdgcfjbbpaeojofohoefgiehjai', description: '' },
-                        { name: 'Native Client', filename: 'internal-nacl-plugin', description: '' },
-                    ];
-                    arr.__proto__ = PluginArray.prototype;
-                    return arr;
-                }
-            });
-            Object.defineProperty(navigator, 'languages', { get: () => ['tr-TR', 'tr', 'en-US', 'en'] });
-            Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-            Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
-            Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
-            window.chrome = {
-                runtime: {},
-                loadTimes: function() {},
-                csi: function() {},
-                app: {}
-            };
-            const originalQuery = window.navigator.permissions.query;
-            window.navigator.permissions.query = (parameters) =>
-                parameters.name === 'notifications'
-                    ? Promise.resolve({ state: Notification.permission })
-                    : originalQuery(parameters);
-        });
-
         await page.setExtraHTTPHeaders({
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Cache-Control': 'max-age=0',
-            'Sec-Ch-Ua': '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"',
-            'Sec-Ch-Ua-Mobile': '?0',
-            'Sec-Ch-Ua-Platform': '"Windows"',
-            'Sec-Fetch-Dest': 'document',
-            'Sec-Fetch-Mode': 'navigate',
-            'Sec-Fetch-Site': 'none',
-            'Sec-Fetch-User': '?1',
             'Upgrade-Insecure-Requests': '1',
         });
 
         await page.emulateTimezone('Europe/Istanbul');
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
         await page.setViewport({ width: 1920, height: 1080 });
 
         console.log(`  🔄 Visiting Decathlon homepage first...`);
@@ -205,6 +165,121 @@ async function scrapeDecathlon(browser, url) {
     }
 }
 
+async function waitForCloudflare(page, timeoutMs = 30000) {
+    const startTime = Date.now();
+    let isBlocked = true;
+
+    while (Date.now() - startTime < timeoutMs) {
+        const title = (await page.title()).toLowerCase();
+        isBlocked = title.includes('just a moment') || 
+                    title.includes('attention required') || 
+                    title.includes('cloudflare') || 
+                    title.includes('bir dakika') || 
+                    title.includes('lütfen');
+
+        if (!isBlocked) {
+            console.log(`  🎉 Cloudflare bypassed! Title changed to: "${await page.title()}"`);
+            return true;
+        }
+
+        console.log(`  ⏳ Cloudflare challenge active (Title: "${await page.title()}"). Waiting 2s...`);
+        await new Promise(r => setTimeout(r, 2000));
+    }
+
+    console.log(`  ⚠️ Cloudflare bypass timed out after ${timeoutMs / 1000}s.`);
+    return false;
+}
+
+// ==========================================
+// 👟 اسکرپر مخصوص کورای اسپور
+// ==========================================
+async function scrapeKorayspor(browser, url) {
+    const page = await browser.newPage();
+    try {
+        await page.setExtraHTTPHeaders({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Upgrade-Insecure-Requests': '1',
+        });
+
+        await page.emulateTimezone('Europe/Istanbul');
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        if (useProxy) {
+            await page.authenticate({
+                username: 'mehran',
+                password: 'mehran75'
+            });
+        }
+
+        console.log(`  🔄 Navigating to product page...`);
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        console.log(`  ⏳ Waiting 15s to let Cloudflare pass...`);
+        await new Promise(r => setTimeout(r, 15000));
+
+        const hostname = new URL(page.url()).hostname;
+
+        const nextDataString = await page.evaluate(() => {
+            const scriptNode = document.getElementById('__NEXT_DATA__');
+            return scriptNode ? scriptNode.innerHTML : null;
+        });
+
+        await page.close();
+
+        if (!nextDataString) {
+            return { success: false, error: "Korayspor: __NEXT_DATA__ not found (Cloudflare Blocked or structure changed)" };
+        }
+
+        const nextData = JSON.parse(nextDataString);
+        const product = nextData.props?.pageProps?.data?.response?.product;
+
+        if (!product || !product.barcodes || !product.stocksByBarcode) {
+            return { success: false, error: "Korayspor: Product, barcodes, or stocks not found in JSON" };
+        }
+
+        const regularPrice = product.basePrice || product.salesPrice || null;
+        const discountPrice = product.discountPrice || null;
+
+        // مرتب‌سازی بارکدها بر اساس مقدار بارکد به صورت عددی/رشته‌ای صعودی
+        const sortedBarcodes = [...product.barcodes].sort((a, b) => {
+            return String(a.barcode).localeCompare(String(b.barcode), undefined, { numeric: true });
+        });
+
+        // مرتب‌سازی کلیدهای استوک به صورت عددی صعودی
+        const sortedStockKeys = Object.keys(product.stocksByBarcode).sort((a, b) => {
+            return parseInt(a) - parseInt(b);
+        });
+
+        const extractedStocks = {};
+        sortedBarcodes.forEach((bc, idx) => {
+            if (bc.stockTypeValues && bc.stockTypeValues[0]) {
+                const rawSize = bc.stockTypeValues[0].name;
+                const stockKey = sortedStockKeys[idx];
+                const stockVal = product.stocksByBarcode[stockKey] !== undefined ? product.stocksByBarcode[stockKey] : 0;
+                extractedStocks[rawSize] = stockVal;
+            }
+        });
+
+        const normalizedStocks = {};
+        for (const [key, val] of Object.entries(extractedStocks)) {
+            const normKey = normalizeSize(key, hostname);
+            if (normKey) normalizedStocks[normKey] = val;
+        }
+
+        const regular = parseTurkishPrice(regularPrice);
+        let offer = parseTurkishPrice(discountPrice);
+        if (regular && offer && offer >= regular) offer = null;
+
+        console.log(`  ✅ Korayspor URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Korayspor Error: " + error.message };
+    }
+}
+
 // ==========================================
 // 🛒 اسکرپر استاندارد (سایر سایت‌ها)
 // ==========================================
@@ -215,12 +290,12 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
     const page = await browser.newPage();
 
     try {
-        await page.authenticate({
-            username: 'mehran',
-            password: 'mehran75'
-        });
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-        await page.setViewport({ width: 1920, height: 1080 });
+        if (useProxy) {
+            await page.authenticate({
+                username: 'mehran',
+                password: 'mehran75'
+            });
+        }
 
         try {
             await page.goto(productObj.url, { waitUntil: 'networkidle2', timeout: CONFIG.PAGE_TIMEOUT });
@@ -313,6 +388,9 @@ async function processProduct(browser, product) {
         if (product.url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Primary URL for product ${product.id} (Decathlon Engine)`);
             primaryData = await scrapeDecathlon(browser, product.url);
+        } else if (product.url.toLowerCase().includes('korayspor')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Korayspor Engine)`);
+            primaryData = await scrapeKorayspor(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -322,6 +400,9 @@ async function processProduct(browser, product) {
         if (product.secondary_url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Decathlon Engine)`);
             secondaryData = await scrapeDecathlon(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('korayspor')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Korayspor Engine)`);
+            secondaryData = await scrapeKorayspor(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
@@ -380,6 +461,7 @@ async function processProduct(browser, product) {
 
 async function main() {
     const args = getArgs();
+    useProxy = args.proxy !== 'false' && !process.argv.includes('--no-proxy');
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
 
     const files = fs.readdirSync('.').filter(fn => fn.startsWith('products_') && fn.endsWith('.json'));
@@ -389,19 +471,19 @@ async function main() {
         return;
     }
 
-    const browser = await puppeteer.launch({
-        headless: 'new',
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-blink-features=AutomationControlled',
-            '--disable-features=IsolateOrigins,site-per-process',
-            '--flag-switches-begin',
-            '--disable-site-isolation-trials',
-            '--flag-switches-end',
-            '--proxy-server=http://45.145.20.148:3128'
-        ],
-        ignoreDefaultArgs: ['--enable-automation'],
+    console.log(`🔌 Proxy Enabled: ${useProxy}`);
+
+    const launchArgs = [];
+    if (useProxy) {
+        launchArgs.push('--proxy-server=http://45.145.20.148:3128');
+    }
+
+    console.log('🚀 Launching puppeteer-real-browser...');
+    const { browser } = await connect({
+        headless: false,
+        turnstile: true,
+        disableXvfb: false,
+        args: launchArgs
     });
 
     for (const file of files) {
