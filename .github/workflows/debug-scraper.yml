@@ -14,7 +14,11 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          npm install
+          npm install puppeteer-real-browser
 
       - name: Run scraper
         env:
