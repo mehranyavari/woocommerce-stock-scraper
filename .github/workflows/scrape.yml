@@ -21,11 +21,13 @@ jobs:
         with:
           node-version: '18'
       
-      # ⚠️ نصب افزونه‌های ضد‌ردیابی دکتلون
+      # ⚠️ نصب پیش‌نیازهای مرورگر واقعی (Xvfb) و پکیج PRB
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
           npm install
-          npm install puppeteer-extra puppeteer-extra-plugin-stealth
+          npm install puppeteer-real-browser
       
       - name: Run scraper
         run: node scraper.js
