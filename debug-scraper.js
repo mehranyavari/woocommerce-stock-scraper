@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.opsarsport.com/urun/nike-zoom-vapor-pro-3-clay";
+const TEST_URL = "https://www.raketci.com/urun/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi/";
 
 // ==========================================
 // تنظیمات
@@ -325,8 +325,121 @@ async function scrapeOpsarSport(page, url) {
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
         
     } catch (error) {
-        try { await page.close(); } catch(e) {}
         return { success: false, error: "OpsarSport Error: " + error.message };
+    }
+}
+
+// ==========================================
+// 🏓 اسکرپر مخصوص راکت‌چی (Raketci)
+// ==========================================
+async function scrapeRaketci(page, url) {
+    console.log(`\n🔄 Scraping Raketci: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 10000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            let stockData = {};
+            
+            // WooCommerce Variations Form Data
+            const form = document.querySelector('form.variations_form');
+            if (form) {
+                const varData = form.getAttribute('data-product_variations');
+                if (varData) {
+                    try {
+                        const variations = JSON.parse(varData);
+                        variations.forEach(v => {
+                            let size = '';
+                            for (let key in v.attributes) {
+                                if (v.attributes[key]) {
+                                    size = v.attributes[key];
+                                    break;
+                                }
+                            }
+                            if (size) {
+                                // sometimes sizes are like 42-5 instead of 42.5
+                                size = size.replace('-', '.');
+                                stockData[size] = v.is_in_stock;
+                            }
+                            
+                            // Prices from the first valid variation
+                            if (basePrice === null) {
+                                basePrice = v.display_regular_price || null;
+                                salePrice = v.display_price || null;
+                            }
+                        });
+                    } catch (e) {}
+                }
+            }
+            
+            // Fallback to WooCommerce DOM (Swatches)
+            if (Object.keys(stockData).length === 0) {
+                const lis = document.querySelectorAll('li.variable-item');
+                lis.forEach(li => {
+                    const title = li.getAttribute('data-title') || li.getAttribute('title');
+                    let size = li.getAttribute('data-value') || title;
+                    if (!size) {
+                        const span = li.querySelector('.variable-item-span');
+                        if (span) size = span.innerText.trim();
+                    }
+                    if (size) {
+                        size = size.replace('-', '.');
+                        const isOut = li.classList.contains('disabled');
+                        stockData[size] = !isOut;
+                    }
+                });
+            }
+            
+            // Fallback for simple products
+            if (Object.keys(stockData).length === 0) {
+                const outOfStockEl = document.querySelector('.out-of-stock');
+                stockData['Standart'] = !outOfStockEl;
+            }
+            
+            // Fallback for Price from DOM
+            if (basePrice === null) {
+                const priceWrapper = document.querySelector('.summary .price, .product-info .price, .price');
+                if (priceWrapper) {
+                    const del = priceWrapper.querySelector('del .amount');
+                    const ins = priceWrapper.querySelector('ins .amount');
+                    if (del && ins) {
+                        basePrice = del.innerText;
+                        salePrice = ins.innerText;
+                    } else {
+                        const amt = priceWrapper.querySelector('.amount');
+                        if (amt) basePrice = amt.innerText;
+                    }
+                }
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Raketci URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Raketci Error: " + error.message };
     }
 }
 
@@ -343,6 +456,10 @@ async function scrapeProduct(page, url) {
 
     if (url.toLowerCase().includes('opsarsport.com')) {
         return scrapeOpsarSport(page, url);
+    }
+
+    if (url.toLowerCase().includes('raketci.com')) {
+        return scrapeRaketci(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
