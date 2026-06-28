@@ -375,6 +375,83 @@ async function scrapeProduct(browser, productObj, isSecondary = false) {
     }
 }
 
+async function scrapeTenisBurada(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 15000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = 0;
+            let salePrice = 0;
+            const stockData = {};
+            
+            if (typeof window.PRODUCT_DATA !== 'undefined' && window.PRODUCT_DATA.length > 0) {
+                const product = window.PRODUCT_DATA[0];
+                basePrice = product.total_base_price || product.price || 0;
+                salePrice = product.total_sale_price || product.sale_price || 0;
+                
+                if (window.PRODUCT_DATA.length > 1) {
+                    window.PRODUCT_DATA.forEach(p => {
+                        const size = p.variant1 || p.variant2 || p.subproduct_name || 'Standart';
+                        stockData[size] = p.quantity > 0;
+                    });
+                } else if (typeof window.sub_products !== 'undefined' && window.sub_products.length > 0) {
+                    window.sub_products.forEach(sp => {
+                        const size = sp.variant1 || sp.variant2 || sp.name || sp.value || 'Standart';
+                        stockData[size] = sp.stock > 0 || sp.quantity > 0;
+                    });
+                } else {
+                    stockData['Standart'] = product.quantity > 0;
+                }
+            }
+            
+            if (Object.keys(stockData).length === 0 || (Object.keys(stockData).length === 1 && stockData['Standart'] !== undefined)) {
+                let domFound = false;
+                const variantLinks = document.querySelectorAll('a[data-id], .variant a, .size a, .beden a, .variantItem, [data-toggle="variant"]');
+                variantLinks.forEach(a => {
+                    const size = a.getAttribute('data-type') || a.innerText.trim();
+                    const isOutOfStock = a.classList.contains('passive') || a.classList.contains('out-of-stock') || a.classList.contains('disabled') || a.getAttribute('data-instock') === '0' || a.getAttribute('data-stock') === '0';
+                    if (size && size.length < 30) {
+                        stockData[size.trim()] = !isOutOfStock;
+                        domFound = true;
+                    }
+                });
+                if (domFound) delete stockData['Standart'];
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Tenisburada URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "TenisBurada Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
@@ -391,6 +468,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('korayspor')) {
             console.log(`Scraping Primary URL for product ${product.id} (Korayspor Engine)`);
             primaryData = await scrapeKorayspor(browser, product.url);
+        } else if (product.url.toLowerCase().includes('tenisburada.com')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Tenisburada Engine)`);
+            primaryData = await scrapeTenisBurada(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -403,6 +483,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('korayspor')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Korayspor Engine)`);
             secondaryData = await scrapeKorayspor(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('tenisburada.com')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Tenisburada Engine)`);
+            secondaryData = await scrapeTenisBurada(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
