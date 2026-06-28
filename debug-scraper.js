@@ -212,15 +212,18 @@ async function scrapeTenisBurada(page, url) {
                 }
             }
             
-            if (Object.keys(stockData).length === 0) {
+            if (Object.keys(stockData).length === 0 || (Object.keys(stockData).length === 1 && stockData['Standart'] !== undefined)) {
+                let domFound = false;
                 const variantLinks = document.querySelectorAll('a[data-id], .variant a, .size a, .beden a, .variantItem, [data-toggle="variant"]');
                 variantLinks.forEach(a => {
                     const size = a.getAttribute('data-type') || a.innerText.trim();
                     const isOutOfStock = a.classList.contains('passive') || a.classList.contains('out-of-stock') || a.classList.contains('disabled') || a.getAttribute('data-instock') === '0' || a.getAttribute('data-stock') === '0';
                     if (size && size.length < 30) {
                         stockData[size.trim()] = !isOutOfStock;
+                        domFound = true;
                     }
                 });
+                if (domFound) delete stockData['Standart'];
             }
             
             return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
