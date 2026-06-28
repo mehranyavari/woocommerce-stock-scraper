@@ -530,6 +530,122 @@ async function scrapeOpsarSport(browser, url) {
     }
 }
 
+// ==========================================
+// 🏓 اسکرپر مخصوص راکت‌چی (Raketci)
+// ==========================================
+async function scrapeRaketci(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 10000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            let stockData = {};
+            
+            // WooCommerce Variations Form Data
+            const form = document.querySelector('form.variations_form');
+            if (form) {
+                const varData = form.getAttribute('data-product_variations');
+                if (varData) {
+                    try {
+                        const variations = JSON.parse(varData);
+                        variations.forEach(v => {
+                            let size = '';
+                            for (let key in v.attributes) {
+                                if (v.attributes[key]) {
+                                    size = v.attributes[key];
+                                    break;
+                                }
+                            }
+                            if (size) {
+                                size = size.replace('-', '.');
+                                stockData[size] = v.is_in_stock;
+                            }
+                            
+                            // Prices from the first valid variation
+                            if (basePrice === null) {
+                                basePrice = v.display_regular_price || null;
+                                salePrice = v.display_price || null;
+                            }
+                        });
+                    } catch (e) {}
+                }
+            }
+            
+            // Fallback to WooCommerce DOM (Swatches)
+            if (Object.keys(stockData).length === 0) {
+                const lis = document.querySelectorAll('li.variable-item');
+                lis.forEach(li => {
+                    const title = li.getAttribute('data-title') || li.getAttribute('title');
+                    let size = li.getAttribute('data-value') || title;
+                    if (!size) {
+                        const span = li.querySelector('.variable-item-span');
+                        if (span) size = span.innerText.trim();
+                    }
+                    if (size) {
+                        size = size.replace('-', '.');
+                        const isOut = li.classList.contains('disabled');
+                        stockData[size] = !isOut;
+                    }
+                });
+            }
+            
+            // Fallback for simple products
+            if (Object.keys(stockData).length === 0) {
+                const outOfStockEl = document.querySelector('.out-of-stock');
+                stockData['Standart'] = !outOfStockEl;
+            }
+            
+            // Fallback for Price from DOM
+            if (basePrice === null) {
+                const priceWrapper = document.querySelector('.summary .price, .product-info .price, .price');
+                if (priceWrapper) {
+                    const del = priceWrapper.querySelector('del .amount');
+                    const ins = priceWrapper.querySelector('ins .amount');
+                    if (del && ins) {
+                        basePrice = del.innerText;
+                        salePrice = ins.innerText;
+                    } else {
+                        const amt = priceWrapper.querySelector('.amount');
+                        if (amt) basePrice = amt.innerText;
+                    }
+                }
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Raketci URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Raketci Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
@@ -552,6 +668,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('opsarsport.com')) {
             console.log(`Scraping Primary URL for product ${product.id} (OpsarSport Engine)`);
             primaryData = await scrapeOpsarSport(browser, product.url);
+        } else if (product.url.toLowerCase().includes('raketci.com')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Raketci Engine)`);
+            primaryData = await scrapeRaketci(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -570,6 +689,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('opsarsport.com')) {
             console.log(`Scraping Secondary URL for product ${product.id} (OpsarSport Engine)`);
             secondaryData = await scrapeOpsarSport(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('raketci.com')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Raketci Engine)`);
+            secondaryData = await scrapeRaketci(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
