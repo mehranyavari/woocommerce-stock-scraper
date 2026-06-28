@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-toprak-kort-erkek-tenis-ayakkabisi";
+const TEST_URL = "https://www.opsarsport.com/urun/nike-zoom-vapor-pro-3-clay";
 
 // ==========================================
 // تنظیمات
@@ -243,6 +243,7 @@ async function scrapeTenisBurada(page, url) {
         let offer = parseTurkishPrice(result.offerPrice);
         if (regular && offer && offer >= regular) offer = null;
         
+        console.log(`  ✅ Tenisburada URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
         
     } catch (error) {
@@ -251,6 +252,86 @@ async function scrapeTenisBurada(page, url) {
     }
 }
 
+// ==========================================
+// 🎾 اسکرپر مخصوص اوپسار اسپورت (OpsarSport)
+// ==========================================
+async function scrapeOpsarSport(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 15000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = 0;
+            let salePrice = 0;
+            const stockData = {};
+            
+            // Try to get price from pageParams (IdeaSoft)
+            if (typeof pageParams !== 'undefined' && pageParams.product) {
+                // In IdeaSoft, price is sometimes without tax, so we calculate it just in case
+                const taxMultiplier = 1 + ((pageParams.product.tax || 0) / 100);
+                const p1 = parseFloat(pageParams.product.priceWithCurrency || 0) * taxMultiplier;
+                const p2 = parseFloat(pageParams.product.salePrice || 0) * taxMultiplier;
+                
+                if (p2 < p1 && p2 > 0) {
+                    basePrice = p1;
+                    salePrice = p2;
+                } else {
+                    basePrice = p1;
+                    salePrice = 0; // No discount
+                }
+            }
+            
+            // Get sizes from DOM
+            let domFound = false;
+            const variantSpans = document.querySelectorAll('.variant-list .variant-text, .product-options .variant-text');
+            variantSpans.forEach(span => {
+                const size = span.innerText.trim();
+                const isOutOfStock = span.classList.contains('passive') || span.classList.contains('disabled') || span.classList.contains('out-of-stock');
+                if (size && size.length < 30) {
+                    stockData[size] = !isOutOfStock;
+                    domFound = true;
+                }
+            });
+            
+            if (!domFound && typeof pageParams !== 'undefined' && pageParams.product && pageParams.product.quantity) {
+                stockData['Standart'] = pageParams.product.quantity > 0;
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ OpsarSport URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "OpsarSport Error: " + error.message };
+    }
+}
+
+function getEffectivePrice(scrapeData) { }
+
 async function scrapeProduct(page, url) {
     if (url.toLowerCase().includes('korayspor')) {
         return scrapeKorayspor(page, url);
@@ -258,6 +339,10 @@ async function scrapeProduct(page, url) {
     
     if (url.toLowerCase().includes('tenisburada.com')) {
         return scrapeTenisBurada(page, url);
+    }
+
+    if (url.toLowerCase().includes('opsarsport.com')) {
+        return scrapeOpsarSport(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
