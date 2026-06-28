@@ -255,8 +255,8 @@ async function scrapeTenisBurada(page, url) {
 // ==========================================
 // 🎾 اسکرپر مخصوص اوپسار اسپورت (OpsarSport)
 // ==========================================
-async function scrapeOpsarSport(browser, url) {
-    const page = await browser.newPage();
+async function scrapeOpsarSport(page, url) {
+    console.log(`\n🔄 Scraping OpsarSport: ${url}`);
     try {
         if (useProxy) {
             await page.authenticate({ username: 'mehran', password: 'mehran75' });
