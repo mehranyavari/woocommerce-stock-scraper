@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.korayspor.com/asics-tenis-ayakkabisi-solution-speed-ff-3-1041a438-300/";
+const TEST_URL = "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-toprak-kort-erkek-tenis-ayakkabisi";
 
 // ==========================================
 // تنظیمات
@@ -51,10 +51,7 @@ function parseTurkishPrice(rawPrice) {
     const commaIdx = clean.lastIndexOf(',');
     const dotIdx = clean.lastIndexOf('.');
 
-    if (commaIdx > dotIdx) {
-        // فرمت ترکی: 1.234,56
-        clean = clean.replace(/\./g, '').replace(',', '.');
-    } else if (dotIdx > commaIdx) {
+    if (dotIdx > commaIdx) {
         // فرمت انگلیسی یا float ساده: 1,234.56
         clean = clean.replace(/,/g, '');
     }
@@ -174,9 +171,90 @@ async function scrapeKorayspor(page, url) {
     }
 }
 
+async function scrapeTenisBurada(page, url) {
+    console.log(`\n🔄 Scraping TenisBurada: ${url}`);
+    
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        console.log(`  🔄 Navigating to product page...`);
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        console.log(`  ⏳ Waiting 15s to let JS load...`);
+        await new Promise(r => setTimeout(r, 15000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = 0;
+            let salePrice = 0;
+            const stockData = {};
+            
+            if (typeof window.PRODUCT_DATA !== 'undefined' && window.PRODUCT_DATA.length > 0) {
+                const product = window.PRODUCT_DATA[0];
+                basePrice = product.total_base_price || product.price || 0;
+                salePrice = product.total_sale_price || product.sale_price || 0;
+                
+                if (window.PRODUCT_DATA.length > 1) {
+                    window.PRODUCT_DATA.forEach(p => {
+                        const size = p.variant1 || p.variant2 || p.subproduct_name || 'Standart';
+                        stockData[size] = p.quantity > 0;
+                    });
+                } else if (typeof window.sub_products !== 'undefined' && window.sub_products.length > 0) {
+                    window.sub_products.forEach(sp => {
+                        const size = sp.variant1 || sp.variant2 || sp.name || sp.value || 'Standart';
+                        stockData[size] = sp.stock > 0 || sp.quantity > 0;
+                    });
+                } else {
+                    stockData['Standart'] = product.quantity > 0;
+                }
+            }
+            
+            if (Object.keys(stockData).length === 0) {
+                const variantLinks = document.querySelectorAll('a[data-id], .variant a, .size a, .beden a, .variantItem');
+                variantLinks.forEach(a => {
+                    const size = a.innerText.trim();
+                    const isOutOfStock = a.classList.contains('passive') || a.classList.contains('out-of-stock') || a.classList.contains('disabled');
+                    if (size && size.length < 15) {
+                        stockData[size] = !isOutOfStock;
+                    }
+                });
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "TenisBurada Error: " + error.message };
+    }
+}
+
 async function scrapeProduct(page, url) {
     if (url.toLowerCase().includes('korayspor')) {
         return scrapeKorayspor(page, url);
+    }
+    
+    if (url.toLowerCase().includes('tenisburada.com')) {
+        return scrapeTenisBurada(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
