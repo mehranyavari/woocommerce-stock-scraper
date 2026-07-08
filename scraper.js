@@ -646,6 +646,83 @@ async function scrapeRaketci(browser, url) {
     }
 }
 
+// ==========================================
+// 🏃‍♂️ اسکرپر مخصوص اسپورت‌این (Sportinn)
+// ==========================================
+async function scrapeSportinn(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 10000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            // Sizes
+            const variantLinks = document.querySelectorAll('a[data-variant], a[data-id]');
+            variantLinks.forEach(a => {
+                const size = a.getAttribute('data-variant') || a.innerText.trim();
+                const isColor = !a.hasAttribute('data-group-id') && !a.classList.contains('box-border') && !a.querySelector('p');
+                if (!isColor && size && size.length < 20) {
+                    const isOutOfStock = a.classList.contains('passive') || a.classList.contains('disabled') || a.getAttribute('data-stock') === '0';
+                    stockData[size] = !isOutOfStock;
+                }
+            });
+            
+            if (Object.keys(stockData).length === 0) {
+                const isOutOfStock = !!document.querySelector('.out-of-stock');
+                stockData['Standart'] = !isOutOfStock;
+            }
+            
+            // Prices
+            const priceEl = document.querySelector('.product-price');
+            const discountEl = document.querySelector('.product-discount-price');
+            const oldPriceEl = document.querySelector('.product-old-price');
+            
+            if (oldPriceEl && priceEl) {
+                basePrice = oldPriceEl.innerText.trim();
+                salePrice = priceEl.innerText.trim();
+            } else if (discountEl && priceEl) {
+                basePrice = priceEl.innerText.trim();
+                salePrice = discountEl.innerText.trim();
+            } else if (priceEl) {
+                basePrice = priceEl.innerText.trim();
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Sportinn URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Sportinn Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
@@ -671,6 +748,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('raketci.com')) {
             console.log(`Scraping Primary URL for product ${product.id} (Raketci Engine)`);
             primaryData = await scrapeRaketci(browser, product.url);
+        } else if (product.url.toLowerCase().includes('sportinn.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Sportinn Engine)`);
+            primaryData = await scrapeSportinn(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -692,6 +772,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('raketci.com')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Raketci Engine)`);
             secondaryData = await scrapeRaketci(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('sportinn.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Sportinn Engine)`);
+            secondaryData = await scrapeSportinn(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
