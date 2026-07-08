@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.raketci.com/urun/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi/";
+const TEST_URL = "https://www.sportinn.com.tr/nike-nikecourt-tee-std-heritage-erkek-siyah-tisort-ih2085-010";
 
 // ==========================================
 // تنظیمات
@@ -443,6 +443,80 @@ async function scrapeRaketci(page, url) {
     }
 }
 
+// ==========================================
+// 🏃‍♂️ اسکرپر مخصوص اسپورت‌این (Sportinn)
+// ==========================================
+async function scrapeSportinn(page, url) {
+    console.log(`\n🔄 Scraping Sportinn: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 10000));
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            // Sizes
+            const variantLinks = document.querySelectorAll('a[data-variant], a[data-id]');
+            variantLinks.forEach(a => {
+                const size = a.getAttribute('data-variant') || a.innerText.trim();
+                const isColor = !a.hasAttribute('data-group-id') && !a.classList.contains('box-border') && !a.querySelector('p');
+                if (!isColor && size && size.length < 20) {
+                    const isOutOfStock = a.classList.contains('passive') || a.classList.contains('disabled') || a.getAttribute('data-stock') === '0';
+                    stockData[size] = !isOutOfStock;
+                }
+            });
+            
+            if (Object.keys(stockData).length === 0) {
+                const isOutOfStock = !!document.querySelector('.out-of-stock');
+                stockData['Standart'] = !isOutOfStock;
+            }
+            
+            // Prices
+            const priceEl = document.querySelector('.product-price');
+            const discountEl = document.querySelector('.product-discount-price');
+            const oldPriceEl = document.querySelector('.product-old-price');
+            
+            if (oldPriceEl && priceEl) {
+                basePrice = oldPriceEl.innerText.trim();
+                salePrice = priceEl.innerText.trim();
+            } else if (discountEl && priceEl) {
+                basePrice = priceEl.innerText.trim();
+                salePrice = discountEl.innerText.trim();
+            } else if (priceEl) {
+                basePrice = priceEl.innerText.trim();
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Sportinn URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Sportinn Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) { }
 
 async function scrapeProduct(page, url) {
@@ -460,6 +534,10 @@ async function scrapeProduct(page, url) {
 
     if (url.toLowerCase().includes('raketci.com')) {
         return scrapeRaketci(page, url);
+    }
+
+    if (url.toLowerCase().includes('sportinn.com.tr')) {
+        return scrapeSportinn(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
