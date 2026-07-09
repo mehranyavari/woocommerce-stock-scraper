@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.adidas.com.tr/tr/barricade-14-tenis-ayakkabisi/KI3438.html";
+const TEST_URL = "https://www.intersport.com.tr/urun/nike-initiator-erkek-beyaz-gunluk-spor-ayakkabi/394055-100/";
 
 // ==========================================
 // تنظیمات
@@ -716,6 +716,100 @@ async function scrapeAdidas(page, url) {
     }
 }
 
+async function scrapeIntersport(page, url) {
+    console.log(`\n🔄 Scraping Intersport: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            // 1. Get prices from JSON-LD
+            try {
+                const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+                scripts.forEach(s => {
+                    const data = JSON.parse(s.innerText);
+                    if (data['@type'] === 'Product' && data.offers && data.offers.price) {
+                        basePrice = data.offers.price;
+                        salePrice = basePrice;
+                    }
+                });
+            } catch(e) {}
+            
+            // Fallback for price
+            if (!basePrice) {
+                const priceEl = document.querySelector('.price, .product-price, .price-row');
+                if (priceEl) basePrice = priceEl.innerText.trim();
+            }
+
+            // 2. Get variants (Akinon structure)
+            const variants = document.querySelectorAll('pz-variant-option');
+            if (variants.length > 0) {
+                variants.forEach(v => {
+                    const size = v.getAttribute('label') || v.innerText.trim();
+                    if (!size) return;
+                    
+                    const urlAttr = v.getAttribute('url') || '';
+                    const isSelectable = v.hasAttribute('selectable');
+                    
+                    let isStock = isSelectable;
+                    
+                    // Check if it's the currently selected size
+                    const currentPath = window.location.pathname.replace(/\/$/, '');
+                    const variantPath = urlAttr.replace(/\/$/, '');
+                    
+                    if (!isSelectable && currentPath === variantPath) {
+                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart');
+                         if (addBtn && !addBtn.hasAttribute('disabled')) {
+                             isStock = true;
+                         }
+                    }
+                    
+                    stockData[size] = isStock;
+                });
+            } else {
+                // Fallback generic DOM size parsing
+                const sizeButtons = document.querySelectorAll('.product-detail__variant, .size-selector option, label.size');
+                sizeButtons.forEach(btn => {
+                    const size = btn.innerText.trim();
+                    if (size && size.length < 15) {
+                        const isOutOfStock = btn.classList.contains('disabled') || btn.disabled || btn.getAttribute('data-stock') === '0';
+                        stockData[size] = !isOutOfStock;
+                    }
+                });
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Intersport URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Intersport Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) { }
 
 async function scrapeProduct(page, url) {
@@ -745,6 +839,10 @@ async function scrapeProduct(page, url) {
 
     if (url.toLowerCase().includes('adidas.com.tr')) {
         return scrapeAdidas(page, url);
+    }
+
+    if (url.includes('intersport.com.tr')) {
+        return scrapeIntersport(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
