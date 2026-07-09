@@ -17,7 +17,7 @@ const CONFIG = {
 };
 
 function normalizeSize(rawSize, hostname) {
-    const trimmed = rawSize.trim();
+    const trimmed = String(rawSize).trim();
     if (!trimmed) return null;
     const lower = trimmed.toLowerCase();
     if (lower === 's-m') return 'S/M';
@@ -26,6 +26,11 @@ function normalizeSize(rawSize, hostname) {
 
     const rangeMatch = trimmed.match(/^(\d+)\s*-\s*(\d+)$/);
     if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
+
+    const fractionMatch = trimmed.match(/(\d+)\s*(-?\s*\d+\/\d+)/);
+    if (fractionMatch) {
+        return (fractionMatch[1] + ' ' + fractionMatch[2].replace('-', '')).replace(/\s+/g, ' ');
+    }
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
     if (numbers && numbers.length > 0) {
