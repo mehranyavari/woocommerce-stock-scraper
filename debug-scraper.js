@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.sportinn.com.tr/nike-nikecourt-tee-std-heritage-erkek-siyah-tisort-ih2085-010";
+const TEST_URL = "https://www.asics.com.tr/solution-speed-ff-4-1670";
 
 // ==========================================
 // تنظیمات
@@ -517,6 +517,69 @@ async function scrapeSportinn(page, url) {
     }
 }
 
+// ==========================================
+// 🏃‍♂️ اسکرپر مخصوص اسیکس (Asics)
+// ==========================================
+async function scrapeAsics(page, url) {
+    console.log(`\n🔄 Scraping Asics: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction('typeof window.productDetailModel !== "undefined"', { timeout: 15000 }).catch(() => {});
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            if (typeof window.productDetailModel === 'undefined' || !window.productDetailModel.products) {
+                return { success: false, error: "productDetailModel not found" };
+            }
+            const d = window.productDetailModel;
+            const stockData = {};
+            
+            d.products.forEach(p => {
+                const variants = d.productVariantData.filter(v => v.urunID === p.id);
+                variants.forEach(v => {
+                    const size = v.tanim.trim();
+                    const isColor = size.includes('/') || size.toLowerCase().includes('white') || size.toLowerCase().includes('black') || size.toLowerCase().includes('blue') || size.toLowerCase().includes('red');
+                    if (!isColor && size.length < 20) {
+                        stockData[size] = p.stokAdedi > 0;
+                    }
+                });
+            });
+            
+            if (Object.keys(stockData).length === 0 && d.product) {
+                stockData['Standart'] = d.product.stokAdedi > 0;
+            }
+            
+            const basePrice = d.product.satisFiyatiStr || d.product.satisFiyati;
+            const salePrice = d.product.indirimliFiyatiStr || d.product.indirimliFiyati;
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Asics URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Asics Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) { }
 
 async function scrapeProduct(page, url) {
@@ -538,6 +601,10 @@ async function scrapeProduct(page, url) {
 
     if (url.toLowerCase().includes('sportinn.com.tr')) {
         return scrapeSportinn(page, url);
+    }
+
+    if (url.toLowerCase().includes('asics.com.tr')) {
+        return scrapeAsics(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
