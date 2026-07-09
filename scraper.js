@@ -24,7 +24,7 @@ function getArgs() {
 }
 
 function normalizeSize(rawSize, hostname) {
-    const trimmed = rawSize.trim();
+    const trimmed = String(rawSize).trim();
     if (!trimmed) return null;
     const lower = trimmed.toLowerCase();
     if (lower === 's-m') return 'S/M';
@@ -33,6 +33,11 @@ function normalizeSize(rawSize, hostname) {
 
     const rangeMatch = trimmed.match(/^(\d+)\s*-\s*(\d+)$/);
     if (rangeMatch) return rangeMatch[1] + '-' + rangeMatch[2];
+
+    const fractionMatch = trimmed.match(/(\d+)\s*(-?\s*\d+\/\d+)/);
+    if (fractionMatch) {
+        return (fractionMatch[1] + ' ' + fractionMatch[2].replace('-', '')).replace(/\s+/g, ' ');
+    }
 
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
     if (numbers && numbers.length > 0) {
@@ -798,6 +803,128 @@ async function scrapeAsics(browser, url) {
     }
 }
 
+// ==========================================
+// 🏃‍♂️ اسکرپر مخصوص آدیداس (Adidas)
+// ==========================================
+async function scrapeAdidas(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction('document.getElementById("__NEXT_DATA__") !== null', { timeout: 15000 }).catch(() => {});
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const urlParts = url.split('/');
+        let productId = urlParts[urlParts.length - 1].replace('.html', '').trim();
+        if (!productId) productId = urlParts[urlParts.length - 2].replace('.html', '').trim();
+        
+        const result = await page.evaluate(async (productId) => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            // 1. Get Price from __NEXT_DATA__
+            try {
+                const nextDataEl = document.getElementById('__NEXT_DATA__');
+                if (nextDataEl) {
+                    const nextData = JSON.parse(nextDataEl.innerText);
+                    let foundProduct = null;
+                    function findProd(obj) {
+                        if (!obj || typeof obj !== 'object' || foundProduct) return;
+                        if (obj.id === productId && obj.pricing_information) {
+                            foundProduct = obj;
+                            return;
+                        }
+                        for (let k in obj) {
+                            if (typeof obj[k] === 'object') findProd(obj[k]);
+                        }
+                    }
+                    findProd(nextData);
+                    
+                    if (foundProduct && foundProduct.pricing_information) {
+                        if (Array.isArray(foundProduct.pricing_information)) {
+                            const original = foundProduct.pricing_information.find(p => p.type === 'original' || p.type === 'standard');
+                            const sale = foundProduct.pricing_information.find(p => p.type === 'sale');
+                            if (original) basePrice = original.value;
+                            if (sale) salePrice = sale.value;
+                        } else {
+                            basePrice = foundProduct.pricing_information.standard_price;
+                            salePrice = foundProduct.pricing_information.sale_price;
+                        }
+                    }
+                }
+            } catch(e) {}
+            
+            // 2. Fetch Availability via API
+            try {
+                const res = await fetch(`https://www.adidas.com.tr/api/products/${productId}/availability`);
+                if (res.ok) {
+                    const availData = await res.json();
+                    if (availData && availData.variation_list) {
+                        availData.variation_list.forEach(v => {
+                            if (v.size) {
+                                const isStock = v.availability_status === 'IN_STOCK' || v.availability > 0;
+                                stockData[v.size] = isStock;
+                            }
+                        });
+                    }
+                }
+            } catch(e) {}
+            
+            // 3. Fallback to DOM parsing for sizes
+            if (Object.keys(stockData).length === 0) {
+                const sizeButtons = document.querySelectorAll('button[class*="size"], button.gl-label, .size-selector button');
+                sizeButtons.forEach(btn => {
+                    const size = btn.innerText.trim();
+                    if (size && size.length < 20) {
+                        const isOutOfStock = btn.classList.contains('gl-label--disabled') || btn.disabled || btn.getAttribute('aria-disabled') === 'true';
+                        stockData[size] = !isOutOfStock;
+                    }
+                });
+            }
+            
+            // 4. Fallback for price from DOM
+            if (!basePrice) {
+                const priceEl = document.querySelector('.gl-price-item--crossed, .gl-price-item');
+                const saleEl = document.querySelector('.gl-price-item--sale');
+                if (priceEl && saleEl) {
+                    basePrice = priceEl.innerText.trim();
+                    salePrice = saleEl.innerText.trim();
+                } else if (priceEl) {
+                    basePrice = priceEl.innerText.trim();
+                }
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        }, productId);
+        
+        await page.close();
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Adidas URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Adidas Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
@@ -829,6 +956,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('asics.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Asics Engine)`);
             primaryData = await scrapeAsics(browser, product.url);
+        } else if (product.url.toLowerCase().includes('adidas.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Adidas Engine)`);
+            primaryData = await scrapeAdidas(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -856,6 +986,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('asics.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Asics Engine)`);
             secondaryData = await scrapeAsics(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('adidas.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Adidas Engine)`);
+            secondaryData = await scrapeAdidas(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
