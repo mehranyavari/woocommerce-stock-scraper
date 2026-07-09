@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.asics.com.tr/solution-speed-ff-4-1670";
+const TEST_URL = "https://www.adidas.com.tr/tr/barricade-14-tenis-ayakkabisi/KI3438.html";
 
 // ==========================================
 // تنظیمات
@@ -51,9 +51,21 @@ function parseTurkishPrice(rawPrice) {
     const commaIdx = clean.lastIndexOf(',');
     const dotIdx = clean.lastIndexOf('.');
 
-    if (dotIdx > commaIdx) {
-        // فرمت انگلیسی یا float ساده: 1,234.56
+    if (dotIdx > commaIdx && commaIdx !== -1) {
+        // فرمت انگلیسی: 1,234.56
         clean = clean.replace(/,/g, '');
+    } else if (commaIdx > dotIdx && dotIdx !== -1) {
+        // فرمت ترکی: 1.234,56
+        clean = clean.replace(/\./g, '').replace(/,/g, '.');
+    } else if (commaIdx !== -1 && dotIdx === -1) {
+        // فقط کاما دارد: 1234,56
+        clean = clean.replace(/,/g, '.');
+    } else if (dotIdx !== -1 && commaIdx === -1) {
+        // فقط نقطه دارد: 1234.56
+        // در این حالت اگر فرمت ترکی بدون اعشار باشد (مثل 1.234)
+        if (clean.length - dotIdx === 4) { // احتمالا هزارگان است
+            clean = clean.replace(/\./g, '');
+        }
     }
 
     const num = parseFloat(clean);
@@ -580,6 +592,125 @@ async function scrapeAsics(page, url) {
     }
 }
 
+// ==========================================
+// 🏃‍♂️ اسکرپر مخصوص آدیداس (Adidas)
+// ==========================================
+async function scrapeAdidas(page, url) {
+    console.log(`\n🔄 Scraping Adidas: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await page.waitForFunction('document.getElementById("__NEXT_DATA__") !== null', { timeout: 15000 }).catch(() => {});
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const urlParts = url.split('/');
+        let productId = urlParts[urlParts.length - 1].replace('.html', '').trim();
+        if (!productId) productId = urlParts[urlParts.length - 2].replace('.html', '').trim();
+        
+        const result = await page.evaluate(async (productId) => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            // 1. Get Price from __NEXT_DATA__
+            try {
+                const nextDataEl = document.getElementById('__NEXT_DATA__');
+                if (nextDataEl) {
+                    const nextData = JSON.parse(nextDataEl.innerText);
+                    let foundProduct = null;
+                    function findProd(obj) {
+                        if (!obj || typeof obj !== 'object' || foundProduct) return;
+                        if (obj.id === productId && obj.pricing_information) {
+                            foundProduct = obj;
+                            return;
+                        }
+                        for (let k in obj) {
+                            if (typeof obj[k] === 'object') findProd(obj[k]);
+                        }
+                    }
+                    findProd(nextData);
+                    
+                    if (foundProduct && foundProduct.pricing_information) {
+                        if (Array.isArray(foundProduct.pricing_information)) {
+                            const original = foundProduct.pricing_information.find(p => p.type === 'original' || p.type === 'standard');
+                            const sale = foundProduct.pricing_information.find(p => p.type === 'sale');
+                            if (original) basePrice = original.value;
+                            if (sale) salePrice = sale.value;
+                        } else {
+                            basePrice = foundProduct.pricing_information.standard_price;
+                            salePrice = foundProduct.pricing_information.sale_price;
+                        }
+                    }
+                }
+            } catch(e) {}
+            
+            // 2. Fetch Availability via API
+            try {
+                const res = await fetch(`https://www.adidas.com.tr/api/products/${productId}/availability`);
+                if (res.ok) {
+                    const availData = await res.json();
+                    if (availData && availData.variation_list) {
+                        availData.variation_list.forEach(v => {
+                            if (v.size) {
+                                const isStock = v.availability_status === 'IN_STOCK' || v.availability > 0;
+                                stockData[v.size] = isStock;
+                            }
+                        });
+                    }
+                }
+            } catch(e) {}
+            
+            // 3. Fallback to DOM parsing for sizes
+            if (Object.keys(stockData).length === 0) {
+                const sizeButtons = document.querySelectorAll('button[class*="size"], button.gl-label, .size-selector button');
+                sizeButtons.forEach(btn => {
+                    const size = btn.innerText.trim();
+                    if (size && size.length < 20) {
+                        const isOutOfStock = btn.classList.contains('gl-label--disabled') || btn.disabled || btn.getAttribute('aria-disabled') === 'true';
+                        stockData[size] = !isOutOfStock;
+                    }
+                });
+            }
+            
+            // 4. Fallback for price from DOM
+            if (!basePrice) {
+                const priceEl = document.querySelector('.gl-price-item--crossed, .gl-price-item');
+                const saleEl = document.querySelector('.gl-price-item--sale');
+                if (priceEl && saleEl) {
+                    basePrice = priceEl.innerText.trim();
+                    salePrice = saleEl.innerText.trim();
+                } else if (priceEl) {
+                    basePrice = priceEl.innerText.trim();
+                }
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        }, productId);
+        
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        console.log(`  ✅ Adidas URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Adidas Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) { }
 
 async function scrapeProduct(page, url) {
@@ -605,6 +736,10 @@ async function scrapeProduct(page, url) {
 
     if (url.toLowerCase().includes('asics.com.tr')) {
         return scrapeAsics(page, url);
+    }
+
+    if (url.toLowerCase().includes('adidas.com.tr')) {
+        return scrapeAdidas(page, url);
     }
 
     console.log(`\n🔄 Scraping: ${url}`);
