@@ -660,6 +660,94 @@ async function scrapeRaketci(browser, url) {
     }
 }
 
+async function scrapeIntersport(page, url) {
+    console.log(`[${new Date().toISOString()}] Scraping Intersport: ${url}`);
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        const hostname = new URL(page.url()).hostname;
+        
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+            
+            try {
+                const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+                scripts.forEach(s => {
+                    const data = JSON.parse(s.innerText);
+                    if (data['@type'] === 'Product' && data.offers && data.offers.price) {
+                        basePrice = data.offers.price;
+                        salePrice = basePrice;
+                    }
+                });
+            } catch(e) {}
+            
+            if (!basePrice) {
+                const priceEl = document.querySelector('.price, .product-price, .price-row');
+                if (priceEl) basePrice = priceEl.innerText.trim();
+            }
+
+            const variants = document.querySelectorAll('pz-variant-option');
+            if (variants.length > 0) {
+                variants.forEach(v => {
+                    const size = v.getAttribute('label') || v.innerText.trim();
+                    if (!size) return;
+                    
+                    const urlAttr = v.getAttribute('url') || '';
+                    const isSelectable = v.hasAttribute('selectable');
+                    
+                    let isStock = isSelectable;
+                    
+                    const currentPath = window.location.pathname.replace(/\/$/, '');
+                    const variantPath = urlAttr.replace(/\/$/, '');
+                    
+                    if (!isSelectable && currentPath === variantPath) {
+                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart');
+                         if (addBtn && !addBtn.hasAttribute('disabled')) {
+                             isStock = true;
+                         }
+                    }
+                    
+                    stockData[size] = isStock;
+                });
+            } else {
+                const sizeButtons = document.querySelectorAll('.product-detail__variant, .size-selector option, label.size');
+                sizeButtons.forEach(btn => {
+                    const size = btn.innerText.trim();
+                    if (size && size.length < 15) {
+                        const isOutOfStock = btn.classList.contains('disabled') || btn.disabled || btn.getAttribute('data-stock') === '0';
+                        stockData[size] = !isOutOfStock;
+                    }
+                });
+            }
+            
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+        
+        if (!result.success) return { success: false, error: result.error };
+        
+        const normalizedStocks = {};
+        for (const [rawSize, isStock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = isStock ? 1 : 0;
+        }
+        
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+        
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        
+    } catch (error) {
+        return { success: false, error: "Intersport Error: " + error.message };
+    }
+}
+
 // ==========================================
 // 🏃‍♂️ اسکرپر مخصوص اسپورت‌این (Sportinn)
 // ==========================================
@@ -956,6 +1044,10 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('asics.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Asics Engine)`);
             primaryData = await scrapeAsics(browser, product.url);
+        } else if (product.url.toLowerCase().includes('intersport.com.tr')) {
+            const page = await browser.newPage();
+            primaryData = await scrapeIntersport(page, product.url);
+            await page.close();
         } else if (product.url.toLowerCase().includes('adidas.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Adidas Engine)`);
             primaryData = await scrapeAdidas(browser, product.url);
