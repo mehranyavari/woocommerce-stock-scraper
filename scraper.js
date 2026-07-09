@@ -59,12 +59,21 @@ function parseTurkishPrice(rawPrice) {
     const commaIdx = clean.lastIndexOf(',');
     const dotIdx = clean.lastIndexOf('.');
 
-    if (commaIdx > dotIdx) {
-        // فرمت ترکی: 1.234,56
-        clean = clean.replace(/\./g, '').replace(',', '.');
-    } else if (dotIdx > commaIdx) {
+    if (dotIdx > commaIdx && commaIdx !== -1) {
         // فرمت انگلیسی: 1,234.56
         clean = clean.replace(/,/g, '');
+    } else if (commaIdx > dotIdx && dotIdx !== -1) {
+        // فرمت ترکی: 1.234,56
+        clean = clean.replace(/\./g, '').replace(/,/g, '.');
+    } else if (commaIdx !== -1 && dotIdx === -1) {
+        // فقط کاما دارد: 1234,56
+        clean = clean.replace(/,/g, '.');
+    } else if (dotIdx !== -1 && commaIdx === -1) {
+        // فقط نقطه دارد: 1234.56
+        // در این حالت اگر فرمت ترکی بدون اعشار باشد (مثل 1.234)
+        if (clean.length - dotIdx === 4) { // احتمالا هزارگان است
+            clean = clean.replace(/\./g, '');
+        }
     }
 
     const num = parseFloat(clean);
