@@ -129,7 +129,7 @@
     "id": "77046",
     "name": "77046 LEGO® Animal Crossing Julian Doğum Gününü Kutluyor",
     "price": 949,
-    "quantity": 4,
+    "quantity": 5,
     "in_stock": true,
     "category": "LEGO® Animal Crossing™",
     "url": "https://lego.tr/product\\/77046-lego-animal-crossing-julian-dogum-gununu-kutluyor"
@@ -300,7 +300,7 @@
     "id": "31216",
     "name": "31216 LEGO® Art Keith Haring – Dans Eden Figürler",
     "price": 7299,
-    "quantity": 64,
+    "quantity": 63,
     "in_stock": true,
     "category": "LEGO® Art",
     "url": "https://lego.tr/product\\/31216-lego-art-keith-haring-dans-eden-figurler"
@@ -309,7 +309,7 @@
     "id": "31215",
     "name": "31215 LEGO® Art Vincent van Gogh – Ayçiçekleri",
     "price": 12199,
-    "quantity": 55,
+    "quantity": 54,
     "in_stock": true,
     "category": "LEGO® Art",
     "url": "https://lego.tr/product\\/31215-lego-art-vincent-van-gogh-aycicekleri"
@@ -453,7 +453,7 @@
     "id": "854235",
     "name": "854235 LEGO® Super Heroes Batman™ Anahtarlık",
     "price": 379,
-    "quantity": 384,
+    "quantity": 383,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854235-lego-super-heroes-batman-anahtarlik"
@@ -660,7 +660,7 @@
     "id": "11508",
     "name": "11508 LEGO® Botanicals Papatyalar",
     "price": 869,
-    "quantity": 13,
+    "quantity": 12,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/11508-lego-botanicals-papatyalar"
@@ -714,7 +714,7 @@
     "id": "10372",
     "name": "10372 LEGO® Botanicals Japon Gülü",
     "price": 4199,
-    "quantity": 7,
+    "quantity": 6,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10372-lego-botanicals-japon-gulu"
@@ -763,15 +763,6 @@
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10347-lego-botanicals-kucuk-sari-buket"
-  },
-  {
-    "id": "11514",
-    "name": "11514 LEGO® Botanicals Kozmos Çiçekleri",
-    "price": 869,
-    "quantity": 1,
-    "in_stock": true,
-    "category": "Botanical Collection",
-    "url": "https://lego.tr/11514-lego-botanicals-kozmos-cicekleri"
   },
   {
     "id": "11511",
@@ -840,7 +831,7 @@
     "id": "10329",
     "name": "10329 LEGO® Botanicals Minik Bitkiler",
     "price": 2999,
-    "quantity": 8,
+    "quantity": 10,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10329-lego-icons-minik-bitkiler"
@@ -867,7 +858,7 @@
     "id": "10368",
     "name": "10368 LEGO® Botanicals Krizantem",
     "price": 1799,
-    "quantity": 15,
+    "quantity": 14,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10368-lego-botanicals-krizantem"
@@ -903,7 +894,7 @@
     "id": "10313",
     "name": "10313 LEGO® Botanicals Kır Çiçekleri Buketi",
     "price": 3599,
-    "quantity": 259,
+    "quantity": 258,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10313-lego-icons-kir-cicekleri-buketi"
@@ -1008,6 +999,15 @@
     "url": "https://lego.tr/product\\/31172-lego-creator-cicekli-pikap"
   },
   {
+    "id": "11514",
+    "name": "11514 LEGO® Botanicals Kozmos Çiçekleri",
+    "price": 869,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Botanical Collection",
+    "url": "https://lego.tr/11514-lego-botanicals-kozmos-cicekleri"
+  },
+  {
     "id": "11506",
     "name": "11506 LEGO® Botanicals Sallanan Bitkiler",
     "price": 1159,
@@ -1092,7 +1092,7 @@
     "id": "40793",
     "name": "40793 LEGO® BrickHeadz Tom ve Jerry Figürleri",
     "price": 1399,
-    "quantity": 105,
+    "quantity": 103,
     "in_stock": true,
     "category": "BrickHeadz",
     "url": "https://lego.tr/product\\/40793-lego-brickheadz-tom-ve-jerry-figurleri"
@@ -3423,7 +3423,7 @@
     "id": "31393",
     "name": "31393 LEGO® Creator Ormanı Hayvanları: Gri Kurt",
     "price": 2999,
-    "quantity": 71,
+    "quantity": 70,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/31393-lego-creator-ormani-hayvanlari-gri-kurt"
@@ -3468,7 +3468,7 @@
     "id": "31388",
     "name": "31388 LEGO® Creator Vahşi Hayvanlar: Koala Ailesi",
     "price": 7299,
-    "quantity": 49,
+    "quantity": 48,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/31388-lego-creator-vahsi-hayvanlar-koala-ailesi"
@@ -3540,7 +3540,7 @@
     "id": "31380",
     "name": "31380 LEGO® Creator Retro Oyun Konsolu",
     "price": 1159,
-    "quantity": 170,
+    "quantity": 169,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/31380-lego-creator-retro-oyun-konsolu"
@@ -3756,7 +3756,7 @@
     "id": "31129",
     "name": "31129 LEGO Creator Muhteşem Kaplan",
     "price": 3299,
-    "quantity": 26,
+    "quantity": 25,
     "in_stock": true,
     "category": "Creator 3-in-1",
     "url": "https://lego.tr/product\\/31129-lego-creator-muhtesem-kaplan"
@@ -4341,7 +4341,7 @@
     "id": "43301",
     "name": "43301 LEGO® │ Disney Oyuncak Hikayesi Köpek Slinky Kitap Desteği",
     "price": 9099,
-    "quantity": 34,
+    "quantity": 33,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/43301-lego-disney-oyuncak-hikayesi-kopek-slinky-kitap-destegi"
@@ -4476,7 +4476,7 @@
     "id": "43217",
     "name": "43217 LEGO® Disney Classic “Yukarı Bak” Evi",
     "price": 3299,
-    "quantity": 5,
+    "quantity": 4,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/43217-lego-disney-classic-yukari-bak-evi"
@@ -7428,7 +7428,7 @@
     "id": "5056",
     "name": "854115 LEGO Harry Potter Hermione Anahtarlık",
     "price": 379,
-    "quantity": 247,
+    "quantity": 246,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854115-lego-harry-potter-hermione-anahtarlik"
@@ -7437,7 +7437,7 @@
     "id": "5050",
     "name": "854114 LEGO Harry Potter Harry Potter™ Anahtarlık",
     "price": 379,
-    "quantity": 475,
+    "quantity": 474,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854114-lego-harry-potter-harry-potter-anahtarlik"
@@ -7689,7 +7689,7 @@
     "id": "40921",
     "name": "40921 LEGO® LEGO Iconic Büyük Mavi Astronot Minifigürü",
     "price": 3799,
-    "quantity": 320,
+    "quantity": 321,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/40921-lego-lego-iconic-buyuk-mavi-astronot-minifiguru"
@@ -7851,7 +7851,7 @@
     "id": "80120",
     "name": "80120 LEGO® Chinese Festivals Sıçrayan Bolluk Sazanı",
     "price": 2999,
-    "quantity": 8,
+    "quantity": 7,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/80120-lego-chinese-festivals-sicrayan-bolluk-sazani"
@@ -8202,7 +8202,7 @@
     "id": "854082",
     "name": "854082 LEGO Iconic Lady Liberty Anahtarlık",
     "price": 379,
-    "quantity": 330,
+    "quantity": 328,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854082-lego-iconic-lady-liberty-anahtarlik"
@@ -8247,7 +8247,7 @@
     "id": "854201",
     "name": "854201 LEGO® Iconic Noel Baba Anahtarlık",
     "price": 379,
-    "quantity": 240,
+    "quantity": 239,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854201-lego-iconic-noel-baba-anahtarlik"
@@ -8346,7 +8346,7 @@
     "id": "3451",
     "name": "853571 Hot Dog Guy Anahtarlık",
     "price": 379,
-    "quantity": 728,
+    "quantity": 727,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/853571-hot-dog-guy-anahtarlik"
@@ -8751,7 +8751,7 @@
     "id": "10335",
     "name": "10335 LEGO® Icons Endurance",
     "price": 16999,
-    "quantity": 12,
+    "quantity": 11,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/product\\/10335-lego-icons-endurance"
@@ -8760,7 +8760,7 @@
     "id": "11374",
     "name": "11374 LEGO® Icons Pinball (Tilt) Oyun Makinesi",
     "price": 12799,
-    "quantity": 520,
+    "quantity": 519,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/11374-lego-icons-pinball-tilt-oyun-makinesi"
@@ -8859,7 +8859,7 @@
     "id": "10318",
     "name": "10318 LEGO® Icons Concorde",
     "price": 12999,
-    "quantity": 8,
+    "quantity": 9,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/product\\/10318-lego-icons-concorde"
@@ -9336,7 +9336,7 @@
     "id": "21362",
     "name": "21362 LEGO® Ideas Mineral Koleksiyonu",
     "price": 3599,
-    "quantity": 28,
+    "quantity": 27,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/product\\/21362-lego-ideas-mineral-koleksiyonu"
@@ -9768,7 +9768,7 @@
     "id": "854321",
     "name": "854321 LEGO® Marvel Hulk Anahtarlık",
     "price": 379,
-    "quantity": 373,
+    "quantity": 372,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854321-lego-marvel-hulk-anahtarlik"
@@ -9777,7 +9777,7 @@
     "id": "76325",
     "name": "76325 LEGO® | Marvel Avengers: Ultron Çağı Quinjet",
     "price": 7299,
-    "quantity": 13,
+    "quantity": 14,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76325-lego-marvel-avengers-ultron-cagi-quinjet"
@@ -10083,7 +10083,7 @@
     "id": "76295",
     "name": "76295 LEGO® Marvel Avengers Helikoptaşır",
     "price": 4999,
-    "quantity": 32,
+    "quantity": 33,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76295-lego-marvel-avengers-helikoptasir"
@@ -10236,7 +10236,7 @@
     "id": "76281",
     "name": "76281 LEGO® Marvel X-Men X-Jet",
     "price": 5399,
-    "quantity": 7,
+    "quantity": 8,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/product\\/76281-lego-marvel-x-men-x-jet"
@@ -10263,7 +10263,7 @@
     "id": "854153",
     "name": "854153 LEGO Marvel Miles Morales Anahtarlık",
     "price": 379,
-    "quantity": 6,
+    "quantity": 5,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854153-lego-marvel-miles-morales-anahtarlik"
@@ -12261,7 +12261,7 @@
     "id": "76924",
     "name": "76924 LEGO® Speed Champions Mercedes-AMG G 63 ve Mercedes-AMG SL 63",
     "price": 2999,
-    "quantity": 43,
+    "quantity": 42,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/product\\/76924-lego-speed-champions-mercedes-amg-g-63-ve-mercedes-amg-sl-63"
@@ -12270,7 +12270,7 @@
     "id": "76923",
     "name": "76923 LEGO® Speed Champions Lamborghini Lambo V12 Vision GT Süper Araba",
     "price": 1699,
-    "quantity": 29,
+    "quantity": 28,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/product\\/76923-lego-speed-champions-lamborghini-lambo-v12-vision-gt-super-araba"
@@ -12972,7 +12972,7 @@
     "id": "5046",
     "name": "75308 LEGO Star Wars™ R2-D2™",
     "price": 16299,
-    "quantity": 11,
+    "quantity": 12,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75308-lego-star-wars-r2-d2"
