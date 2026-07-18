@@ -333,15 +333,6 @@
     "url": "https://lego.tr/product\\/31210-lego-art-modern-sanat"
   },
   {
-    "id": "21333",
-    "name": "21333 LEGO Ideas Vincent van Gogh - Yıldızlı Gece",
-    "price": 10499,
-    "quantity": 2,
-    "in_stock": true,
-    "category": "Ideas",
-    "url": "https://lego.tr/product\\/21333-lego-ideas-vincent-van-gogh-yildizli-gece"
-  },
-  {
     "id": "31213",
     "name": "31213 LEGO® ART Mona Lisa",
     "price": 6099,
@@ -367,6 +358,15 @@
     "in_stock": false,
     "category": "LEGO® Art",
     "url": "https://lego.tr/product\\/31209-lego-art-inanilmaz-orumcek-adam"
+  },
+  {
+    "id": "21333",
+    "name": "21333 LEGO Ideas Vincent van Gogh - Yıldızlı Gece",
+    "price": 10499,
+    "quantity": 0,
+    "in_stock": false,
+    "category": "Ideas",
+    "url": "https://lego.tr/product\\/21333-lego-ideas-vincent-van-gogh-yildizli-gece"
   },
   {
     "id": "31208",
@@ -723,7 +723,7 @@
     "id": "30701",
     "name": "30701 LEGO® Botanicals Tarla Çiçekleri",
     "price": 289,
-    "quantity": 157,
+    "quantity": 156,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/30701-lego-botanicals-tarla-cicekleri"
@@ -732,7 +732,7 @@
     "id": "10344",
     "name": "10344 LEGO® Botanicals Şans Bambusu",
     "price": 1799,
-    "quantity": 68,
+    "quantity": 66,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10344-lego-botanicals-sans-bambusu"
@@ -741,7 +741,7 @@
     "id": "10343",
     "name": "10343 LEGO® Botanicals Mini Orkide",
     "price": 1799,
-    "quantity": 33,
+    "quantity": 32,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10343-lego-botanicals-mini-orkide"
@@ -786,7 +786,7 @@
     "id": "11505",
     "name": "11505 LEGO® Botanicals Orman Mantarları",
     "price": 4799,
-    "quantity": 321,
+    "quantity": 320,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/11505-lego-botanicals-orman-mantarlari"
@@ -849,7 +849,7 @@
     "id": "10311",
     "name": "10311 LEGO® Botanicals Orkide",
     "price": 2999,
-    "quantity": 44,
+    "quantity": 42,
     "in_stock": true,
     "category": "Botanical Collection",
     "url": "https://lego.tr/product\\/10311-lego-creator-expert-orkide"
@@ -1191,7 +1191,7 @@
     "id": "40861",
     "name": "40861 LEGO® Disney Classic Sulley, Mike ve Boo Figürleri",
     "price": 1699,
-    "quantity": 22,
+    "quantity": 21,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/40861-lego-disney-classic-sulley-mike-ve-boo-figurleri"
@@ -4008,7 +4008,7 @@
     "id": "854320",
     "name": "854320 LEGO® DC Batgirl™ Anahtarlık",
     "price": 379,
-    "quantity": 51,
+    "quantity": 50,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854320-lego-dc-batgirl-anahtarlik"
@@ -4530,7 +4530,7 @@
     "id": "43242",
     "name": "43242 LEGO® Disney Princess Pamuk Prenses ve Yedi Cücelerin Evi",
     "price": 14099,
-    "quantity": 30,
+    "quantity": 29,
     "in_stock": true,
     "category": "Disney™",
     "url": "https://lego.tr/product\\/43242-lego-disney-princess-pamuk-prenses-ve-yedi-cucelerin-evi"
@@ -7428,7 +7428,7 @@
     "id": "71043",
     "name": "71043 LEGO® Harry Potter™ Hogwarts™ Şatosu",
     "price": 29299,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "category": "Harry Potter™",
     "url": "https://lego.tr/product\\/71043-lego-harry-potter-hogwarts-satosu"
@@ -7851,7 +7851,7 @@
     "id": "80120",
     "name": "80120 LEGO® Chinese Festivals Sıçrayan Bolluk Sazanı",
     "price": 2999,
-    "quantity": 5,
+    "quantity": 4,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/80120-lego-chinese-festivals-sicrayan-bolluk-sazani"
@@ -7878,7 +7878,7 @@
     "id": "40955",
     "name": "40955 LEGO® LEGO Iconic Maersk Çift Yakıtlı Konteyner Gemisi",
     "price": 9999,
-    "quantity": 64,
+    "quantity": 63,
     "in_stock": true,
     "category": "LEGO Iconic",
     "url": "https://lego.tr/40955-lego-lego-iconic-maersk-cift-yakitli-konteyner-gemisi"
@@ -8706,7 +8706,7 @@
     "id": "10375",
     "name": "10375 LEGO® Icons Ejderhanı Nasıl Eğitirsin: Dişsiz",
     "price": 4299,
-    "quantity": 16,
+    "quantity": 15,
     "in_stock": true,
     "category": "LEGO® Icons",
     "url": "https://lego.tr/product\\/10375-lego-icons-ejderhani-nasil-egitirsin-dissiz"
@@ -9318,7 +9318,7 @@
     "id": "21376",
     "name": "21376 LEGO® Ideas Turuncu Kedi",
     "price": 6099,
-    "quantity": 29,
+    "quantity": 28,
     "in_stock": true,
     "category": "Ideas",
     "url": "https://lego.tr/21376-lego-ideas-turuncu-kedi"
@@ -10020,7 +10020,7 @@
     "id": "76334",
     "name": "76334 LEGO® | Marvel Efsanevi Savaş: Örümcek Adam, Kum Adam’a Karşı",
     "price": 1459,
-    "quantity": 6,
+    "quantity": 5,
     "in_stock": true,
     "category": "Marvel",
     "url": "https://lego.tr/76334-lego-marvel-efsanevi-savas-orumcek-adam-kum-adama-karsi"
@@ -10218,7 +10218,7 @@
     "id": "854292",
     "name": "854292 LEGO® Marvel Ghost-Spider Anahtarlık",
     "price": 379,
-    "quantity": 67,
+    "quantity": 66,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854292-lego-marvel-ghost-spider-anahtarlik"
@@ -12027,7 +12027,7 @@
     "id": "77241",
     "name": "77241 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Honda S2000",
     "price": 1699,
-    "quantity": 14,
+    "quantity": 5,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/product\\/77241-lego-speed-champions-daha-hizli-daha-ofkeli-honda-s2000"
@@ -12234,7 +12234,7 @@
     "id": "76917",
     "name": "76917 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Nissan Skyline GT-R (R34)",
     "price": 1699,
-    "quantity": 51,
+    "quantity": 49,
     "in_stock": true,
     "category": "Speed Champions",
     "url": "https://lego.tr/product\\/76917-lego-speed-champions-daha-hizli-daha-ofkeli-nissan-skyline-gt-r-r34"
@@ -12486,7 +12486,7 @@
     "id": "854313",
     "name": "854313 LEGO® Star Wars™ C-3PO™ Anahtarlık",
     "price": 379,
-    "quantity": 187,
+    "quantity": 186,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854313-lego-star-wars-c-3po-anahtarlik"
@@ -12495,7 +12495,7 @@
     "id": "854312",
     "name": "854312 LEGO® Star Wars™ R2-D2™ Anahtarlık",
     "price": 379,
-    "quantity": 660,
+    "quantity": 659,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/854312-lego-star-wars-r2-d2-anahtarlik"
@@ -12909,7 +12909,7 @@
     "id": "75375",
     "name": "75375 LEGO® Star Wars Millennium Falcon™",
     "price": 5099,
-    "quantity": 3,
+    "quantity": 2,
     "in_stock": true,
     "category": "Star Wars™",
     "url": "https://lego.tr/product\\/75375-lego-star-wars-millennium-falcon"
@@ -13017,7 +13017,7 @@
     "id": "3958",
     "name": "853946 Stormtrooper Anahtarlık",
     "price": 379,
-    "quantity": 1114,
+    "quantity": 1113,
     "in_stock": true,
     "category": "Anahtarlıklar",
     "url": "https://lego.tr/product\\/853946-stormtrooper-anahtarlik"
