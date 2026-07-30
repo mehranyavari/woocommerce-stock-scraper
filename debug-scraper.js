@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.intersport.com.tr/urun/nike-initiator-erkek-beyaz-gunluk-spor-ayakkabi/394055-100/";
+const TEST_URL = "https://www.opsarsport.com/urun/nike-vapor-pro-3-toprak-kort-erkek-tenis-ayakkabisi";
 
 // ==========================================
 // تنظیمات
