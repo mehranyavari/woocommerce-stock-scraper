@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.opsarsport.com/urun/nike-vapor-pro-3-toprak-kort-erkek-tenis-ayakkabisi";
+const TEST_URL = "https://www.raketspor.com.tr/nikecourt-fd6574-001-lite-4-erkek-tenis-ayakkabisi-siyah-14431";
 
 // ==========================================
 // تنظیمات
