@@ -232,21 +232,16 @@ function loadProductsFromJSON(filePath) {
         const targetItems = [];
 
         items.forEach(item => {
+            // ⚠️ فقط محصولاتی که تامین‌کننده اول (Primary URL) آن‌ها راکت اسپور است
             if (item.url && item.url.includes('raketspor.com.tr')) {
                 targetItems.push({
                     id: item.id || null,
                     url: item.url
                 });
             }
-            if (item.secondary_url && item.secondary_url.includes('raketspor.com.tr')) {
-                targetItems.push({
-                    id: item.id || null,
-                    url: item.secondary_url
-                });
-            }
         });
 
-        console.log(`   ↳ Found ${targetItems.length} Raketspor products in ${filePath}`);
+        console.log(`   ↳ Found ${targetItems.length} products with PRIMARY supplier = Raketspor in ${filePath}`);
         return targetItems;
     } catch (e) {
         console.error(`⚠️ Error reading ${filePath}: ${e.message}`);
