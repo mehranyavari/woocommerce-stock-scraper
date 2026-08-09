@@ -3,14 +3,19 @@ name: Raketspor Price Scraper
 on:
   workflow_dispatch:
     inputs:
+      json_file:
+        description: 'نام فایل JSON محصولات'
+        required: false
+        default: 'products_tennis24shop_com.json'
+        type: string
       mode:
         description: 'حالت اجرا (Mode)'
         required: true
         default: 'json'
         type: choice
         options:
-          - 'json'      # لینک‌های راکت اسپور از products.json
-          - 'sitemap'   # اسکرپ از روی Sitemap راکت اسپور
+          - 'json'      # لینک‌های راکت اسپور از فایل JSON مشخص شده
+          - 'sitemap'   # اسکرپ کل نقشه سایت راکت اسپور
           - 'custom'    # اسکرپ یک لینک خاص
           - 'file'      # اسکرپ از روی فایل متنی urls.txt
       custom_url:
@@ -39,9 +44,9 @@ on:
         default: true
         type: boolean
 
-  # اجرای زمان‌بندی شده روزانه (در صورت تمایل فعال کنید)
+  # اجرای زمان‌بندی شده خودکار (در صورت تمایل کامنت را بردارید)
   # schedule:
-  #   - cron: '0 8 * * *' # هر روز ساعت 8 صبح UTC
+  #   - cron: '0 8 * * *'
 
 jobs:
   scrape-prices:
@@ -72,7 +77,11 @@ jobs:
           elif [ "${{ github.event.inputs.mode }}" = "file" ]; then
             ARGS="$ARGS --file=urls.txt"
           else
-            ARGS="$ARGS --json=products.json"
+            JSON_FILE="${{ github.event.inputs.json_file }}"
+            if [ -z "$JSON_FILE" ]; then
+              JSON_FILE="products_tennis24shop_com.json"
+            fi
+            ARGS="$ARGS --json=$JSON_FILE"
           fi
 
           # لیمیت
