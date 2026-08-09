@@ -1,0 +1,117 @@
+name: Raketspor Price Scraper
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'حالت اجرا (Mode)'
+        required: true
+        default: 'json'
+        type: choice
+        options:
+          - 'json'      # لینک‌های راکت اسپور از products.json
+          - 'sitemap'   # اسکرپ از روی Sitemap راکت اسپور
+          - 'custom'    # اسکرپ یک لینک خاص
+          - 'file'      # اسکرپ از روی فایل متنی urls.txt
+      custom_url:
+        description: 'آدرس محصول (فقط در حالت custom)'
+        required: false
+        default: ''
+        type: string
+      limit:
+        description: 'حداکثر تعداد محصولات (اختیاری - خالی یعنی همه)'
+        required: false
+        default: ''
+        type: string
+      concurrency:
+        description: 'تعداد درخواست‌های همزمان'
+        required: false
+        default: '5'
+        type: string
+      save_csv:
+        description: 'تولید خروجی CSV برای اکسل'
+        required: false
+        default: true
+        type: boolean
+      commit_results:
+        description: 'ثبت و پوش تغییرات در گیت‌هاب (Commit & Push)'
+        required: false
+        default: true
+        type: boolean
+
+  # اجرای زمان‌بندی شده روزانه (در صورت تمایل فعال کنید)
+  # schedule:
+  #   - cron: '0 8 * * *' # هر روز ساعت 8 صبح UTC
+
+jobs:
+  scrape-prices:
+    name: Scrape Raketspor Prices
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Raketspor Price Scraper
+        run: |
+          ARGS=""
+          
+          # بررسی حالت‌های مختلف
+          if [ "${{ github.event.inputs.mode }}" = "sitemap" ]; then
+            ARGS="$ARGS --sitemap"
+          elif [ "${{ github.event.inputs.mode }}" = "custom" ] && [ -n "${{ github.event.inputs.custom_url }}" ]; then
+            ARGS="$ARGS \"${{ github.event.inputs.custom_url }}\""
+          elif [ "${{ github.event.inputs.mode }}" = "file" ]; then
+            ARGS="$ARGS --file=urls.txt"
+          else
+            ARGS="$ARGS --json=products.json"
+          fi
+
+          # لیمیت
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
+          fi
+
+          # همزمانی
+          if [ -n "${{ github.event.inputs.concurrency }}" ]; then
+            ARGS="$ARGS --concurrency=${{ github.event.inputs.concurrency }}"
+          fi
+
+          # خروجی CSV
+          if [ "${{ github.event.inputs.save_csv }}" = "true" ]; then
+            ARGS="$ARGS --csv"
+          fi
+
+          echo "Running: node raketspor-price-scraper.js $ARGS"
+          eval node raketspor-price-scraper.js $ARGS
+
+      - name: Upload Scraped Results as Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: raketspor-prices
+          path: |
+            raketspor-prices.json
+            raketspor-prices.csv
+
+      - name: Commit and Push results
+        if: ${{ github.event.inputs.commit_results == 'true' || github.event_name == 'schedule' }}
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add raketspor-prices.json raketspor-prices.csv 2>/dev/null || true
+          
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "💰 Update Raketspor prices - $(date '+%Y-%m-%d %H:%M:%S')" &&
+            git pull --rebase --autostash origin main &&
+            git push
+          )
