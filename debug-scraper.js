@@ -706,7 +706,7 @@ async function scrapeAdidas(page, url) {
         
         const regular = parseTurkishPrice(result.price);
         let offer = parseTurkishPrice(result.offerPrice);
-        if (regular && offer && offer >= regular) offer = null;
+        if (offer && regular && offer >= regular) offer = null;
         
         console.log(`  ✅ Adidas URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
@@ -716,6 +716,9 @@ async function scrapeAdidas(page, url) {
     }
 }
 
+// ==========================================
+// 🏬 اسکرپر مخصوص اینتر اسپورت (Intersport)
+// ==========================================
 async function scrapeIntersport(page, url) {
     console.log(`\n🔄 Scraping Intersport: ${url}`);
     try {
@@ -725,6 +728,24 @@ async function scrapeIntersport(page, url) {
 
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
+        // منتظر لود شدن و بایپس احتمالی کلودفلر
+        await new Promise(r => setTimeout(r, 8000));
+
+        const isBlocked = await page.evaluate(() => {
+            const title = (document.title || '').toLowerCase();
+            return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare') || title.includes('bir dakika') || title.includes('lütfen');
+        });
+
+        if (isBlocked) {
+            console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
+            await new Promise(r => setTimeout(r, 10000));
+        }
+
+        // منتظر لود شدن کامپوننت‌های اکینون و داده‌ها
+        await page.waitForFunction(() => {
+            return document.querySelectorAll('pz-variant-option, script[type="application/ld+json"], .price, .product-price, pz-price, .option.-size').length > 0;
+        }, { timeout: 15000 }).catch(() => {});
+
         const hostname = new URL(page.url()).hostname;
         
         const result = await page.evaluate(() => {
@@ -732,29 +753,47 @@ async function scrapeIntersport(page, url) {
             let salePrice = null;
             const stockData = {};
             
-            // 1. Get prices from JSON-LD
+            // 1. استخراج قیمت از Structured Data (LD+JSON) با textContent
             try {
                 const scripts = document.querySelectorAll('script[type="application/ld+json"]');
                 scripts.forEach(s => {
-                    const data = JSON.parse(s.innerText);
-                    if (data['@type'] === 'Product' && data.offers && data.offers.price) {
-                        basePrice = data.offers.price;
-                        salePrice = basePrice;
-                    }
+                    const text = s.textContent || s.innerHTML;
+                    if (!text) return;
+                    try {
+                        const data = JSON.parse(text);
+                        if (data['@type'] === 'Product' && data.offers) {
+                            const offers = Array.isArray(data.offers) ? data.offers[0] : data.offers;
+                            if (offers && offers.price) {
+                                basePrice = offers.price;
+                                salePrice = basePrice;
+                            }
+                        }
+                    } catch(e) {}
                 });
             } catch(e) {}
             
-            // Fallback for price
+            // 2. فال‌بک قیمت از ساختار DOM
             if (!basePrice) {
-                const priceEl = document.querySelector('.price, .product-price, .price-row');
-                if (priceEl) basePrice = priceEl.innerText.trim();
+                const discountedEl = document.querySelector('.discounted-price');
+                const currentEl = document.querySelector('.current-price');
+                const pzPriceEl = document.querySelector('pz-price');
+                const priceEl = document.querySelector('.price, .product-price, .price-row, .product-info__price, .price-info');
+                
+                if (discountedEl && currentEl) {
+                    basePrice = discountedEl.innerText.trim();
+                    salePrice = currentEl.innerText.trim();
+                } else if (pzPriceEl) {
+                    basePrice = pzPriceEl.innerText.trim();
+                } else if (priceEl) {
+                    basePrice = priceEl.innerText.trim();
+                }
             }
 
-            // 2. Get variants (Akinon structure)
+            // 3. استخراج سایزها از ساختار Akinon (pz-variant-option)
             const variants = document.querySelectorAll('pz-variant-option');
             if (variants.length > 0) {
                 variants.forEach(v => {
-                    const size = v.getAttribute('label') || v.innerText.trim();
+                    const size = v.getAttribute('label') || v.getAttribute('value') || v.innerText.trim();
                     if (!size) return;
                     
                     const urlAttr = v.getAttribute('url') || '';
@@ -762,27 +801,32 @@ async function scrapeIntersport(page, url) {
                     
                     let isStock = isSelectable;
                     
-                    // Check if it's the currently selected size
                     const currentPath = window.location.pathname.replace(/\/$/, '');
                     const variantPath = urlAttr.replace(/\/$/, '');
                     
                     if (!isSelectable && currentPath === variantPath) {
-                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart');
+                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart, .btn-add-to-cart');
                          if (addBtn && !addBtn.hasAttribute('disabled')) {
-                             isStock = true;
+                              isStock = true;
                          }
                     }
                     
-                    stockData[size] = isStock;
+                    if (stockData[size] === undefined || isStock) {
+                        stockData[size] = isStock;
+                    }
                 });
-            } else {
-                // Fallback generic DOM size parsing
-                const sizeButtons = document.querySelectorAll('.product-detail__variant, .size-selector option, label.size');
+            }
+
+            // 4. فال‌بک سایزها از DOM عمومی
+            if (Object.keys(stockData).length === 0) {
+                const sizeButtons = document.querySelectorAll('.option.-size, .variant-size, .product-detail__variant, .size-selector option, label.size, button.size');
                 sizeButtons.forEach(btn => {
-                    const size = btn.innerText.trim();
+                    const size = btn.getAttribute('data-label') || btn.getAttribute('data-size') || btn.innerText.trim();
                     if (size && size.length < 15) {
-                        const isOutOfStock = btn.classList.contains('disabled') || btn.disabled || btn.getAttribute('data-stock') === '0';
-                        stockData[size] = !isOutOfStock;
+                        const isOutOfStock = btn.classList.contains('-disabled') || btn.classList.contains('disabled') || btn.classList.contains('passive') || btn.disabled || btn.getAttribute('data-stock') === '0';
+                        if (stockData[size] === undefined || !isOutOfStock) {
+                            stockData[size] = !isOutOfStock;
+                        }
                     }
                 });
             }
@@ -800,7 +844,7 @@ async function scrapeIntersport(page, url) {
         
         const regular = parseTurkishPrice(result.price);
         let offer = parseTurkishPrice(result.offerPrice);
-        if (regular && offer && offer >= regular) offer = null;
+        if (offer && regular && offer >= regular) offer = null;
         
         console.log(`  ✅ Intersport URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
