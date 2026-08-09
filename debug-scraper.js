@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.raketspor.com.tr/nikecourt-fn0530-001-lite-4-toprak-kort-erkek-tenis-ayakkabisi-siyah-14403";
+const TEST_URL = "https://www.intersport.com.tr/urun/nike-initiator-erkek-beyaz-gunluk-spor-ayakkabi/394055-100/";
 
 // ==========================================
 // تنظیمات
@@ -44,10 +44,10 @@ function parseTurkishPrice(rawPrice) {
     if (!rawPrice) return null;
     const str = String(rawPrice).trim();
 
-    // اگه عدد خالص float بود (از JSON، بدون فرمت‌بندی)
+    // اگه عدد خالص بود (از JSON، بدون فرمت‌بندی)
     const plain = parseFloat(str);
-    if (!isNaN(plain) && !str.includes(',')) {
-        return Math.ceil(plain);
+    if (!isNaN(plain) && !str.includes(',') && !str.includes('₺') && !str.includes('TL')) {
+        return plain > 0 ? Math.ceil(plain) : null;
     }
 
     // فرمت ترکی: 1.234,56 → 1234.56
@@ -74,7 +74,7 @@ function parseTurkishPrice(rawPrice) {
     }
 
     const num = parseFloat(clean);
-    if (isNaN(num)) return null;
+    if (isNaN(num) || num <= 0) return null;
     return Math.ceil(num);
 }
 
@@ -865,10 +865,38 @@ async function scrapeProduct(page, url) {
                 const data = JSON.parse(match[1]);
                 const stocks = {};
 
-                let regularPrice = data.productPriceKDVIncluded
-                    ? String(data.productPriceKDVIncluded)
-                    : null;
+                let regularPrice = null;
                 let offerPrice = null;
+
+                const anaUrun = (data.products && data.products.find(p => p.anaUrun === true)) || (data.products && data.products[0]) || data.product || {};
+
+                // استخراج قیمت‌ها از ساختار استاندارد Ticimax
+                const satis = anaUrun.satisFiyatiStr || (anaUrun.satisFiyati && anaUrun.satisKDV ? (anaUrun.satisFiyati + anaUrun.satisKDV) : anaUrun.satisFiyati);
+                const indirimli = anaUrun.indirimliFiyatiStr || (anaUrun.indirimliFiyati && anaUrun.indirimliKDV ? (anaUrun.indirimliFiyati + anaUrun.indirimliKDV) : anaUrun.indirimliFiyati);
+                const piyasa = anaUrun.piyasaFiyatiStr || (anaUrun.piyasaFiyati && anaUrun.piyasaFiyatiKDV ? (anaUrun.piyasaFiyati + anaUrun.piyasaFiyatiKDV) : anaUrun.piyasaFiyati);
+
+                if (anaUrun.indirimliFiyati && anaUrun.satisFiyati && anaUrun.indirimliFiyati > 0 && anaUrun.indirimliFiyati < anaUrun.satisFiyati) {
+                    regularPrice = satis;
+                    offerPrice = indirimli;
+                } else if (anaUrun.piyasaFiyati && anaUrun.satisFiyati && anaUrun.piyasaFiyati > anaUrun.satisFiyati && anaUrun.satisFiyati > 0) {
+                    regularPrice = piyasa;
+                    offerPrice = satis;
+                } else {
+                    regularPrice = satis || data.productPriceKDVIncluded || data.productPriceStr;
+                    offerPrice = null;
+                }
+
+                // فال‌بک از ساختار DOM در صورت نیاز
+                if (!regularPrice) {
+                    const priceEl = document.querySelector('#fiyat .spanFiyat, .PiyasafiyatiContent .spanFiyat, .spanFiyat');
+                    const discountEl = document.querySelector('#indirimliFiyat .spanFiyat, .IndirimliFiyatContent .spanFiyat, .indirimliFiyat .spanFiyat');
+                    if (priceEl && discountEl) {
+                        regularPrice = priceEl.innerText.trim();
+                        offerPrice = discountEl.innerText.trim();
+                    } else if (priceEl) {
+                        regularPrice = priceEl.innerText.trim();
+                    }
+                }
 
                 if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
                     const stockMap = {};
@@ -876,12 +904,6 @@ async function scrapeProduct(page, url) {
                         data.products.forEach(p => {
                             if (p.id !== undefined && p.stokAdedi !== undefined) stockMap[p.id] = parseInt(p.stokAdedi);
                         });
-
-                        const anaUrun = data.products.find(p => p.anaUrun === true) || data.products[0];
-                        if (anaUrun && anaUrun.indirimliFiyati < anaUrun.satisFiyati) {
-                            const ratio = anaUrun.indirimliFiyati / anaUrun.satisFiyati;
-                            offerPrice = String(Math.ceil(data.productPriceKDVIncluded * ratio));
-                        }
                     }
                     data.productVariantData.forEach(variant => {
                         if (variant.tanim && variant.urunID !== undefined)
@@ -911,7 +933,7 @@ async function scrapeProduct(page, url) {
 
         const regular = parseTurkishPrice(result.regularPrice);
         let offer = parseTurkishPrice(result.offerPrice);
-        if (regular && offer && offer >= regular) offer = null;
+        if (offer && regular && offer >= regular) offer = null;
 
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
 
