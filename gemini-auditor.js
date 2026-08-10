@@ -737,6 +737,8 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         <div class="q-card" style="border-color: rgba(236,72,153,0.4);" onclick="setFilter('SCREENSHOT')">
             <span style="color:var(--pink)">📸 اسکرین‌شات:</span> <span class="q-num" style="color:var(--pink)">${screenshotsCount}</span>
         </div>
+    </div>
+
     <!-- فیلترها و سرچ -->
     <div class="toolbar">
         <div class="filter-group">
