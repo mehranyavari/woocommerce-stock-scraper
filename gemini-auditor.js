@@ -596,161 +596,188 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد حسابرسی دوطرفه محصولات | AI Product Auditor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>پایش هوشمند محصولات | AI Auditor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #151d30;
-            --card-border: #243049;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg: #090d16;
+            --surface: #121827;
+            --surface-hover: #1a2236;
+            --border: #1f293d;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
             --primary: #8b5cf6;
-            --primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            --primary-glow: rgba(139,92,246,0.15);
             --critical: #ef4444;
             --warning: #f59e0b;
-            --info: #3b82f6;
             --success: #10b981;
+            --info: #38bdf8;
+            --pink: #ec4899;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-primary); padding: 30px 20px; line-height: 1.6; }
-        .container { max-width: 1440px; margin: 0 auto; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', -apple-system, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 15px; font-size: 13px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1400px; margin: 0 auto; }
 
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
-        .header h1 { font-size: 24px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .header .meta { font-size: 13px; color: var(--text-secondary); }
+        /* نوار بالای صفحه */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; background: var(--surface); padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+        .logo-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; color: #fff; }
+        .logo-badge { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: #fff; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+        .meta-tag { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
 
-        /* کارت‌های آمار */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
-        .stat-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
-        .stat-icon { font-size: 26px; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); }
-        .stat-info .num { font-size: 20px; font-weight: 800; }
-        .stat-info .label { font-size: 11px; color: var(--text-secondary); }
+        /* کارت‌های آماری فشرده */
+        .quick-stats { display: flex; gap: 8px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+        .quick-stats::-webkit-scrollbar { display: none; }
+        .q-card { background: var(--surface); border: 1px solid var(--border); padding: 8px 14px; border-radius: 8px; white-space: nowrap; display: flex; align-items: center; gap: 8px; flex-shrink: 0; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .q-card:hover { border-color: var(--primary); transform: translateY(-1px); }
+        .q-num { font-weight: 800; font-size: 14px; }
 
-        /* گزارش مدیریتی */
-        .ai-summary-box { background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(59,130,246,0.12) 100%); border: 1px solid rgba(139,92,246,0.35); border-radius: 12px; padding: 22px; margin-bottom: 25px; }
-        .ai-summary-title { font-size: 16px; font-weight: 700; color: #c084fc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .ai-summary-content { font-size: 14px; color: #e2e8f0; white-space: pre-line; line-height: 1.8; }
+        /* گزارش مدیریتی جمع‌وجور */
+        .ai-box { background: var(--primary-glow); border: 1px solid rgba(139,92,246,0.3); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+        .ai-header { font-size: 13px; font-weight: 700; color: #c084fc; display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+        .ai-text { font-size: 12px; color: #cbd5e1; white-space: pre-line; line-height: 1.7; }
 
-        /* فیلترها و جستجو */
-        .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; background: var(--card-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--card-border); }
-        .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: var(--text-secondary); padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; }
-        .search-input { background: #0b0f19; border: 1px solid var(--card-border); color: #fff; padding: 8px 15px; border-radius: 8px; font-size: 13px; width: 280px; outline: none; }
-        .search-input:focus { border-color: var(--primary); }
+        /* نوار فیلتر و جستجو */
+        .toolbar { display: flex; justify-content: space-between; align-items: center; background: var(--surface); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; gap: 10px; flex-wrap: wrap; position: sticky; top: 10px; z-index: 100; backdrop-filter: blur(10px); }
+        .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .f-btn { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted); padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+        .f-btn.active, .f-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .search-box { background: var(--bg); border: 1px solid var(--border); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px; width: 220px; outline: none; transition: border-color 0.2s; }
+        .search-box:focus { border-color: var(--primary); }
 
-        /* جدول Side-by-Side */
-        .table-wrapper { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); overflow-x: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: right; }
-        th, td { padding: 14px 16px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
-        th { background: #111827; color: var(--text-secondary); font-weight: 600; }
-        tr:hover { background: rgba(255,255,255,0.02); }
+        /* جدول محصولات (دسکتاپ) */
+        .table-card { background: var(--surface); border-radius: 10px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); }
+        table { width: 100%; border-collapse: collapse; text-align: right; font-size: 12px; }
+        th { background: #0c1220; color: var(--muted); padding: 10px 12px; font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+        tr:hover { background: var(--surface-hover); }
 
-        /* بج‌ها */
-        .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
-        .badge-critical { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
-        .badge-warning { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); }
-        .badge-ok { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
+        /* تگ‌ها و بج‌ها */
+        .pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+        .pill-ok { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+        .pill-critical { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+        .pill-warning { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
 
-        .compare-box { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px; font-size: 12px; margin-bottom: 5px; }
-        .compare-title { font-weight: 700; font-size: 11px; margin-bottom: 5px; color: var(--text-secondary); text-transform: uppercase; }
+        .tag-size { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; margin: 1px; }
+        .tag-size.in { background: rgba(16,185,129,0.12); color: #34d399; }
+        .tag-size.out { background: rgba(239,68,68,0.1); color: #f87171; opacity: 0.6; }
+        .tag-size.missing { background: rgba(245,158,11,0.2); color: #fbbf24; font-weight: bold; border: 1px solid rgba(245,158,11,0.4); }
+        .tag-size.phantom { background: rgba(239,68,68,0.25); color: #fca5a5; font-weight: bold; border: 1px solid rgba(239,68,68,0.5); }
 
-        .size-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin: 2px; }
-        .size-tag.in { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
-        .size-tag.out { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-        .size-tag.missing { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); font-weight: bold; }
-        .size-tag.phantom { background: rgba(239,68,68,0.25); color: #fca5a5; border: 1px solid rgba(239,68,68,0.5); font-weight: bold; }
+        .price-chip { font-size: 12px; font-weight: bold; }
+        .price-old { color: #f87171; text-decoration: line-through; margin-left: 4px; font-size: 10px; }
+        .price-new { color: #34d399; }
+        .price-mine { color: #38bdf8; }
 
-        .action-box { background: rgba(139,92,246,0.08); border-right: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 12px; color: #cbd5e1; margin-top: 6px; }
+        .action-chip { background: rgba(255,255,255,0.03); border-right: 2px solid var(--primary); padding: 4px 8px; font-size: 11px; color: #cbd5e1; border-radius: 0 4px 4px 0; margin-top: 4px; }
 
-        .btn-link { color: #818cf8; text-decoration: none; font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
-        .btn-link:hover { text-decoration: underline; }
+        .action-links { display: flex; gap: 4px; flex-wrap: wrap; }
+        .a-btn { background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: #94a3b8; padding: 3px 7px; border-radius: 4px; font-size: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 3px; font-weight: 600; transition: all 0.15s; }
+        .a-btn:hover { background: var(--surface-hover); color: #fff; border-color: #475569; }
+        .a-btn.primary { color: #38bdf8; border-color: rgba(56,189,248,0.3); }
+        .a-btn.edit { color: #fbbf24; border-color: rgba(251,191,36,0.3); }
+        .a-btn.photo { color: #f472b6; border-color: rgba(236,72,153,0.3); cursor: pointer; }
 
-        .btn-screenshot { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.35); padding: 3px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; font-weight: bold; transition: all 0.2s; }
-        .btn-screenshot:hover { background: #ec4899; color: #fff; }
+        /* نسخه موبایل (کارت‌های مدرن) */
+        .mobile-cards { display: none; }
 
-        /* Modal Lightbox برای اسکرین‌شات */
-        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { max-width: 90%; max-height: 90%; border-radius: 12px; border: 1px solid #475569; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
-        .modal-close { position: absolute; top: 20px; right: 30px; font-size: 32px; color: #fff; cursor: pointer; font-weight: bold; }
+        @media (max-width: 900px) {
+            .table-card { display: none; }
+            .mobile-cards { display: flex; flex-direction: column; gap: 10px; }
+            .m-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+            .m-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            .m-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 6px; }
+            .m-label { font-size: 10px; color: var(--muted); font-weight: 600; }
+            .toolbar { flex-direction: column; align-items: stretch; }
+            .search-box { width: 100%; }
+        }
+
+        /* لایت‌باکس اسکرین‌شات */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 15px; }
+        .modal-content { max-width: 95%; max-height: 90vh; border-radius: 10px; border: 1px solid #475569; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 28px; color: #fff; cursor: pointer; }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <div>
-            <h1>🤖 داشبورد حسابرسی دوطرفه محصولات (سایت شما vs تامین‌کننده)</h1>
-            <div class="meta">بررسی دقیق سایزهای گمشده، خطرات اتمام موجودی، تغییرات قیمتی و تصاویر زنده تامین‌کنندگان • تاریخ: ${new Date().toLocaleDateString('fa-IR')}</div>
+    <!-- هدر جمع‌وجور -->
+    <div class="top-bar">
+        <div class="logo-title">
+            <span>🤖 پایش هوشمند محصولات</span>
+            <span class="logo-badge">Gemini 2.5 Flash</span>
+        </div>
+        <div class="meta-tag">
+            <span>🕒 بروزرسانی: ${new Date().toLocaleDateString('fa-IR')}</span>
+            <span>•</span>
+            <span>📦 ${total} محصول پایش‌شده</span>
         </div>
     </div>
 
-    <!-- آمار سریع -->
-    <div class="stats-grid">
-        <div class="stat-card" style="border-color: rgba(16,185,129,0.4);">
-            <div class="stat-icon" style="color: var(--success);">🟢</div>
-            <div class="stat-info"><div class="num" style="color: var(--success);">${okCount}</div><div class="label">کاملاً هماهنگ و اکی</div></div>
+    <!-- نوارهای آماری فشرده -->
+    <div class="quick-stats">
+        <div class="q-card" onclick="setFilter('ALL')">
+            <span>کل:</span> <span class="q-num">${total}</span>
         </div>
-        <div class="stat-card" style="border-color: rgba(239,68,68,0.4);">
-            <div class="stat-icon" style="color: var(--critical);">🔴</div>
-            <div class="stat-info"><div class="num" style="color: var(--critical);">${criticalCount}</div><div class="label">بحرانی (خطر لغو سفارش/ضرر)</div></div>
+        <div class="q-card" style="border-color: rgba(16,185,129,0.4);" onclick="setFilter('OK')">
+            <span style="color:var(--success)">🟢 هماهنگ:</span> <span class="q-num" style="color:var(--success)">${okCount}</span>
         </div>
-        <div class="stat-card" style="border-color: rgba(245,158,11,0.4);">
-            <div class="stat-icon" style="color: var(--warning);">👟</div>
-            <div class="stat-info"><div class="num" style="color: var(--warning);">${missingSizesCount}</div><div class="label">سایز گمشده در سایت شما</div></div>
+        <div class="q-card" style="border-color: rgba(239,68,68,0.4);" onclick="setFilter('CRITICAL')">
+            <span style="color:var(--critical)">🔴 بحرانی:</span> <span class="q-num" style="color:var(--critical)">${criticalCount}</span>
         </div>
-        <div class="stat-card" style="border-color: rgba(239,68,68,0.4);">
-            <div class="stat-icon" style="color: var(--critical);">⚠️</div>
-            <div class="stat-info"><div class="num" style="color: var(--critical);">${phantomSizesCount}</div><div class="label">سایز کاذب (اتمام در تامین‌کننده)</div></div>
+        <div class="q-card" style="border-color: rgba(245,158,11,0.4);" onclick="setFilter('MISSING_SIZES')">
+            <span style="color:var(--warning)">👟 سایز گمشده:</span> <span class="q-num" style="color:var(--warning)">${missingSizesCount}</span>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon">💰</div>
-            <div class="stat-info"><div class="num">${priceMismatchCount}</div><div class="label">مغایرت قیمت لیر</div></div>
+        <div class="q-card" style="border-color: rgba(239,68,68,0.4);" onclick="setFilter('PHANTOM_STOCK')">
+            <span style="color:var(--critical)">⚠️ سایز کاذب:</span> <span class="q-num" style="color:var(--critical)">${phantomSizesCount}</span>
         </div>
-        <div class="stat-card" style="border-color: rgba(236,72,153,0.4);">
-            <div class="stat-icon" style="color: #f472b6;">📸</div>
-            <div class="stat-info"><div class="num" style="color: #f472b6;">${screenshotsCount}</div><div class="label">اسکرین‌شات زنده تامین‌کننده</div></div>
+        <div class="q-card" onclick="setFilter('PRICE')">
+            <span style="color:var(--info)">💰 اختلاف قیمت:</span> <span class="q-num" style="color:var(--info)">${priceMismatchCount}</span>
+        </div>
+        <div class="q-card" style="border-color: rgba(236,72,153,0.4);" onclick="setFilter('SCREENSHOT')">
+            <span style="color:var(--pink)">📸 اسکرین‌شات:</span> <span class="q-num" style="color:var(--pink)">${screenshotsCount}</span>
         </div>
     </div>
 
-    <!-- خلاصه هوش مصنوعی -->
-    <div class="ai-summary-box">
-        <div class="ai-summary-title">🧠 گزارش و تحلیل مدیریتی هوش مصنوعی Gemini</div>
-        <div class="ai-summary-content">${executiveSummary}</div>
-    </div>
-
-    <!-- ابزارهای فیلتر -->
-    <div class="controls">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="ALL">همه (${total})</button>
-            <button class="filter-btn" data-filter="OK">🟢 کاملاً اکی (${okCount})</button>
-            <button class="filter-btn" data-filter="CRITICAL">🔴 بحرانی (${criticalCount})</button>
-            <button class="filter-btn" data-filter="MISSING_SIZES">👟 سایز گمشده (${missingSizesCount})</button>
-            <button class="filter-btn" data-filter="PHANTOM_STOCK">⚠️ سایز کاذب (${phantomSizesCount})</button>
-            <button class="filter-btn" data-filter="PRICE">💰 مغایرت قیمت (${priceMismatchCount})</button>
-            <button class="filter-btn" data-filter="SCREENSHOT">📸 دارای اسکرین‌شات (${screenshotsCount})</button>
+    <!-- گزارش مدیریتی -->
+    <div class="ai-box">
+        <div class="ai-header">
+            <span>🧠 تحلیل و راهکار مدیریتی هوش مصنوعی Gemini</span>
         </div>
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 جستجو بر اساس ID، نام، دامنه...">
+        <div class="ai-text">${executiveSummary}</div>
     </div>
 
-    <!-- جدول نتایج دوطرفه -->
-    <div class="table-wrapper">
+    <!-- فیلترها و سرچ -->
+    <div class="toolbar">
+        <div class="filter-group">
+            <button class="f-btn active" data-filter="ALL">همه (${total})</button>
+            <button class="f-btn" data-filter="OK">🟢 اکی (${okCount})</button>
+            <button class="f-btn" data-filter="CRITICAL">🔴 بحرانی (${criticalCount})</button>
+            <button class="f-btn" data-filter="MISSING_SIZES">👟 سایز گمشده (${missingSizesCount})</button>
+            <button class="f-btn" data-filter="PHANTOM_STOCK">⚠️ سایز کاذب (${phantomSizesCount})</button>
+            <button class="f-btn" data-filter="PRICE">💰 قیمت (${priceMismatchCount})</button>
+            <button class="f-btn" data-filter="SCREENSHOT">📸 اسکرین‌شات (${screenshotsCount})</button>
+        </div>
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 جستجو (شناسه، نام، تامین‌کننده)...">
+    </div>
+
+    <!-- جدول دسکتاپ -->
+    <div class="table-card">
         <table id="auditTable">
             <thead>
                 <tr>
-                    <th style="width: 100px;">محصول</th>
-                    <th style="width: 110px;">وضعیت تطابق</th>
-                    <th style="width: 250px;">🏪 در سایت شما (Our Site)</th>
-                    <th style="width: 250px;">🏬 در تامین‌کننده (Supplier)</th>
-                    <th>🧠 تحلیل هوش مصنوعی Gemini و راهکار</th>
-                    <th style="width: 100px;">لینک‌ها و تصویر</th>
+                    <th style="width:70px;">محصول</th>
+                    <th style="width:90px;">وضعیت</th>
+                    <th style="width:230px;">🏪 در سایت شما</th>
+                    <th style="width:230px;">🏬 در تامین‌کننده</th>
+                    <th>🧠 تحلیل و اقدام پیشنهادی</th>
+                    <th style="width:130px;">دسترسی سریع</th>
                 </tr>
             </thead>
             <tbody>
                 ${auditResults.map(item => `
-                <tr data-severity="${item.severity}" 
+                <tr class="product-item"
+                    data-severity="${item.severity}" 
                     data-is-ok="${item.status_tag === 'OK'}"
                     data-has-missing="${item.missing_sizes_in_store.length > 0}"
                     data-has-phantom="${item.phantom_sizes_in_store.length > 0}"
@@ -758,82 +785,67 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                     data-has-screenshot="${Boolean(item.screenshot_base64 || item.screenshot_file)}">
                     
                     <td>
-                        <strong>#${item.id}</strong><br>
-                        <span style="font-size:11px; color:#94a3b8;">${item.sku || item.domain}</span>
+                        <strong style="color:#fff;">#${item.id}</strong><br>
+                        <span style="font-size:10px; color:var(--muted);">${item.domain}</span>
                     </td>
                     <td>
                         ${item.status_tag === 'OK' 
-                            ? '<span class="badge badge-ok">🟢 هماهنگ (OK)</span>'
-                            : `<span class="badge badge-${item.severity.toLowerCase()}">${item.severity}</span>`
+                            ? '<span class="pill pill-ok">🟢 اکی</span>'
+                            : `<span class="pill pill-${item.severity.toLowerCase()}">${item.severity}</span>`
                         }
                     </td>
                     <td>
-                        <div class="compare-box">
-                            <div class="compare-title">قیمت لیر سایت شما:</div>
-                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
-                                ${item.our_data.price_lir ? item.our_data.price_lir + ' ₺' : '<span style="color:#64748b;">تنظیم نشده</span>'}
-                            </div>
-                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
-                            <div>
-                                ${Object.keys(item.our_data.sizes).length > 0 
-                                    ? Object.entries(item.our_data.sizes).map(([s, q]) => `
-                                        <span class="size-tag ${q > 0 ? (item.phantom_sizes_in_store.some(p => p.size === s) ? 'phantom' : 'in') : 'out'}">
-                                            ${s} (${q})
+                        <div class="price-chip">
+                            قیمت: ${item.our_data.price_lir ? `<span class="price-mine">${item.our_data.price_lir} ₺</span>` : '<span style="color:#64748b; font-size:11px;">تنظیم نشده</span>'}
+                        </div>
+                        <div style="margin-top:3px;">
+                            ${Object.keys(item.our_data.sizes).length > 0 
+                                ? Object.entries(item.our_data.sizes).map(([s, q]) => `
+                                    <span class="tag-size ${q > 0 ? (item.phantom_sizes_in_store.some(p => p.size === s) ? 'phantom' : 'in') : 'out'}">
+                                        ${s}${q > 0 ? `(${q})` : ''}
+                                    </span>
+                                `).join('')
+                                : '<span style="color:#64748b; font-size:10px;">تنوعی ثبت نشده</span>'
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <div class="price-chip">
+                            ${item.supplier_data.success 
+                                ? (item.supplier_data.has_discount 
+                                    ? `<span class="price-old">${item.supplier_data.regular_price}₺</span> <span class="price-new">${item.supplier_data.offer_price}₺</span>`
+                                    : `<span class="price-new">${item.supplier_data.regular_price} ₺</span>`
+                                  )
+                                : '<span style="color:var(--critical); font-size:11px;">عدم دسترسی</span>'
+                            }
+                        </div>
+                        <div style="margin-top:3px;">
+                            ${item.supplier_data.success 
+                                ? (item.supplier_data.in_stock_sizes.length > 0 
+                                    ? item.supplier_data.in_stock_sizes.map(s => `
+                                        <span class="tag-size ${item.missing_sizes_in_store.some(m => m.size === s.size) ? 'missing' : 'in'}">
+                                            ✓ ${s.size}${s.qty > 1 ? `(${s.qty})` : ''}
                                         </span>
-                                    `).join('')
-                                    : '<span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>'
-                                }
-                            </div>
+                                      `).join('')
+                                    : '<span style="color:var(--critical); font-size:10px;">کل سایزها ناموجود</span>'
+                                  )
+                                : '<span style="color:var(--pink); font-size:10px;">📸 تصویر زنده ثبت شد</span>'
+                            }
                         </div>
                     </td>
                     <td>
-                        <div class="compare-box">
-                            <div class="compare-title">قیمت تامین‌کننده (${item.domain}):</div>
-                            <div style="font-weight:bold; font-size:13px;">
-                                ${item.supplier_data.success 
-                                    ? (item.supplier_data.has_discount 
-                                        ? `<span style="text-decoration:line-through; color:#ef4444; font-size:11px;">${item.supplier_data.regular_price}₺</span> <span style="color:#10b981;">${item.supplier_data.offer_price}₺</span> <span style="color:#f87171; font-size:10px;">(-${item.supplier_data.discount_percent}%)</span>`
-                                        : `<span style="color:#10b981;">${item.supplier_data.regular_price} ₺</span>`
-                                      )
-                                    : '<span style="color:#ef4444;">عدم دسترسی اسکرپر</span>'
-                                }
-                            </div>
-                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
-                            <div>
-                                ${item.supplier_data.success 
-                                    ? (item.supplier_data.in_stock_sizes.length > 0 
-                                        ? item.supplier_data.in_stock_sizes.map(s => `
-                                            <span class="size-tag ${item.missing_sizes_in_store.some(m => m.size === s.size) ? 'missing' : 'in'}">
-                                                ✓ ${s.size} (${s.qty})
-                                            </span>
-                                          `).join('')
-                                        : '<span style="color:#ef4444; font-size:11px;">کل سایزها ناموجود</span>'
-                                      )
-                                    : `<span style="color:#f472b6; font-size:11px;">📸 تصویر زنده صفحه ثبت شده</span>`
-                                }
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                        <div style="font-size:12px; font-weight:600; color:#f8fafc;">
                             ${item.ai_summary || (item.discrepancies.length > 0 ? item.discrepancies[0].message : 'همه موارد هماهنگ است.')}
                         </div>
-                        ${item.discrepancies.length > 1 ? `
-                            <ul style="font-size:11px; color:#94a3b8; margin: 4px 15px 0 0;">
-                                ${item.discrepancies.slice(1).map(d => `<li>${d.message}</li>`).join('')}
-                            </ul>
-                        ` : ''}
-                        ${item.recommended_action ? `<div class="action-box">💡 راهکار پیشنهادی: ${item.recommended_action}</div>` : ''}
+                        ${item.recommended_action ? `<div class="action-chip">💡 ${item.recommended_action}</div>` : ''}
                     </td>
                     <td>
-                        <div style="display:flex; flex-direction:column; gap:6px; min-width:95px;">
-                            ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="btn-link" style="color:#38bdf8; font-weight:600;">🛍️ سایت ما</a>` : ''}
-                            ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="btn-link" style="color:#fbbf24;">✏️ ویرایش</a>` : ''}
-                            ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="btn-link" style="color:#a78bfa;">🏬 تامین‌کننده</a>` : ''}
+                        <div class="action-links">
+                            ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت</a>` : ''}
+                            ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="a-btn edit">✏️ ویرایش</a>` : ''}
+                            ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="a-btn">🏬 منبع</a>` : ''}
                             ${(item.screenshot_base64 || item.screenshot_file) ? `
-                                <button class="btn-screenshot" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">
-                                    📸 اسکرین‌شات
-                                </button>
+                                <button class="a-btn photo" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">📸 عکس</button>
                             ` : ''}
                         </div>
                     </td>
@@ -842,12 +854,75 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             </tbody>
         </table>
     </div>
+
+    <!-- نسخه کارت‌های موبایل -->
+    <div class="mobile-cards">
+        ${auditResults.map(item => `
+        <div class="m-card product-item"
+            data-severity="${item.severity}" 
+            data-is-ok="${item.status_tag === 'OK'}"
+            data-has-missing="${item.missing_sizes_in_store.length > 0}"
+            data-has-phantom="${item.phantom_sizes_in_store.length > 0}"
+            data-has-price="${item.price_discrepancy !== null}"
+            data-has-screenshot="${Boolean(item.screenshot_base64 || item.screenshot_file)}">
+            
+            <div class="m-card-header">
+                <div>
+                    <strong>#${item.id}</strong> <span style="font-size:11px; color:var(--muted);">(${item.domain})</span>
+                </div>
+                <div>
+                    ${item.status_tag === 'OK' 
+                        ? '<span class="pill pill-ok">🟢 اکی</span>'
+                        : `<span class="pill pill-${item.severity.toLowerCase()}">${item.severity}</span>`
+                    }
+                </div>
+            </div>
+
+            <div class="m-grid">
+                <div>
+                    <div class="m-label">🏪 در سایت شما:</div>
+                    <div class="price-mine" style="font-weight:bold;">${item.our_data.price_lir ? item.our_data.price_lir + ' ₺' : 'تنظیم نشده'}</div>
+                    <div style="margin-top:2px;">
+                        ${Object.keys(item.our_data.sizes).length > 0 
+                            ? Object.entries(item.our_data.sizes).map(([s, q]) => `<span class="tag-size ${q > 0 ? 'in' : 'out'}">${s}</span>`).join('')
+                            : '<span style="color:#64748b; font-size:10px;">-</span>'
+                        }
+                    </div>
+                </div>
+                <div>
+                    <div class="m-label">🏬 در تامین‌کننده:</div>
+                    <div class="price-new" style="font-weight:bold;">${item.supplier_data.effective_price ? item.supplier_data.effective_price + ' ₺' : 'نامشخص'}</div>
+                    <div style="margin-top:2px;">
+                        ${item.supplier_data.in_stock_sizes.length > 0 
+                            ? item.supplier_data.in_stock_sizes.map(s => `<span class="tag-size in">${s.size}</span>`).join('')
+                            : '<span style="color:var(--critical); font-size:10px;">ناموجود</span>'
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size:12px; color:#f8fafc; font-weight:600; margin-bottom:4px;">
+                ${item.ai_summary || (item.discrepancies.length > 0 ? item.discrepancies[0].message : 'هماهنگ است.')}
+            </div>
+            ${item.recommended_action ? `<div class="action-chip" style="margin-bottom:8px;">💡 ${item.recommended_action}</div>` : ''}
+
+            <div class="action-links">
+                ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت ما</a>` : ''}
+                ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="a-btn edit">✏️ ویرایش</a>` : ''}
+                ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="a-btn">🏬 تامین‌کننده</a>` : ''}
+                ${(item.screenshot_base64 || item.screenshot_file) ? `
+                    <button class="a-btn photo" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">📸 اسکرین‌شات</button>
+                ` : ''}
+            </div>
+        </div>
+        `).join('')}
+    </div>
 </div>
 
 <!-- Modal Lightbox -->
 <div id="imageModal" class="modal" onclick="closeModal()">
     <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImg" class="modal-content" src="" alt="Live Supplier Page Screenshot">
+    <img id="modalImg" class="modal-content" src="" alt="Screenshot">
 </div>
 
 <script>
@@ -860,18 +935,24 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    const filterBtns = document.querySelectorAll('.filter-btn');
+    const filterBtns = document.querySelectorAll('.f-btn');
     const searchInput = document.getElementById('searchInput');
-    const rows = document.querySelectorAll('#auditTable tbody tr');
+    const items = document.querySelectorAll('.product-item');
 
     let currentFilter = 'ALL';
 
+    function setFilter(f) {
+        currentFilter = f;
+        filterBtns.forEach(b => {
+            if (b.getAttribute('data-filter') === f) b.classList.add('active');
+            else b.classList.remove('active');
+        });
+        applyFilters();
+    }
+
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentFilter = btn.getAttribute('data-filter');
-            applyFilters();
+            setFilter(btn.getAttribute('data-filter'));
         });
     });
 
@@ -880,14 +961,14 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     function applyFilters() {
         const query = searchInput.value.toLowerCase().trim();
 
-        rows.forEach(row => {
-            const severity = row.getAttribute('data-severity');
-            const isOk = row.getAttribute('data-is-ok') === 'true';
-            const hasMissing = row.getAttribute('data-has-missing') === 'true';
-            const hasPhantom = row.getAttribute('data-has-phantom') === 'true';
-            const hasPrice = row.getAttribute('data-has-price') === 'true';
-            const hasScreenshot = row.getAttribute('data-has-screenshot') === 'true';
-            const rowText = row.innerText.toLowerCase();
+        items.forEach(item => {
+            const severity = item.getAttribute('data-severity');
+            const isOk = item.getAttribute('data-is-ok') === 'true';
+            const hasMissing = item.getAttribute('data-has-missing') === 'true';
+            const hasPhantom = item.getAttribute('data-has-phantom') === 'true';
+            const hasPrice = item.getAttribute('data-has-price') === 'true';
+            const hasScreenshot = item.getAttribute('data-has-screenshot') === 'true';
+            const itemText = item.innerText.toLowerCase();
 
             let matchesFilter = false;
             if (currentFilter === 'ALL') matchesFilter = true;
@@ -898,12 +979,12 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             else if (currentFilter === 'PRICE' && hasPrice) matchesFilter = true;
             else if (currentFilter === 'SCREENSHOT' && hasScreenshot) matchesFilter = true;
 
-            const matchesSearch = query === '' || rowText.includes(query);
+            const matchesSearch = query === '' || itemText.includes(query);
 
             if (matchesFilter && matchesSearch) {
-                row.style.display = '';
+                item.style.display = '';
             } else {
-                row.style.display = 'none';
+                item.style.display = 'none';
             }
         });
     }
@@ -912,7 +993,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
 </html>`;
 
     fs.writeFileSync(outputFile, html, 'utf8');
-    console.log(`\n💾 داشبورد مقایسه‌ای ذخیره شد: ${outputFile}`);
+    console.log(`\n💾 داشبورد فشرده و ریسپانسیو ذخیره شد: ${outputFile}`);
 }
 
 // ==========================================
