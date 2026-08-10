@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد حسابرسی هوشمند محصولات | AI Product Auditor</title>
+    <title>داشبورد حسابرسی دوطرفه محصولات | AI Product Auditor</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --card-border: #334155;
+            --bg-color: #0b0f19;
+            --card-bg: #151d30;
+            --card-border: #243049;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --primary: #8b5cf6;
@@ -22,56 +22,57 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-primary); padding: 30px 20px; line-height: 1.6; }
-        .container { max-width: 1350px; margin: 0 auto; }
+        .container { max-width: 1400px; margin: 0 auto; }
 
-        /* هدر */
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
         .header h1 { font-size: 24px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .header .meta { font-size: 13px; color: var(--text-secondary); }
 
-        /* کارت‌های آماری */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
-        .stat-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
-        .stat-icon { font-size: 28px; width: 50px; height: 50px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); }
-        .stat-info .num { font-size: 22px; font-weight: 800; }
-        .stat-info .label { font-size: 12px; color: var(--text-secondary); }
+        /* کارت‌های آمار */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
+        .stat-icon { font-size: 26px; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); }
+        .stat-info .num { font-size: 20px; font-weight: 800; }
+        .stat-info .label { font-size: 11px; color: var(--text-secondary); }
 
-        /* خلاصه مدیریتی جمنای */
-        .ai-summary-box { background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(59,130,246,0.1) 100%); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 22px; margin-bottom: 25px; position: relative; }
+        /* گزارش مدیریتی */
+        .ai-summary-box { background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(59,130,246,0.12) 100%); border: 1px solid rgba(139,92,246,0.35); border-radius: 12px; padding: 22px; margin-bottom: 25px; }
         .ai-summary-title { font-size: 16px; font-weight: 700; color: #c084fc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
         .ai-summary-content { font-size: 14px; color: #e2e8f0; white-space: pre-line; line-height: 1.8; }
 
-        /* فیلترها و سرچ */
+        /* فیلترها و جستجو */
         .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; background: var(--card-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--card-border); }
         .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: var(--text-secondary); padding: 7px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-        .search-input { background: #0f172a; border: 1px solid var(--card-border); color: #fff; padding: 8px 15px; border-radius: 8px; font-size: 13px; width: 260px; outline: none; }
+        .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: var(--text-secondary); padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; }
+        .search-input { background: #0b0f19; border: 1px solid var(--card-border); color: #fff; padding: 8px 15px; border-radius: 8px; font-size: 13px; width: 280px; outline: none; }
         .search-input:focus { border-color: var(--primary); }
 
-        /* جدول محصولات */
+        /* جدول Side-by-Side */
         .table-wrapper { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); overflow-x: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
         table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: right; }
-        th, td { padding: 14px 16px; border-bottom: 1px solid var(--card-border); }
-        th { background: #182234; color: var(--text-secondary); font-weight: 600; }
+        th, td { padding: 14px 16px; border-bottom: 1px solid var(--card-border); vertical-align: top; }
+        th { background: #111827; color: var(--text-secondary); font-weight: 600; }
         tr:hover { background: rgba(255,255,255,0.02); }
 
-        /* برچسب‌ها */
+        /* تگ‌ها و بج‌ها */
         .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
         .badge-critical { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
         .badge-warning { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); }
         .badge-info { background: rgba(59,130,246,0.2); color: #60a5fa; border: 1px solid rgba(59,130,246,0.4); }
-        .badge-normal { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
+        .badge-normal, .badge-ok { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
+        .badge-error { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
 
-        .price-badge { font-weight: bold; }
-        .price-offer { color: #f87171; text-decoration: line-through; margin-left: 6px; }
-        .price-final { color: #34d399; }
-        
-        .stock-tag { display: inline-block; background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 11px; margin: 2px; }
-        .stock-tag.in { color: #34d399; }
-        .stock-tag.out { color: #f87171; opacity: 0.6; }
+        .compare-box { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px; font-size: 12px; margin-bottom: 5px; }
+        .compare-title { font-weight: 700; font-size: 11px; margin-bottom: 5px; color: var(--text-secondary); text-transform: uppercase; }
 
-        .action-box { background: rgba(255,255,255,0.03); border-right: 3px solid var(--primary); padding: 6px 10px; border-radius: 0 6px 6px 0; font-size: 12px; color: #cbd5e1; margin-top: 5px; }
+        .size-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin: 2px; }
+        .size-tag.in { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+        .size-tag.out { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+        .size-tag.missing { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); font-weight: bold; }
+        .size-tag.phantom { background: rgba(239,68,68,0.25); color: #fca5a5; border: 1px solid rgba(239,68,68,0.5); font-weight: bold; }
+
+        .action-box { background: rgba(139,92,246,0.08); border-right: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 12px; color: #cbd5e1; margin-top: 6px; }
 
         a.btn-link { color: #818cf8; text-decoration: none; font-size: 12px; }
         a.btn-link:hover { text-decoration: underline; }
@@ -81,1327 +82,633 @@
 <div class="container">
     <div class="header">
         <div>
-            <h1>🤖 داشبورد حسابرسی هوشمند محصولات با Gemini AI</h1>
-            <div class="meta">تحلیل لحظه‌ای مغایرت‌های سایز، قیمت و موجودی فروشگاه با تامین‌کنندگان • تاریخ: ۱۴۰۵/۵/۱۹</div>
+            <h1>🤖 داشبورد حسابرسی دوطرفه محصولات (سایت شما vs تامین‌کننده)</h1>
+            <div class="meta">بررسی دقیق سایزهای گمشده، خطرات اتمام موجودی، تغییرات قیمتی و لینک‌های حذف‌شده • تاریخ: ۱۴۰۵/۵/۱۹</div>
         </div>
     </div>
 
     <!-- آمار سریع -->
     <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">📦</div>
-            <div class="stat-info"><div class="num">50</div><div class="label">کل محصولات بررسی شده</div></div>
+        <div class="stat-card" style="border-color: rgba(16,185,129,0.4);">
+            <div class="stat-icon" style="color: var(--success);">🟢</div>
+            <div class="stat-info"><div class="num" style="color: var(--success);">5</div><div class="label">کاملاً هماهنگ و اکی</div></div>
         </div>
         <div class="stat-card" style="border-color: rgba(239,68,68,0.4);">
             <div class="stat-icon" style="color: var(--critical);">🔴</div>
-            <div class="stat-info"><div class="num" style="color: var(--critical);">3</div><div class="label">موارد بحرانی</div></div>
+            <div class="stat-info"><div class="num" style="color: var(--critical);">5</div><div class="label">بحرانی (خطر لغو سفارش یا ضرر)</div></div>
         </div>
         <div class="stat-card" style="border-color: rgba(245,158,11,0.4);">
-            <div class="stat-icon" style="color: var(--warning);">🟡</div>
-            <div class="stat-info"><div class="num" style="color: var(--warning);">30</div><div class="label">هشدارها و فرصت‌ها</div></div>
+            <div class="stat-icon" style="color: var(--warning);">👟</div>
+            <div class="stat-info"><div class="num" style="color: var(--warning);">0</div><div class="label">سایز گمشده در سایت شما</div></div>
         </div>
-        <div class="stat-card" style="border-color: rgba(59,130,246,0.4);">
-            <div class="stat-icon" style="color: var(--info);">🔥</div>
-            <div class="stat-info"><div class="num" style="color: var(--info);">5</div><div class="label">تخفیف‌های فعال تامین‌کننده</div></div>
+        <div class="stat-card" style="border-color: rgba(239,68,68,0.4);">
+            <div class="stat-icon" style="color: var(--critical);">⚠️</div>
+            <div class="stat-info"><div class="num" style="color: var(--critical);">0</div><div class="label">سایز کاذب (اتمام در تامین‌کننده)</div></div>
         </div>
         <div class="stat-card">
-            <div class="stat-icon">⚠️</div>
-            <div class="stat-info"><div class="num">23</div><div class="label">خطاهای اسکرپ / بلاک</div></div>
+            <div class="stat-icon">💰</div>
+            <div class="stat-info"><div class="num">0</div><div class="label">مغایرت قیمت لیر</div></div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🚫</div>
+            <div class="stat-info"><div class="num">4</div><div class="label">لینک حذف‌شده / خطای صفحه</div></div>
         </div>
     </div>
 
     <!-- خلاصه هوش مصنوعی -->
     <div class="ai-summary-box">
-        <div class="ai-summary-title">🧠 گزارش و توصیه مدیریتی هوش مصنوعی Gemini</div>
-        <div class="ai-summary-content">به عنوان مشاور ارشد فروشگاه، گزارش مدیریتی وضعیت مانیتورینگ محصولات به شرح زیر تقدیم می‌گردد:
+        <div class="ai-summary-title">🧠 گزارش و تحلیل مدیریتی هوش مصنوعی Gemini</div>
+        <div class="ai-summary-content">**گزارش مدیریتی: تحلیل تطبیقی موجودی و قیمت‌گذاری محصولات با تأمین‌کنندگان**
 
-📊 **گزارش وضعیت و تحلیل عملکرد سیستم مانیتورینگ**
-از مجموع ۳۰ محصول بررسی‌شده، وضعیت کلی پلتفرم نیازمند توجه فوری مدیریتی است. نقطه قوت اصلی در این ارزیابی، پایداری نسبی قیمت‌هاست؛ به‌طوری‌که تنها ۱ مورد تخفیف نامتعارف (`discounted_items`) و ۱ هشدار عمومی (`info_count`) ثبت شده که نشان‌دهنده کنترل خوب بر رویه تخفیفات است. با این حال، شاخص هشداره�� (`warning_count`) با ۲۶ مورد بسیار بالاست که نشان از نوسانات پنهان، احتمالخطاهای سیستمی یا نیاز به به‌روزرسانی اطلاعات محصولات دارد. 
+با سلام و احترام؛
+بر اساس پایش و ممیزی انجام‌شده روی نمونه‌ای ۵ عددی از اقلام کلیدی سایت در مقایسه با سیستم تامین‌کنندگان، خوشبختانه وضعیت سلامت داده‌ها در بخش‌های انبارداری و قیمت‌گذاری از پایداری مطلوبی برخوردار است. آمار مانیتورینگ نشان می‌دهد که خطاهای مرتبط با «موجودی کاذب (Phantom Stock)»، «فرصت‌های ازدست‌رفته سایزبندی» و «اختلاف قیم��» روی عدد صفر تثبیت شده‌اند که این امر نشان‌دهنده دقت مناسب در همگام‌سازی پایه قیمت‌ها و موجودی‌های اولیه است. با این حال، شاخص کلیدی ریسک بحرانی روی عدد ۵ (۱۰۰٪ موارد بررسی‌شده) قرار دارد که نیازمند توجه فوری مدیریت است.
 
-🚨 **تهدیدات فوری و ریسک‌های تجاری**
-در حال حاضر، ۳ محصول در وضعیت بحرانی (`critical_count`) قرار دارند که ۲ مورد از آن‌ها مربوط به کالاهای ناموجود (`out_of_stock_items`) است. این موضوع به طور مستقیم به از دست رفتن درآمد روزانه، کاهش نرخ تبدیل و هدایت مشتریان به سمت رقبا منجر می‌شود. همچنین وجود اقلام بحرانی نیازمند مداخله آنی تیم تامین کالا و پشتیبانی است تا از آسیب به اعتبار فروشگاه جلوگیری شود.
+ریسک بحرانی شناسایی‌شده در این ارزیابی، مربوط به حوزه ارتباط با زنجیره تامین است؛ به‌طوری‌که ۴ مورد از ۵ لینک اتصال به تامین‌کنندگان (`dead_supplier_links`) قطع یا منقضی شده‌اند. اگرچه در حال حاضر خطای مستقیمی در مغایرت قیمت یا موجودی ثبت نشده، اما قطع بودن ارتباط سیستمی با تامین‌کنندگان، پلتفرم ما را در «منطقه خطر کور» قرار داده است. ادامه این روند می‌تواند با اولین نوسان ناگهانی بازار یا اتمام موجودی واقعی نزد تامین‌کننده (بدون به‌روزرسانی خودکار در سایت)، منجر به ثبت سفارش‌های غیرقابل تأمین، نارضایتی شد��د مشتریان، جریمه‌های انضباطی و آسیب جبران‌ناپذیر به اعتبار برند گردد.
 
-🎯 **توصیه‌های کلیدی و اولویت‌دار به مدیریت سایت:**
-۱. **رفع آنی بحران موجودی:** بررسی و تامین فوری ۲ کالای ناموجود یا جایگزین کردن آن‌ها با محصولات مشابه برای جلوگیری از ریزش ترافیک خرید.
-۲. **پاک‌سازی هشدارها (Warnings):** تشکیل کارگروه ویژه برای بررسی ۲۶ هشدار ثبت‌شده جهت جلوگیری از تبدیل آن‌ها به وضعیت بحرانی.
-۳. **بازنگری قیمت‌گذاری و سیستمی:** بررسی دقیق تنها محصول تخفیف‌خورده برای اطمینان از عدم وجود ضرر مالی (Margin Loss) و بهینه‌سازی الگوریتم‌های هشداردهنده قیمت.</div>
+برای رفع این چالش و صیانت از عملیات تجارت الکترونیک، ۳ اقدام فوری زیر پیشنهاد می‌شود:
+۱. 🔗 **بررسی و احیای فوری لینک‌ها:** تیم فنی باید در کوتاه‌ترین زمان ممکن، وضعیت اتصال API یا پنل‌های ارتباطی با آن ۴ تامین‌کننده قطع‌شده را بررسی و بازسازی کند.
+۲. 🛡️ **استقرار سیستم پایش خودکار:** راه‌اندازی هشداردهنده‌های زنده (Real-time Alerts) برای شناسایی آنی قطعی ارتباط با تامین‌کنندگان پیش از تبدیل شدن به بحران عملیاتی.
+۳. 📋 **بازبینی دستی موقت:** تا زمان رفع کامل خطای لینک‌ها، موجودی و قیمت اقلام حساس این تامین‌کنندگان به صورت دستی و روزانه کنترل شود.</div>
     </div>
 
     <!-- ابزارهای فیلتر -->
     <div class="controls">
         <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="ALL">همه (50)</button>
-            <button class="filter-btn" data-filter="CRITICAL">🔴 بحرانی (3)</button>
-            <button class="filter-btn" data-filter="WARNING">🟡 هشدار (30)</button>
-            <button class="filter-btn" data-filter="DISCOUNT">🔥 تخفیف‌دار (5)</button>
-            <button class="filter-btn" data-filter="ERROR">⚠️ خطاها (23)</button>
+            <button class="filter-btn active" data-filter="ALL">همه (10)</button>
+            <button class="filter-btn" data-filter="OK">🟢 کاملاً اکی (5)</button>
+            <button class="filter-btn" data-filter="CRITICAL">🔴 بحرانی (5)</button>
+            <button class="filter-btn" data-filter="MISSING_SIZES">👟 سایز گمشده (0)</button>
+            <button class="filter-btn" data-filter="PHANTOM_STOCK">⚠️ سایز کاذب (0)</button>
+            <button class="filter-btn" data-filter="PRICE">💰 مغایرت قیمت (0)</button>
+            <button class="filter-btn" data-filter="DEAD">🚫 لینک نامعتبر (4)</button>
         </div>
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 جستجو بر اساس ID، دامنه یا متن...">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 جستجو بر اساس ID، نام، دامنه...">
     </div>
 
-    <!-- جدول نتایج -->
+    <!-- جدول نتایج دوطرفه -->
     <div class="table-wrapper">
         <table id="auditTable">
             <thead>
                 <tr>
-                    <th>شناسه (ID)</th>
-                    <th>تامین‌کننده</th>
-                    <th>سطح فوریت</th>
-                    <th>قیمت روز (لیر)</th>
-                    <th>وضعیت سایزها</th>
-                    <th>تحلیل هوش مصنوعی و راهکار پیشنهادی</th>
-                    <th>لینک‌ها</th>
+                    <th style="width: 100px;">محصول</th>
+                    <th style="width: 110px;">وضعیت تطابق</th>
+                    <th style="width: 250px;">🏪 در سایت شما (Our Site)</th>
+                    <th style="width: 250px;">🏬 در تامین‌کننده (Supplier)</th>
+                    <th>🧠 تحلیل هوش مصنوعی Gemini و راهکار</th>
+                    <th style="width: 90px;">لینک</th>
                 </tr>
             </thead>
             <tbody>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#8322</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
+                <tr data-severity="NORMAL" 
+                    data-is-ok="true"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#8322</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">meritspor.com.tr</span>
                     </td>
                     <td>
-                        <span class="price-final">4300 ₺</span>
+                        <span class="badge badge-ok">🟢 هماهنگ (OK)</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 46 (1)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 47</span><span class="stock-tag out">✗ 39.5</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 41.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 43.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 46.5</span>
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">محصول فقط در سایز ۴۶ (با موجودی ۱ عدد) باقی مانده و سایر سایزها ناموجود هستند.</div>
-                        <div class="action-box">💡 اقدام: سایزهای ناموجود را غیرفعال کرده و وضعیت موجودی سایز ۴۶ را بررسی کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (meritspor.com.tr):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#10b981;">4300 ₺</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                
+                                            <span class="size-tag in">
+                                                ✓ 46 (1)
+                                            </span>
+                                          
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            ✅ همه چیز اکیه؛ سایزها، موجودی و قیمت کاملاً با تامین‌کننده هماهنگ هستند.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: نیازی به اقدامی نیست.</div>
                     </td>
                     <td>
                         <a href="https://www.meritspor.com.tr/asics-gel-challenger-13-erkek-tenis-ayakkabisi-lacivert-turuncu" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#41632</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">asics.com.tr</span></td>
+                <tr data-severity="CRITICAL" 
+                    data-is-ok="false"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="true">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#41632</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">asics.com.tr</span>
                     </td>
                     <td>
-                        <span style="color:#64748b;">-</span>
+                        <span class="badge badge-critical">CRITICAL</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در اسکرپ و دریافت اطلاعات محصول از سایت تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز لینک را به‌روزرسانی کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (asics.com.tr):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#ef4444;">عدم دسترسی</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                <span style="color:#ef4444; font-size:11px;">Primary: productDetailModel not found | Secondary: No Secondary URL</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            صفحه محصول در سایت تامین‌کننده حذف یا با خطای ۴۰۴ مواجه شده است.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: لینک تامین‌کننده را بررسی کرده و در صورت حذف دائمی، محصول را در سایت خود غیرفعال کنید.</div>
                     </td>
                     <td>
                         <a href="https://www.asics.com.tr/p-gel-resolution-x-erkek-dark-purple-tenis-ayakkabisi-1041a481-500" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#32475</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
+                <tr data-severity="NORMAL" 
+                    data-is-ok="true"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#32475</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">meritspor.com.tr</span>
                     </td>
                     <td>
-                        <span class="price-final">7200 ₺</span>
+                        <span class="badge badge-ok">🟢 هماهنگ (OK)</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 40.5 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span><span class="stock-tag in">✓ 44.5 (1)</span><span class="stock-tag in">✓ 45.5 (2)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 38.5</span>
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">بیشتر سایزهای این محصول ناموجود شده و فقط چند سایز محدود با موجودی کم باقی مانده‌اند.</div>
-                        <div class="action-box">💡 اقدام: سایزهای ناموجود را در سایت بروزرسانی کرده و مراقب اتمام موجودی نهایی باشید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (meritspor.com.tr):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#10b981;">7200 ₺</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                
+                                            <span class="size-tag in">
+                                                ✓ 40.5 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 42.5 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 44.5 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 45.5 (2)
+                                            </span>
+                                          
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            ✅ همه چیز اکیه؛ سایزها، موجودی و قیمت کاملاً با تامین‌کننده هماهنگ هستند.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: نیازی به اقدامی نیست.</div>
                     </td>
                     <td>
                         <a href="https://www.meritspor.com.tr/nikecourt-air-zoom-vapor-cage-4-rafa-toprak-kort-clay-erkek-tenis-ayakkabisi-dusty-cactus" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="INFO" data-has-discount="true" data-has-error="false">
-                    <td><strong>#42004</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">opsarsport.com</span></td>
+                <tr data-severity="NORMAL" 
+                    data-is-ok="true"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
                     <td>
-                        <span class="badge badge-info">INFO</span>
+                        <strong>#42004</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">opsarsport.com</span>
                     </td>
                     <td>
-                        <span class="price-offer">6900 ₺</span> <span class="price-final">6452 ₺</span> <span style="font-size:11px; color:#f87171;">(-6%)</span>
+                        <span class="badge badge-ok">🟢 هماهنگ (OK)</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span>
-                            
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تامین‌کننده ۶ درصد تخفیف اعمال کرده و موجودی سایزهای باقیمانده محدود است.</div>
-                        <div class="action-box">💡 اقدام: قیمت سایت را متناسب با تخفیف جدید تامین‌کننده تعدیل کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (opsarsport.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="text-decoration:line-through; color:#ef4444; font-size:11px;">6900₺</span> <span style="color:#10b981;">6452₺</span> <span style="color:#f87171; font-size:10px;">(-6%)</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                
+                                            <span class="size-tag in">
+                                                ✓ 42 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 44 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 45 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 42.5 (1)
+                                            </span>
+                                          
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            ✅ همه چیز اکیه؛ سایزها، موجودی و قیمت کاملاً با تامین‌کننده هماهنگ هستند.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: نیازی به اقدامی نیست.</div>
                     </td>
                     <td>
                         <a href="https://www.opsarsport.com/urun/nike-zoom-vapor-pro-3-clay" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#41970</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
+                <tr data-severity="NORMAL" 
+                    data-is-ok="true"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#41970</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">tenisburada.com</span>
                     </td>
                     <td>
-                        <span class="price-final">8299 ₺</span>
+                        <span class="badge badge-ok">🟢 هماهنگ (OK)</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 46 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span>
-                            <span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تنها سه سایز با موجودی محدودِ ۱ عددی از این محصول باقی مانده است.</div>
-                        <div class="action-box">💡 اقدام: سایزهای ناموجود را از سایت حذف یا غیرفعال کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (tenisburada.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#10b981;">8299 ₺</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                
+                                            <span class="size-tag in">
+                                                ✓ 44 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 46 (1)
+                                            </span>
+                                          
+                                            <span class="size-tag in">
+                                                ✓ 42.5 (1)
+                                            </span>
+                                          
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            ✅ همه چیز اکیه؛ سایزها، موجودی و قیمت کاملاً با تامین‌کننده هماهنگ هستند.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: نیازی به اقدامی نیست.</div>
                     </td>
                     <td>
                         <a href="https://www.tenisburada.com/nike-gp-challenge-1-toprak-kort-kadin-tenis-ayakkabisi-3099" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#41002</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisshop.com</span></td>
+                <tr data-severity="CRITICAL" 
+                    data-is-ok="false"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="true">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#41002</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">tenisshop.com</span>
                     </td>
                     <td>
-                        <span style="color:#64748b;">-</span>
+                        <span class="badge badge-critical">CRITICAL</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">اسکرپر در استخراج اطلاعات از صفحه تامین‌کننده با خطا مواجه شده است.</div>
-                        <div class="action-box">💡 اقدام: ساختار صفحه تامین‌کننده و سلکتورهای اسکرپر را بررسی و اصلاح کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (tenisshop.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#ef4444;">عدم دسترسی</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                <span style="color:#ef4444; font-size:11px;">Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            خطای سیستمی در اسکرپ کردن اطلاعات از سایت تامین‌کننده رخ داده است.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: لینک محصول و وضعیت ساختار صفحه تامین‌کننده را بررسی و اسکرپر را عیب‌یابی کنید.</div>
                     </td>
                     <td>
                         <a href="https://www.tenisshop.com/nikecourt-lite-4-erkek-tenis-ayakkabisi-3856" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#39387</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
+                <tr data-severity="CRITICAL" 
+                    data-is-ok="false"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="true">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#39387</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">swatch.com</span>
                     </td>
                     <td>
-                        <span style="color:#64748b;">-</span>
+                        <span class="badge badge-critical">CRITICAL</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">اطلاعات این محصول به دلیل خطای اسکرپر قابل دریافت نیست.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده را بررسی کرده و خطای اسکرپر را برطرف نمایید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (swatch.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#ef4444;">عدم دسترسی</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                <span style="color:#ef4444; font-size:11px;">Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            خطای اسکرپر در دریافت اطلاعات محصول از سایت تامین‌کننده گزارش شده است.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: لینک تامین‌کننده را بررسی کرده و سلامت اتصال اسکرپر به سایت مرجع را چک کنید.</div>
                     </td>
                     <td>
                         <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/mission-to-earthphase.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#42117</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
+                <tr data-severity="CRITICAL" 
+                    data-is-ok="false"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="true">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#42117</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">swatch.com</span>
                     </td>
                     <td>
-                        <span style="color:#64748b;">-</span>
+                        <span class="badge badge-critical">CRITICAL</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای عدم دسترسی به اطلاعات محصول در سایت تامین‌کننده گزارش شده است.</div>
-                        <div class="action-box">💡 اقدام: عملکرد اسکرپر و سلامت لینک تامین‌کننده را بررسی کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (swatch.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#ef4444;">عدم دسترسی</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                <span style="color:#ef4444; font-size:11px;">Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            اطلاعات محصول از تامین‌کننده قابل دریافت نیست و خطای اسکرپر وجود دارد.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: لینک محصول در سایت تامین‌کننده را دستی بررسی و در صورت نیاز لینک جدید جایگزین کنید.</div>
                     </td>
                     <td>
                         <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/moonswatch-1965.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="CRITICAL" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42617</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">raketspor.com.tr</span></td>
+                <tr data-severity="CRITICAL" 
+                    data-is-ok="false"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
+                    <td>
+                        <strong>#42617</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">raketspor.com.tr</span>
+                    </td>
                     <td>
                         <span class="badge badge-critical">CRITICAL</span>
                     </td>
                     <td>
-                        <span class="price-final">8500 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تمام سایزهای این محصول در سایت تامین‌کننده کاملاً ناموجود شده‌اند.</div>
-                        <div class="action-box">💡 اقدام: محصول را در سایت خودتان به‌طور کامل ناموجود یا غیرفعال کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (raketspor.com.tr):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#10b981;">8500 ₺</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                <span style="color:#ef4444; font-size:11px;">کل سایزها ناموجود</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            تامین‌کننده تمام سایزها را ناموجود کرده است اما محصول در سایت ما همچنان موجود/فعال است که خطر سفارش ناموجود دارد.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: محصول را در سایت خود فوراً ناموجود یا غیرفعال کنید تا از سفارش ثبت‌شده جلوگیری شود.</div>
                     </td>
                     <td>
                         <a href="https://www.raketspor.com.tr/nike-fv5552-001-vapor-12-sert-kort-erkek-tenis-ayakkabisi-siyah-10707" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42627</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">opsarsport.com</span></td>
+                <tr data-severity="NORMAL" 
+                    data-is-ok="true"
+                    data-has-missing="false"
+                    data-has-phantom="false"
+                    data-has-price="false"
+                    data-has-dead="false">
+                    
                     <td>
-                        <span class="badge badge-warning">WARNING</span>
+                        <strong>#42627</strong><br>
+                        <span style="font-size:11px; color:#94a3b8;">opsarsport.com</span>
                     </td>
                     <td>
-                        <span class="price-final">8799 ₺</span>
+                        <span class="badge badge-ok">🟢 هماهنگ (OK)</span>
                     </td>
                     <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 43 (1)</span>
-                            
-                            
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت لیر سایت شما:</div>
+                            <div style="font-weight:bold; font-size:13px; color:#38bdf8;">
+                                <span style="color:#64748b;">تنظیم نشده</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در سایت شما:</div>
+                            <div>
+                                <span style="color:#64748b; font-size:11px;">تنوعی ثبت نشده</span>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">فقط یک عدد از سایز ۴۳ این محصول در انبار تامین‌کننده باقی مانده است.</div>
-                        <div class="action-box">💡 اقدام: وضعیت موجودی را زیر نظر داشته باشید تا پس از فروش، محصول را ناموجود کنید.</div>
+                        <div class="compare-box">
+                            <div class="compare-title">قیمت تامین‌کننده (opsarsport.com):</div>
+                            <div style="font-weight:bold; font-size:13px;">
+                                <span style="color:#10b981;">8799 ₺</span>
+                            </div>
+                            <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
+                            <div>
+                                
+                                            <span class="size-tag in">
+                                                ✓ 43 (1)
+                                            </span>
+                                          
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size:13px; font-weight:600; color:#f1f5f9;">
+                            ✅ همه چیز اکیه؛ سایزها، موجودی و قیمت کاملاً با تامین‌کننده هماهنگ هستند.
+                        </div>
+                        
+                        <div class="action-box">💡 راهکار پیشنهادی: نیازی به اقدامی نیست.</div>
                     </td>
                     <td>
                         <a href="https://www.opsarsport.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42657</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-final">8799 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 47 (1)</span><span class="stock-tag in">✓ 45.5 (1)</span>
-                            <span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 44.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی این محصول در تمامی سایزها به مرز اتمام رسیده و تنها یک عدد از هر کدام باقی مانده است.</div>
-                        <div class="action-box">💡 اقدام: وضعیت انبار را بررسی کرده و در صورت عدم تامین، سایزهای رو به اتمام را ناموجود کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.tenisburada.com/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-fv5552-101" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="CRITICAL" data-has-discount="false" data-has-error="false">
-                    <td><strong>#41655</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-critical">CRITICAL</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 41.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 43.5</span><span class="stock-tag out">✗ 44.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تمامی سایزهای این محصول در سایت تامین‌کننده کاملاً ناموجود شده‌اند.</div>
-                        <div class="action-box">💡 اقدام: محصول را در سایت فروشگاه ناموجود کنید تا از سفارش ثبت شده بدون موجودی جلوگیری شود.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/asics-solution-speed-3-erkek-tenis-ayakkabisi1" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#33193</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">اسکرپر در دریافت اطلاعات این محصول از سایت تامین‌کننده با خطا مواجه شده است.</div>
-                        <div class="action-box">💡 اقدام: سلکتورهای اسکرپر سایت swatch.com را بررسی و به‌روزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-mission-on-earth/lava.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#33186</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در استخراج اطلاعات محصول از تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و صحت عملکرد اسکرپر را بررسی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-mission-on-earth/polar-lights.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#31344</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">دریافت اطلاعات محصول از سایت مرجع با شکست مواجه شد.</div>
-                        <div class="action-box">💡 اقدام: اسکرپر مربوط به دامنه swatch.com را عیب‌یابی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/mission-to-the-moonphase/new-moon.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#30172</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">اطلاعات این محصول به دلیل خطای اسکرپر قابل خواندن نیست.</div>
-                        <div class="action-box">💡 اقدام: ساختار صفحه محصول در سایت تامین‌کننده را بررسی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/mission-to-the-moonphase/full-moon.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#33200</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای سیستمی در اسکرپ کردن اطلاعات این محصول گزارش شده است.</div>
-                        <div class="action-box">💡 اقدام: وضعیت اتصال و کدهای استخراج داده برای دامنه swatch.com را بررسی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-mission-on-earth/desert.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#7549</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای عدم یافتن مدل محصول در داده‌های دریافتی از تامین‌کننده مشاهده شد.</div>
-                        <div class="action-box">💡 اقدام: اسکریپت مانیتورینگ و کدهای استخراج را بازبینی نمایید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-neptune.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#7253</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">داده‌های این محصول به دلیل خطای اسکرپر به‌روزرسانی نشده‌اند.</div>
-                        <div class="action-box">💡 اقدام: عملکرد ربات اسکرپر و سلامت لینک تامین‌کننده را بررسی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-on-earth.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#7244</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات محصول مانع از بررسی وضعیت موجودی شده است.</div>
-                        <div class="action-box">💡 اقدام: اسکرپر را مجدداً اجرا کرده و در صورت تداوم خطا، سلکتوره�� را اصلاح کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-pluto.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6901</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-uranus.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6868</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-jupiter.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6858</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-saturn.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6842</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-the-moon.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6719</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-venus.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6743</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-mercury.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6692</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-the-sun.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="true">
-                    <td><strong>#6679</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">swatch.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطا در دریافت اطلاعات از اسکرپر تامین‌کننده رخ داده است.</div>
-                        <div class="action-box">💡 اقدام: لینک تامین‌کننده و وضعیت اسکرپر را بررسی و در صورت نیاز بروزرسانی کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/bioceramic-moonswatch/mission-to-mars.html" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42690</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6900 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 41 (1)</span><span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span><span class="stock-tag in">✓ 44.5 (1)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">برخی سایزها ناموجود شده و سایزهای موجودی نیز تنها ۱ عدد انبار دارند.</div>
-                        <div class="action-box">💡 اقدام: سایزهای [39, 40, 46, 38.5, 40.5] را ناموجود کنید و برای اتمام موجودی باقی‌مانده آماده باشید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.tenisburada.com/nike-vapor-pro-3-erkek-sert-kort-tenis-ayakkabisi-fz2161-800" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="CRITICAL" data-has-discount="false" data-has-error="false">
-                    <td><strong>#40983</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">raketci.com</span></td>
-                    <td>
-                        <span class="badge badge-critical">CRITICAL</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6700 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span>
-                            
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی این محصول به شدت محدود شده و فقط یک عدد از سایزهای باقی‌مانده وجود دارد.</div>
-                        <div class="action-box">💡 اقدام: سایزهای 45 و 42.5 را به دقت زیر نظر داشته باشید یا محصول را موقتاً ناموجود کنید.</div>
-                    </td>
-                    <td>
-                        <a href="https://www.raketci.com/urun/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi/" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42714</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">5900 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 35.5 (1)</span>
-                            <span class="stock-tag out">✗ 36</span><span class="stock-tag out">✗ 38</span><span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 36.5</span><span class="stock-tag out">✗ 37.5</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [35.5] موجود و سایزهای [36, 38, 39, 40, 36.5, 37.5, 38.5, 40.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [35.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/nike-vapor-pro-3-sert-kort-kadin-tenis-ayakkabisi-amethyst-tint-hydrangeas-white-deep-night" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#40963</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">korayspor.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">5899 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 41 (1)</span><span class="stock-tag in">✓ 47 (1)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 45.5</span><span class="stock-tag out">✗ 44.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [41, 47] موجود و سایزهای [39, 40, 42, 43, 44, 45, 46, 42.5, 45.5, 44.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [41, 47]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.korayspor.com/nike-ayakkabi-tenis-m-zoom-gp-challenge-pro-hc-fb3145-002/" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42735</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 35.5 (1)</span>
-                            <span class="stock-tag out">✗ 36</span><span class="stock-tag out">✗ 38</span><span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 36.5</span><span class="stock-tag out">✗ 37.5</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [35.5] موجود و سایزهای [36, 38, 39, 40, 41, 36.5, 37.5, 38.5, 40.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [35.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/nike-zoom-gp-challenge-1-sert-kort-kadin-tenis-ayakkabisi-amethyst" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42755</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-final">3800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 36</span><span class="stock-tag out">✗ 38</span><span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 35.5</span><span class="stock-tag out">✗ 36.5</span><span class="stock-tag out">✗ 37.5</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تمام سایزهای این محصول در سایت تامین‌کننده ناموجود شده‌اند.</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/nike-vapor-lite-3-toprak-kort-clay-kadin-tenis-ayakkabisi-amethyst" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42785</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 40 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 40.5 (1)</span><span class="stock-tag in">✓ 41.5 (1)</span>
-                            <span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 47</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 43.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 46.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [40, 45, 40.5, 41.5] موجود و سایزهای [42, 44, 46, 47, 42.5, 43.5, 44.5, 46.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [40, 45, 40.5, 41.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/asics-solution-speed-3-erkek-tenis-ayakkabisi-saxon-greenbirch" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#40928</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">opsarsport.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">7200 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 39 (1)</span><span class="stock-tag in">✓ 40 (1)</span><span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 38.5 (1)</span><span class="stock-tag in">✓ 40.5 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span><span class="stock-tag in">✓ 44.5 (1)</span>
-                            
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [39, 40, 42, 43, 44, 45, 38.5, 40.5, 42.5, 44.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.opsarsport.com/urun/nike-vapor-pro-3-toprak-kort-clay-erkek-tenis-ayakkabisi" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="true" data-has-error="false">
-                    <td><strong>#40905</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">raketspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-offer">4099 ₺</span> <span class="price-final">3485 ₺</span> <span style="font-size:11px; color:#f87171;">(-15%)</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 40 (1)</span><span class="stock-tag in">✓ 41 (2)</span><span class="stock-tag in">✓ 42 (3)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (2)</span><span class="stock-tag in">✓ 46 (2)</span><span class="stock-tag in">✓ 47 (1)</span><span class="stock-tag in">✓ 49.5 (1)</span><span class="stock-tag in">✓ 40.5 (2)</span><span class="stock-tag in">✓ 42.5 (3)</span><span class="stock-tag in">✓ 44.5 (2)</span><span class="stock-tag in">✓ 45.5 (2)</span>
-                            <span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 47.5</span><span class="stock-tag out">✗ 48.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تخفیف فعال در تامین‌کننده: قیمت از 4099₺ به 3485₺ کاهش یافته (-15%) | موجودی ناقص: سایزهای [40, 41, 42, 43, 44, 46, 47, 49.5, 40.5, 42.5, 44.5, 45.5] موجود و سایزهای [45, 47.5, 48.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [40, 43, 47, 49.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.raketspor.com.tr/nike-hq5292-001-m-vapor-lite-3-erkek-siyah-toprak-tenis-ayakkbisi-14051?__cf_chl_f_tk=HH2TCBKedwDN4IJYnGERS1It1xW8aoN2uq71mtCP6So-1783156640-1.0.1.1-QdIJUfRkZqH1f3lL7JyHCBGzwLC8uZlDaRKHr0Fw.bU" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="true" data-has-error="false">
-                    <td><strong>#39603</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">yuxel.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-offer">4800 ₺</span> <span class="price-final">3360 ₺</span> <span style="font-size:11px; color:#f87171;">(-30%)</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تخفیف فعال در تامین‌کننده: قیمت از 4800₺ به 3360₺ کاهش یافته (-30%) | تمام سایزهای این محصول در سایت تامین‌کننده ناموجود شده‌اند.</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.yuxel.com.tr/nike-gp-challenge-pro-premium-sert-kort-tenis-ayakkabisi-fz1243-001" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="false" data-has-error="false">
-                    <td><strong>#39463</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6300 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تمام سایزهای این محصول در سایت تامین‌کننده ناموجود شده‌اند.</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/nikecourt-vapor-pro-2-premium-sert-kort-erkek-tenis-ayakkabisi-gri-" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#39443</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">8500 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span>
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [42, 44, 45, 42.5] موجود و سایزهای [40, 41, 43, 46, 40.5, 44.5, 45.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [42, 44, 45, 42.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisburada.com/nikecourt-air-zoom-vapor-11-erkek-tenis-ayakkabisi-fz1245-001" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="true">
-                    <td><strong>#39311</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisshop.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisshop.com/nikecourt-zoom-vapor-cage-4-rafa-erkek-sert-zemin-tenis-ayakkabisi-3785" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="true">
-                    <td><strong>#38762</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisshop.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisshop.com/en/nike-court-lite-4-toprak-kort-erkek-tenis-ayakkabisi-3739" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#41125</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">opsarsport.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">5800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 36.5 (1)</span><span class="stock-tag in">✓ 40.5 (1)</span>
-                            <span class="stock-tag out">✗ 38</span><span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 37.5</span><span class="stock-tag out">✗ 38.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [36.5, 40.5] موجود و سایزهای [38, 39, 40, 41, 37.5, 38.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [36.5, 40.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.opsarsport.com/urun/nike-vapor-pro-3-sert-kort-kadin-tenis-ayakkabisi" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#41107</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">raketspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">6900 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 37.5 (1)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 38.5</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [37.5] موجود و سایزهای [39, 40, 41, 38.5, 40.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [37.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.raketspor.com.tr/nike-vapor-pro-3-kadin-sert-kort-tenis-ayakkabisi-hf7835-300-13422" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="NORMAL" data-has-discount="false" data-has-error="false">
-                    <td><strong>#41085</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">opsarsport.com</span></td>
-                    <td>
-                        <span class="badge badge-normal">NORMAL</span>
-                    </td>
-                    <td>
-                        <span class="price-final">5800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;"></div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.opsarsport.com/urun/nike-vapor-pro-3-kadin-sert-kort-tenis-ayakkabisi" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#42836</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">meritspor.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">8800 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 45 (1)</span><span class="stock-tag in">✓ 44.5 (1)</span><span class="stock-tag in">✓ 45.5 (1)</span>
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 42.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [42, 43, 44, 45, 44.5, 45.5] موجود و سایزهای [40, 41, 40.5, 42.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [42, 43, 44, 45, 44.5, 45.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.meritspor.com.tr/nike-vapor-12-toprak-kort-clay-erkek-tenis-ayakkabisi-ashen-slate-light-armory-blue-marrakesh-obsidian" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="WARNING" data-has-discount="true" data-has-error="false">
-                    <td><strong>#38638</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">yuxel.com.tr</span></td>
-                    <td>
-                        <span class="badge badge-warning">WARNING</span>
-                    </td>
-                    <td>
-                        <span class="price-offer">3400 ₺</span> <span class="price-final">2380 ₺</span> <span style="font-size:11px; color:#f87171;">(-30%)</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 42</span><span class="stock-tag out">✗ 43</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 42.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تخفیف فعال در تامین‌کننده: قیمت از 3400₺ به 2380₺ کاهش یافته (-30%) | تمام سایزهای این محصول در سایت تامین‌کننده ناموجود شده‌اند.</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.yuxel.com.tr/nikecourt-lite-4-sert-kort-tenis-ayakkabisi-fd657-106" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="true">
-                    <td><strong>#38610</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisshop.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span style="color:#64748b;">-</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            
-                            
-                            <span style="color:#64748b; font-size:11px;">نامشخص</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisshop.com/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi-3764" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="false" data-has-error="false">
-                    <td><strong>#38583</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-final">8500 ₺</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 46 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span>
-                            <span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 41</span><span class="stock-tag out">✗ 44</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 40.5</span><span class="stock-tag out">✗ 44.5</span><span class="stock-tag out">✗ 45.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">موجودی ناقص: سایزهای [42, 43, 46, 42.5] موجود و سایزهای [40, 41, 44, 45, 40.5, 44.5, 45.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [42, 43, 46, 42.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisburada.com/nikecourt-air-zoom-vapor-11-erkek-tenis-ayakkabisi-dr6966-105" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
-                    </td>
-                </tr>
-                
-                <tr data-severity="INFO" data-has-discount="true" data-has-error="false">
-                    <td><strong>#38483</strong></td>
-                    <td><span style="font-weight:600; color:#cbd5e1;">tenisburada.com</span></td>
-                    <td>
-                        <span class="badge badge-info">INFO</span>
-                    </td>
-                    <td>
-                        <span class="price-offer">7199 ₺</span> <span class="price-final">6480 ₺</span> <span style="font-size:11px; color:#f87171;">(-10%)</span>
-                    </td>
-                    <td>
-                        <div style="max-width: 220px;">
-                            <span class="stock-tag in">✓ 41 (1)</span><span class="stock-tag in">✓ 42 (1)</span><span class="stock-tag in">✓ 43 (1)</span><span class="stock-tag in">✓ 44 (1)</span><span class="stock-tag in">✓ 42.5 (1)</span><span class="stock-tag in">✓ 44.5 (1)</span><span class="stock-tag in">✓ 45.5 (1)</span>
-                            <span class="stock-tag out">✗ 39</span><span class="stock-tag out">✗ 40</span><span class="stock-tag out">✗ 45</span><span class="stock-tag out">✗ 46</span><span class="stock-tag out">✗ 40.5</span>
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div style="font-size:12px; color:#f1f5f9; font-weight:600;">تخفیف فعال در تامین‌کننده: قیمت از 7199₺ به 6480₺ کاهش یافته (-10%) | موجودی ناقص: سایزهای [41, 42, 43, 44, 42.5, 44.5, 45.5] موجود و سایزهای [39, 40, 45, 46, 40.5] ناموجود هستند. | موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [41, 42, 43, 44, 42.5, 44.5, 45.5]</div>
-                        
-                    </td>
-                    <td>
-                        <a href="https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-toprak-kort-dv2020-006" target="_blank" class="btn-link">🔗 تامین‌کننده</a>
                     </td>
                 </tr>
                 
@@ -1411,7 +718,6 @@
 </div>
 
 <script>
-    // فیلتر و جستجوی آنی در داشبورد
     const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
     const rows = document.querySelectorAll('#auditTable tbody tr');
@@ -1434,16 +740,21 @@
 
         rows.forEach(row => {
             const severity = row.getAttribute('data-severity');
-            const hasDiscount = row.getAttribute('data-has-discount') === 'true';
-            const hasError = row.getAttribute('data-has-error') === 'true';
+            const isOk = row.getAttribute('data-is-ok') === 'true';
+            const hasMissing = row.getAttribute('data-has-missing') === 'true';
+            const hasPhantom = row.getAttribute('data-has-phantom') === 'true';
+            const hasPrice = row.getAttribute('data-has-price') === 'true';
+            const hasDead = row.getAttribute('data-has-dead') === 'true';
             const rowText = row.innerText.toLowerCase();
 
             let matchesFilter = false;
             if (currentFilter === 'ALL') matchesFilter = true;
+            else if (currentFilter === 'OK' && isOk) matchesFilter = true;
             else if (currentFilter === 'CRITICAL' && severity === 'CRITICAL') matchesFilter = true;
-            else if (currentFilter === 'WARNING' && severity === 'WARNING') matchesFilter = true;
-            else if (currentFilter === 'DISCOUNT' && hasDiscount) matchesFilter = true;
-            else if (currentFilter === 'ERROR' && hasError) matchesFilter = true;
+            else if (currentFilter === 'MISSING_SIZES' && hasMissing) matchesFilter = true;
+            else if (currentFilter === 'PHANTOM_STOCK' && hasPhantom) matchesFilter = true;
+            else if (currentFilter === 'PRICE' && hasPrice) matchesFilter = true;
+            else if (currentFilter === 'DEAD' && hasDead) matchesFilter = true;
 
             const matchesSearch = query === '' || rowText.includes(query);
 
