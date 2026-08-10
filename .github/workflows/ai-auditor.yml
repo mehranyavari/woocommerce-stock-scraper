@@ -22,9 +22,9 @@ on:
         default: 'stock-data_tennis24shop_com.json'
         type: string
       limit:
-        description: 'حداکثر تعداد محصولات جهت تحلیل (مثلاً 30 یا 50 یا خالی برای همه)'
+        description: 'حداکثر تعداد محصولات (خالی بگذارید تا همه بررسی شوند)'
         required: false
-        default: '50'
+        default: ''
         type: string
       enable_ai:
         description: 'فعال بودن هوش مصنوعی جمنای'
@@ -61,6 +61,8 @@ jobs:
           
           if [ -n "${{ github.event.inputs.limit }}" ]; then
             ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
+          else
+            ARGS="$ARGS --all"
           fi
 
           if [ "${{ github.event.inputs.enable_ai }}" = "false" ]; then
