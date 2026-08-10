@@ -1,0 +1,427 @@
+{
+  "generated_at": "2026-08-10T06:37:27.146Z",
+  "executive_summary": "با سلام و احترام؛\n\nگزارش ارزیابی و مانیتورینگ محصولات فروشگاه حاکی از آن است که از مجموع ۱۰ کالای بررسی‌شده، وضعیت کلی انبار و قیمت‌گذاری دارای نشانگرهای هشداردهنده‌ای است که نیاز به مداخله سریع دارد 📊. نقطه قوت اصلی در این پایش، تمرکز محدود اقلام بحرانی است، اما با این حال وجود **۱ مورد ناموجود** و **۱ مورد دارای تخفیف غیرمتعارف (یا ضرر قیمتی)** در کنار **۸ اخطار فعال**، زنگ خطری جدی برای تجربه خرید مشتریان و حاشیه سود فروشگاه به صدا در��ورده است ⚠️. تداوم این روند هشدارها می‌تواند به ریزش مشتری و از دست رفتن پتانسیل فروش تبدیل شود.\n\nدر همین راستا، برای تثبیت وضعیت و بهبود عملکرد فروشگاه، ۳ اقدام اصلاحی زیر با فوریت بالا پیشنهاد می‌گردد 🚀:\n\n۱. **رفع فوری مشکل ناموجودی:** تعیین تکلیف سریع کالای ناموجود (تأمین مجدد یا غیرفعال‌سازی موقت صفحه محصول) جهت جلوگیری از ناامیدی کاربران و بهبود سئو سایت.\n۲. **بازنگری ساختار قیمت‌گذاری و تخفیف‌ها:** بررسی دقیق کالای دارای تخفیف بحرانی برای جلوگیری از فروش با ضرر (Negative Margin) و تنظیم مکانیزم‌های قیمت‌گذاری پویا.\n۳. **رسیدگی به هشدارها (Warnings):** آنالیز و رفع ریشه‌ای ۸ خطای ثبت‌شده در سیستم تا پیش از تبدیل شدن آن‌ها به بحران‌های لجستیکی یا قیمتی.\n\nبا احترام،\nمشاور ارشد فروشگاه اینترنتی 🛒",
+  "total_audited": 10,
+  "results": [
+    {
+      "id": 8322,
+      "primary_url": "https://www.meritspor.com.tr/asics-gel-challenger-13-erkek-tenis-ayakkabisi-lacivert-turuncu",
+      "secondary_url": "",
+      "domain": "meritspor.com.tr",
+      "scrape_success": true,
+      "regular_price": 4300,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {
+        "39": 0,
+        "40": 0,
+        "42": 0,
+        "44": 0,
+        "45": 0,
+        "46": 1,
+        "47": 0,
+        "39.5": 0,
+        "40.5": 0,
+        "41.5": 0,
+        "42.5": 0,
+        "43.5": 0,
+        "44.5": 0,
+        "46.5": 0
+      },
+      "total_stock_count": 1,
+      "in_stock_sizes": [
+        {
+          "size": "46",
+          "qty": 1
+        }
+      ],
+      "out_of_stock_sizes": [
+        "39",
+        "40",
+        "42",
+        "44",
+        "45",
+        "47",
+        "39.5",
+        "40.5",
+        "41.5",
+        "42.5",
+        "43.5",
+        "44.5",
+        "46.5"
+      ],
+      "discrepancies": [
+        {
+          "type": "PARTIAL_STOCK",
+          "message": "موجودی ناقص: سایزهای [46] موجود و سایزهای [39, 40, 42, 44, 45, 47, 39.5, 40.5, 41.5, 42.5, 43.5, 44.5, 46.5] ناموجود هستند."
+        },
+        {
+          "type": "LOW_STOCK_RISK",
+          "message": "موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [46]"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "محصول دارای موجودی بسیار محدود (فقط یک عدد در سایز ۴۶) و سایر سایزها ناموجود است.",
+      "recommended_action": "سایزهای ناموجود را در سایت بروزرسانی کرده و وضعیت موجودی سایز ۴۶ را به دقت مانیتور کنید."
+    },
+    {
+      "id": 41632,
+      "primary_url": "https://www.asics.com.tr/p-gel-resolution-x-erkek-dark-purple-tenis-ayakkabisi-1041a481-500",
+      "secondary_url": "",
+      "domain": "asics.com.tr",
+      "scrape_success": false,
+      "regular_price": null,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {},
+      "total_stock_count": 0,
+      "in_stock_sizes": [],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "SCRAPER_ERROR",
+          "message": "خطای دریافت اطلاعات از تامین‌کننده: Primary: productDetailModel not found | Secondary: No Secondary URL"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "خطا در اسکرپ اطلاعات محصول از سایت تامین‌کننده رخ داده است.",
+      "recommended_action": "لینک تامین‌کننده و وضعیت ساختار صفحه را بررسی و در صورت تغییر، اسکرپر را اصلاح کنید.",
+      "error": "Primary: productDetailModel not found | Secondary: No Secondary URL"
+    },
+    {
+      "id": 32475,
+      "primary_url": "https://www.meritspor.com.tr/nikecourt-air-zoom-vapor-cage-4-rafa-toprak-kort-clay-erkek-tenis-ayakkabisi-dusty-cactus",
+      "secondary_url": "https://www.raketspor.com.tr/nikecourt-air-zoom-vapor-cage-4-rafa-erkek-toprak-zemin-tenis-ayakkabisi-dv1773-302-13413",
+      "domain": "meritspor.com.tr",
+      "scrape_success": true,
+      "regular_price": 7200,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {
+        "39": 0,
+        "40": 0,
+        "41": 0,
+        "42": 0,
+        "43": 0,
+        "44": 0,
+        "45": 0,
+        "46": 0,
+        "38.5": 0,
+        "40.5": 1,
+        "42.5": 1,
+        "44.5": 1,
+        "45.5": 2
+      },
+      "total_stock_count": 5,
+      "in_stock_sizes": [
+        {
+          "size": "40.5",
+          "qty": 1
+        },
+        {
+          "size": "42.5",
+          "qty": 1
+        },
+        {
+          "size": "44.5",
+          "qty": 1
+        },
+        {
+          "size": "45.5",
+          "qty": 2
+        }
+      ],
+      "out_of_stock_sizes": [
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "38.5"
+      ],
+      "discrepancies": [
+        {
+          "type": "PARTIAL_STOCK",
+          "message": "موجودی ناقص: سایزهای [40.5, 42.5, 44.5, 45.5] موجود و سایزهای [39, 40, 41, 42, 43, 44, 45, 46, 38.5] ناموجود هستند."
+        },
+        {
+          "type": "LOW_STOCK_RISK",
+          "message": "موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [40.5, 42.5, 44.5]"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "بیشتر سایزهای این محصول ناموجود شده و موجودی مابقی سایزها بسیار محدود است.",
+      "recommended_action": "سایزهای ناموجود را غیرفعال کرده و برای اتمام موجودی باقی‌مانده آماده باشید."
+    },
+    {
+      "id": 42004,
+      "primary_url": "https://www.opsarsport.com/urun/nike-zoom-vapor-pro-3-clay",
+      "secondary_url": "",
+      "domain": "opsarsport.com",
+      "scrape_success": true,
+      "regular_price": 6900,
+      "offer_price": 6452,
+      "has_discount": true,
+      "discount_percent": 6,
+      "stocks": {
+        "42": 1,
+        "44": 1,
+        "45": 1,
+        "42.5": 1
+      },
+      "total_stock_count": 4,
+      "in_stock_sizes": [
+        {
+          "size": "42",
+          "qty": 1
+        },
+        {
+          "size": "44",
+          "qty": 1
+        },
+        {
+          "size": "45",
+          "qty": 1
+        },
+        {
+          "size": "42.5",
+          "qty": 1
+        }
+      ],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "ACTIVE_DISCOUNT",
+          "message": "تخفیف فعال در تامین‌کننده: قیمت از 6900₺ به 6452₺ کاهش یافته (-6%)"
+        },
+        {
+          "type": "LOW_STOCK_RISK",
+          "message": "موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [42, 44, 45, 42.5]"
+        }
+      ],
+      "severity": "INFO",
+      "ai_summary": "تامین‌کننده ۶ درصد تخفیف روی محصول اعمال کرده و موجودی سایزها محدود است.",
+      "recommended_action": "قیمت سایت را متناسب با قیمت جدید تامین‌کننده (6452 لیر) تعدیل کنید."
+    },
+    {
+      "id": 41970,
+      "primary_url": "https://www.tenisburada.com/nike-gp-challenge-1-toprak-kort-kadin-tenis-ayakkabisi-3099",
+      "secondary_url": "",
+      "domain": "tenisburada.com",
+      "scrape_success": true,
+      "regular_price": 8299,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {
+        "41": 0,
+        "42": 0,
+        "43": 0,
+        "44": 1,
+        "45": 0,
+        "46": 1,
+        "40.5": 0,
+        "42.5": 1,
+        "44.5": 0,
+        "45.5": 0
+      },
+      "total_stock_count": 3,
+      "in_stock_sizes": [
+        {
+          "size": "44",
+          "qty": 1
+        },
+        {
+          "size": "46",
+          "qty": 1
+        },
+        {
+          "size": "42.5",
+          "qty": 1
+        }
+      ],
+      "out_of_stock_sizes": [
+        "41",
+        "42",
+        "43",
+        "45",
+        "40.5",
+        "44.5",
+        "45.5"
+      ],
+      "discrepancies": [
+        {
+          "type": "PARTIAL_STOCK",
+          "message": "موجودی ناقص: سایزهای [44, 46, 42.5] موجود و سایزهای [41, 42, 43, 45, 40.5, 44.5, 45.5] ناموجود هستند."
+        },
+        {
+          "type": "LOW_STOCK_RISK",
+          "message": "موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [44, 46, 42.5]"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "تنها سه سایز با موجودی ۱ عددی از این محصول باقی مانده و مابقی ناموجود هستند.",
+      "recommended_action": "سایزهای ناموجود را در سایت غیرفعال کنید تا از سفارشات ناموفق جلوگیری شود."
+    },
+    {
+      "id": 41002,
+      "primary_url": "https://www.tenisshop.com/nikecourt-lite-4-erkek-tenis-ayakkabisi-3856",
+      "secondary_url": "",
+      "domain": "tenisshop.com",
+      "scrape_success": false,
+      "regular_price": null,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {},
+      "total_stock_count": 0,
+      "in_stock_sizes": [],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "SCRAPER_ERROR",
+          "message": "خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "اسکرپر در دریافت اطلاعات محصول از تامین‌کننده دچار خطا شده است.",
+      "recommended_action": "عملکرد اسکرپر و سلامت لینک تامین‌کننده را بررسی کنید.",
+      "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+    },
+    {
+      "id": 39387,
+      "primary_url": "https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/mission-to-earthphase.html",
+      "secondary_url": "",
+      "domain": "swatch.com",
+      "scrape_success": false,
+      "regular_price": null,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {},
+      "total_stock_count": 0,
+      "in_stock_sizes": [],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "SCRAPER_ERROR",
+          "message": "خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "خطای استخراج داده از سایت تامین‌کننده برای این محصول ثبت شده است.",
+      "recommended_action": "رابطه و سلکتورهای اسکرپر را برای سایت swatch.com بررسی و عیب‌یابی کنید.",
+      "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+    },
+    {
+      "id": 42117,
+      "primary_url": "https://www.swatch.com/tr-tr/bioceramic-moonswatch-collection/moonswatch-1965.html",
+      "secondary_url": "",
+      "domain": "swatch.com",
+      "scrape_success": false,
+      "regular_price": null,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {},
+      "total_stock_count": 0,
+      "in_stock_sizes": [],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "SCRAPER_ERROR",
+          "message": "خطای دریافت اطلاعات از تامین‌کننده: Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "اطلاعات این محصول به دلیل خطای اسکرپر قابل دریافت نیست.",
+      "recommended_action": "وضعیت صفحه تامین‌کننده را به صورت دستی بررسی و اسکرپر را بروز کنید.",
+      "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL"
+    },
+    {
+      "id": 42617,
+      "primary_url": "https://www.raketspor.com.tr/nike-fv5552-001-vapor-12-sert-kort-erkek-tenis-ayakkabisi-siyah-10707",
+      "secondary_url": "https://www.meritspor.com.tr/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-siyah",
+      "domain": "raketspor.com.tr",
+      "scrape_success": true,
+      "regular_price": 8500,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {
+        "40": 0,
+        "41": 0,
+        "42": 0,
+        "43": 0,
+        "44": 0,
+        "45": 0,
+        "46": 0,
+        "40.5": 0,
+        "42.5": 0,
+        "44.5": 0,
+        "45.5": 0
+      },
+      "total_stock_count": 0,
+      "in_stock_sizes": [],
+      "out_of_stock_sizes": [
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "40.5",
+        "42.5",
+        "44.5",
+        "45.5"
+      ],
+      "discrepancies": [
+        {
+          "type": "ALL_SIZES_OUT_OF_STOCK",
+          "message": "تمام سایزهای این محصول در سایت تامین‌کننده ناموجود شده‌اند."
+        }
+      ],
+      "severity": "CRITICAL",
+      "ai_summary": "تمام سایزهای این محصول در سایت تامین‌کننده کاملاً ناموجود شده‌اند.",
+      "recommended_action": "محصول را در سایت خودمان بلافاصله ناموجود یا غیرفعال کنید."
+    },
+    {
+      "id": 42627,
+      "primary_url": "https://www.opsarsport.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi",
+      "secondary_url": "",
+      "domain": "opsarsport.com",
+      "scrape_success": true,
+      "regular_price": 8799,
+      "offer_price": null,
+      "has_discount": false,
+      "discount_percent": 0,
+      "stocks": {
+        "43": 1
+      },
+      "total_stock_count": 1,
+      "in_stock_sizes": [
+        {
+          "size": "43",
+          "qty": 1
+        }
+      ],
+      "out_of_stock_sizes": [],
+      "discrepancies": [
+        {
+          "type": "LOW_STOCK_RISK",
+          "message": "موجودی بحرانی (فقط ۱ عدد باقی‌مانده): سایزهای [43]"
+        }
+      ],
+      "severity": "WARNING",
+      "ai_summary": "فقط یک عدد از سایز ۴۳ این محصول در انبار تامین‌کننده باقی مانده است.",
+      "recommended_action": "وضعیت موجودی را رصد کرده و پس از فروش، محصول را سریعاً ناموجود کنید."
+    }
+  ]
+}
