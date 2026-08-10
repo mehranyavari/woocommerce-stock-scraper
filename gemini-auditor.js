@@ -1,19 +1,18 @@
 #!/usr/bin/env node
 /**
  * ==============================================================================
- * 🤖 Gemini AI Product & Supplier Auditor (نسخه پیشرفته - مقایسه دوطرفه)
+ * 🤖 Gemini AI Product & Supplier Auditor (نسخه پیشرفته - مقایسه دوطرفه + اسکرین‌شات)
  * ==============================================================================
  * سیستم حسابرس و مقایسه‌گر هوشمند محصولات فروشگاه با سایت‌های تامین‌کننده
  * 
- * 🔍 موارد مورد بررسی:
- * ۱. مقایسه سایزهای موجود در تامین‌کننده با سایزهای تعریف‌شده در سایت شما
- * ۲. تشخیص سایزهای گمشده در سایت شما (فرصت فروش از دست رفته)
+ * 🔍 قابلیت‌های کلیدی:
+ * ۱. مقایسه دوطرفه سایزها و قیمت‌های سایت شما در برابر تامین‌کننده
+ * ۲. تشخیص سایزهای گمشده در سایت شما (فرصت فروش)
  * ۳. تشخیص سایزهای ناموجود در تامین‌کننده که در سایت شما هنوز روشن است (خطر لغو سفارش)
- * ۴. بررسی اختلاف قیمت لیر سایت شما با قیمت روز یا تخفیف‌دار تامین‌کننده
- * ۵. تشخیص صفحات حذف‌شده (404)، ریدایرکت‌شده یا مسدودشده تامین‌کننده
- * ۶. تایید و برچسب‌گذاری محصولات کاملاً هماهنگ و بدون نقص (All OK)
- * 
- * قدرت گرفته از هوش مصنوعی Google Gemini (gemini-flash-lite-latest)
+ * ۴. بررسی اختلاف قیمت لیر با قیمت روز یا تخفیف‌دار تامین‌کننده
+ * ۵. تصویربرداری خودکار (Screenshot) از سایت‌های مسدود یا غیرقابل اسکرپ (مثل اسیکس، دکلتون)
+ * ۶. نمایش اسکرین‌شات با لایت‌باکس پاپ‌آپ داخل داشبورد HTML
+ * ۷. گزارش و تحلیل مدیریتی با هوش مصنوعی Google Gemini (gemini-flash-lite-latest)
  * ==============================================================================
  */
 
@@ -40,6 +39,10 @@ let CONFIG = {
     audit_thresholds: {
         price_change_significant_percent: 5,
         low_stock_threshold: 2
+    },
+    screenshots: {
+        enable_for_failed_products: true,
+        max_screenshots_per_run: 15
     }
 };
 
@@ -122,7 +125,91 @@ async function callGemini(promptText, modelName = CONFIG.default_model) {
 }
 
 // ==========================================
-// 🔍 لایه ۱: تحلیل و مقایسه دوطرفه (سایت ما vs تامین‌کننده)
+// 📸 ماژول تصویربرداری از صفحات مسدود/خطادار (Puppeteer)
+// ==========================================
+
+function findBrowserExecutable() {
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) return process.env.PUPPETEER_EXECUTABLE_PATH;
+    const candidates = [
+        'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+        'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+        'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium-browser',
+        '/usr/bin/chromium'
+    ];
+    for (const p of candidates) {
+        if (fs.existsSync(p)) return p;
+    }
+    return undefined;
+}
+
+async function captureScreenshotsForItems(items) {
+    if (!items || items.length === 0) return;
+    console.log(`\n📸 در حال تصویربرداری زنده از صفحات تامین‌کننده برای ${items.length} محصول با خطای اسکرپ...`);
+
+    let puppeteer;
+    try {
+        puppeteer = require('puppeteer-extra');
+        const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+        puppeteer.use(StealthPlugin());
+    } catch (e) {
+        try { puppeteer = require('puppeteer'); } catch (err) {
+            console.log('⚠️ ماژول Puppeteer یافت نشد.');
+            return;
+        }
+    }
+
+    const execPath = findBrowserExecutable();
+    const launchOpts = {
+        headless: 'new',
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    };
+    if (execPath) launchOpts.executablePath = execPath;
+
+    let browser;
+    try {
+        browser = await puppeteer.launch(launchOpts);
+    } catch (err) {
+        console.log('⚠️ خطا در راه‌اندازی مرورگر برای اسکرین‌شات:', err.message);
+        return;
+    }
+
+    const screenshotsDir = path.join(OUTPUT_DIR, 'screenshots');
+    if (!fs.existsSync(screenshotsDir)) fs.mkdirSync(screenshotsDir, { recursive: true });
+
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        if (!item.primary_url) continue;
+
+        console.log(`  📸 [${i + 1}/${items.length}] تصویربرداری از محصول #${item.id} (${item.domain})...`);
+        try {
+            const page = await browser.newPage();
+            await page.setViewport({ width: 1280, height: 900 });
+
+            const filename = `${item.id}.jpg`;
+            const filePath = path.join(screenshotsDir, filename);
+
+            await page.goto(item.primary_url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await new Promise(r => setTimeout(r, 3500));
+            await page.screenshot({ path: filePath, type: 'jpeg', quality: 75 });
+            
+            const b64 = fs.readFileSync(filePath).toString('base64');
+            item.screenshot_file = `screenshots/${filename}`;
+            item.screenshot_base64 = `data:image/jpeg;base64,${b64}`;
+            console.log(`     ✅ اسکرین‌شات با موفقیت ذخیره شد: ${filename}`);
+            await page.close();
+        } catch (err) {
+            console.log(`     ⚠️ خطا در ثبت اسکرین‌شات #${item.id}: ${err.message}`);
+        }
+    }
+
+    await browser.close();
+}
+
+// ==========================================
+// 🔍 لایه ۱: تحلیل و مقایسه دوطرفه
 // ==========================================
 
 function performAlgorithmicAudit(products, stockData) {
@@ -145,6 +232,7 @@ function performAlgorithmicAudit(products, stockData) {
         const ourTitle = product.title || `محصول #${product.id}`;
         const ourSku = product.sku || '';
         const ourStockStatus = product.our_stock_status || 'instock';
+        
         let ourUrl = product.our_url || '';
         let ourEditUrl = product.our_edit_url || '';
 
@@ -187,6 +275,9 @@ function performAlgorithmicAudit(products, stockData) {
                 out_of_stock_sizes: []
             },
 
+            screenshot_file: null,
+            screenshot_base64: null,
+
             // نتایج مقایسه
             discrepancies: [],
             missing_sizes_in_store: [],    // در تامین‌کننده هست ولی تو سایت ما نیست یا ۰ هست
@@ -198,7 +289,7 @@ function performAlgorithmicAudit(products, stockData) {
             recommended_action: ''
         };
 
-        // ۱. بررسی خطای عدم وجود دیتای اسکرپ
+        // ۱. بررسی عدم وجود دیتای اسکرپ
         if (!supplierInfo) {
             itemAudit.discrepancies.push({
                 type: 'NOT_SCRAPED',
@@ -212,25 +303,29 @@ function performAlgorithmicAudit(products, stockData) {
             return;
         }
 
-        // ۲. بررسی خطای صفحه یا بلاک تامین‌کننده (404، Cloudflare، ...)
+        // ۲. بررسی خطای صفحه یا بلاک تامین‌کننده
         if (!supplierInfo.success) {
             const errMsg = supplierInfo.error || 'خطای دسترسی به صفحه تامین‌کننده';
             itemAudit.supplier_data.error = errMsg;
             
             let isDeadOrRedirect = errMsg.includes('404') || errMsg.includes('not found') || errMsg.includes('Redirect');
-            let isBlocked = errMsg.includes('Cloudflare') || errMsg.includes('Blocked') || errMsg.includes('DKT');
+            let isBlocked = errMsg.includes('Cloudflare') || errMsg.includes('Blocked') || errMsg.includes('DKT') || errMsg.includes('productDetailModel');
 
             itemAudit.discrepancies.push({
-                type: isDeadOrRedirect ? 'SUPPLIER_PAGE_DEAD' : (isBlocked ? 'CLOUDFLARE_BLOCKED' : 'SCRAPER_ERROR'),
+                type: isDeadOrRedirect ? 'SUPPLIER_PAGE_DEAD' : (isBlocked ? 'CLOUDFLARE_OR_SCRAPE_BLOCKED' : 'SCRAPER_ERROR'),
                 message: isDeadOrRedirect 
                     ? 'صفحه محصول در سایت تامین‌کننده حذف یا ریدایرکت شده است (404).'
-                    : `خطای اسکرپر در تامین‌کننده: ${errMsg}`
+                    : `خطای اسکرپر در تامین‌کننده (${itemAudit.domain}): ${errMsg}`
             });
 
-            itemAudit.status_tag = isDeadOrRedirect ? 'CRITICAL' : 'ERROR';
+            itemAudit.status_tag = isDeadOrRedirect ? 'CRITICAL' : 'WARNING';
             itemAudit.severity = isDeadOrRedirect ? 'CRITICAL' : 'WARNING';
-            itemAudit.ai_summary = isDeadOrRedirect ? 'صفحه تامین‌کننده در دسترس نیست یا محصول حذف شده است.' : 'خطای دسترسی به تامین‌کننده رخ داده است.';
-            itemAudit.recommended_action = isDeadOrRedirect ? 'لینک تامین‌کننده را در سایت اصلاح یا در صورت اتمام، محصول را ناموجود کنید.' : 'بررسی اتصال یا بایپس کلودفلر.';
+            itemAudit.ai_summary = isDeadOrRedirect 
+                ? 'صفحه تامین‌کننده در دسترس نیست یا محصول حذف شده است.' 
+                : 'عدم امکان اسکرپ مستقیم صفحه تامین‌کننده (تصویر زنده صفحه ثبت شده است).';
+            itemAudit.recommended_action = isDeadOrRedirect 
+                ? 'لینک تامین‌کننده را در سایت اصلاح یا در صورت اتمام، محصول را ناموجود کنید.' 
+                : 'تصویر زنده تامین‌کننده را بررسی کرده و در صورت نیاز مقادیر را دستی اعمال کنید.';
             auditResults.push(itemAudit);
             return;
         }
@@ -262,13 +357,13 @@ function performAlgorithmicAudit(products, stockData) {
         });
 
         // ==========================================
-        // ⚖️ مقایسه دوطرفه (Our Store vs Supplier)
+        // ⚖️ مقایسه دوطرفه
         // ==========================================
 
         const ourSizeKeys = Object.keys(ourSizes);
         const hasOurSizes = ourSizeKeys.length > 0;
 
-        // الف) بررسی سایزهای گمشده (تامین‌کننده موجود دارد، ولی در سایت ما نیست یا ۰ است)
+        // الف) سایزهای گمشده (فرصت فروش)
         itemAudit.supplier_data.in_stock_sizes.forEach(suppSize => {
             const sName = suppSize.size;
             const ourQty = ourSizes[sName];
@@ -291,12 +386,11 @@ function performAlgorithmicAudit(products, stockData) {
             if (itemAudit.severity === 'NORMAL') itemAudit.severity = 'WARNING';
         }
 
-        // ب) بررسی موجودی کاذب (سایت ما موجود نشان می‌دهد ولی تامین‌کننده تمام کرده)
+        // ب) موجودی کاذب (خطر لغو سفارش)
         if (hasOurSizes) {
             ourSizeKeys.forEach(ourSize => {
                 const ourQty = ourSizes[ourSize];
                 if (ourQty > 0) {
-                    // بررسی در تامین‌کننده
                     const suppQty = itemAudit.supplier_data.stocks[ourSize];
                     const numSuppQty = typeof suppQty === 'boolean' ? (suppQty ? 1 : 0) : parseInt(suppQty) || 0;
 
@@ -316,7 +410,7 @@ function performAlgorithmicAudit(products, stockData) {
             itemAudit.severity = 'CRITICAL';
         }
 
-        // ج) بررسی ناموجودی کل در تامین‌کننده
+        // ج) ناموجودی کل
         if (supplierStockEntries.length > 0 && itemAudit.supplier_data.in_stock_sizes.length === 0) {
             if (ourStockStatus === 'instock') {
                 itemAudit.discrepancies.push({
@@ -333,7 +427,7 @@ function performAlgorithmicAudit(products, stockData) {
             }
         }
 
-        // د) بررسی اختلاف قیمت
+        // د) اختلاف قیمت
         if (ourPrice && effectivePrice) {
             const diff = Math.round(effectivePrice - ourPrice);
             const diffPct = Math.round((Math.abs(diff) / ourPrice) * 100);
@@ -361,7 +455,7 @@ function performAlgorithmicAudit(products, stockData) {
             }
         }
 
-        // هـ) بررسی محصول کاملاً هماهنگ و بدون مشکل (All OK)
+        // هـ) بررسی محصول کاملاً هماهنگ
         if (itemAudit.discrepancies.length === 0) {
             itemAudit.status_tag = 'OK';
             itemAudit.severity = 'NORMAL';
@@ -405,7 +499,8 @@ async function performAIAudit(discrepantItems, modelName) {
             supplier: {
                 effective_price: item.supplier_data.effective_price,
                 sizes_in_supplier: item.supplier_data.in_stock_sizes.map(s => `${s.size} (${s.qty}عدد)`),
-                error: item.supplier_data.error || null
+                error: item.supplier_data.error || null,
+                has_live_screenshot: item.screenshot_base64 ? true : false
             },
             discrepancies: item.discrepancies.map(d => d.message),
             missing_sizes: item.missing_sizes_in_store.map(m => m.size),
@@ -417,12 +512,8 @@ async function performAIAudit(discrepantItems, modelName) {
 
 لطفاً برای هر محصول:
 1. "severity": یکی از مقادیر ("CRITICAL", "WARNING", "INFO", "OK")
-   - CRITICAL: خطر سفارش ناموجود (سایزی که تامین‌کننده تمام کرده ولی در سایت ما موجود است)، افزایش شدید قیمت تامین‌کننده، یا حذف صفحه (404)
-   - WARNING: فرصت فروش از دست رفته (سایزی که تامین‌کننده دارد ولی سایت ما ندارد)، تخفیف تامین‌کننده
-   - INFO: اطلاع‌رسانی معمولی
-   - OK: هماهنگی کامل
 2. "ai_summary": تحلیل بسیار دقیق و خلاصه به زبان فارسی روان (مثلا: "سایز ۴۲ در تامین‌کننده موجود است ولی در سایت ندارید. قیمت لیر تامین‌کننده هم ۱۵٪ بالا رفته.")
-3. "recommended_action": دستور اقدام صریح و عملیاتی برای مدیر سایت (مثلا: "سایز ۴۲ را به محصول اضافه کنید و قیمت لیر را به ۳۵۰۰ تغییر دهید.")
+3. "recommended_action": دستور اقدام صریح و عملیاتی برای مدیر سایت
 
 پاسخ را فقط و فقط به صورت JSON معتبر ارسال کن:
 [
@@ -457,7 +548,6 @@ ${JSON.stringify(promptPayload, null, 2)}`;
         await new Promise(r => setTimeout(r, CONFIG.rate_limit.delay_between_batches_ms || 1500));
     }
 
-    // تولید گزارش کلان مدیریتی
     console.log('📝 در حال تدوین گزارش مدیریتی کل فروشگاه توسط Gemini...');
     let executiveSummary = 'گزارش حسابرسی هوشمند آماده شد.';
     try {
@@ -477,7 +567,7 @@ ${JSON.stringify(statsSummary, null, 2)}
 
 شامل:
 ۱. تحلیل وضعیت سلامت موجودی و قیمت‌های سایت
-۲. نقاط خطر فوری (خطر لغو سفارش به دلیل سایزهای ناموجود یا ضرر مالی قیمت‌ها)
+۲. نقاط خطر فوری (خطر لغو سفارش یا ضرر مالی قیمت‌ها)
 ۳. ۳ توصیه عملیاتی و فوری به مدیر سایت با ایموجی‌های مناسب.`;
 
         executiveSummary = await callGemini(summaryPrompt, modelName);
@@ -489,7 +579,7 @@ ${JSON.stringify(statsSummary, null, 2)}
 }
 
 // ==========================================
-// 📊 تولید گزارش گرافیکی HTML با مقایسه Side-by-Side
+// 📊 تولید گزارش گرافیکی HTML با مقایسه Side-by-Side + لایت‌باکس اسکرین‌شات
 // ==========================================
 
 function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
@@ -500,7 +590,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     const missingSizesCount = auditResults.filter(r => r.missing_sizes_in_store.length > 0).length;
     const phantomSizesCount = auditResults.filter(r => r.phantom_sizes_in_store.length > 0).length;
     const priceMismatchCount = auditResults.filter(r => r.price_discrepancy !== null).length;
-    const deadLinksCount = auditResults.filter(r => !r.supplier_data.success).length;
+    const screenshotsCount = auditResults.filter(r => r.screenshot_base64 || r.screenshot_file).length;
 
     const html = `<!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -526,14 +616,14 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-primary); padding: 30px 20px; line-height: 1.6; }
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container { max-width: 1440px; margin: 0 auto; }
 
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
         .header h1 { font-size: 24px; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .header .meta { font-size: 13px; color: var(--text-secondary); }
 
         /* کارت‌های آمار */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); }
         .stat-icon { font-size: 26px; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); }
         .stat-info .num { font-size: 20px; font-weight: 800; }
@@ -559,13 +649,11 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         th { background: #111827; color: var(--text-secondary); font-weight: 600; }
         tr:hover { background: rgba(255,255,255,0.02); }
 
-        /* تگ‌ها و بج‌ها */
+        /* بج‌ها */
         .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
         .badge-critical { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
         .badge-warning { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); }
-        .badge-info { background: rgba(59,130,246,0.2); color: #60a5fa; border: 1px solid rgba(59,130,246,0.4); }
-        .badge-normal, .badge-ok { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
-        .badge-error { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
+        .badge-ok { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
 
         .compare-box { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 10px; font-size: 12px; margin-bottom: 5px; }
         .compare-title { font-weight: 700; font-size: 11px; margin-bottom: 5px; color: var(--text-secondary); text-transform: uppercase; }
@@ -578,8 +666,16 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
 
         .action-box { background: rgba(139,92,246,0.08); border-right: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 6px 6px 0; font-size: 12px; color: #cbd5e1; margin-top: 6px; }
 
-        a.btn-link { color: #818cf8; text-decoration: none; font-size: 12px; }
-        a.btn-link:hover { text-decoration: underline; }
+        .btn-link { color: #818cf8; text-decoration: none; font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
+        .btn-link:hover { text-decoration: underline; }
+
+        .btn-screenshot { background: rgba(236,72,153,0.15); color: #f472b6; border: 1px solid rgba(236,72,153,0.35); padding: 3px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; font-weight: bold; transition: all 0.2s; }
+        .btn-screenshot:hover { background: #ec4899; color: #fff; }
+
+        /* Modal Lightbox برای اسکرین‌شات */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { max-width: 90%; max-height: 90%; border-radius: 12px; border: 1px solid #475569; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+        .modal-close { position: absolute; top: 20px; right: 30px; font-size: 32px; color: #fff; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -587,7 +683,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     <div class="header">
         <div>
             <h1>🤖 داشبورد حسابرسی دوطرفه محصولات (سایت شما vs تامین‌کننده)</h1>
-            <div class="meta">بررسی دقیق سایزهای گمشده، خطرات اتمام موجودی، تغییرات قیمتی و لینک‌های حذف‌شده • تاریخ: ${new Date().toLocaleDateString('fa-IR')}</div>
+            <div class="meta">بررسی دقیق سایزهای گمشده، خطرات اتمام موجودی، تغییرات قیمتی و تصاویر زنده تامین‌کنندگان • تاریخ: ${new Date().toLocaleDateString('fa-IR')}</div>
         </div>
     </div>
 
@@ -599,7 +695,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         </div>
         <div class="stat-card" style="border-color: rgba(239,68,68,0.4);">
             <div class="stat-icon" style="color: var(--critical);">🔴</div>
-            <div class="stat-info"><div class="num" style="color: var(--critical);">${criticalCount}</div><div class="label">بحرانی (خطر لغو سفارش یا ضرر)</div></div>
+            <div class="stat-info"><div class="num" style="color: var(--critical);">${criticalCount}</div><div class="label">بحرانی (خطر لغو سفارش/ضرر)</div></div>
         </div>
         <div class="stat-card" style="border-color: rgba(245,158,11,0.4);">
             <div class="stat-icon" style="color: var(--warning);">👟</div>
@@ -613,9 +709,9 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             <div class="stat-icon">💰</div>
             <div class="stat-info"><div class="num">${priceMismatchCount}</div><div class="label">مغایرت قیمت لیر</div></div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon">🚫</div>
-            <div class="stat-info"><div class="num">${deadLinksCount}</div><div class="label">لینک حذف‌شده / خطای صفحه</div></div>
+        <div class="stat-card" style="border-color: rgba(236,72,153,0.4);">
+            <div class="stat-icon" style="color: #f472b6;">📸</div>
+            <div class="stat-info"><div class="num" style="color: #f472b6;">${screenshotsCount}</div><div class="label">اسکرین‌شات زنده تامین‌کننده</div></div>
         </div>
     </div>
 
@@ -634,7 +730,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             <button class="filter-btn" data-filter="MISSING_SIZES">👟 سایز گمشده (${missingSizesCount})</button>
             <button class="filter-btn" data-filter="PHANTOM_STOCK">⚠️ سایز کاذب (${phantomSizesCount})</button>
             <button class="filter-btn" data-filter="PRICE">💰 مغایرت قیمت (${priceMismatchCount})</button>
-            <button class="filter-btn" data-filter="DEAD">🚫 لینک نامعتبر (${deadLinksCount})</button>
+            <button class="filter-btn" data-filter="SCREENSHOT">📸 دارای اسکرین‌شات (${screenshotsCount})</button>
         </div>
         <input type="text" id="searchInput" class="search-input" placeholder="🔍 جستجو بر اساس ID، نام، دامنه...">
     </div>
@@ -649,7 +745,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                     <th style="width: 250px;">🏪 در سایت شما (Our Site)</th>
                     <th style="width: 250px;">🏬 در تامین‌کننده (Supplier)</th>
                     <th>🧠 تحلیل هوش مصنوعی Gemini و راهکار</th>
-                    <th style="width: 90px;">لینک</th>
+                    <th style="width: 100px;">لینک‌ها و تصویر</th>
                 </tr>
             </thead>
             <tbody>
@@ -659,7 +755,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                     data-has-missing="${item.missing_sizes_in_store.length > 0}"
                     data-has-phantom="${item.phantom_sizes_in_store.length > 0}"
                     data-has-price="${item.price_discrepancy !== null}"
-                    data-has-dead="${!item.supplier_data.success}">
+                    data-has-screenshot="${Boolean(item.screenshot_base64 || item.screenshot_file)}">
                     
                     <td>
                         <strong>#${item.id}</strong><br>
@@ -699,7 +795,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                                         ? `<span style="text-decoration:line-through; color:#ef4444; font-size:11px;">${item.supplier_data.regular_price}₺</span> <span style="color:#10b981;">${item.supplier_data.offer_price}₺</span> <span style="color:#f87171; font-size:10px;">(-${item.supplier_data.discount_percent}%)</span>`
                                         : `<span style="color:#10b981;">${item.supplier_data.regular_price} ₺</span>`
                                       )
-                                    : '<span style="color:#ef4444;">عدم دسترسی</span>'
+                                    : '<span style="color:#ef4444;">عدم دسترسی اسکرپر</span>'
                                 }
                             </div>
                             <div class="compare-title" style="margin-top:6px;">سایزهای موجود در تامین‌کننده:</div>
@@ -713,7 +809,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                                           `).join('')
                                         : '<span style="color:#ef4444; font-size:11px;">کل سایزها ناموجود</span>'
                                       )
-                                    : `<span style="color:#ef4444; font-size:11px;">${item.supplier_data.error || 'خطا'}</span>`
+                                    : `<span style="color:#f472b6; font-size:11px;">📸 تصویر زنده صفحه ثبت شده</span>`
                                 }
                             </div>
                         </div>
@@ -730,10 +826,15 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                         ${item.recommended_action ? `<div class="action-box">💡 راهکار پیشنهادی: ${item.recommended_action}</div>` : ''}
                     </td>
                     <td>
-                        <div style="display:flex; flex-direction:column; gap:5px; min-width:85px;">
+                        <div style="display:flex; flex-direction:column; gap:6px; min-width:95px;">
                             ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="btn-link" style="color:#38bdf8; font-weight:600;">🛍️ سایت ما</a>` : ''}
                             ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="btn-link" style="color:#fbbf24;">✏️ ویرایش</a>` : ''}
                             ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="btn-link" style="color:#a78bfa;">🏬 تامین‌کننده</a>` : ''}
+                            ${(item.screenshot_base64 || item.screenshot_file) ? `
+                                <button class="btn-screenshot" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">
+                                    📸 اسکرین‌شات
+                                </button>
+                            ` : ''}
                         </div>
                     </td>
                 </tr>
@@ -743,7 +844,22 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     </div>
 </div>
 
+<!-- Modal Lightbox -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" class="modal-content" src="" alt="Live Supplier Page Screenshot">
+</div>
+
 <script>
+    function openModal(src) {
+        document.getElementById('modalImg').src = src;
+        document.getElementById('imageModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('imageModal').style.display = 'none';
+    }
+
     const filterBtns = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('searchInput');
     const rows = document.querySelectorAll('#auditTable tbody tr');
@@ -770,7 +886,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             const hasMissing = row.getAttribute('data-has-missing') === 'true';
             const hasPhantom = row.getAttribute('data-has-phantom') === 'true';
             const hasPrice = row.getAttribute('data-has-price') === 'true';
-            const hasDead = row.getAttribute('data-has-dead') === 'true';
+            const hasScreenshot = row.getAttribute('data-has-screenshot') === 'true';
             const rowText = row.innerText.toLowerCase();
 
             let matchesFilter = false;
@@ -780,7 +896,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             else if (currentFilter === 'MISSING_SIZES' && hasMissing) matchesFilter = true;
             else if (currentFilter === 'PHANTOM_STOCK' && hasPhantom) matchesFilter = true;
             else if (currentFilter === 'PRICE' && hasPrice) matchesFilter = true;
-            else if (currentFilter === 'DEAD' && hasDead) matchesFilter = true;
+            else if (currentFilter === 'SCREENSHOT' && hasScreenshot) matchesFilter = true;
 
             const matchesSearch = query === '' || rowText.includes(query);
 
@@ -811,6 +927,7 @@ async function main() {
     let modelName = CONFIG.default_model;
     let limit = 50;
     let runAI = true;
+    let takeScreenshots = true;
 
     args.forEach(arg => {
         if (arg.startsWith('--products=')) productsFile = arg.split('=')[1];
@@ -819,6 +936,7 @@ async function main() {
         else if (arg.startsWith('--key=')) CONFIG.api_key = arg.split('=')[1];
         else if (arg.startsWith('--limit=')) limit = parseInt(arg.split('=')[1]) || 50;
         else if (arg === '--no-ai') runAI = false;
+        else if (arg === '--no-screenshots') takeScreenshots = false;
         else if (arg === '--all') limit = Infinity;
     });
 
@@ -833,11 +951,12 @@ async function main() {
     }
 
     console.log('='.repeat(70));
-    console.log('  🤖 Gemini AI Two-Way Auditor (سایت شما vs تامین‌کننده)');
+    console.log('  🤖 Gemini AI Auditor (مقایسه دوطرفه + اسکرین‌شات زنده)');
     console.log('='.repeat(70));
     console.log(`📂 فایل محصولات ووکامرس: ${productsFile}`);
     console.log(`📂 فایل دیتای اسکرپ شده : ${stockFile}`);
     console.log(`🧠 مدل انتخابی جمنای    : ${runAI ? modelName : 'غیرفعال (--no-ai)'}`);
+    console.log(`📸 ثبت خودکار اسکرین‌شات: ${takeScreenshots ? 'فعال' : 'غیرفعال'}`);
     console.log(`🎯 حداکثر تعداد بررسی  : ${limit === Infinity ? 'همه محصولات' : limit}`);
 
     if (!fs.existsSync(productsFile) || !fs.existsSync(stockFile)) {
@@ -852,7 +971,16 @@ async function main() {
     // مرحله ۱: تحلیل دوطرفه
     const auditResults = performAlgorithmicAudit(products, stockData);
 
-    // مرحله ۲: تحلیل هوش مصنوعی Gemini
+    // مرحله ۲: ثبت اسکرین‌شات از سایت‌های ناموفق (مثل اسیکس، دکلتون)
+    if (takeScreenshots) {
+        const failedItems = auditResults.filter(r => !r.supplier_data.success && r.primary_url);
+        const toCapture = failedItems.slice(0, CONFIG.screenshots.max_screenshots_per_run || 10);
+        if (toCapture.length > 0) {
+            await captureScreenshotsForItems(toCapture);
+        }
+    }
+
+    // مرحله ۳: تحلیل هوش مصنوعی Gemini
     let executiveSummary = 'حسابرسی دوطرفه با موفقیت انجام شد.';
     if (runAI) {
         const itemsForAI = auditResults.filter(r => r.discrepancies.length > 0 || !r.supplier_data.success);
@@ -877,7 +1005,7 @@ async function main() {
 
     // خروجی CSV
     const csvRows = [
-        ['ID', 'Title', 'Domain', 'Status', 'Severity', 'Our Price (TRY)', 'Supplier Price (TRY)', 'Missing Sizes in Store', 'Phantom Sizes in Store', 'AI Summary', 'Action'].join(',')
+        ['ID', 'Title', 'Domain', 'Status', 'Severity', 'Our Price (TRY)', 'Supplier Price (TRY)', 'Missing Sizes in Store', 'Phantom Sizes in Store', 'Has Screenshot', 'AI Summary', 'Action'].join(',')
     ];
     auditResults.forEach(r => {
         csvRows.push([
@@ -890,6 +1018,7 @@ async function main() {
             r.supplier_data.effective_price || '',
             `"${r.missing_sizes_in_store.map(s => s.size).join(' ')}"`,
             `"${r.phantom_sizes_in_store.map(s => s.size).join(' ')}"`,
+            Boolean(r.screenshot_base64 || r.screenshot_file) ? 'YES' : 'NO',
             `"${(r.ai_summary || '').replace(/"/g, '""')}"`,
             `"${(r.recommended_action || '').replace(/"/g, '""')}"`
         ].join(','));
