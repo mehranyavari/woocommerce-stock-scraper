@@ -737,16 +737,6 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         <div class="q-card" style="border-color: rgba(236,72,153,0.4);" onclick="setFilter('SCREENSHOT')">
             <span style="color:var(--pink)">📸 اسکرین‌شات:</span> <span class="q-num" style="color:var(--pink)">${screenshotsCount}</span>
         </div>
-    </div>
-
-    <!-- گزارش مدیریتی -->
-    <div class="ai-box">
-        <div class="ai-header">
-            <span>🧠 تحلیل و راهکار مدیریتی هوش مصنوعی Gemini</span>
-        </div>
-        <div class="ai-text">${executiveSummary}</div>
-    </div>
-
     <!-- فیلترها و سرچ -->
     <div class="toolbar">
         <div class="filter-group">
@@ -768,9 +758,8 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                 <tr>
                     <th style="width:70px;">محصول</th>
                     <th style="width:90px;">وضعیت</th>
-                    <th style="width:230px;">🏪 در سایت شما</th>
-                    <th style="width:230px;">🏬 در تامین‌کننده</th>
-                    <th>🧠 تحلیل و اقدام پیشنهادی</th>
+                    <th style="width:260px;">🏪 در سایت شما</th>
+                    <th style="width:260px;">🏬 در تامین‌کننده</th>
                     <th style="width:130px;">دسترسی سریع</th>
                 </tr>
             </thead>
@@ -834,12 +823,6 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                         </div>
                     </td>
                     <td>
-                        <div style="font-size:12px; font-weight:600; color:#f8fafc;">
-                            ${item.ai_summary || (item.discrepancies.length > 0 ? item.discrepancies[0].message : 'همه موارد هماهنگ است.')}
-                        </div>
-                        ${item.recommended_action ? `<div class="action-chip">💡 ${item.recommended_action}</div>` : ''}
-                    </td>
-                    <td>
                         <div class="action-links">
                             ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت</a>` : ''}
                             ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="a-btn edit">✏️ ویرایش</a>` : ''}
@@ -900,11 +883,6 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                     </div>
                 </div>
             </div>
-
-            <div style="font-size:12px; color:#f8fafc; font-weight:600; margin-bottom:4px;">
-                ${item.ai_summary || (item.discrepancies.length > 0 ? item.discrepancies[0].message : 'هماهنگ است.')}
-            </div>
-            ${item.recommended_action ? `<div class="action-chip" style="margin-bottom:8px;">💡 ${item.recommended_action}</div>` : ''}
 
             <div class="action-links">
                 ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت ما</a>` : ''}
@@ -1006,7 +984,7 @@ async function main() {
     let productsFile = 'products_tennis24shop_com.json';
     let stockFile = 'stock-data_tennis24shop_com.json';
     let modelName = CONFIG.default_model;
-    let limit = 50;
+    let limit = Infinity; // پیش‌فرض: بررسی تمام محصولات
     let runAI = true;
     let takeScreenshots = true;
 
@@ -1015,7 +993,14 @@ async function main() {
         else if (arg.startsWith('--stock=')) stockFile = arg.split('=')[1];
         else if (arg.startsWith('--model=')) modelName = arg.split('=')[1];
         else if (arg.startsWith('--key=')) CONFIG.api_key = arg.split('=')[1];
-        else if (arg.startsWith('--limit=')) limit = parseInt(arg.split('=')[1]) || 50;
+        else if (arg.startsWith('--limit=')) {
+            const raw = arg.split('=')[1].trim();
+            if (raw && !isNaN(parseInt(raw)) && parseInt(raw) > 0) {
+                limit = parseInt(raw);
+            } else {
+                limit = Infinity;
+            }
+        }
         else if (arg === '--no-ai') runAI = false;
         else if (arg === '--no-screenshots') takeScreenshots = false;
         else if (arg === '--all') limit = Infinity;
