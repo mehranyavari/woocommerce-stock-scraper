@@ -1,0 +1,94 @@
+name: AI Product Auditor (Gemini)
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: 'مدل هوش مصنوعی Gemini'
+        required: true
+        default: 'gemini-flash-lite-latest'
+        type: choice
+        options:
+          - 'gemini-flash-lite-latest'
+          - 'gemini-2.5-flash'
+      products_file:
+        description: 'فایل محصولات ووکامرس'
+        required: false
+        default: 'products_tennis24shop_com.json'
+        type: string
+      stock_file:
+        description: 'فایل دیتای اسکرپ شده'
+        required: false
+        default: 'stock-data_tennis24shop_com.json'
+        type: string
+      limit:
+        description: 'حداکثر تعداد محصولات جهت تحلیل (مثلاً 30 یا 50 یا خالی برای همه)'
+        required: false
+        default: '50'
+        type: string
+      enable_ai:
+        description: 'فعال بودن هوش مصنوعی جمنای'
+        required: false
+        default: true
+        type: boolean
+
+  # اجرای هفتگی یا بعد از اسکرپ (اختیاری)
+  # schedule:
+  #   - cron: '0 10 * * 0' # هر یکشنبه ساعت 10 UTC
+
+jobs:
+  audit:
+    name: Run Gemini AI Auditor
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Gemini Auditor
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--products=${{ github.event.inputs.products_file || 'products_tennis24shop_com.json' }} --stock=${{ github.event.inputs.stock_file || 'stock-data_tennis24shop_com.json' }} --model=${{ github.event.inputs.model || 'gemini-flash-lite-latest' }}"
+          
+          if [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS="$ARGS --limit=${{ github.event.inputs.limit }}"
+          fi
+
+          if [ "${{ github.event.inputs.enable_ai }}" = "false" ]; then
+            ARGS="$ARGS --no-ai"
+          fi
+
+          echo "Running: node gemini-auditor.js $ARGS"
+          node gemini-auditor.js $ARGS
+
+      - name: Upload AI Audit Dashboard & Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-audit-report
+          path: |
+            output/audit-report.html
+            output/audit-report.json
+            output/audit-report.csv
+
+      - name: Commit and Push audit results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          git add output/audit-report* 2>/dev/null || true
+          
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "🤖 AI Audit Report - $(date '+%Y-%m-%d %H:%M:%S')" &&
+            git pull --rebase --autostash origin main &&
+            git push
+          )
