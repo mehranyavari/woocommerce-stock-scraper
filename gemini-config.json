@@ -1,0 +1,14 @@
+{
+  "api_key": "",
+  "default_model": "gemini-flash-lite-latest",
+  "fallback_model": "gemini-2.5-flash",
+  "rate_limit": {
+    "requests_per_minute": 30,
+    "delay_between_batches_ms": 1500,
+    "batch_size": 10
+  },
+  "audit_thresholds": {
+    "price_change_significant_percent": 10,
+    "low_stock_threshold": 2
+  }
+}
