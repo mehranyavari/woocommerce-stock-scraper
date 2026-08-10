@@ -79,13 +79,14 @@ jobs:
             output/audit-report.html
             output/audit-report.json
             output/audit-report.csv
+            output/screenshots/
 
       - name: Commit and Push audit results
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          git add output/audit-report* 2>/dev/null || true
+          git add output/audit-report* output/screenshots/ 2>/dev/null || true
           
           git diff --quiet && git diff --staged --quiet || (
             git commit -m "🤖 AI Audit Report - $(date '+%Y-%m-%d %H:%M:%S')" &&
