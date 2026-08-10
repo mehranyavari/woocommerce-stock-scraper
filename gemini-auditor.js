@@ -145,6 +145,15 @@ function performAlgorithmicAudit(products, stockData) {
         const ourTitle = product.title || `محصول #${product.id}`;
         const ourSku = product.sku || '';
         const ourStockStatus = product.our_stock_status || 'instock';
+        let ourUrl = product.our_url || '';
+        let ourEditUrl = product.our_edit_url || '';
+
+        if (!ourUrl && product.id) {
+            ourUrl = `https://tennis24shop.com/?p=${product.id}`;
+        }
+        if (!ourEditUrl && product.id) {
+            ourEditUrl = `https://tennis24shop.com/wp-admin/post.php?post=${product.id}&action=edit`;
+        }
 
         const itemAudit = {
             id: product.id,
@@ -152,13 +161,17 @@ function performAlgorithmicAudit(products, stockData) {
             sku: ourSku,
             primary_url: primaryUrl,
             secondary_url: secondaryUrl,
+            our_url: ourUrl,
+            our_edit_url: ourEditUrl,
             domain: domain,
             
             // وضعیت در سایت ما
             our_data: {
                 price_lir: ourPrice,
                 stock_status: ourStockStatus,
-                sizes: ourSizes
+                sizes: ourSizes,
+                url: ourUrl,
+                edit_url: ourEditUrl
             },
 
             // وضعیت در سایت تامین‌کننده
@@ -717,7 +730,11 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                         ${item.recommended_action ? `<div class="action-box">💡 راهکار پیشنهادی: ${item.recommended_action}</div>` : ''}
                     </td>
                     <td>
-                        ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="btn-link">🔗 تامین‌کننده</a>` : ''}
+                        <div style="display:flex; flex-direction:column; gap:5px; min-width:85px;">
+                            ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="btn-link" style="color:#38bdf8; font-weight:600;">🛍️ سایت ما</a>` : ''}
+                            ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="btn-link" style="color:#fbbf24;">✏️ ویرایش</a>` : ''}
+                            ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="btn-link" style="color:#a78bfa;">🏬 تامین‌کننده</a>` : ''}
+                        </div>
                     </td>
                 </tr>
                 `).join('')}
