@@ -110,8 +110,6 @@ async function scrapeKorayspor(page, url) {
     console.log(`\n🔄 Scraping Korayspor: ${url}`);
 
     try {
-        // حذف setExtraHTTPHeaders و setViewport برای جلوگیری از خراب شدن فینگرپرینت PRB
-
         if (useProxy) {
             await page.authenticate({ username: 'mehran', password: 'mehran75' });
         }
@@ -119,56 +117,81 @@ async function scrapeKorayspor(page, url) {
         console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
-        console.log(`  ⏳ Waiting 15s to let Cloudflare pass...`);
-        await new Promise(r => setTimeout(r, 15000));
+        console.log(`  ⏳ Waiting 10s to let Cloudflare pass and DOM render...`);
+        await new Promise(r => setTimeout(r, 10000));
 
         const hostname = new URL(page.url()).hostname;
 
-        const nextDataString = await page.evaluate(() => {
-            const scriptNode = document.getElementById('__NEXT_DATA__');
-            return scriptNode ? scriptNode.innerHTML : null;
-        });
+        // ۱. استخراج مستقیم و ۱۰۰٪ دقیق از دکمه‌های سایز رندر شده در صفحه (DOM Evaluation)
+        const domResult = await page.evaluate(() => {
+            const sizeData = {};
+            
+            // پیدا کردن تمام دکمه‌های انتخاب سایز
+            const buttons = document.querySelectorAll('button[data-test-id="available_size"], button[data-test-id="out_of_stock"], button[data-test-id^="prd_size_"], div[data-test-id="product_size_select"] ~ div button, .prd-detail-middle button');
+            
+            buttons.forEach(btn => {
+                const clone = btn.cloneNode(true);
+                clone.querySelectorAll('svg, span').forEach(el => el.remove());
+                const sizeText = clone.textContent.trim();
+                
+                if (sizeText && sizeText.length <= 10 && !sizeText.includes('Beden') && !sizeText.includes('Hemen') && !sizeText.includes('Sepet') && !sizeText.includes('Listeye')) {
+                    const testId = btn.getAttribute('data-test-id') || '';
+                    const isOutOfStock = testId === 'out_of_stock' || 
+                                         btn.classList.contains('disabled') || 
+                                         btn.hasAttribute('disabled') || 
+                                         btn.innerHTML.includes('after:rotate') || 
+                                         btn.querySelector('svg.lucide-bell') !== null;
+                    
+                    sizeData[sizeText] = isOutOfStock ? 0 : 1;
+                }
+            });
 
-        if (!nextDataString) {
-            const bodyHtml = await page.evaluate(() => document.body ? document.body.innerHTML : '');
-            const title = await page.title();
-            fs.writeFileSync('korayspor_debug_dump.html', `<!-- Title: ${title} -->\n` + bodyHtml);
-            try { await page.screenshot({ path: 'korayspor_cloudflare_block.png', fullPage: true }); } catch (e) {}
-            await page.close();
-            return { success: false, error: `Korayspor: __NEXT_DATA__ not found. Saved page source to korayspor_debug_dump.html. Title: ${title}` };
-        }
+            // استخراج داده‌های NEXT_DATA برای قیمت یا فال‌بک
+            let nextProduct = null;
+            try {
+                const scriptNode = document.getElementById('__NEXT_DATA__');
+                if (scriptNode) {
+                    const nextData = JSON.parse(scriptNode.innerHTML);
+                    nextProduct = nextData.props?.pageProps?.data?.response?.product || null;
+                }
+            } catch(e) {}
+
+            return {
+                domSizes: sizeData,
+                nextProduct: nextProduct
+            };
+        });
 
         await page.close();
 
-        const nextData = JSON.parse(nextDataString);
-        const product = nextData.props?.pageProps?.data?.response?.product;
+        let extractedStocks = domResult.domSizes || {};
+        let regularPrice = null;
+        let discountPrice = null;
 
-        if (!product || !product.barcodes || !product.stocksByBarcode) {
-            return { success: false, error: "Korayspor: Product, barcodes, or stocks not found in JSON" };
-        }
+        if (domResult.nextProduct) {
+            const p = domResult.nextProduct;
+            regularPrice = p.basePrice || p.salesPrice || null;
+            discountPrice = p.discountPrice || null;
 
-        const regularPrice = product.basePrice || product.salesPrice || null;
-        const discountPrice = product.discountPrice || null;
-
-        // مرتب‌سازی بارکدها بر اساس مقدار بارکد به صورت عددی/رشته‌ای صعودی
-        const sortedBarcodes = [...product.barcodes].sort((a, b) => {
-            return String(a.barcode).localeCompare(String(b.barcode), undefined, { numeric: true });
-        });
-
-        // مرتب‌سازی کلیدهای استوک به صورت عددی صعودی
-        const sortedStockKeys = Object.keys(product.stocksByBarcode).sort((a, b) => {
-            return parseInt(a) - parseInt(b);
-        });
-
-        const extractedStocks = {};
-        sortedBarcodes.forEach((bc, idx) => {
-            if (bc.stockTypeValues && bc.stockTypeValues[0]) {
-                const rawSize = bc.stockTypeValues[0].name;
-                const stockKey = sortedStockKeys[idx];
-                const stockVal = product.stocksByBarcode[stockKey] !== undefined ? product.stocksByBarcode[stockKey] : 0;
-                extractedStocks[rawSize] = stockVal;
+            // اگر دکمه‌های DOM به هر دلیلی خالی بودند، از ساختار بارکدهای NEXT_DATA استفاده کن
+            if (Object.keys(extractedStocks).length === 0 && p.barcodes) {
+                p.barcodes.forEach(bc => {
+                    if (bc.stockTypeValues && bc.stockTypeValues[0]) {
+                        const rawSize = bc.stockTypeValues[0].name;
+                        let stockVal = 0;
+                        if (p.stocksByBarcode) {
+                            if (p.stocksByBarcode[bc.barcode] !== undefined) stockVal = p.stocksByBarcode[bc.barcode];
+                            else if (p.stocksByBarcode[bc.id] !== undefined) stockVal = p.stocksByBarcode[bc.id];
+                            else if (p.stocksByBarcode[bc.barcodeId] !== undefined) stockVal = p.stocksByBarcode[bc.barcodeId];
+                            else if (bc.stock !== undefined) stockVal = bc.stock;
+                        } else if (bc.stock !== undefined) {
+                            stockVal = bc.stock;
+                        }
+                        extractedStocks[rawSize] = stockVal > 0 ? stockVal : 0;
+                    }
+                });
             }
-        });
+        }
 
         const normalizedStocks = {};
         for (const [key, val] of Object.entries(extractedStocks)) {
@@ -176,10 +199,15 @@ async function scrapeKorayspor(page, url) {
             if (normKey) normalizedStocks[normKey] = val;
         }
 
+        if (Object.keys(normalizedStocks).length === 0) {
+            return { success: false, error: "Korayspor: No size buttons or barcodes found" };
+        }
+
         const regular = parseTurkishPrice(regularPrice);
         let offer = parseTurkishPrice(discountPrice);
         if (regular && offer && offer >= regular) offer = null;
 
+        console.log(`  ✅ Korayspor URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
 
     } catch (error) {
@@ -989,10 +1017,13 @@ async function scrapeProduct(page, url) {
 
 async function main() {
     useProxy = !process.argv.includes('--no-proxy');
+    const cliUrl = process.argv.slice(2).find(a => a.startsWith('http'));
+    const urlToScrape = cliUrl || TEST_URL;
+
     console.log('='.repeat(60));
     console.log('🧪 TEST SINGLE PRODUCT');
     console.log('='.repeat(60));
-    console.log('🔗 URL:', TEST_URL);
+    console.log('🔗 URL:', urlToScrape);
     console.log('🔌 Proxy Enabled:', useProxy);
 
     const launchArgs = [];
@@ -1008,7 +1039,7 @@ async function main() {
         args: launchArgs
     });
 
-    const result = await scrapeProduct(page, TEST_URL);
+    const result = await scrapeProduct(page, urlToScrape);
     await browser.close();
 
     console.log('\n' + '='.repeat(60));
