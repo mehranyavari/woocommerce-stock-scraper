@@ -229,56 +229,90 @@ async function scrapeKorayspor(browser, url) {
         console.log(`  🔄 Navigating to product page...`);
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
-        console.log(`  ⏳ Waiting 15s to let Cloudflare pass...`);
-        await new Promise(r => setTimeout(r, 15000));
+        console.log(`  ⏳ Waiting 10s to let Cloudflare pass and DOM render...`);
+        await new Promise(r => setTimeout(r, 10000));
 
         const hostname = new URL(page.url()).hostname;
 
-        const nextDataString = await page.evaluate(() => {
-            const scriptNode = document.getElementById('__NEXT_DATA__');
-            return scriptNode ? scriptNode.innerHTML : null;
+        // ۱. استخراج مستقیم و ۱۰۰٪ دقیق از دکمه‌های سایز رندر شده در صفحه (DOM Evaluation)
+        const domResult = await page.evaluate(() => {
+            const sizeData = {};
+            
+            // پیدا کردن تمام دکمه‌های انتخاب سایز
+            const buttons = document.querySelectorAll('button[data-test-id="available_size"], button[data-test-id="out_of_stock"], button[data-test-id^="prd_size_"], div[data-test-id="product_size_select"] ~ div button, .prd-detail-middle button');
+            
+            buttons.forEach(btn => {
+                const clone = btn.cloneNode(true);
+                clone.querySelectorAll('svg, span').forEach(el => el.remove());
+                const sizeText = clone.textContent.trim();
+                
+                if (sizeText && sizeText.length <= 10 && !sizeText.includes('Beden') && !sizeText.includes('Hemen') && !sizeText.includes('Sepet') && !sizeText.includes('Listeye')) {
+                    const testId = btn.getAttribute('data-test-id') || '';
+                    const isOutOfStock = testId === 'out_of_stock' || 
+                                         btn.classList.contains('disabled') || 
+                                         btn.hasAttribute('disabled') || 
+                                         btn.innerHTML.includes('after:rotate') || 
+                                         btn.querySelector('svg.lucide-bell') !== null;
+                    
+                    sizeData[sizeText] = isOutOfStock ? 0 : 1;
+                }
+            });
+
+            // استخراج داده‌های NEXT_DATA برای قیمت یا فال‌بک
+            let nextProduct = null;
+            try {
+                const scriptNode = document.getElementById('__NEXT_DATA__');
+                if (scriptNode) {
+                    const nextData = JSON.parse(scriptNode.innerHTML);
+                    nextProduct = nextData.props?.pageProps?.data?.response?.product || null;
+                }
+            } catch(e) {}
+
+            return {
+                domSizes: sizeData,
+                nextProduct: nextProduct
+            };
         });
 
         await page.close();
 
-        if (!nextDataString) {
-            return { success: false, error: "Korayspor: __NEXT_DATA__ not found (Cloudflare Blocked or structure changed)" };
-        }
+        let extractedStocks = domResult.domSizes || {};
+        let regularPrice = null;
+        let discountPrice = null;
 
-        const nextData = JSON.parse(nextDataString);
-        const product = nextData.props?.pageProps?.data?.response?.product;
+        if (domResult.nextProduct) {
+            const p = domResult.nextProduct;
+            regularPrice = p.basePrice || p.salesPrice || null;
+            discountPrice = p.discountPrice || null;
 
-        if (!product || !product.barcodes || !product.stocksByBarcode) {
-            return { success: false, error: "Korayspor: Product, barcodes, or stocks not found in JSON" };
-        }
-
-        const regularPrice = product.basePrice || product.salesPrice || null;
-        const discountPrice = product.discountPrice || null;
-
-        // مرتب‌سازی بارکدها بر اساس مقدار بارکد به صورت عددی/رشته‌ای صعودی
-        const sortedBarcodes = [...product.barcodes].sort((a, b) => {
-            return String(a.barcode).localeCompare(String(b.barcode), undefined, { numeric: true });
-        });
-
-        // مرتب‌سازی کلیدهای استوک به صورت عددی صعودی
-        const sortedStockKeys = Object.keys(product.stocksByBarcode).sort((a, b) => {
-            return parseInt(a) - parseInt(b);
-        });
-
-        const extractedStocks = {};
-        sortedBarcodes.forEach((bc, idx) => {
-            if (bc.stockTypeValues && bc.stockTypeValues[0]) {
-                const rawSize = bc.stockTypeValues[0].name;
-                const stockKey = sortedStockKeys[idx];
-                const stockVal = product.stocksByBarcode[stockKey] !== undefined ? product.stocksByBarcode[stockKey] : 0;
-                extractedStocks[rawSize] = stockVal;
+            // اگر دکمه‌های DOM به هر دلیلی خالی بودند، از ساختار بارکدهای NEXT_DATA استفاده کن
+            if (Object.keys(extractedStocks).length === 0 && p.barcodes) {
+                p.barcodes.forEach(bc => {
+                    if (bc.stockTypeValues && bc.stockTypeValues[0]) {
+                        const rawSize = bc.stockTypeValues[0].name;
+                        let stockVal = 0;
+                        if (p.stocksByBarcode) {
+                            if (p.stocksByBarcode[bc.barcode] !== undefined) stockVal = p.stocksByBarcode[bc.barcode];
+                            else if (p.stocksByBarcode[bc.id] !== undefined) stockVal = p.stocksByBarcode[bc.id];
+                            else if (p.stocksByBarcode[bc.barcodeId] !== undefined) stockVal = p.stocksByBarcode[bc.barcodeId];
+                            else if (bc.stock !== undefined) stockVal = bc.stock;
+                        } else if (bc.stock !== undefined) {
+                            stockVal = bc.stock;
+                        }
+                        extractedStocks[rawSize] = stockVal > 0 ? stockVal : 0;
+                    }
+                });
             }
-        });
+        }
 
         const normalizedStocks = {};
         for (const [key, val] of Object.entries(extractedStocks)) {
             const normKey = normalizeSize(key, hostname);
             if (normKey) normalizedStocks[normKey] = val;
+        }
+
+        if (Object.keys(normalizedStocks).length === 0) {
+            return { success: false, error: "Korayspor: No size buttons or barcodes found" };
         }
 
         const regular = parseTurkishPrice(regularPrice);
@@ -666,7 +700,7 @@ async function scrapeRaketci(browser, url) {
         
         const regular = parseTurkishPrice(result.price);
         let offer = parseTurkishPrice(result.offerPrice);
-        if (regular && offer && offer >= regular) offer = null;
+        if (offer && regular && offer >= regular) offer = null;
         
         console.log(`  ✅ Raketci URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
@@ -677,8 +711,12 @@ async function scrapeRaketci(browser, url) {
     }
 }
 
-async function scrapeIntersport(page, url) {
+// ==========================================
+// 🏬 اسکرپر مخصوص اینتر اسپورت (Intersport)
+// ==========================================
+async function scrapeIntersport(browser, url) {
     console.log(`[${new Date().toISOString()}] Scraping Intersport: ${url}`);
+    const page = await browser.newPage();
     try {
         if (useProxy) {
             await page.authenticate({ username: 'mehran', password: 'mehran75' });
@@ -686,6 +724,24 @@ async function scrapeIntersport(page, url) {
 
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
         
+        // منتظر لود شدن و بایپس احتمالی کلودفلر
+        await new Promise(r => setTimeout(r, 8000));
+
+        const isBlocked = await page.evaluate(() => {
+            const title = (document.title || '').toLowerCase();
+            return title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare') || title.includes('bir dakika') || title.includes('lütfen');
+        });
+
+        if (isBlocked) {
+            console.log(`  ⏳ Cloudflare challenge detected, waiting extra 10s...`);
+            await new Promise(r => setTimeout(r, 10000));
+        }
+
+        // منتظر لود شدن کامپوننت‌های اکینون و داده‌ها
+        await page.waitForFunction(() => {
+            return document.querySelectorAll('pz-variant-option, script[type="application/ld+json"], .price, .product-price, pz-price, .option.-size').length > 0;
+        }, { timeout: 15000 }).catch(() => {});
+
         const hostname = new URL(page.url()).hostname;
         
         const result = await page.evaluate(() => {
@@ -693,26 +749,47 @@ async function scrapeIntersport(page, url) {
             let salePrice = null;
             const stockData = {};
             
+            // 1. استخراج قیمت از Structured Data (LD+JSON) با textContent
             try {
                 const scripts = document.querySelectorAll('script[type="application/ld+json"]');
                 scripts.forEach(s => {
-                    const data = JSON.parse(s.innerText);
-                    if (data['@type'] === 'Product' && data.offers && data.offers.price) {
-                        basePrice = data.offers.price;
-                        salePrice = basePrice;
-                    }
+                    const text = s.textContent || s.innerHTML;
+                    if (!text) return;
+                    try {
+                        const data = JSON.parse(text);
+                        if (data['@type'] === 'Product' && data.offers) {
+                            const offers = Array.isArray(data.offers) ? data.offers[0] : data.offers;
+                            if (offers && offers.price) {
+                                basePrice = offers.price;
+                                salePrice = basePrice;
+                            }
+                        }
+                    } catch(e) {}
                 });
             } catch(e) {}
             
+            // 2. فال‌بک قیمت از ساختار DOM
             if (!basePrice) {
-                const priceEl = document.querySelector('.price, .product-price, .price-row');
-                if (priceEl) basePrice = priceEl.innerText.trim();
+                const discountedEl = document.querySelector('.discounted-price');
+                const currentEl = document.querySelector('.current-price');
+                const pzPriceEl = document.querySelector('pz-price');
+                const priceEl = document.querySelector('.price, .product-price, .price-row, .product-info__price, .price-info');
+                
+                if (discountedEl && currentEl) {
+                    basePrice = discountedEl.innerText.trim();
+                    salePrice = currentEl.innerText.trim();
+                } else if (pzPriceEl) {
+                    basePrice = pzPriceEl.innerText.trim();
+                } else if (priceEl) {
+                    basePrice = priceEl.innerText.trim();
+                }
             }
 
+            // 3. استخراج سایزها از ساختار Akinon (pz-variant-option)
             const variants = document.querySelectorAll('pz-variant-option');
             if (variants.length > 0) {
                 variants.forEach(v => {
-                    const size = v.getAttribute('label') || v.innerText.trim();
+                    const size = v.getAttribute('label') || v.getAttribute('value') || v.innerText.trim();
                     if (!size) return;
                     
                     const urlAttr = v.getAttribute('url') || '';
@@ -724,21 +801,28 @@ async function scrapeIntersport(page, url) {
                     const variantPath = urlAttr.replace(/\/$/, '');
                     
                     if (!isSelectable && currentPath === variantPath) {
-                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart');
+                         const addBtn = document.querySelector('pz-button[action="addProduct"], .js-add-to-basket, .add-to-cart, .btn-add-to-cart');
                          if (addBtn && !addBtn.hasAttribute('disabled')) {
-                             isStock = true;
+                              isStock = true;
                          }
                     }
                     
-                    stockData[size] = isStock;
+                    if (stockData[size] === undefined || isStock) {
+                        stockData[size] = isStock;
+                    }
                 });
-            } else {
-                const sizeButtons = document.querySelectorAll('.product-detail__variant, .size-selector option, label.size');
+            }
+
+            // 4. فال‌بک سایزها از DOM عمومی
+            if (Object.keys(stockData).length === 0) {
+                const sizeButtons = document.querySelectorAll('.option.-size, .variant-size, .product-detail__variant, .size-selector option, label.size, button.size');
                 sizeButtons.forEach(btn => {
-                    const size = btn.innerText.trim();
+                    const size = btn.getAttribute('data-label') || btn.getAttribute('data-size') || btn.innerText.trim();
                     if (size && size.length < 15) {
-                        const isOutOfStock = btn.classList.contains('disabled') || btn.disabled || btn.getAttribute('data-stock') === '0';
-                        stockData[size] = !isOutOfStock;
+                        const isOutOfStock = btn.classList.contains('-disabled') || btn.classList.contains('disabled') || btn.classList.contains('passive') || btn.disabled || btn.getAttribute('data-stock') === '0';
+                        if (stockData[size] === undefined || !isOutOfStock) {
+                            stockData[size] = !isOutOfStock;
+                        }
                     }
                 });
             }
@@ -746,7 +830,9 @@ async function scrapeIntersport(page, url) {
             return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
         });
         
-        if (!result.success) return { success: false, error: result.error };
+        await page.close();
+
+        if (!result.success) return { success: false, error: result.error || "Extraction failed" };
         
         const normalizedStocks = {};
         for (const [rawSize, isStock] of Object.entries(result.stocks)) {
@@ -756,11 +842,13 @@ async function scrapeIntersport(page, url) {
         
         const regular = parseTurkishPrice(result.price);
         let offer = parseTurkishPrice(result.offerPrice);
-        if (regular && offer && offer >= regular) offer = null;
+        if (offer && regular && offer >= regular) offer = null;
         
+        console.log(`  ✅ Intersport URL Scraped: ${Object.keys(normalizedStocks).length} sizes found.`);
         return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
         
     } catch (error) {
+        try { await page.close(); } catch(e) {}
         return { success: false, error: "Intersport Error: " + error.message };
     }
 }
@@ -1062,9 +1150,8 @@ async function processProduct(browser, product) {
             console.log(`Scraping Primary URL for product ${product.id} (Asics Engine)`);
             primaryData = await scrapeAsics(browser, product.url);
         } else if (product.url.toLowerCase().includes('intersport.com.tr')) {
-            const page = await browser.newPage();
-            primaryData = await scrapeIntersport(page, product.url);
-            await page.close();
+            console.log(`Scraping Primary URL for product ${product.id} (Intersport Engine)`);
+            primaryData = await scrapeIntersport(browser, product.url);
         } else if (product.url.toLowerCase().includes('adidas.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Adidas Engine)`);
             primaryData = await scrapeAdidas(browser, product.url);
@@ -1095,6 +1182,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('asics.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Asics Engine)`);
             secondaryData = await scrapeAsics(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('intersport.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Intersport Engine)`);
+            secondaryData = await scrapeIntersport(browser, product.secondary_url);
         } else if (product.secondary_url.toLowerCase().includes('adidas.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Adidas Engine)`);
             secondaryData = await scrapeAdidas(browser, product.secondary_url);
@@ -1154,6 +1244,26 @@ async function processProduct(browser, product) {
     };
 }
 
+function detectBrowserPath() {
+    if (process.env.CHROME_PATH && fs.existsSync(process.env.CHROME_PATH)) {
+        return process.env.CHROME_PATH;
+    }
+    const possiblePaths = [
+        'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+        'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+        'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+        'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+        (process.env.LOCALAPPDATA || '') + '\\Google\\Chrome\\Application\\chrome.exe',
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium',
+        '/usr/bin/chromium-browser'
+    ];
+    for (const p of possiblePaths) {
+        if (p && fs.existsSync(p)) return p;
+    }
+    return undefined;
+}
+
 async function main() {
     const args = getArgs();
     useProxy = args.proxy !== 'false' && !process.argv.includes('--no-proxy');
@@ -1173,13 +1283,24 @@ async function main() {
         launchArgs.push('--proxy-server=http://45.145.20.148:3128');
     }
 
+    const browserPath = detectBrowserPath();
+    if (browserPath) {
+        console.log(`🌐 مرورگر شناسایی شد: ${browserPath}`);
+        process.env.CHROME_PATH = browserPath;
+    }
+
     console.log('🚀 Launching puppeteer-real-browser...');
-    const { browser } = await connect({
+    const connectOptions = {
         headless: false,
         turnstile: true,
         disableXvfb: false,
         args: launchArgs
-    });
+    };
+    if (browserPath) {
+        connectOptions.customConfig = { executablePath: browserPath };
+    }
+
+    const { browser } = await connect(connectOptions);
 
     for (const file of files) {
         const siteName = file.replace('products_', '').replace('.json', '');
