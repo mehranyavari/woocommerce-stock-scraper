@@ -653,6 +653,11 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
         tr:hover { background: var(--surface-hover); }
 
+        /* آیتم‌های حل شده */
+        .is-resolved { opacity: 0.55; background: rgba(16,185,129,0.04) !important; }
+        .chk-resolve { width: 16px; height: 16px; accent-color: #10b981; cursor: pointer; border-radius: 4px; }
+        .supp-badge { font-size: 9px; background: rgba(56,189,248,0.15); color: #38bdf8; padding: 1px 5px; border-radius: 4px; font-weight: 700; margin-right: 4px; border: 1px solid rgba(56,189,248,0.3); }
+
         /* تگ‌ها و بج‌ها */
         .pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; white-space: nowrap; }
         .pill-ok { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
@@ -737,6 +742,9 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         <div class="q-card" style="border-color: rgba(236,72,153,0.4);" onclick="setFilter('SCREENSHOT')">
             <span style="color:var(--pink)">📸 اسکرین‌شات:</span> <span class="q-num" style="color:var(--pink)">${screenshotsCount}</span>
         </div>
+        <div class="q-card" style="border-color: rgba(16,185,129,0.4);" onclick="setFilter('RESOLVED')">
+            <span style="color:var(--success)">✅ حل شده:</span> <span class="q-num" id="statResolvedCount" style="color:var(--success)">0</span>
+        </div>
     </div>
 
     <!-- فیلترها و سرچ -->
@@ -749,8 +757,15 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             <button class="f-btn" data-filter="PHANTOM_STOCK">⚠️ سایز کاذب (${phantomSizesCount})</button>
             <button class="f-btn" data-filter="PRICE">💰 قیمت (${priceMismatchCount})</button>
             <button class="f-btn" data-filter="SCREENSHOT">📸 اسکرین‌شات (${screenshotsCount})</button>
+            <button class="f-btn" data-filter="RESOLVED" style="border-color: rgba(16,185,129,0.4); color: #34d399;">✅ حل شده‌ها (<span id="filterResolvedCount">0</span>)</button>
         </div>
-        <input type="text" id="searchInput" class="search-box" placeholder="🔍 جستجو (شناسه، نام، تامین‌کننده)...">
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <label style="display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); cursor:pointer; user-select:none;">
+                <input type="checkbox" id="hideResolvedToggle" checked onchange="toggleHideResolved(this.checked)" class="chk-resolve"> مخفی‌سازی حل‌شده‌ها از لیست خطاها
+            </label>
+            <button class="f-btn" onclick="clearAllResolved()" style="color:#f87171; border-color:rgba(239,68,68,0.3);" title="پاکسازی تیک‌های حل‌شده">🗑️ ریست تیک‌ها</button>
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 جستجو (شناسه، نام، تامین‌کننده)...">
+        </div>
     </div>
 
     <!-- جدول دسکتاپ -->
@@ -758,16 +773,18 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
         <table id="auditTable">
             <thead>
                 <tr>
+                    <th style="width:40px; text-align:center;" title="علامت‌گذاری به عنوان بررسی و حل شده">حل شد</th>
                     <th style="width:70px;">محصول</th>
                     <th style="width:90px;">وضعیت</th>
                     <th style="width:260px;">🏪 در سایت شما</th>
                     <th style="width:260px;">🏬 در تامین‌کننده</th>
-                    <th style="width:130px;">دسترسی سریع</th>
+                    <th style="width:140px;">دسترسی سریع</th>
                 </tr>
             </thead>
             <tbody>
                 ${auditResults.map(item => `
                 <tr class="product-item"
+                    data-id="${item.id}"
                     data-severity="${item.severity}" 
                     data-is-ok="${item.status_tag === 'OK'}"
                     data-has-missing="${item.missing_sizes_in_store.length > 0}"
@@ -775,6 +792,9 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                     data-has-price="${item.price_discrepancy !== null}"
                     data-has-screenshot="${Boolean(item.screenshot_base64 || item.screenshot_file)}">
                     
+                    <td style="text-align:center;">
+                        <input type="checkbox" class="chk-resolve" data-id="${item.id}" onchange="toggleResolved('${item.id}', this.checked)" title="تیک بزنید تا از لیست مشکل‌دارها حذف شود">
+                    </td>
                     <td>
                         <strong style="color:#fff;">#${item.id}</strong><br>
                         <span style="font-size:10px; color:var(--muted);">${item.domain}</span>
@@ -809,6 +829,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                                   )
                                 : '<span style="color:var(--critical); font-size:11px;">عدم دسترسی</span>'
                             }
+                            ${item.secondary_url ? '<span class="supp-badge">۲ منبع</span>' : ''}
                         </div>
                         <div style="margin-top:3px;">
                             ${item.supplier_data.success 
@@ -828,7 +849,12 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
                         <div class="action-links">
                             ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت</a>` : ''}
                             ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="a-btn edit">✏️ ویرایش</a>` : ''}
-                            ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="a-btn">🏬 منبع</a>` : ''}
+                            ${item.primary_url && item.secondary_url ? `
+                                <a href="${item.primary_url}" target="_blank" class="a-btn" title="تامین‌کننده اول">🏬 منبع ۱</a>
+                                <a href="${item.secondary_url}" target="_blank" class="a-btn" title="تامین‌کننده دوم">🏬 منبع ۲</a>
+                            ` : (item.primary_url ? `
+                                <a href="${item.primary_url}" target="_blank" class="a-btn">🏬 منبع</a>
+                            ` : '')}
                             ${(item.screenshot_base64 || item.screenshot_file) ? `
                                 <button class="a-btn photo" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">📸 عکس</button>
                             ` : ''}
@@ -844,6 +870,7 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     <div class="mobile-cards">
         ${auditResults.map(item => `
         <div class="m-card product-item"
+            data-id="${item.id}"
             data-severity="${item.severity}" 
             data-is-ok="${item.status_tag === 'OK'}"
             data-has-missing="${item.missing_sizes_in_store.length > 0}"
@@ -854,8 +881,12 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             <div class="m-card-header">
                 <div>
                     <strong>#${item.id}</strong> <span style="font-size:11px; color:var(--muted);">(${item.domain})</span>
+                    ${item.secondary_url ? '<span class="supp-badge">۲ منبع</span>' : ''}
                 </div>
-                <div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <label style="display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted); cursor:pointer;">
+                        <input type="checkbox" class="chk-resolve" data-id="${item.id}" onchange="toggleResolved('${item.id}', this.checked)"> حل شد
+                    </label>
                     ${item.status_tag === 'OK' 
                         ? '<span class="pill pill-ok">🟢 اکی</span>'
                         : `<span class="pill pill-${item.severity.toLowerCase()}">${item.severity}</span>`
@@ -889,7 +920,12 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             <div class="action-links">
                 ${item.our_url ? `<a href="${item.our_url}" target="_blank" class="a-btn primary">🛍️ سایت ما</a>` : ''}
                 ${item.our_edit_url ? `<a href="${item.our_edit_url}" target="_blank" class="a-btn edit">✏️ ویرایش</a>` : ''}
-                ${item.primary_url ? `<a href="${item.primary_url}" target="_blank" class="a-btn">🏬 تامین‌کننده</a>` : ''}
+                ${item.primary_url && item.secondary_url ? `
+                    <a href="${item.primary_url}" target="_blank" class="a-btn" title="تامین‌کننده اول">🏬 منبع ۱</a>
+                    <a href="${item.secondary_url}" target="_blank" class="a-btn" title="تامین‌کننده دوم">🏬 منبع ۲</a>
+                ` : (item.primary_url ? `
+                    <a href="${item.primary_url}" target="_blank" class="a-btn">🏬 تامین‌کننده</a>
+                ` : '')}
                 ${(item.screenshot_base64 || item.screenshot_file) ? `
                     <button class="a-btn photo" onclick="openModal('${item.screenshot_base64 || item.screenshot_file}')">📸 اسکرین‌شات</button>
                 ` : ''}
@@ -920,6 +956,49 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     const items = document.querySelectorAll('.product-item');
 
     let currentFilter = 'ALL';
+    let hideResolved = true;
+    let resolvedIds = new Set(JSON.parse(localStorage.getItem('audit_resolved_products') || '[]'));
+
+    function updateResolvedUI() {
+        const count = resolvedIds.size;
+        const statEl = document.getElementById('statResolvedCount');
+        const filterEl = document.getElementById('filterResolvedCount');
+        if (statEl) statEl.innerText = count;
+        if (filterEl) filterEl.innerText = count;
+
+        items.forEach(item => {
+            const id = item.getAttribute('data-id');
+            const isRes = resolvedIds.has(id);
+            item.classList.toggle('is-resolved', isRes);
+            item.setAttribute('data-is-resolved', isRes ? 'true' : 'false');
+            
+            const chks = item.querySelectorAll('.chk-resolve');
+            chks.forEach(c => c.checked = isRes);
+        });
+
+        applyFilters();
+    }
+
+    function toggleResolved(id, checked) {
+        if (checked) resolvedIds.add(id);
+        else resolvedIds.delete(id);
+        
+        localStorage.setItem('audit_resolved_products', JSON.stringify(Array.from(resolvedIds)));
+        updateResolvedUI();
+    }
+
+    function toggleHideResolved(checked) {
+        hideResolved = checked;
+        applyFilters();
+    }
+
+    function clearAllResolved() {
+        if (confirm('آیا مایلید تمام تیک‌های موارد حل‌شده پاک شوند؟')) {
+            resolvedIds.clear();
+            localStorage.removeItem('audit_resolved_products');
+            updateResolvedUI();
+        }
+    }
 
     function setFilter(f) {
         currentFilter = f;
@@ -931,9 +1010,11 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
     }
 
     filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setFilter(btn.getAttribute('data-filter'));
-        });
+        if (btn.hasAttribute('data-filter')) {
+            btn.addEventListener('click', () => {
+                setFilter(btn.getAttribute('data-filter'));
+            });
+        }
     });
 
     searchInput.addEventListener('input', applyFilters);
@@ -948,16 +1029,27 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             const hasPhantom = item.getAttribute('data-has-phantom') === 'true';
             const hasPrice = item.getAttribute('data-has-price') === 'true';
             const hasScreenshot = item.getAttribute('data-has-screenshot') === 'true';
+            const isResolved = item.getAttribute('data-is-resolved') === 'true';
             const itemText = item.innerText.toLowerCase();
 
             let matchesFilter = false;
-            if (currentFilter === 'ALL') matchesFilter = true;
-            else if (currentFilter === 'OK' && isOk) matchesFilter = true;
-            else if (currentFilter === 'CRITICAL' && severity === 'CRITICAL') matchesFilter = true;
-            else if (currentFilter === 'MISSING_SIZES' && hasMissing) matchesFilter = true;
-            else if (currentFilter === 'PHANTOM_STOCK' && hasPhantom) matchesFilter = true;
-            else if (currentFilter === 'PRICE' && hasPrice) matchesFilter = true;
-            else if (currentFilter === 'SCREENSHOT' && hasScreenshot) matchesFilter = true;
+
+            if (currentFilter === 'RESOLVED') {
+                matchesFilter = isResolved;
+            } else {
+                // اگر در فیلترهای خطا هستیم و تیک مخفی‌سازی حل‌شده‌ها فعال است
+                if (hideResolved && isResolved) {
+                    matchesFilter = false;
+                } else {
+                    if (currentFilter === 'ALL') matchesFilter = true;
+                    else if (currentFilter === 'OK' && isOk) matchesFilter = true;
+                    else if (currentFilter === 'CRITICAL' && severity === 'CRITICAL') matchesFilter = true;
+                    else if (currentFilter === 'MISSING_SIZES' && hasMissing) matchesFilter = true;
+                    else if (currentFilter === 'PHANTOM_STOCK' && hasPhantom) matchesFilter = true;
+                    else if (currentFilter === 'PRICE' && hasPrice) matchesFilter = true;
+                    else if (currentFilter === 'SCREENSHOT' && hasScreenshot) matchesFilter = true;
+                }
+            }
 
             const matchesSearch = query === '' || itemText.includes(query);
 
@@ -968,6 +1060,9 @@ function generateHtmlDashboard(auditResults, executiveSummary, outputFile) {
             }
         });
     }
+
+    // بارگذاری اولیه وضعیت حل‌شده‌ها از حافظه مرورگر
+    updateResolvedUI();
 </script>
 </body>
 </html>`;
