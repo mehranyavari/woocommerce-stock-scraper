@@ -45,4 +45,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add stock-data_tennis24shop_com.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "⚡ Update Korayspor stock data [skip ci]" && git push)
+          if ! git diff --staged --quiet; then
+            git commit -m "⚡ Update Korayspor stock data [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
