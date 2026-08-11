@@ -1,0 +1,48 @@
+name: Rescrape Korayspor Products
+
+on:
+  workflow_dispatch:
+    inputs:
+      use_proxy:
+        description: 'استفاده از پروکسی'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  scrape-korayspor:
+    name: Rescrape Korayspor Stock
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Chromium & Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser xvfb
+
+      - name: Run Korayspor Rescraper
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.use_proxy }}" = "false" ]; then
+            ARGS="--no-proxy"
+          fi
+          echo "Running: xvfb-run --auto-servernum node rescrape-korayspor.js $ARGS"
+          xvfb-run --auto-servernum node rescrape-korayspor.js $ARGS
+
+      - name: Commit and Push Updated Stock Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add stock-data_tennis24shop_com.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "⚡ Update Korayspor stock data [skip ci]" && git push)
