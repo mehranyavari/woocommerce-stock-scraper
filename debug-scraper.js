@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.raketspor.com.tr/nikecourt-fn0530-001-lite-4-toprak-kort-erkek-tenis-ayakkabisi-siyah-14403";
+const TEST_URL = "https://www.korayspor.com/nike-ayakkabi-tenis-m-zoom-gp-challenge-pro-hc-fb3145-002/";
 
 // ==========================================
 // تنظیمات
