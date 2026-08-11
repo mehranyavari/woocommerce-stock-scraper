@@ -109,7 +109,7 @@ function extractProducts(html) {
       seen.add(id);
 
       const qty   = parseInt(d.quantity ?? 0, 10);
-      const price = Math.round(parseFloat(d.total_sale_price ?? d.total_base_price ?? d.sale_price ?? 0));
+      const price = Math.round(parseFloat(d.total_base_price ?? d.base_price ?? d.total_price ?? d.price ?? d.total_sale_price ?? d.sale_price ?? 0));
 
       products.push({
         id,
