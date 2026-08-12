@@ -182,14 +182,25 @@ async function scrapeTheme(themeUrl) {
 }
 
 // ─── Kaydet ───────────────────────────────────────────────────────────────────
-function saveOutput(products) {
+function saveOutput(products, wooSkus = []) {
   fs.mkdirSync(CONFIG.output_dir, { recursive: true });
 
-  // Tam liste
+  // 1. فایل اختصاصی برای افزونه lego-updater.php (آرایه‌ای از آبجکت‌ها)
+  const updatePayload = products.map(p => ({
+    id:       p.id,
+    price:    p.price,
+    in_stock: p.in_stock,
+    quantity: p.quantity,
+    name:     p.name,
+  }));
+  const updatePath = path.join(CONFIG.output_dir, 'lego-update.json');
+  fs.writeFileSync(updatePath, JSON.stringify(updatePayload, null, 2), 'utf8');
+
+  // 2. فایل کامل تمام مشخصات
   const fullPath = path.join(CONFIG.output_dir, 'lego-products-full.json');
   fs.writeFileSync(fullPath, JSON.stringify(products, null, 2), 'utf8');
 
-  // Özet (id → stok/fiyat)
+  // 3. خلاصه (id → اطلاعات)
   const summary = {};
   for (const p of products) {
     summary[p.id] = {
@@ -204,7 +215,7 @@ function saveOutput(products) {
   const summaryPath = path.join(CONFIG.output_dir, 'lego-stock-summary.json');
   fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2), 'utf8');
 
-  // CSV
+  // 4. خروجی CSV برای اکسل
   const csvLines = [
     'ID,Fiyat (TL),Stok,Adet,Kategori,Ürün Adı',
     ...products.map(p => [
@@ -219,11 +230,11 @@ function saveOutput(products) {
   const csvPath = path.join(CONFIG.output_dir, 'lego-products.csv');
   fs.writeFileSync(csvPath, csvLines.join('\n'), 'utf8');
 
-  return { fullPath, summaryPath, csvPath };
+  return { updatePath, fullPath, summaryPath, csvPath };
 }
 
 // ─── İstatistik ───────────────────────────────────────────────────────────────
-function printStats(products) {
+function printStats(products, wooSkus = []) {
   const total    = products.length;
   const inStock  = products.filter(p => p.in_stock).length;
   const avgPrice = total
@@ -235,19 +246,26 @@ function printStats(products) {
 
   const catLines = Object.entries(byCat)
     .sort((a, b) => b[1] - a[1])
+    .slice(0, 15)
     .map(([cat, n]) => `    ${cat}: ${n}`)
     .join('\n');
 
   console.log(`
 ${'='.repeat(60)}
-📊 SONUÇ
+📊 آمار نتایج اسکرپ لگو
 ${'='.repeat(60)}
-  Toplam ürün    : ${total}
-  Mevcut (stokta): ${inStock}
-  Tükendi        : ${total - inStock}
-  Ortalama fiyat : ${avgPrice} TL
+  کل محصولات اسکرپ شده : ${total}
+  موجود در انبار        : ${inStock}
+  ناموجود              : ${total - inStock}
+  میانگین قیمت پایه     : ${avgPrice} TL`);
 
-  Kategoriler:
+  if (wooSkus && wooSkus.length > 0) {
+    const scrapedIds = new Set(products.map(p => String(p.id).trim().toUpperCase()));
+    const matchedCount = wooSkus.filter(sku => scrapedIds.has(sku)).length;
+    console.log(`  🎯 تطبیق با سایت شما  : ${matchedCount} از ${wooSkus.length} محصول پیدا و آماده آپدیت شد.`);
+  }
+
+  console.log(`\n  دسته‌بندی‌ها:
 ${catLines}
 ${'='.repeat(60)}`);
 }
@@ -260,6 +278,19 @@ async function main() {
 
   if (get('--out'))   CONFIG.output_dir = get('--out');
   if (get('--delay')) CONFIG.delay_ms   = parseInt(get('--delay'), 10) || CONFIG.delay_ms;
+
+  // بررسی فایل کدهای ووکامرس
+  const skusFilePath = get('--skus') || path.join(process.cwd(), 'woo-skus-export.json');
+  let wooSkus = [];
+  if (fs.existsSync(skusFilePath)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(skusFilePath, 'utf8'));
+      if (Array.isArray(raw)) {
+        wooSkus = raw.map(s => String(s).trim().toUpperCase()).filter(Boolean);
+        console.log(`🎯 فایل کدهای ووکامرس پیدا شد: ${wooSkus.length} کد محصول در نظر گرفته شد.`);
+      }
+    } catch(e) {}
+  }
 
   console.log('='.repeat(60));
   console.log('  🧱 lego.tr Stok & Fiyat Takip Scripti');
@@ -300,12 +331,13 @@ async function main() {
       process.exit(1);
     }
 
-    const paths = saveOutput(allProducts);
-    console.log(`\n✅ Tam liste  → ${paths.fullPath}`);
-    console.log(`✅ Stok özeti → ${paths.summaryPath}`);
-    console.log(`✅ CSV        → ${paths.csvPath}`);
+    const paths = saveOutput(allProducts, wooSkus);
+    console.log(`\n🚀 فایل آپدیت افزونه → ${paths.updatePath}`);
+    console.log(`✅ لیست کامل      → ${paths.fullPath}`);
+    console.log(`✅ خلاصه موجودی   → ${paths.summaryPath}`);
+    console.log(`✅ فایل CSV       → ${paths.csvPath}`);
 
-    printStats(allProducts);
+    printStats(allProducts, wooSkus);
 
   } finally {
     await closeBrowser();
