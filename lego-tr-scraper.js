@@ -19,6 +19,8 @@
 const fs   = require('fs');
 const path = require('path');
 
+const vm   = require('vm');
+
 const puppeteer     = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
@@ -39,20 +41,38 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // ─── تبدیل قیمت ترکی ────────────────────────────────────────────────────────
 function parseTurkishPrice(rawPrice) {
-  if (!rawPrice) return 0;
+  if (rawPrice === null || rawPrice === undefined || rawPrice === '') return 0;
+  if (typeof rawPrice === 'number') {
+    return Math.round(rawPrice);
+  }
+
   const str = String(rawPrice).trim();
+  if (/^\d+$/.test(str)) {
+    return parseInt(str, 10);
+  }
+
   let clean = str.replace(/[^\d,\.]/g, '');
+  if (!clean) return 0;
+
   const commaIdx = clean.lastIndexOf(',');
   const dotIdx = clean.lastIndexOf('.');
 
-  if (dotIdx > commaIdx && commaIdx !== -1) {
-    clean = clean.replace(/,/g, '');
-  } else if (commaIdx > dotIdx && dotIdx !== -1) {
+  // فرمت ترکی: 2.999,00 یا 2.899,50
+  if (dotIdx !== -1 && commaIdx !== -1 && commaIdx > dotIdx) {
     clean = clean.replace(/\./g, '').replace(/,/g, '.');
-  } else if (commaIdx !== -1 && dotIdx === -1) {
+  }
+  // فرمت انگلیسی: 2,999.00
+  else if (dotIdx !== -1 && commaIdx !== -1 && dotIdx > commaIdx) {
+    clean = clean.replace(/,/g, '');
+  }
+  // فقط کاما دارد: 2999,00 یا 299,50
+  else if (commaIdx !== -1 && dotIdx === -1) {
     clean = clean.replace(/,/g, '.');
-  } else if (dotIdx !== -1 && commaIdx === -1) {
-    if (clean.length - dotIdx === 4) {
+  }
+  // فقط نقطه دارد:
+  else if (dotIdx !== -1 && commaIdx === -1) {
+    const afterDot = clean.slice(dotIdx + 1);
+    if (afterDot.length === 3) {
       clean = clean.replace(/\./g, '');
     }
   }
@@ -129,49 +149,66 @@ function parseProductDetails(html, sourceUrl, defaultSku = '', productId = null)
     category:    'LEGO',
   };
 
-  // ۱. بررسی PRODUCT_DATA
+  // ۱. استخراج دیتای ساختاریافته PRODUCT_DATA
   let pd = null;
-  const pdM = html.match(/PRODUCT_DATA\.push\(JSON\.parse\('(.+?)'\)\)/s);
+  const pdM = html.match(/PRODUCT_DATA\.push\(JSON\.parse\('([\s\S]+?)'\)\);/);
   if (pdM) {
+    const raw = pdM[1];
     try {
-      const decoded = pdM[1]
-        .replace(/\\\\"/g, '\x00DQ\x00')
-        .replace(/\\"/g, '"')
-        .replace(/\x00DQ\x00/g, '\\"')
-        .replace(/\\\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)))
-        .replace(/\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)));
-      pd = JSON.parse(decoded);
+      pd = vm.runInNewContext(`JSON.parse('${raw}')`);
+    } catch (e1) {
+      try {
+        const decoded = raw
+          .replace(/\\'/g, "'")
+          .replace(/\\\\"/g, '"')
+          .replace(/\\"/g, '"')
+          .replace(/\\\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)))
+          .replace(/\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)));
+        pd = JSON.parse(decoded);
+      } catch (e2) {}
+    }
+
+    if (pd) {
       p.name     = pd.name ? String(pd.name).replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim() : '';
       p.sku      = pd.code || p.sku;
       p.id       = p.sku || String(pd.id || '');
       p.quantity = typeof pd.quantity === 'number' ? pd.quantity : 0;
-      p.in_stock = p.quantity > 0 || !!pd.available;
+      p.in_stock = p.quantity > 0 || pd.available === true || pd.available === 'true' || pd.available === 1;
       p.category = pd.category || pd.brand || 'LEGO';
-    } catch(e) {}
+    }
   }
 
-  // ۲. استخراج قیمت قبل از تخفیف (Regular Price)
-  // اولویت اول: تگ product-price-not-discounted
-  const notDiscountedMatch = html.match(/class=["'][^"']*product-price-not-discounted[^"']*["'][^>]*>([\d\.,]+)<\/span>/i) ||
-                             html.match(/class=["'][^"']*product-discounted-price[^"']*["'][^>]*>[\s\S]*?([\d\.,]+)\s*(?:TL)?[\s\S]*?<\/div>/i);
-  if (notDiscountedMatch) {
-    p.price = parseTurkishPrice(notDiscountedMatch[1]);
+  // ۲. استخراج قیمت‌ها
+  if (pd) {
+    const basePrice = parseTurkishPrice(pd.total_base_price || pd.old_price || pd.base_price || pd.total_price || pd.price || 0);
+    const salePrice = parseTurkishPrice(pd.total_sale_price || pd.sale_price || 0);
+
+    if (basePrice > 0 && salePrice > 0 && basePrice > salePrice) {
+      p.price = basePrice;
+      p.offer_price = salePrice;
+    } else if (basePrice > 0) {
+      p.price = basePrice;
+      p.offer_price = null;
+    } else if (salePrice > 0) {
+      p.price = salePrice;
+      p.offer_price = null;
+    }
+  } else {
+    // در صورت عدم دسترسی به PRODUCT_DATA، استخراج از HTML اصلی
+    const vatIncludedMatch = html.match(/id=["']product-price-vat-include["'][^>]*value=["']([\d\.,]+)["']/i);
+    if (vatIncludedMatch) {
+      p.price = parseTurkishPrice(vatIncludedMatch[1]);
+    }
   }
 
-  // اولویت دوم: PRODUCT_DATA برای total_base_price / old_price / price
-  if (!p.price && pd) {
-    p.price = parseTurkishPrice(pd.total_base_price || pd.base_price || pd.old_price || pd.total_price || pd.price);
-  }
-
-  // در صورت عدم وجود تخفیف:
-  if (!p.price) {
-    if (pd && (pd.total_sale_price || pd.sale_price)) {
-      p.price = parseTurkishPrice(pd.total_sale_price || pd.sale_price);
-    } else {
-      const priceMatch = html.match(/class=["'][^"']*product-price[^"']*["'][^>]*>([\d\.,]+)/i);
-      if (priceMatch) {
-        p.price = parseTurkishPrice(priceMatch[1]);
-      }
+  // ۳. بررسی موجودی از تگ‌های صفحه در صورت نبودن دیتای JSON
+  if (!pd) {
+    if (html.includes('product:availability') && /content=["']in stock["']/i.test(html)) {
+      p.in_stock = true;
+      p.quantity = p.quantity || 1;
+    } else if (html.includes('Sepete Ekle') && !html.includes('Tükendi') && !html.includes('Stokta Yok')) {
+      p.in_stock = true;
+      p.quantity = p.quantity || 1;
     }
   }
 
@@ -190,33 +227,44 @@ function parseProductDetails(html, sourceUrl, defaultSku = '', productId = null)
 function extractProductsFromCategory(html) {
   const products = [];
   const seen     = new Set();
-  const pattern  = /PRODUCT_DATA\.push\(JSON\.parse\('(.+?)'\)\)/g;
+  const pattern  = /PRODUCT_DATA\.push\(JSON\.parse\('([\s\S]+?)'\)\);/g;
   let   m;
 
   while ((m = pattern.exec(html)) !== null) {
     try {
-      const decoded = m[1]
-        .replace(/\\\\"/g, '\x00DQ\x00')
-        .replace(/\\"/g,   '"')
-        .replace(/\x00DQ\x00/g, '\\"')
-        .replace(/\\\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)))
-        .replace(/\\u([0-9a-fA-F]{4})/g,   (_, c) => String.fromCharCode(parseInt(c, 16)));
+      const raw = m[1];
+      let d = null;
+      try {
+        d = vm.runInNewContext(`JSON.parse('${raw}')`);
+      } catch (e) {
+        const decoded = raw
+          .replace(/\\'/g, "'")
+          .replace(/\\\\"/g, '\x00DQ\x00')
+          .replace(/\\"/g,   '"')
+          .replace(/\x00DQ\x00/g, '\\"')
+          .replace(/\\\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)))
+          .replace(/\\u([0-9a-fA-F]{4})/g,   (_, c) => String.fromCharCode(parseInt(c, 16)));
+        d = JSON.parse(decoded);
+      }
 
-      const d  = JSON.parse(decoded);
       const id = String(d.code || d.id || '').trim();
       if (!id || seen.has(id)) continue;
       seen.add(id);
 
-      const qty   = parseInt(d.quantity ?? 0, 10);
-      const price = Math.round(parseFloat(d.total_base_price ?? d.base_price ?? d.total_price ?? d.price ?? d.total_sale_price ?? d.sale_price ?? 0));
+      const qty = parseInt(d.quantity ?? 0, 10);
+      const basePrice = parseTurkishPrice(d.total_base_price ?? d.old_price ?? d.base_price ?? d.total_price ?? d.price ?? 0);
+      const salePrice = parseTurkishPrice(d.total_sale_price ?? d.sale_price ?? 0);
+      
+      const price = basePrice > 0 ? basePrice : salePrice;
 
       products.push({
         id,
         sku:      id,
         name:     String(d.name || '').replace(/\s+/g, ' ').trim(),
         price,
+        offer_price: (salePrice > 0 && basePrice > salePrice) ? salePrice : null,
         quantity: qty,
-        in_stock: qty > 0,
+        in_stock: qty > 0 || d.available === true || d.available === 'true' || d.available === 1,
         category: String(d.category || d.brand || '').trim(),
         url:      d.url ? (d.url.startsWith('http') ? d.url : CONFIG.base_url + '/' + d.url) : '',
       });
