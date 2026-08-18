@@ -48,42 +48,39 @@ function normalizeSize(rawSize, hostname) {
 }
 
 function parseTurkishPrice(rawPrice) {
-    if (!rawPrice) return null;
-    const str = String(rawPrice).trim();
-
-    // اگه عدد خالص بود (از JSON، بدون فرمت‌بندی)
-    const plain = parseFloat(str);
-    if (!isNaN(plain) && !str.includes(',') && !str.includes('₺') && !str.includes('TL')) {
-        return plain > 0 ? Math.ceil(plain) : null;
+    if (rawPrice === null || rawPrice === undefined || rawPrice === '') return null;
+    if (typeof rawPrice === 'number') {
+        return rawPrice > 0 ? Math.round(rawPrice) : null;
     }
 
-    // فرمت ترکی: 1.234,56 → 1234.56
-    // اول نقطه‌های هزارگان رو حذف کن، بعد کاما رو به نقطه تبدیل کن
+    const str = String(rawPrice).trim();
+    if (/^\d+$/.test(str)) {
+        const val = parseInt(str, 10);
+        return val > 0 ? val : null;
+    }
+
     let clean = str.replace(/[^\d,\.]/g, '');
+    if (!clean) return null;
 
     const commaIdx = clean.lastIndexOf(',');
     const dotIdx = clean.lastIndexOf('.');
 
-    if (dotIdx > commaIdx && commaIdx !== -1) {
-        // فرمت انگلیسی: 1,234.56
-        clean = clean.replace(/,/g, '');
-    } else if (commaIdx > dotIdx && dotIdx !== -1) {
-        // فرمت ترکی: 1.234,56
+    if (dotIdx !== -1 && commaIdx !== -1 && commaIdx > dotIdx) {
         clean = clean.replace(/\./g, '').replace(/,/g, '.');
+    } else if (dotIdx !== -1 && commaIdx !== -1 && dotIdx > commaIdx) {
+        clean = clean.replace(/,/g, '');
     } else if (commaIdx !== -1 && dotIdx === -1) {
-        // فقط کاما دارد: 1234,56
         clean = clean.replace(/,/g, '.');
     } else if (dotIdx !== -1 && commaIdx === -1) {
-        // فقط نقطه دارد: 1234.56
-        // در این حالت اگر فرمت ترکی بدون اعشار باشد (مثل 1.234)
-        if (clean.length - dotIdx === 4) { // احتمالا هزارگان است
+        const afterDot = clean.slice(dotIdx + 1);
+        if (afterDot.length === 3) {
             clean = clean.replace(/\./g, '');
         }
     }
 
     const num = parseFloat(clean);
     if (isNaN(num) || num <= 0) return null;
-    return Math.ceil(num);
+    return Math.round(num);
 }
 
 // ==========================================
@@ -1118,9 +1115,136 @@ async function scrapeAdidas(browser, url) {
     }
 }
 
+// ==========================================
+// 🧱 اسکرپر مخصوص لگو (LEGO.tr)
+// ==========================================
+async function scrapeLegoTr(browser, url) {
+    const page = await browser.newPage();
+    try {
+        await page.setExtraHTTPHeaders({
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Upgrade-Insecure-Requests': '1',
+        });
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        if (useProxy) {
+            await page.authenticate({
+                username: 'mehran',
+                password: 'mehran75'
+            });
+        }
+
+        console.log(`  🔄 Navigating to LEGO product page...`);
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        await new Promise(r => setTimeout(r, 6000));
+
+        const hostname = new URL(page.url()).hostname;
+
+        const result = await page.evaluate(() => {
+            let regularPrice = 0;
+            let offerPrice = null;
+            const stockData = {};
+
+            // 1. بررسی آبجکت PRODUCT_DATA
+            let pd = null;
+            const scriptElements = Array.from(document.querySelectorAll('script'));
+            for (const s of scriptElements) {
+                const text = s.innerHTML || '';
+                const m = text.match(/PRODUCT_DATA\.push\(JSON\.parse\('([\s\S]+?)'\)\);/);
+                if (m) {
+                    try {
+                        const decoded = m[1]
+                            .replace(/\\'/g, "'")
+                            .replace(/\\\\"/g, '"')
+                            .replace(/\\"/g, '"')
+                            .replace(/\\\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)))
+                            .replace(/\\u([0-9a-fA-F]{4})/g, (_, c) => String.fromCharCode(parseInt(c, 16)));
+                        pd = JSON.parse(decoded);
+                        break;
+                    } catch(e) {}
+                }
+            }
+
+            // 2. استخراج قیمت‌ها
+            if (pd) {
+                const baseP = pd.total_base_price || pd.old_price || pd.base_price || pd.total_price || pd.price;
+                const saleP = pd.total_sale_price || pd.sale_price;
+                if (baseP && saleP && saleP < baseP) {
+                    regularPrice = baseP;
+                    offerPrice = saleP;
+                } else {
+                    regularPrice = baseP || saleP;
+                    offerPrice = null;
+                }
+            }
+
+            const notDiscountedEl = document.querySelector('.product-price-not-discounted');
+            if (notDiscountedEl && notDiscountedEl.innerText.trim()) {
+                regularPrice = notDiscountedEl.innerText.trim();
+            }
+
+            const vatIncludedEl = document.querySelector('#product-price-vat-include');
+            if (vatIncludedEl && vatIncludedEl.value && !regularPrice) {
+                regularPrice = vatIncludedEl.value;
+            }
+
+            const currentPriceEl = document.querySelector('.product-current-price .product-price, .product-price');
+            if (currentPriceEl && currentPriceEl.innerText.trim()) {
+                if (notDiscountedEl) {
+                    offerPrice = currentPriceEl.innerText.trim();
+                } else if (!regularPrice) {
+                    regularPrice = currentPriceEl.innerText.trim();
+                }
+            }
+
+            // 3. بررسی موجودی انبار
+            if (pd) {
+                const qty = typeof pd.quantity === 'number' ? pd.quantity : 0;
+                const inStock = qty > 0 || pd.available === true || pd.available === 'true' || pd.available === 1;
+                stockData['Standart'] = inStock ? (qty > 0 ? qty : 5) : 0;
+            } else {
+                const metaAvail = document.querySelector('meta[property="product:availability"]');
+                const isMetaInStock = metaAvail && metaAvail.content && metaAvail.content.toLowerCase().includes('in stock');
+                const isOutOfStock = !!document.querySelector('.out-of-stock, .tuken-btn, [data-stock="0"]');
+                stockData['Standart'] = (!isOutOfStock || isMetaInStock) ? 5 : 0;
+            }
+
+            return {
+                success: true,
+                regularPrice,
+                offerPrice,
+                stocks: stockData
+            };
+        });
+
+        await page.close();
+
+        if (!result.success) return { success: false, error: "LEGO.tr Extraction Failed" };
+
+        const normalizedStocks = {};
+        for (const [rawSize, qty] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = qty;
+        }
+
+        const regular = parseTurkishPrice(result.regularPrice);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+
+        console.log(`  ✅ LEGO.tr URL Scraped: Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "LEGO.tr Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
-    return scrapeData.offer_price ? scrapeData.offer_price : (scrapeData.regular_price || 0);
+    const reg = typeof scrapeData.regular_price === 'number' ? scrapeData.regular_price : parseFloat(scrapeData.regular_price) || 0;
+    const off = typeof scrapeData.offer_price === 'number' ? scrapeData.offer_price : parseFloat(scrapeData.offer_price) || 0;
+    return Math.max(reg, off);
 }
 
 async function processProduct(browser, product) {
@@ -1134,6 +1258,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('korayspor')) {
             console.log(`Scraping Primary URL for product ${product.id} (Korayspor Engine)`);
             primaryData = await scrapeKorayspor(browser, product.url);
+        } else if (product.url.toLowerCase().includes('lego.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (LEGO.tr Engine)`);
+            primaryData = await scrapeLegoTr(browser, product.url);
         } else if (product.url.toLowerCase().includes('tenisburada.com')) {
             console.log(`Scraping Primary URL for product ${product.id} (Tenisburada Engine)`);
             primaryData = await scrapeTenisBurada(browser, product.url);
@@ -1167,6 +1294,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('korayspor')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Korayspor Engine)`);
             secondaryData = await scrapeKorayspor(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('lego.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (LEGO.tr Engine)`);
+            secondaryData = await scrapeLegoTr(browser, product.secondary_url);
         } else if (product.secondary_url.toLowerCase().includes('tenisburada.com')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Tenisburada Engine)`);
             secondaryData = await scrapeTenisBurada(browser, product.secondary_url);
@@ -1210,7 +1340,7 @@ async function processProduct(browser, product) {
         const price1 = getEffectivePrice(primaryData);
         const price2 = getEffectivePrice(secondaryData);
         priceWinner = (price2 > price1) ? secondaryData : primaryData;
-        console.log(`  ⚖️ Comparing Prices: Primary=${price1}₺, Secondary=${price2}₺ -> Selected higher price.`);
+        console.log(`  ⚖️ Comparing Prices: Primary=${price1}₺, Secondary=${price2}₺ -> Selected higher price (${Math.max(price1, price2)}₺).`);
     } else if (primarySuccess) {
         priceWinner = primaryData;
     } else {
