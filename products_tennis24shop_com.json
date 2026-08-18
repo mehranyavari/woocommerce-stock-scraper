@@ -14379,12 +14379,12 @@
         "our_url": "https://tennis24shop.com/?p=46207",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46207",
         "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "XL": 1,
-            "L": 1,
-            "S": 1,
-            "M": 1
+            "XL": 0,
+            "L": 0,
+            "S": 0,
+            "M": 0
         }
     },
     {
@@ -16744,14 +16744,14 @@
         "our_url": "https://tennis24shop.com/?p=48600",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48600",
         "our_price_lir": 3359,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "41": 0,
             "42": 0,
-            "42.5": 0,
+            "42.5": 999,
             "43": 0,
-            "44": 0,
-            "45": 0,
+            "44": 999,
+            "45": 999,
             "46": 0
         },
         "secondary_url": "https://www.sportive.com.tr/nike-court-vision-lo-erkek-kahverengi-sneaker-ayakkabi-hm9862-200-3/?integration_renk=N14"
@@ -18080,10 +18080,10 @@
         "url": "https://www.opsarsport.com/urun/asics-court-ff-3-novak-toprak-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=50600",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=50600",
-        "our_price_lir": 10000,
+        "our_price_lir": 9991,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43.5": 5
+            "43.5": 999
         }
     },
     {
@@ -24355,7 +24355,7 @@
             "41 1/3": 999,
             "42 2/3": 999,
             "43 1/3": 999,
-            "44 2/3": 999,
+            "44 2/3": 0,
             "45 1/3": 999,
             "46 2/3": 999,
             "47 1/3": 999
@@ -24843,7 +24843,8 @@
             "44": 999,
             "44.5": 999,
             "45": 999,
-            "46": 999
+            "46": 999,
+            "40.5": 999
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-clay-erkek-tenis-ayakkabisi-2/"
     },
@@ -27349,13 +27350,13 @@
         "our_price_lir": 1339,
         "our_stock_status": "instock",
         "our_sizes": {
-            "AURORA GREEN": 999,
+            "AURORA GREEN": 0,
             "2XL": 999,
-            "L": 999,
+            "L": 0,
             "M": 999,
             "S": 999,
             "XL": 999,
-            "XS": 999
+            "XS": 0
         }
     },
     {
@@ -27365,16 +27366,17 @@
         "url": "https://www.asics.com.tr/match-polo-ss-top-952",
         "our_url": "https://tennis24shop.com/?p=69350",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69350",
-        "our_price_lir": 4000,
+        "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "AURORA GREEN": 999,
-            "2XL": 999,
-            "L.": 999,
+            "AURORA GREEN": 0,
+            "2XL": 0,
+            "L.": 0,
             "M": 999,
             "S": 999,
             "XL": 999,
-            "XS": 999
+            "XS": 0,
+            "L": 999
         }
     },
     {
@@ -27384,16 +27386,17 @@
         "url": "https://www.asics.com.tr/padel-court-all-over-print-ss-top-1015",
         "our_url": "https://tennis24shop.com/?p=69365",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69365",
-        "our_price_lir": 2300,
+        "our_price_lir": 2299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "AURORA GREEN": 999,
-            "2XL": 999,
-            "L.": 999,
+            "AURORA GREEN": 0,
+            "2XL": 0,
+            "L.": 0,
             "M": 999,
             "S": 999,
-            "XL": 999,
-            "XS": 999
+            "XL": 0,
+            "XS": 0,
+            "L": 999
         }
     }
 ]
