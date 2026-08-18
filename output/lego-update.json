@@ -131,8 +131,8 @@
     "id": "77054",
     "product_id": 1225,
     "price": 1799,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "77054 LEGO® Animal Crossing Leif Karavan ve Bahçe Dükkanı"
   },
   {
@@ -460,7 +460,7 @@
     "product_id": 1789,
     "price": 299,
     "in_stock": true,
-    "quantity": 586,
+    "quantity": 585,
     "name": "30719 LEGO® City Go Kart Yarışçısı"
   },
   {
@@ -2427,8 +2427,8 @@
     "id": "42177",
     "product_id": 3927,
     "price": 15299,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42177 LEGO® Technic Mercedes-Benz G 500 PROFESSIONAL Line"
   },
   {
@@ -3028,7 +3028,7 @@
     "product_id": 4639,
     "price": 379,
     "in_stock": true,
-    "quantity": 429,
+    "quantity": 428,
     "name": "853998 Mickey Key Chain"
   },
   {
@@ -3324,7 +3324,7 @@
     "product_id": 4965,
     "price": 379,
     "in_stock": true,
-    "quantity": 176,
+    "quantity": 175,
     "name": "854203 LEGO | Disney Eeyore Anahtarlık"
   },
   {
@@ -4540,7 +4540,7 @@
     "product_id": 6281,
     "price": 379,
     "in_stock": true,
-    "quantity": 44,
+    "quantity": 43,
     "name": "854235 LEGO® Super Heroes Batman™ Anahtarlık"
   },
   {
@@ -5811,8 +5811,8 @@
     "id": "42603",
     "product_id": 7898,
     "price": 1999,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42603 LEGO® Friends Yıldız Gözlemleme Kamp Aracı"
   },
   {
@@ -7292,7 +7292,7 @@
     "product_id": 9480,
     "price": 229,
     "in_stock": true,
-    "quantity": 2074,
+    "quantity": 2071,
     "name": "71050 LEGO® Minifigures Örümcek Adam: Örümcek Evrenine Geçiş"
   },
   {
@@ -7492,7 +7492,7 @@
     "product_id": 9667,
     "price": 379,
     "in_stock": true,
-    "quantity": 169,
+    "quantity": 168,
     "name": "854290 LEGO® Marvel Örümcek Adam Anahtarlık"
   },
   {
@@ -8380,7 +8380,7 @@
     "product_id": 10610,
     "price": 299,
     "in_stock": true,
-    "quantity": 755,
+    "quantity": 754,
     "name": "30692 LEGO® Creator 3’ü 1 Arada Noel Baba ile Baca Eğlencesi"
   },
   {
@@ -8412,7 +8412,7 @@
     "product_id": 10662,
     "price": 299,
     "in_stock": true,
-    "quantity": 435,
+    "quantity": 434,
     "name": "30714 LEGO® Creator Turuncu Kedi"
   },
   {
@@ -8572,7 +8572,7 @@
     "product_id": 10817,
     "price": 899,
     "in_stock": true,
-    "quantity": 529,
+    "quantity": 528,
     "name": "40468 LEGO Creator Sarı Taksi"
   },
   {
@@ -9484,7 +9484,7 @@
     "product_id": 11844,
     "price": 299,
     "in_stock": true,
-    "quantity": 741,
+    "quantity": 740,
     "name": "30687 LEGO® Bluey Bluey Çay Partisi"
   },
   {
@@ -9612,7 +9612,7 @@
     "product_id": 12032,
     "price": 299,
     "in_stock": true,
-    "quantity": 75,
+    "quantity": 73,
     "name": "30636 LEGO® DREAMZzz Z-Blob ve Bunchu Örümcek Kaçışı"
   },
   {
@@ -9716,7 +9716,7 @@
     "product_id": 12127,
     "price": 4999,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 1,
     "name": "71484 LEGO® DREAMZzz Cooper'ın Robot Dinozoru C-Rex"
   },
   {
@@ -10619,8 +10619,8 @@
     "id": "30676",
     "product_id": 12988,
     "price": 299,
-    "in_stock": false,
-    "quantity": 0,
+    "in_stock": true,
+    "quantity": 1,
     "name": "30676 LEGO® Sonic Kiki'nin Hindistan Cevizi Saldırısı"
   },
   {
@@ -10748,7 +10748,7 @@
     "product_id": 13390,
     "price": 9999,
     "in_stock": true,
-    "quantity": 69,
+    "quantity": 68,
     "name": "11608-07028 Herschel Little America™ Backpack - Abstract Bricks"
   },
   {
@@ -10780,7 +10780,7 @@
     "product_id": 13408,
     "price": 5399,
     "in_stock": true,
-    "quantity": 138,
+    "quantity": 137,
     "name": "11603-07029 Herschel Classic™ Backpack - Garden Floral"
   },
   {
@@ -10860,7 +10860,7 @@
     "product_id": 13450,
     "price": 4299,
     "in_stock": true,
-    "quantity": 126,
+    "quantity": 124,
     "name": "11615-07032 Herschel Heritage™ Kids Backpack - Scavenger Hunt Bricks"
   },
   {
@@ -10892,7 +10892,7 @@
     "product_id": 13468,
     "price": 2199,
     "in_stock": true,
-    "quantity": 48,
+    "quantity": 47,
     "name": "30142-07028 Herschel Settlement Pencil Case - Abstract Bricks"
   },
   {
@@ -12028,7 +12028,7 @@
     "product_id": 13970,
     "price": 3699,
     "in_stock": true,
-    "quantity": 308,
+    "quantity": 305,
     "name": "20205B-0354 2x2 LEGO® Yapım Parçası Sırt Çantası - Siyah - Çok Renkli"
   },
   {
@@ -12060,7 +12060,7 @@
     "product_id": 14137,
     "price": 2999,
     "in_stock": true,
-    "quantity": 13,
+    "quantity": 12,
     "name": "20042A-2607 ZERO Hafif Sırt Çantası - LEGO® Renkli Yapım Parçaları"
   },
   {
@@ -12092,7 +12092,7 @@
     "product_id": 15563,
     "price": 379,
     "in_stock": true,
-    "quantity": 163,
+    "quantity": 162,
     "name": "854304 LEGO® Iconic Orta Eflatun 2x4 Anahtarlık"
   },
   {
@@ -12100,7 +12100,7 @@
     "product_id": 15567,
     "price": 379,
     "in_stock": true,
-    "quantity": 21,
+    "quantity": 20,
     "name": "854320 LEGO® DC Batgirl™ Anahtarlık"
   },
   {
@@ -12172,7 +12172,7 @@
     "product_id": 15619,
     "price": 379,
     "in_stock": true,
-    "quantity": 138,
+    "quantity": 137,
     "name": "854082 LEGO Iconic Lady Liberty Anahtarlık"
   },
   {
@@ -12196,7 +12196,7 @@
     "product_id": 15629,
     "price": 379,
     "in_stock": true,
-    "quantity": 496,
+    "quantity": 495,
     "name": "850807 Anahtarlık Mini Figür Altın V121"
   },
   {
@@ -12316,7 +12316,7 @@
     "product_id": 15829,
     "price": 1799,
     "in_stock": true,
-    "quantity": 61,
+    "quantity": 60,
     "name": "11509 LEGO® Botanicals Çiçekli Kaktüs"
   },
   {
@@ -12492,7 +12492,7 @@
     "product_id": 16352,
     "price": 4199,
     "in_stock": true,
-    "quantity": 35,
+    "quantity": 34,
     "name": "10478 LEGO® DUPLO® 3’ü 1 Arada Araçlarla Yaratıcı Rampalar"
   },
   {
@@ -13828,7 +13828,7 @@
     "product_id": 17644,
     "price": 579,
     "in_stock": true,
-    "quantity": 25,
+    "quantity": 24,
     "name": "60484 LEGO® City Araçlar – Video Oyunu Yarış Arabası"
   },
   {
@@ -13860,7 +13860,7 @@
     "product_id": 17676,
     "price": 1159,
     "in_stock": true,
-    "quantity": 22,
+    "quantity": 21,
     "name": "60488 LEGO® City Patates Kızartması Kamyonu"
   },
   {
@@ -13900,7 +13900,7 @@
     "product_id": 17716,
     "price": 2699,
     "in_stock": true,
-    "quantity": 48,
+    "quantity": 47,
     "name": "60493 LEGO® City Audi F1® Yarış Arabalı F1® Sergileme Kamyonu"
   },
   {
@@ -14771,8 +14771,8 @@
     "id": "76356",
     "product_id": 18826,
     "price": 2999,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "76356 LEGO® | Marvel Venom Büstü"
   },
   {
@@ -14948,7 +14948,7 @@
     "product_id": 18980,
     "price": 1299,
     "in_stock": true,
-    "quantity": 126,
+    "quantity": 125,
     "name": "20281-2607 Orta Boy Çocuk Sırt Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -14964,7 +14964,7 @@
     "product_id": 18988,
     "price": 1999,
     "in_stock": true,
-    "quantity": 53,
+    "quantity": 52,
     "name": "20368-2607 3 Parça Seyahat Düzenleyici Seti - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -14996,7 +14996,7 @@
     "product_id": 19012,
     "price": 1099,
     "in_stock": true,
-    "quantity": 92,
+    "quantity": 91,
     "name": "20370-2607 Çok Amaçlı Düzenleyici Çanta - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15012,7 +15012,7 @@
     "product_id": 19022,
     "price": 1199,
     "in_stock": true,
-    "quantity": 36,
+    "quantity": 34,
     "name": "20371-2607 Çok Amaçlı Seyahat ve Aksesuar Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15028,7 +15028,7 @@
     "product_id": 19032,
     "price": 1199,
     "in_stock": true,
-    "quantity": 16,
+    "quantity": 13,
     "name": "20372-2607 Çok Amaçlı Aksesuar ve Kalem Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15076,7 +15076,7 @@
     "product_id": 19058,
     "price": 1699,
     "in_stock": true,
-    "quantity": 134,
+    "quantity": 132,
     "name": "20375-2607 Colorblock Sırt Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15108,7 +15108,7 @@
     "product_id": 19080,
     "price": 2499,
     "in_stock": true,
-    "quantity": 46,
+    "quantity": 45,
     "name": "20319-0354 Premium Çift Kullanımlı LEGO® Yapım Parçası Çocuk Sırt Çantası - Siyah - Çok Renkli"
   },
   {
@@ -15124,7 +15124,7 @@
     "product_id": 19090,
     "price": 1499,
     "in_stock": true,
-    "quantity": 139,
+    "quantity": 138,
     "name": "20320-0354 Premium 1x1 Mini LEGO® Yapım Parçası Çapraz Çanta - Siyah - Çok Renkli"
   },
   {
@@ -15148,7 +15148,7 @@
     "product_id": 19102,
     "price": 1499,
     "in_stock": true,
-    "quantity": 27,
+    "quantity": 26,
     "name": "20322-0140 1x1 LEGO® Yapım Parçası Kendinden Kılıflı Tote Çanta - Koyu Mavi"
   },
   {
@@ -15244,7 +15244,7 @@
     "product_id": 19444,
     "price": 18199,
     "in_stock": true,
-    "quantity": 31,
+    "quantity": 30,
     "name": "21067 LEGO® Architecture Tower Bridge"
   },
   {
@@ -15444,7 +15444,7 @@
     "product_id": 19637,
     "price": 4199,
     "in_stock": true,
-    "quantity": 24,
+    "quantity": 23,
     "name": "75643 LEGO® ONE PIECE Tony Tony Chopper"
   },
   {
@@ -15460,7 +15460,7 @@
     "product_id": 19653,
     "price": 6099,
     "in_stock": true,
-    "quantity": 25,
+    "quantity": 24,
     "name": "75645 LEGO® ONE PIECE Drum Kalesi Savaşı"
   },
   {
@@ -15468,7 +15468,7 @@
     "product_id": 19661,
     "price": 10299,
     "in_stock": true,
-    "quantity": 15,
+    "quantity": 14,
     "name": "75646 LEGO® ONE PIECE Garp'ın Savaş Gemisi"
   },
   {
