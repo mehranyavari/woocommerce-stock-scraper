@@ -5131,7 +5131,7 @@
         "our_price_lir": 5500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41.5": 999
+            "41.5": 998
         }
     },
     {
@@ -12230,7 +12230,7 @@
         "our_url": "https://tennis24shop.com/?p=42162",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42162",
         "our_price_lir": 2050,
-        "our_stock_status": "instock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -27253,7 +27253,6 @@
         "our_price_lir": 669,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L.": 0,
             "L": 999
         }
     },
@@ -27314,6 +27313,22 @@
             "XL": 0,
             "XS": 0,
             "L": 999
+        }
+    },
+    {
+        "id": 69435,
+        "title": "جوراب تنیس اسیکس ASICS Unisex Socks PERFORMANCE - کرم/صورتی",
+        "sku": "3013B347-700",
+        "url": "https://www.boyner.com.tr/asics-pembe-unisex-corap-3013b347-700-performance-run-sock-c-p-15985728?magaza=boyner",
+        "our_url": "https://tennis24shop.com/?p=69435",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69435",
+        "our_price_lir": 1000,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "L": 999,
+            "XL": 6,
+            "M": 6,
+            "S": 6
         }
     }
 ]
