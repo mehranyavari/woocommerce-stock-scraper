@@ -2710,7 +2710,7 @@
         "our_price_lir": 3900,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "XL": 999,
             "M": 0,
             "L": 0
@@ -4755,7 +4755,7 @@
             "45.5": 999,
             "44.5": 999,
             "44": 0,
-            "42.5": 999,
+            "42.5": 0,
             "42": 0,
             "39": 0,
             "40": 0,
@@ -14286,13 +14286,13 @@
         "url": "https://www.intersport.com.tr/urun/nike-court-erkek-siyah-tenis-t-shirt/hj3362-010/",
         "our_url": "https://tennis24shop.com/?p=46207",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46207",
-        "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_price_lir": 2799,
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "XL": 999,
-            "L": 999,
-            "S": 999,
-            "M": 999
+            "XL": 0,
+            "L": 0,
+            "S": 0,
+            "M": 0
         }
     },
     {
@@ -20072,13 +20072,13 @@
         "our_price_lir": 2750,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 5,
-            "41": 5,
-            "42": 5,
-            "43": 5,
-            "44": 5,
-            "45": 5,
-            "46": 5
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "44": 999,
+            "45": 999,
+            "46": 999
         }
     },
     {
@@ -24389,7 +24389,7 @@
             "L": 0,
             "M": 999,
             "S": 999,
-            "XL": 999
+            "XL": 0
         }
     },
     {
@@ -26504,9 +26504,9 @@
         "our_url": "https://tennis24shop.com/?p=31148",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=31148",
         "our_price_lir": 3239,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "40.5": 999
+            "40.5": 0
         }
     },
     {
