@@ -857,7 +857,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "43": 999,
-            "44": 0,
+            "45.5": 999,
             "46": 999,
             "42": 999,
             "42.5": 999
@@ -2691,14 +2691,9 @@
         "our_price_lir": 8500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "46": 0,
-            "43": 0,
-            "44": 999,
-            "44.5": 0,
-            "42.5": 999,
-            "42": 999
-        },
-        "secondary_url": "https://www.opsarsport.com/urun/nike-court-air-zoom-vapor-11-sert-kort-tenis-ayakkabisi"
+            "44": 1,
+            "42.5": 999
+        }
     },
     {
         "id": 37171,
@@ -12168,6 +12163,23 @@
         "our_sizes": []
     },
     {
+        "id": 39097,
+        "title": "کفش پدل زنانه اسیکس -Asics Gel-Dedicate 8 - سفید",
+        "sku": "AS-K-HM0029254",
+        "url": "https://www.asics.com.tr/gel-dedicate-8-padel-681",
+        "our_url": "https://tennis24shop.com/?p=39097",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=39097",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "42": 999,
+            "40.5": 999
+        }
+    },
+    {
         "id": 42253,
         "title": "توپ پدل کویکما-Padel Ball Kuikma PB Control-سه عددی",
         "sku": "8750703",
@@ -18208,17 +18220,20 @@
         "url": "https://www.meritspor.com.tr/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-lacivert-sari",
         "our_url": "https://tennis24shop.com/?p=51186",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51186",
-        "our_price_lir": 8500,
+        "our_price_lir": 8800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 999,
-            "42.5": 0,
-            "43": 0,
-            "44.5": 999,
-            "45": 0,
+            "43": 999,
+            "44": 0,
+            "44.5": 0,
+            "45": 999,
             "45.5": 0,
             "40.5": 0,
-            "41": 999
+            "41": 0,
+            "42": 999,
+            "42.5": 0,
+            "40": 999,
+            "46": 0
         }
     },
     {
@@ -26250,12 +26265,12 @@
         "our_url": "https://tennis24shop.com/?p=68169",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68169",
         "our_price_lir": 4559,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "41.5": 0,
             "44": 0,
             "44.5": 0,
-            "45": 999,
+            "45": 0,
             "46": 0,
             "42": 0,
             "40.5": 0,
@@ -27360,6 +27375,78 @@
             "L": 999,
             "M": 6,
             "S": 6
+        }
+    },
+    {
+        "id": 69469,
+        "title": "شلوارک پدل مردانه اسیکس Asics COURT 7IN - سفید",
+        "sku": "2041A350-100",
+        "url": "https://www.asics.com.tr/padel-court-7in-short-863",
+        "our_url": "https://tennis24shop.com/?p=69469",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69469",
+        "our_price_lir": 2299,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "2XL": 99,
+            "XL": 99,
+            "L": 0,
+            "M": 0,
+            "S": 0
+        }
+    },
+    {
+        "id": 69482,
+        "title": "شلوارک پدل مردانه اسیکس Asics COURT 7IN - سبز",
+        "sku": "2041A350-300",
+        "url": "https://www.asics.com.tr/padel-court-7in-short-1491",
+        "our_url": "https://tennis24shop.com/?p=69482",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69482",
+        "our_price_lir": 2299,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "2XL": 99,
+            "XL": 0,
+            "L": 99,
+            "M": 99,
+            "S": 99
+        }
+    },
+    {
+        "id": 69498,
+        "title": "کفش پدل مردانه اسیکس - Asics Gel-Dedicate 9 - سفید/مشکی",
+        "sku": "1041A546-101",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-padel-1764",
+        "our_url": "https://tennis24shop.com/?p=69498",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69498",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "43.5": 999,
+            "42.5": 999,
+            "42": 999,
+            "41.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
+        }
+    },
+    {
+        "id": 69516,
+        "title": "کفش پدل مردانه اسیکس - Asics Gel-Dedicate 9 - سبز",
+        "sku": "1041A546-300",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-padel-1770",
+        "our_url": "https://tennis24shop.com/?p=69516",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69516",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "43.5": 999,
+            "42.5": 999,
+            "42": 999,
+            "41.5": 999,
+            "44.5": 999,
+            "45": 999,
+            "44": 999
         }
     }
 ]
