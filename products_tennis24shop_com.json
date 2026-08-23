@@ -4661,7 +4661,7 @@
         "our_sizes": {
             "39": 0,
             "36": 999,
-            "45": 999,
+            "45": 998,
             "36.5": 999,
             "37.5": 999,
             "42": 999,
@@ -9959,7 +9959,9 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14003",
         "our_price_lir": 2590,
         "our_stock_status": "instock",
-        "our_sizes": []
+        "our_sizes": {
+            "40": 0
+        }
     },
     {
         "id": 11586,
