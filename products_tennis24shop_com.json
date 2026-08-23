@@ -4335,7 +4335,7 @@
             "44.5": 999,
             "45": 999,
             "45.5": 999,
-            "42": 0,
+            "42": 999,
             "39": 0,
             "38.5": 999
         },
@@ -15640,7 +15640,7 @@
         "our_price_lir": 5099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "XL": 0
         }
     },
@@ -17538,7 +17538,7 @@
         "url": "https://www.intersport.com.tr/urun/adidas-crazyquick-paddel-erkek-beyaz-tenis-ayakkabisi/ih3636/",
         "our_url": "https://tennis24shop.com/?p=49553",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49553",
-        "our_price_lir": 4499,
+        "our_price_lir": 7499,
         "our_stock_status": "instock",
         "our_sizes": {
             "43": 999,
@@ -18655,10 +18655,10 @@
         "our_url": "https://tennis24shop.com/?p=51790",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51790",
         "our_price_lir": 11999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "42": 0,
-            "41 1/3": 0,
+            "42": 999,
+            "41 1/3": 999,
             "42 2/3": 0
         }
     },
@@ -21505,13 +21505,13 @@
         "our_url": "https://tennis24shop.com/?p=56092",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=56092",
         "our_price_lir": 2190,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "37⅓": 999,
-            "38": 999,
-            "38⅔": 999,
-            "39⅓": 999,
-            "40": 999
+            "37⅓": 0,
+            "38": 0,
+            "38⅔": 0,
+            "39⅓": 0,
+            "40": 0
         }
     },
     {
@@ -25138,7 +25138,7 @@
             "43": 999,
             "44": 999,
             "45": 0,
-            "46": 999
+            "46": 0
         }
     },
     {
@@ -25311,7 +25311,7 @@
             "39": 999,
             "39.5": 999,
             "40": 999,
-            "40.5": 999,
+            "40.5": 0,
             "42": 0,
             "42.5": 999
         }
@@ -27466,14 +27466,14 @@
         "url": "https://www.asics.com.tr/gel-challenger-15-padel-l.e.-2153",
         "our_url": "https://tennis24shop.com/?p=69553",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69553",
-        "our_price_lir": 6499,
+        "our_price_lir": 8999,
         "our_stock_status": "instock",
         "our_sizes": {
             "43.5": 999,
             "42.5": 999,
             "42": 999,
             "44.5": 999,
-            "44": 999,
+            "44": 0,
             "41.5": 0
         }
     },
@@ -27487,13 +27487,13 @@
         "our_price_lir": 6499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 999,
             "37": 999,
             "37.5": 999,
             "38": 999,
             "39": 999,
             "39.5": 999,
-            "40": 0
+            "40": 999
         }
     },
     {
@@ -27506,8 +27506,8 @@
         "our_price_lir": 6499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "36": 0,
+            "40": 999,
+            "36": 999,
             "37": 999,
             "37.5": 999,
             "38": 999,
@@ -27522,10 +27522,10 @@
         "url": "https://www.asics.com.tr/gel-resolution-x-padel-2108",
         "our_url": "https://tennis24shop.com/?p=69672",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69672",
-        "our_price_lir": 10000,
+        "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 999,
             "37": 999,
             "37.5": 999
         }
@@ -27553,16 +27553,16 @@
         "url": "https://www.asics.com.tr/gel-challenger-15-padel-l.e.-2153",
         "our_url": "https://tennis24shop.com/?p=69702",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69702",
-        "our_price_lir": 6499,
+        "our_price_lir": 8999,
         "our_stock_status": "instock",
         "our_sizes": {
             "43.5": 999,
-            "44": 999,
+            "44": 0,
             "44.5": 999,
-            "45": 999,
+            "45": 0,
             "41.5": 0,
-            "42": 0,
-            "42.5": 0
+            "42": 999,
+            "42.5": 999
         }
     }
 ]
