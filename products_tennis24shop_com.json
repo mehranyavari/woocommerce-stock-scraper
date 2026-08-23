@@ -21895,16 +21895,16 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40.5": 999,
-            "41": 0,
+            "41": 999,
             "44.5": 999,
             "45": 999,
             "45.5": 999,
-            "46": 0,
-            "42": 0,
+            "46": 999,
+            "42": 999,
             "44": 999,
-            "42.5": 0
+            "42.5": 999
         },
-        "secondary_url": "https://www.raketspor.com.tr/nike-vapor-pro-3-fz2161-401-sert-kort-erkek-tenis-ayakkabisi-mavi-14615"
+        "secondary_url": "https://www.raketci.com/urun/nike-vapor-pro-3-sert-kort-erkek-tenis-ayakkabisi-4/"
     },
     {
         "id": 56744,
@@ -22697,7 +22697,11 @@
             "40.5": 999,
             "44": 999,
             "44.5": 999,
-            "45": 999
+            "45": 999,
+            "41": 1,
+            "42": 1,
+            "42.5": 1,
+            "43": 1
         }
     },
     {
