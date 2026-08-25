@@ -15642,7 +15642,7 @@
         "our_price_lir": 5099,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "XL": 0
         }
     },
@@ -16591,7 +16591,23 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48516",
         "our_price_lir": 5099,
         "our_stock_status": "instock",
-        "our_sizes": [],
+        "our_sizes": {
+            "44": 999,
+            "39": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "45": 999,
+            "46": 999,
+            "47": 999,
+            "40.5": 999,
+            "42.5": 999,
+            "44.5": 999,
+            "38.5": 999,
+            "45.5": 999,
+            "47.5": 999
+        },
         "secondary_url": "https://www.korayspor.com/en/nike-running-shoes-initiator-hj7683-072/?srsltid=AfmBOoqxQEZadOBqlpd6FahNL1y90F972VH4KJdB2Km2wj3_UCEqOHCC"
     },
     {
@@ -16705,7 +16721,10 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48634",
         "our_price_lir": 2459,
         "our_stock_status": "instock",
-        "our_sizes": [],
+        "our_sizes": {
+            "42.5": 0,
+            "44.5": 999
+        },
         "secondary_url": "https://www.intersport.com.tr/urun/nike-big-low-erkek-beyaz-sneaker/355152-140/"
     },
     {
@@ -25529,7 +25548,7 @@
         "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "37": 998,
+            "37": 999,
             "37.5": 999,
             "38": 999,
             "39": 999,
