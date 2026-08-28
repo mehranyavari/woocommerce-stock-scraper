@@ -3901,15 +3901,15 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 0,
-            "40.5": 0,
+            "40.5": 999,
             "42": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
             "44.5": 0,
-            "45": 0,
-            "45.5": 0,
-            "46": 0,
+            "45": 999,
+            "45.5": 999,
+            "46": 999,
             "39": 0,
             "41": 0,
             "47": 0,
@@ -3930,17 +3930,17 @@
         "our_price_lir": 5400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "42": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
-            "44.5": 0,
-            "45.5": 0,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "45.5": 999,
             "46": 0,
             "39": 0,
             "40": 0,
             "41": 0,
-            "45": 0,
+            "45": 999,
             "47": 0,
             "104": 0,
             "38.5": 0,
@@ -4533,15 +4533,15 @@
         "url": "https://www.tenisshop.com/en/nikecourt-air-zoom-vapor-pro-2-hard-court-2646",
         "our_url": "https://tennis24shop.com/?p=9830",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=9830",
-        "our_price_lir": 4099,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 5400,
+        "our_stock_status": "instock",
         "our_sizes": {
             "44.5": 0,
             "38": 0,
             "39": 0,
             "40": 0,
             "41": 0,
-            "42": 0,
+            "42": 999,
             "43": 0,
             "44": 0,
             "45": 0,
@@ -4567,8 +4567,8 @@
         "our_price_lir": 5400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43": 0,
-            "41": 0,
+            "43": 999,
+            "41": 999,
             "39": 0,
             "40": 0,
             "42": 0,
@@ -4679,7 +4679,7 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "38.5": 0,
+            "38.5": 999,
             "39": 0,
             "40": 0,
             "41": 0,
@@ -4748,7 +4748,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "45.5": 999,
-            "44.5": 999,
+            "44.5": 0,
             "44": 0,
             "42.5": 0,
             "42": 0,
@@ -4904,7 +4904,7 @@
         "url": "https://www.tenisshop.com/asics-court-ff-3-novak-clay-3967",
         "our_url": "https://tennis24shop.com/?p=41457",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41457",
-        "our_price_lir": 10000,
+        "our_price_lir": 8999,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "43.5": 0,
@@ -5431,7 +5431,7 @@
             "42": 999,
             "41.5": 999,
             "40.5": 999,
-            "40": 999,
+            "40": 0,
             "39.5": 0,
             "39": 0
         },
@@ -6065,11 +6065,11 @@
         "our_url": "https://tennis24shop.com/?p=41306",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41306",
         "our_price_lir": 2500,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "S": 0,
-            "101": 0
+            "XS": 999,
+            "S": 999,
+            "101": 999
         }
     },
     {
@@ -6920,11 +6920,11 @@
         "our_url": "https://tennis24shop.com/?p=32186",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=32186",
         "our_price_lir": 3100,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "S": 999,
             "709": 0,
             "XS": 0,
             "M": 0,
@@ -7321,7 +7321,7 @@
         "our_price_lir": 2700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "677": 0,
             "XS": 0,
             "M": 0,
@@ -7389,7 +7389,7 @@
         "our_price_lir": 2600,
         "our_stock_status": "instock",
         "our_sizes": {
-            "2XL": 0
+            "2XL": 999
         }
     },
     {
@@ -7456,7 +7456,7 @@
         "our_price_lir": 2099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "2XL": 0,
             "010": 0,
             "XS": 0,
@@ -7513,8 +7513,8 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
+            "L": 999,
+            "M": 999,
             "480": 0,
             "XS": 0,
             "S": 0,
@@ -7562,8 +7562,8 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "M": 0,
             "S": 0,
             "2XL": 0,
@@ -7609,9 +7609,9 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "010": 0,
             "XS": 0,
             "XL": 0,
@@ -7771,9 +7771,9 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "313": 0,
             "XS": 0,
             "XL": 0,
@@ -7862,9 +7862,9 @@
         "our_price_lir": 2899,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "657": 0,
             "XS": 0,
             "XL": 0,
@@ -7923,7 +7923,7 @@
             "010": 0,
             "XS": 0,
             "S": 0,
-            "L": 0,
+            "L": 999,
             "XL": 0,
             "2XL": 0
         }
@@ -8051,10 +8051,10 @@
         "our_price_lir": 2250,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
-            "XL": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
             "657": 0,
             "XS": 0,
             "2XL": 0
@@ -8117,13 +8117,13 @@
         "url": "https://www.tenisshop.com/en/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-3929",
         "our_url": "https://tennis24shop.com/?p=41822",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41822",
-        "our_price_lir": 3200,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3299,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "S": 0,
+            "L": 999,
+            "S": 999,
             "M": 0,
-            "XL": 0,
+            "XL": 999,
             "010": 0,
             "XS": 0,
             "2XL": 0
@@ -8297,10 +8297,10 @@
         "our_price_lir": 1099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "010": 0,
             "XS": 0
         }
@@ -8313,12 +8313,12 @@
         "our_url": "https://tennis24shop.com/?p=26403",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=26403",
         "our_price_lir": 1099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "084": 0,
             "XS": 0
         }
@@ -8333,7 +8333,7 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
+            "L": 999,
             "S": 0,
             "343": 0,
             "XS": 0,
@@ -8369,7 +8369,7 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "010": 0,
             "XS": 0,
             "M": 0,
@@ -8429,9 +8429,9 @@
         "our_price_lir": 1099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -8444,9 +8444,9 @@
         "our_price_lir": 1099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -8459,9 +8459,9 @@
         "our_price_lir": 1199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "بچه گانه": 0,
-            "L": 0,
+            "L": 999,
             "M": 0,
             "S": 0,
             "471": 0,
@@ -8532,10 +8532,10 @@
         "our_price_lir": 1199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "S": 0,
-            "M": 0,
+            "XL": 999,
+            "L": 999,
+            "S": 999,
+            "M": 999,
             "XS": 0
         }
     },
@@ -8549,12 +8549,12 @@
         "our_price_lir": 1199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
             "367": 0,
             "XS": 0,
-            "S": 0
+            "S": 999
         }
     },
     {
@@ -8812,11 +8812,11 @@
         "our_url": "https://tennis24shop.com/?p=26425",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=26425",
         "our_price_lir": 1049,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "L": 0,
-            "M": 0,
+            "M": 999,
             "S": 0,
             "084": 0,
             "XS": 0,
@@ -8833,10 +8833,10 @@
         "our_price_lir": 1049,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "L": 0,
-            "S": 0,
-            "M": 0,
+            "S": 999,
+            "M": 999,
             "010": 0,
             "XS": 0,
             "2XL": 0
@@ -8935,10 +8935,10 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "M": 0,
-            "L": 0,
-            "XL": 0,
+            "L": 999,
+            "XL": 999,
             "795": 0,
             "XS": 999,
             "2XL": 0
@@ -8955,10 +8955,10 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
+            "L": 999,
+            "M": 999,
             "S": 0,
-            "XL": 0,
+            "XL": 999,
             "493": 0,
             "XS": 0,
             "2XL": 0
@@ -9056,12 +9056,12 @@
         "url": "https://www.tenisshop.com/en/nikecourt-dri-fit-victory-18-cm-erkek-tenis-sortu-3240",
         "our_url": "https://tennis24shop.com/?p=36931",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=36931",
-        "our_price_lir": 2000,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 2499,
+        "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "451": 0,
             "XS": 0,
             "XL": 0,
@@ -9323,16 +9323,16 @@
         "url": "https://www.tenisshop.com/en/nikecourt-dri-fit-victory-18-cm-erkek-tenis-sortu-3212",
         "our_url": "https://tennis24shop.com/?p=17033",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=17033",
-        "our_price_lir": 2000,
+        "our_price_lir": 2499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "S": 0,
-            "M": 0,
-            "L": 0,
-            "XL": 0,
-            "2XL": 0,
-            "100": 0,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999,
+            "100": 999,
             "XXL": 999
         },
         "secondary_url": "https://www.yuxel.com.tr/nikecourt-dri-fit-victory-18-cm-tenis-sortu-fd5380-100"
@@ -9344,16 +9344,16 @@
         "url": "https://www.tenisshop.com/en/nikecourt-dri-fit-victory-18-cm-erkek-tenis-sortu-3211",
         "our_url": "https://tennis24shop.com/?p=17009",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=17009",
-        "our_price_lir": 2399,
+        "our_price_lir": 2499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "XS": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "XS": 999,
+            "M": 999,
+            "L": 999,
             "XL": 999,
-            "2XL": 0,
-            "657": 0
+            "2XL": 999,
+            "657": 999
         },
         "secondary_url": "https://www.yuxel.com.tr/nikecourt-dri-fit-victory-18-cm-tenis-sortu-fd5380-657"
     },
@@ -9531,8 +9531,8 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "S": 0,
+            "L": 999,
+            "S": 999,
             "661": 0,
             "XS": 0,
             "M": 0,
@@ -9550,10 +9550,10 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "450": 0,
             "XS": 0,
             "2XL": 0
@@ -9580,7 +9580,7 @@
         "our_price_lir": 2900,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
+            "M": 999,
             "368": 0,
             "XS": 0,
             "S": 0,
@@ -9621,7 +9621,7 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "2XL": 0,
             "010": 0,
             "XS": 0,
@@ -10419,8 +10419,8 @@
         "our_price_lir": 3200,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "S": 0,
+            "L": 999,
+            "S": 999,
             "555": 0,
             "XS": 0,
             "M": 0,
@@ -10437,7 +10437,7 @@
         "our_url": "https://tennis24shop.com/?p=26101",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=26101",
         "our_price_lir": 2600,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
             "010": 0,
@@ -10487,7 +10487,7 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
+            "M": 999,
             "885": 0,
             "XS": 0,
             "S": 0,
@@ -10752,11 +10752,11 @@
         "our_price_lir": 3000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "3XL": 0,
+            "3XL": 999,
             "2XL": 0,
             "L": 0,
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "410": 0,
             "XS": 0,
             "XL": 0
@@ -10773,7 +10773,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "3XL": 0,
-            "S": 0,
+            "S": 999,
             "411": 0,
             "XS": 0,
             "M": 0,
@@ -10792,11 +10792,11 @@
         "our_price_lir": 3000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "3XL": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "3XL": 999,
             "2XL": 0,
             "010": 0,
             "XS": 0
@@ -10813,7 +10813,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
-            "S": 0,
+            "S": 999,
             "077": 0,
             "XS": 0,
             "M": 0,
@@ -10832,8 +10832,8 @@
         "our_price_lir": 3000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "450": 0,
             "XS": 0,
             "L": 0,
@@ -11045,10 +11045,10 @@
         "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "478": 0,
             "XS": 0,
             "2XL": 0
@@ -11172,21 +11172,21 @@
         "our_price_lir": 4699,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "40.5": 0,
-            "42": 0,
+            "40": 999,
+            "40.5": 999,
+            "42": 999,
             "43": 0,
-            "44": 0,
-            "44.5": 0,
-            "45": 0,
-            "41": 0,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
+            "41": 999,
             "39": 0,
             "46": 0,
             "47": 0,
             "800": 0,
             "38.5": 0,
             "42.5": 0,
-            "45.5": 0,
+            "45.5": 999,
             "47.5": 0,
             "48.5": 0,
             "49.5": 0
@@ -11727,8 +11727,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
-            "M": 0,
-            "S": 0
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -11754,7 +11754,7 @@
         "url": "https://www.tenisshop.com/en/nikecourt-dri-fit-heritage-havlu-kadin-tenis-pantolonu-2878",
         "our_url": "https://tennis24shop.com/?p=19873",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19873",
-        "our_price_lir": 2100,
+        "our_price_lir": 2200,
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
@@ -11789,9 +11789,9 @@
         "our_price_lir": 2700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "010": 0,
-            "10": 0
+            "XS": 999,
+            "010": 999,
+            "10": 999
         }
     },
     {
@@ -11804,7 +11804,7 @@
         "our_price_lir": 2299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
+            "M": 999,
             "S": 0,
             "100": 0,
             "XS": 0,
@@ -11822,9 +11822,9 @@
         "our_price_lir": 2299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
             "451": 0,
             "XS": 0,
             "S": 0
@@ -11840,8 +11840,8 @@
         "our_price_lir": 2200,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "343": 0
+            "XS": 999,
+            "343": 999
         }
     },
     {
@@ -11854,8 +11854,8 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "101": 0
+            "XS": 999,
+            "101": 999
         }
     },
     {
@@ -11931,8 +11931,8 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "690": 0
+            "XS": 999,
+            "690": 999
         }
     },
     {
@@ -12321,7 +12321,7 @@
             "42-46": 0,
             "937": 0,
             "XS": 0,
-            "S": 0,
+            "S": 999,
             "M": 0,
             "L": 0,
             "XL": 0
@@ -12985,8 +12985,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "34-38": 999,
-            "38-42": 0,
-            "42-46": 0,
+            "38-42": 999,
+            "42-46": 999,
             "38.42": 999,
             "42.46": 999
         },
@@ -13337,7 +13337,7 @@
             "M": 0,
             "259": 0,
             "XS": 0,
-            "S": 0,
+            "S": 999,
             "2XL": 0
         }
     },
@@ -13790,8 +13790,9 @@
         "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0
+            "S": 999,
+            "M": 999,
+            "100": 999
         }
     },
     {
@@ -13804,8 +13805,9 @@
         "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0
+            "M": 999,
+            "S": 999,
+            "10": 999
         }
     },
     {
@@ -13818,9 +13820,9 @@
         "our_price_lir": 1349,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -13833,7 +13835,7 @@
         "our_price_lir": 1349,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0
+            "S": 999
         }
     },
     {
@@ -13846,8 +13848,8 @@
         "our_price_lir": 1349,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -13926,8 +13928,9 @@
         "our_price_lir": 1399,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0
+            "M": 999,
+            "S": 999,
+            "100": 999
         }
     },
     {
@@ -14774,9 +14777,9 @@
         "our_url": "https://tennis24shop.com/?p=46551",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46551",
         "our_price_lir": 4099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "36": 0,
             "38": 0,
             "39": 0,
@@ -14786,7 +14789,7 @@
             "43": 0,
             "44": 0,
             "45": 0,
-            "46": 0,
+            "46": 999,
             "47": 0,
             "800": 0,
             "35.5": 0,
@@ -14795,7 +14798,7 @@
             "38.5": 0,
             "42.5": 0,
             "44.5": 0,
-            "45.5": 0,
+            "45.5": 999,
             "47.5": 0,
             "48.5": 0,
             "49.5": 0
@@ -15011,24 +15014,24 @@
         "url": "https://www.tenisshop.com/nike-vapor-lite-3-erkek-sert-kort-tenis-ayakkabisi-4237",
         "our_url": "https://tennis24shop.com/?p=46803",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46803",
-        "our_price_lir": 4450,
+        "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "40.5": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "44": 0,
-            "44.5": 0,
-            "45": 0,
+            "40": 999,
+            "40.5": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
             "45.5": 999,
-            "46": 0,
+            "46": 999,
             "39": 0,
-            "47": 0,
+            "47": 999,
             "401": 0,
             "38.5": 0,
-            "42.5": 0,
+            "42.5": 999,
             "47.5": 0,
             "48.5": 0,
             "49.5": 0
@@ -15245,8 +15248,8 @@
         "our_sizes": {
             "S": 0,
             "M": 0,
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "815": 0,
             "XS": 0,
             "2XL": 0
@@ -15262,8 +15265,8 @@
         "our_price_lir": 2100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "M": 0,
             "S": 0,
             "229": 0,
@@ -15364,14 +15367,14 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 999,
-            "40⅔": 999,
-            "42": 999,
-            "42⅔": 999,
-            "43": 998,
-            "44": 999,
-            "44⅔": 999,
-            "40.5": 999,
-            "42.5": 999
+            "40⅔": 0,
+            "42": 0,
+            "42⅔": 0,
+            "43": 0,
+            "44": 0,
+            "44⅔": 0,
+            "40.5": 0,
+            "42.5": 0
         },
         "secondary_url": "https://www.adidas.com.tr/tr/courtquick-padel-ayakkabisi/JP7232.html?pr=nosearch_rr&slot=2&rec=mt"
     },
@@ -15409,7 +15412,7 @@
             "41 1/3": 0,
             "36.5": 999,
             "41.5": 0,
-            "40.5": 999,
+            "40.5": 0,
             "39.5": 999,
             "37.5": 999,
             "38.5": 0
@@ -15456,7 +15459,7 @@
         "url": "https://www.yuxel.com.tr/nike-vapor-lite-3-toprak-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=47333",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47333",
-        "our_price_lir": 3800,
+        "our_price_lir": 4699,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "36.5": 0,
@@ -15641,9 +15644,9 @@
         "our_url": "https://tennis24shop.com/?p=47495",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47495",
         "our_price_lir": 5099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "XL": 0
         }
     },
@@ -15830,13 +15833,13 @@
         "url": "https://www.tenisshop.com/nikecourt-heritage-dri-fit-fleece-erkek-tenis-sortu-4214",
         "our_url": "https://tennis24shop.com/?p=47737",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47737",
-        "our_price_lir": 3200,
+        "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "010": 0,
             "XS": 999,
             "2XL": 0
@@ -15850,7 +15853,7 @@
         "url": "https://www.meritspor.com.tr/nikecourt-heritage-erkek-dri-fit-fleece-tenis-sortu-blue-force",
         "our_url": "https://tennis24shop.com/?p=47747",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47747",
-        "our_price_lir": 3200,
+        "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 999,
@@ -15887,8 +15890,8 @@
         "our_price_lir": 2499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "S": 0,
+            "XL": 999,
+            "S": 999,
             "717": 0,
             "XS": 0,
             "M": 0,
@@ -16886,9 +16889,9 @@
         "our_price_lir": 949,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "010": 0,
             "XL": 0
         }
@@ -16903,9 +16906,9 @@
         "our_price_lir": 949,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "103": 0,
             "XL": 0
         }
@@ -17310,10 +17313,10 @@
         "our_price_lir": 1050,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
-            "L": 0,
-            "XL": 0,
+            "M": 999,
+            "S": 999,
+            "L": 999,
+            "XL": 999,
             "010": 0,
             "XS": 0,
             "2XL": 0
@@ -17331,7 +17334,7 @@
         "our_sizes": {
             "XL": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "657": 0,
             "XS": 0,
             "L": 0,
@@ -17348,10 +17351,10 @@
         "our_price_lir": 1050,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "M": 0,
-            "S": 0,
-            "L": 0,
+            "XL": 999,
+            "M": 999,
+            "S": 999,
+            "L": 999,
             "084": 0,
             "XS": 0,
             "2XL": 0
@@ -17384,12 +17387,12 @@
         "our_url": "https://tennis24shop.com/?p=49301",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49301",
         "our_price_lir": 1000,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "XL": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "XL": 999,
+            "M": 999,
+            "L": 999,
             "325": 0,
             "XS": 0,
             "2XL": 0
@@ -17424,10 +17427,10 @@
         "our_price_lir": 1000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "XL": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "XL": 999,
+            "M": 999,
+            "L": 999,
             "010": 0,
             "XS": 0,
             "2XL": 0
@@ -17560,10 +17563,10 @@
         "url": "https://www.intersport.com.tr/urun/adidas-crazyquick-paddel-erkek-beyaz-tenis-ayakkabisi/ih3636/",
         "our_url": "https://tennis24shop.com/?p=49553",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49553",
-        "our_price_lir": 4499,
+        "our_price_lir": 7499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43": 1000,
+            "43": 999,
             "42": 0,
             "41": 0,
             "42⅔": 0
@@ -17578,7 +17581,7 @@
         "our_url": "https://tennis24shop.com/?p=42376",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42376",
         "our_price_lir": 3299,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -17589,7 +17592,7 @@
         "our_url": "https://tennis24shop.com/?p=42367",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42367",
         "our_price_lir": 3299,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -17600,7 +17603,7 @@
         "our_url": "https://tennis24shop.com/?p=42358",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42358",
         "our_price_lir": 3549,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -17611,7 +17614,7 @@
         "our_url": "https://tennis24shop.com/?p=42304",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42304",
         "our_price_lir": 3549,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -17622,7 +17625,7 @@
         "our_url": "https://tennis24shop.com/?p=42296",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42296",
         "our_price_lir": 3299,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -17913,9 +17916,11 @@
         "url": "https://www.tenisburada.com/asics-gel-resolution-9-kadin-tenis-ayakkabisi-1042a208-101",
         "our_url": "https://tennis24shop.com/?p=13194",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=13194",
-        "our_price_lir": 5500,
-        "our_stock_status": "outofstock",
-        "our_sizes": []
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "39": 999
+        }
     },
     {
         "id": 8393,
@@ -18217,10 +18222,10 @@
         "url": "https://www.meritspor.com.tr/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-white-green",
         "our_url": "https://tennis24shop.com/?p=51039",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51039",
-        "our_price_lir": 8500,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 8799,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "46": 0,
             "44.5": 0,
             "42.5": 0,
@@ -18494,7 +18499,7 @@
         "url": "https://www.tenisshop.com/nikecourt-heritage-dri-fit-fransiz-havlu-kumasi-erkek-kapusonlu-tenis-sweatshirtu-4215",
         "our_url": "https://tennis24shop.com/?p=51525",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51525",
-        "our_price_lir": 4500,
+        "our_price_lir": 4699,
         "our_stock_status": "instock",
         "our_sizes": {
             "M": 999,
@@ -18514,11 +18519,11 @@
         "url": "https://www.yuxel.com.tr/nikecourt-heritage-dri-fit-fransiz-havlu-kapusonlu-sweatshirt-hm6759-246",
         "our_url": "https://tennis24shop.com/?p=51539",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51539",
-        "our_price_lir": 4500,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 4699,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "XL": 0,
+            "S": 999,
+            "XL": 999,
             "M": 0,
             "L": 0
         },
@@ -18538,8 +18543,8 @@
             "S": 999,
             "L": 0,
             "XL": 999,
-            "415": 0,
-            "XS": 0
+            "415": 999,
+            "XS": 999
         },
         "secondary_url": "https://www.tenisshop.com/nikecourt-heritage-dri-fit-fransiz-havlu-kumasi-erkek-kapusonlu-tenis-sweatshirtu-4267"
     },
@@ -18677,10 +18682,10 @@
         "our_url": "https://tennis24shop.com/?p=51790",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51790",
         "our_price_lir": 11999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "42": 0,
-            "41 1/3": 0,
+            "42": 999,
+            "41 1/3": 999,
             "42 2/3": 0
         }
     },
@@ -18793,15 +18798,15 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-wild-grape",
         "our_url": "https://tennis24shop.com/?p=51984",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=51984",
-        "our_price_lir": 3200,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3299,
+        "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "XS": 0,
+            "XS": 999,
             "L": 0,
             "M": 0,
             "XL": 0,
-            "507": 0
+            "507": 999
         },
         "secondary_url": "https://www.tenisshop.com/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-4286"
     },
@@ -18832,9 +18837,9 @@
         "our_price_lir": 4299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T3-S": 0,
+            "T3-S": 999,
             "T4-M": 0,
-            "T5-M/L": 0,
+            "T5-M/L": 999,
             "031": 0,
             "T6-L": 0,
             "T7-L/XL": 0
@@ -18868,9 +18873,9 @@
         "our_price_lir": 6299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T5-M/L": 0,
-            "T6-L": 0,
-            "800": 0,
+            "T5-M/L": 999,
+            "T6-L": 999,
+            "800": 999,
             "T3-S": 0,
             "T4-M": 0
         }
@@ -18885,11 +18890,11 @@
         "our_price_lir": 6299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T3-S": 0,
-            "T5-M/L": 0,
-            "T6-L": 0,
-            "T4-M": 0,
-            "892": 0
+            "T3-S": 999,
+            "T5-M/L": 999,
+            "T6-L": 999,
+            "T4-M": 999,
+            "892": 999
         }
     },
     {
@@ -18902,11 +18907,11 @@
         "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T3-S": 0,
-            "T5-M/L": 0,
-            "T6-L": 0,
-            "T8-XL": 0,
-            "F8M": 0,
+            "T3-S": 999,
+            "T5-M/L": 999,
+            "T6-L": 999,
+            "T8-XL": 999,
+            "F8M": 999,
             "T2-XS": 0,
             "T4-M": 0,
             "T7-L/XL": 0
@@ -18922,8 +18927,8 @@
         "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T5-M/L": 0,
-            "T6-L": 0,
+            "T5-M/L": 999,
+            "T6-L": 999,
             "T8-XL": 0,
             "IY1": 0,
             "T2-XS": 0,
@@ -18962,14 +18967,14 @@
         "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "T3-S": 0,
-            "T4-M": 0,
-            "T5-M/L": 0,
-            "T6-L": 0,
-            "T8-XL": 0,
-            "CB8": 0,
+            "T3-S": 999,
+            "T4-M": 999,
+            "T5-M/L": 999,
+            "T6-L": 999,
+            "T8-XL": 999,
+            "CB8": 999,
             "T2-XS": 0,
-            "T7-L/XL": 0
+            "T7-L/XL": 999
         }
     },
     {
@@ -19085,7 +19090,7 @@
         "our_price_lir": 2500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "S": 0,
             "XS": 999,
             "M": 0,
@@ -19686,13 +19691,13 @@
         "url": "https://www.tenisshop.com/nikecourt-heritage-dri-fit-fleece-erkek-kapusonlu-tenis-ustu-3689",
         "our_url": "https://tennis24shop.com/?p=53199",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53199",
-        "our_price_lir": 3350,
+        "our_price_lir": 3600,
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
             "XS": 999,
-            "M": 0,
-            "L": 0,
+            "M": 999,
+            "L": 999,
             "010": 0,
             "XL": 0,
             "2XL": 0
@@ -19834,11 +19839,11 @@
         "our_price_lir": 4299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
-            "XS": 0,
-            "010": 0,
-            "10": 0
+            "M": 999,
+            "S": 999,
+            "XS": 999,
+            "010": 999,
+            "10": 999
         }
     },
     {
@@ -19862,15 +19867,15 @@
         "url": "https://www.tenisshop.com/nike-sportswear-phoenix-fleece-bol-kesimli-kadin-kapusonlu-sweatshirtu-4179",
         "our_url": "https://tennis24shop.com/?p=53343",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53343",
-        "our_price_lir": 2800,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 2900,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XS": 0,
-            "063": 0,
-            "63": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XS": 999,
+            "063": 999,
+            "63": 999
         },
         "secondary_url": "https://www.yuxel.com.tr/nike-sportswear-phoenix-oversize-kapusonlu-sweatshirt-dq5860-063"
     },
@@ -19884,11 +19889,11 @@
         "our_price_lir": 2800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
-            "XS": 0,
-            "010": 0,
-            "10": 0
+            "M": 999,
+            "S": 999,
+            "XS": 999,
+            "010": 999,
+            "10": 999
         }
     },
     {
@@ -19902,10 +19907,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XS": 999,
-            "S": 0,
-            "M": 0,
-            "L": 0,
-            "XL": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
             "100": 0,
             "2XL": 0
         },
@@ -19921,11 +19926,11 @@
         "our_price_lir": 1950,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "XS": 999,
-            "M": 0,
-            "L": 0,
-            "XL": 0,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
             "323": 0,
             "2XL": 0
         },
@@ -19945,7 +19950,7 @@
             "L": 0,
             "M": 0,
             "XS": 999,
-            "S": 0,
+            "S": 999,
             "893": 0,
             "2XL": 0
         },
@@ -20146,12 +20151,12 @@
         "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "42": 0,
-            "42.5": 0,
+            "42": 999,
+            "42.5": 999,
             "43.5": 0,
             "44": 0,
             "44.5": 0,
-            "45": 0
+            "45": 999
         }
     },
     {
@@ -20657,7 +20662,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "M": 999,
-            "XL": 0,
+            "XL": 999,
             "S": 999,
             "276": 0,
             "XS": 0,
@@ -20709,7 +20714,7 @@
         "our_sizes": {
             "XL": 999,
             "L": 0,
-            "S": 0,
+            "S": 999,
             "XS": 999,
             "M": 0
         },
@@ -20725,10 +20730,10 @@
         "our_price_lir": 4700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "M": 999,
             "L": 0,
-            "XL": 0,
+            "XL": 999,
             "661": 0,
             "XS": 0,
             "2XL": 0
@@ -20794,9 +20799,9 @@
         "our_url": "https://tennis24shop.com/?p=54463",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54463",
         "our_price_lir": 3300,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
+            "S": 999,
             "M": 0,
             "L": 0,
             "652": 0,
@@ -20814,12 +20819,12 @@
         "our_url": "https://tennis24shop.com/?p=54475",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54475",
         "our_price_lir": 3300,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
             "386": 0,
             "XS": 0,
             "2XL": 0
@@ -21288,7 +21293,14 @@
             "42": 999,
             "42.5": 999,
             "43": 999,
-            "44.5": 999
+            "44.5": 999,
+            "40": 999,
+            "44": 999,
+            "45": 999,
+            "46": 999,
+            "47": 999,
+            "40.5": 999,
+            "45.5": 999
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-vapor-pro-3-heritage-erkek-sert-kort-tenis-ayakkabilari"
     },
@@ -21300,11 +21312,19 @@
         "our_url": "https://tennis24shop.com/?p=55006",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55006",
         "our_price_lir": 7699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "42.5": 0,
-            "44.5": 0
+            "44.5": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "44": 999,
+            "45": 999,
+            "46": 999,
+            "47": 999,
+            "45.5": 999
         },
         "secondary_url": "https://www.opsarsport.com/kategori/nike"
     },
@@ -21351,10 +21371,10 @@
         "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "010": 0,
             "XS": 0,
             "2XL": 0
@@ -21368,12 +21388,12 @@
         "our_url": "https://tennis24shop.com/?p=55201",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55201",
         "our_price_lir": 3299,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "100": 0,
             "XS": 0,
             "2XL": 0
@@ -21389,10 +21409,10 @@
         "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "478": 0,
             "XS": 0,
             "2XL": 0
@@ -21581,17 +21601,17 @@
         "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "40.5": 0,
-            "41": 0,
-            "42": 0,
+            "40": 999,
+            "40.5": 999,
+            "41": 999,
+            "42": 999,
             "42.5": 0,
-            "43": 0,
-            "44.5": 0,
+            "43": 999,
+            "44.5": 999,
             "45": 0,
-            "45.5": 0,
-            "46": 0,
-            "47": 0,
+            "45.5": 999,
+            "46": 999,
+            "47": 999,
             "39": 0,
             "44": 0,
             "100": 0,
@@ -21876,11 +21896,12 @@
         "our_url": "https://tennis24shop.com/?p=56705",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=56705",
         "our_price_lir": 5699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "45": 0,
-            "44.5": 0,
-            "43.5": 0
+            "45": 999,
+            "44.5": 999,
+            "43.5": 0,
+            "42.5": 999
         }
     },
     {
@@ -22108,15 +22129,15 @@
         "our_url": "https://tennis24shop.com/?p=57041",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=57041",
         "our_price_lir": 4300,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
+            "XS": 999,
             "S": 0,
-            "M": 0,
-            "L": 0,
+            "M": 999,
+            "L": 999,
             "XL": 0,
             "2XL": 0,
-            "494": 0
+            "494": 999
         },
         "secondary_url": "https://www.meritspor.com.tr/nikecourt-heritage-phoenix-fleece-kadin-sweatshirt-royal-pulsecomet-blue"
     },
@@ -22646,7 +22667,7 @@
             "XL": 0,
             "L": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "451": 0,
             "XS": 0,
             "2XL": 0
@@ -22663,9 +22684,9 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
+            "L": 999,
+            "M": 999,
+            "S": 999,
             "100": 0,
             "XS": 0,
             "2XL": 0
@@ -22681,10 +22702,10 @@
         "our_price_lir": 2049,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 999,
             "L": 0,
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "441": 0,
             "XS": 0,
             "2XL": 0
@@ -23102,8 +23123,8 @@
         "our_price_lir": 999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "970": 0,
             "L": 0,
             "XL": 0
@@ -23117,7 +23138,7 @@
         "our_url": "https://tennis24shop.com/?p=58623",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=58623",
         "our_price_lir": 1549,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "L": 0,
             "M": 0,
@@ -23149,9 +23170,9 @@
         "our_price_lir": 949,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "105": 0,
             "XL": 0
         }
@@ -23166,9 +23187,9 @@
         "our_price_lir": 1199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "064": 0,
             "XL": 0
         }
@@ -23220,7 +23241,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "M": 0,
+            "M": 999,
             "L": 0,
             "100": 0,
             "XS": 0,
@@ -23237,9 +23258,9 @@
         "our_price_lir": 999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 0,
-            "M": 0,
-            "L": 0,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "904": 0,
             "XL": 0
         }
@@ -23672,8 +23693,9 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0
+            "M": 999,
+            "S": 999,
+            "100": 999
         }
     },
     {
@@ -24429,11 +24451,11 @@
         "our_url": "https://tennis24shop.com/?p=65626",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65626",
         "our_price_lir": 4199,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "XL": 0
         }
     },
@@ -25258,13 +25280,14 @@
             "36": 999,
             "37": 999,
             "37.5": 999,
-            "39": 0,
-            "39.5": 0,
-            "40": 0,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
             "40.5": 999,
             "42": 999,
             "42.5": 0,
-            "38": 0
+            "38": 999,
+            "375": 999
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-kadin-padel-ayakkabisi/"
     },
@@ -25765,7 +25788,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-sortu-kahverengi-kuikma-dry/_/R-p-340125?mc=8968181&c=GRİ",
         "our_url": "https://tennis24shop.com/?p=67404",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67404",
-        "our_price_lir": 879,
+        "our_price_lir": 870,
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 999,
@@ -26062,7 +26085,7 @@
             "41.5": 999,
             "40.5": 999,
             "46.5": 999,
-            "42.5": 0,
+            "42.5": 999,
             "45.5": 999,
             "44.5": 999
         }
@@ -26479,7 +26502,7 @@
         "url": "https://www.decathlon.com.tr/p/yetiskin-tenis-raketi-264-gr-wilson-intrigue-se/_/R-p-375294?mc=8972079",
         "our_url": "https://tennis24shop.com/?p=68430",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68430",
-        "our_price_lir": 9890,
+        "our_price_lir": 9395,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -26490,7 +26513,7 @@
         "url": "https://www.decathlon.com.tr/p/yetiskin-tenis-raketi-280-g-turuncu-wilson-burn-100ls-v6-0/_/R-p-360531?mc=9000239&c=TURUNCU",
         "our_url": "https://tennis24shop.com/?p=68439",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68439",
-        "our_price_lir": 14290,
+        "our_price_lir": 13575,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -26733,7 +26756,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-tisortu-kirik-beyaz-tts-soft/_/R-p-324603?mc=8990379&c=KAHVERENG%C4%B0",
         "our_url": "https://tennis24shop.com/?p=68821",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68821",
-        "our_price_lir": 1350,
+        "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 999,
@@ -26750,7 +26773,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-tisortu-kirik-beyaz-tts-soft/_/R-p-324603?mc=8990377&c=BEYAZ",
         "our_url": "https://tennis24shop.com/?p=68838",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68838",
-        "our_price_lir": 1350,
+        "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 999,
@@ -26767,7 +26790,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-tisortu-kirik-beyaz-tts-soft/_/R-p-324603?mc=8954847&c=BEYAZ",
         "our_url": "https://tennis24shop.com/?p=68853",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68853",
-        "our_price_lir": 1350,
+        "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 999,
@@ -26818,7 +26841,7 @@
         "url": "https://www.decathlon.com.tr/p/kadin-tenis-tisortu-pembe-light/_/R-p-346537?mc=8913848&c=MOR",
         "our_url": "https://tennis24shop.com/?p=68907",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68907",
-        "our_price_lir": 650,
+        "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
             "XS": 999,
