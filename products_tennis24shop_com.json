@@ -112,8 +112,8 @@
         "our_sizes": {
             "40": 0,
             "44": 0,
-            "44.5": 0,
-            "45": 0,
+            "44.5": 999,
+            "45": 999,
             "45.5": 0,
             "36": 0,
             "38": 0,
@@ -827,16 +827,16 @@
         "our_price_lir": 8000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
-            "45": 0,
-            "45.5": 0,
+            "41": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "45": 999,
+            "45.5": 999,
             "39": 0,
             "40": 0,
             "42": 0,
-            "46": 0,
+            "46": 999,
             "47": 0,
             "106": 0,
             "38.5": 0,
@@ -881,7 +881,7 @@
             "44": 999,
             "44.5": 999,
             "46": 999,
-            "41": 999,
+            "41": 0,
             "45.5": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-toprak-kort-dv2020-006"
@@ -919,12 +919,12 @@
         "our_price_lir": 3399,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
+            "40": 999,
             "41": 0,
             "42": 0,
             "44": 0,
             "44.5": 0,
-            "45.5": 0,
+            "45.5": 999,
             "39": 0,
             "43": 0,
             "45": 0,
@@ -1152,9 +1152,9 @@
         "our_url": "https://tennis24shop.com/?p=38390",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=38390",
         "our_price_lir": 5899,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
+            "40": 999,
             "40.5": 0,
             "41": 0,
             "36": 0,
@@ -1903,14 +1903,14 @@
         "url": "https://www.yuxel.com.tr/nikecourt-lite-4-toprak-tenis-ayakkabisi-fj2318-001",
         "our_url": "https://tennis24shop.com/?p=26551",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=26551",
-        "our_price_lir": 3400,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 4099,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "38": 0,
-            "38.5": 0,
+            "38": 999,
+            "38.5": 999,
             "40": 0,
             "40.5": 0,
-            "41": 0,
+            "41": 999,
             "36": 0,
             "39": 0,
             "42": 0,
@@ -2315,9 +2315,9 @@
         "our_url": "https://tennis24shop.com/?p=14951",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14951",
         "our_price_lir": 3600,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "36": 0,
             "38": 0,
             "39": 0,
@@ -2874,7 +2874,11 @@
         "our_price_lir": 6700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "42.5": 999
+            "42.5": 999,
+            "42": 999,
+            "44": 999,
+            "40.5": 999,
+            "44.5": 999
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-zoom-gp-challenge-1-toprak-kort-erkek-tenis-ayakkabisi"
     },
@@ -2908,12 +2912,12 @@
         "our_url": "https://tennis24shop.com/?p=41486",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41486",
         "our_price_lir": 5699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "46.5": 0,
-            "44.5": 0,
+            "44.5": 999,
             "44": 0,
-            "43.5": 0
+            "43.5": 999
         }
     },
     {
@@ -2927,8 +2931,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 0,
-            "45": 0,
-            "45.5": 0,
+            "45": 999,
+            "45.5": 999,
             "39": 0,
             "41": 0,
             "42": 0,
@@ -3294,13 +3298,13 @@
         "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
-            "44.5": 0,
-            "45.5": 0,
-            "46": 0,
+            "40.5": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "45.5": 999,
+            "46": 999,
             "39": 0,
             "40": 0,
             "41": 0,
@@ -3364,18 +3368,18 @@
         "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "45": 0,
-            "45.5": 0,
-            "46": 0,
-            "35.5": 0,
-            "36.5": 0,
-            "37.5": 0,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "45": 999,
+            "45.5": 999,
+            "46": 999,
+            "35.5": 999,
+            "36.5": 999,
+            "37.5": 999,
             "38": 0,
-            "38.5": 0,
+            "38.5": 999,
             "36": 0,
             "39": 0,
             "44": 0,
@@ -3396,11 +3400,18 @@
         "url": "https://www.tenisshop.com/en/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi-3341",
         "our_url": "https://tennis24shop.com/?p=30738",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30738",
-        "our_price_lir": 6200,
+        "our_price_lir": 8000,
         "our_stock_status": "instock",
         "our_sizes": {
             "42.5": 999,
-            "43": 999
+            "43": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "44": 999,
+            "46": 999,
+            "40.5": 999,
+            "45.5": 999
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-zoom-gp-challenge-1-sert-kort-erkek-tenis-ayakkabisi"
     },
@@ -3483,15 +3494,15 @@
         "our_url": "https://tennis24shop.com/?p=30581",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30581",
         "our_price_lir": 4800,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "45.5": 0,
+            "45.5": 999,
             "41": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
             "45": 0,
-            "40.5": 0,
+            "40.5": 999,
             "47": 0,
             "001": 0,
             "38.5": 0,
@@ -3551,7 +3562,7 @@
         "our_url": "https://tennis24shop.com/?p=28665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=28665",
         "our_price_lir": 3300,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "34": 0,
             "36": 0,
@@ -3563,13 +3574,15 @@
             "36.5": 0,
             "37.5": 0,
             "38.5": 0,
-            "40.5": 0,
-            "42.5": 0,
-            "44.5": 0,
+            "40.5": 999,
+            "42.5": 999,
+            "44.5": 999,
             "45.5": 0,
             "47.5": 0,
             "48.5": 0,
-            "49.5": 0
+            "49.5": 0,
+            "41": 999,
+            "44": 999
         }
     },
     {
@@ -3630,7 +3643,7 @@
         "our_sizes": {
             "42": 0,
             "42.5": 0,
-            "45.5": 0,
+            "45.5": 999,
             "39": 0,
             "40": 0,
             "41": 0,
@@ -3909,7 +3922,7 @@
             "44.5": 0,
             "45": 999,
             "45.5": 999,
-            "46": 999,
+            "46": 0,
             "39": 0,
             "41": 0,
             "47": 0,
@@ -5322,14 +5335,14 @@
         "our_url": "https://tennis24shop.com/?p=28020",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=28020",
         "our_price_lir": 4299,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "39": 0,
             "40": 0,
             "41": 0,
             "42": 0,
             "43": 0,
-            "44": 0,
+            "44": 999,
             "45": 0,
             "46": 0,
             "47": 0,
@@ -8460,10 +8473,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 999,
-            "بچه گانه": 0,
+            "بچه گانه": 999,
             "L": 999,
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "471": 0,
             "XS": 0
         }
@@ -9946,9 +9959,9 @@
         "our_url": "https://tennis24shop.com/?p=25440",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=25440",
         "our_price_lir": 1890,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "44": 996
+            "44": 0
         }
     },
     {
@@ -11824,7 +11837,7 @@
         "our_sizes": {
             "XL": 999,
             "L": 999,
-            "M": 999,
+            "M": 0,
             "451": 0,
             "XS": 0,
             "S": 0
@@ -14779,7 +14792,7 @@
         "our_price_lir": 4099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 999,
+            "40.5": 0,
             "36": 0,
             "38": 0,
             "39": 0,
@@ -15644,9 +15657,9 @@
         "our_url": "https://tennis24shop.com/?p=47495",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47495",
         "our_price_lir": 5099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "XL": 0
         }
     },
@@ -16908,7 +16921,7 @@
         "our_sizes": {
             "L": 999,
             "M": 999,
-            "S": 999,
+            "S": 0,
             "103": 0,
             "XL": 0
         }
@@ -17352,7 +17365,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 999,
-            "M": 999,
+            "M": 0,
             "S": 999,
             "L": 999,
             "084": 0,
@@ -18839,7 +18852,7 @@
         "our_sizes": {
             "T3-S": 999,
             "T4-M": 0,
-            "T5-M/L": 999,
+            "T5-M/L": 0,
             "031": 0,
             "T6-L": 0,
             "T7-L/XL": 0
@@ -18892,9 +18905,9 @@
         "our_sizes": {
             "T3-S": 999,
             "T5-M/L": 999,
-            "T6-L": 999,
+            "T6-L": 0,
             "T4-M": 999,
-            "892": 999
+            "892": 0
         }
     },
     {
@@ -19603,7 +19616,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-uzun-kollu-yarim-fermuarli-tenis-sweatshirtu-terracotta-rengi-thermic/_/R-p-324220?mc=8881226&c=BEJ",
         "our_url": "https://tennis24shop.com/?p=53089",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53089",
-        "our_price_lir": 1090,
+        "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
@@ -19696,7 +19709,7 @@
         "our_sizes": {
             "S": 999,
             "XS": 999,
-            "M": 999,
+            "M": 0,
             "L": 999,
             "010": 0,
             "XL": 0,
@@ -19994,7 +20007,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-uzun-kollu-yarim-fermuarli-tenis-sweatshirtu-bej-thermic/_/R-p-324220?mc=8881226&c=BEJ",
         "our_url": "https://tennis24shop.com/?p=53482",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53482",
-        "our_price_lir": 1090,
+        "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
@@ -20149,14 +20162,14 @@
         "our_url": "https://tennis24shop.com/?p=53652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53652",
         "our_price_lir": 3999,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "42": 999,
-            "42.5": 999,
+            "42": 0,
+            "42.5": 0,
             "43.5": 0,
             "44": 0,
             "44.5": 0,
-            "45": 999
+            "45": 0
         }
     },
     {
@@ -20933,7 +20946,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
-            "M": 999,
+            "M": 0,
             "S": 999
         }
     },
@@ -21898,8 +21911,8 @@
         "our_price_lir": 5699,
         "our_stock_status": "instock",
         "our_sizes": {
-            "45": 999,
-            "44.5": 999,
+            "45": 0,
+            "44.5": 0,
             "43.5": 0,
             "42.5": 999
         }
@@ -24484,10 +24497,10 @@
         "our_url": "https://tennis24shop.com/?p=65652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65652",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0,
             "L": 0
         }
@@ -24500,11 +24513,11 @@
         "our_url": "https://tennis24shop.com/?p=65665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65665",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24516,12 +24529,12 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -24532,10 +24545,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24547,13 +24560,13 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "2XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
