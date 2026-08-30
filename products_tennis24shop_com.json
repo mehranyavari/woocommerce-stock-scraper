@@ -5284,7 +5284,7 @@
         "our_sizes": {
             "42": 999,
             "44.5": 0,
-            "41.5": 999
+            "41.5": 0
         },
         "secondary_url": "https://www.tenisburada.com/asics-court-ff-3-novak-djokovic-toprak-kort-clay-tenis-ayakkabisi-1041a362-961"
     },
@@ -10323,7 +10323,7 @@
         "our_sizes": {
             "L": 999,
             "XS": 999,
-            "S": 999,
+            "S": 0,
             "M": 999,
             "XL": 0
         }
@@ -17634,7 +17634,7 @@
         "our_url": "https://tennis24shop.com/?p=42296",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42296",
         "our_price_lir": 3299,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -19536,7 +19536,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-uzun-kollu-tenis-tisortu-kirik-beyaz-th-500/_/R-p-324743?mc=8582884&c=BEYAZ",
         "our_url": "https://tennis24shop.com/?p=53023",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53023",
-        "our_price_lir": 340,
+        "our_price_lir": 690,
         "our_stock_status": "instock",
         "our_sizes": {
             "113-122cm 5-6 YEARS OLD": 999,
@@ -19554,7 +19554,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-uzun-kollu-termal-tenis-tisortu-acik-mavi-tts-ml-th/_/R-p-350914?mc=8873137&c=MAV%C4%B0",
         "our_url": "https://tennis24shop.com/?p=53038",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53038",
-        "our_price_lir": 340,
+        "our_price_lir": 690,
         "our_stock_status": "instock",
         "our_sizes": {
             "123-130cm 7-8 YEARS OLD": 999,
@@ -24257,7 +24257,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "42-46": 999,
-            "38-42": 999
+            "38-42": 0
         }
     },
     {
@@ -24493,10 +24493,10 @@
         "our_url": "https://tennis24shop.com/?p=65652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65652",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0,
             "L": 0
         }
@@ -24509,11 +24509,11 @@
         "our_url": "https://tennis24shop.com/?p=65665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65665",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24525,12 +24525,12 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -24541,10 +24541,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24556,13 +24556,13 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "2XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -27700,9 +27700,9 @@
             "40": 999,
             "40.5": 999,
             "46": 999,
-            "44.5": 999,
-            "45": 999,
-            "45.5": 999
+            "44.5": 0,
+            "45": 0,
+            "45.5": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nike-vapor-12-toprak-kort-clay-erkek-tenis-ayakkabisi-smoky-blue"
     },
@@ -27744,10 +27744,10 @@
         "our_price_lir": 7700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "38.5": 999,
-            "39": 999,
-            "40": 999,
-            "40.5": 999,
+            "38.5": 0,
+            "39": 0,
+            "40": 0,
+            "40.5": 0,
             "41": 999,
             "42": 999,
             "42.5": 999,
@@ -27757,8 +27757,8 @@
             "45": 999,
             "45.5": 999,
             "46": 999,
-            "47": 999,
-            "47.5": 999
+            "47": 0,
+            "47.5": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nike-zoom-vapor-pro-3-premium-toprak-kort-clay-erkek-tenis-ayakkabisi"
     }
