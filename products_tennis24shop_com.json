@@ -12315,7 +12315,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "34-38": 999,
-            "38-42": 999,
+            "38-42": 0,
             "42-46": 0
         }
     },
@@ -17601,7 +17601,7 @@
         "our_url": "https://tennis24shop.com/?p=42367",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42367",
         "our_price_lir": 3299,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -17623,7 +17623,7 @@
         "our_url": "https://tennis24shop.com/?p=42304",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42304",
         "our_price_lir": 3549,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -20794,7 +20794,7 @@
         "our_price_lir": 4700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999,
+            "M": 0,
             "S": 0,
             "L": 999,
             "XL": 999
@@ -24493,10 +24493,10 @@
         "our_url": "https://tennis24shop.com/?p=65652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65652",
         "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
-            "S": 999,
+            "S": 0,
             "XL": 0,
             "L": 0
         }
@@ -24509,11 +24509,11 @@
         "our_url": "https://tennis24shop.com/?p=65665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65665",
         "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "2XL": 0,
             "M": 0,
-            "S": 999,
+            "S": 0,
             "XL": 0
         }
     },
@@ -26066,7 +26066,7 @@
             "46": 999,
             "40.5": 999,
             "41.5": 999,
-            "44.5": 999,
+            "44.5": 0,
             "45.5": 999,
             "42.5": 999
         }
@@ -27719,7 +27719,7 @@
             "41": 999,
             "42": 999,
             "42.5": 999,
-            "43": 998,
+            "43": 999,
             "44": 999,
             "44.5": 999,
             "45": 999,
