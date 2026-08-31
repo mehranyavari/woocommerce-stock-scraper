@@ -448,11 +448,11 @@
         "our_url": "https://tennis24shop.com/?p=40983",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=40983",
         "our_price_lir": 6700,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "41": 0,
             "42.5": 0,
-            "45": 999
+            "45": 0
         }
     },
     {
@@ -1828,8 +1828,8 @@
         "url": "https://www.raketci.com/urun/nike-dri-fit-doublewide-bileklik-2li-paket/",
         "our_url": "https://tennis24shop.com/?p=34134",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=34134",
-        "our_price_lir": 900,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 799,
+        "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.meritspor.com.tr/nike-home-away-doublewide-tenis-bilekligi-beyaz-siyah"
     },
@@ -2778,7 +2778,7 @@
         "our_url": "https://tennis24shop.com/?p=36708",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=36708",
         "our_price_lir": 4700,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -18215,7 +18215,7 @@
             "42": 999,
             "42.5": 999,
             "43": 999,
-            "44": 998,
+            "44": 999,
             "44.5": 999,
             "45": 999,
             "40": 999,
@@ -20127,7 +20127,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-mavi-buz-beyazi-ts500/_/R-p-301723?mc=8882111&c=BEYAZ_MAV%C4%B0",
         "our_url": "https://tennis24shop.com/?p=53612",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53612",
-        "our_price_lir": 2750,
+        "our_price_lir": 2190,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "40": 0,
@@ -24493,10 +24493,10 @@
         "our_url": "https://tennis24shop.com/?p=65652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65652",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0,
             "L": 0
         }
@@ -24509,11 +24509,11 @@
         "our_url": "https://tennis24shop.com/?p=65665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65665",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
             "M": 0,
-            "S": 0,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24525,12 +24525,12 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -24541,10 +24541,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
+            "M": 999,
+            "S": 999,
             "XL": 0
         }
     },
@@ -24556,13 +24556,13 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "2XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
