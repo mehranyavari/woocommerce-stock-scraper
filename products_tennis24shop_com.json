@@ -212,7 +212,7 @@
         "our_sizes": {
             "43": 0,
             "44.5": 999,
-            "45": 999,
+            "45": 0,
             "45.5": 999
         }
     },
@@ -3983,7 +3983,7 @@
             "39": 999,
             "40": 999,
             "40.5": 999,
-            "41": 0
+            "41": 999
         }
     },
     {
@@ -4288,7 +4288,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "42.5": 0,
-            "43": 999,
+            "43": 0,
             "39": 0,
             "40": 0,
             "41": 0,
@@ -6085,7 +6085,7 @@
             "42.5": 0,
             "42": 999,
             "41.5": 999,
-            "40.5": 0,
+            "40.5": 999,
             "40": 0,
             "39.5": 0,
             "39": 0,
@@ -7097,7 +7097,7 @@
             "33": 0,
             "33.5": 0,
             "34": 0,
-            "37": 999,
+            "37": 0,
             "35.5": 0,
             "36.5": 0,
             "31": 0,
@@ -13650,7 +13650,7 @@
         "url": "https://www.opsarsport.com/urun/nike-everyday-plus-cushioned-crew-antrenman-coraplari-3-cift-5",
         "our_url": "https://tennis24shop.com/?p=44194",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=44194",
-        "our_price_lir": 800,
+        "our_price_lir": 1000,
         "our_stock_status": "instock",
         "our_sizes": {
             "38-42": 0,
@@ -14200,7 +14200,7 @@
         "our_sizes": {
             "34-38": 999,
             "38-42": 999,
-            "42-46": 999,
+            "42-46": 0,
             "38.42": 999,
             "42.46": 999
         },
@@ -18512,12 +18512,12 @@
         "our_url": "https://tennis24shop.com/?p=48878",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48878",
         "our_price_lir": 1550,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
             "L": 0,
             "38-42": 0,
-            "42-46": 999
+            "42-46": 0
         }
     },
     {
@@ -18999,7 +18999,8 @@
         "our_sizes": {
             "43": 999,
             "42.5": 999,
-            "42": 999
+            "42": 0,
+            "41": 999
         }
     },
     {
@@ -19742,7 +19743,7 @@
         "our_price_lir": 7400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43": 999,
+            "43": 0,
             "44": 999,
             "44.5": 999,
             "46": 0,
@@ -20088,7 +20089,7 @@
             "35.5": 0,
             "36": 0,
             "40": 0,
-            "41": 999,
+            "41": 0,
             "36.5": 0,
             "37.5": 999
         },
@@ -22477,7 +22478,7 @@
         "our_sizes": {
             "XL": 999,
             "L": 0,
-            "S": 999,
+            "S": 0,
             "XS": 0,
             "M": 0,
             "873": 0
@@ -24871,7 +24872,10 @@
             "8.5": 0,
             "9.5": 0,
             "10.5": 0,
-            "11.5": 0
+            "11.5": 0,
+            "42": 0,
+            "43": 0,
+            "42.5": 0
         }
     },
     {
@@ -24903,7 +24907,9 @@
             "8.5": 0,
             "9.5": 0,
             "10.5": 0,
-            "11.5": 0
+            "11.5": 0,
+            "46": 0,
+            "42.5": 0
         }
     },
     {
@@ -25170,7 +25176,12 @@
         "our_stock_status": "outofstock",
         "our_sizes": {
             "⅓47": 0,
-            "44": 0
+            "44": 0,
+            "40": 0,
+            "42": 0,
+            "46": 0,
+            "48": 0,
+            "50": 0
         }
     },
     {
@@ -25183,7 +25194,7 @@
         "our_price_lir": 9199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41.5": 0,
+            "41.5": 999,
             "42": 999,
             "42.5": 0,
             "43.5": 999,
@@ -25193,7 +25204,13 @@
             "46": 0,
             "white-aurora-green": 0,
             "47": 0,
-            "grey-blue-pistachio": 0
+            "grey-blue-pistachio": 0,
+            "39": 0,
+            "40": 0,
+            "48": 0,
+            "46.5": 0,
+            "39.5": 0,
+            "40.5": 0
         }
     },
     {
@@ -25213,7 +25230,9 @@
             "42.5": 0,
             "43.5": 0,
             "44": 999,
-            "44.5": 999
+            "44.5": 999,
+            "45": 0,
+            "46": 0
         }
     },
     {
@@ -25253,7 +25272,12 @@
             "39": 999,
             "38": 999,
             "36": 999,
-            "42.5": 999
+            "42.5": 999,
+            "40": 0,
+            "42": 0,
+            "39.5": 0,
+            "40.5": 0,
+            "41.5": 0
         },
         "secondary_url": "https://www.opsarsport.com/urun/asics-court-ff-3-clay-kadin-pembe-tenis-ayakkabisi"
     },
@@ -25275,7 +25299,8 @@
             "39.5": 999,
             "40": 999,
             "41.5": 0,
-            "morganite-piedmont-grey": 0
+            "morganite-piedmont-grey": 0,
+            "40.5": 0
         }
     },
     {
@@ -25297,7 +25322,12 @@
             "36 2/3": 999,
             "37 1/3": 0,
             "39 1/3": 0,
-            "38 2/3": 0
+            "38 2/3": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "46": 0,
+            "48": 0
         }
     },
     {
@@ -25523,7 +25553,8 @@
         "our_sizes": {
             "M": 0,
             "S": 999,
-            "100": 999
+            "100": 999,
+            "L": 0
         }
     },
     {
@@ -25612,7 +25643,8 @@
         "our_sizes": {
             "L": 0,
             "M": 0,
-            "S": 999
+            "S": 999,
+            "XL": 0
         }
     },
     {
@@ -25799,7 +25831,10 @@
             "37⅓": 0,
             "36 2/3": 0,
             "38": 0,
-            "37 1/3": 0
+            "37 1/3": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0
         }
     },
     {
@@ -25885,7 +25920,7 @@
             "41.5": 999,
             "42": 0,
             "42.5": 999,
-            "43.5": 0,
+            "43.5": 999,
             "44": 0,
             "44.5": 999,
             "45": 0,
@@ -25936,7 +25971,8 @@
             "44.5": 999,
             "45": 999,
             "46": 999,
-            "WHITE/DIGITAL SAKURA": 0
+            "WHITE/DIGITAL SAKURA": 0,
+            "40.5": 0
         }
     },
     {
@@ -25960,7 +25996,10 @@
             "46": 999,
             "47": 0,
             "49": 0,
-            "50.5": 999
+            "50.5": 999,
+            "40": 0,
+            "48": 0,
+            "46.5": 0
         }
     },
     {
@@ -26164,7 +26203,10 @@
             "44 2/3": 0,
             "45 1/3": 999,
             "46 2/3": 0,
-            "47 1/3": 999
+            "47 1/3": 999,
+            "40": 0,
+            "48": 0,
+            "50": 0
         }
     },
     {
@@ -26195,7 +26237,9 @@
             "44 2/3": 0,
             "45 1/3": 0,
             "46 2/3": 0,
-            "47 1/3": 0
+            "47 1/3": 0,
+            "40": 0,
+            "48": 0
         }
     },
     {
@@ -28445,9 +28489,9 @@
         "our_url": "https://tennis24shop.com/?p=14994",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14994",
         "our_price_lir": 3100,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 999,
             "۳۶": 0,
             "38": 0,
             "39": 0,
@@ -29950,6 +29994,60 @@
             "39": 5,
             "40": 5,
             "41": 5
+        }
+    },
+    {
+        "id": 72505,
+        "title": "تی شرت تنیس مردانه نایک  - NikeCourt Advantage - کرم",
+        "sku": "IM6084-072",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-erkek-tenis-tisortu",
+        "our_url": "https://tennis24shop.com/?p=72505",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72505",
+        "our_price_lir": 4100,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "L": 999,
+            "M": 0,
+            "XL": 0,
+            "L.": 0,
+            "S": 999,
+            "XS": 0
+        }
+    },
+    {
+        "id": 72533,
+        "title": "شلوارک تنیس مردانه نایک  - NikeCourt Advantage 15cm - زرشکی",
+        "sku": "IM5776-677",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
+        "our_url": "https://tennis24shop.com/?p=72533",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72533",
+        "our_price_lir": 5000,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "L": 999,
+            "M": 0,
+            "XL": 0,
+            "L.": 0,
+            "S": 999,
+            "XS": 0
+        }
+    },
+    {
+        "id": 72548,
+        "title": "شلوارک تنیس مردانه نایک  - NikeCourt Advantage Dri-FIT 20 cm - نارنجی",
+        "sku": "FZ6913-633",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
+        "our_url": "https://tennis24shop.com/?p=72548",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72548",
+        "our_price_lir": 3300,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "L": 999,
+            "M": 0,
+            "XL": 0,
+            "L.": 0,
+            "S": 999,
+            "XS": 0
         }
     }
 ]
