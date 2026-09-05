@@ -14321,12 +14321,12 @@
         "our_url": "https://tennis24shop.com/?p=46207",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46207",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
-            "S": 0,
-            "M": 0
+            "XL": 999,
+            "L": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -18995,13 +18995,13 @@
         "our_url": "https://tennis24shop.com/?p=52500",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52500",
         "our_price_lir": 3200,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "S": 0,
             "M": 0,
             "L": 0,
             "XL": 0,
-            "XS": 999
+            "XS": 0
         }
     },
     {
