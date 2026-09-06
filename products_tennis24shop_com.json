@@ -7404,7 +7404,7 @@
         "our_price_lir": 8800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44.5": 999,
+            "44.5": 0,
             "40.5": 0,
             "42.5": 999,
             "43": 0,
@@ -12228,7 +12228,7 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999,
+            "M": 0,
             "S": 999,
             "XS": 999,
             "L": 0
@@ -15098,7 +15098,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "M": 1000,
+            "M": 999,
             "10": 0,
             "XS": 0,
             "L": 0,
@@ -23077,11 +23077,11 @@
         "our_price_lir": 7700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41": 0,
+            "41": 999,
             "42": 999,
-            "42.5": 2,
-            "43": 4,
-            "44.5": 0,
+            "42.5": 999,
+            "43": 999,
+            "44.5": 999,
             "46": 0,
             "47": 0,
             "40.5": 0,
@@ -23090,7 +23090,11 @@
             "38.5": 0,
             "47.5": 0,
             "48.5": 0,
-            "49.5": 0
+            "49.5": 0,
+            "40": 0,
+            "44": 0,
+            "45": 0,
+            "200": 0
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-vapor-pro-3-heritage-erkek-sert-kort-tenis-ayakkabilari"
     },
@@ -23407,7 +23411,7 @@
         "our_sizes": {
             "40": 999,
             "40.5": 999,
-            "41": 3,
+            "41": 999,
             "42": 999,
             "42.5": 0,
             "43": 999,
@@ -23421,7 +23425,8 @@
             "100": 0,
             "48.5": 0,
             "49.5": 0,
-            "47.5": 0
+            "47.5": 0,
+            "38.5": 0
         }
     },
     {
@@ -26383,10 +26388,10 @@
         "our_url": "https://tennis24shop.com/?p=65652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65652",
         "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
-            "S": 999,
+            "S": 0,
             "XL": 0,
             "L": 0,
             "XS": 0
@@ -26418,12 +26423,12 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
-            "M": 999,
-            "S": 999,
-            "XL": 999,
+            "L": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
             "XS": 0
         }
     },
@@ -26435,10 +26440,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "M": 999,
-            "S": 999,
+            "M": 0,
+            "S": 0,
             "XL": 0,
             "XS": 0,
             "L": 0
@@ -26452,13 +26457,13 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
-            "M": 999,
-            "S": 999,
-            "XL": 999,
-            "2XL": 999,
+            "L": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
+            "2XL": 0,
             "XS": 0
         }
     },
@@ -27962,7 +27967,7 @@
             "36": 999,
             "36⅔": 0,
             "37⅓": 0,
-            "38": 998,
+            "38": 999,
             "38⅔": 0,
             "39⅓": 0,
             "40": 999,
@@ -29998,7 +30003,8 @@
             "38.5": 0,
             "40.5": 0,
             "39": 0,
-            "40": 0
+            "40": 0,
+            "38": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nike-vapor-12-premium-sert-kort-kadin-tenis-ayakkabisi1"
     },
@@ -30041,7 +30047,7 @@
             "39": 999,
             "40": 999,
             "35.5": 0,
-            "40.5": 999
+            "40.5": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nike-vapor-pro-3-sert-kort-kadin-tenis-ayakkabisi1"
     },
@@ -30127,10 +30133,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 999,
-            "M": 0,
-            "XL": 0,
+            "M": 999,
+            "XL": 999,
             "L.": 0,
-            "S": 999,
+            "S": 0,
             "XS": 0
         }
     },
@@ -30145,10 +30151,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 999,
-            "M": 0,
-            "XL": 0,
+            "M": 999,
+            "XL": 999,
             "L.": 0,
-            "S": 999,
+            "S": 0,
             "XS": 0
         }
     },
@@ -30159,14 +30165,14 @@
         "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
         "our_url": "https://tennis24shop.com/?p=72548",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72548",
-        "our_price_lir": 3300,
+        "our_price_lir": 5000,
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 999,
-            "M": 0,
-            "XL": 0,
+            "M": 999,
+            "XL": 999,
             "L.": 0,
-            "S": 999,
+            "S": 0,
             "XS": 0
         }
     }
