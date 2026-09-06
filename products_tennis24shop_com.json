@@ -1075,7 +1075,7 @@
             "37.5": 999,
             "36.5": 999,
             "41": 999,
-            "42": 999,
+            "42": 0,
             "43": 999,
             "44": 999,
             "45": 999,
@@ -15366,7 +15366,16 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45803",
         "our_price_lir": 5649,
         "our_stock_status": "outofstock",
-        "our_sizes": []
+        "our_sizes": {
+            "۳۶": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "46": 0,
+            "48": 0,
+            "50": 0
+        }
     },
     {
         "id": 45815,
@@ -15377,7 +15386,16 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45815",
         "our_price_lir": 3749,
         "our_stock_status": "outofstock",
-        "our_sizes": []
+        "our_sizes": {
+            "۳۶": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "46": 0,
+            "48": 0,
+            "50": 0
+        }
     },
     {
         "id": 45873,
@@ -22280,7 +22298,7 @@
         "our_price_lir": 4000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999,
+            "M": 0,
             "L": 999,
             "XS": 0,
             "S": 0
@@ -23140,7 +23158,7 @@
         "url": "https://www.decathlon.com.tr/p/cignenebilir-enerji-gummy-karisik-aromali-30-g-onthego/_/R-p-385342?mc=9031144&utm_campaign=productpage&utm_medium=share&utm_source=mobileapp",
         "our_url": "https://tennis24shop.com/?p=55159",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55159",
-        "our_price_lir": 60,
+        "our_price_lir": 75,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -26405,12 +26423,13 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "XS": 0
         }
     },
     {
@@ -26421,11 +26440,13 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "M": 0,
-            "S": 0,
-            "XL": 0
+            "M": 999,
+            "S": 999,
+            "XL": 0,
+            "XS": 0,
+            "L": 0
         }
     },
     {
@@ -26436,13 +26457,14 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "2XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "2XL": 999,
+            "XS": 0
         }
     },
     {
@@ -27945,7 +27967,7 @@
             "36": 999,
             "36⅔": 0,
             "37⅓": 0,
-            "38": 999,
+            "38": 998,
             "38⅔": 0,
             "39⅓": 0,
             "40": 999,
