@@ -25063,7 +25063,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
-            "M": 999,
+            "M": 0,
             "L": 0,
             "105": 0,
             "XL": 0
@@ -28331,10 +28331,10 @@
         "our_url": "https://tennis24shop.com/?p=68169",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68169",
         "our_price_lir": 4559,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "41.5": 0,
-            "44": 0,
+            "44": 999,
             "44.5": 0,
             "45": 0,
             "46": 0,
@@ -28784,14 +28784,14 @@
         "our_url": "https://tennis24shop.com/?p=68762",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68762",
         "our_price_lir": 2749,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "XS": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "XS": 999
         }
     },
     {
@@ -28802,14 +28802,14 @@
         "our_url": "https://tennis24shop.com/?p=68784",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68784",
         "our_price_lir": 2749,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "XS": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "XS": 999
         }
     },
     {
@@ -29323,7 +29323,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -29337,7 +29340,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -29351,7 +29357,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -29365,7 +29374,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 0,
+            "XL": 999
         }
     },
     {
@@ -29379,7 +29391,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
@@ -29392,7 +29407,10 @@
         "our_price_lir": 669,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999
         }
     },
     {
