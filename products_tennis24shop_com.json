@@ -88,9 +88,9 @@
         "our_sizes": {
             "42": 999,
             "42.5": 999,
-            "43": 999,
+            "43": 0,
             "44": 999,
-            "44.5": 999,
+            "44.5": 0,
             "45": 0,
             "41": 0,
             "45.5": 0,
@@ -481,11 +481,11 @@
         "our_url": "https://tennis24shop.com/?p=40983",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=40983",
         "our_price_lir": 6700,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "41": 0,
             "42.5": 0,
-            "45": 999
+            "45": 0
         }
     },
     {
@@ -855,7 +855,7 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-clay-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=42836",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42836",
-        "our_price_lir": 8800,
+        "our_price_lir": 8799,
         "our_stock_status": "instock",
         "our_sizes": {
             "42": 999,
@@ -863,7 +863,7 @@
             "43": 999,
             "44": 999,
             "44.5": 999,
-            "45": 999,
+            "45": 0,
             "45.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi/"
@@ -1974,8 +1974,8 @@
         "url": "https://www.raketci.com/urun/nike-dri-fit-doublewide-bileklik-2li-paket/",
         "our_url": "https://tennis24shop.com/?p=34134",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=34134",
-        "our_price_lir": 900,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 799,
+        "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.meritspor.com.tr/nike-home-away-doublewide-tenis-bilekligi-beyaz-siyah"
     },
@@ -3049,7 +3049,7 @@
         "our_url": "https://tennis24shop.com/?p=36708",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=36708",
         "our_price_lir": 4700,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -3631,14 +3631,14 @@
         "our_url": "https://tennis24shop.com/?p=42904",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42904",
         "our_price_lir": 6800,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "40": 999,
-            "42": 999,
-            "42.5": 999,
-            "43": 999,
+            "40": 0,
+            "42": 0,
+            "42.5": 0,
+            "43": 0,
             "45": 0,
-            "40.5": 999
+            "40.5": 0
         }
     },
     {
@@ -7437,14 +7437,14 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-2",
         "our_url": "https://tennis24shop.com/?p=43121",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=43121",
-        "our_price_lir": 8800,
-        "our_stock_status": "instock",
+        "our_price_lir": 8799,
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "44.5": 0,
             "40.5": 0,
-            "42.5": 999,
+            "42.5": 0,
             "43": 0,
-            "45": 999
+            "45": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-2/"
     },
@@ -10869,7 +10869,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-raketi-25-inc-sari-easy-tr130/_/R-p-309594?mc=8540261&c=S%C4%B0YAH_SARI",
         "our_url": "https://tennis24shop.com/?p=12902",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12902",
-        "our_price_lir": 1090,
+        "our_price_lir": 981,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -10938,17 +10938,17 @@
         "url": "https://www.raketci.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-3/",
         "our_url": "https://tennis24shop.com/?p=43562",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=43562",
-        "our_price_lir": 8800,
+        "our_price_lir": 8500,
         "our_stock_status": "instock",
         "our_sizes": {
             "40.5": 999,
-            "42": 999,
-            "42.5": 999,
-            "43": 999,
-            "44": 999,
+            "42": 0,
+            "42.5": 0,
+            "43": 0,
+            "44": 0,
             "44.5": 0,
-            "45": 999,
-            "45.5": 999,
+            "45": 0,
+            "45.5": 0,
             "46": 999,
             "39": 0,
             "40": 0,
@@ -12483,7 +12483,7 @@
         "our_url": "https://tennis24shop.com/?p=40151",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=40151",
         "our_price_lir": 600,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -14241,8 +14241,8 @@
             "34-38": 999,
             "38-42": 999,
             "42-46": 999,
-            "38.42": 999,
-            "42.46": 999
+            "38.42": 0,
+            "42.46": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -14852,7 +14852,7 @@
         "url": "https://www.raketci.com/urun/nike-court-advantage-dri-fit-kisa-kollu-kadin-tenis-tisortu-4/",
         "our_url": "https://tennis24shop.com/?p=45229",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45229",
-        "our_price_lir": 3300,
+        "our_price_lir": 2700,
         "our_stock_status": "instock",
         "our_sizes": {
             "M": 0,
@@ -15481,10 +15481,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "47": 999,
-            "40.5": 999,
+            "40.5": 0,
             "41": 0,
             "42.5": 0,
-            "44": 999,
+            "44": 0,
             "45": 0,
             "46": 999,
             "44.5": 999,
@@ -15955,16 +15955,16 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=46341",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46341",
-        "our_price_lir": 8800,
+        "our_price_lir": 8799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44.5": 999,
-            "45": 999,
+            "44.5": 0,
+            "45": 0,
             "45.5": 999,
             "46": 999,
             "44": 999,
             "42": 999,
-            "42.5": 999,
+            "42.5": 0,
             "43": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi-2/"
@@ -18295,11 +18295,11 @@
         "our_url": "https://tennis24shop.com/?p=48669",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48669",
         "our_price_lir": 3359,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "45": 0,
             "44.5": 0,
-            "43": 999,
+            "43": 0,
             "41": 0,
             "42": 0,
             "44": 0,
@@ -19415,7 +19415,7 @@
         "our_url": "https://tennis24shop.com/?p=49993",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49993",
         "our_price_lir": 10000,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -21042,7 +21042,7 @@
         "our_url": "https://tennis24shop.com/?p=25857",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=25857",
         "our_price_lir": 600,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -21063,7 +21063,7 @@
         "url": "https://www.yuxel.com.tr/nike-swoosh-unisex-antrenman-sac-bandi5",
         "our_url": "https://tennis24shop.com/?p=52811",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52811",
-        "our_price_lir": 900,
+        "our_price_lir": 460,
         "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.raketci.com/urun/nike-swoosh-unisex-gri-sac-bandi/"
@@ -21076,7 +21076,7 @@
         "our_url": "https://tennis24shop.com/?p=52814",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52814",
         "our_price_lir": 600,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -21087,7 +21087,7 @@
         "our_url": "https://tennis24shop.com/?p=52817",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52817",
         "our_price_lir": 600,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -21109,7 +21109,7 @@
         "our_url": "https://tennis24shop.com/?p=52824",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52824",
         "our_price_lir": 500,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -22729,19 +22729,19 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-kopya",
         "our_url": "https://tennis24shop.com/?p=54580",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54580",
-        "our_price_lir": 8800,
+        "our_price_lir": 8799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43": 999,
+            "43": 0,
             "44.5": 999,
             "45.5": 999,
-            "45": 999,
+            "45": 0,
             "46": 0,
             "41": 0,
-            "42": 999,
+            "42": 0,
             "40.5": 0,
-            "42.5": 999,
-            "44": 999
+            "42.5": 0,
+            "44": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-6/"
     },
@@ -23180,13 +23180,13 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 999,
-            "40.5": 999,
+            "40.5": 0,
             "44": 999,
             "44.5": 999,
             "45.5": 0,
-            "42": 999,
-            "42.5": 999,
-            "43": 999,
+            "42": 0,
+            "42.5": 0,
+            "43": 0,
             "45": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-magnolia-sert-kort-erkek-tenis-ayakkabisi/"
@@ -23816,10 +23816,10 @@
             "45": 999,
             "45.5": 999,
             "46": 0,
-            "42": 999,
-            "44": 999,
-            "42.5": 999,
-            "43": 999,
+            "42": 0,
+            "44": 0,
+            "42.5": 0,
+            "43": 0,
             "39": 0,
             "40": 0,
             "47": 0,
@@ -24614,17 +24614,17 @@
         "url": "https://www.raketci.com/urun/nike-zoom-gp-challange-1-5-erkek-sert-kort-tenis-ayakkabisi/",
         "our_url": "https://tennis24shop.com/?p=56586",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=56586",
-        "our_price_lir": 8799,
+        "our_price_lir": 7839,
         "our_stock_status": "instock",
         "our_sizes": {
             "40.5": 0,
-            "44": 999,
+            "44": 0,
             "44.5": 999,
-            "45": 999,
-            "41": 999,
-            "42": 999,
-            "42.5": 999,
-            "43": 999,
+            "45": 0,
+            "41": 0,
+            "42": 0,
+            "42.5": 0,
+            "43": 0,
             "38": 0,
             "40": 0,
             "46": 0,
@@ -26769,7 +26769,7 @@
             "44.5": 999,
             "45": 999,
             "46": 999,
-            "40.5": 999
+            "40.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-clay-erkek-tenis-ayakkabisi-2/"
     },
@@ -26832,11 +26832,11 @@
         "our_url": "https://tennis24shop.com/?p=66186",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66186",
         "our_price_lir": 2699,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "XS": 0,
-            "M": 999,
-            "L": 999
+            "M": 0,
+            "L": 0
         }
     },
     {
@@ -26847,12 +26847,12 @@
         "our_url": "https://tennis24shop.com/?p=66195",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66195",
         "our_price_lir": 3300,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "XS": 999,
-            "M": 999,
+            "XS": 0,
+            "M": 0,
             "L": 0,
-            "S": 999
+            "S": 0
         }
     },
     {
@@ -27277,14 +27277,14 @@
             "36": 999,
             "37": 999,
             "37.5": 999,
-            "39": 999,
-            "39.5": 999,
-            "40": 999,
+            "39": 0,
+            "39.5": 0,
+            "40": 0,
             "40.5": 999,
             "42": 999,
             "42.5": 999,
-            "38": 999,
-            "375": 999,
+            "38": 0,
+            "375": 0,
             "41.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-kadin-padel-ayakkabisi/"
@@ -27699,9 +27699,9 @@
         "our_url": "https://tennis24shop.com/?p=67309",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67309",
         "our_price_lir": 3000,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "XL": 999,
+            "XL": 0,
             "L": 0
         }
     },
@@ -27713,9 +27713,9 @@
         "our_url": "https://tennis24shop.com/?p=67328",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67328",
         "our_price_lir": 3200,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "XL": 999,
+            "XL": 0,
             "L": 0
         }
     },
@@ -27727,11 +27727,11 @@
         "our_url": "https://tennis24shop.com/?p=67340",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67340",
         "our_price_lir": 4300,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
-            "XL": 999,
-            "M": 999
+            "L": 0,
+            "XL": 0,
+            "M": 0
         }
     },
     {
@@ -27742,12 +27742,12 @@
         "our_url": "https://tennis24shop.com/?p=67352",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67352",
         "our_price_lir": 3400,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "M": 999,
-            "S": 999,
-            "XS": 999,
-            "L": 999
+            "M": 0,
+            "S": 0,
+            "XS": 0,
+            "L": 0
         }
     },
     {
@@ -27758,11 +27758,11 @@
         "our_url": "https://tennis24shop.com/?p=67363",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67363",
         "our_price_lir": 2900,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "XL": 0,
-            "S": 999,
-            "XS": 999
+            "S": 0,
+            "XS": 0
         }
     },
     {
@@ -28015,7 +28015,7 @@
             "41 ⅓": 0,
             "41.5": 0,
             "39.5": 999,
-            "40.5": 999,
+            "40.5": 0,
             "37.5": 999,
             "36.5": 999,
             "38.5": 999
