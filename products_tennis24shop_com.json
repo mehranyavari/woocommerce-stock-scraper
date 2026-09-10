@@ -517,11 +517,11 @@
         "our_url": "https://tennis24shop.com/?p=40963",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=40963",
         "our_price_lir": 5899,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": {
             "39": 0,
             "42": 0,
-            "42.5": 0,
+            "42.5": 999,
             "41": 0,
             "47": 0,
             "40": 0,
@@ -738,10 +738,10 @@
         "our_url": "https://tennis24shop.com/?p=39311",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=39311",
         "our_price_lir": 7199,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "42": 0,
-            "42.5": 0,
+            "42.5": 999,
             "43": 0,
             "44": 0,
             "45": 0,
@@ -2479,11 +2479,11 @@
         "our_url": "https://tennis24shop.com/?p=15399",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=15399",
         "our_price_lir": 7199,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "42": 0,
-            "42.5": 0,
+            "42.5": 999,
             "38": 0,
             "39": 0,
             "40": 0,
@@ -2660,11 +2660,11 @@
         "our_url": "https://tennis24shop.com/?p=12608",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12608",
         "our_price_lir": 3239,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "36.5": 0,
             "37.5": 0,
-            "38": 999,
+            "38": 0,
             "۳۶": 0,
             "39": 0,
             "40": 0,
@@ -4349,7 +4349,7 @@
             "43": 999,
             "44": 999,
             "44.5": 0,
-            "45": 999,
+            "45": 0,
             "45.5": 999,
             "46": 0,
             "39": 0,
@@ -19207,9 +19207,9 @@
         "our_url": "https://tennis24shop.com/?p=42376",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42376",
         "our_price_lir": 3299,
-        "our_stock_status": "onbackorder",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "1": 999
+            "1": 0
         }
     },
     {
@@ -19233,9 +19233,9 @@
         "our_url": "https://tennis24shop.com/?p=42358",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42358",
         "our_price_lir": 3549,
-        "our_stock_status": "onbackorder",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "1": 999
+            "1": 0
         }
     },
     {
@@ -27180,11 +27180,11 @@
         "our_url": "https://tennis24shop.com/?p=66453",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66453",
         "our_price_lir": 6899,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "43": 0,
             "44": 0,
-            "45": 999
+            "45": 0
         }
     },
     {
@@ -27984,7 +27984,7 @@
             "45 ⅓": 0,
             "46": 999,
             "46⅔": 0,
-            "48": 0,
+            "48": 999,
             "45.5": 999,
             "44.5": 999,
             "41.5": 999,
@@ -29301,12 +29301,12 @@
         "our_url": "https://tennis24shop.com/?p=69254",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69254",
         "our_price_lir": 9199,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 0,
+            "40.5": 999,
             "42.5": 0,
-            "43.5": 0,
-            "44": 0,
+            "43.5": 999,
+            "44": 999,
             "44.5": 0,
             "45": 0
         },
@@ -29943,7 +29943,7 @@
         "url": "https://www.meritspor.com.tr/nike-vapor-12-premium-sert-kort-erkek-tenis-ayakkabisi2",
         "our_url": "https://tennis24shop.com/?p=70245",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=70245",
-        "our_price_lir": 9000,
+        "our_price_lir": 10000,
         "our_stock_status": "instock",
         "our_sizes": {
             "38.5": 999,
