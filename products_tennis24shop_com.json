@@ -12460,7 +12460,7 @@
     {
         "id": 44044,
         "title": "دامن تنیس زنانه دکتلون DECATHLON Essentiel 100 - سفید",
-        "sku": "8547381",
+        "sku": "8547381-old-44044",
         "url": "https://www.decathlon.com.tr/p/kadin-tenis-etegi-siyah-essentiel-100/_/R-p-305841?mc=8547381",
         "our_url": "https://tennis24shop.com/?p=44044",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=44044",
@@ -15487,7 +15487,7 @@
             "44": 999,
             "45": 0,
             "46": 999,
-            "44.5": 999,
+            "44.5": 0,
             "39": 0,
             "40": 0,
             "43": 0,
@@ -29374,7 +29374,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L.": 0,
-            "L": 999,
+            "L": 0,
             "M": 999,
             "S": 0,
             "XL": 999
@@ -30251,6 +30251,24 @@
             "44": 10,
             "45": 10,
             "46": 10
+        }
+    },
+    {
+        "id": 73043,
+        "title": "دامن تنیس زنانه دکتلون مدل Essentiel 100 - سفید",
+        "sku": "8547381",
+        "url": "https://www.decathlon.com.tr/p/kadin-tenis-etegi-beyaz-essentiel-100/_/R-p-305841?mc=8547381&c=BEYAZ",
+        "our_url": "https://tennis24shop.com/?p=73043",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73043",
+        "our_price_lir": 610,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "2XS": 10,
+            "XS": 10,
+            "S": 10,
+            "M": 10,
+            "L": 10,
+            "XL": 10
         }
     }
 ]
