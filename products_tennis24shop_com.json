@@ -29677,7 +29677,7 @@
             "37.5": 999,
             "39": 99,
             "39.5": 0,
-            "38": 999
+            "38": 0
         },
         "secondary_url": "https://www.boyner.com.tr/asics-padel-ayakkabisi-beyaz-pembe-kadin-1042a285-250-gel-resolution-x-padel-p-15977853?magaza=boyner"
     },
@@ -30278,16 +30278,16 @@
         "our_price_lir": 6099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 10,
-            "36": 10,
-            "36.5": 10,
-            "37.5": 10,
-            "38": 10,
-            "38.5": 10,
-            "39.5": 10,
-            "40": 10,
-            "40.5": 10,
-            "41.5": 10
+            "مشکی": 0,
+            "36": 0,
+            "36.5": 0,
+            "37.5": 0,
+            "38": 0,
+            "38.5": 0,
+            "39.5": 0,
+            "40": 0,
+            "40.5": 0,
+            "41.5": 0
         }
     },
     {
@@ -30370,6 +30370,38 @@
         "our_sizes": {
             "131-140cm 8-9 years old": 5,
             "113-122cm 5-6 YEARS OLD": 5
+        }
+    },
+    {
+        "id": 73164,
+        "title": "سویشرت تنیس بچه‌گانه دکتلون Decathlon 500  – مشکی",
+        "sku": "9007462-2",
+        "url": "https://www.decathlon.com.tr/p/cocuk-tenis-esofman-ustu-siyah-500/_/R-p-333330?mc=8646052&c=SİYAH",
+        "our_url": "https://tennis24shop.com/?p=73164",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73164",
+        "our_price_lir": 1090,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "149-159cm 12-13 YEARS OLD": 5,
+            "141-148cm 10-11 YEARS OLD": 5,
+            "131-140cm 8-9 years old": 5,
+            "123-130cm 7-8 YEARS OLD": 5,
+            "14-15سال-161-172cm": 5
+        }
+    },
+    {
+        "id": 73179,
+        "title": "جوراب تنیس ساق بلند دکتلون DECATHLON DKT ONE پک چهار تایی - خاکی و آبی",
+        "sku": "8977104",
+        "url": "https://www.decathlon.com.tr/p/spor-corabi-uzun-konclu-4-cift-bej-kahverengi-beyaz-rs-300/_/R-p-343508?mc=8977104&c=BEYAZ_MAVİ_YEŞİL",
+        "our_url": "https://tennis24shop.com/?p=73179",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73179",
+        "our_price_lir": 440,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "35/38": 5,
+            "39/42": 5,
+            "43/46": 5
         }
     }
 ]
