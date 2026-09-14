@@ -26692,16 +26692,13 @@
         "our_url": "https://tennis24shop.com/?p=65915",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65915",
         "our_price_lir": 710,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 0,
-            "141-150cm 10-11 YEARS OLD": 0,
-            "151-160cm 12-13 YEARS OLD": 0,
-            "161-172cm 14-15 AGE": 0,
-            "123": 0,
-            "131": 0,
-            "141": 0
+            "123-130cm 7-8 YEARS OLD": 5,
+            "131-140cm 8-9 years old": 5,
+            "141-150cm 10-11 YEARS OLD": 5,
+            "151-160cm 12-13 YEARS OLD": 5,
+            "161-172cm 14-15 AGE": 5
         }
     },
     {
@@ -30313,6 +30310,52 @@
             "40": 10,
             "40.5": 10,
             "41.5": 10
+        }
+    },
+    {
+        "id": 73105,
+        "title": "تی‌شرت تنیس بچه‌گانه دکتلون  Decathlon TTS Light JR - قهوه‌ای",
+        "sku": "8968222",
+        "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-kahverengi-tts-light-jr/_/R-p-347275?mc=8968222&c=KAHVERENGİ",
+        "our_url": "https://tennis24shop.com/?p=73105",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73105",
+        "our_price_lir": 1100,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "123-130cm 7-8 YEARS OLD": 5,
+            "131-140cm 8-9 years old": 5,
+            "141-150cm 10-11 YEARS OLD": 5,
+            "151-160cm 12-13 YEARS OLD": 5,
+            "161-172cm 14-15 AGE": 5
+        }
+    },
+    {
+        "id": 73120,
+        "title": "تی‌شرت تنیس بچه‌گانه دکتلون  Decathlon TTS Light JR - سرمه ای",
+        "sku": "8841808",
+        "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-kahverengi-tts-light-jr/_/R-p-347275?mc=8841808&c=MAVİ",
+        "our_url": "https://tennis24shop.com/?p=73120",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73120",
+        "our_price_lir": 1100,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "141-150cm 10-11 YEARS OLD": 5,
+            "151-160cm 12-13 YEARS OLD": 5
+        }
+    },
+    {
+        "id": 73134,
+        "title": "تیشرت تنیس بچگانه Decathlon TTS Dry JR – آبی",
+        "sku": "8912074",
+        "url": "https://www.decathlon.com.tr/p/cocuk-bisiklet-yaka-tenis-tisortu-mavi-tts-dry-jr/_/R-p-352819?mc=8912074&c=MAV%C4%B0",
+        "our_url": "https://tennis24shop.com/?p=73134",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73134",
+        "our_price_lir": 710,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "149-159cm 12-13 YEARS OLD": 5,
+            "141-148cm 10-11 YEARS OLD": 5,
+            "131-140cm 8-9 years old": 5
         }
     }
 ]
