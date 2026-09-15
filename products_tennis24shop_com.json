@@ -214,7 +214,7 @@
             "43": 0,
             "44.5": 999,
             "45": 0,
-            "45.5": 999
+            "45.5": 0
         }
     },
     {
@@ -7280,7 +7280,7 @@
         "our_sizes": {
             "32.5": 999,
             "35": 0,
-            "33": 0,
+            "33": 999,
             "36": 0,
             "37": 0,
             "38": 0,
@@ -9124,13 +9124,14 @@
         "our_price_lir": 3299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "S": 0,
-            "M": 0,
+            "L": 999,
+            "S": 999,
+            "M": 999,
             "XL": 999,
             "010": 0,
             "XS": 0,
-            "2XL": 0
+            "2XL": 0,
+            "XXL": 999
         },
         "secondary_url": "https://www.meritspor.com.tr/nikecourt-dri-fit-advantage-6-15cm-erkek-tenis-sortu-siyah"
     },
@@ -9288,7 +9289,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-bagcikli-tenis-ayakkabisi-beyaz-ts500-fast/_/R-p-324753?mc=8646077",
         "our_url": "https://tennis24shop.com/?p=10147",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=10147",
-        "our_price_lir": 2081,
+        "our_price_lir": 2190,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "35": 0,
@@ -9478,10 +9479,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 999,
-            "بچه گانه": 999,
+            "بچه گانه": 0,
             "L": 999,
-            "M": 999,
-            "S": 999,
+            "M": 0,
+            "S": 0,
             "471": 0,
             "XS": 0
         }
@@ -10768,7 +10769,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-bagcikli-tenis-ayakkabisi-beyaz-35-39-numara-ts500-fast/_/R-p-324753?mc=8646077&c=MAV%C4%B0_TURUNCU",
         "our_url": "https://tennis24shop.com/?p=5381",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=5381",
-        "our_price_lir": 2081,
+        "our_price_lir": 2190,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "36": 0,
@@ -10785,7 +10786,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-bagcikli-tenis-ayakkabisi-beyaz-35-39-numara-ts500-fast/_/R-p-324753?mc=8646077&c=MAV%C4%B0_TURUNCU",
         "our_url": "https://tennis24shop.com/?p=2757",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2757",
-        "our_price_lir": 2081,
+        "our_price_lir": 2190,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "36": 0,
@@ -10802,7 +10803,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-esofman-ustu-siyah-500/_/R-p-333330?mc=8646052",
         "our_url": "https://tennis24shop.com/?p=23466",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=23466",
-        "our_price_lir": 1071,
+        "our_price_lir": 1190,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "14-15سال-161-172cm": 0,
@@ -10841,7 +10842,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-lacivert-tts-essentiel-jr/_/R-p-312333?mc=8760079",
         "our_url": "https://tennis24shop.com/?p=12967",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12967",
-        "our_price_lir": 585,
+        "our_price_lir": 650,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "113": 0,
@@ -10869,7 +10870,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-raketi-25-inc-sari-easy-tr130/_/R-p-309594?mc=8540261&c=S%C4%B0YAH_SARI",
         "our_url": "https://tennis24shop.com/?p=12902",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12902",
-        "our_price_lir": 981,
+        "our_price_lir": 890,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -10880,7 +10881,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-raketi-19-inc-kirmizi-easy-tr130/_/R-p-309593?mc=8540256",
         "our_url": "https://tennis24shop.com/?p=12855",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12855",
-        "our_price_lir": 891,
+        "our_price_lir": 790,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -10891,7 +10892,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-raketi-21-inc-turuncu-easy/_/R-p-309612?mc=8540257",
         "our_url": "https://tennis24shop.com/?p=12453",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12453",
-        "our_price_lir": 891,
+        "our_price_lir": 790,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -18206,7 +18207,7 @@
             "43": 0,
             "44": 999,
             "41": 0,
-            "42": 0,
+            "42": 999,
             "42.5": 999,
             "46": 999
         },
@@ -18931,7 +18932,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 0,
-            "M": 999,
+            "M": 0,
             "S": 0,
             "657": 0,
             "XS": 0,
@@ -19259,9 +19260,9 @@
         "our_url": "https://tennis24shop.com/?p=42296",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42296",
         "our_price_lir": 3299,
-        "our_stock_status": "onbackorder",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "1": 999
+            "1": 0
         }
     },
     {
@@ -22713,13 +22714,13 @@
         "our_url": "https://tennis24shop.com/?p=54528",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54528",
         "our_price_lir": 3200,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "L": 0,
+            "XL": 999,
+            "L": 999,
             "XS": 0,
             "S": 0,
-            "M": 0
+            "M": 999
         }
     },
     {
@@ -26692,13 +26693,13 @@
         "our_url": "https://tennis24shop.com/?p=65915",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65915",
         "our_price_lir": 710,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 5,
-            "131-140cm 8-9 years old": 5,
-            "141-150cm 10-11 YEARS OLD": 5,
-            "151-160cm 12-13 YEARS OLD": 5,
-            "161-172cm 14-15 AGE": 5
+            "123-130cm 7-8 YEARS OLD": 0,
+            "131-140cm 8-9 years old": 0,
+            "141-150cm 10-11 YEARS OLD": 0,
+            "151-160cm 12-13 YEARS OLD": 0,
+            "161-172cm 14-15 AGE": 0
         }
     },
     {
@@ -28328,7 +28329,7 @@
         "our_url": "https://tennis24shop.com/?p=68169",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68169",
         "our_price_lir": 4559,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "41.5": 0,
             "44": 0,
@@ -28338,9 +28339,9 @@
             "42": 0,
             "40.5": 0,
             "43.5": 0,
-            "40": 0,
+            "40": 999,
             "38": 0,
-            "39": 0,
+            "39": 999,
             "47": 0,
             "48": 0,
             "49": 0,
@@ -29677,7 +29678,7 @@
             "37.5": 999,
             "39": 99,
             "39.5": 0,
-            "38": 0
+            "38": 999
         },
         "secondary_url": "https://www.boyner.com.tr/asics-padel-ayakkabisi-beyaz-pembe-kadin-1042a285-250-gel-resolution-x-padel-p-15977853?magaza=boyner"
     },
@@ -29815,7 +29816,7 @@
             "40.5": 999,
             "40": 999,
             "39": 999,
-            "47.5": 999,
+            "47.5": 0,
             "47": 999,
             "38.5": 999
         },
@@ -30100,7 +30101,7 @@
             "38": 999,
             "38.5": 999,
             "39": 999,
-            "40": 999,
+            "40": 0,
             "35.5": 0,
             "40.5": 0
         },
@@ -30336,11 +30337,11 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-kahverengi-tts-light-jr/_/R-p-347275?mc=8841808&c=MAVİ",
         "our_url": "https://tennis24shop.com/?p=73120",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73120",
-        "our_price_lir": 1100,
-        "our_stock_status": "instock",
+        "our_price_lir": 1090,
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "141-150cm 10-11 YEARS OLD": 5,
-            "151-160cm 12-13 YEARS OLD": 5
+            "141-150cm 10-11 YEARS OLD": 0,
+            "151-160cm 12-13 YEARS OLD": 0
         }
     },
     {
@@ -30351,10 +30352,10 @@
         "our_url": "https://tennis24shop.com/?p=73149",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73149",
         "our_price_lir": 1090,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "131-140cm 8-9 years old": 5,
-            "113-122cm 5-6 YEARS OLD": 5
+            "131-140cm 8-9 years old": 0,
+            "113-122cm 5-6 YEARS OLD": 0
         }
     },
     {
@@ -30364,14 +30365,14 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-esofman-ustu-siyah-500/_/R-p-333330?mc=8646052&c=SİYAH",
         "our_url": "https://tennis24shop.com/?p=73164",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73164",
-        "our_price_lir": 1090,
-        "our_stock_status": "instock",
+        "our_price_lir": 1190,
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "149-159cm 12-13 YEARS OLD": 5,
-            "141-148cm 10-11 YEARS OLD": 5,
-            "131-140cm 8-9 years old": 5,
-            "123-130cm 7-8 YEARS OLD": 5,
-            "14-15سال-161-172cm": 5
+            "149-159cm 12-13 YEARS OLD": 0,
+            "141-148cm 10-11 YEARS OLD": 0,
+            "131-140cm 8-9 years old": 0,
+            "123-130cm 7-8 YEARS OLD": 0,
+            "14-15سال-161-172cm": 0
         }
     },
     {
@@ -30382,11 +30383,11 @@
         "our_url": "https://tennis24shop.com/?p=73179",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73179",
         "our_price_lir": 440,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "35/38": 5,
-            "39/42": 5,
-            "43/46": 5
+            "35/38": 0,
+            "39/42": 0,
+            "43/46": 0
         }
     },
     {
@@ -30399,12 +30400,12 @@
         "our_price_lir": 710,
         "our_stock_status": "instock",
         "our_sizes": {
-            "6": 10,
-            "8": 10,
-            "9": 10,
-            "11": 10,
-            "13": 10,
-            "15": 10
+            "6": 0,
+            "8": 0,
+            "9": 5,
+            "11": 5,
+            "13": 5,
+            "15": 0
         }
     }
 ]
