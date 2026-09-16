@@ -30351,10 +30351,10 @@
         "our_url": "https://tennis24shop.com/?p=73149",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73149",
         "our_price_lir": 1090,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "131-140cm 8-9 years old": 0,
-            "113-122cm 5-6 YEARS OLD": 0
+            "113-122cm-سال6-5": 99,
+            "131-140cm-سال9-8": 99
         }
     },
     {
@@ -30382,11 +30382,11 @@
         "our_url": "https://tennis24shop.com/?p=73179",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73179",
         "our_price_lir": 440,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
-            "39/42": 0,
-            "43/46": 0
+            "35/38": 999,
+            "39/42": 999,
+            "43/46": 999
         }
     },
     {
@@ -30427,11 +30427,13 @@
         "our_url": "https://tennis24shop.com/?p=73258",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73258",
         "our_price_lir": 650,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "141-148cm 10-11 YEARS OLD": 0,
-            "123-130cm 7-8 YEARS OLD": 0,
-            "113-122cm 5-6 YEARS OLD": 0
+            "113-122cm-سال6-5": 99,
+            "123-130cm-سال8-7": 99,
+            "131-140cm-سال9-8": 99,
+            "141-150cm-سال11-10": 99,
+            "149-159cm-سال13-12": 99
         }
     },
     {
@@ -30593,17 +30595,6 @@
         }
     },
     {
-        "id": 73447,
-        "title": "زه تنیس Decathlon Razor Soft 1.25mm – مشکی",
-        "sku": "8878086",
-        "url": "https://www.decathlon.com.tr/p/tenis-kordaji-monofilament-siyah-technifibre-razor-soft-1-25mm/_/R-p-X8878086?mc=8878086",
-        "our_url": "https://tennis24shop.com/?p=73447",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73447",
-        "our_price_lir": 1050,
-        "our_stock_status": "instock",
-        "our_sizes": []
-    },
-    {
         "id": 73455,
         "title": "کفش تنیس بزرگسال Decathlon Kuikma Comfort Lite – سفید/بژ",
         "sku": "8968009",
@@ -30611,34 +30602,15 @@
         "our_url": "https://tennis24shop.com/?p=73455",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73455",
         "our_price_lir": 2090,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "سفید/بژ": 0,
-            "36": 0,
-            "37": 0,
-            "38": 0,
-            "39": 0,
-            "40": 0,
-            "41": 0
-        }
-    },
-    {
-        "id": 73469,
-        "title": "کفش تنیس روی میز بزرگسال Decathlon TTS 530 Lite – سفید/خاکستری",
-        "sku": "8939130",
-        "url": "https://www.decathlon.com.tr/p/masa-tenisi-ayakkabisi-ic-mekan-beyaz-gri-tts-530-lite/_/R-p-361928?mc=8939130&c=GR%C4%B0_BEYAZ",
-        "our_url": "https://tennis24shop.com/?p=73469",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73469",
-        "our_price_lir": 2090,
-        "our_stock_status": "outofstock",
-        "our_sizes": {
-            "سفید/خاکستری": 0,
-            "37": 0,
-            "38": 0,
-            "42": 0,
-            "43": 0,
-            "44": 0,
-            "45": 0
+            "سفید/بژ": 999,
+            "36": 999,
+            "37": 999,
+            "38": 999,
+            "39": 999,
+            "40": 999,
+            "41": 999
         }
     }
 ]
