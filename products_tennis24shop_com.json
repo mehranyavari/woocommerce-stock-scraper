@@ -6295,7 +6295,7 @@
             "9.5": 0,
             "10.5": 0,
             "43.5": 0,
-            "44.5": 999,
+            "44.5": 998,
             "42": 0,
             "41.5": 0,
             "42.5": 0
@@ -30232,25 +30232,6 @@
         }
     },
     {
-        "id": 72979,
-        "title": "کفش تنیس مردانه Decathlon مدل TS160 MULTI",
-        "sku": "",
-        "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-beyaz-ts160-multi/_/R-p-306672?mc=8559598&c=S%C4%B0YAH_GR%C4%B0_BEYAZ",
-        "our_url": "https://tennis24shop.com/?p=72979",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72979",
-        "our_price_lir": 2090,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "40": 10,
-            "41": 10,
-            "42": 10,
-            "43": 10,
-            "44": 10,
-            "45": 10,
-            "46": 10
-        }
-    },
-    {
         "id": 73043,
         "title": "دامن تنیس زنانه دکتلون مدل Essentiel 100 - سفید",
         "sku": "8547381",
@@ -30397,11 +30378,11 @@
         "our_url": "https://tennis24shop.com/?p=73235",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73235",
         "our_price_lir": 710,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "151-160cm 12-13 YEARS OLD": 0,
-            "141-148cm 10-11 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 0
+            "151-160cm 12-13 YEARS OLD": 99,
+            "141-148cm 10-11 YEARS OLD": 99,
+            "131-140cm 8-9 years old": 99
         }
     },
     {
@@ -30611,6 +30592,56 @@
             "39": 999,
             "40": 999,
             "41": 999
+        }
+    },
+    {
+        "id": 73521,
+        "title": "جوراب تنیس بچگانه Decathlon RS 500 – چند رنگ",
+        "sku": "8576281",
+        "url": "https://www.decathlon.com.tr/p/cocuk-spor-corabi-orta-konclu-3-cift-beyaz-lacivert-rs-500/_/R-p-307194?mc=8576281&c=PEMBE_BEYAZ",
+        "our_url": "https://tennis24shop.com/?p=73521",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73521",
+        "our_price_lir": 220,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "چند رنگ": 10,
+            "30": 10,
+            "34": 10,
+            "35/38": 10
+        }
+    },
+    {
+        "id": 73530,
+        "title": "سوییشرت تنیس زنانه نایک  Advantage Dri-FIT - آبی",
+        "sku": "IB0776-417",
+        "url": "https://www.tenisburada.com/nike-advantage-dri-fit-tam-boy-fermuarli-kadin-tenis-ceketi-ib0776-417",
+        "our_url": "https://tennis24shop.com/?p=73530",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73530",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "M": 10,
+            "S": 10
+        }
+    },
+    {
+        "id": 73564,
+        "title": "کفش تنیس مردانه Decathlon TS160 MULTI – چند رنگ",
+        "sku": "8559598",
+        "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-beyaz-ts160-multi/_/R-p-306672?mc=8559598&c=S%C4%B0YAH_GR%C4%B0_BEYAZ",
+        "our_url": "https://tennis24shop.com/?p=73564",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73564",
+        "our_price_lir": 2090,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "چند رنگ": 99,
+            "40": 99,
+            "41": 99,
+            "42": 99,
+            "43": 99,
+            "44": 99,
+            "45": 99,
+            "46": 99
         }
     }
 ]
