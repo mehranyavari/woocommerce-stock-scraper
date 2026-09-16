@@ -1240,6 +1240,149 @@ async function scrapeLegoTr(browser, url) {
     }
 }
 
+// ==========================================
+// 🛍️ اسکرپر مخصوص بوینر (Boyner)
+// ==========================================
+async function scrapeBoyner(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.setExtraHTTPHeaders({
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Upgrade-Insecure-Requests': '1',
+        });
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+        
+        await waitForCloudflare(page, 30000);
+        await new Promise(r => setTimeout(r, 4000));
+
+        const hostname = new URL(page.url()).hostname;
+
+        const result = await page.evaluate(() => {
+            let basePrice = null;
+            let salePrice = null;
+            const stockData = {};
+
+            // 1. استخراج از تگ __NEXT_DATA__
+            try {
+                const nextDataEl = document.getElementById('__NEXT_DATA__');
+                if (nextDataEl && nextDataEl.innerText) {
+                    const nextData = JSON.parse(nextDataEl.innerText);
+
+                    let productNode = null;
+                    function findProductNode(obj, depth = 0) {
+                        if (!obj || typeof obj !== 'object' || productNode || depth > 12) return;
+                        if (obj.ProductId && Array.isArray(obj.Variants)) {
+                            productNode = obj;
+                            return;
+                        }
+                        for (const k of Object.keys(obj)) {
+                            findProductNode(obj[k], depth + 1);
+                        }
+                    }
+                    findProductNode(nextData);
+
+                    if (productNode) {
+                        // استخراج قیمت
+                        if (productNode.PriceInfo) {
+                            const p = productNode.PriceInfo;
+                            if (p.OldPrice && p.Price) {
+                                basePrice = p.OldPrice;
+                                salePrice = p.Price;
+                            } else if (p.Price) {
+                                basePrice = p.Price;
+                                salePrice = null;
+                            }
+                        } else if (Array.isArray(productNode.Merchants) && productNode.Merchants.length > 0) {
+                            const sel = productNode.Merchants.find(m => m.IsSelected) || productNode.Merchants[0];
+                            if (sel && sel.PriceInfo) {
+                                if (sel.PriceInfo.OldPrice && sel.PriceInfo.Price) {
+                                    basePrice = sel.PriceInfo.OldPrice;
+                                    salePrice = sel.PriceInfo.Price;
+                                } else if (sel.PriceInfo.Price) {
+                                    basePrice = sel.PriceInfo.Price;
+                                }
+                            }
+                        }
+
+                        // استخراج موجودی سایزها
+                        if (Array.isArray(productNode.Variants) && productNode.Variants.length > 0) {
+                            productNode.Variants.forEach(v => {
+                                const sizeName = v.Name || v.Size || 'Standart';
+                                const qty = typeof v.StockCount === 'number' ? v.StockCount : (v.StockInfoType === 'NoStock' ? 0 : 1);
+                                stockData[sizeName] = qty;
+                            });
+                        } else {
+                            stockData['Standart'] = 1;
+                        }
+                    }
+                }
+            } catch (e) {}
+
+            // 2. Fallback از DOM برای سایزها
+            if (Object.keys(stockData).length === 0) {
+                const options = document.querySelectorAll('.b-select-option, [class*="selectSizeOption"]');
+                options.forEach(opt => {
+                    const textEl = opt.querySelector('p, h5, span') || opt;
+                    let text = textEl.innerText ? textEl.innerText.trim() : '';
+                    if (text) {
+                        const isOut = opt.classList.contains('b-select-option--disabled') || 
+                                      opt.innerText.includes('Tükendi') || 
+                                      opt.getAttribute('aria-disabled') === 'true';
+                        const cleanSize = text.replace(/-?\s*Tükendi/gi, '').trim();
+                        if (cleanSize && cleanSize.length < 20) {
+                            stockData[cleanSize] = isOut ? 0 : 1;
+                        }
+                    }
+                });
+            }
+
+            // 3. Fallback از DOM برای قیمت‌ها
+            if (!basePrice) {
+                const mainPriceEl = document.querySelector('[class*="priceMain"], [class*="priceLeft"] h2, .price_priceMain__DrVVQ');
+                const oldPriceEl = document.querySelector('[class*="priceOld"], [class*="oldPrice"]');
+                if (mainPriceEl && oldPriceEl) {
+                    basePrice = oldPriceEl.innerText.trim();
+                    salePrice = mainPriceEl.innerText.trim();
+                } else if (mainPriceEl) {
+                    basePrice = mainPriceEl.innerText.trim();
+                }
+            }
+
+            if (Object.keys(stockData).length === 0 && !basePrice) {
+                return { success: false, error: "Boyner data not found in JSON or DOM" };
+            }
+
+            return { success: true, price: basePrice, offerPrice: salePrice, stocks: stockData };
+        });
+
+        await page.close();
+
+        if (!result.success) return { success: false, error: result.error || "Boyner extraction failed" };
+
+        const normalizedStocks = {};
+        for (const [rawSize, qty] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = parseInt(qty) || 0;
+        }
+
+        const regular = parseTurkishPrice(result.price);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (regular && offer && offer >= regular) offer = null;
+
+        console.log(`  ✅ Boyner URL Scraped: Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Boyner Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     const reg = typeof scrapeData.regular_price === 'number' ? scrapeData.regular_price : parseFloat(scrapeData.regular_price) || 0;
@@ -1282,6 +1425,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('adidas.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Adidas Engine)`);
             primaryData = await scrapeAdidas(browser, product.url);
+        } else if (product.url.toLowerCase().includes('boyner.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Boyner Engine)`);
+            primaryData = await scrapeBoyner(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -1318,6 +1464,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('adidas.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Adidas Engine)`);
             secondaryData = await scrapeAdidas(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('boyner.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Boyner Engine)`);
+            secondaryData = await scrapeBoyner(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
