@@ -30585,13 +30585,13 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید/بژ": 999,
-            "36": 999,
-            "37": 999,
-            "38": 999,
-            "39": 999,
-            "40": 999,
-            "41": 999
+            "سفید/بژ": 6,
+            "36": 5,
+            "37": 5,
+            "38": 5,
+            "39": 5,
+            "40": 5,
+            "41": 6
         }
     },
     {
@@ -30646,7 +30646,7 @@
     },
     {
         "id": 73621,
-        "title": "کفش تنیس بچگانه Decathlon TS500 Fast – چند رنگ",
+        "title": "کفش تنیس بچگانه Decathlon TS500 Fast – سفید/صورتی",
         "sku": "324753",
         "url": "https://www.decathlon.com.tr/p/cocuk-bagcikli-tenis-ayakkabisi-mavi-siyah-35-39-numara-ts500-fast/_/R-p-324753?mc=8646076",
         "our_url": "https://tennis24shop.com/?p=73621",
@@ -30660,6 +30660,80 @@
             "37": 99,
             "38": 99,
             "39": 99
+        }
+    },
+    {
+        "id": 73639,
+        "title": "سویشرت تنیس زنانه نایک Crown Tenis Crop – سبز",
+        "sku": "SR-CROWN-GRN",
+        "url": "https://www.tenisburada.com/sporty-rich-crown-tenis-koyu-yesil-crop-sweatshirt",
+        "our_url": "https://tennis24shop.com/?p=73639",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73639",
+        "our_price_lir": 12150,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز تیره": 10,
+            "S": 10
+        }
+    },
+    {
+        "id": 73703,
+        "title": "لباس تنیس زنانه نایک Victory – آبی",
+        "sku": "FQ1780-417",
+        "url": "https://www.tenisburada.com/nike-victory-kadin-dri-fit-tenis-elbisesi-fq1780-417",
+        "our_url": "https://tennis24shop.com/?p=73703",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73703",
+        "our_price_lir": 4490,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "L": 10,
+            "M": 10,
+            "S": 10,
+            "XS": 10
+        }
+    },
+    {
+        "id": 73721,
+        "title": "پیراهن تنیس زنانه نایک مدل Victory Dri-FIT کد FQ1780 – صورتی/سفید",
+        "sku": "FQ1780",
+        "url": "https://www.tenisburada.com/nike-victory-dri-fit-kadin-elbisesi-fq1780-666",
+        "our_url": "https://tennis24shop.com/?p=73721",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73721",
+        "our_price_lir": 4099,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "S": 99,
+            "XS": 99
+        }
+    },
+    {
+        "id": 73743,
+        "title": "لباس تنیس زنانه نایک مدل Court Slam Dri-FIT کد HJ8296-494 – آبی تیره",
+        "sku": "HJ8296-494",
+        "url": "https://www.tenisburada.com/nike-court-slam-dri-fit-kadin-tenis-elbisesi",
+        "our_url": "https://tennis24shop.com/?p=73743",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73743",
+        "our_price_lir": 6899,
+        "our_stock_status": "instock",
+        "our_sizes": []
+    },
+    {
+        "id": 73751,
+        "title": "کفش تنیس مردانه نایک مدل GP Challenge 1.5 Premium کد IQ6059-200 – قهوه‌ای/نارنجی",
+        "sku": "IQ6059-200",
+        "url": "https://www.tenisburada.com/tenisburadacom/nike-gp-challenge-1-5-premium-toprak-kort-erkek-tenis-ayakkabisi-iq6059-200https//tenisburadacom/nike-gp-challenge-1-5-premium-toprak-kort-erkek-tenis-ayakkabisi-iq6059-200",
+        "our_url": "https://tennis24shop.com/?p=73751",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73751",
+        "our_price_lir": 9599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "40": 99,
+            "41": 99,
+            "42": 99,
+            "43": 99,
+            "44": 99,
+            "45": 99
         }
     }
 ]
