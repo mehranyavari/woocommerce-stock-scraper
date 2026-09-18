@@ -30824,15 +30824,15 @@
         "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S/M": 99,
-            "M/L": 99,
-            "One size": 99
+            "سفید": 0,
+            "S/M": 999,
+            "M/L": 0,
+            "One size": 0
         }
     },
     {
         "id": 73881,
-        "title": "کلاه ورزشی تنیس نایک مدل Club Cap – مشکی",
+        "title": "کلاه تنیس نایک مدل Club Cap – مشکی",
         "sku": "IQ1321-010",
         "url": "https://www.courtmax.com.tr/nike-club-cap-siyah-tenis-sapkasi",
         "our_url": "https://tennis24shop.com/?p=73881",
@@ -30844,6 +30844,20 @@
             "S/M": 99,
             "M/L": 99,
             "One Size": 99
+        }
+    },
+    {
+        "id": 73899,
+        "title": "کلاه تنیس نایک مدل Club Cap – آبی",
+        "sku": "IQ1321-417",
+        "url": "https://www.courtmax.com.tr/nike-club-cap-mavi-tenis-sapkasi",
+        "our_url": "https://tennis24shop.com/?p=73899",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73899",
+        "our_price_lir": 1649,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 999,
+            "One Size": 999
         }
     }
 ]
