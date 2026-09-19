@@ -591,8 +591,8 @@
     "id": "10294",
     "name": "10294 LEGO Icons Titanik",
     "price": 42999,
-    "in_stock": true,
-    "quantity": 3
+    "in_stock": false,
+    "quantity": 0
   },
   "10297": {
     "id": "10297",
@@ -865,7 +865,7 @@
     "name": "10343 LEGO® Botanicals Mini Orkide",
     "price": 1799,
     "in_stock": true,
-    "quantity": 30
+    "quantity": 29
   },
   "10344": {
     "id": "10344",
@@ -1047,7 +1047,7 @@
     "name": "10372 LEGO® Botanicals Japon Gülü",
     "price": 4199,
     "in_stock": true,
-    "quantity": 8
+    "quantity": 7
   },
   "10373": {
     "id": "10373",
@@ -2188,7 +2188,7 @@
     "name": "11381 LEGO® Icons Jaguar E-Type",
     "price": 8499,
     "in_stock": true,
-    "quantity": 24
+    "quantity": 23
   },
   "11382": {
     "id": "11382",
@@ -2202,7 +2202,7 @@
     "name": "11384 LEGO® Icons Yavru Golden Retriever",
     "price": 8499,
     "in_stock": true,
-    "quantity": 101
+    "quantity": 100
   },
   "11389": {
     "id": "11389",
@@ -2713,7 +2713,7 @@
     "name": "21346 LEGO® Ideas Aile Ağacı",
     "price": 5999,
     "in_stock": true,
-    "quantity": 2
+    "quantity": 4
   },
   "21347": {
     "id": "21347",
@@ -2839,7 +2839,7 @@
     "name": "21365 LEGO® Ideas Muhabbet Kuşları",
     "price": 2999,
     "in_stock": true,
-    "quantity": 46
+    "quantity": 45
   },
   "21366": {
     "id": "21366",
@@ -3147,7 +3147,7 @@
     "name": "30665 LEGO® City Yavru Goril Karşılaşması",
     "price": 299,
     "in_stock": true,
-    "quantity": 16
+    "quantity": 15
   },
   "30669": {
     "id": "30669",
@@ -3972,8 +3972,8 @@
     "id": "31221",
     "name": "31221 LEGO® Art Gustav Klimt – Öpücük",
     "price": 18299,
-    "in_stock": true,
-    "quantity": 18
+    "in_stock": false,
+    "quantity": 0
   },
   "31376": {
     "id": "31376",
@@ -4553,8 +4553,8 @@
     "id": "40867",
     "name": "40867 LEGO® Iconic Love Harfleri",
     "price": 1399,
-    "in_stock": true,
-    "quantity": 1
+    "in_stock": false,
+    "quantity": 0
   },
   "40871": {
     "id": "40871",
@@ -4589,7 +4589,7 @@
     "name": "40879 LEGO® Stranger Things Eleven, Max, Demogorgon ve Holly Figürleri",
     "price": 2799,
     "in_stock": true,
-    "quantity": 7
+    "quantity": 6
   },
   "40881": {
     "id": "40881",
@@ -4659,7 +4659,7 @@
     "name": "40955 LEGO® LEGO Iconic Maersk Çift Yakıtlı Konteyner Gemisi",
     "price": 9999,
     "in_stock": true,
-    "quantity": 27
+    "quantity": 29
   },
   "40957": {
     "id": "40957",
@@ -7319,7 +7319,7 @@
     "name": "60422 LEGO® City Yük Gemili Liman",
     "price": 7199,
     "in_stock": true,
-    "quantity": 1
+    "quantity": 2
   },
   "60423": {
     "id": "60423",
@@ -7823,7 +7823,7 @@
     "name": "60501 LEGO® City Lava Land Hız Treni Parkı",
     "price": 6099,
     "in_stock": true,
-    "quantity": 20
+    "quantity": 22
   },
   "60502": {
     "id": "60502",
@@ -7914,7 +7914,7 @@
     "name": "71050 LEGO® Minifigures Örümcek Adam: Örümcek Evrenine Geçiş",
     "price": 229,
     "in_stock": true,
-    "quantity": 1357
+    "quantity": 1354
   },
   "71051": {
     "id": "71051",
@@ -8789,7 +8789,7 @@
     "name": "72051 LEGO® Super Mario™ Donkey Kong™ Video Oyunu",
     "price": 10299,
     "in_stock": true,
-    "quantity": 8
+    "quantity": 7
   },
   "72150": {
     "id": "72150",
@@ -8838,7 +8838,7 @@
     "name": "72423 LEGO® Shrek Şrek, Eşek ve Çizmeli Kedi",
     "price": 7299,
     "in_stock": true,
-    "quantity": 21
+    "quantity": 20
   },
   "72537": {
     "id": "72537",
@@ -10161,7 +10161,7 @@
     "name": "76317 LEGO® | Marvel Peter Parker'ın Dairesi",
     "price": 2999,
     "in_stock": true,
-    "quantity": 10
+    "quantity": 9
   },
   "76319": {
     "id": "76319",
@@ -10714,7 +10714,7 @@
     "name": "76469 LEGO® Harry Potter™ Özgür Ev Cini Dobby™",
     "price": 2099,
     "in_stock": true,
-    "quantity": 6
+    "quantity": 5
   },
   "76470": {
     "id": "76470",
@@ -11407,7 +11407,7 @@
     "name": "77241 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Honda S2000",
     "price": 1699,
     "in_stock": true,
-    "quantity": 385
+    "quantity": 384
   },
   "77242": {
     "id": "77242",
@@ -11449,7 +11449,7 @@
     "name": "77247 LEGO® Speed Champions KICK Sauber F1® Team C44 Yarış Arabası",
     "price": 1699,
     "in_stock": true,
-    "quantity": 275
+    "quantity": 273
   },
   "77248": {
     "id": "77248",
@@ -11498,7 +11498,7 @@
     "name": "77254 LEGO® Speed Champions Ferrari SF90 XX Stradale Spor Araba",
     "price": 1699,
     "in_stock": true,
-    "quantity": 20
+    "quantity": 19
   },
   "77255": {
     "id": "77255",
@@ -11540,7 +11540,7 @@
     "name": "77260 LEGO® Speed Champions Hızlı ve Öfkeli Toyota Supra MK4",
     "price": 1699,
     "in_stock": true,
-    "quantity": 28
+    "quantity": 27
   },
   "77261": {
     "id": "77261",
@@ -11799,7 +11799,7 @@
     "name": "854153 LEGO Marvel Miles Morales Anahtarlık",
     "price": 379,
     "in_stock": true,
-    "quantity": 481
+    "quantity": 480
   },
   "854154": {
     "id": "854154",
@@ -11869,7 +11869,7 @@
     "name": "854235 LEGO® Super Heroes Batman™ Anahtarlık",
     "price": 379,
     "in_stock": true,
-    "quantity": 493
+    "quantity": 492
   },
   "854236": {
     "id": "854236",
@@ -12009,7 +12009,7 @@
     "name": "854290 LEGO® Marvel Örümcek Adam Anahtarlık",
     "price": 379,
     "in_stock": true,
-    "quantity": 313
+    "quantity": 310
   },
   "854291": {
     "id": "854291",
@@ -12023,7 +12023,7 @@
     "name": "854292 LEGO® Marvel Ghost-Spider Anahtarlık",
     "price": 379,
     "in_stock": true,
-    "quantity": 180
+    "quantity": 178
   },
   "854294": {
     "id": "854294",
@@ -12142,7 +12142,7 @@
     "name": "854319 LEGO® Disney Classic Stiç Anahtarlık",
     "price": 379,
     "in_stock": true,
-    "quantity": 795
+    "quantity": 794
   },
   "854320": {
     "id": "854320",
@@ -13493,7 +13493,7 @@
     "name": "20372-2607 Çok Amaçlı Aksesuar ve Kalem Çantası - Renkli LEGO® Yapım Parçası",
     "price": 1199,
     "in_stock": true,
-    "quantity": 33
+    "quantity": 31
   },
   "20372-2611": {
     "id": "20372-2611",
