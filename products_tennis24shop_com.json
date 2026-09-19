@@ -30791,7 +30791,7 @@
     },
     {
         "id": 73839,
-        "title": "کفش تنیس مردانه نایک مدل GP Challenge 1.5 Premium Clay Jannik Sinner – سرمه‌ای/آبی",
+        "title": "کفش تنیس مردانه نایک GP Challenge 1.5 Premium Clay – آبی",
         "sku": "IQ6059-400",
         "url": "https://www.tenisburada.com/nike-gp-challenge-15-premium-jannik-sinner-erkek-toprak-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=73839",
@@ -30799,19 +30799,12 @@
         "our_price_lir": 9590,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 0,
-            "39": 0,
-            "40": 0,
-            "40.5": 99,
-            "41": 0,
-            "42": 99,
-            "42.5": 99,
-            "43": 99,
-            "44": 99,
-            "44.5": 0,
-            "45": 0,
-            "45.5": 0,
-            "46": 0
+            "پیش‌فرض": 10,
+            "42": 10,
+            "42.5": 10,
+            "43": 10,
+            "44": 10,
+            "45.5": 10
         }
     },
     {
@@ -30840,22 +30833,53 @@
         "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 999,
-            "One Size": 999
+            "تک سایز": 999
         }
     },
     {
         "id": 73917,
-        "title": "کلاه تنیس نایک مدل Club Cap کد IQ1321-010 – مشکی",
+        "title": "کلاه تنیس نایک مدل Club Cap– مشکی",
         "sku": "IQ1321-010",
         "url": "https://www.courtmax.com.tr/nike-club-cap-siyah-tenis-sapkasi",
         "our_url": "https://tennis24shop.com/?p=73917",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73917",
-        "our_price_lir": null,
+        "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": {
             "مشکی": 99,
             "S/M": 99
+        }
+    },
+    {
+        "id": 73957,
+        "title": "تیشرت تنیس زنانه نایک Victory Dri-FIT – آبی",
+        "sku": "IB3776-417",
+        "url": "https://www.tenisburada.com/tenisburadacom/nike-victory-dri-fit-kadin-tenis-tisortu-ib3776-417https//tenisburadacom/nike-victory-dri-fit-kadin-tenis-tisortu-ib3776-417",
+        "our_url": "https://tennis24shop.com/?p=73957",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73957",
+        "our_price_lir": 2799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی رویال": 10,
+            "XS": 10,
+            "S": 10,
+            "M": 10,
+            "L": 10
+        }
+    },
+    {
+        "id": 73966,
+        "title": "دامن تنیس زنانه نایک مدل Victory Dri-FIT کد HV9951-417 – آبی",
+        "sku": "HV9951-417",
+        "url": "https://www.tenisburada.com/tenisburadacom/nike-victory-dri-fit-kadin-tenis-etegi-hv9951-417https//tenisburadacom/nike-victory-dri-fit-kadin-tenis-etegi-hv9951-417",
+        "our_url": "https://tennis24shop.com/?p=73966",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73966",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "XS": 99,
+            "L": 99
         }
     }
 ]
