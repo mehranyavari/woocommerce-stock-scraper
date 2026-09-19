@@ -1383,6 +1383,125 @@ async function scrapeBoyner(browser, url) {
     }
 }
 
+// ==========================================
+// 🎾 اسکرپر مخصوص کورت‌مکس (Courtmax)
+// ==========================================
+async function scrapeCourtmax(browser, url) {
+    const page = await browser.newPage();
+    try {
+        await page.setExtraHTTPHeaders({
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Upgrade-Insecure-Requests': '1'
+        });
+
+        await page.emulateTimezone('Europe/Istanbul');
+        await page.setViewport({ width: 1920, height: 1080 });
+
+        if (useProxy) {
+            await page.authenticate({
+                username: 'mehran',
+                password: 'mehran75'
+            });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+        await waitForCloudflare(page, 30000);
+        await new Promise(r => setTimeout(r, 4000));
+
+        const hostname = new URL(page.url()).hostname;
+
+        const result = await page.evaluate(() => {
+            const match = document.body.innerHTML.match(/var productDetailModel = (.*?);/);
+            if (!match) return { success: false, error: "Variable 'productDetailModel' NOT found" };
+
+            try {
+                const data = JSON.parse(match[1]);
+                const stocks = {};
+
+                let regularPrice = null;
+                let offerPrice = null;
+
+                const anaUrun = (data.products && data.products.find(p => p.anaUrun === true)) || (data.products && data.products[0]) || data.product || {};
+
+                // استخراج قیمت‌ها از ساختار استاندارد Ticimax
+                const satis = anaUrun.satisFiyatiStr || (anaUrun.satisFiyati && anaUrun.satisKDV ? (anaUrun.satisFiyati + anaUrun.satisKDV) : anaUrun.satisFiyati);
+                const indirimli = anaUrun.indirimliFiyatiStr || (anaUrun.indirimliFiyati && anaUrun.indirimliKDV ? (anaUrun.indirimliFiyati + anaUrun.indirimliKDV) : anaUrun.indirimliFiyati);
+                const piyasa = anaUrun.piyasaFiyatiStr || (anaUrun.piyasaFiyati && anaUrun.piyasaFiyatiKDV ? (anaUrun.piyasaFiyati + anaUrun.piyasaFiyatiKDV) : anaUrun.piyasaFiyati);
+
+                if (anaUrun.indirimliFiyati && anaUrun.satisFiyati && anaUrun.indirimliFiyati > 0 && anaUrun.indirimliFiyati < anaUrun.satisFiyati) {
+                    regularPrice = satis;
+                    offerPrice = indirimli;
+                } else if (anaUrun.piyasaFiyati && anaUrun.satisFiyati && anaUrun.piyasaFiyati > anaUrun.satisFiyati && anaUrun.satisFiyati > 0) {
+                    regularPrice = piyasa;
+                    offerPrice = satis;
+                } else {
+                    regularPrice = satis || data.productPriceKDVIncluded || data.productPriceStr;
+                    offerPrice = null;
+                }
+
+                // فال‌بک از ساختار DOM در صورت نیاز
+                if (!regularPrice) {
+                    const priceEl = document.querySelector('#fiyat .spanFiyat, .PiyasafiyatiContent .spanFiyat, .spanFiyat');
+                    const discountEl = document.querySelector('#indirimliFiyat .spanFiyat, .IndirimliFiyatContent .spanFiyat, .indirimliFiyat .spanFiyat');
+                    if (priceEl && discountEl) {
+                        regularPrice = priceEl.innerText.trim();
+                        offerPrice = discountEl.innerText.trim();
+                    } else if (priceEl) {
+                        regularPrice = priceEl.innerText.trim();
+                    }
+                }
+
+                if (data.productVariantData && Array.isArray(data.productVariantData) && data.productVariantData.length > 0) {
+                    const stockMap = {};
+                    if (data.products && Array.isArray(data.products)) {
+                        data.products.forEach(p => {
+                            const pId = p.id !== undefined ? p.id : p.urunID;
+                            if (pId !== undefined && p.stokAdedi !== undefined) stockMap[pId] = parseInt(p.stokAdedi);
+                        });
+                    }
+                    data.productVariantData.forEach(variant => {
+                        const vUrunId = variant.urunID !== undefined ? variant.urunID : variant.id;
+                        if (variant.tanim && vUrunId !== undefined) {
+                            stocks[variant.tanim] = stockMap[vUrunId] !== undefined ? stockMap[vUrunId] : (parseInt(variant.stokAdedi) || 0);
+                        }
+                    });
+                } else if (data.product) {
+                    stocks['Standart'] = parseInt(data.product.stokAdedi) || 0;
+                } else {
+                    return { success: false, error: "Unknown JSON structure" };
+                }
+
+                return { success: true, stocks, regularPrice, offerPrice };
+            } catch (e) {
+                return { success: false, error: "JSON Parse Error: " + e.message };
+            }
+        });
+
+        await page.close();
+
+        if (!result.success) return { success: false, error: result.error };
+
+        const normalizedStocks = {};
+        for (const [rawSize, stock] of Object.entries(result.stocks)) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (normalized) normalizedStocks[normalized] = stock;
+        }
+
+        const regular = parseTurkishPrice(result.regularPrice);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (offer && regular && offer >= regular) offer = null;
+
+        console.log(`  ✅ Courtmax URL Scraped: Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+
+    } catch (error) {
+        try { await page.close(); } catch(e) {}
+        return { success: false, error: "Courtmax Error: " + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     const reg = typeof scrapeData.regular_price === 'number' ? scrapeData.regular_price : parseFloat(scrapeData.regular_price) || 0;
@@ -1428,6 +1547,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('boyner.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Boyner Engine)`);
             primaryData = await scrapeBoyner(browser, product.url);
+        } else if (product.url.toLowerCase().includes('courtmax.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (Courtmax Engine)`);
+            primaryData = await scrapeCourtmax(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -1467,6 +1589,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('boyner.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Boyner Engine)`);
             secondaryData = await scrapeBoyner(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('courtmax.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Courtmax Engine)`);
+            secondaryData = await scrapeCourtmax(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
