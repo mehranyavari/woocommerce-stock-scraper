@@ -3786,7 +3786,7 @@
         "url": "https://www.opsarsport.com/urun/nike-gp-challenge-1-premium-sert-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=30715",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30715",
-        "our_price_lir": 5800,
+        "our_price_lir": 6500,
         "our_stock_status": "instock",
         "our_sizes": {
             "39": 0,
@@ -3796,8 +3796,8 @@
             "42.5": 999,
             "44.5": 999,
             "45.5": 999,
-            "44": 0,
-            "43": 0,
+            "44": 999,
+            "43": 999,
             "40": 0,
             "45": 0,
             "46": 0,
@@ -4073,9 +4073,9 @@
         "our_url": "https://tennis24shop.com/?p=25560",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=25560",
         "our_price_lir": 2989,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "46": 999,
+            "46": 0,
             "44.5": 0,
             "41": 0,
             "40.5": 0,
@@ -5772,17 +5772,7 @@
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=29124",
         "our_price_lir": 8499,
         "our_stock_status": "instock",
-        "our_sizes": {
-            "42": 0,
-            "44": 999,
-            "45": 0,
-            "46": 0,
-            "41.5": 0,
-            "42.5": 0,
-            "43.5": 0,
-            "44.5": 0,
-            "46.5": 0
-        }
+        "our_sizes": []
     },
     {
         "id": 29105,
@@ -24909,7 +24899,7 @@
             "41.5": 999,
             "44": 0,
             "44.5": 999,
-            "45": 1000,
+            "45": 999,
             "7سال": 0,
             "8 سال": 0,
             "9سال": 0,
@@ -30702,17 +30692,6 @@
         }
     },
     {
-        "id": 73743,
-        "title": "لباس تنیس زنانه نایک مدل Court Slam Dri-FIT کد HJ8296-494 – آبی تیره",
-        "sku": "HJ8296-494",
-        "url": "https://www.tenisburada.com/nike-court-slam-dri-fit-kadin-tenis-elbisesi",
-        "our_url": "https://tennis24shop.com/?p=73743",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73743",
-        "our_price_lir": 6899,
-        "our_stock_status": "instock",
-        "our_sizes": []
-    },
-    {
         "id": 73764,
         "title": "کفش تنیس مردانه نایکNike GP Challenge 1.5 Premium – یاسی مات",
         "sku": "IQ6059-200",
@@ -31061,7 +31040,7 @@
     },
     {
         "id": 74317,
-        "title": "تاپ تنیس زنانه نایک Nike Court Collection Dri-FIT  – سرمه‌ای",
+        "title": "تاپ تنیس زنانه نایک Nike Court Collection Dri-FIT  – کرم",
         "sku": "IU1829-102",
         "url": "https://www.tenisburada.com/nikecourt-court-collection-dri-fit-kadin-atleti-iu1829-102",
         "our_url": "https://tennis24shop.com/?p=74317",
@@ -31090,11 +31069,12 @@
             "M": 99,
             "L": 99,
             "XL": 99
-        }
+        },
+        "secondary_url": "https://www.opsarsport.com/urun/nike-court-max90-erkek-kirmizi-tisort"
     },
     {
         "id": 74348,
-        "title": "رکابی ورزشی زنانه نایک مدل Court Collection Dri-FIT کد IU1829-417 – سرمه‌ای",
+        "title": "تاپ تنیس زنانه نایک Nike Court Collection Dri-FIT – سرمه‌ای",
         "sku": "IU1829-417",
         "url": "https://www.tenisburada.com/nikecourt-court-collection-dri-fit-kadin-atleti-iu1829-417",
         "our_url": "https://tennis24shop.com/?p=74348",
@@ -31102,11 +31082,270 @@
         "our_price_lir": 4199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 0,
+            "سرمه‌ای": 20,
+            "XS": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74364,
+        "title": "تیشرت تنیس مردانه نایک مدل NikeCourt Advantage Dri-FIT – سبز",
+        "sku": "IB1064-365",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-erkek-tenis-tisortu-malachite",
+        "our_url": "https://tennis24shop.com/?p=74364",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74364",
+        "our_price_lir": 3999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مالاکیت/سفید": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 74382,
+        "title": "تاپ تنیس زنانه نایک Nike Advantage Dri-FIT – آبی",
+        "sku": "IM9409-417",
+        "url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-kadin-tenis-atleti-im9409-417",
+        "our_url": "https://tennis24shop.com/?p=74382",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74382",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74393,
+        "title": "لباس تنیس زنانه نایک Nike Court Slam Dri-FIT  – آبی",
+        "sku": "HJ8296-494",
+        "url": "https://www.tenisburada.com/nike-court-slam-dri-fit-kadin-tenis-elbisesi",
+        "our_url": "https://tennis24shop.com/?p=74393",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74393",
+        "our_price_lir": 6899,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی/بنفش": 20,
+            "M": 20,
+            "L": 20
+        }
+    },
+    {
+        "id": 74408,
+        "title": "تیشرت تنیس مردانه نایک NikeCourt Slam RG Dri-FIT ADV – آلاباستر(استخوانی گرم)",
+        "sku": "IB1016-744",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-tisortu-alabaster",
+        "our_url": "https://tennis24shop.com/?p=74408",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74408",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آلاباستر/طلایی/مشکی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 74427,
+        "title": "لباس تنیس زنانه نایک Nike Victory Dri-FIT – سبز",
+        "sku": "FQ1780-017",
+        "url": "https://www.tenisburada.com/nike-victory-dri-fit-kadin-tenis-elbisesi-fq1780-017",
+        "our_url": "https://tennis24shop.com/?p=74427",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74427",
+        "our_price_lir": 3999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی/سبز": 20,
+            "XS": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74437,
+        "title": "لباس تنیس زنانه نایک Nike Court Slam Dri-Fit – لیمویی",
+        "sku": "FZ6463-331",
+        "url": "https://www.tenisburada.com/nikecourt-slam-dri-fit-kadin-tenis-elbisesi",
+        "our_url": "https://tennis24shop.com/?p=74437",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74437",
+        "our_price_lir": 5799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز لیمویی": 20,
+            "XS": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74452,
+        "title": "لباس تنیس زنانه نایک Nike Slam Dri-FIT – سبز",
+        "sku": "FZ6463-379",
+        "url": "https://www.tenisburada.com/nikecourt-slam-dri-fit-kadin-tenis-elbisesi-fz6463-379",
+        "our_url": "https://tennis24shop.com/?p=74452",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74452",
+        "our_price_lir": 5798,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز نعنایی": 20,
+            "XS": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74459,
+        "title": "تیشرت تنیس مردانه نایک NikeCourt Slam RG Dri-FIT ADV – صورتی",
+        "sku": "IB1016-664",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-tisortu-pearl-pink",
+        "our_url": "https://tennis24shop.com/?p=74459",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74459",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "صورتی مرواریدی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 74478,
+        "title": "لباس تنیس زنانه نایک Nike Victory Dri-FIT – مشکی",
+        "sku": "FQ1780-010",
+        "url": "https://www.tenisburada.com/nike-victory-dri-fit-kadin-tenis-elbisesi-fq1780-010",
+        "our_url": "https://tennis24shop.com/?p=74478",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74478",
+        "our_price_lir": 4490,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی/سفید": 20,
+            "XS": 20,
+            "S": 20,
+            "M": 20
+        }
+    },
+    {
+        "id": 74488,
+        "title": "لباس تنیس زنانه نایک Nike Victory  – سفید",
+        "sku": "FQ1780-100",
+        "url": "https://www.tenisburada.com/nike-victory-womens-dri-fit-tennis-dress",
+        "our_url": "https://tennis24shop.com/?p=74488",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74488",
+        "our_price_lir": 4399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید/مشکی": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99
+        }
+    },
+    {
+        "id": 74502,
+        "title": "تیشرت تنیس مردانه نایک NikeCourt Slam RG Dri-FIT ADV – بنفش",
+        "sku": "IB1016-511",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-tisortu-violet-mist",
+        "our_url": "https://tennis24shop.com/?p=74502",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74502",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بنفش/مشکی": 99,
             "XS": 99,
             "S": 99,
             "M": 99,
+            "L": 99,
+            "XL": 99
+        },
+        "secondary_url": "https://www.tenisburada.com/tenisburadacom/nike-court-slam-dri-fit-adv-erkek-tenis-tisortu-ib1016-511https//tenisburadacom/nike-court-slam-dri-fit-adv-erkek-tenis-tisortu-ib1016-511"
+    },
+    {
+        "id": 74521,
+        "title": "دامن تنیس زنانه نایک Nike Victory Dri-FIT  – صورتی",
+        "sku": "HV9951-654",
+        "url": "https://www.tenisburada.com/tenisburadacom/nike-victory-dri-fit-kadin-tenis-etegi-hv9951-654https//tenisburadacom/nike-victory-dri-fit-kadin-tenis-etegi-hv9951-654",
+        "our_url": "https://tennis24shop.com/?p=74521",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74521",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "صورتی/قرمز": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99
+        }
+    },
+    {
+        "id": 74528,
+        "title": "دامن تنیس زنانه نایک Nike Advantage Dri-FIT  – آبی",
+        "sku": "IM9404-417",
+        "url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-kadin-tenis-etegi-im9404-417",
+        "our_url": "https://tennis24shop.com/?p=74528",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74528",
+        "our_price_lir": 5399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی/آبی روشن": 0,
+            "M": 99,
             "L": 0
+        }
+    },
+    {
+        "id": 74542,
+        "title": "دامن تنیس زنانه نایک Nike Court Slam High-Rise  – صورتی",
+        "sku": "II3472-503",
+        "url": "https://www.tenisburada.com/tenisburadacom/nike-court-slam-high-rise-kadin-pembe-tenis-etegi-ii3472-503https//tenisburadacom/nike-court-slam-high-rise-kadin-pembe-tenis-etegi-ii3472-503",
+        "our_url": "https://tennis24shop.com/?p=74542",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74542",
+        "our_price_lir": 5199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "XS": 99,
+            "S": 99,
+            "M": 99
+        }
+    },
+    {
+        "id": 74551,
+        "title": "تیشرت تنیس مردانه نایک NikeCourt Slam RG Dri-FIT ADV  – سبز روشن",
+        "sku": "IB1016-394",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-tisortu-barely-green",
+        "our_url": "https://tennis24shop.com/?p=74551",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74551",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز روشن": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XXL": 99
+        },
+        "secondary_url": "https://www.tenisburada.com/tenisburadacom/nike-court-slam-dri-fit-adv-erkek-tenis-tisortu-ib1016-394https//tenisburadacom/nike-court-slam-dri-fit-adv-erkek-tenis-tisortu-ib1016-394"
+    },
+    {
+        "id": 74572,
+        "title": "تیشرت تنیس مردانه نایک مدل NikeCourt Slam Dri-FIT ADV کد IB1012-341 – سبز کله‌غازی",
+        "sku": "IB1012-341",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-adv-erkek-tenis-tisortu-gorge-green",
+        "our_url": "https://tennis24shop.com/?p=74572",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74572",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز کله‌غازی": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
         }
     }
 ]
