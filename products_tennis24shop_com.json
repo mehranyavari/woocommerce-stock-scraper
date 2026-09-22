@@ -644,7 +644,7 @@
         "our_price_lir": 4099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 999,
+            "40.5": 0,
             "41": 0,
             "42": 0,
             "42.5": 0,
@@ -653,7 +653,7 @@
             "44.5": 0,
             "45.5": 999,
             "46": 0,
-            "47": 999,
+            "47": 0,
             "40": 0,
             "49.5": 0,
             "45": 0,
@@ -3982,10 +3982,10 @@
         "our_price_lir": 3589,
         "our_stock_status": "instock",
         "our_sizes": {
-            "38": 999,
+            "38": 0,
             "38.5": 0,
             "39": 999,
-            "40": 999,
+            "40": 0,
             "40.5": 999,
             "41": 999
         }
@@ -19409,7 +19409,7 @@
         "our_url": "https://tennis24shop.com/?p=49993",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49993",
         "our_price_lir": 10000,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -25964,7 +25964,7 @@
             "40.5": 999,
             "41.5": 999,
             "42": 0,
-            "42.5": 0,
+            "42.5": 999,
             "43.5": 0,
             "44": 0,
             "44.5": 999,
@@ -29441,7 +29441,7 @@
             "AURORA GREEN": 0,
             "2XL": 0,
             "L.": 0,
-            "M": 999,
+            "M": 0,
             "S": 999,
             "XL": 0,
             "XS": 0,
@@ -30244,10 +30244,10 @@
             "37.5": 999,
             "38": 999,
             "38.5": 999,
-            "39.5": 0,
+            "39.5": 999,
             "40": 999,
-            "40.5": 0,
-            "41.5": 0
+            "40.5": 999,
+            "41.5": 999
         }
     },
     {
@@ -30260,16 +30260,16 @@
         "our_price_lir": 5099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "Ù¾ÛŒØ´â€ŒÙØ±Ø¶": 10,
-            "36": 10,
-            "36.5": 10,
-            "37.5": 10,
-            "38": 10,
-            "38.5": 10,
-            "39.5": 10,
-            "40": 10,
-            "40.5": 10,
-            "41.5": 10
+            "Ù¾ÛŒØ´â€ŒÙØ±Ø¶": 0,
+            "36": 999,
+            "36.5": 999,
+            "37.5": 0,
+            "38": 999,
+            "38.5": 0,
+            "39.5": 0,
+            "40": 999,
+            "40.5": 0,
+            "41.5": 0
         }
     },
     {
@@ -31683,6 +31683,23 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "سفید": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 75014,
+        "title": "سویشرت تنیس زنانه نایک NikeCourt Fall Heritage  – سرمه ای روشن",
+        "sku": "FZ6507-415",
+        "url": "https://www.meritspor.com.tr/nikecourt-fall-heritage-kadin-tenis-ceketi-blue",
+        "our_url": "https://tennis24shop.com/?p=75014",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75014",
+        "our_price_lir": 4799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی ملایم": 99,
+            "S": 99,
             "M": 99,
             "L": 99,
             "XL": 99
