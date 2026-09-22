@@ -11205,7 +11205,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XS": 999,
-            "S": 999,
+            "S": 0,
             "M": 0,
             "L": 0,
             "XL": 0
@@ -13421,7 +13421,7 @@
             "38": 0,
             "39": 0,
             "42": 999,
-            "40.5": 999,
+            "40.5": 0,
             "37": 0,
             "40": 0,
             "42.5": 0,
@@ -19409,7 +19409,7 @@
         "our_url": "https://tennis24shop.com/?p=49993",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49993",
         "our_price_lir": 10000,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -26450,12 +26450,12 @@
         "our_url": "https://tennis24shop.com/?p=65682",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65682",
         "our_price_lir": 3399,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
-            "M": 999,
-            "S": 999,
-            "XL": 999,
+            "L": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
             "XS": 0
         }
     },
@@ -26467,10 +26467,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "M": 999,
-            "S": 999,
+            "M": 0,
+            "S": 0,
             "XL": 0,
             "XS": 0,
             "L": 0
@@ -26484,13 +26484,13 @@
         "our_url": "https://tennis24shop.com/?p=65709",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65709",
         "our_price_lir": 4999,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
-            "M": 999,
-            "S": 999,
-            "XL": 999,
-            "2XL": 999,
+            "L": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
+            "2XL": 0,
             "XS": 0
         }
     },
@@ -27036,7 +27036,7 @@
         "our_price_lir": 9199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 999,
+            "40": 0,
             "38": 0,
             "37.5": 0,
             "41": 0,
@@ -27326,7 +27326,7 @@
             "39": 0,
             "39.5": 0,
             "40": 0,
-            "40.5": 999,
+            "40.5": 0,
             "42": 999,
             "42.5": 0,
             "41.5": 0
@@ -27351,7 +27351,7 @@
             "40": 999,
             "40.5": 0,
             "42": 0,
-            "42.5": 999,
+            "42.5": 0,
             "41.5": 0
         }
     },
@@ -31582,5 +31582,94 @@
             "XL": 99,
             "XXL": 99
         }
+    },
+    {
+        "id": 74903,
+        "title": "شلوارک تنیس مردانه نایک  NikeCourt Slam Dri-FIT 15 cm– سبز روشن",
+        "sku": "IF1560-006",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-15-cm-erkek-tenis-sortu-steam",
+        "our_url": "https://tennis24shop.com/?p=74903",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74903",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "استیم/سبز روشن": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "XXL": 99
+        }
+    },
+    {
+        "id": 74921,
+        "title": "شلوارک تنیس مردانه نایک NikeCourt Slam Dri-FIT 15 cm – سبز",
+        "sku": "IB1043-341",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-15-cm-erkek-tenis-sortu-gorge-green",
+        "our_url": "https://tennis24shop.com/?p=74921",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74921",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز گرجی": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "XXL": 99
+        }
+    },
+    {
+        "id": 74939,
+        "title": "شلوارک تنیس مردانه نایک Advantage Dri-FIT 15 cm  – آبی خاکستری تیره",
+        "sku": "FZ6913-438",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-new-slate",
+        "our_url": "https://tennis24shop.com/?p=74939",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74939",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "طوسی آبی/نارنجی": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 74958,
+        "title": "شلوارک تنیس مردانه نایک NikeCourt Advantage Dri-FIT 15 cm – آبی بالتیک",
+        "sku": "FZ6913-416",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-baltic-blue",
+        "our_url": "https://tennis24shop.com/?p=74958",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74958",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی بالتیک": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        },
+        "secondary_url": "https://www.opsarsport.com/urun/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-13"
+    },
+    {
+        "id": 74976,
+        "title": "شلوارک تنیس مردانه نایک NikeCourt Advantage Dri-FIT 15 cm– سبز زیتونی",
+        "sku": "FZ6913-303",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-camo-green",
+        "our_url": "https://tennis24shop.com/?p=74976",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74976",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز ارتشی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "XXL": 99
+        },
+        "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-erkek-dri-fit-6-inc-tenis-sortu-fz6913-303"
     }
 ]
