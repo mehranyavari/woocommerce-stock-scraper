@@ -2204,9 +2204,9 @@
         "our_url": "https://tennis24shop.com/?p=24059",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=24059",
         "our_price_lir": 4800,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "35.5": 999,
+            "35.5": 0,
             "36": 0,
             "38": 0,
             "39": 0,
@@ -4007,7 +4007,7 @@
             "44.5": 999,
             "44": 999,
             "43": 0,
-            "42.5": 999,
+            "42.5": 0,
             "40.5": 999,
             "40": 999,
             "41": 999,
@@ -10947,12 +10947,12 @@
         "our_sizes": {
             "40.5": 999,
             "42": 999,
-            "42.5": 999,
+            "42.5": 0,
             "43": 999,
             "44": 999,
             "44.5": 999,
             "45": 999,
-            "45.5": 999,
+            "45.5": 0,
             "46": 999,
             "39": 0,
             "40": 0,
@@ -14236,8 +14236,8 @@
         "our_sizes": {
             "34-38": 999,
             "38-42": 999,
-            "42-46": 999,
-            "38.42": 999,
+            "42-46": 0,
+            "38.42": 0,
             "42.46": 999,
             "34.38": 999
         },
@@ -21081,7 +21081,7 @@
         "our_url": "https://tennis24shop.com/?p=52817",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52817",
         "our_price_lir": 600,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -22731,7 +22731,7 @@
             "45.5": 999,
             "45": 999,
             "46": 0,
-            "41": 999,
+            "41": 0,
             "42": 999,
             "40.5": 0,
             "42.5": 999,
@@ -23181,7 +23181,7 @@
             "42": 999,
             "42.5": 999,
             "43": 999,
-            "45": 999
+            "45": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-magnolia-sert-kort-erkek-tenis-ayakkabisi/"
     },
@@ -25036,11 +25036,8 @@
         "our_url": "https://tennis24shop.com/?p=58631",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=58631",
         "our_price_lir": 950,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "42-46": 0,
-            "42.46": 999
-        }
+        "our_stock_status": "outofstock",
+        "our_sizes": []
     },
     {
         "id": 58721,
@@ -26724,7 +26721,7 @@
         "our_url": "https://tennis24shop.com/?p=66103",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66103",
         "our_price_lir": 1550,
-        "our_stock_status": "onbackorder",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -26810,7 +26807,7 @@
         "our_price_lir": 2699,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 999,
+            "XS": 0,
             "M": 999,
             "L": 999
         }
@@ -27689,11 +27686,8 @@
         "our_url": "https://tennis24shop.com/?p=67328",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67328",
         "our_price_lir": 3200,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "XL": 999,
-            "L": 0
-        }
+        "our_stock_status": "outofstock",
+        "our_sizes": []
     },
     {
         "id": 67340,
@@ -27705,7 +27699,7 @@
         "our_price_lir": 4300,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
+            "L": 0,
             "XL": 999,
             "M": 999
         }
@@ -27722,7 +27716,7 @@
         "our_sizes": {
             "M": 999,
             "S": 999,
-            "XS": 999,
+            "XS": 0,
             "L": 999
         }
     },
@@ -27736,8 +27730,8 @@
         "our_price_lir": 2900,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 999,
-            "S": 999,
+            "XL": 0,
+            "S": 0,
             "XS": 999
         }
     },
