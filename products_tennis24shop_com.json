@@ -26956,7 +26956,7 @@
             "41.5": 999,
             "39": 0,
             "42.5": 0,
-            "43.5": 999,
+            "43.5": 0,
             "44": 0,
             "44.5": 999,
             "45": 0,
@@ -29274,7 +29274,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40.5": 999,
-            "42.5": 999,
+            "42.5": 0,
             "43.5": 999,
             "44": 999,
             "44.5": 0,
@@ -30257,13 +30257,13 @@
             "Ù¾ÛŒØ´â€ŒÙØ±Ø¶": 0,
             "36": 999,
             "36.5": 999,
-            "37.5": 0,
+            "37.5": 999,
             "38": 999,
-            "38.5": 0,
-            "39.5": 0,
+            "38.5": 999,
+            "39.5": 999,
             "40": 999,
-            "40.5": 0,
-            "41.5": 0
+            "40.5": 999,
+            "41.5": 999
         }
     },
     {
@@ -30593,8 +30593,10 @@
         "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 10,
-            "S": 10
+            "M": 999,
+            "S": 0,
+            "XS": 0,
+            "L": 0
         }
     },
     {
@@ -30643,10 +30645,10 @@
         "our_url": "https://tennis24shop.com/?p=73639",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73639",
         "our_price_lir": 12150,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "سبز تیره": 10,
-            "S": 10
+            "سبز تیره": 0,
+            "S": 999
         }
     },
     {
@@ -30659,10 +30661,10 @@
         "our_price_lir": 4490,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 10,
-            "M": 10,
-            "S": 10,
-            "XS": 10
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XS": 999
         }
     },
     {
@@ -30672,11 +30674,12 @@
         "url": "https://www.tenisburada.com/nike-victory-dri-fit-kadin-elbisesi-fq1780-666",
         "our_url": "https://tennis24shop.com/?p=73721",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73721",
-        "our_price_lir": 4099,
+        "our_price_lir": 4100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 10,
-            "XS": 10
+            "S": 999,
+            "XS": 999,
+            "M": 0
         }
     },
     {
@@ -30689,10 +30692,10 @@
         "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 10,
-            "M": 10,
-            "S": 10,
-            "XS": 10
+            "L": 999,
+            "M": 0,
+            "S": 999,
+            "XS": 999
         }
     },
     {
@@ -31693,6 +31696,73 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "آبی ملایم": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 75068,
+        "title": "سویشرت تنیس زنانه نایک Nike Court Heritage Logo– سرمه ای روشن",
+        "sku": "CV4701-429",
+        "url": "https://www.meritspor.com.tr/nike-court-heritage-logo-kadin-tenis-ceketi-mavi",
+        "our_url": "https://tennis24shop.com/?p=75068",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75068",
+        "our_price_lir": 3799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "XS": 99,
+            "S": 99,
+            "L": 99
+        }
+    },
+    {
+        "id": 75085,
+        "title": "پلوشرت تنیس مردانه نایک NikeCourt Slam Dri-FIT ADV  – آبی مات",
+        "sku": "IB1028-486",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-adv-erkek-tenis-polo-work-blue",
+        "our_url": "https://tennis24shop.com/?p=75085",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75085",
+        "our_price_lir": 6399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی/مشکی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 75104,
+        "title": "پولوشرت تنیس مردانه نایکNikeCourt Slam Dri-FIT ADV–خاکستری",
+        "sku": "IB1028-060",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-polo-anthracite",
+        "our_url": "https://tennis24shop.com/?p=75104",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75104",
+        "our_price_lir": 6399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "ذغالی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 75123,
+        "title": "پلوشرت تنیس مردانه نایک NikeCourt Heritage – سفید",
+        "sku": "FQ2101-100",
+        "url": "https://www.meritspor.com.tr/nikecourt-heritage-erkek-tenis-polo-ust-beyaz",
+        "our_url": "https://tennis24shop.com/?p=75123",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75123",
+        "our_price_lir": 4499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید/مشکی": 99,
             "S": 99,
             "M": 99,
             "L": 99,
