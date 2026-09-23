@@ -777,7 +777,7 @@
             "41": 0,
             "42": 0,
             "43": 0,
-            "44": 998,
+            "44": 999,
             "45": 0,
             "46": 0,
             "47": 0,
@@ -2662,11 +2662,11 @@
         "our_url": "https://tennis24shop.com/?p=12608",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12608",
         "our_price_lir": 3239,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "36.5": 0,
             "37.5": 0,
-            "38": 0,
+            "38": 999,
             "۳۶": 0,
             "39": 0,
             "40": 0,
@@ -3900,7 +3900,7 @@
         "our_sizes": {
             "42.5": 0,
             "44": 999,
-            "44.5": 998,
+            "44.5": 999,
             "45.5": 999,
             "40": 0,
             "41": 0,
@@ -18252,7 +18252,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "42.5": 0,
-            "44.5": 0,
+            "44.5": 999,
             "41": 0,
             "42": 0,
             "43": 0,
@@ -18309,11 +18309,11 @@
         "our_url": "https://tennis24shop.com/?p=48686",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48686",
         "our_price_lir": 2659,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "44.5": 0,
             "45": 0,
-            "41": 0,
+            "41": 999,
             "42": 0,
             "43": 0,
             "44": 0,
@@ -31918,6 +31918,24 @@
             "S": 99,
             "M": 99,
             "L": 99
+        }
+    },
+    {
+        "id": 75409,
+        "title": "تیشرت تنیس مردانه Decathlon TTS Essential – سفید",
+        "sku": "",
+        "url": "https://www.decathlon.com.tr/p/erkek-kisa-kollu-tenis-tisortu-beyaz-essential/_/R-p-306876?mc=8980608&c=BEYAZ",
+        "our_url": "https://tennis24shop.com/?p=75409",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75409",
+        "our_price_lir": 710,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "2XL": 99
         }
     }
 ]
