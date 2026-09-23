@@ -450,7 +450,7 @@
     "sku": "60450",
     "price": 899,
     "offer_price": null,
-    "quantity": 11,
+    "quantity": 10,
     "in_stock": true,
     "url": "https://lego.tr/product/60450-lego-city-sari-tekerlekli-insaat-yukleyicisi",
     "category": "City"
@@ -834,7 +834,7 @@
     "sku": "11025",
     "price": 519,
     "offer_price": null,
-    "quantity": 7,
+    "quantity": 6,
     "in_stock": true,
     "url": "https://lego.tr/product/11025-lego-classic-mavi-plaka-zemin",
     "category": "Classic"
@@ -846,8 +846,8 @@
     "sku": "11023",
     "price": 519,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/11023-lego-classic-yesil-plaka-zemin",
     "category": "Classic"
   },
@@ -990,7 +990,7 @@
     "sku": "60415",
     "price": 1159,
     "offer_price": null,
-    "quantity": 12,
+    "quantity": 11,
     "in_stock": true,
     "url": "https://lego.tr/product/60415-lego-city-polis-arabasi-ve-spor-araba-takibi",
     "category": "City"
@@ -1110,7 +1110,7 @@
     "sku": "4878",
     "price": 1159,
     "offer_price": null,
-    "quantity": 10,
+    "quantity": 9,
     "in_stock": true,
     "url": "https://lego.tr/product/60304-road-plates",
     "category": "City"
@@ -2380,12 +2380,11 @@
     "product_id": 2939,
     "name": "854246 LEGO® Star Wars™ Gözcü Trooper™ Anahtarlık",
     "sku": "854246",
-    "price": 379,
-    "offer_price": null,
-    "quantity": 141,
-    "in_stock": true,
+    "price": 0,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/854246-lego-star-wars-gozcu-trooper-anahtarlik",
-    "category": "Anahtarlıklar"
+    "error": "Navigation timeout of 60000 ms exceeded"
   },
   {
     "id": "854236",
@@ -4662,7 +4661,7 @@
     "sku": "854287",
     "price": 379,
     "offer_price": null,
-    "quantity": 227,
+    "quantity": 226,
     "in_stock": true,
     "url": "https://lego.tr/product/854287-lego-disney-mirabel-anahtarlik",
     "category": "Anahtarlıklar"
@@ -5958,7 +5957,7 @@
     "sku": "71827",
     "price": 579,
     "offer_price": null,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "url": "https://lego.tr/product/71827-lego-ninjago-zanein-savas-zirhi-mechi",
     "category": "NINJAGO®"
@@ -6018,7 +6017,7 @@
     "sku": "71832",
     "price": 4499,
     "offer_price": null,
-    "quantity": 2,
+    "quantity": 1,
     "in_stock": true,
     "url": "https://lego.tr/product/71832-lego-ninjago-thunderfang-kaos-ejderhasi",
     "category": "NINJAGO®"
@@ -6810,7 +6809,7 @@
     "sku": "854235",
     "price": 379,
     "offer_price": null,
-    "quantity": 457,
+    "quantity": 456,
     "in_stock": true,
     "url": "https://lego.tr/product/854235-lego-super-heroes-batman-anahtarlik",
     "category": "Anahtarlıklar"
@@ -7110,7 +7109,7 @@
     "sku": "77241",
     "price": 1699,
     "offer_price": null,
-    "quantity": 369,
+    "quantity": 529,
     "in_stock": true,
     "url": "https://lego.tr/product/77241-lego-speed-champions-daha-hizli-daha-ofkeli-honda-s2000",
     "category": "Speed Champions"
@@ -7242,7 +7241,7 @@
     "sku": "76919",
     "price": 1699,
     "offer_price": null,
-    "quantity": 384,
+    "quantity": 383,
     "in_stock": true,
     "url": "https://lego.tr/product/76919-lego-speed-champions-2023-mclaren-formula-1-yaris-arabasi",
     "category": "Speed Champions"
@@ -7746,7 +7745,7 @@
     "sku": "76457",
     "price": 22999,
     "offer_price": null,
-    "quantity": 29,
+    "quantity": 30,
     "in_stock": true,
     "url": "https://lego.tr/product/76457-lego-harry-potter-hogsmeade-koyu-koleksiyoncu-versiyonu",
     "category": "Harry Potter™"
@@ -9546,7 +9545,7 @@
     "sku": "10354",
     "price": 16499,
     "offer_price": null,
-    "quantity": 13,
+    "quantity": 12,
     "in_stock": true,
     "url": "https://lego.tr/product/10354-lego-icons-yuzuklerin-efendisi-shire",
     "category": "LEGO® Icons"
@@ -9702,7 +9701,7 @@
     "sku": "10329",
     "price": 2999,
     "offer_price": null,
-    "quantity": 24,
+    "quantity": 23,
     "in_stock": true,
     "url": "https://lego.tr/product/10329-lego-icons-minik-bitkiler",
     "category": "Botanical Collection"
@@ -9822,8 +9821,8 @@
     "sku": "10325",
     "price": 6599,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/10325-lego-icons-alp-kabini",
     "category": "LEGO® Icons"
   },
@@ -10002,7 +10001,7 @@
     "sku": "11389",
     "price": 6699,
     "offer_price": null,
-    "quantity": 29,
+    "quantity": 28,
     "in_stock": true,
     "url": "https://lego.tr/11389-lego-icons-kurtulus-projesi-project-hail-mary",
     "category": "LEGO® Icons"
@@ -10938,7 +10937,7 @@
     "sku": "71050",
     "price": 229,
     "offer_price": null,
-    "quantity": 1332,
+    "quantity": 1330,
     "in_stock": true,
     "url": "https://lego.tr/product/71050-lego-minifigures-orumcek-adam-orumcek-evrenine-gecis",
     "category": "Minifigures"
@@ -10986,7 +10985,7 @@
     "sku": "76295",
     "price": 4999,
     "offer_price": null,
-    "quantity": 11,
+    "quantity": 10,
     "in_stock": true,
     "url": "https://lego.tr/product/76295-lego-marvel-avengers-helikoptasir",
     "category": "Marvel"
@@ -11214,7 +11213,7 @@
     "sku": "854292",
     "price": 379,
     "offer_price": null,
-    "quantity": 124,
+    "quantity": 122,
     "in_stock": true,
     "url": "https://lego.tr/product/854292-lego-marvel-ghost-spider-anahtarlik",
     "category": "Anahtarlıklar"
@@ -11238,7 +11237,7 @@
     "sku": "854290",
     "price": 379,
     "offer_price": null,
-    "quantity": 252,
+    "quantity": 250,
     "in_stock": true,
     "url": "https://lego.tr/product/854290-lego-marvel-orumcek-adam-anahtarlik",
     "category": "Anahtarlıklar"
@@ -11310,7 +11309,7 @@
     "sku": "854153",
     "price": 379,
     "offer_price": null,
-    "quantity": 425,
+    "quantity": 423,
     "in_stock": true,
     "url": "https://lego.tr/product/854153-lego-marvel-miles-morales-anahtarlik",
     "category": "Anahtarlıklar"
@@ -11466,8 +11465,8 @@
     "sku": "76263",
     "price": 1389,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/76263-lego-marvel-iron-man-hulkbuster-thanosa-karsi",
     "category": "Marvel"
   },
@@ -11802,7 +11801,7 @@
     "sku": "21365",
     "price": 2999,
     "offer_price": null,
-    "quantity": 42,
+    "quantity": 41,
     "in_stock": true,
     "url": "https://lego.tr/21365-lego-ideas-muhabbet-kuslari",
     "category": "Ideas"
@@ -12894,7 +12893,7 @@
     "sku": "31169",
     "price": 1799,
     "offer_price": null,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "url": "https://lego.tr/product/31169-lego-creator-cicekli-daktilo",
     "category": "Creator 3-in-1"
@@ -14214,7 +14213,7 @@
     "sku": "43021",
     "price": 2399,
     "offer_price": null,
-    "quantity": 5,
+    "quantity": 4,
     "in_stock": true,
     "url": "https://lego.tr/product/43021-lego-editions-lifestyle-nike-dunk-trickshot",
     "category": "Nike x LEGO® Collection"
@@ -18186,7 +18185,7 @@
     "sku": "854305",
     "price": 379,
     "offer_price": null,
-    "quantity": 173,
+    "quantity": 172,
     "in_stock": true,
     "url": "https://lego.tr/product/854305-lego-iconic-gumus-minifigur-anahtarlik",
     "category": "Anahtarlıklar"
@@ -18282,7 +18281,7 @@
     "sku": "854201",
     "price": 379,
     "offer_price": null,
-    "quantity": 738,
+    "quantity": 737,
     "in_stock": true,
     "url": "https://lego.tr/product/854201-lego-iconic-noel-baba-anahtarlik",
     "category": "Anahtarlıklar"
@@ -18498,7 +18497,7 @@
     "sku": "10372",
     "price": 4199,
     "offer_price": null,
-    "quantity": 5,
+    "quantity": 3,
     "in_stock": true,
     "url": "https://lego.tr/product/10372-lego-botanicals-japon-gulu",
     "category": "Botanical Collection"
@@ -18942,7 +18941,7 @@
     "sku": "11506",
     "price": 1159,
     "offer_price": null,
-    "quantity": 124,
+    "quantity": 123,
     "in_stock": true,
     "url": "https://lego.tr/11506-lego-botanicals-sallanan-bitkiler",
     "category": "Botanical Collection"
@@ -19386,7 +19385,7 @@
     "sku": "31378",
     "price": 2099,
     "offer_price": null,
-    "quantity": 18,
+    "quantity": 217,
     "in_stock": true,
     "url": "https://lego.tr/31378-lego-creator-uzay-kesif-teleskobu",
     "category": "Creator 3-in-1"
@@ -19722,7 +19721,7 @@
     "sku": "40954",
     "price": 1049,
     "offer_price": null,
-    "quantity": 26,
+    "quantity": 25,
     "in_stock": true,
     "url": "https://lego.tr/40954-lego-iconic-almanya-kartpostali",
     "category": "LEGO Iconic"
@@ -21978,7 +21977,7 @@
     "sku": "71863",
     "price": 1159,
     "offer_price": null,
-    "quantity": 60,
+    "quantity": 59,
     "in_stock": true,
     "url": "https://lego.tr/71863-lego-ninjago-zilvar-ve-ejderha-canavar-grimtak",
     "category": "NINJAGO®"
@@ -22302,7 +22301,7 @@
     "sku": "77260",
     "price": 1699,
     "offer_price": null,
-    "quantity": 25,
+    "quantity": 24,
     "in_stock": true,
     "url": "https://lego.tr/77260-lego-speed-champions-hizli-ve-ofkeli-toyota-supra-mk4",
     "category": "Speed Champions"
@@ -22998,7 +22997,7 @@
     "sku": "42235",
     "price": 3899,
     "offer_price": null,
-    "quantity": 103,
+    "quantity": 123,
     "in_stock": true,
     "url": "https://lego.tr/42235-lego-technic-ferrari-488-pista-araba",
     "category": "Technic™"
@@ -23010,7 +23009,7 @@
     "sku": "42236",
     "price": 5399,
     "offer_price": null,
-    "quantity": 39,
+    "quantity": 50,
     "in_stock": true,
     "url": "https://lego.tr/42236-lego-technic-modifiye-ford-mustang-gt-araba",
     "category": "Technic™"
@@ -23022,7 +23021,7 @@
     "sku": "42238",
     "price": 2999,
     "offer_price": null,
-    "quantity": 40,
+    "quantity": 39,
     "in_stock": true,
     "url": "https://lego.tr/42238-lego-technic-ducati-desmo450-mx-factory-motosiklet",
     "category": "Technic™"
@@ -23034,7 +23033,7 @@
     "sku": "42239",
     "price": 11599,
     "offer_price": null,
-    "quantity": 42,
+    "quantity": 43,
     "in_stock": true,
     "url": "https://lego.tr/42239-lego-technic-batmobile-tumbler",
     "category": "Technic™"
@@ -23070,7 +23069,7 @@
     "sku": "72160",
     "price": 6099,
     "offer_price": null,
-    "quantity": 69,
+    "quantity": 71,
     "in_stock": true,
     "url": "https://lego.tr/72160-lego-pokémon-arcanine",
     "category": "LEGO® Pokémon™"
@@ -23238,7 +23237,7 @@
     "sku": "77059",
     "price": 3599,
     "offer_price": null,
-    "quantity": 16,
+    "quantity": 19,
     "in_stock": true,
     "url": "https://lego.tr/77059-lego-animal-crossing-timmy-ve-tommynin-eglenceli-gunu",
     "category": "LEGO® Animal Crossing™"
@@ -23250,7 +23249,7 @@
     "sku": "77119",
     "price": 1799,
     "offer_price": null,
-    "quantity": 16,
+    "quantity": 20,
     "in_stock": true,
     "url": "https://lego.tr/77119-lego-sonic-the-hedgehog-tailsin-tornado-1-ucagi",
     "category": "Sonic the Hedgehog™"
@@ -23286,7 +23285,7 @@
     "sku": "77264",
     "price": 3299,
     "offer_price": null,
-    "quantity": 116,
+    "quantity": 119,
     "in_stock": true,
     "url": "https://lego.tr/77264-lego-speed-champions-jaguar-project-7-ve-land-rover-defender",
     "category": "Speed Champions"
