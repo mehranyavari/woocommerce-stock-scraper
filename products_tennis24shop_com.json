@@ -777,7 +777,7 @@
             "41": 0,
             "42": 0,
             "43": 0,
-            "44": 999,
+            "44": 998,
             "45": 0,
             "46": 0,
             "47": 0,
@@ -3900,7 +3900,7 @@
         "our_sizes": {
             "42.5": 0,
             "44": 999,
-            "44.5": 999,
+            "44.5": 998,
             "45.5": 999,
             "40": 0,
             "41": 0,
@@ -11174,7 +11174,7 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 5
+            "M": 4
         }
     },
     {
@@ -15712,7 +15712,7 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 5,
+            "XL": 4,
             "M": 5,
             "L": 5,
             "S": 5,
@@ -15729,7 +15729,7 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 5,
+            "L": 4,
             "XL": 5,
             "M": 5,
             "S": 5,
@@ -20257,7 +20257,7 @@
             "M": 999,
             "L": 999,
             "XL": 999,
-            "2XL": 999
+            "2XL": 998
         }
     },
     {
@@ -21372,7 +21372,7 @@
             "L": 5,
             "M": 5,
             "S": 5,
-            "2XL": 5
+            "2XL": 4
         }
     },
     {
@@ -31377,22 +31377,6 @@
         "secondary_url": "https://www.opsarsport.com/urun/nikecourt-advantage-erkek-tenis-tisortu-1"
     },
     {
-        "id": 74625,
-        "title": "دامن تنیس زنانه نایک Nike Court Slam  – خاکستری",
-        "sku": "II3472-007",
-        "url": "https://www.tenisburada.com/nikecourt-slam-yuksek-belli-kadin-tenis-etegi-ii3472-007",
-        "our_url": "https://tennis24shop.com/?p=74625",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74625",
-        "our_price_lir": 5199,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "مشکی/خاکستری": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
-        }
-    },
-    {
         "id": 74636,
         "title": "دامن تنیس زنانه نایک Nike Victory Dri-FIT  – مشکی",
         "sku": "HV9951-010",
@@ -31575,23 +31559,6 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "استیم/سبز روشن": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "XXL": 99
-        }
-    },
-    {
-        "id": 74921,
-        "title": "شلوارک تنیس مردانه نایک NikeCourt Slam Dri-FIT 15 cm – سبز",
-        "sku": "IB1043-341",
-        "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-15-cm-erkek-tenis-sortu-gorge-green",
-        "our_url": "https://tennis24shop.com/?p=74921",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74921",
-        "our_price_lir": 4999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "سبز گرجی": 99,
             "M": 99,
             "L": 99,
             "XL": 99,
@@ -31866,6 +31833,88 @@
         "our_sizes": {
             "استیم/مشکی": 99,
             "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99
+        }
+    },
+    {
+        "id": 75319,
+        "title": "پلوشرت تنیس مردانه نایک Nike Rafa Slim 2.0– مشکی",
+        "sku": "",
+        "url": "https://www.meritspor.com.tr/the-nike-rafa-slim-2.0-polo-siyah",
+        "our_url": "https://tennis24shop.com/?p=75319",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75319",
+        "our_price_lir": 2499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 99,
+            "XS": 99,
+            "S": 99
+        }
+    },
+    {
+        "id": 75334,
+        "title": "دامن تنیس زنانه نایک Nike Court Advantage Dri-FIT Pileli – سرمه‌ای",
+        "sku": "FZ6512-417",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-pileli-kadin-tenis-etegi-old-royal?utm_source=chatgpt.com",
+        "our_url": "https://tennis24shop.com/?p=75334",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75334",
+        "our_price_lir": 4499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سرمه‌ای": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99
+        }
+    },
+    {
+        "id": 75352,
+        "title": "شلوارک ورزشی مردانه نایک NikeCourt Slam Dri-FIT – سبز",
+        "sku": "IB1043-341",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-15-cm-erkek-tenis-sortu-gorge-green?utm_source=chatgpt.com",
+        "our_url": "https://tennis24shop.com/?p=75352",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75352",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "XXL": 99
+        }
+    },
+    {
+        "id": 75368,
+        "title": "دامن تنیس زنانه نایک Nike court Slam – سفید",
+        "sku": "II3472-007",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-yuksek-belli-pileli-kadin-tenis-etegi-steam?utm_source=chatgpt.com",
+        "our_url": "https://tennis24shop.com/?p=75368",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75368",
+        "our_price_lir": 5199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 75390,
+        "title": "دامن تنیس زنانه نایک Nike Victory Dri-FIT  – سفید",
+        "sku": "HV9951-100",
+        "url": "https://www.meritspor.com.tr/nike-victory-dri-fit-yuksek-belli-kadin-tenis-etegi-beyaz",
+        "our_url": "https://tennis24shop.com/?p=75390",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75390",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
             "S": 99,
             "M": 99,
             "L": 99
