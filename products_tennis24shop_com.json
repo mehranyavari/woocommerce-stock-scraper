@@ -27012,7 +27012,7 @@
             "42.5": 999,
             "43.5": 999,
             "44.5": 0,
-            "44": 999,
+            "44": 998,
             "47": 0,
             "40.5": 0,
             "46": 0,
@@ -29536,7 +29536,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "43.5": 999,
-            "42.5": 999,
+            "42.5": 998,
             "42": 999,
             "41.5": 999,
             "44.5": 999,
@@ -31968,6 +31968,20 @@
             "XS": 99,
             "S": 99,
             "L": 99
+        }
+    },
+    {
+        "id": 75553,
+        "title": "جوراب تنیس نایک  Nike Essentials Tennis No-Show – مشکی",
+        "sku": "SX6914-013",
+        "url": "https://www.meritspor.com.tr/nike-essentials-tennis-no-show-tenis-corabi",
+        "our_url": "https://tennis24shop.com/?p=75553",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75553",
+        "our_price_lir": 699,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 99,
+            "34-38": 99
         }
     }
 ]
