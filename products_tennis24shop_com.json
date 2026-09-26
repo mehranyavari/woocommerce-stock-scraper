@@ -2954,7 +2954,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "44": 999,
-            "42.5": 999,
+            "42.5": 0,
             "42": 0,
             "39": 0,
             "40": 0,
@@ -6071,7 +6071,7 @@
             "42": 0,
             "42.5": 0,
             "43.5": 0,
-            "44": 998,
+            "44": 999,
             "44.5": 0,
             "45": 0,
             "8 سال": 0,
@@ -6288,7 +6288,7 @@
         "our_url": "https://tennis24shop.com/?p=21193",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=21193",
         "our_price_lir": 4000,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "44": 0,
             "8 سال": 0,
@@ -6298,7 +6298,7 @@
             "9.5": 0,
             "10.5": 0,
             "43.5": 0,
-            "44.5": 1,
+            "44.5": 0,
             "42": 0,
             "41.5": 0,
             "42.5": 0
@@ -7304,7 +7304,7 @@
         "our_price_lir": 7199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "46": 998,
+            "46": 999,
             "44": 999,
             "44.5": 0,
             "42.5": 0,
@@ -12623,9 +12623,9 @@
         "our_url": "https://tennis24shop.com/?p=41365",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41365",
         "our_price_lir": 2900,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 999,
+            "L": 0,
             "XS": 0,
             "S": 0,
             "M": 0
@@ -15475,7 +15475,7 @@
         "our_price_lir": 5000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "47": 999,
+            "47": 0,
             "40.5": 999,
             "41": 0,
             "42.5": 999,
@@ -26078,7 +26078,7 @@
         "our_price_lir": 8999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 999,
+            "36": 0,
             "37": 999,
             "37.5": 999,
             "38": 0,
@@ -27012,7 +27012,7 @@
             "42.5": 999,
             "43.5": 999,
             "44.5": 0,
-            "44": 998,
+            "44": 999,
             "47": 0,
             "40.5": 0,
             "46": 0,
@@ -32010,6 +32010,17 @@
         "our_url": "https://tennis24shop.com/?p=75569",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75569",
         "our_price_lir": 649,
+        "our_stock_status": "instock",
+        "our_sizes": []
+    },
+    {
+        "id": 75588,
+        "title": "مچ‌بند تنیس نایک مدل Swoosh کد N.000.1565.043.OS – بنفش/مشکی",
+        "sku": "N.000.1565.043.OS",
+        "url": "https://www.meritspor.com.tr/nike-swoosh-2li-tenis-bilekligi-mor-siyah",
+        "our_url": "https://tennis24shop.com/?p=75588",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75588",
+        "our_price_lir": 650,
         "our_stock_status": "instock",
         "our_sizes": []
     }
