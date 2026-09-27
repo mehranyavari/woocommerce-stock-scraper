@@ -12695,7 +12695,10 @@
         "our_price_lir": 2400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999
+            "M": 999,
+            "XS": 0,
+            "S": 0,
+            "L": 0
         }
     },
     {
@@ -21498,9 +21501,9 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 999,
-            "M": 1,
-            "S": 1,
-            "XS": 1
+            "M": 999,
+            "S": 999,
+            "XS": 999
         }
     },
     {
@@ -32160,6 +32163,70 @@
             "40": 99,
             "40.5": 99,
             "41": 99
+        }
+    },
+    {
+        "id": 75808,
+        "title": "کفش تنیس مردانه آن راجر پرو The Roger Pro 3  – خاکستری/آبی",
+        "sku": "3MG10366031",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-3-gri-erkek-tenis-ayakkabi-gri-3mg10366031-12719-1/",
+        "our_url": "https://tennis24shop.com/?p=75808",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75808",
+        "our_price_lir": 14999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99,
+            "46": 99
+        }
+    },
+    {
+        "id": 75831,
+        "title": "کفش تنیس مردانه The Roger Pro Fire –  hard court  – سفید",
+        "sku": "3MF30102626",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-fire-erkek-tenis-ayakkabisi-beyaz-3mf30102626-100/",
+        "our_url": "https://tennis24shop.com/?p=75831",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75831",
+        "our_price_lir": 14999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99,
+            "46": 99,
+            "47": 99
+        }
+    },
+    {
+        "id": 75876,
+        "title": "کفش تنیس مردانه اون مدل The Roger Pro 2 کد 3ME10303496 – آبی",
+        "sku": "3ME10303496",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-2-erkek-tenis-ayakkabisi-mavi-3me10303496-37/",
+        "our_url": "https://tennis24shop.com/?p=75876",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75876",
+        "our_price_lir": 14499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "45": 99,
+            "46": 99,
+            "47": 99
         }
     }
 ]
