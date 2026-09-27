@@ -12695,10 +12695,7 @@
         "our_price_lir": 2400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
-            "S": 0,
-            "M": 999,
-            "L": 0
+            "M": 999
         }
     },
     {
@@ -21500,10 +21497,10 @@
         "our_price_lir": 2400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999,
-            "S": 999,
-            "XS": 999,
-            "L": 999
+            "L": 999,
+            "M": 1,
+            "S": 1,
+            "XS": 1
         }
     },
     {
@@ -29678,20 +29675,20 @@
         "id": 69778,
         "title": "کفش تنیس مردانه آن راجر پرو - ONE The Roger Pro Fire Clay - مشکی",
         "sku": "3MF30820106",
-        "url": "https://www.asics.com.tr/gel-challenger-15-padel-l.e.-2153",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-fire-clay-erkek-siyah-tenis-ayakkabisi-siyah-3mf30820106-001/",
         "our_url": "https://tennis24shop.com/?p=69778",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69778",
-        "our_price_lir": 8999,
+        "our_price_lir": 15000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41": 0,
+            "41": 999,
             "42": 999,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
             "44.5": 999,
-            "45": 0,
-            "46": 0,
+            "45": 999,
+            "46": 999,
             "43.5": 999
         }
     },
@@ -32068,7 +32065,7 @@
     },
     {
         "id": 75676,
-        "title": "ژاکت تنیس زنانه نایک مدل Court Heritage کد CV4701-010 – مشکی",
+        "title": "سویشرت تنیس زنانه نایک Court Heritage – مشکی",
         "sku": "CV4701-010",
         "url": "https://www.meritspor.com.tr/nike-court-heritage-fermuarli-kadin-tenis-ceketi-siyah",
         "our_url": "https://tennis24shop.com/?p=75676",
@@ -32079,6 +32076,48 @@
             "مشکی": 99,
             "XS": 99,
             "L": 99
+        }
+    },
+    {
+        "id": 75712,
+        "title": "کفش تنیس زنانه آن راجر پرو  The Roger Pro Fire Clay  – صورتی",
+        "sku": "3WF30591088-153",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-fire-clay-kadin-pembe-tenis-ayakkabisi-pembe-3wf30591088-153/",
+        "our_url": "https://tennis24shop.com/?p=75712",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75712",
+        "our_price_lir": 14999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "38.5": 99,
+            "39": 99,
+            "40": 99,
+            "40.5": 99,
+            "41": 99
+        }
+    },
+    {
+        "id": 75742,
+        "title": "کفش تنیس زنانه آن راجر پرو  The Roger Pro –hard court – سفید",
+        "sku": "3WF30032626-100",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-fire-kadin-tenis-ayakkabisi-renkli-3wf30032626-100/",
+        "our_url": "https://tennis24shop.com/?p=75742",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75742",
+        "our_price_lir": 14999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "38.5": 99,
+            "39": 99,
+            "40": 99,
+            "40.5": 99,
+            "41": 99
         }
     }
 ]
