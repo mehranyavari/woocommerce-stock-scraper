@@ -21631,7 +21631,7 @@
         "our_price_lir": 4300,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "M": 999,
             "10": 0,
             "XS": 0,
@@ -26395,12 +26395,12 @@
         "our_url": "https://tennis24shop.com/?p=65638",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65638",
         "our_price_lir": 4199,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "2XL": 999,
-            "M": 999,
-            "S": 999,
-            "XL": 999,
+            "2XL": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
             "L": 0,
             "XS": 0
         }
@@ -26430,11 +26430,11 @@
         "our_url": "https://tennis24shop.com/?p=65665",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65665",
         "our_price_lir": 2099,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "2XL": 0,
             "M": 0,
-            "S": 999,
+            "S": 0,
             "XL": 0,
             "XS": 0,
             "L": 0
@@ -29676,7 +29676,7 @@
     },
     {
         "id": 69778,
-        "title": "کفش تنیس مردانه آن راجر پرو - ONE The Roger Pro Fire Clay - مشکی",
+        "title": "کفش تنیس مردانه آن راجر - ON The Roger Pro Fire Clay - مشکی",
         "sku": "3MF30820106",
         "url": "https://www.spx.com.tr/on-the-roger-pro-fire-clay-erkek-siyah-tenis-ayakkabisi-siyah-3mf30820106-001/",
         "our_url": "https://tennis24shop.com/?p=69778",
@@ -32083,7 +32083,7 @@
     },
     {
         "id": 75712,
-        "title": "کفش تنیس زنانه آن راجر پرو  On The Roger Pro Fire – Clay  – صورتی",
+        "title": "کفش تنیس زنانه آن راجر– On The Roger Pro Fire – Clay  – صورتی",
         "sku": "3WF30591088-153",
         "url": "https://www.spx.com.tr/on-the-roger-pro-fire-clay-kadin-pembe-tenis-ayakkabisi-pembe-3wf30591088-153/",
         "our_url": "https://tennis24shop.com/?p=75712",
@@ -32104,7 +32104,7 @@
     },
     {
         "id": 75742,
-        "title": "کفش تنیس زنانه آن راجر پروOn The Roger Pro 3–hard court – سفید",
+        "title": "کفش تنیس زنانه آن راجرOn The Roger Pro 3–hard court – سفید",
         "sku": "3WF30032626-100",
         "url": "https://www.spx.com.tr/on-the-roger-pro-fire-kadin-tenis-ayakkabisi-renkli-3wf30032626-100/",
         "our_url": "https://tennis24shop.com/?p=75742",
@@ -32125,7 +32125,7 @@
     },
     {
         "id": 75763,
-        "title": "کفش تنیس زنانه آن راجر پرو On The Roger Pro 3–hard court – سفید/بنفش",
+        "title": "کفش تنیس زنانه آن راجر  On The Roger Pro 3–hard court – سفید/بنفش",
         "sku": "7885404",
         "url": "https://www.spx.com.tr/on-the-roger-pro-3-kadin-beyaz-tenis-ayakkabisi-beyaz-3wg10316030-whit/",
         "our_url": "https://tennis24shop.com/?p=75763",
@@ -32297,7 +32297,7 @@
     },
     {
         "id": 76029,
-        "title": "کفش تنیس مردانه On مدل The Roger Pro Fire کد 3MF30105165 – آبی",
+        "title": "کفش تنیس مردانه آن The Roger Pro Fire – آبی اقیانوسی",
         "sku": "3MF30105165",
         "url": "https://www.spx.com.tr/on-the-roger-pro-fire-erkek-mavi-tenis-ayakkabi-mavi-3mf30105165-37/",
         "our_url": "https://tennis24shop.com/?p=76029",
@@ -32314,6 +32314,28 @@
             "44.5": 99,
             "45": 99,
             "46": 99
+        }
+    },
+    {
+        "id": 76050,
+        "title": "کفش تنیس مردانه آن راجر  The Roger Pro Fire  – صورتی",
+        "sku": "3MF30103606",
+        "url": "https://www.spx.com.tr/on-the-roger-pro-fire-erkek-tenis-ayakkabisi-pembe-3mf30103606-153/",
+        "our_url": "https://tennis24shop.com/?p=76050",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76050",
+        "our_price_lir": 14999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99,
+            "46": 99,
+            "47": 99
         }
     }
 ]
