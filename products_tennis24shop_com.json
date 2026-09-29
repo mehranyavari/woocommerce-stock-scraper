@@ -31987,26 +31987,6 @@
         }
     },
     {
-        "id": 75423,
-        "title": "کفش تنیس زنانه اسیکس GEL-RESOLUTION X – CLAY آبی روشن/سبز اقیانوسی",
-        "sku": "1042A277-402-6H",
-        "url": "https://www.asics.com.tr/gel-resolution-x-clay-2196",
-        "our_url": "https://tennis24shop.com/?p=75423",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75423",
-        "our_price_lir": 9999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "پیش‌فرض": 0,
-            "37.5": 999,
-            "38": 999,
-            "39": 999,
-            "39.5": 999,
-            "40": 999,
-            "40.5": 999,
-            "41.5": 999
-        }
-    },
-    {
         "id": 75456,
         "title": "سویشرت تنیس مردانه نایک Nike Court Heritage  – زرد",
         "sku": "DC0620-783",
@@ -32659,8 +32639,8 @@
     },
     {
         "id": 76691,
-        "title": "تیشرت تنیس زنانه اسیکس مدل Match Jacquard Polo SS Top کد 2041A420-500 – بادمجانی تیره",
-        "sku": "2041A420-500-2XL",
+        "title": "تیشرت تنیس مردانه اسیکس ASICS Match Jacquard Polo SS Top – بادمجانی",
+        "sku": "2041A420-500",
         "url": "https://www.asics.com.tr/match-jacquard-polo-ss-top-1814",
         "our_url": "https://tennis24shop.com/?p=76691",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76691",
@@ -32674,6 +32654,91 @@
             "L": 3,
             "XL": 3,
             "2XL": 2
+        }
+    },
+    {
+        "id": 76842,
+        "title": "تیشرت تنیس مردانه اسیکس ASICS COURT SS TOP – خاکی",
+        "sku": "2041A339-200",
+        "url": "https://www.asics.com.tr/court-ss-top-1948",
+        "our_url": "https://tennis24shop.com/?p=76842",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76842",
+        "our_price_lir": 2199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "خاکی وینتیج": 4,
+            "3XL": 2,
+            "XS": 2,
+            "S": 6,
+            "M": 5,
+            "L": 6,
+            "XL": 5,
+            "2XL": 4
+        }
+    },
+    {
+        "id": 76906,
+        "title": "تیشرت تنیس مردانه اسیکس ASICS Game Seasonal Graphic Tee – بژ",
+        "sku": "2041A351-250",
+        "url": "https://www.asics.com.tr/game-seasonal-graphic-tee-2057",
+        "our_url": "https://tennis24shop.com/?p=76906",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76906",
+        "our_price_lir": 2199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بژ (Soft Oat)": 4,
+            "XS": 2,
+            "S": 6,
+            "M": 6,
+            "L": 7,
+            "XL": 5,
+            "2XL": 4
+        }
+    },
+    {
+        "id": 76924,
+        "title": "تیشرت تنیس مردانه اسیکس ASICS Match Jacquard SS Top – بادمجانی",
+        "sku": "2041A419-500",
+        "url": "https://www.asics.com.tr/match-jacquard-ss-top-1812",
+        "our_url": "https://tennis24shop.com/?p=76924",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76924",
+        "our_price_lir": 399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بادمجانی تیره‌": 2,
+            "XS": 5,
+            "S": 8,
+            "M": 7,
+            "L": 5,
+            "XL": 2,
+            "2XL": 2
+        }
+    },
+    {
+        "id": 77008,
+        "title": "کفش تنیس زنانه اسیکس مدل GEL-Dedicate 9 کد 1042A315-101 – سفید/نقره‌ای",
+        "sku": "1042A315-101-5H",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-1771",
+        "our_url": "https://tennis24shop.com/?p=77008",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77008",
+        "our_price_lir": 5498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 11,
+            "36": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99,
+            "5H": 12,
+            "6": 18,
+            "6H": 18,
+            "7": 17,
+            "7H": 15,
+            "8": 12,
+            "8H": 11
         }
     }
 ]
