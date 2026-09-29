@@ -32716,7 +32716,7 @@
     },
     {
         "id": 77008,
-        "title": "کفش تنیس زنانه اسیکس مدل GEL-Dedicate 9 کد 1042A315-101 – سفید/نقره‌ای",
+        "title": "کفش تنیس زنانه اسیکس GEL-Dedicate 9 – سفید/نقره‌ای",
         "sku": "1042A315-101-5H",
         "url": "https://www.asics.com.tr/gel-dedicate-9-1771",
         "our_url": "https://tennis24shop.com/?p=77008",
@@ -32724,7 +32724,47 @@
         "our_price_lir": 5498,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 11,
+            "پیش‌فرض": 99,
+            "36": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99
+        }
+    },
+    {
+        "id": 77040,
+        "title": "کفش تنیس زنانه اسیکس  GEL-DEDICATE 9  – سفید/نارنجی",
+        "sku": "1042A316-100-5H",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-1772",
+        "our_url": "https://tennis24shop.com/?p=77040",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77040",
+        "our_price_lir": 5498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99,
+            "36": 1
+        }
+    },
+    {
+        "id": 77069,
+        "title": "کفش تنیس زنانه اسیکس  GEL-Dedicate 9  – سفید/بنفش مات",
+        "sku": "1042A316-102-5H",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-2074",
+        "our_url": "https://tennis24shop.com/?p=77069",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77069",
+        "our_price_lir": 5498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
             "36": 99,
             "37": 99,
             "37.5": 99,
@@ -32732,13 +32772,34 @@
             "39": 99,
             "39.5": 99,
             "40": 99,
-            "5H": 12,
+            "40.5": 99
+        }
+    },
+    {
+        "id": 77097,
+        "title": "کفش تنیس زنانه آسیکس مدل GEL-DEDICATE 9 کد 1042A316-400 – آبی/سفید",
+        "sku": "1042A316-400-5H",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-2075",
+        "our_url": "https://tennis24shop.com/?p=77097",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77097",
+        "our_price_lir": 5498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 12,
+            "36": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99,
+            "5H": 15,
             "6": 18,
             "6H": 18,
             "7": 17,
-            "7H": 15,
+            "7H": 14,
             "8": 12,
-            "8H": 11
+            "8H": 12
         }
     }
 ]
