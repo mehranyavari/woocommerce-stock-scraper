@@ -28151,7 +28151,7 @@
     {
         "id": 68028,
         "title": "کفش تنیس مردانه اسیکس Asics GEL-RESOLUTION X - سفید/سبز",
-        "sku": "1041A481-104",
+        "sku": "1041A481-104-7H",
         "url": "https://www.asics.com.tr/gel-resolution-x-2106",
         "our_url": "https://tennis24shop.com/?p=68028",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68028",
@@ -28164,7 +28164,7 @@
             "42.5": 999,
             "43.5": 999,
             "44": 999,
-            "44.5": 999,
+            "44.5": 1000,
             "45": 999,
             "46": 999,
             "46.5": 0,
@@ -33002,7 +33002,7 @@
     {
         "id": 77469,
         "title": "کفش تنیس مردانه اسیکس   – Gel-Resolution X –Hard Court  – سفید/سبز",
-        "sku": "",
+        "sku": "1041A481-104",
         "url": "https://www.opsarsport.com/urun/asics-gel-resolution-x-erkek-beyaz-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=77469",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77469",
@@ -33040,8 +33040,8 @@
     },
     {
         "id": 77509,
-        "title": "شلوارک ورزشی مردانه اسیکس مدل Court 9in Short کد 2041A343-100 – سفید",
-        "sku": "2041A343-100-2XL",
+        "title": "شلوارک تنیس مردانه اسیکس مدل ASICS Court 9in Short  – سفید",
+        "sku": "2041A343-100",
         "url": "https://www.asics.com.tr/court-9in-short-835",
         "our_url": "https://tennis24shop.com/?p=77509",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77509",
@@ -33060,8 +33060,8 @@
     },
     {
         "id": 77531,
-        "title": "شلوارک ورزشی مردانه اسیکس مدل COURT 7IN SHORT کد 2041A344-300 – سبز آورا",
-        "sku": "2041A344-300-2XL",
+        "title": "شلوارک تنیس مردانه اسیکس ASICS COURT 7IN SHORT  – سبز",
+        "sku": "2041A344-300",
         "url": "https://www.asics.com.tr/court-7in-short-1052",
         "our_url": "https://tennis24shop.com/?p=77531",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77531",
@@ -33075,5 +33075,24 @@
             "XL": 7,
             "2XL": 12
         }
+    },
+    {
+        "id": 77582,
+        "title": "کفش تنیس زنانه نایک  – Zoom Vapor 12 PRM–Hard Court – سفید/سبز",
+        "sku": "IR0651-100",
+        "url": "https://www.opsarsport.com/urun/nike-zoom-vapor-12-prm-sert-kort-hardcourt-kadin-tenis-ayakkabisi",
+        "our_url": "https://tennis24shop.com/?p=77582",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77582",
+        "our_price_lir": 10000,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "36.5": 99,
+            "38": 99,
+            "39": 99,
+            "40": 0,
+            "38.5": 99,
+            "37.5": 0
+        },
+        "secondary_url": "https://www.raketci.com/urun/nike-zoom-vapor-12-kadin-tenis-ayakkabisi-beyaz/"
     }
 ]
