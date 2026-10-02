@@ -25433,11 +25433,11 @@
         "our_url": "https://tennis24shop.com/?p=64001",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=64001",
         "our_price_lir": 230,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
-            "39/42": 0,
-            "43/46": 0
+            "35/38": 5,
+            "39/42": 5,
+            "43/46": 5
         }
     },
     {
@@ -25928,7 +25928,7 @@
         "our_price_lir": 920,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 5,
             "L": 5,
             "M": 5,
             "S": 5
@@ -26148,11 +26148,11 @@
         "our_url": "https://tennis24shop.com/?p=65380",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65380",
         "our_price_lir": 230,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "39/42": 0,
-            "43/46": 0,
-            "3 5/38": 0
+            "39/42": 5,
+            "43/46": 5,
+            "3 5/38": 5
         }
     },
     {
@@ -26562,8 +26562,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "گریپ 0": 0,
-            "گریپ 1": 5,
-            "گریپ 2": 5,
+            "گریپ 1": 0,
+            "گریپ 2": 0,
             "1": 5,
             "2": 5
         }
@@ -26579,9 +26579,9 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "گریپ 0": 0,
-            "گریپ 1": 5,
-            "گریپ 2": 5,
-            "گریپ3": 5,
+            "گریپ 1": 0,
+            "گریپ 2": 0,
+            "گریپ3": 0,
             "1": 5,
             "2": 5,
             "3": 5
@@ -28861,7 +28861,7 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XS": 0,
+            "XS": 5,
             "S": 5,
             "M": 5,
             "L": 5,
@@ -28880,7 +28880,7 @@
         "our_sizes": {
             "XS": 5,
             "S": 5,
-            "M": 0,
+            "M": 5,
             "L": 5,
             "XL": 5
         }
