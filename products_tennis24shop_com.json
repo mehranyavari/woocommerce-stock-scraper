@@ -6443,7 +6443,7 @@
         "our_price_lir": 5500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44": 999,
+            "44": 998,
             "42": 0,
             "45": 0,
             "46": 0,
@@ -31738,23 +31738,6 @@
         }
     },
     {
-        "id": 75104,
-        "title": "پلوشرت تنیس مردانه نایکNikeCourt Slam Dri-FIT ADV–خاکستری",
-        "sku": "IB1028-060",
-        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-polo-anthracite",
-        "our_url": "https://tennis24shop.com/?p=75104",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75104",
-        "our_price_lir": 6399,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "ذغالی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
-        }
-    },
-    {
         "id": 75123,
         "title": "پلوشرت تنیس مردانه نایک NikeCourt Heritage – سفید",
         "sku": "FQ2101-100",
@@ -33210,6 +33193,39 @@
             "43": 99,
             "44": 99,
             "44.5": 99
+        }
+    },
+    {
+        "id": 77824,
+        "title": "شلوارک تنیس مردانه نایک Nike Slam Jannik Sinner – قرمز/کرم",
+        "sku": "",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
+        "our_url": "https://tennis24shop.com/?p=77824",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77824",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "قرمز/کرم": 99,
+            "L": 99,
+            "XL": 99,
+            "m": 0
+        }
+    },
+    {
+        "id": 77844,
+        "title": "تی شرت تنیس مردانه نایک Nike Slam RG Dri-FIT ADV -خاکستری/سفید",
+        "sku": "IB1028-060",
+        "url": "https://www.meritspor.com.tr/nikecourt-slam-rg-dri-fit-adv-erkek-tenis-polo-anthracite",
+        "our_url": "https://tennis24shop.com/?p=77844",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77844",
+        "our_price_lir": 6399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آنتراسیت/خاکستری/سفید": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
         }
     }
 ]
