@@ -88,9 +88,9 @@
         "our_sizes": {
             "42": 999,
             "42.5": 999,
-            "43": 999,
+            "43": 0,
             "44": 999,
-            "44.5": 999,
+            "44.5": 0,
             "45": 0,
             "41": 0,
             "45.5": 0,
@@ -1974,7 +1974,7 @@
         "url": "https://www.raketci.com/urun/nike-dri-fit-doublewide-bileklik-2li-paket/",
         "our_url": "https://tennis24shop.com/?p=34134",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=34134",
-        "our_price_lir": 799,
+        "our_price_lir": 900,
         "our_stock_status": "outofstock",
         "our_sizes": [],
         "secondary_url": "https://www.meritspor.com.tr/nike-home-away-doublewide-tenis-bilekligi-beyaz-siyah"
@@ -15023,7 +15023,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-cooling-unisex-siyah-havlu/n0000005-010/?srsltid=AfmBOoo9bdkDbReTg7qU4lFs6ahARXel9HktjXbukCuvDCFF-D-IzsHF",
         "our_url": "https://tennis24shop.com/?p=45409",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45409",
-        "our_price_lir": 1950,
+        "our_price_lir": 999,
         "our_stock_status": "outofstock",
         "our_sizes": []
     },
@@ -28481,10 +28481,10 @@
         "our_url": "https://tennis24shop.com/?p=26322",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=26322",
         "our_price_lir": 2700,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "42": 0,
-            "40.5": 999,
+            "40.5": 0,
             "39": 0,
             "40": 0,
             "41": 0,
@@ -33095,5 +33095,92 @@
             "37.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-zoom-vapor-12-kadin-tenis-ayakkabisi-beyaz/"
+    },
+    {
+        "id": 77656,
+        "title": "تیشرت تنیس مردانه آدیداس Adidas Tennis Pro Climacool – سفید",
+        "sku": "JL9677",
+        "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-erkek-kolsuz-tisort-beyaz",
+        "our_url": "https://tennis24shop.com/?p=77656",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77656",
+        "our_price_lir": 4748,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "XXL": 99
+        }
+    },
+    {
+        "id": 77690,
+        "title": "کفش پدل زنانه اسیکس GEL-CHALLENGER 15 PADEL – سفید/صورتی",
+        "sku": "1042A296-102-5H",
+        "url": "https://www.asics.com.tr/gel-challenger-15-padel-1759",
+        "our_url": "https://tennis24shop.com/?p=77690",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77690",
+        "our_price_lir": 8498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "36": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99
+        }
+    },
+    {
+        "id": 77675,
+        "title": "شلوارک تنیس مردانه آدیداس Adidas Tennis Pro Climacool Ergo – سفید",
+        "sku": "",
+        "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-ergo-erkek-tenis-sortu-beyaz",
+        "our_url": "https://tennis24shop.com/?p=77675",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77675",
+        "our_price_lir": 4449,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "XL": 99,
+            "XXL": 99
+        }
+    },
+    {
+        "id": 77711,
+        "title": "تیشرت پولو زنانه آدیداس AdidasTennis Pro Climacool – سفید",
+        "sku": "JM4734",
+        "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-kadin-polo-tisort-beyaz",
+        "our_url": "https://tennis24shop.com/?p=77711",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77711",
+        "our_price_lir": 4449,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99
+        }
+    },
+    {
+        "id": 77747,
+        "title": "تیشرت تنیس مردانه آدیداس Adidas Climacool+ Freelift Pro  – نارنجی",
+        "sku": "KH0442",
+        "url": "https://www.meritspor.com.tr/adidas-tennis-climacool-freelift-pro-erkek-tisort-turuncu",
+        "our_url": "https://tennis24shop.com/?p=77747",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77747",
+        "our_price_lir": 2534,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "نارنجی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
     }
 ]
