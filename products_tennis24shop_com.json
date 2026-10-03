@@ -6443,7 +6443,7 @@
         "our_price_lir": 5500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44": 998,
+            "44": 999,
             "42": 0,
             "45": 0,
             "46": 0,
@@ -29577,24 +29577,6 @@
         }
     },
     {
-        "id": 69553,
-        "title": "کفش پدل مردانه اسیکس - Asics GEL-CHALLENGER 15 - سفید/سبز",
-        "sku": "1041A493-102",
-        "url": "https://www.asics.com.tr/gel-challenger-15-padel-l.e.-2153",
-        "our_url": "https://tennis24shop.com/?p=69553",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69553",
-        "our_price_lir": 8999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "43.5": 999,
-            "42.5": 0,
-            "42": 999,
-            "44.5": 999,
-            "44": 0,
-            "41.5": 0
-        }
-    },
-    {
         "id": 69641,
         "title": "کفش پدل زنانه اسیکس - Asics GAME FF PADEL - سفید/صورتی",
         "sku": "1042A286-103",
@@ -29666,25 +29648,6 @@
             "42": 999,
             "44.5": 999,
             "44": 0
-        }
-    },
-    {
-        "id": 69702,
-        "title": "کفش پدل مردانه اسیکس - Asics GAME FF PADEL - نارنجی",
-        "sku": "1041A493-800",
-        "url": "https://www.asics.com.tr/gel-challenger-15-padel-l.e.-2153",
-        "our_url": "https://tennis24shop.com/?p=69702",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69702",
-        "our_price_lir": 8999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "43.5": 999,
-            "44": 0,
-            "44.5": 999,
-            "45": 0,
-            "41.5": 0,
-            "42": 999,
-            "42.5": 0
         }
     },
     {
@@ -33226,6 +33189,71 @@
             "M": 99,
             "L": 99,
             "XL": 99
+        }
+    },
+    {
+        "id": 77865,
+        "title": "کفش پدل مردانه اسیکس  GEL-Dedicate 8 Padel – مشکی/سبز",
+        "sku": "1041A414-003-10",
+        "url": "https://www.asics.com.tr/gel-dedicate-8-padel-684",
+        "our_url": "https://tennis24shop.com/?p=77865",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77865",
+        "our_price_lir": 4999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "39": 0,
+            "39.5": 0,
+            "40": 99,
+            "40.5": 0,
+            "41.5": 99,
+            "42": 99,
+            "42.5": 0,
+            "43.5": 0,
+            "44": 0,
+            "44.5": 0,
+            "45": 0,
+            "46": 0
+        }
+    },
+    {
+        "id": 77918,
+        "title": "کفش پدل مردانه اسیکس Game FF Padel – سفید/سبز",
+        "sku": "1041A493-102-10",
+        "url": "https://www.asics.com.tr/game-ff-padel-2188",
+        "our_url": "https://tennis24shop.com/?p=77918",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77918",
+        "our_price_lir": 6498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41.5": 99,
+            "42": 99,
+            "42.5": 99,
+            "43.5": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99
+        }
+    },
+    {
+        "id": 77940,
+        "title": "کفش پدل مردانه اسیکس مدل Game FF Padel کد 1041A493-800 – نارنجی/سبز",
+        "sku": "1041A493-800-10",
+        "url": "https://www.asics.com.tr/game-ff-padel-1910",
+        "our_url": "https://tennis24shop.com/?p=77940",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77940",
+        "our_price_lir": 6498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "41.5": 99,
+            "42": 99,
+            "42.5": 99,
+            "43.5": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99
         }
     }
 ]
