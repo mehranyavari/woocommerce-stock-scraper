@@ -42,7 +42,7 @@
     "sku": "10294",
     "price": 42999,
     "offer_price": null,
-    "quantity": 11,
+    "quantity": 7,
     "in_stock": true,
     "url": "https://lego.tr/product/10294-lego-icons-titanik",
     "category": "LEGO® Icons"
@@ -2202,7 +2202,7 @@
     "sku": "40795",
     "price": 939,
     "offer_price": null,
-    "quantity": 3,
+    "quantity": 2,
     "in_stock": true,
     "url": "https://lego.tr/product/40795-lego-star-wars-luke-skywalker-asi-pilot",
     "category": "BrickHeadz"
@@ -2394,7 +2394,7 @@
     "sku": "854236",
     "price": 379,
     "offer_price": null,
-    "quantity": 886,
+    "quantity": 885,
     "in_stock": true,
     "url": "https://lego.tr/product/854236-lego-star-wars-darth-vader-anahtarlik",
     "category": "Anahtarlıklar"
@@ -4374,7 +4374,7 @@
     "sku": "43257",
     "price": 3899,
     "offer_price": null,
-    "quantity": 16,
+    "quantity": 15,
     "in_stock": true,
     "url": "https://lego.tr/product/43257-lego-disney-angel",
     "category": "Disney™"
@@ -4986,7 +4986,7 @@
     "sku": "5541",
     "price": 379,
     "offer_price": null,
-    "quantity": 373,
+    "quantity": 372,
     "in_stock": true,
     "url": "https://lego.tr/product/854203-lego-disney-eeyore-anahtarlik",
     "category": "Anahtarlıklar"
@@ -6810,7 +6810,7 @@
     "sku": "854235",
     "price": 379,
     "offer_price": null,
-    "quantity": 463,
+    "quantity": 462,
     "in_stock": true,
     "url": "https://lego.tr/product/854235-lego-super-heroes-batman-anahtarlik",
     "category": "Anahtarlıklar"
@@ -7830,7 +7830,7 @@
     "sku": "76424",
     "price": 869,
     "offer_price": null,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "url": "https://lego.tr/product/76424-lego-harry-potter-ucan-ford-anglia",
     "category": "Harry Potter™"
@@ -8238,8 +8238,8 @@
     "sku": "71043",
     "price": 29299,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/71043-lego-harry-potter-hogwarts-satosu",
     "category": "Harry Potter™"
   },
@@ -8258,38 +8258,38 @@
   {
     "id": "42644",
     "product_id": 7492,
-    "name": "Web server is down\n                Error code 521",
+    "name": "42644 LEGO® Friends Heartlake City Dondurma Kamyonu",
     "sku": "42644",
-    "price": 0,
+    "price": 1159,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 5,
+    "in_stock": true,
     "url": "https://lego.tr/product/42644-lego-friends-heartlake-city-dondurma-kamyonu",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42643",
     "product_id": 7500,
-    "name": "Web server is down\n                Error code 521",
+    "name": "42643 LEGO® Friends Pamuk Şeker Standı ve Scooter",
     "sku": "42643",
-    "price": 0,
+    "price": 649,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 82,
+    "in_stock": true,
     "url": "https://lego.tr/product/42643-lego-friends-pamuk-seker-standi-ve-scooter",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42641",
     "product_id": 7508,
-    "name": "Web server is down\n                Error code 521",
+    "name": "42641 LEGO® Friends Sörfçü Köpekler ve Scooter Macerası",
     "sku": "42641",
-    "price": 0,
+    "price": 899,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 17,
+    "in_stock": true,
     "url": "https://lego.tr/product/42641-lego-friends-sorfcu-kopekler-ve-scooter-macerasi",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42640",
@@ -8414,26 +8414,26 @@
   {
     "id": "42654",
     "product_id": 7588,
-    "name": "لگو 42654 LEGO® Friends Midilli Çiftliği ve Ahır",
+    "name": "42654 LEGO® Friends Midilli Çiftliği ve Ahır",
     "sku": "42654",
-    "price": 0,
+    "price": 4199,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 2,
+    "in_stock": true,
     "url": "https://lego.tr/product/42654-lego-friends-midilli-ciftligi-ve-ahir",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42684",
     "product_id": 7668,
-    "name": "لگو 42684 LEGO® Friends Renkli Düşler Kafe",
+    "name": "42684 LEGO® Friends Renkli Düşler Kafe",
     "sku": "42684",
-    "price": 0,
+    "price": 2399,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 6,
+    "in_stock": true,
     "url": "https://lego.tr/42684-lego-friends-renkli-dusler-kafe",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42648",
@@ -9510,7 +9510,7 @@
     "sku": "10328",
     "price": 3599,
     "offer_price": null,
-    "quantity": 199,
+    "quantity": 198,
     "in_stock": true,
     "url": "https://lego.tr/product/10328-lego-icons-gul-buketi",
     "category": "Botanical Collection"
@@ -9534,8 +9534,8 @@
     "sku": "10360",
     "price": 13999,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/10360-lego-icons-mekik-tasima-ucagi",
     "category": "LEGO® Icons"
   },
@@ -11082,7 +11082,7 @@
     "sku": "854240",
     "price": 379,
     "offer_price": null,
-    "quantity": 47,
+    "quantity": 46,
     "in_stock": true,
     "url": "https://lego.tr/product/854240-lego-marvel-iron-man-anahtarlik",
     "category": "Anahtarlıklar"
@@ -11238,7 +11238,7 @@
     "sku": "854290",
     "price": 379,
     "offer_price": null,
-    "quantity": 275,
+    "quantity": 274,
     "in_stock": true,
     "url": "https://lego.tr/product/854290-lego-marvel-orumcek-adam-anahtarlik",
     "category": "Anahtarlıklar"
@@ -11898,7 +11898,7 @@
     "sku": "21354",
     "price": 13699,
     "offer_price": null,
-    "quantity": 41,
+    "quantity": 40,
     "in_stock": true,
     "url": "https://lego.tr/product/21354-lego-ideas-alacakaranlik-cullen-evi",
     "category": "Ideas"
@@ -14958,7 +14958,7 @@
     "sku": "21586",
     "price": 1159,
     "offer_price": null,
-    "quantity": 7,
+    "quantity": 6,
     "in_stock": true,
     "url": "https://lego.tr/21586-lego-minecraft-solgun-bahce",
     "category": "Minecraft®"
@@ -16518,7 +16518,7 @@
     "sku": "3439",
     "price": 699,
     "offer_price": null,
-    "quantity": 113,
+    "quantity": 112,
     "in_stock": true,
     "url": "https://lego.tr/product/2x2-lego-kutu-mavi-v46",
     "category": "Saklama ve Ev Dekoru"
@@ -18102,8 +18102,8 @@
     "sku": "11377",
     "price": 39999,
     "offer_price": null,
-    "quantity": 2,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/11377-lego-icons-yuzuklerin-efendisi-minas-tirith",
     "category": "LEGO® Icons"
   },
@@ -18186,7 +18186,7 @@
     "sku": "854305",
     "price": 379,
     "offer_price": null,
-    "quantity": 166,
+    "quantity": 165,
     "in_stock": true,
     "url": "https://lego.tr/product/854305-lego-iconic-gumus-minifigur-anahtarlik",
     "category": "Anahtarlıklar"
@@ -20010,7 +20010,7 @@
     "sku": "42687",
     "price": 4199,
     "offer_price": 2939,
-    "quantity": 106,
+    "quantity": 105,
     "in_stock": true,
     "url": "https://lego.tr/42687-lego-friends-liannin-aile-evi",
     "category": "Friends"
@@ -20358,7 +20358,7 @@
     "sku": "43033",
     "price": 1459,
     "offer_price": 875,
-    "quantity": 264,
+    "quantity": 263,
     "in_stock": true,
     "url": "https://lego.tr/43033-lego-editions-2026-abd-futbol-milli-takim-formasi",
     "category": "LEGO® Editions"
@@ -21006,8 +21006,8 @@
     "sku": "71512",
     "price": 4199,
     "offer_price": 2519,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/71512-lego-dreamzzz-timsah-denizalti",
     "category": "LEGO® DREAMZzz™"
   },
@@ -21738,7 +21738,7 @@
     "sku": "854328",
     "price": 379,
     "offer_price": null,
-    "quantity": 795,
+    "quantity": 794,
     "in_stock": true,
     "url": "https://lego.tr/854328-lego-disney-classic-dumbo-anahtarlik",
     "category": "Anahtarlıklar"
@@ -21834,7 +21834,7 @@
     "sku": "11374",
     "price": 12799,
     "offer_price": null,
-    "quantity": 194,
+    "quantity": 192,
     "in_stock": true,
     "url": "https://lego.tr/11374-lego-icons-pinball-tilt-oyun-makinesi",
     "category": "LEGO® Icons"
@@ -21978,7 +21978,7 @@
     "sku": "71863",
     "price": 1159,
     "offer_price": null,
-    "quantity": 34,
+    "quantity": 33,
     "in_stock": true,
     "url": "https://lego.tr/71863-lego-ninjago-zilvar-ve-ejderha-canavar-grimtak",
     "category": "NINJAGO®"
@@ -22410,7 +22410,7 @@
     "sku": "20323-0354",
     "price": 1999,
     "offer_price": null,
-    "quantity": 20,
+    "quantity": 19,
     "in_stock": true,
     "url": "https://lego.tr/20323-0354-premium-1x1-lego-yapim-parcasi-capraz-canta-siyah-cok-renkli",
     "category": " LEGO® Çantalar"
