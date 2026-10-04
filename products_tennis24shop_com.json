@@ -20936,7 +20936,7 @@
         "our_price_lir": 3400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 997,
+            "S": 999,
             "XS": 999,
             "M": 999,
             "L": 999,
@@ -28057,7 +28057,7 @@
             "41 ⅓": 0,
             "42": 999,
             "42 ⅔": 0,
-            "43": 0,
+            "43": 999,
             "44": 999,
             "44⅔": 0,
             "45 ⅓": 0,
@@ -33618,29 +33618,9 @@
         }
     },
     {
-        "id": 78515,
-        "title": "کفش مردانه تنیس Decathlon Comfort Lite – سفید",
-        "sku": "9018082",
-        "url": "https://www.decathlon.com.tr/p/erkek-tenis-padel-pickleball-ayakkabisi-beyaz-comfort-lite/_/R-p-365168?mc=9018082&c=BEYAZ_TURUNCU",
-        "our_url": "https://tennis24shop.com/?p=78515",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78515",
-        "our_price_lir": 2090,
-        "our_stock_status": "onbackorder",
-        "our_sizes": {
-            "سفید": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "44": 0,
-            "45": 0,
-            "46": 0
-        }
-    },
-    {
         "id": 78537,
-        "title": "کلاه ورزشی اسیکس مدل Performance Cap کد 3043A139-800 – قرمز",
-        "sku": "3043A139-800-L",
+        "title": "کلاه تنیس اسیکس ASICS Performance Cap  – قرمز",
+        "sku": "3043A139-800",
         "url": "https://www.asics.com.tr/performance-cap-1696",
         "our_url": "https://tennis24shop.com/?p=78537",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78537",
@@ -33650,5 +33630,31 @@
             "قرمز": 99,
             "L": 99
         }
+    },
+    {
+        "id": 78553,
+        "title": "کلاه تنیس اسیکس Performance Cap کد 3043A139-500 – بادمجانی",
+        "sku": "3043A139-500",
+        "url": "https://www.asics.com.tr/performance-cap-1695",
+        "our_url": "https://tennis24shop.com/?p=78553",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78553",
+        "our_price_lir": 1849,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بادمجانی تیره": 7,
+            "M": 10,
+            "L": 7
+        }
+    },
+    {
+        "id": 78571,
+        "title": "مچ بند تنیس اسیکس ASICS Wrist Band Pair – صورتی",
+        "sku": "3043A143-700-OS",
+        "url": "https://www.asics.com.tr/wrist-band-pair-1698",
+        "our_url": "https://tennis24shop.com/?p=78571",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78571",
+        "our_price_lir": 599,
+        "our_stock_status": "instock",
+        "our_sizes": []
     }
 ]
