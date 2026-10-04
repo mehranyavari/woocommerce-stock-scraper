@@ -11099,7 +11099,7 @@
             "42": 5,
             "43": 5,
             "45": 5,
-            "46": 5,
+            "46": 4,
             "41": 5
         }
     },
@@ -14787,7 +14787,7 @@
         "our_sizes": {
             "2XL": 5,
             "XL": 5,
-            "L": 5,
+            "L": 4,
             "M": 5,
             "S": 5
         }
@@ -21369,7 +21369,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 5,
-            "L": 5,
+            "L": 4,
             "M": 5,
             "S": 5,
             "2XL": 5
@@ -30328,7 +30328,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43/46": 5,
+            "43/46": 4,
             "39/42": 5,
             "35/38": 5
         }
@@ -30503,7 +30503,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43/46": 5,
+            "43/46": 4,
             "39/42": 5,
             "35/38": 5
         }
@@ -30541,22 +30541,6 @@
             "30": 1,
             "34": 1,
             "35/38": 1
-        }
-    },
-    {
-        "id": 73530,
-        "title": "سویشرت تنیس زنانه نایک  Advantage Dri-FIT - آبی",
-        "sku": "IB0776-417",
-        "url": "https://www.tenisburada.com/nike-advantage-dri-fit-tam-boy-fermuarli-kadin-tenis-ceketi-ib0776-417",
-        "our_url": "https://tennis24shop.com/?p=73530",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73530",
-        "our_price_lir": 5499,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "M": 999,
-            "S": 0,
-            "XS": 0,
-            "L": 0
         }
     },
     {
@@ -31069,23 +31053,6 @@
         }
     },
     {
-        "id": 74364,
-        "title": "تیشرت تنیس مردانه نایک مدل NikeCourt Advantage Dri-FIT – سبز",
-        "sku": "IB1064-365",
-        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-erkek-tenis-tisortu-malachite",
-        "our_url": "https://tennis24shop.com/?p=74364",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74364",
-        "our_price_lir": 3999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "مالاکیت/سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
-        }
-    },
-    {
         "id": 74382,
         "title": "تاپ تنیس زنانه نایک Nike Advantage Dri-FIT – آبی",
         "sku": "IM9409-417",
@@ -31574,24 +31541,6 @@
             "L": 999,
             "XL": 999,
             "XXL": 999
-        }
-    },
-    {
-        "id": 74939,
-        "title": "شلوارک تنیس مردانه نایک Advantage Dri-FIT 15 cm  – آبی خاکستری تیره",
-        "sku": "FZ6913-438",
-        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-new-slate",
-        "our_url": "https://tennis24shop.com/?p=74939",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=74939",
-        "our_price_lir": 3599,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "طوسی آبی/نارنجی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
         }
     },
     {
@@ -33514,7 +33463,7 @@
     },
     {
         "id": 78331,
-        "title": "کفش تنیس بچگانه آسیکس مدل GEL-Resolution X GS Clay کد 1044A080-403-1 – آبی آسمانی/خاکستری",
+        "title": "کفش تنیس بچگانه اسیکس GEL-Resolution X GS Clay – آبی آسمانی",
         "sku": "1044A080-403-1",
         "url": "https://www.asics.com.tr/gel-resolution-x-gs-clay-1260",
         "our_url": "https://tennis24shop.com/?p=78331",
@@ -33522,33 +33471,84 @@
         "our_price_lir": 6239,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
+            "پیش‌فرض": 0,
             "32.5": 99,
             "33": 99,
-            "33.5": 99,
-            "34.5": 99,
-            "35": 99,
+            "33.5": 0,
+            "34.5": 0,
+            "35": 0,
             "35.5": 99,
             "36": 99,
-            "37": 99,
-            "37.5": 99
+            "37": 0,
+            "37.5": 0
         }
     },
     {
-        "id": 78354,
-        "title": "راکت تنیس بزرگسال Decathlon Easy – چند رنگ",
-        "sku": "",
-        "url": "https://www.decathlon.com.tr/p/yetiskin-tenis-raketi-mavi-beyaz-kuikma-easy/_/R-p-306608?mc=8935616",
-        "our_url": "https://tennis24shop.com/?p=78354",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78354",
-        "our_price_lir": 1690,
+        "id": 78373,
+        "title": "شلوار تنیس مردانه نایک  Court Dri-Fit Heritage   – زیتونی",
+        "sku": "HM6766-276",
+        "url": "https://www.meritspor.com.tr/nike-court-dri-fit-heritage-esofman-alti",
+        "our_url": "https://tennis24shop.com/?p=78373",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78373",
+        "our_price_lir": 4694,
         "our_stock_status": "instock",
         "our_sizes": {
             "چند رنگ": 99,
-            "0": 99,
-            "1": 99,
-            "2": 99,
-            "3": 99
+            "M": 99,
+            "L": 99
+        }
+    },
+    {
+        "id": 78391,
+        "title": "کفش تنیس مردانه Decathlon TS500 – سرمه ای /سفید",
+        "sku": "",
+        "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-mavi-buz-beyazi-ts500/_/R-p-301723?mc=8882111&c=BEYAZ_MAV%C4%B0",
+        "our_url": "https://tennis24shop.com/?p=78391",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78391",
+        "our_price_lir": 2750,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید و آبی": 99,
+            "40": 99,
+            "41": 99,
+            "42": 99,
+            "43": 99,
+            "44": 99,
+            "45": 99,
+            "46": 99
+        }
+    },
+    {
+        "id": 78401,
+        "title": "سویشرت تنیس زنانه نایک Nike Court Advantage Dri-FIT – آبی",
+        "sku": "IB0776-417",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-tam-fermuarli-kadin-tenis-ceketi-old-royal",
+        "our_url": "https://tennis24shop.com/?p=78401",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78401",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99
+        }
+    },
+    {
+        "id": 78417,
+        "title": "شلوارک ورزشی مردانه نایک  Nike Court Advantage Dri-FIT  – سرمه‌ای/نارنجی",
+        "sku": "FZ6913-438",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-new-slate",
+        "our_url": "https://tennis24shop.com/?p=78417",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78417",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سرمه‌ای/نارنجی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
         }
     }
 ]
