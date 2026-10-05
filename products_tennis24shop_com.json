@@ -232,7 +232,7 @@
             "46": 0,
             "47": 0,
             "44.5": 0,
-            "44": 999,
+            "44": 0,
             "43": 999,
             "42": 0,
             "41": 0,
@@ -621,7 +621,7 @@
         "our_price_lir": 7200,
         "our_stock_status": "instock",
         "our_sizes": {
-            "38.5": 999,
+            "38.5": 0,
             "39": 999,
             "40": 999,
             "40.5": 0,
@@ -2084,7 +2084,7 @@
             "40.5": 0,
             "41": 999,
             "36": 0,
-            "39": 999,
+            "39": 0,
             "42": 0,
             "36.5": 0,
             "37.5": 0,
@@ -12595,7 +12595,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40.5": 999,
-            "41": 999,
+            "41": 0,
             "42": 0,
             "44": 0,
             "44.5": 0,
@@ -14883,10 +14883,10 @@
         "our_url": "https://tennis24shop.com/?p=45252",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45252",
         "our_price_lir": 2700,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
-            "L": 999,
+            "L": 0,
             "XS": 0,
             "S": 0
         }
@@ -16062,8 +16062,8 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-doublewide-2-li-tenis-bilekligi-beyaz-mavi",
         "our_url": "https://tennis24shop.com/?p=3124",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3124",
-        "our_price_lir": 750,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 1100,
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -16510,9 +16510,9 @@
         "our_url": "https://tennis24shop.com/?p=46940",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46940",
         "our_price_lir": 8799,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "39": 999
+            "39": 0
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-vapor-12-kadin-tenis-ayakkabisi"
     },
@@ -17033,10 +17033,10 @@
         "our_url": "https://tennis24shop.com/?p=37650",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=37650",
         "our_price_lir": 2599,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "L": 0,
-            "M": 999,
+            "M": 0,
             "S": 0,
             "XS": 0
         }
@@ -19584,9 +19584,9 @@
         "our_url": "https://tennis24shop.com/?p=13194",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=13194",
         "our_price_lir": 5499,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "39": 999
+            "39": 0
         }
     },
     {
@@ -21631,7 +21631,7 @@
         "our_price_lir": 4300,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "M": 999,
             "10": 0,
             "XS": 0,
@@ -23630,7 +23630,7 @@
         "our_url": "https://tennis24shop.com/?p=56452",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=56452",
         "our_price_lir": 4990,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -25915,7 +25915,7 @@
             "XL": 5,
             "L": 5,
             "M": 5,
-            "S": 0
+            "S": 5
         }
     },
     {
@@ -26152,7 +26152,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "3 5/38": 0
+            "3 5/38": 5
         }
     },
     {
@@ -27419,7 +27419,7 @@
         "our_url": "https://tennis24shop.com/?p=66743",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66743",
         "our_price_lir": 2650,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -30504,7 +30504,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "43/46": 4,
+            "43/46": 5,
             "39/42": 5,
             "35/38": 5
         }
@@ -30521,7 +30521,7 @@
         "our_sizes": {
             "سفید/بژ": 0,
             "36": 5,
-            "37": 5,
+            "37": 0,
             "38": 0,
             "39": 0,
             "40": 0,
