@@ -2937,7 +2937,7 @@
         "our_sizes": {
             "44": 0,
             "45": 0,
-            "40.5": 999,
+            "40.5": 0,
             "42": 0,
             "44.5": 0
         },
@@ -6771,7 +6771,7 @@
             "40": 999,
             "41": 0,
             "42": 0,
-            "43": 0,
+            "43": 999,
             "40.5": 0,
             "45": 0,
             "42.5": 0
@@ -12897,7 +12897,7 @@
             "L": 999,
             "S": 999,
             "XS": 999,
-            "M": 0
+            "M": 999
         }
     },
     {
@@ -15901,7 +15901,7 @@
         "our_price_lir": 2350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "37": 0,
+            "37": 5,
             "38": 5,
             "39": 5,
             "40": 5,
@@ -17670,7 +17670,7 @@
         "our_sizes": {
             "35/38": 5,
             "39/42": 0,
-            "43/46": 5
+            "43/46": 0
         }
     },
     {
@@ -19050,7 +19050,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "43": 0,
-            "42.5": 0,
+            "42.5": 999,
             "42": 0,
             "41": 999
         }
@@ -22827,7 +22827,7 @@
         "our_url": "https://tennis24shop.com/?p=54689",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54689",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -23262,10 +23262,10 @@
         "our_url": "https://tennis24shop.com/?p=20872",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=20872",
         "our_price_lir": 3500,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "S": 0,
-            "XS": 999,
+            "XS": 0,
             "M": 0,
             "L": 0,
             "XL": 0
@@ -25319,7 +25319,7 @@
         "our_sizes": {
             "37": 999,
             "37.5": 999,
-            "39": 0,
+            "39": 999,
             "38": 999,
             "36": 999,
             "42.5": 999,
@@ -26151,7 +26151,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "3 5/38": 5
+            "3 5/38": 0
         }
     },
     {
@@ -26525,7 +26525,7 @@
         "our_url": "https://tennis24shop.com/?p=65766",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65766",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
