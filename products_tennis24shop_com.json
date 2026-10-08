@@ -11747,7 +11747,7 @@
         "our_price_lir": 3300,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
+            "L": 0,
             "M": 999,
             "S": 999,
             "XS": 999,
@@ -12334,7 +12334,7 @@
         "our_sizes": {
             "40": 999,
             "40.5": 999,
-            "42": 999,
+            "42": 0,
             "43": 0,
             "44": 999,
             "44.5": 999,
@@ -15023,7 +15023,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-cooling-unisex-siyah-havlu/n0000005-010/?srsltid=AfmBOoo9bdkDbReTg7qU4lFs6ahARXel9HktjXbukCuvDCFF-D-IzsHF",
         "our_url": "https://tennis24shop.com/?p=45409",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45409",
-        "our_price_lir": 1950,
+        "our_price_lir": 999,
         "our_stock_status": "outofstock",
         "our_sizes": []
     },
@@ -15482,7 +15482,7 @@
             "44": 0,
             "45": 0,
             "46": 999,
-            "44.5": 999,
+            "44.5": 0,
             "39": 0,
             "40": 0,
             "43": 0,
@@ -17669,8 +17669,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "35/38": 5,
-            "39/42": 0,
-            "43/46": 0
+            "39/42": 5,
+            "43/46": 5
         }
     },
     {
@@ -26151,7 +26151,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "3 5/38": 0
+            "3 5/38": 5
         }
     },
     {
@@ -26503,7 +26503,7 @@
         "our_url": "https://tennis24shop.com/?p=65751",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65751",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -27396,7 +27396,7 @@
         "our_url": "https://tennis24shop.com/?p=66722",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66722",
         "our_price_lir": 870,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
