@@ -16452,7 +16452,7 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 5,
+            "40": 0,
             "39": 0,
             "38": 0,
             "37": 5,
@@ -25571,7 +25571,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "35/38": 0,
-            "39/42": 6,
+            "39/42": 5,
             "43/46": 5
         }
     },
@@ -30299,7 +30299,7 @@
         "our_sizes": {
             "35/38": 5,
             "39/42": 5,
-            "43/46": 0
+            "43/46": 5
         }
     },
     {
@@ -33892,5 +33892,91 @@
             "M": 99
         },
         "secondary_url": "https://www.tenisshop.com/nike-dri-fit-adv-club-yumusak-tenis-sapkasi-4386"
+    },
+    {
+        "id": 79245,
+        "title": "کفش تنیس مردانه اسیکس  GEL-CHALLENGER 15  – کرمی",
+        "sku": "1041A510-250-10",
+        "url": "https://www.asics.com.tr/gel-challenger-15-1754",
+        "our_url": "https://tennis24shop.com/?p=79245",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79245",
+        "our_price_lir": 8498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 2,
+            "41.5": 2,
+            "42": 1,
+            "42.5": 2,
+            "43.5": 0,
+            "44": 1,
+            "44.5": 2,
+            "45": 2
+        }
+    },
+    {
+        "id": 79266,
+        "title": "کفش تنیس مردانه اسیکس  Gel-Dedicate 9 Clay  – سرمه‌ای",
+        "sku": "1041A547-400-10",
+        "url": "https://www.asics.com.tr/gel-dedicate-9-clay-1874",
+        "our_url": "https://tennis24shop.com/?p=79266",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79266",
+        "our_price_lir": 5498,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 11,
+            "41.5": 13,
+            "42": 17,
+            "42.5": 13,
+            "43.5": 15,
+            "44": 14,
+            "44.5": 12,
+            "45": 11
+        }
+    },
+    {
+        "id": 79295,
+        "title": "کفش تنیس مردانه اسیکس  Court Slide 4  – سرمه‌ای",
+        "sku": "1041A483-401-10",
+        "url": "https://www.asics.com.tr/court-slide-4-2519",
+        "our_url": "https://tennis24shop.com/?p=79295",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79295",
+        "our_price_lir": 4799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 11,
+            "41.5": 11,
+            "42": 16,
+            "42.5": 16,
+            "43.5": 16,
+            "44": 13,
+            "44.5": 12,
+            "45": 11
+        }
+    },
+    {
+        "id": 76980,
+        "title": "کفش تنیس زنانه اسیکس  Game FF  – سفید/نقره‌ای",
+        "sku": "1042A281-101-5H",
+        "url": "https://www.asics.com.tr/game-ff-1627",
+        "our_url": "https://tennis24shop.com/?p=76980",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76980",
+        "our_price_lir": 6499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "36": 99,
+            "37": 99,
+            "37.5": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99,
+            "40": 99,
+            "40.5": 0,
+            "41.5": 0,
+            "42": 99,
+            "42.5": 0,
+            "9": 0,
+            "9H": 0
+        }
     }
 ]
