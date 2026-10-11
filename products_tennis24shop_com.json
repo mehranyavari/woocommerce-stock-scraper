@@ -4162,7 +4162,7 @@
             "40": 0,
             "41": 0,
             "42": 0,
-            "43": 999,
+            "43": 0,
             "44": 0,
             "45": 0,
             "46": 0,
@@ -16835,7 +16835,7 @@
             "40⅔": 0,
             "36": 0,
             "38": 999,
-            "36.5": 999,
+            "36.5": 0,
             "38.5": 0
         },
         "secondary_url": "https://www.hepsiburada.com/adidas-performance-ih3407-courtquick-padel-shoes-pm-HBC00007OIX85"
@@ -25480,7 +25480,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "39/42": 5,
-            "43/46": 5,
+            "43/46": 4,
             "35/38": 5
         }
     },
@@ -25496,7 +25496,7 @@
         "our_sizes": {
             "35/38": 5,
             "39/42": 5,
-            "43/46": 5
+            "43/46": 4
         }
     },
     {
@@ -34087,7 +34087,7 @@
     },
     {
         "id": 79827,
-        "title": "کفش تنیس زنانه نایک مدل Vapor 12 Qinwen Zheng کد IQ9093-600 – قرمز/طلایی",
+        "title": "کفش تنیس زنانه نایک Vapor 12 Qinwen Zheng – قرمز/طلایی",
         "sku": "IQ9093-600",
         "url": "https://www.nike.com/tr/t/vapor-12-qinwen-zheng-sert-kort-kadin-tenis-ayakkabisi-LStfDGsK",
         "our_url": "https://tennis24shop.com/?p=79827",
@@ -34096,21 +34096,47 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "35.5": 1,
-            "36": 1,
-            "36.5": 1,
-            "37.5": 1,
-            "38": 1,
-            "38.5": 1,
-            "39": 1,
-            "40": 1,
-            "40.5": 1,
-            "41": 1,
-            "42": 1,
-            "42.5": 1,
-            "43": 1,
+            "35.5": 99,
+            "36": 99,
+            "36.5": 99,
+            "37.5": 99,
+            "38": 99,
+            "38.5": 99,
+            "39": 99,
+            "40": 99,
+            "40.5": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
             "44": 0,
             "44.5": 0
+        }
+    },
+    {
+        "id": 79849,
+        "title": "بلوز تنیس آستین بلند زنانه اورسایز نایک مدل Court Collection Oversize کد IM9436-297 – بژ",
+        "sku": "IM9436-297",
+        "url": "https://www.nike.com/tr/t/nikecourt-court-collection-oversize-uzun-kollu-kadin-tenis-ustu-Fy3FJgch/IM9436-297",
+        "our_url": "https://tennis24shop.com/?p=79849",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79849",
+        "our_price_lir": 7099,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بژ چترنجات": 0,
+            "XS": 0,
+            "S": 0,
+            "M": 0,
+            "L": 0,
+            "XL": 0,
+            "XXL": 0,
+            "بژ": 1,
+            "XS (EU 32-34)": 1,
+            "S (EU 36-38)": 1,
+            "M (EU 40-42)": 1,
+            "L (EU 44-46)": 1,
+            "XL (EU 48-50)": 1,
+            "XXL (EU 52-54)": 1
         }
     }
 ]
