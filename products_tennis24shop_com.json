@@ -12773,9 +12773,13 @@
             "28": 0,
             "30": 0,
             "31": 0,
-            "32": 5,
-            "27": 5,
-            "29": 0
+            "32": 99,
+            "27": 99,
+            "29": 0,
+            "33": 99,
+            "36": 99,
+            "37": 99,
+            "38": 99
         }
     },
     {
@@ -14230,7 +14234,9 @@
         "our_sizes": {
             "34-38": 999,
             "38-42": 999,
-            "42-46": 999
+            "42-46": 0,
+            "34.38": 999,
+            "42.46": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -17331,7 +17337,7 @@
             "M": 0,
             "S": 999,
             "010": 0,
-            "XS": 0,
+            "XS": 999,
             "2XL": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nikecourt-heritage-dri-fit-fleece-erkek-tenis-sortu-siyah"
@@ -17814,7 +17820,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-sortu-siyah-artengo-dry-gael-monfils/_/R-p-340019?mc=8841652&c=BEJ",
         "our_url": "https://tennis24shop.com/?p=30268",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30268",
-        "our_price_lir": 650,
+        "our_price_lir": 1290,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
@@ -22241,7 +22247,7 @@
             "40": 999,
             "43": 0,
             "45 ⅓": 0,
-            "40.5": 0,
+            "40.5": 999,
             "41.5": 0,
             "۳۶": 0,
             "38": 0,
@@ -22699,7 +22705,8 @@
             "XL": 999,
             "L": 999,
             "XS": 0,
-            "M": 999
+            "M": 999,
+            "S": 0
         }
     },
     {
@@ -26571,7 +26578,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-dri-fit-home-away-unisex-siyah-beyaz-cift-tarafli-bileklik/nnnb0-022/?_gl=1*101ioq3*_up*MQ..*_gs*NA..&gclid=EAIaIQobChMI1LL6v-y-lAMVeqWDBx2mmAf2EAQYAiABEgIiLvD_BwE&gbraid=0AAAAAqEUWH1X8W5K5K7RKPSTDX0lGsN4Y",
         "our_url": "https://tennis24shop.com/?p=65834",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65834",
-        "our_price_lir": 2099,
+        "our_price_lir": 899,
         "our_stock_status": "outofstock",
         "our_sizes": [],
         "secondary_url": "https://www.sportive.com.tr/nike-dri-fit-home-away-unisex-siyah-kafa-ve-bileklik-bandi-n-nn-b0-022-os/"
@@ -28253,7 +28260,7 @@
             "37": 999,
             "37.5": 999,
             "38": 999,
-            "39": 997,
+            "39": 999,
             "39.5": 999,
             "40": 999
         }
@@ -34448,6 +34455,23 @@
             "44": 15,
             "44.5": 12,
             "45": 12
+        }
+    },
+    {
+        "id": 80555,
+        "title": "شلوار گرمکن تنیس زنانه نایک مدل Advantage Dri-FIT کد IB0776-010 – مشکی",
+        "sku": "IB0776-010",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-normal-belli-kadin-tenis-esofman-alti-black",
+        "our_url": "https://tennis24shop.com/?p=80555",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80555",
+        "our_price_lir": 4499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 2,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "010": 2
         }
     }
 ]
