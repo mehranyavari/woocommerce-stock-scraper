@@ -6,7 +6,7 @@ let useProxy = true;
 // ==========================================
 // 🔗 لینک تست
 // ==========================================
-const TEST_URL = "https://www.boyner.com.tr/joma-ace-men-25-erkek-acik-mavi-toprak-kort-tenis-ayakkabisi-taces2505c-p-15504791?srsltid=AfmBOor5bokGS2VXKHAYxJNGfCL9dFGZa8gf_k891Q1kbiuamaSMsFR1";
+const TEST_URL = "https://www.meritspor.com.tr/nikecourt-dri-fit-advantage-6-15cm-erkek-tenis-sortu-beyaz";
 
 // ==========================================
 // تنظیمات
