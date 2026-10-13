@@ -188,7 +188,7 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 5,
+            "40": 0,
             "39": 0,
             "38": 0,
             "37": 0,
@@ -501,7 +501,7 @@
         "our_url": "https://tennis24shop.com/?p=3820",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3820",
         "our_price_lir": 990,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -6802,7 +6802,7 @@
             "44.5": 999,
             "45": 999,
             "40": 0,
-            "39": 999,
+            "39": 1000,
             "40.5": 0,
             "46": 0,
             "38.5": 0,
@@ -14027,39 +14027,19 @@
         }
     },
     {
-        "id": 72533,
-        "title": "شلوارک تنیس مردانه نایک  - NikeCourt Advantage 15cm - زرشکی",
-        "sku": "IM5776-677",
-        "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
-        "our_url": "https://tennis24shop.com/?p=72533",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72533",
-        "our_price_lir": 5000,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "L": 999,
-            "M": 0,
-            "XL": 999,
-            "L.": 0,
-            "S": 0,
-            "XS": 0
-        }
-    },
-    {
         "id": 72548,
         "title": "شلوارک تنیس مردانه نایک  - NikeCourt Advantage Dri-FIT 20 cm - نارنجی",
         "sku": "FZ6913-633",
-        "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
+        "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-20-cm-erkek-tenis-sortu",
         "our_url": "https://tennis24shop.com/?p=72548",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=72548",
         "our_price_lir": 5000,
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 999,
-            "M": 0,
+            "M": 999,
             "XL": 999,
-            "L.": 0,
-            "S": 0,
-            "XS": 0
+            "S": 999
         }
     },
     {
@@ -14647,7 +14627,7 @@
         "url": "https://www.meritspor.com.tr/nikecourt-slam-jannik-sinner-15-cm-erkek-tenis-sortu",
         "our_url": "https://tennis24shop.com/?p=77824",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77824",
-        "our_price_lir": 4999,
+        "our_price_lir": 5000,
         "our_stock_status": "instock",
         "our_sizes": {
             "قرمز/کرم": 99,
@@ -15174,6 +15154,26 @@
             "S": 5,
             "M": 6,
             "L": 3
+        }
+    },
+    {
+        "id": 80459,
+        "title": "کفش تنیس مردانه اسیکس Asics COURT SLIDE 4 – سبز",
+        "sku": "1041A483-103-10",
+        "url": "https://www.asics.com.tr/court-slide-4-1752",
+        "our_url": "https://tennis24shop.com/?p=80459",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80459",
+        "our_price_lir": 4799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 12,
+            "41.5": 11,
+            "42": 15,
+            "42.5": 16,
+            "43.5": 17,
+            "44": 15,
+            "44.5": 12,
+            "45": 12
         }
     },
     {
@@ -34376,7 +34376,7 @@
     },
     {
         "id": 79295,
-        "title": "کفش تنیس مردانه اسیکس  Court Slide 4  – سرمه‌ای",
+        "title": "کفش تنیس مردانه اسیکس ASICS COURT SLIDE 4  – سرمه‌ای",
         "sku": "1041A483-401-10",
         "url": "https://www.asics.com.tr/court-slide-4-2519",
         "our_url": "https://tennis24shop.com/?p=79295",
@@ -34384,8 +34384,8 @@
         "our_price_lir": 4799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 11,
-            "41.5": 11,
+            "پیش‌فرض": 12,
+            "41.5": 12,
             "42": 16,
             "42.5": 16,
             "43.5": 16,
@@ -34480,6 +34480,22 @@
             "M": 99,
             "L": 99,
             "XS": 0
+        }
+    },
+    {
+        "id": 80435,
+        "title": "جلیقه ورزشی زنانه نایک  Court Collection Fleece  – آبی",
+        "sku": "IM9416-468",
+        "url": "https://www.meritspor.com.tr/nikecourt-court-collection-fleece-kadin-tenis-yelegi-aluminum",
+        "our_url": "https://tennis24shop.com/?p=80435",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80435",
+        "our_price_lir": 5399,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آلومینیومی": 6,
+            "XS": 99,
+            "S": 99,
+            "468": 6
         }
     }
 ]
