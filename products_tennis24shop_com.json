@@ -405,7 +405,7 @@
         "our_url": "https://tennis24shop.com/?p=3156",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3156",
         "our_price_lir": 250,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -471,7 +471,7 @@
         "our_url": "https://tennis24shop.com/?p=3820",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3820",
         "our_price_lir": 890,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -3548,7 +3548,7 @@
         "our_url": "https://tennis24shop.com/?p=15686",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=15686",
         "our_price_lir": 210,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -3705,7 +3705,7 @@
         "our_url": "https://tennis24shop.com/?p=16883",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=16883",
         "our_price_lir": 220,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -4141,7 +4141,7 @@
         "our_url": "https://tennis24shop.com/?p=19528",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19528",
         "our_price_lir": 120,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -4152,7 +4152,7 @@
         "our_url": "https://tennis24shop.com/?p=19531",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19531",
         "our_price_lir": 120,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -4185,7 +4185,7 @@
         "our_url": "https://tennis24shop.com/?p=19544",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19544",
         "our_price_lir": 1095,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": []
     },
     {
@@ -8676,7 +8676,7 @@
         "url": "https://www.decathlon.com.tr/p/tenis-sapkasi-58-cm-beyaz-tc-500/_/R-p-302625?mc=8530077",
         "our_url": "https://tennis24shop.com/?p=28528",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=28528",
-        "our_price_lir": 430,
+        "our_price_lir": 290,
         "our_stock_status": "outofstock",
         "our_sizes": []
     },
@@ -9358,7 +9358,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-kisa-kollu-polo-tenis-tisortu-beyaz-artengo-dry/_/R-p-333148?mc=8841678&c=S%C4%B0YAH_BEYAZ",
         "our_url": "https://tennis24shop.com/?p=30254",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30254",
-        "our_price_lir": 920,
+        "our_price_lir": 690,
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 5,
@@ -9375,7 +9375,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-sortu-siyah-artengo-dry-gael-monfils/_/R-p-340019?mc=8841652&c=BEJ",
         "our_url": "https://tennis24shop.com/?p=30268",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=30268",
-        "our_price_lir": 1290,
+        "our_price_lir": 650,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "M": 0,
@@ -10543,7 +10543,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "45.5": 999,
-            "45": 999,
+            "45": 0,
             "44.5": 999,
             "44": 999,
             "43": 0,
@@ -11083,7 +11083,7 @@
             "43": 0,
             "44": 999,
             "44.5": 999,
-            "45": 999,
+            "45": 0,
             "45.5": 999
         }
     },
@@ -11365,7 +11365,7 @@
         "url": "https://www.decathlon.com.tr/p/kadin-tenis-ayakkabisi-beyaz-ts500/_/R-p-304639?mc=8882108&c=PEMBE_BEJ_BEYAZ",
         "our_url": "https://tennis24shop.com/?p=35917",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=35917",
-        "our_price_lir": 2350,
+        "our_price_lir": 1750,
         "our_stock_status": "instock",
         "our_sizes": {
             "37": 0,
@@ -13056,7 +13056,7 @@
             "38": 0,
             "39": 0,
             "42": 999,
-            "40.5": 0,
+            "40.5": 999,
             "37": 0,
             "40": 0,
             "42.5": 0,
@@ -15809,7 +15809,7 @@
         "url": "https://www.decathlon.com.tr/p/100-bp-raket-sporlari-sirt-cantasi-koyu-gri/_/R-p-157311?mc=8581376&c=MAV%C4%B0",
         "our_url": "https://tennis24shop.com/?p=44811",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=44811",
-        "our_price_lir": 990,
+        "our_price_lir": 890,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15914,7 +15914,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-bagcikli-tenis-ayakkabisi-kirmizi-35-39-numara-ts-strong-jr/_/R-p-347405?mc=8805991&c=BEYAZ_YE%C5%9E%C4%B0L",
         "our_url": "https://tennis24shop.com/?p=45137",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45137",
-        "our_price_lir": 1690,
+        "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
             "36": 5,
@@ -16695,7 +16695,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-etegi-beyaz-500/_/R-p-307810?mc=8912086&c=PEMBE",
         "our_url": "https://tennis24shop.com/?p=46126",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46126",
-        "our_price_lir": 710,
+        "our_price_lir": 640,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "161-172cm-سال15-14": 0,
@@ -17631,7 +17631,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "38⅔": 0,
-            "37": 999,
+            "37": 0,
             "37⅓": 0,
             "36⅔": 0,
             "40⅔": 0,
@@ -18224,7 +18224,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-yuvarlak-yaka-tenis-tisortu-yesil-tts-dry-jr/_/R-p-352819?mc=8912075&c=YE%C5%9E%C4%B0L_MOR",
         "our_url": "https://tennis24shop.com/?p=47938",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47938",
-        "our_price_lir": 710,
+        "our_price_lir": 640,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "123-130cm 7-8 YEARS OLD": 0,
@@ -18259,7 +18259,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-pembe-500/_/R-p-324715?mc=8776741&c=YE%C5%9E%C4%B0L",
         "our_url": "https://tennis24shop.com/?p=47980",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=47980",
-        "our_price_lir": 710,
+        "our_price_lir": 640,
         "our_stock_status": "outofstock",
         "our_sizes": {
             "123-130cm 7-8 YEARS OLD": 0,
@@ -18322,7 +18322,7 @@
         "url": "https://www.decathlon.com.tr/p/kisa-konclu-tenis-corabi-5-cift-limited-edition/_/R-p-374214?mc=8969970",
         "our_url": "https://tennis24shop.com/?p=48088",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48088",
-        "our_price_lir": 280,
+        "our_price_lir": 240,
         "our_stock_status": "instock",
         "our_sizes": {
             "35/38": 5,
@@ -19775,10 +19775,10 @@
         "url": "https://www.intersport.com.tr/urun/adidas-crazyquick-paddel-erkek-beyaz-tenis-ayakkabisi/ih3636/",
         "our_url": "https://tennis24shop.com/?p=49553",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=49553",
-        "our_price_lir": 4499,
-        "our_stock_status": "instock",
+        "our_price_lir": 3999,
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "43": 999,
+            "43": 0,
             "42": 0,
             "41": 0,
             "42⅔": 0,
@@ -21674,7 +21674,7 @@
             "L": 5,
             "M": 5,
             "S": 5,
-            "2XL": 0
+            "2XL": 5
         }
     },
     {
@@ -30843,15 +30843,14 @@
         "our_price_lir": 8400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 0,
             "39": 999,
-            "40.5": 999,
             "41": 999,
             "42": 999,
             "43": 999,
             "44": 999,
             "45": 999,
             "46": 999,
+            "40.5": 999,
             "44.5": 999,
             "45.5": 999
         }
@@ -33078,7 +33077,8 @@
             "42.5": 99,
             "43": 99,
             "44": 99,
-            "44.5": 99
+            "44.5": 99,
+            "40.5": 99
         }
     },
     {
@@ -33748,8 +33748,8 @@
             "پیش‌فرض": 99,
             "38.5": 99,
             "39": 99,
-            "40": 99,
-            "40.5": 99,
+            "40": 0,
+            "40.5": 0,
             "41": 99,
             "42": 99,
             "42.5": 99,
@@ -34601,5 +34601,22 @@
         "our_price_lir": 699,
         "our_stock_status": "instock",
         "our_sizes": []
+    },
+    {
+        "id": 80939,
+        "title": "هودی ورزشی مردانه نایک مدل Court Slam کد IM6637-647 – بنفش",
+        "sku": "IM6637-647",
+        "url": "https://www.intersport.com.tr/urun/nike-court-slam-erkek-mor-sweatshirt/im6637-647/",
+        "our_url": "https://tennis24shop.com/?p=80939",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80939",
+        "our_price_lir": 4499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بنفش": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
     }
 ]
