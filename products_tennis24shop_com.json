@@ -165,11 +165,11 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "39": 0,
+            "40": 5,
+            "39": 5,
             "38": 0,
             "37": 0,
-            "36": 0,
+            "36": 5,
             "41": 5
         }
     },
@@ -181,7 +181,7 @@
         "our_url": "https://tennis24shop.com/?p=2272",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2272",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -418,9 +418,9 @@
         "our_price_lir": 280,
         "our_stock_status": "instock",
         "our_sizes": {
-            "39/42": 99,
-            "35/38": 0,
-            "43/46": 99
+            "39/42": 5,
+            "35/38": 5,
+            "43/46": 5
         }
     },
     {
@@ -470,7 +470,7 @@
         "url": "https://www.decathlon.com.tr/p/100-bp-raket-sporlari-sirt-cantasi-koyu-gri/_/R-p-157311?mc=8581375&c=S%C4%B0YAH",
         "our_url": "https://tennis24shop.com/?p=3820",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3820",
-        "our_price_lir": 990,
+        "our_price_lir": 890,
         "our_stock_status": "instock",
         "our_sizes": []
     },
