@@ -14181,7 +14181,7 @@
         "our_url": "https://tennis24shop.com/?p=3820",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3820",
         "our_price_lir": 890,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -14214,7 +14214,7 @@
         "our_url": "https://tennis24shop.com/?p=3156",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3156",
         "our_price_lir": 250,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -16444,8 +16444,8 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 5,
-            "39": 5,
+            "40": 0,
+            "39": 0,
             "38": 0,
             "37": 0,
             "36": 5,
@@ -21805,13 +21805,13 @@
         "our_price_lir": 1550,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S / W 30 L 33": 0,
+            "S / W 30 L 33": 5,
             "M / W 32 L 33": 5,
             "XL / W 37 L 34": 5,
             "2XL / W 41 L 34": 5,
-            "S / W30 L33": 0,
+            "S / W30 L33": 5,
             "M / W32 L33": 5,
-            "L / W34 L34": 0,
+            "L / W34 L34": 5,
             "XL / W37 L34": 5,
             "2XL / W41 L34": 5
         }
@@ -30481,14 +30481,14 @@
         "url": "https://www.decathlon.com.tr/p/yetiskin-tenis-ayakkabisi-beyaz-bej-kuikma-comfort-lite/_/R-p-372971?mc=8968009&c=BEJ_BEYAZ",
         "our_url": "https://tennis24shop.com/?p=73455",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73455",
-        "our_price_lir": 2090,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 1890,
+        "our_stock_status": "instock",
         "our_sizes": {
             "سفید/بژ": 0,
             "36": 0,
             "37": 0,
             "38": 0,
-            "39": 0,
+            "39": 5,
             "40": 0,
             "41": 0
         }
