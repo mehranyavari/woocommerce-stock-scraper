@@ -19433,8 +19433,15 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "44.5": 999,
-            "41.5": 0
-        }
+            "41.5": 0,
+            "39.5": 99,
+            "40": 99,
+            "42": 99,
+            "42.5": 99,
+            "43.5": 99,
+            "44": 99
+        },
+        "secondary_url": "https://www.tenisburada.com/asics-court-ff-3-novak-toprak-kort-tenis-ayakkabisi-1041a371-403"
     },
     {
         "id": 50020,
@@ -31937,7 +31944,7 @@
     },
     {
         "id": 75644,
-        "title": "جوراب ورزشی نایک Dri-FIT Spark – سفید/خاکستری",
+        "title": "جوراب تنیس نایک Dri-FIT Spark – سفید/خاکستری",
         "sku": "CU7199-100",
         "url": "https://www.meritspor.com.tr/nike-dri-fit-spark-cushioned-ankle-kosu-corabi-tek-cift1",
         "our_url": "https://tennis24shop.com/?p=75644",
@@ -33937,7 +33944,7 @@
     },
     {
         "id": 79479,
-        "title": "جوراب ورزشی نایک Nike Everyday Elevated Dri-FIT Crew – سفید",
+        "title": "جوراب تنیس نایک Nike Everyday Elevated Dri-FIT Crew – سفید",
         "sku": "HQ4335-901",
         "url": "https://www.meritspor.com.tr/nike-everyday-elevated-dri-fit-crew-corap-3lu-set-beyaz?utm_source=chatgpt.com",
         "our_url": "https://tennis24shop.com/?p=79479",
@@ -34804,5 +34811,20 @@
         "our_price_lir": 649,
         "our_stock_status": "instock",
         "our_sizes": []
+    },
+    {
+        "id": 81267,
+        "title": "جوراب ورزشی سه عددی نایک مدل Everyday Elevated کد HQ4335-908 – چند رنگ",
+        "sku": "HQ4335-908",
+        "url": "https://www.meritspor.com.tr/nike-everyday-elevated-3lu-antreman-corabi",
+        "our_url": "https://tennis24shop.com/?p=81267",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81267",
+        "our_price_lir": 1099,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "چند رنگ": 6,
+            "43-46": 99,
+            "908": 6
+        }
     }
 ]
