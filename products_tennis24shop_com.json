@@ -14350,7 +14350,7 @@
         "our_url": "https://tennis24shop.com/?p=2272",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2272",
         "our_price_lir": 220,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -14387,7 +14387,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "35/38": 0
+            "35/38": 5
         }
     },
     {
@@ -16458,11 +16458,11 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
-            "39": 0,
-            "38": 0,
+            "40": 5,
+            "39": 5,
+            "38": 5,
             "37": 5,
-            "36": 0,
+            "36": 5,
             "41": 5
         }
     },
@@ -22047,11 +22047,11 @@
         "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 99,
-            "M": 99,
-            "S": 99,
-            "XL": 99,
-            "XS": 99
+            "L": 5,
+            "M": 5,
+            "S": 5,
+            "XL": 5,
+            "XS": 5
         }
     },
     {
@@ -25421,7 +25421,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "35/38": 5
+            "35/38": 0
         }
     },
     {
@@ -25584,7 +25584,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
+            "35/38": 5,
             "39/42": 5,
             "43/46": 5
         }
@@ -29717,9 +29717,9 @@
     },
     {
         "id": 70089,
-        "title": "کفش تنیس مردانه نایک Nike Vapor 12 Clay - آبی/سفید",
+        "title": "کفش تنیس مردانه نایک Nike Vapor 12 - Clay - آبی/سفید",
         "sku": "HQ6026-002",
-        "url": "https://www.meritspor.com.tr/nike-vapor-12-toprak-kort-clay-erkek-tenis-ayakkabisi-smoky-blue",
+        "url": "https://www.meritspor.com.tr/nike-vapor-12-erkek-toprak-kort-clay-tenis-ayakkabisi-smokey-blue",
         "our_url": "https://tennis24shop.com/?p=70089",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=70089",
         "our_price_lir": 10000,
@@ -29727,14 +29727,19 @@
         "our_sizes": {
             "38.5": 999,
             "39": 999,
-            "40": 0,
+            "40": 999,
             "40.5": 999,
             "46": 999,
-            "44.5": 0,
-            "45": 0,
-            "45.5": 0
+            "45": 999,
+            "45.5": 999,
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999
         },
-        "secondary_url": "https://www.meritspor.com.tr/nike-vapor-12-toprak-kort-clay-erkek-tenis-ayakkabisi-smoky-blue"
+        "secondary_url": "https://www.tenisburada.com/nike-vapor-12-erkek-toprak-kort-tenis-ayakkabisi-hq6026-002"
     },
     {
         "id": 70099,
@@ -29932,7 +29937,7 @@
     },
     {
         "id": 70297,
-        "title": "کفش تنیس مردانه نایک - Nike Vapor 12 - آبی/سفید",
+        "title": "کفش تنیس مردانه نایک - Nike Vapor 12 - Hard آبی/سفید",
         "sku": "FV5552-002",
         "url": "https://www.meritspor.com.tr/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi1",
         "our_url": "https://tennis24shop.com/?p=70297",
@@ -29956,7 +29961,7 @@
             "40.5": 999,
             "47.5": 0
         },
-        "secondary_url": "https://www.meritspor.com.tr/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi1"
+        "secondary_url": "https://www.tenisburada.com/nike-vapor-12-sert-kort-erkek-tenis-ayakkabisi-fv5552-002"
     },
     {
         "id": 70323,
@@ -33050,7 +33055,7 @@
     },
     {
         "id": 77803,
-        "title": "کفش تنیس مردانه نایک Nike GP Challenge Pro Premium – بنفش روشن/خاکستری",
+        "title": "کفش تنیس مردانه نایک– Nike GP Challenge Pro Premium –Hard یاسی مات/خاکستری",
         "sku": "II7100-200",
         "url": "https://www.meritspor.com.tr/nike-gp-challenge-pro-premium-erkek-tenis-ayakkabisi-light-violet-ore",
         "our_url": "https://tennis24shop.com/?p=77803",
@@ -34815,5 +34820,35 @@
             "35-37.5": 99,
             "38-42.5": 99
         }
+    },
+    {
+        "id": 81312,
+        "title": "کفش تنیس مردانه نایک  – Vapor Pro 3 –Clay– سبز/سفید",
+        "sku": "HQ6034-002",
+        "url": "https://www.tenisburada.com/nike-vapor-pro-3-erkek-toprak-kort-tenis-ayakkabisi-hq6034-002-17895425433500",
+        "our_url": "https://tennis24shop.com/?p=81312",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81312",
+        "our_price_lir": 7799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "38.5": 0,
+            "39": 0,
+            "40": 0,
+            "40.5": 0,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99,
+            "45.5": 99,
+            "46": 0,
+            "46.5": 0,
+            "47": 0,
+            "47.5": 99
+        },
+        "secondary_url": "https://www.meritspor.com.tr/nike-vapor-pro-3-erkek-toprak-kort-clay-tenis-ayakkabisi-smokey-blue-"
     }
 ]
