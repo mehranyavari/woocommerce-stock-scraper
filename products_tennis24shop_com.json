@@ -29906,7 +29906,7 @@
     },
     {
         "id": 70271,
-        "title": "کفش تنیس مردانه نایک - Nike Vapor Pro 3 - آبی/سفید",
+        "title": "کفش تنیس مردانه نایک - Nike Vapor Pro 3 - Hard Court سبز/سفید",
         "sku": "FZ2161-005",
         "url": "https://www.meritspor.com.tr/nike-vapor-pro-3-sert-kort-erkek-tenis-ayakkabisi2",
         "our_url": "https://tennis24shop.com/?p=70271",
@@ -30641,7 +30641,7 @@
     },
     {
         "id": 73764,
-        "title": "کفش تنیس مردانه نایکNike GP Challenge 1.5 Premium – یاسی مات",
+        "title": "کفش تنیس مردانه نایک– Nike GP Challenge 1.5 Premium  – Clay– یاسی مات",
         "sku": "IQ6059-200",
         "url": "https://www.tenisburada.com/tenisburadacom/nike-gp-challenge-1-5-premium-toprak-kort-erkek-tenis-ayakkabisi-iq6059-200https//tenisburadacom/nike-gp-challenge-1-5-premium-toprak-kort-erkek-tenis-ayakkabisi-iq6059-200",
         "our_url": "https://tennis24shop.com/?p=73764",
@@ -30654,14 +30654,15 @@
             "43": 999,
             "42.5": 999,
             "39": 0,
-            "44": 0,
-            "45": 0,
+            "44": 999,
+            "45": 999,
             "46": 0,
-            "44.5": 0,
-            "45.5": 0,
+            "44.5": 999,
+            "41": 999,
             "38.5": 0,
             "40.5": 0
-        }
+        },
+        "secondary_url": "https://www.raketci.com/urun/nike-zoom-gp-challenge-1-5-erkek-toprak-kort-tenis-ayakkabisi-light-violet-anhtrasit/"
     },
     {
         "id": 73789,
@@ -31712,28 +31713,6 @@
             "44.5": 999,
             "45": 999,
             "40.5": 999
-        }
-    },
-    {
-        "id": 75196,
-        "title": "کفش تنیس مردانه نایک NIKE Vapor Pro 3 Hard court – آبی دودی/سفید",
-        "sku": "",
-        "url": "https://www.meritspor.com.tr/nike-vapor-pro-3-sert-kort-erkek-tenis-ayakkabisi2",
-        "our_url": "https://tennis24shop.com/?p=75196",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75196",
-        "our_price_lir": 7800,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "پیش‌فرض": 999,
-            "41": 999,
-            "42.5": 999,
-            "43": 999,
-            "44": 999,
-            "44.5": 999,
-            "45": 999,
-            "45.5": 999,
-            "46": 999,
-            "47": 999
         }
     },
     {
@@ -33088,8 +33067,12 @@
             "43": 99,
             "44": 99,
             "44.5": 99,
-            "40.5": 99
-        }
+            "40.5": 99,
+            "45": 99,
+            "45.5": 99,
+            "46": 99
+        },
+        "secondary_url": "https://www.opsarsport.com/urun/nike-gp-challenge-pro-prm-sert-kort-erkek-tenis-ayakkabisi"
     },
     {
         "id": 77824,
