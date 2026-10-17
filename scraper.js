@@ -1510,6 +1510,11 @@ function getEffectivePrice(scrapeData) {
 }
 
 async function processProduct(browser, product) {
+        // Decathlon is blocked by Cloudflare on GitHub runners; the VPS updater handles these products.
+    const isDecathlon = u => String(u || '').toLowerCase().includes('decathlon');
+    if (isDecathlon(product.url) && (!product.secondary_url || isDecathlon(product.secondary_url))) {
+        return { success: false, error: 'Skipped: Decathlon is updated by the VPS updater' };
+    }
     let primaryData = { success: false, error: "No Primary URL", stocks: {} };
     let secondaryData = { success: false, error: "No Secondary URL", stocks: {} };
 
