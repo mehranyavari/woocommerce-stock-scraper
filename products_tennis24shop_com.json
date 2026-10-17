@@ -854,7 +854,7 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-clay-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=42836",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42836",
-        "our_price_lir": 8800,
+        "our_price_lir": 8799,
         "our_stock_status": "instock",
         "our_sizes": {
             "42": 999,
@@ -14244,8 +14244,8 @@
             "34-38": 999,
             "38-42": 999,
             "42-46": 0,
-            "34.38": 999,
-            "42.46": 999
+            "34.38": 0,
+            "42.46": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -15029,7 +15029,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-cooling-unisex-siyah-havlu/n0000005-010/?srsltid=AfmBOoo9bdkDbReTg7qU4lFs6ahARXel9HktjXbukCuvDCFF-D-IzsHF",
         "our_url": "https://tennis24shop.com/?p=45409",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45409",
-        "our_price_lir": 999,
+        "our_price_lir": 699,
         "our_stock_status": "outofstock",
         "our_sizes": []
     },
@@ -22032,19 +22032,19 @@
     },
     {
         "id": 53788,
-        "title": "سویشرت تنیس زنانه دکتلون DECATHLON - بنفش",
+        "title": "سویشرت تنیس زنانه Decathlon – بنفش",
         "sku": "8844451",
-        "url": "https://www.decathlon.com.tr/p/kadin-kapusonlu-tenis-sweatshirtu-yesil/_/R-p-349830?mc=8844451&c=MOR",
+        "url": "https://www.decathlon.com.tr/p/kadin-kapusonlu-tenis-sweatshirtu-beyaz/_/R-p-349830?mc=8844451&c=MOR",
         "our_url": "https://tennis24shop.com/?p=53788",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53788",
         "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 5,
-            "M": 5,
-            "S": 5,
-            "XL": 5,
-            "XS": 5
+            "L": 99,
+            "M": 99,
+            "S": 99,
+            "XL": 99,
+            "XS": 99
         }
     },
     {
@@ -26746,7 +26746,7 @@
             "44.5": 999,
             "45": 999,
             "46": 999,
-            "40.5": 999
+            "40.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-clay-erkek-tenis-ayakkabisi-2/"
     },
@@ -27254,14 +27254,14 @@
             "36": 999,
             "37": 999,
             "37.5": 999,
-            "39": 999,
-            "39.5": 999,
+            "39": 0,
+            "39.5": 0,
             "40": 999,
             "40.5": 999,
             "42": 0,
             "42.5": 999,
-            "38": 999,
-            "375": 999,
+            "38": 0,
+            "375": 0,
             "41.5": 0
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-kadin-padel-ayakkabisi/"
@@ -28621,7 +28621,7 @@
             "36.5": 0,
             "37.5": 0,
             "38.5": 0,
-            "40.5": 0
+            "40.5": 999
         }
     },
     {
@@ -30732,15 +30732,20 @@
         }
     },
     {
-        "id": 73899,
-        "title": "کلاه تنیس نایک Club Cap – آبی",
-        "sku": "IQ1321-417",
-        "url": "https://www.courtmax.com.tr/nike-club-cap-mavi-tenis-sapkasi",
-        "our_url": "https://tennis24shop.com/?p=73899",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73899",
+        "id": 73864,
+        "title": "کلاه ورزشی تنیس نایکNike Club Court Logo– سفید",
+        "sku": "IQ1321-100",
+        "url": "https://www.courtmax.com.tr/nike-club-cap-beyaz-tenis-sapkasi",
+        "our_url": "https://tennis24shop.com/?p=73864",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73864",
         "our_price_lir": 1649,
         "our_stock_status": "instock",
-        "our_sizes": []
+        "our_sizes": {
+            "S/M": 999,
+            "سفید": 8,
+            "M-L": 99,
+            "100": 8
+        }
     },
     {
         "id": 73917,
@@ -31921,23 +31926,12 @@
     },
     {
         "id": 75602,
-        "title": "مچ‌بند ورزشی نایک  NBA On Court – مشکی",
+        "title": "مچ‌بند بسکتبال یونیسکس نایک Nike NBA On Court – مشکی",
         "sku": "N.KN.03.001.OS",
         "url": "https://www.meritspor.com.tr/nike-nba-on-court-siyah-bileklik",
         "our_url": "https://tennis24shop.com/?p=75602",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75602",
-        "our_price_lir": 900,
-        "our_stock_status": "instock",
-        "our_sizes": []
-    },
-    {
-        "id": 75617,
-        "title": "مچ‌بند نایک  Swoosh Classic  - پک دوتایی -  سرخابی",
-        "sku": "N.101.2405.639",
-        "url": "https://www.meritspor.com.tr/nike-swoosh-classic-2li-havlu-bileklik-pembe",
-        "our_url": "https://tennis24shop.com/?p=75617",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75617",
-        "our_price_lir": 650,
+        "our_price_lir": 899,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -33981,9 +33975,20 @@
         "id": 79522,
         "title": "کلاه تنیس نایک Nike Dri-FIT ADV Club  – قرمز/کرم",
         "sku": "FB5598-677",
-        "url": "https://www.meritspor.com.tr/nike-dri-fit-adv-club-yumusak-tenis-sapkasi1",
+        "url": "https://www.meritspor.com.tr/nike-dri-fit-adv-club-yumusak-tenis-sapkasi1?utm_source=chatgpt.com",
         "our_url": "https://tennis24shop.com/?p=79522",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79522",
+        "our_price_lir": 1849,
+        "our_stock_status": "instock",
+        "our_sizes": []
+    },
+    {
+        "id": 79576,
+        "title": "کلاه تنیس نایک Nike Dri-FIT ADV Club– سرمه‌ای/سفید",
+        "sku": "FB5598-417",
+        "url": "https://www.meritspor.com.tr/nike-dri-fit-adv-club-yumusak-tenis-sapkasi?utm_source=chatgpt.com",
+        "our_url": "https://tennis24shop.com/?p=79576",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79576",
         "our_price_lir": 1849,
         "our_stock_status": "instock",
         "our_sizes": []
@@ -34530,17 +34535,6 @@
         }
     },
     {
-        "id": 80769,
-        "title": "مچ‌بند تنیس نایک  Dri-FIT Swoosh Classic 2 Pk Printed  – ذغالی",
-        "sku": "N.101.2408.022.OS",
-        "url": "https://www.meritspor.com.tr/nike-dri-fit-swoosh-classic-2li-desenli-tenis-bilekligi-anthraciteblacktotal-orange",
-        "our_url": "https://tennis24shop.com/?p=80769",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80769",
-        "our_price_lir": 1099,
-        "our_stock_status": "instock",
-        "our_sizes": []
-    },
-    {
         "id": 80783,
         "title": "دامن تنیس زنانه آدیداس Adidas Tennis Pro Climacool – سفید",
         "sku": "JM4730",
@@ -34573,7 +34567,7 @@
     },
     {
         "id": 80821,
-        "title": "مچ‌بند تنیس نایک Nike Swoosh Classic – خاکستری/مشکی",
+        "title": "مچ‌بند تنیس نایک Nike Swoosh Classic – خاکستری",
         "sku": "N.101.2405.005.OS",
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-2li-tenis-bilekligi-cool-grey",
         "our_url": "https://tennis24shop.com/?p=80821",
@@ -34715,5 +34709,100 @@
             "40": 99,
             "40.5": 99
         }
+    },
+    {
+        "id": 81062,
+        "title": "تیشرت مردانه نایک M NKCT TEE M90 FRENCH OPEN– سفید",
+        "sku": "HJ3468-100",
+        "url": "https://www.korayspor.com/nike-giyim-tisort-m-nkct-tee-m90-french-open-hj3468-100/",
+        "our_url": "https://tennis24shop.com/?p=81062",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81062",
+        "our_price_lir": 1699,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99,
+            "2XL": 99
+        }
+    },
+    {
+        "id": 81135,
+        "title": "هدبند ورزشی بچگانه نایک Nike Flex Classic Youth Slim – چند رنگ",
+        "sku": "N.101.1926.702.OS",
+        "url": "https://www.meritspor.com.tr/nike-flex-classic-youth-slim-6li-cocuk-sac-bandi",
+        "our_url": "https://tennis24shop.com/?p=81135",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81135",
+        "our_price_lir": 799,
+        "our_stock_status": "instock",
+        "our_sizes": []
+    },
+    {
+        "id": 81150,
+        "title": "هدبند ورزشی یونیسکس نایک Nike Flex Classic 6pk – چند رنگ",
+        "sku": "N.101.1927.111.OS",
+        "url": "https://www.meritspor.com.tr/nike-flex-classic-6li-sac-bandi-cok-renkli-n.101.1927.111.os",
+        "our_url": "https://tennis24shop.com/?p=81150",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81150",
+        "our_price_lir": 799,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "چند رنگ": 99,
+            "Standard": 99
+        }
+    },
+    {
+        "id": 81169,
+        "title": "هدبند ورزشی نایک Nike  Flex Classic Wide – مشکی/سفید",
+        "sku": "N.101.1932.036.OS",
+        "url": "https://www.meritspor.com.tr/nike-flex-classic-wide-3lu-genis-sac-bandi-siyahbeyaz",
+        "our_url": "https://tennis24shop.com/?p=81169",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81169",
+        "our_price_lir": 999,
+        "our_stock_status": "instock",
+        "our_sizes": []
+    },
+    {
+        "id": 81183,
+        "title": "مچ‌بند تنیس نایک Nike Dri-FIT Swoosh Classic 2 Pk Printed  – ذغالی/نارنجی",
+        "sku": "N.101.2408.022.OS",
+        "url": "https://www.meritspor.com.tr/nike-dri-fit-swoosh-classic-2li-desenli-tenis-bilekligi-anthraciteblacktotal-orange",
+        "our_url": "https://tennis24shop.com/?p=81183",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81183",
+        "our_price_lir": 1099,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "ذغالی/مشکی/نارنجی": 99,
+            "Standard": 99
+        }
+    },
+    {
+        "id": 81205,
+        "title": "جوراب تنیس نایک  Everyday Elevated  – پک 3 تایی",
+        "sku": "HQ4335-904",
+        "url": "https://www.meritspor.com.tr/nike-everyday-elevated-3lu-antreman-corabi1",
+        "our_url": "https://tennis24shop.com/?p=81205",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81205",
+        "our_price_lir": 1099,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "چند رنگ": 99,
+            "43-46": 99,
+            "35-37.5": 99,
+            "38-42.5": 99
+        }
+    },
+    {
+        "id": 81219,
+        "title": "مچ‌بند تنیس نایک Nike Premier Swoosh  – صورتی پودری",
+        "sku": "N0002467827",
+        "url": "https://www.meritspor.com.tr/nike-premier-swoosh-tenis-bileklik-pudra",
+        "our_url": "https://tennis24shop.com/?p=81219",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81219",
+        "our_price_lir": 649,
+        "our_stock_status": "instock",
+        "our_sizes": []
     }
 ]
