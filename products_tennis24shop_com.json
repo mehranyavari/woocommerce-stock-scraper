@@ -270,7 +270,7 @@
         "our_sizes": {
             "38-42": 0,
             "42-46": 0,
-            "46-50": 999,
+            "46-50": 0,
             "34-38": 999
         }
     },
@@ -375,8 +375,8 @@
             "34-38": 999,
             "38-42": 999,
             "42-46": 0,
-            "34.38": 0,
-            "42.46": 0
+            "34.38": 999,
+            "42.46": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -2752,7 +2752,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "35/38": 0
+            "35/38": 5
         }
     },
     {
@@ -9343,7 +9343,7 @@
         "our_sizes": {
             "2XL": 5,
             "XL": 5,
-            "L": 5,
+            "L": 0,
             "M": 5,
             "S": 5
         }
@@ -10748,7 +10748,7 @@
         "our_price_lir": 920,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
+            "XL": 5,
             "L": 5,
             "M": 5,
             "S": 5
@@ -14299,7 +14299,7 @@
         "our_sizes": {
             "37": 0,
             "38": 5,
-            "39": 5,
+            "39": 0,
             "40": 5,
             "41": 0
         }
@@ -15308,7 +15308,7 @@
         "url": "https://www.raketci.com/urun/nike-dri-fit-doublewide-bileklik-2li-paket/",
         "our_url": "https://tennis24shop.com/?p=34134",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=34134",
-        "our_price_lir": 900,
+        "our_price_lir": 799,
         "our_stock_status": "outofstock",
         "our_sizes": [],
         "secondary_url": "https://www.meritspor.com.tr/nike-home-away-doublewide-tenis-bilekligi-beyaz-siyah"
@@ -16758,7 +16758,7 @@
             "42": 0,
             "43": 0,
             "44": 0,
-            "40.5": 999,
+            "40.5": 0,
             "44.5": 0,
             "45.5": 999,
             "38.5": 0
@@ -17494,15 +17494,16 @@
         "url": "https://www.yuxel.com.tr/nikecourt-air-zoom-vapor-pro-2-sert-kort-tenis-ayakkabisi-dr6191-100",
         "our_url": "https://tennis24shop.com/?p=10273",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=10273",
-        "our_price_lir": 5400,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 7199,
+        "our_stock_status": "instock",
         "our_sizes": {
             "40": 0,
             "41": 0,
             "42": 0,
             "43": 0,
             "40.5": 0,
-            "42.5": 0
+            "42.5": 0,
+            "45": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-sert-kort-erkek-tenis-ayakkabisi"
     },
@@ -18078,11 +18079,11 @@
         "our_url": "https://tennis24shop.com/?p=12608",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=12608",
         "our_price_lir": 3239,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "36.5": 0,
             "37.5": 0,
-            "38": 0,
+            "38": 999,
             "۳۶": 0,
             "39": 0,
             "40": 0,
@@ -18231,12 +18232,12 @@
             "40": 999,
             "39": 0,
             "38": 999,
-            "41": 99,
+            "41": 999,
             "36.5": 0,
             "37.5": 0,
             "38.5": 0,
             "40.5": 0,
-            "42": 99
+            "42": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-vapor-lite-2-sert-kort-kadin-tenis-ayakkabisi-dv2019-001"
     },
@@ -18646,9 +18647,9 @@
         "our_url": "https://tennis24shop.com/?p=13904",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=13904",
         "our_price_lir": 3300,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "32.5": 999,
+            "32.5": 0,
             "35": 0,
             "33": 0,
             "36": 0,
@@ -18914,7 +18915,7 @@
         "our_price_lir": 7999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
+            "40": 999,
             "42": 0,
             "43": 0,
             "45": 0,
@@ -18922,12 +18923,18 @@
             "47": 0,
             "002": 0,
             "38.5": 0,
-            "40.5": 0,
+            "40.5": 999,
             "42.5": 999,
             "44.5": 0,
             "45.5": 0,
             "47.5": 0,
-            "48.5": 0
+            "48.5": 0,
+            "۳۶": 0,
+            "38": 0,
+            "39": 999,
+            "41": 999,
+            "36.5": 0,
+            "37.5": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-air-zoom-vapor-11-kadin-tenis-ayakkabisi"
     },
@@ -18960,8 +18967,8 @@
         "url": "https://www.raketspor.com.tr/nikecourt-vapor-lite-2-erkek-sert-kort-tenis-ayakkabisi-dv2018-100-13116",
         "our_url": "https://tennis24shop.com/?p=15042",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=15042",
-        "our_price_lir": 2989,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3100,
+        "our_stock_status": "instock",
         "our_sizes": {
             "46": 0,
             "40": 0,
@@ -18969,12 +18976,16 @@
             "42": 0,
             "43": 0,
             "44": 0,
-            "45": 0,
+            "45": 999,
             "47": 0,
             "40.5": 0,
             "42.5": 0,
-            "44.5": 0,
-            "45.5": 0
+            "44.5": 999,
+            "45.5": 0,
+            "۳۶": 999,
+            "38": 999,
+            "36.5": 999,
+            "37.5": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-vapor-lite-2-sert-kort-erkek-tenis-ayakkabisi-dv2018-100"
     },
@@ -22262,7 +22273,7 @@
             "XS": 0,
             "M": 0,
             "L": 0,
-            "XL": 0
+            "XL": 999
         }
     },
     {
@@ -22292,11 +22303,11 @@
         "our_url": "https://tennis24shop.com/?p=24400",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=24400",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
             "XL": 0,
-            "L": 0,
+            "L": 999,
             "M": 0,
             "S": 0,
             "XS": 0,
@@ -22357,8 +22368,8 @@
         "url": "https://www.yuxel.com.tr/nikecourt-air-zoom-vapor-pro-2-premium-sert-kort-tenis-ayakkabisi-fd6692-001",
         "our_url": "https://tennis24shop.com/?p=24563",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=24563",
-        "our_price_lir": 5400,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 7200,
+        "our_stock_status": "instock",
         "our_sizes": {
             "40": 0,
             "40.5": 0,
@@ -22368,11 +22379,12 @@
             "43": 0,
             "44": 0,
             "44.5": 0,
-            "45": 0,
-            "45.5": 0,
-            "46": 0,
+            "45": 999,
+            "45.5": 999,
+            "46": 999,
             "47": 0,
-            "39": 0
+            "39": 0,
+            "38.5": 0
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-w"
     },
@@ -23957,11 +23969,11 @@
         "our_url": "https://tennis24shop.com/?p=27656",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=27656",
         "our_price_lir": 3589,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "38": 0,
             "38.5": 0,
-            "39": 999,
+            "39": 0,
             "40": 0,
             "40.5": 0,
             "41": 0
@@ -26339,10 +26351,22 @@
         "url": "https://www.opsarsport.com/urun/nikecourt-vapor-pro-2-wmb-sert-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=33870",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=33870",
-        "our_price_lir": 5399,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 6000,
+        "our_stock_status": "instock",
         "our_sizes": {
-            "42.5": 0
+            "42.5": 0,
+            "39": 0,
+            "40": 0,
+            "41": 999,
+            "42": 0,
+            "43": 0,
+            "44": 999,
+            "45": 999,
+            "46": 0,
+            "38.5": 0,
+            "40.5": 0,
+            "44.5": 0,
+            "45.5": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-air-zoom-vapor-pro-2-hf3632-100"
     },
@@ -26497,7 +26521,7 @@
         "our_price_lir": 8500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40.5": 999,
+            "40.5": 0,
             "44": 999,
             "46": 0,
             "38.5": 0,
@@ -27565,9 +27589,14 @@
         "url": "https://www.yuxel.com.tr/nikecourt-dri-fit-victory-18-cm-tenis-sortu-fd5380-010",
         "our_url": "https://tennis24shop.com/?p=39661",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=39661",
-        "our_price_lir": 2000,
-        "our_stock_status": "outofstock",
-        "our_sizes": [],
+        "our_price_lir": 2599,
+        "our_stock_status": "onbackorder",
+        "our_sizes": {
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 0
+        },
         "secondary_url": "https://www.tenisburada.com/nikecourt-dri-fit-victory-fd5380-010"
     },
     {
@@ -28071,11 +28100,11 @@
         "url": "https://www.meritspor.com.tr/asics-court-ff-3-kadin-tenis-ayakkabisi-indigo-fog-white",
         "our_url": "https://tennis24shop.com/?p=41389",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41389",
-        "our_price_lir": 8800,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 9990,
+        "our_stock_status": "instock",
         "our_sizes": {
             "36": 0,
-            "37.5": 0,
+            "37.5": 999,
             "38": 0,
             "39.5": 0,
             "40": 0,
@@ -28190,14 +28219,15 @@
         "url": "https://www.yuxel.com.tr/nikecourt-dri-fit-advantage-tenis-t-shirt-fz6910-010",
         "our_url": "https://tennis24shop.com/?p=41521",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41521",
-        "our_price_lir": 2500,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "M": 0,
-            "L": 0,
+            "M": 999,
+            "L": 999,
             "XL": 0,
-            "2XL": 0
+            "2XL": 0,
+            "XS": 0
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-erkek-tenis-ustu-3302"
     },
@@ -28208,14 +28238,15 @@
         "url": "https://www.yuxel.com.tr/nikecourt-dri-fit-advantage-tenis-t-shirt-fz6910-100",
         "our_url": "https://tennis24shop.com/?p=41534",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41534",
-        "our_price_lir": 2500,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3599,
+        "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "M": 0,
+            "M": 999,
             "L": 0,
             "XL": 0,
-            "XXL": 0
+            "XXL": 0,
+            "XS": 0
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-erkek-tenis-ustu-3300"
     },
@@ -28243,13 +28274,13 @@
         "url": "https://www.yuxel.com.tr/nikecourt-dri-fit-advantage-tenis-t-shirt-fz6910-478",
         "our_url": "https://tennis24shop.com/?p=41560",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41560",
-        "our_price_lir": 2500,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3599,
+        "our_stock_status": "onbackorder",
         "our_sizes": {
             "S": 0,
-            "M": 0,
-            "L": 0,
-            "XL": 0,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
             "XXL": 0
         },
         "secondary_url": "https://www.tenisburada.com/tenisburadacom/nikecourt-advantage-erkek-tenis-tisortu-fz6910-478https//tenisburadacom/nikecourt-advantage-erkek-tenis-tisortu-fz6910-478"
@@ -28993,10 +29024,10 @@
         "our_url": "https://tennis24shop.com/?p=42627",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42627",
         "our_price_lir": 8799,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "43": 0,
-            "44.5": 999,
+            "44.5": 0,
             "45": 0,
             "45.5": 0
         }
@@ -29155,7 +29186,7 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-clay-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=42836",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42836",
-        "our_price_lir": 8799,
+        "our_price_lir": 8800,
         "our_stock_status": "instock",
         "our_sizes": {
             "42": 999,
@@ -29839,7 +29870,7 @@
         "our_url": "https://tennis24shop.com/?p=44111",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=44111",
         "our_price_lir": 6900,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "37.5": 0
         },
@@ -30174,7 +30205,7 @@
         "our_url": "https://tennis24shop.com/?p=45152",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45152",
         "our_price_lir": 920,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -30268,13 +30299,13 @@
         "url": "https://www.raketci.com/urun/nike-court-advantage-dri-fit-kisa-kollu-kadin-tenis-tisortu-4/",
         "our_url": "https://tennis24shop.com/?p=45229",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45229",
-        "our_price_lir": 3300,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 3499,
+        "our_stock_status": "instock",
         "our_sizes": {
             "M": 0,
             "L": 0,
-            "S": 0,
-            "XS": 0
+            "S": 999,
+            "XS": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-tenis-t-shirt"
     },
@@ -30442,7 +30473,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-cooling-unisex-siyah-havlu/n0000005-010/?srsltid=AfmBOoo9bdkDbReTg7qU4lFs6ahARXel9HktjXbukCuvDCFF-D-IzsHF",
         "our_url": "https://tennis24shop.com/?p=45409",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45409",
-        "our_price_lir": 699,
+        "our_price_lir": 999,
         "our_stock_status": "outofstock",
         "our_sizes": []
     },
@@ -30453,11 +30484,13 @@
         "url": "https://www.yuxel.com.tr/nike-dri-fit-advantage-unisex-sapka-fb5598-345",
         "our_url": "https://tennis24shop.com/?p=45420",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45420",
-        "our_price_lir": 1150,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 1849,
+        "our_stock_status": "instock",
         "our_sizes": {
             "M/L": 0,
-            "S/M": 0
+            "S/M": 0,
+            "S": 999,
+            "M": 999
         },
         "secondary_url": "https://www.tenisburada.com/nike-dri-fit-adv-club-turkuaz"
     },
@@ -30468,11 +30501,13 @@
         "url": "https://www.yuxel.com.tr/nike-dri-fit-advantage-unisex-sapka-fb5598-515",
         "our_url": "https://tennis24shop.com/?p=45429",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45429",
-        "our_price_lir": 1150,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 1849,
+        "our_stock_status": "instock",
         "our_sizes": {
             "M/L": 0,
-            "S/M": 0
+            "S/M": 0,
+            "S": 999,
+            "M": 999
         },
         "secondary_url": "https://www.tenisburada.com/nike-dri-fit-adv-club-turkuaz-3248"
     },
