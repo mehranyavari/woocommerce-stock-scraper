@@ -22086,7 +22086,7 @@
             "L": 5,
             "M": 5,
             "S": 5,
-            "XL": 5,
+            "XL": 0,
             "XS": 5
         }
     },
@@ -22853,7 +22853,7 @@
         "our_url": "https://tennis24shop.com/?p=54676",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54676",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -22930,7 +22930,7 @@
         "our_url": "https://tennis24shop.com/?p=54720",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54720",
         "our_price_lir": 990,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -25456,7 +25456,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "35/38": 5
+            "35/38": 0
         }
     },
     {
@@ -26722,7 +26722,7 @@
             "131-140cm-سال9-8": 5,
             "141-150cm-سال11-10": 5,
             "151-160cm-سال13-12": 5,
-            "161-172cm-سال15-14": 5,
+            "161-172cm-سال15-14": 0,
             "113-122cm-سال6-5": 5
         }
     },
@@ -30567,13 +30567,13 @@
         "our_url": "https://tennis24shop.com/?p=73455",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73455",
         "our_price_lir": 1890,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "سفید/بژ": 0,
             "36": 0,
             "37": 0,
             "38": 0,
-            "39": 5,
+            "39": 0,
             "40": 0,
             "41": 0
         }
@@ -35090,13 +35090,13 @@
         "our_price_lir": 640,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بنفش": 99,
-            "113-122cm-سال6-5": 99,
+            "بنفش": 5,
+            "113-122cm-سال6-5": 5,
             "123-130cm-سال8-7": 0,
-            "131-140cm-سال9-8": 99,
-            "141-148cm-سال11-10": 99,
-            "149-159cm-سال13-12": 99,
-            "160-166cm-سال15-14": 99
+            "131-140cm-سال9-8": 5,
+            "141-148cm-سال11-10": 5,
+            "149-159cm-سال13-12": 5,
+            "160-166cm-سال15-14": 5
         }
     },
     {
@@ -35110,10 +35110,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "آبی": 0,
-            "113-122cm-سال6-5": 99,
-            "123-130cm-سال8-7": 99,
-            "131-140cm-سال9-8": 99,
-            "141-148cm-سال11-10": 99,
+            "113-122cm-سال6-5": 5,
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "141-148cm-سال11-10": 5,
             "149-159cm-سال13-12": 0
         }
     }
