@@ -2798,7 +2798,14 @@
             "41": 999,
             "42": 999,
             "44": 999,
-            "45.5": 0
+            "45.5": 0,
+            "39": 0,
+            "40": 0,
+            "43": 0,
+            "45": 0,
+            "46": 0,
+            "42.5": 0,
+            "44.5": 0
         }
     },
     {
@@ -14271,8 +14278,8 @@
             "34-38": 999,
             "38-42": 999,
             "42-46": 0,
-            "34.38": 0,
-            "42.46": 0
+            "34.38": 999,
+            "42.46": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -15981,16 +15988,16 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=46341",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46341",
-        "our_price_lir": 8799,
+        "our_price_lir": 8800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44.5": 0,
-            "45": 0,
+            "44.5": 999,
+            "45": 999,
             "45.5": 999,
             "46": 0,
             "44": 999,
             "42": 999,
-            "42.5": 0,
+            "42.5": 999,
             "43": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi-2/"
@@ -23882,7 +23889,7 @@
         "our_sizes": {
             "2XL": 5,
             "XL": 5,
-            "L": 0,
+            "L": 5,
             "M": 5,
             "S": 5
         }
@@ -25946,7 +25953,7 @@
             "XL": 5,
             "L": 5,
             "M": 5,
-            "S": 5,
+            "S": 0,
             "2XL": 5
         }
     },
@@ -28029,18 +28036,18 @@
         "our_url": "https://tennis24shop.com/?p=67652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67652",
         "our_price_lir": 5590,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "40": 999,
+            "40": 0,
             "40⅔": 0,
             "41 ⅓": 0,
             "42": 0,
             "42 ⅔": 0,
             "43": 0,
-            "44": 999,
+            "44": 0,
             "44⅔": 0,
             "45 ⅓": 0,
-            "46": 999,
+            "46": 0,
             "46⅔": 0,
             "48": 0,
             "45.5": 0,
@@ -35032,13 +35039,13 @@
         "our_price_lir": 640,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
-            "6": 99,
+            "آبی": 5,
+            "6": 5,
             "8": 0,
-            "9": 99,
-            "10": 99,
+            "9": 5,
+            "10": 5,
             "13": 0,
-            "15": 99
+            "15": 5
         }
     },
     {
@@ -35048,18 +35055,18 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-sortu-siyah-tsh-dry/_/R-p-340973?mc=8966396&c=KAHVERENG%C4%B0",
         "our_url": "https://tennis24shop.com/?p=81929",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81929",
-        "our_price_lir": 5,
+        "our_price_lir": 710,
         "our_stock_status": "instock",
         "our_sizes": {
-            "قهوه‌ای": 99,
-            "123-130cm-سال8-7": 99,
-            "131-140cm-سال9-8": 99,
-            "141-150cm-سال11-10": 0,
-            "151-160cm-سال13-12": 99,
-            "161-172cm-سال15-14": 99,
-            "10": 99,
-            "12": 99,
-            "14": 99
+            "قهوه‌ای": 0,
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 5,
+            "161-172cm-سال15-14": 5,
+            "10": 0,
+            "12": 0,
+            "14": 0
         }
     },
     {
@@ -35072,12 +35079,12 @@
         "our_price_lir": 440,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "113-122cm-سال6-5": 99,
-            "123-130cm-سال8-7": 99,
-            "131-140cm-سال9-8": 99,
-            "141-150cm-سال11-10": 99,
-            "151-160cm-سال13-12": 99
+            "سفید": 5,
+            "113-122cm-سال6-5": 5,
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 5
         }
     },
     {
