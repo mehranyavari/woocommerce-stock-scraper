@@ -375,8 +375,8 @@
             "34-38": 999,
             "38-42": 999,
             "42-46": 0,
-            "34.38": 999,
-            "42.46": 999
+            "34.38": 0,
+            "42.46": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-multiplier-cushioned-crew-2li-siyah-corap/"
     },
@@ -610,7 +610,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XS": 999,
-            "S": 999,
+            "S": 0,
             "M": 0,
             "L": 0,
             "XL": 0
@@ -790,10 +790,7 @@
         "our_stock_status": "outofstock",
         "our_sizes": {
             "113-122cm-سال6-5": 0,
-            "161-172cm-سال15-14": 0,
-            "131": 0,
-            "141": 0,
-            "160": 0
+            "161-172cm-سال15-14": 0
         }
     },
     {
@@ -1140,12 +1137,7 @@
         "our_price_lir": 690,
         "our_stock_status": "instock",
         "our_sizes": {
-            "113-122cm 5-6 YEARS OLD": 1,
-            "123-130cm 7-8 YEARS OLD": 1,
-            "131-140cm 8-9 years old": 1,
-            "141-148cm 10-11 YEARS OLD": 1,
-            "123": 1,
-            "131": 1
+            "123-130cm-سال8-7": 5
         }
     },
     {
@@ -1158,13 +1150,7 @@
         "our_price_lir": 690,
         "our_stock_status": "instock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 1,
-            "131-140cm 8-9 years old": 1,
-            "141-150cm 10-11 YEARS OLD": 1,
-            "151-160cm 12-13 YEARS OLD": 1,
-            "123": 1,
-            "131": 1,
-            "141": 1
+            "123-130cm-سال8-7": 5
         }
     },
     {
@@ -2927,11 +2913,12 @@
         "our_price_lir": 640,
         "our_stock_status": "instock",
         "our_sizes": {
-            "113-122cm-سال6-5": 1,
-            "123-130cm-سال8-7": 1,
-            "151-160cm-سال13-12": 1,
-            "131-140cm-سال9-8": 1,
-            "141-148cm-سال11-10": 1
+            "113-121cm-سال6-5": 5,
+            "123-130cm-سال8-7": 5,
+            "160-166cm-سال15-14": 5,
+            "131-140cm-سال9-8": 5,
+            "141-148cm-سال11-10": 5,
+            "149-159cm-سال13-12": 5
         }
     },
     {
@@ -2944,13 +2931,11 @@
         "our_price_lir": 490,
         "our_stock_status": "instock",
         "our_sizes": {
-            "10": 5,
-            "12سال": 0,
-            "14سال": 0,
-            "8 سال": 0,
-            "6سال": 0,
-            "6": 5,
-            "14": 5
+            "10سال": 5,
+            "12سال": 5,
+            "14سال": 5,
+            "8سال": 5,
+            "6سال": 5
         }
     },
     {
@@ -2963,11 +2948,12 @@
         "our_price_lir": 710,
         "our_stock_status": "instock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 1,
-            "131-140cm 8-9 years old": 1,
-            "141-150cm 10-11 YEARS OLD": 1,
-            "151-160cm 12-13 YEARS OLD": 1,
-            "161-172cm 14-15 AGE": 1
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 5,
+            "161-172cm-سال15-14": 5,
+            "113-122cm-سال6-5": 5
         }
     },
     {
@@ -3345,13 +3331,13 @@
         "our_url": "https://tennis24shop.com/?p=67506",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67506",
         "our_price_lir": 2399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
-            "2XL": 0
+            "L": 999,
+            "M": 999,
+            "S": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -3362,13 +3348,13 @@
         "our_url": "https://tennis24shop.com/?p=67516",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67516",
         "our_price_lir": 1939,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "XL": 999,
+            "2XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -3379,13 +3365,13 @@
         "our_url": "https://tennis24shop.com/?p=67531",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67531",
         "our_price_lir": 3049,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "XL": 999,
+            "2XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -3396,13 +3382,13 @@
         "our_url": "https://tennis24shop.com/?p=67542",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67542",
         "our_price_lir": 2399,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "XL": 999,
+            "2XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -3413,13 +3399,13 @@
         "our_url": "https://tennis24shop.com/?p=67554",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67554",
         "our_price_lir": 3449,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 0,
-            "2XL": 0,
-            "L": 0,
-            "M": 0,
-            "S": 0
+            "XL": 999,
+            "2XL": 999,
+            "L": 999,
+            "M": 999,
+            "S": 999
         }
     },
     {
@@ -3603,11 +3589,11 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 1,
-            "131-140cm 8-9 years old": 1,
-            "141-150cm 10-11 YEARS OLD": 1,
-            "151-160cm 12-13 YEARS OLD": 1,
-            "161-172cm 14-15 AGE": 1
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 5,
+            "161-172cm-سال15-14": 5
         }
     },
     {
@@ -3620,8 +3606,12 @@
         "our_price_lir": 990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "141-150cm 10-11 YEARS OLD": 1,
-            "151-160cm 12-13 YEARS OLD": 1
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 0,
+            "113-122cm-سال6-5": 5,
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "161-172cm-سال15-14": 0
         }
     },
     {
@@ -3634,8 +3624,11 @@
         "our_price_lir": 990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "113-122cm-سال6-5": 1,
-            "131-140cm-سال9-8": 1
+            "113-122cm-سال6-5": 5,
+            "131-140cm-سال9-8": 5,
+            "123-130cm-سال8-7": 5,
+            "141-150cm-سال11-10": 5,
+            "151-160cm-سال13-12": 5
         }
     },
     {
@@ -3648,11 +3641,11 @@
         "our_price_lir": 1190,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "149-159cm 12-13 YEARS OLD": 0,
-            "141-148cm 10-11 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 0,
-            "123-130cm 7-8 YEARS OLD": 0,
-            "14-15سال-161-172cm": 0
+            "149-159cm-سال13-12": 0,
+            "141-148cm-سال11-10": 0,
+            "131-140cm-سال9-8": 0,
+            "123-130cm-سال8-7": 0,
+            "161-172cm-سال15-14": 0
         }
     },
     {
@@ -3680,9 +3673,12 @@
         "our_price_lir": 640,
         "our_stock_status": "instock",
         "our_sizes": {
-            "151-160cm 12-13 YEARS OLD": 1,
-            "141-148cm 10-11 YEARS OLD": 1,
-            "131-140cm 8-9 years old": 1
+            "151-160cm-سال13-12": 5,
+            "141-150cm-سال11-10": 5,
+            "131-140cm-سال9-8": 5,
+            "113-122cm-سال6-5": 0,
+            "123-130cm-سال8-7": 0,
+            "161-172cm-سال15-14": 5
         }
     },
     {
@@ -4373,13 +4369,13 @@
         "our_price_lir": 5299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "خاکستری": 2,
-            "XS": 2,
-            "S": 5,
-            "M": 3,
-            "L": 3,
-            "XL": 3,
-            "2XL": 2
+            "خاکستری": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4392,13 +4388,13 @@
         "our_price_lir": 4449,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز مه آلود": 2,
-            "XS": 2,
-            "S": 5,
-            "M": 5,
-            "L": 3,
-            "XL": 3,
-            "2XL": 2
+            "سبز مه آلود": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4411,13 +4407,13 @@
         "our_price_lir": 4449,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بادمجانی تیره": 2,
-            "XS": 2,
-            "S": 5,
-            "M": 5,
-            "L": 3,
-            "XL": 3,
-            "2XL": 2
+            "بادمجانی تیره": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4430,14 +4426,14 @@
         "our_price_lir": 2199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "خاکی وینتیج": 4,
-            "3XL": 2,
-            "XS": 2,
-            "S": 6,
-            "M": 5,
-            "L": 6,
-            "XL": 5,
-            "2XL": 4
+            "خاکی وینتیج": 999,
+            "3XL": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4450,13 +4446,13 @@
         "our_price_lir": 2199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بژ (Soft Oat)": 4,
-            "XS": 2,
-            "S": 6,
-            "M": 6,
-            "L": 7,
-            "XL": 5,
-            "2XL": 4
+            "بژ (Soft Oat)": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4466,16 +4462,16 @@
         "url": "https://www.asics.com.tr/match-jacquard-ss-top-1812",
         "our_url": "https://tennis24shop.com/?p=76924",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=76924",
-        "our_price_lir": 399,
+        "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بادمجانی تیره‌": 2,
-            "XS": 5,
-            "S": 8,
-            "M": 7,
-            "L": 5,
-            "XL": 2,
-            "2XL": 2
+            "بادمجانی تیره‌": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4488,13 +4484,13 @@
         "our_price_lir": 3599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "نپتون تاریک": 6,
-            "XS": 6,
-            "S": 12,
-            "M": 5,
+            "نپتون تاریک": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
             "L": 0,
-            "XL": 9,
-            "2XL": 6
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4507,14 +4503,14 @@
         "our_price_lir": 2599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 15,
-            "3XL": 2,
-            "XS": 2,
-            "S": 18,
-            "M": 14,
-            "L": 18,
-            "XL": 16,
-            "2XL": 15
+            "سفید": 999,
+            "3XL": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4527,12 +4523,12 @@
         "our_price_lir": 2159,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز آورا": 12,
-            "S": 10,
-            "M": 1,
-            "L": 6,
-            "XL": 7,
-            "2XL": 12
+            "سبز آورا": 999,
+            "S": 999,
+            "M": 0,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4545,13 +4541,13 @@
         "our_price_lir": 3449,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بادمجانی تیره": 2,
-            "XS": 1,
-            "S": 2,
-            "M": 4,
-            "L": 3,
-            "XL": 2,
-            "2XL": 2
+            "بادمجانی تیره": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4564,13 +4560,13 @@
         "our_price_lir": 3449,
         "our_stock_status": "instock",
         "our_sizes": {
-            "خاکی وینتیج": 2,
-            "XS": 1,
-            "S": 2,
-            "M": 5,
-            "L": 4,
-            "XL": 2,
-            "2XL": 2
+            "خاکی وینتیج": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4583,14 +4579,14 @@
         "our_price_lir": 2599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز خاکی": 4,
-            "3XL": 2,
-            "XS": 2,
-            "S": 6,
-            "M": 5,
-            "L": 5,
-            "XL": 5,
-            "2XL": 4
+            "سبز خاکی": 999,
+            "3XL": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4603,13 +4599,13 @@
         "our_price_lir": 2199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 4,
-            "XS": 2,
-            "S": 6,
-            "M": 6,
-            "L": 6,
-            "XL": 5,
-            "2XL": 4
+            "سرمه‌ای": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -4622,10 +4618,10 @@
         "our_price_lir": 1599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "صورتی روشن": 9,
-            "XS": 1,
-            "S": 8,
-            "M": 9
+            "صورتی روشن": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -4638,10 +4634,10 @@
         "our_price_lir": 1849,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز": 6,
-            "XS": 1,
-            "S": 5,
-            "M": 6
+            "سبز": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -4654,8 +4650,8 @@
         "our_price_lir": 1849,
         "our_stock_status": "instock",
         "our_sizes": {
-            "قرمز": 99,
-            "L": 99
+            "قرمز": 999,
+            "L": 999
         }
     },
     {
@@ -4668,9 +4664,9 @@
         "our_price_lir": 1849,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بادمجانی تیره": 7,
-            "M": 10,
-            "L": 7
+            "بادمجانی تیره": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -4681,7 +4677,7 @@
         "our_url": "https://tennis24shop.com/?p=78571",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78571",
         "our_price_lir": 599,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -4691,7 +4687,7 @@
         "url": "https://www.meritspor.com.tr/nike-club-futura-swoosh-tenis-sapkasi1",
         "our_url": "https://tennis24shop.com/?p=79496",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79496",
-        "our_price_lir": 1648,
+        "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -4702,7 +4698,7 @@
         "url": "https://www.meritspor.com.tr/nike-club-futura-swoosh-tenis-sapkasi",
         "our_url": "https://tennis24shop.com/?p=79508",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79508",
-        "our_price_lir": 1648,
+        "our_price_lir": 1649,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -4713,7 +4709,7 @@
         "url": "https://www.meritspor.com.tr/nike-dri-fit-adv-club-yumusak-tenis-sapkasi1?utm_source=chatgpt.com",
         "our_url": "https://tennis24shop.com/?p=79522",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79522",
-        "our_price_lir": 1849,
+        "our_price_lir": 1850,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -4724,7 +4720,7 @@
         "url": "https://www.meritspor.com.tr/nike-dri-fit-adv-club-yumusak-tenis-sapkasi?utm_source=chatgpt.com",
         "our_url": "https://tennis24shop.com/?p=79576",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79576",
-        "our_price_lir": 1849,
+        "our_price_lir": 1850,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -4735,7 +4731,7 @@
         "url": "https://www.meritspor.com.tr/nike-dri-fit-club-yumusak-metal-swoosh-cocuk-sapkasi",
         "our_url": "https://tennis24shop.com/?p=79597",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79597",
-        "our_price_lir": 1499,
+        "our_price_lir": 1450,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -5819,26 +5815,26 @@
         "url": "https://www.intersport.com.tr/urun/nike-initiator-erkek-krem-gunluk-spor-ayakkabi/hj7683-072/",
         "our_url": "https://tennis24shop.com/?p=48494",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48494",
-        "our_price_lir": 4499,
+        "our_price_lir": 5099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "39": 0,
-            "40": 0,
+            "39": 999,
+            "40": 999,
             "40.5": 999,
-            "41": 0,
-            "42": 0,
-            "42.5": 0,
-            "38.5": 0,
-            "45.5": 0,
-            "43": 0,
-            "46": 0,
-            "47": 0,
-            "44": 0,
-            "44.5": 0,
-            "45": 0,
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "38.5": 999,
+            "45.5": 999,
+            "43": 999,
+            "46": 999,
+            "47": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
             "48.5": 0,
             "49.5": 0,
-            "47.5": 0
+            "47.5": 999
         },
         "secondary_url": "https://www.korayspor.com/nike-kosu-ayakkabi-initiator-hj7683-072/?srsltid=AfmBOorf3bfphimynBNyGapRsv6M5m1g3jeKlgncwj4hivAuDZysjhHb"
     },
@@ -5849,24 +5845,24 @@
         "url": "https://www.intersport.com.tr/urun/nike-initiator-erkek-krem-gunluk-spor-ayakkabi/hj7683-072/",
         "our_url": "https://tennis24shop.com/?p=48516",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48516",
-        "our_price_lir": 4499,
+        "our_price_lir": 5099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44": 0,
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "45": 0,
-            "46": 0,
-            "47": 0,
+            "44": 999,
+            "39": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "45": 999,
+            "46": 999,
+            "47": 999,
             "40.5": 999,
-            "42.5": 0,
-            "44.5": 0,
-            "38.5": 0,
-            "45.5": 0,
-            "47.5": 0,
+            "42.5": 999,
+            "44.5": 999,
+            "38.5": 999,
+            "45.5": 999,
+            "47.5": 999,
             "48.5": 0,
             "49.5": 0
         },
@@ -7918,8 +7914,8 @@
         "url": "https://www.yuxel.com.tr/nike-swoosh-unisex-antrenman-sac-bandi5",
         "our_url": "https://tennis24shop.com/?p=52811",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=52811",
-        "our_price_lir": 460,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 900,
+        "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.raketci.com/urun/nike-swoosh-unisex-gri-sac-bandi/"
     },
@@ -14534,15 +14530,15 @@
         "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-erkek-kolsuz-tisort-beyaz",
         "our_url": "https://tennis24shop.com/?p=77656",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77656",
-        "our_price_lir": 4748,
+        "our_price_lir": 4749,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "XXL": 99
+            "سفید": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "XXL": 999
         }
     },
     {
@@ -14555,9 +14551,9 @@
         "our_price_lir": 4449,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "XL": 99,
-            "XXL": 99
+            "سفید": 999,
+            "XL": 999,
+            "XXL": 999
         }
     },
     {
@@ -14570,11 +14566,11 @@
         "our_price_lir": 2534,
         "our_stock_status": "instock",
         "our_sizes": {
-            "نارنجی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "نارنجی": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999
         }
     },
     {
@@ -14587,11 +14583,11 @@
         "our_price_lir": 2534,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سفید": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999
         }
     },
     {
@@ -14601,22 +14597,22 @@
         "url": "https://www.meritspor.com.tr/nike-gp-challenge-pro-premium-erkek-tenis-ayakkabisi-light-violet-ore",
         "our_url": "https://tennis24shop.com/?p=77803",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77803",
-        "our_price_lir": 6099,
+        "our_price_lir": 7400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "39": 99,
-            "40": 99,
-            "41": 99,
-            "42": 99,
-            "42.5": 99,
-            "43": 99,
-            "44": 99,
-            "44.5": 99,
-            "40.5": 99,
-            "45": 99,
-            "45.5": 99,
-            "46": 99
+            "پیش‌فرض": 999,
+            "39": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "40.5": 999,
+            "45": 999,
+            "45.5": 999,
+            "46": 999
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-gp-challenge-pro-prm-sert-kort-erkek-tenis-ayakkabisi"
     },
@@ -14630,9 +14626,9 @@
         "our_price_lir": 5000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "قرمز/کرم": 99,
-            "L": 99,
-            "XL": 99,
+            "قرمز/کرم": 999,
+            "L": 999,
+            "XL": 999,
             "m": 0
         }
     },
@@ -14646,11 +14642,12 @@
         "our_price_lir": 6400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آنتراسیت/خاکستری/سفید": 99,
-            "S": 0,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "آنتراسیت/خاکستری/سفید": 999,
+            "S": 999,
+            "M": 0,
+            "L": 999,
+            "XL": 999,
+            "XXL": 0
         }
     },
     {
@@ -14660,14 +14657,14 @@
         "url": "https://www.yuxel.com.tr/nikecourt-advantage-dri-fit-pileli-tenis-etegi-fz6512-844",
         "our_url": "https://tennis24shop.com/?p=78231",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78231",
-        "our_price_lir": 2379,
+        "our_price_lir": 4099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "صورتی روشن (سمن)": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99
+            "صورتی روشن (سمن)": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-pileli-kadin-tenis-etegi-3161"
     },
@@ -14678,14 +14675,14 @@
         "url": "https://www.yuxel.com.tr/nikecourt-heritage-phoenix-fleece-normal-belli-tenis-sortu-",
         "our_url": "https://tennis24shop.com/?p=78248",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78248",
-        "our_price_lir": 2239,
+        "our_price_lir": 3200,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99
+            "آبی": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-kadin-orta-bel-polar-tenis-sortu"
     },
@@ -14696,14 +14693,14 @@
         "url": "https://www.yuxel.com.tr/nikecourt-advantage-dri-fit-pileli-tenis-etegi-fz6512-100",
         "our_url": "https://tennis24shop.com/?p=78267",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78267",
-        "our_price_lir": 2379,
+        "our_price_lir": 4099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "XS": 99,
-            "S": 0,
-            "M": 99,
-            "L": 99
+            "سفید": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-dri-fit-pileli-kadin-tenis-etegi-fz6512-687"
     },
@@ -14714,14 +14711,14 @@
         "url": "https://www.yuxel.com.tr/asics-yuksek-bel-tayt",
         "our_url": "https://tennis24shop.com/?p=78284",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78284",
-        "our_price_lir": 1679,
+        "our_price_lir": 2399,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99
+            "سبز": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -14731,13 +14728,14 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-tam-fermuarli-kadin-tenis-ceketi-old-royal",
         "our_url": "https://tennis24shop.com/?p=78401",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78401",
-        "our_price_lir": 5499,
+        "our_price_lir": 5500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
+            "آبی": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 0
         },
         "secondary_url": "https://www.tenisburada.com/nike-advantage-dri-fit-tam-boy-fermuarli-kadin-tenis-ceketi-ib0776-417"
     },
@@ -14748,14 +14746,15 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-15-cm-erkek-tenis-sortu-new-slate",
         "our_url": "https://tennis24shop.com/?p=78417",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78417",
-        "our_price_lir": 3599,
+        "our_price_lir": 3600,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای/نارنجی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سرمه‌ای/نارنجی": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "XS": 0
         }
     },
     {
@@ -14765,13 +14764,14 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-kisa-kollu-kadin-tenis-ustu-lilac",
         "our_url": "https://tennis24shop.com/?p=78445",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78445",
-        "our_price_lir": 3599,
+        "our_price_lir": 3600,
         "our_stock_status": "instock",
         "our_sizes": {
-            "یاسی روشن": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
+            "یاسی روشن": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 0
         },
         "secondary_url": "https://www.tenisburada.com/nikecourt-advantage-kadin-dri-fit-tenis-tisortu-hq2994-583"
     },
@@ -14785,11 +14785,11 @@
         "our_price_lir": 4000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز مالاکایت": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سبز مالاکایت": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999
         }
     },
     {
@@ -14799,21 +14799,22 @@
         "url": "https://www.meritspor.com.tr/nike-zoom-gp-challenge-pro-toprak-kort-clay-erkek-tenis-ayakkabisi-smokey-blue",
         "our_url": "https://tennis24shop.com/?p=79390",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79390",
-        "our_price_lir": 5999,
+        "our_price_lir": 6000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "40": 99,
-            "41": 99,
-            "42": 99,
-            "42.5": 99,
-            "43": 99,
-            "44": 99,
-            "44.5": 99,
-            "45": 99,
-            "45.5": 99,
-            "46": 99,
-            "47": 99
+            "پیش‌فرض": 999,
+            "40": 999,
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
+            "45.5": 999,
+            "46": 999,
+            "47": 999,
+            "40.5": 999
         }
     },
     {
@@ -14823,11 +14824,13 @@
         "url": "https://www.meritspor.com.tr/nike-everyday-elevated-dri-fit-crew-corap-3lu-set-beyaz?utm_source=chatgpt.com",
         "our_url": "https://tennis24shop.com/?p=79479",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79479",
-        "our_price_lir": 1049,
+        "our_price_lir": 1050,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "43-46": 99
+            "سفید": 999,
+            "43-46": 999,
+            "37.5": 999,
+            "42.5": 999
         }
     },
     {
@@ -14837,12 +14840,12 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-erkek-tenis-polo-ust-beyaz",
         "our_url": "https://tennis24shop.com/?p=79810",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79810",
-        "our_price_lir": 3899,
+        "our_price_lir": 3900,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "M": 99,
-            "L": 99
+            "سفید": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -14910,15 +14913,22 @@
         "our_price_lir": 8999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "44.5": 99,
+            "پیش‌فرض": 0,
+            "41.5": 0,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 0,
+            "44": 999,
+            "44.5": 999,
             "45": 0,
-            "46": 99
+            "46": 0,
+            "40": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "46.5": 0,
+            "50.5": 0,
+            "40.5": 0
         }
     },
     {
@@ -14928,20 +14938,20 @@
         "url": "https://www.asics.com.tr/solution-speed-ff-4-2190",
         "our_url": "https://tennis24shop.com/?p=80068",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80068",
-        "our_price_lir": 9798,
+        "our_price_lir": 9799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "44.5": 99
+            "پیش‌فرض": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999
         }
     },
     {
@@ -14955,15 +14965,15 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "40": 99,
+            "40": 999,
             "40.5": 0,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "44.5": 99,
-            "45": 99,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
             "46": 0
         }
     },
@@ -14977,12 +14987,12 @@
         "our_price_lir": 3899,
         "our_stock_status": "instock",
         "our_sizes": {
-            "خاکستری": 6,
-            "XS": 4,
-            "S": 2,
-            "M": 4,
-            "L": 7,
-            "XL": 6
+            "خاکستری": 999,
+            "XS": 999,
+            "S": 0,
+            "M": 999,
+            "L": 999,
+            "XL": 999
         }
     },
     {
@@ -14995,15 +15005,15 @@
         "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -15013,16 +15023,16 @@
         "url": "https://www.asics.com.tr/match-jacquard-polo-ss-top-1003",
         "our_url": "https://tennis24shop.com/?p=80218",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80218",
-        "our_price_lir": 3998,
+        "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز": 4,
-            "XS": 4,
-            "S": 5,
-            "M": 6,
-            "L": 6,
-            "XL": 4,
-            "2XL": 4
+            "سبز": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -15035,18 +15045,18 @@
         "our_price_lir": 9199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999
         }
     },
     {
@@ -15059,11 +15069,11 @@
         "our_price_lir": 3599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 6,
-            "XS": 6,
-            "S": 11,
-            "M": 11,
-            "L": 6
+            "سرمه‌ای": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15073,16 +15083,16 @@
         "url": "https://www.asics.com.tr/court-core-graphic-half-zip-sweatshirt-1953",
         "our_url": "https://tennis24shop.com/?p=80282",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80282",
-        "our_price_lir": 3998,
+        "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "طوسی روشن": 2,
-            "XS": 2,
-            "S": 4,
-            "M": 3,
-            "L": 4,
-            "XL": 3,
-            "2XL": 2
+            "طوسی روشن": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -15095,13 +15105,13 @@
         "our_price_lir": 3599,
         "our_stock_status": "instock",
         "our_sizes": {
-            "صورتی": 1,
-            "XS": 4,
-            "S": 6,
-            "M": 6,
-            "L": 4,
-            "XL": 3,
-            "2XL": 1
+            "صورتی": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 999
         }
     },
     {
@@ -15114,11 +15124,11 @@
         "our_price_lir": 2299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "زرد": 2,
-            "XS": 3,
-            "S": 2,
-            "M": 3,
-            "L": 2
+            "زرد": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15128,14 +15138,14 @@
         "url": "https://www.asics.com.tr/match-12-zip-ls-top-1009",
         "our_url": "https://tennis24shop.com/?p=80344",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80344",
-        "our_price_lir": 4298,
+        "our_price_lir": 4299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 3,
-            "XS": 3,
-            "S": 5,
-            "M": 6,
-            "L": 3
+            "سرمه‌ای": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15148,14 +15158,14 @@
         "our_price_lir": 4799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 12,
-            "41.5": 11,
-            "42": 15,
-            "42.5": 16,
-            "43.5": 17,
-            "44": 15,
-            "44.5": 12,
-            "45": 12
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -15165,13 +15175,13 @@
         "url": "https://www.meritspor.com.tr/nike-one-yuksek-belli-bilek-ustu-kadin-tayti-pink-smoke",
         "our_url": "https://tennis24shop.com/?p=80652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80652",
-        "our_price_lir": 2998,
+        "our_price_lir": 2999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "صورتی دودی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
+            "صورتی دودی": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -15181,14 +15191,14 @@
         "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-kadin-tenis-atleti-light-magenta",
         "our_url": "https://tennis24shop.com/?p=80688",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80688",
-        "our_price_lir": 4299,
+        "our_price_lir": 4300,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرخابی روشن": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99
+            "سرخابی روشن": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15198,13 +15208,13 @@
         "url": "https://www.meritspor.com.tr/nikecourt-slam-dri-fit-yuksek-belli-kadin-tenis-etegi-light-magenta-siyah",
         "our_url": "https://tennis24shop.com/?p=80707",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80707",
-        "our_price_lir": 5199,
+        "our_price_lir": 5200,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرخابی روشن/مشکی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
+            "سرخابی روشن/مشکی": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -15214,14 +15224,14 @@
         "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-kadin-tenis-sortu-beyaz",
         "our_url": "https://tennis24shop.com/?p=80747",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80747",
-        "our_price_lir": 4449,
+        "our_price_lir": 4450,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99
+            "سفید": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15231,12 +15241,12 @@
         "url": "https://www.meritspor.com.tr/adidas-tennis-pro-climacool-pilili-etek-beyaz",
         "our_url": "https://tennis24shop.com/?p=80783",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80783",
-        "our_price_lir": 4748,
+        "our_price_lir": 4749,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "M": 99,
-            "L": 99
+            "سفید": 999,
+            "M": 999,
+            "L": 999
         }
     },
     {
@@ -15246,13 +15256,13 @@
         "url": "https://www.meritspor.com.tr/nike-victory-dri-fit-kisa-kollu-kadin-tenis-ustu",
         "our_url": "https://tennis24shop.com/?p=80797",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80797",
-        "our_price_lir": 2799,
+        "our_price_lir": 2800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "صورتی دودی/سفید": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99
+            "صورتی دودی/سفید": 999,
+            "XS": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -15262,7 +15272,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-2li-tenis-bilekligi-cool-grey",
         "our_url": "https://tennis24shop.com/?p=80821",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80821",
-        "our_price_lir": 799,
+        "our_price_lir": 800,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15273,7 +15283,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-havlu-kumas-sac-bandi-white",
         "our_url": "https://tennis24shop.com/?p=80852",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80852",
-        "our_price_lir": 699,
+        "our_price_lir": 700,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15284,7 +15294,7 @@
         "url": "https://www.meritspor.com.tr/nike-flex-classic-youth-slim-6li-cocuk-sac-bandi",
         "our_url": "https://tennis24shop.com/?p=81135",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81135",
-        "our_price_lir": 799,
+        "our_price_lir": 800,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15295,7 +15305,7 @@
         "url": "https://www.meritspor.com.tr/nike-flex-classic-6li-sac-bandi-cok-renkli-n.101.1927.111.os",
         "our_url": "https://tennis24shop.com/?p=81150",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81150",
-        "our_price_lir": 799,
+        "our_price_lir": 800,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15306,7 +15316,7 @@
         "url": "https://www.meritspor.com.tr/nike-flex-classic-wide-3lu-genis-sac-bandi-siyahbeyaz",
         "our_url": "https://tennis24shop.com/?p=81169",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81169",
-        "our_price_lir": 999,
+        "our_price_lir": 1000,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15317,7 +15327,7 @@
         "url": "https://www.meritspor.com.tr/nike-dri-fit-swoosh-classic-2li-desenli-tenis-bilekligi-anthraciteblacktotal-orange",
         "our_url": "https://tennis24shop.com/?p=81183",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81183",
-        "our_price_lir": 1099,
+        "our_price_lir": 1100,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -15328,7 +15338,7 @@
         "url": "https://www.meritspor.com.tr/nike-premier-swoosh-tenis-bileklik-pudra",
         "our_url": "https://tennis24shop.com/?p=81219",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81219",
-        "our_price_lir": 649,
+        "our_price_lir": 650,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -18326,11 +18336,10 @@
         "our_price_lir": 650,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "113": 0,
-            "123": 0,
-            "131": 0,
-            "141": 0,
-            "151": 0
+            "123-130cm-سال8-7": 0,
+            "131-140cm-سال9-8": 0,
+            "141-150cm-سال11-10": 0,
+            "151-160cm-سال13-12": 0
         }
     },
     {
@@ -21732,10 +21741,8 @@
         "our_sizes": {
             "123-130cm-سال8-7": 5,
             "149-159cm-سال13-12": 5,
-            "123": 5,
-            "131": 5,
-            "141": 5,
-            "149": 5
+            "131-140cm-سال9-8": 5,
+            "141-148cm-سال11-10": 5
         }
     },
     {
@@ -21748,15 +21755,11 @@
         "our_price_lir": 1090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "14-15سال-161-172cm": 5,
+            "161-172cm-سال15-14": 5,
             "123-130cm-سال8-7": 5,
             "151-160cm-سال13-12": 5,
             "141-150cm-سال11-10": 5,
-            "123": 5,
-            "131": 5,
-            "141": 5,
-            "151": 5,
-            "161": 5
+            "131-140cm-سال9-8": 5
         }
     },
     {
@@ -30971,14 +30974,11 @@
         "our_price_lir": 710,
         "our_stock_status": "instock",
         "our_sizes": {
-            "141-150cm 10-11 YEARS OLD": 5,
-            "123-130cm 7-8 YEARS OLD": 5,
-            "131-140cm 8-9 years old": 5,
-            "151-160cm 12-13 YEARS OLD": 5,
-            "123": 5,
-            "131": 5,
-            "151": 5,
-            "161": 5
+            "141-150cm-سال11-10": 5,
+            "123-130cm-سال8-7": 5,
+            "131-140cm-سال9-8": 5,
+            "151-160cm-سال13-12": 5,
+            "161-172cm-سال15-14": 5
         }
     },
     {
@@ -30994,9 +30994,9 @@
             "161-172cm-سال15-14": 5,
             "131-140cm-سال9-8": 5,
             "141-150cm-سال11-10": 5,
-            "149-159cm-سال13-12": 5,
-            "123": 5,
-            "151": 5
+            "151-160cm-سال13-12": 5,
+            "123-130cm-سال8-7": 5,
+            "113-122cm-سال6-5": 0
         }
     },
     {
@@ -31013,9 +31013,7 @@
             "131-140cm-سال9-8": 0,
             "123-130cm-سال8-7": 0,
             "151-160cm-سال13-12": 0,
-            "131": 0,
-            "141": 0,
-            "160": 0
+            "141-148cm-سال11-10": 0
         }
     },
     {
@@ -31069,11 +31067,11 @@
         "our_url": "https://tennis24shop.com/?p=46207",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46207",
         "our_price_lir": 2099,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "XL": 0,
-            "L": 0,
-            "S": 0,
+            "L": 999,
+            "S": 999,
             "M": 0
         }
     },
@@ -31182,16 +31180,16 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=46341",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=46341",
-        "our_price_lir": 8800,
+        "our_price_lir": 8799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "44.5": 999,
-            "45": 999,
+            "44.5": 0,
+            "45": 0,
             "45.5": 999,
             "46": 0,
             "44": 999,
             "42": 999,
-            "42.5": 999,
+            "42.5": 0,
             "43": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-vapor-12-toprak-kort-erkek-tenis-ayakkabisi-2/"
@@ -31673,14 +31671,11 @@
         "our_price_lir": 490,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 0,
-            "141-150cm 10-11 YEARS OLD": 0,
-            "161-172cm 14-15 AGE": 0,
-            "151-160cm 12-13 YEARS OLD": 0,
-            "123": 0,
-            "131": 0,
-            "141": 0
+            "123-130cm-سال8-7": 0,
+            "131-140cm-سال9-8": 0,
+            "141-150cm-سال11-10": 0,
+            "161-172cm-سال15-14": 0,
+            "151-160cm-سال13-12": 0
         }
     },
     {
@@ -31693,9 +31688,8 @@
         "our_price_lir": 650,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "113": 0,
-            "123": 0,
-            "141": 0
+            "123-130cm-سال8-7": 0,
+            "141-150cm-سال11-10": 0
         }
     },
     {
@@ -31708,12 +31702,9 @@
         "our_price_lir": 640,
         "our_stock_status": "outofstock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 0,
-            "161-172cm 14-15 AGE": 0,
-            "113": 0,
-            "131": 0,
-            "161": 0
+            "123-130cm-سال8-7": 0,
+            "131-140cm-سال9-8": 0,
+            "161-172cm-سال15-14": 0
         }
     },
     {
@@ -31828,14 +31819,7 @@
         "our_price_lir": 495,
         "our_stock_status": "instock",
         "our_sizes": {
-            "113-122cm 5-6 YEARS OLD": 0,
-            "123-130cm 7-8 YEARS OLD": 5,
-            "131-140cm 8-9 years old": 0,
-            "141-150cm 10-11 YEARS OLD": 0,
-            "151-160cm 12-13 YEARS OLD": 0,
-            "161-172cm 14-15 AGE": 0,
-            "123": 5,
-            "131": 0
+            "123-130cm-سال8-7": 5
         }
     },
     {
@@ -31848,16 +31832,12 @@
         "our_price_lir": 550,
         "our_stock_status": "instock",
         "our_sizes": {
-            "113-122cm 5-6 YEARS OLD": 5,
-            "123-130cm 7-8 YEARS OLD": 0,
-            "131-140cm 8-9 years old": 5,
-            "141-150cm 10-11 YEARS OLD": 5,
-            "151-160cm 12-13 YEARS OLD": 5,
-            "160-166cm 14-15 YEARS OLD": 5,
-            "113": 5,
-            "131": 5,
-            "141": 5,
-            "149": 5
+            "113-122cm-سال6-5": 5,
+            "123-130cm-سال8-7": 0,
+            "131-140cm-سال9-8": 5,
+            "141-148cm-سال11-10": 5,
+            "149-159cm-سال13-12": 5,
+            "160-166cm-سال15-14": 5
         }
     },
     {
@@ -32428,12 +32408,7 @@
             "123-130cm-سال8-7": 5,
             "131-140cm-سال9-8": 5,
             "141-150cm-سال11-10": 5,
-            "149-159cm-سال13-12": 0,
-            "113": 5,
-            "123": 5,
-            "131": 5,
-            "141": 5,
-            "151": 0
+            "151-160cm-سال13-12": 0
         }
     },
     {
@@ -32479,7 +32454,7 @@
         "our_price_lir": 790,
         "our_stock_status": "instock",
         "our_sizes": {
-            "123-130cm 7-8 YEARS OLD": 5
+            "123-130cm-سال8-7": 5
         }
     },
     {
@@ -32666,9 +32641,9 @@
         "our_price_lir": 2500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 999,
+            "مشکی": 0,
             "XS": 999,
-            "S": 999,
+            "S": 0,
             "M": 0,
             "L": 0,
             "XL": 0
@@ -32692,8 +32667,8 @@
         "url": "https://www.meritspor.com.tr/adidas-match-bronze-3.2-padel-raketi",
         "our_url": "https://tennis24shop.com/?p=78781",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78781",
-        "our_price_lir": 3300,
-        "our_stock_status": "instock",
+        "our_price_lir": 3299,
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -32707,10 +32682,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 0,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "XXL": 99
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "XXL": 999
         }
     },
     {
@@ -32723,11 +32698,11 @@
         "our_price_lir": 4499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بنفش": 99,
-            "S": 99,
-            "M": 99,
-            "L": 98,
-            "XL": 99
+            "بنفش": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999
         }
     },
     {
@@ -33071,7 +33046,7 @@
             "S": 999,
             "M": 999,
             "L": 999,
-            "XL": 999,
+            "XL": 0,
             "XXL": 999
         }
     },
@@ -33448,7 +33423,7 @@
         "url": "https://www.meritspor.com.tr/nike-nba-on-court-siyah-bileklik",
         "our_url": "https://tennis24shop.com/?p=75602",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75602",
-        "our_price_lir": 899,
+        "our_price_lir": 900,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -33459,7 +33434,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-2li-havlu-bileklik-pembe",
         "our_url": "https://tennis24shop.com/?p=75617",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75617",
-        "our_price_lir": 649,
+        "our_price_lir": 650,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -33792,13 +33767,13 @@
             "پیش‌فرض": 999,
             "36": 0,
             "37": 999,
-            "37.5": 999,
+            "37.5": 0,
             "38": 999,
             "39": 0,
             "39.5": 999,
             "40": 999,
             "40.5": 999,
-            "41.5": 999,
+            "41.5": 0,
             "42": 0,
             "42.5": 999
         }
@@ -33814,16 +33789,16 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
             "40.5": 0,
             "41.5": 0,
-            "42": 99,
+            "42": 999,
             "42.5": 0,
             "9": 0,
             "9H": 0
@@ -33836,17 +33811,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-1771",
         "our_url": "https://tennis24shop.com/?p=77008",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77008",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -33856,17 +33831,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-1772",
         "our_url": "https://tennis24shop.com/?p=77040",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77040",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "36": 1
+            "پیش‌فرض": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "36": 999
         }
     },
     {
@@ -33876,17 +33851,18 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-2074",
         "our_url": "https://tennis24shop.com/?p=77069",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77069",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 0
         }
     },
     {
@@ -33896,17 +33872,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-2075",
         "our_url": "https://tennis24shop.com/?p=77097",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77097",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -33916,24 +33892,24 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-clay-1776",
         "our_url": "https://tennis24shop.com/?p=77127",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77127",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 12,
-            "36": 98,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 98,
-            "40": 99,
-            "5H": 14,
-            "6": 18,
-            "6H": 18,
-            "7": 18,
-            "7H": 15,
-            "8": 12,
-            "8H": 12
+            "پیش‌فرض": 0,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "5H": 0,
+            "6": 0,
+            "6H": 0,
+            "7": 0,
+            "7H": 0,
+            "8": 0,
+            "8H": 0
         }
     },
     {
@@ -33943,17 +33919,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-clay-2202",
         "our_url": "https://tennis24shop.com/?p=77155",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77155",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -33963,17 +33939,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-clay-2203",
         "our_url": "https://tennis24shop.com/?p=77183",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77183",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -33986,12 +33962,12 @@
         "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39.5": 99,
-            "40": 99,
+            "پیش‌فرض": 999,
+            "37": 0,
+            "37.5": 999,
+            "38": 999,
+            "39.5": 999,
+            "40": 999,
             "39": 0,
             "40.5": 0
         }
@@ -34003,18 +33979,18 @@
         "url": "https://www.asics.com.tr/gel-challenger5-669",
         "our_url": "https://tennis24shop.com/?p=77258",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77258",
-        "our_price_lir": 8498,
+        "our_price_lir": 8499,
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
             "36": 0,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999,
             "41.5": 0
         }
     },
@@ -34025,18 +34001,18 @@
         "url": "https://www.asics.com.tr/gel-challenger-15-1253",
         "our_url": "https://tennis24shop.com/?p=77290",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77290",
-        "our_price_lir": 7698,
+        "our_price_lir": 7699,
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
             "36": 0,
-            "37": 99,
-            "37.5": 99,
+            "37": 999,
+            "37.5": 999,
             "38": 0,
             "39": 0,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999,
             "41.5": 0
         }
     },
@@ -34047,18 +34023,18 @@
         "url": "https://www.asics.com.tr/solution-speed-ff-4-night-energy-2128",
         "our_url": "https://tennis24shop.com/?p=77359",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77359",
-        "our_price_lir": 9798,
+        "our_price_lir": 9799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -34068,19 +34044,20 @@
         "url": "https://www.asics.com.tr/court-ff-3-night-energy-2154",
         "our_url": "https://tennis24shop.com/?p=77389",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77389",
-        "our_price_lir": 11998,
+        "our_price_lir": 11999,
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "37": 99,
-            "38": 0,
-            "39": 99,
+            "37": 999,
+            "38": 999,
+            "39": 999,
             "39.5": 0,
-            "6": 1,
-            "6H": 1,
-            "7": 1,
-            "7H": 2,
-            "8": 0
+            "6": 0,
+            "6H": 0,
+            "7": 0,
+            "7H": 0,
+            "8": 0,
+            "37.5": 999
         }
     },
     {
@@ -34090,18 +34067,18 @@
         "url": "https://www.asics.com.tr/solution-speed-ff-4-night-energy-2144",
         "our_url": "https://tennis24shop.com/?p=77441",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77441",
-        "our_price_lir": 9798,
+        "our_price_lir": 9799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "40.5": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
+            "پیش‌فرض": 999,
+            "40.5": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
             "44.5": 0,
-            "45": 99
+            "45": 999
         }
     },
     {
@@ -34111,17 +34088,17 @@
         "url": "https://www.opsarsport.com/urun/asics-gel-resolution-x-erkek-beyaz-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=77469",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77469",
-        "our_price_lir": 9999,
+        "our_price_lir": 10000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "45": 99,
-            "46": 99
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "45": 999,
+            "46": 999
         }
     },
     {
@@ -34134,12 +34111,13 @@
         "our_price_lir": 10000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36.5": 99,
-            "38": 99,
-            "39": 99,
-            "40": 0,
-            "38.5": 99,
-            "37.5": 0
+            "36.5": 0,
+            "38": 0,
+            "39": 0,
+            "40": 999,
+            "38.5": 999,
+            "37.5": 999,
+            "5": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-zoom-vapor-12-kadin-tenis-ayakkabisi-beyaz/"
     },
@@ -34150,17 +34128,17 @@
         "url": "https://www.asics.com.tr/gel-challenger-15-padel-1759",
         "our_url": "https://tennis24shop.com/?p=77690",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77690",
-        "our_price_lir": 8498,
+        "our_price_lir": 8499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -34176,10 +34154,10 @@
             "پیش‌فرض": 0,
             "39": 0,
             "39.5": 0,
-            "40": 99,
+            "40": 999,
             "40.5": 0,
-            "41.5": 99,
-            "42": 98,
+            "41.5": 0,
+            "42": 999,
             "42.5": 0,
             "43.5": 0,
             "44": 0,
@@ -34195,17 +34173,17 @@
         "url": "https://www.asics.com.tr/game-ff-padel-2188",
         "our_url": "https://tennis24shop.com/?p=77918",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77918",
-        "our_price_lir": 6498,
+        "our_price_lir": 6499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "44.5": 99,
-            "45": 99
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -34215,17 +34193,17 @@
         "url": "https://www.asics.com.tr/game-ff-padel-1910",
         "our_url": "https://tennis24shop.com/?p=77940",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77940",
-        "our_price_lir": 6498,
+        "our_price_lir": 6499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "44": 99,
-            "44.5": 99,
-            "45": 99
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -34235,17 +34213,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-padel-2204",
         "our_url": "https://tennis24shop.com/?p=77986",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77986",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 98,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -34255,18 +34233,18 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-padel-1765",
         "our_url": "https://tennis24shop.com/?p=78007",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78007",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
-            "40.5": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -34276,17 +34254,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-padel-1773",
         "our_url": "https://tennis24shop.com/?p=78029",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78029",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99,
-            "40": 99
+            "پیش‌فرض": 999,
+            "36": 999,
+            "37": 999,
+            "37.5": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "40": 999
         }
     },
     {
@@ -34296,7 +34274,7 @@
         "url": "https://www.opsarsport.com/urun/nike-dri-fit-club-yumusak-featherlight-cocuk-sapkasi",
         "our_url": "https://tennis24shop.com/?p=78062",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78062",
-        "our_price_lir": 1349,
+        "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -34307,13 +34285,14 @@
         "url": "https://www.opsarsport.com/urun/nikecourt-heritage-erkek-tenis-esofman-alti",
         "our_url": "https://tennis24shop.com/?p=78166",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78166",
-        "our_price_lir": 3599,
+        "our_price_lir": 3600,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 1
+            "سرمه‌ای": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "S": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/nikecourt-heritage-erkek-tenis-esofman-alti-armoury-navy"
     },
@@ -34328,11 +34307,11 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "32.5": 99,
-            "33": 99,
-            "33.5": 99,
+            "32.5": 999,
+            "33": 999,
+            "33.5": 999,
             "34.5": 0,
-            "35": 99,
+            "35": 999,
             "35.5": 0,
             "36": 0,
             "37": 0,
@@ -34350,13 +34329,13 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "32.5": 99,
-            "33": 99,
+            "32.5": 999,
+            "33": 999,
             "33.5": 0,
             "34.5": 0,
             "35": 0,
-            "35.5": 99,
-            "36": 99,
+            "35.5": 999,
+            "36": 0,
             "37": 0,
             "37.5": 0
         }
@@ -34368,12 +34347,13 @@
         "url": "https://www.meritspor.com.tr/nike-court-dri-fit-heritage-esofman-alti",
         "our_url": "https://tennis24shop.com/?p=78373",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78373",
-        "our_price_lir": 4694,
+        "our_price_lir": 4695,
         "our_stock_status": "instock",
         "our_sizes": {
             "چند رنگ": 0,
-            "M": 99,
-            "L": 0
+            "M": 999,
+            "L": 0,
+            "S": 0
         }
     },
     {
@@ -34406,13 +34386,13 @@
         "our_price_lir": 3999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "33": 99,
-            "35": 99,
-            "35.5": 99,
-            "36": 99,
-            "37": 99,
-            "37.5": 99
+            "پیش‌فرض": 999,
+            "33": 999,
+            "35": 0,
+            "35.5": 0,
+            "36": 999,
+            "37": 999,
+            "37.5": 999
         }
     },
     {
@@ -34422,16 +34402,17 @@
         "url": "https://www.opsarsport.com/urun/nikecourt-jr-vapor-x-cocuk-tenis-ayakkabisi-1",
         "our_url": "https://tennis24shop.com/?p=78705",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78705",
-        "our_price_lir": 4699,
+        "our_price_lir": 5099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "33": 99,
-            "33.5": 99,
-            "36": 99,
-            "37.5": 99,
-            "38": 99,
-            "35.5": 1
+            "پیش‌فرض": 999,
+            "33": 999,
+            "33.5": 999,
+            "36": 999,
+            "37.5": 999,
+            "38": 999,
+            "35.5": 999,
+            "32": 999
         },
         "secondary_url": "https://www.raketci.com/urun/nike-court-jr-vapor-x-kucuk-genc-cocuk-tenis-ayakkabisi-2/"
     },
@@ -34443,7 +34424,7 @@
         "our_url": "https://tennis24shop.com/?p=78765",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78765",
         "our_price_lir": 3299,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -34454,7 +34435,7 @@
         "our_url": "https://tennis24shop.com/?p=78796",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78796",
         "our_price_lir": 3549,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -34500,17 +34481,17 @@
         "our_price_lir": 9990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "38.5": 99,
-            "39": 99,
+            "پیش‌فرض": 999,
+            "38.5": 0,
+            "39": 999,
             "40": 0,
             "40.5": 0,
-            "41": 99,
-            "42": 99,
-            "42.5": 99,
-            "43": 99,
-            "44": 99,
-            "45": 99
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "45": 999
         }
     },
     {
@@ -34523,14 +34504,14 @@
         "our_price_lir": 9590,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36.5": 99,
-            "37.5": 99,
-            "38": 99,
-            "38.5": 99,
-            "39": 99,
-            "40": 99,
-            "40.5": 99
+            "پیش‌فرض": 999,
+            "36.5": 999,
+            "37.5": 999,
+            "38": 999,
+            "38.5": 999,
+            "39": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -34543,15 +34524,15 @@
         "our_price_lir": 9590,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
+            "پیش‌فرض": 999,
             "36": 0,
-            "36.5": 99,
-            "37.5": 99,
-            "38": 99,
-            "38.5": 99,
-            "39": 99,
-            "40": 99,
-            "40.5": 99
+            "36.5": 999,
+            "37.5": 999,
+            "38": 999,
+            "38.5": 999,
+            "39": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -34561,14 +34542,14 @@
         "url": "https://www.opsarsport.com/urun/nike-court-heritage-dri-fit-erkek-beyaz-tenis",
         "our_url": "https://tennis24shop.com/?p=78972",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78972",
-        "our_price_lir": 2400,
+        "our_price_lir": 2639,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "XXL": 99
+            "سفید": 999,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "XXL": 999
         },
         "secondary_url": "https://www.tenisburada.com/tenisburadacom/nike-court-dri-fit-heritage-tenis-tisortu-im6128-100https//tenisburadacom/nike-court-dri-fit-heritage-tenis-tisortu-im6128-100"
     },
@@ -34582,9 +34563,11 @@
         "our_price_lir": 1849,
         "our_stock_status": "instock",
         "our_sizes": {
-            "طوسی/سفید": 99,
-            "S": 99,
-            "M": 99
+            "طوسی/سفید": 999,
+            "S": 999,
+            "M": 999,
+            "353": 0,
+            "L": 0
         },
         "secondary_url": "https://www.tenisshop.com/nike-dri-fit-adv-club-yumusak-tenis-sapkasi-4386"
     },
@@ -34595,17 +34578,17 @@
         "url": "https://www.asics.com.tr/gel-challenger-15-1754",
         "our_url": "https://tennis24shop.com/?p=79245",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79245",
-        "our_price_lir": 8498,
+        "our_price_lir": 8499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 2,
-            "41.5": 2,
-            "42": 1,
-            "42.5": 2,
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 0,
             "43.5": 0,
-            "44": 1,
-            "44.5": 2,
-            "45": 2
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -34615,17 +34598,17 @@
         "url": "https://www.asics.com.tr/gel-dedicate-9-clay-1874",
         "our_url": "https://tennis24shop.com/?p=79266",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79266",
-        "our_price_lir": 5498,
+        "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 11,
-            "41.5": 13,
-            "42": 17,
-            "42.5": 13,
-            "43.5": 15,
-            "44": 14,
-            "44.5": 12,
-            "45": 11
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -34638,14 +34621,14 @@
         "our_price_lir": 4799,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 12,
-            "41.5": 12,
-            "42": 16,
-            "42.5": 16,
-            "43.5": 16,
-            "44": 13,
-            "44.5": 12,
-            "45": 11
+            "پیش‌فرض": 999,
+            "41.5": 999,
+            "42": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999
         }
     },
     {
@@ -34712,11 +34695,11 @@
         "our_price_lir": 2199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بنفش روشن": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "XXL": 99
+            "بنفش روشن": 999,
+            "M": 0,
+            "L": 999,
+            "XL": 999,
+            "XXL": 999
         }
     },
     {
@@ -34729,10 +34712,10 @@
         "our_price_lir": 2199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
+            "سفید": 999,
+            "S": 999,
+            "M": 999,
+            "L": 999,
             "XS": 0
         }
     },
@@ -34743,13 +34726,13 @@
         "url": "https://www.meritspor.com.tr/nikecourt-court-collection-fleece-kadin-tenis-yelegi-aluminum",
         "our_url": "https://tennis24shop.com/?p=80435",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80435",
-        "our_price_lir": 5399,
+        "our_price_lir": 5400,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آلومینیومی": 6,
-            "XS": 99,
-            "S": 99,
-            "468": 6
+            "آلومینیومی": 0,
+            "XS": 999,
+            "S": 999,
+            "468": 0
         }
     },
     {
@@ -34759,12 +34742,12 @@
         "url": "https://www.meritspor.com.tr/nikecourt-advantage-dri-fit-normal-belli-kadin-tenis-esofman-alti-black",
         "our_url": "https://tennis24shop.com/?p=80555",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80555",
-        "our_price_lir": 4499,
+        "our_price_lir": 4500,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 99,
-            "S": 99,
-            "M": 99
+            "مشکی": 999,
+            "S": 999,
+            "M": 999
         }
     },
     {
@@ -34774,7 +34757,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-2li-buyuk-tenis-bilekligi-cool-grey-white-black",
         "our_url": "https://tennis24shop.com/?p=80838",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80838",
-        "our_price_lir": 1099,
+        "our_price_lir": 1100,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -34785,7 +34768,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-havlu-kumas-sac-bandi-whitecool-grey",
         "our_url": "https://tennis24shop.com/?p=80876",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80876",
-        "our_price_lir": 699,
+        "our_price_lir": 700,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -34796,7 +34779,7 @@
         "url": "https://www.meritspor.com.tr/nike-swoosh-classic-havlu-kumas-sac-bandi",
         "our_url": "https://tennis24shop.com/?p=80890",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80890",
-        "our_price_lir": 699,
+        "our_price_lir": 700,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -34810,12 +34793,12 @@
         "our_price_lir": 7118,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41": 99,
-            "42": 99,
-            "43": 99,
-            "44": 99,
-            "45": 99
+            "پیش‌فرض": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "44": 999,
+            "45": 999
         }
     },
     {
@@ -34828,12 +34811,12 @@
         "our_price_lir": 8990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41": 99,
-            "42": 99,
-            "43": 99,
-            "44": 99,
-            "45": 99
+            "پیش‌فرض": 0,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "44": 999,
+            "45": 0
         }
     },
     {
@@ -34846,12 +34829,12 @@
         "our_price_lir": 9490,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "41": 99,
-            "42": 99,
-            "43": 99,
-            "44": 99,
-            "45": 99
+            "پیش‌فرض": 999,
+            "41": 999,
+            "42": 999,
+            "43": 999,
+            "44": 999,
+            "45": 999
         }
     },
     {
@@ -34861,16 +34844,16 @@
         "url": "https://www.opsarsport.com/urun/nike-vapor-12-prm-toprak-kort-kadin-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=81043",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81043",
-        "our_price_lir": 9999,
+        "our_price_lir": 10000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36.5": 99,
-            "37.5": 99,
-            "38.5": 99,
-            "39": 99,
-            "40": 99,
-            "40.5": 99
+            "پیش‌فرض": 999,
+            "36.5": 0,
+            "37.5": 999,
+            "38.5": 999,
+            "39": 999,
+            "40": 999,
+            "40.5": 999
         }
     },
     {
@@ -34880,15 +34863,15 @@
         "url": "https://www.korayspor.com/nike-giyim-tisort-m-nkct-tee-m90-french-open-hj3468-100/",
         "our_url": "https://tennis24shop.com/?p=81062",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81062",
-        "our_price_lir": 1699,
+        "our_price_lir": 1700,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99
+            "سفید": 0,
+            "S": 0,
+            "M": 999,
+            "L": 999,
+            "XL": 999,
+            "2XL": 0
         }
     },
     {
@@ -34898,13 +34881,15 @@
         "url": "https://www.meritspor.com.tr/nike-everyday-elevated-3lu-antreman-corabi1",
         "our_url": "https://tennis24shop.com/?p=81205",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81205",
-        "our_price_lir": 1099,
+        "our_price_lir": 1100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "چند رنگ": 99,
-            "43-46": 99,
-            "35-37.5": 99,
-            "38-42.5": 99
+            "چند رنگ": 999,
+            "43-46": 999,
+            "35-37.5": 0,
+            "38-42.5": 0,
+            "37.5": 999,
+            "42.5": 999
         }
     },
     {
@@ -34914,13 +34899,15 @@
         "url": "https://www.meritspor.com.tr/nike-everyday-elevated-3lu-antreman-corabi",
         "our_url": "https://tennis24shop.com/?p=81267",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81267",
-        "our_price_lir": 1099,
+        "our_price_lir": 1100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "چند رنگ": 99,
-            "43-46": 99,
-            "35-37.5": 99,
-            "38-42.5": 99
+            "چند رنگ": 999,
+            "43-46": 999,
+            "35-37.5": 0,
+            "38-42.5": 0,
+            "37.5": 999,
+            "42.5": 999
         }
     },
     {
@@ -34930,26 +34917,26 @@
         "url": "https://www.tenisburada.com/nike-vapor-pro-3-erkek-toprak-kort-tenis-ayakkabisi-hq6034-002-17895425433500",
         "our_url": "https://tennis24shop.com/?p=81312",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81312",
-        "our_price_lir": 7799,
+        "our_price_lir": 7800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
+            "پیش‌فرض": 999,
             "38.5": 0,
             "39": 0,
             "40": 0,
             "40.5": 0,
-            "41": 99,
-            "42": 99,
-            "42.5": 99,
-            "43": 99,
-            "44": 99,
-            "44.5": 99,
-            "45": 99,
-            "45.5": 99,
+            "41": 999,
+            "42": 999,
+            "42.5": 999,
+            "43": 999,
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
+            "45.5": 999,
             "46": 0,
             "46.5": 0,
             "47": 0,
-            "47.5": 99
+            "47.5": 999
         },
         "secondary_url": "https://www.meritspor.com.tr/nike-vapor-pro-3-erkek-toprak-kort-clay-tenis-ayakkabisi-smokey-blue-"
     },
@@ -34960,19 +34947,25 @@
         "url": "https://www.tenisburada.com/asics-court-ff-3-novak-sert-kort-tenis-ayakkabisi-1041a522-966",
         "our_url": "https://tennis24shop.com/?p=81405",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81405",
-        "our_price_lir": 8999,
+        "our_price_lir": 9000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 0,
+            "پیش‌فرض": 999,
             "40": 0,
             "40.5": 0,
             "41": 0,
-            "42": 99,
+            "42": 999,
             "42.5": 0,
             "43": 0,
-            "44": 99,
+            "44": 999,
             "44.5": 0,
-            "45": 0
+            "45": 999,
+            "39": 0,
+            "46": 0,
+            "39.5": 0,
+            "41.5": 0,
+            "43.5": 0,
+            "38.5": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/asics-court-ff-3-novak-erkek-tenis-ayakkabisi"
     },
@@ -34987,14 +34980,20 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "40": 99,
+            "40": 999,
             "41": 0,
             "42": 0,
             "43": 0,
-            "44": 99,
+            "44": 999,
             "45": 0,
-            "39.5": 99,
-            "43.5": 99
+            "39.5": 999,
+            "43.5": 999,
+            "39": 0,
+            "46": 0,
+            "40.5": 0,
+            "41.5": 0,
+            "42.5": 0,
+            "44.5": 0
         }
     },
     {
@@ -35007,7 +35006,7 @@
         "our_price_lir": 8499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
+            "پیش‌فرض": 999,
             "38": 0,
             "39": 0,
             "39.5": 0,
@@ -35017,29 +35016,50 @@
             "42": 0,
             "42.5": 0,
             "43.5": 0,
-            "44": 99,
-            "44.5": 99,
-            "45": 99
+            "44": 999,
+            "44.5": 999,
+            "45": 999,
+            "46": 0
         }
     },
     {
-        "id": 81801,
-        "title": "کفش تنیس مردانه–Hard – نایک Vapor Lite 2  – سفید",
-        "sku": "DV2018-100",
-        "url": "https://www.tenisburada.com/nikecourt-vapor-lite-2-sert-kort-erkek-tenis-ayakkabisi-dv2018-100",
-        "our_url": "https://tennis24shop.com/?p=81801",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81801",
-        "our_price_lir": 3099,
+        "id": 81786,
+        "title": "دامن تنیس بچگانه Decathlon TSK Dry – آبی",
+        "sku": "8968233",
+        "url": "https://www.decathlon.com.tr/p/cocuk-tenis-etegi-beyaz-500/_/R-p-307810?mc=8968233&c=MAVİ",
+        "our_url": "https://tennis24shop.com/?p=81786",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81786",
+        "our_price_lir": 640,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "36.5": 99,
-            "37.5": 99,
-            "38": 99,
-            "42.5": 0,
-            "44.5": 99,
-            "45": 99
+            "آبی": 99,
+            "6": 99,
+            "8": 0,
+            "9": 99,
+            "10": 99,
+            "13": 0,
+            "15": 99
+        }
+    },
+    {
+        "id": 81929,
+        "title": "شلوارک تنیس بچگانه دکتلون TSH Dry JR – نارنجی",
+        "sku": "8966396",
+        "url": "https://www.decathlon.com.tr/p/cocuk-tenis-sortu-siyah-tsh-dry/_/R-p-340973?mc=8966396&c=KAHVERENG%C4%B0",
+        "our_url": "https://tennis24shop.com/?p=81929",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81929",
+        "our_price_lir": 5,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "قهوه‌ای": 99,
+            "123-130cm-سال8-7": 99,
+            "131-140cm-سال9-8": 99,
+            "141-150cm-سال11-10": 0,
+            "151-160cm-سال13-12": 99,
+            "161-172cm-سال15-14": 99,
+            "10": 99,
+            "12": 99,
+            "14": 99
         }
     }
 ]
