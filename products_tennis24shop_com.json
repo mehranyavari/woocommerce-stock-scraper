@@ -2512,7 +2512,7 @@
             "48.5": 0,
             "۳۶": 0,
             "38": 0,
-            "39": 999,
+            "39": 0,
             "41": 999,
             "36.5": 0,
             "37.5": 999
@@ -3918,7 +3918,7 @@
         "our_sizes": {
             "42.5": 0,
             "44": 999,
-            "44.5": 999,
+            "44.5": 0,
             "45.5": 999,
             "40": 0,
             "41": 0,
@@ -4238,7 +4238,7 @@
             "43": 0,
             "44": 0,
             "44.5": 0,
-            "45": 999,
+            "45": 0,
             "45.5": 999,
             "46": 999,
             "47": 0,
@@ -35030,6 +35030,24 @@
         "secondary_url": "https://www.meritspor.com.tr/asics-court-ff-3-novak-erkek-tenis-ayakkabisi"
     },
     {
+        "id": 81667,
+        "title": "سویشرت تنیس زنانه دکتلون – حرارتی  Decathlon TH 900 – سرمه ای تیره",
+        "sku": "9016902",
+        "url": "https://www.decathlon.com.tr/p/kadin-termal-tenis-tisortu-th-900/_/R-p-313184?mc=9016902&c=MAV%C4%B0",
+        "our_url": "https://tennis24shop.com/?p=81667",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81667",
+        "our_price_lir": 1290,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "XS": 0,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 0
+        }
+    },
+    {
         "id": 81786,
         "title": "دامن تنیس بچگانه Decathlon TSK Dry – آبی",
         "sku": "8968233",
@@ -35135,6 +35153,60 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "مشکی": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 82068,
+        "title": "شلوارک تنیس زنانه دکتلون Decathlon TSH Light – سبز",
+        "sku": "8810310",
+        "url": "https://www.decathlon.com.tr/p/kadin-tenis-sortu-tsh-light/_/R-p-348160?mc=8810310&c=YE%C5%9E%C4%B0L",
+        "our_url": "https://tennis24shop.com/?p=82068",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=82068",
+        "our_price_lir": 760,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 82080,
+        "title": "تیشرت تنیس زنانه Decathlon Dry – سبز",
+        "sku": "8954694",
+        "url": "https://www.decathlon.com.tr/p/kadin-v-yaka-tenis-tisortu-dry/_/R-p-370141?mc=8954694&c=YE%C5%9E%C4%B0L",
+        "our_url": "https://tennis24shop.com/?p=82080",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=82080",
+        "our_price_lir": 650,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 82109,
+        "title": "تاپ تنیس زنانه دکتلون Decathlon TTK Light – آبی",
+        "sku": "8913849",
+        "url": "https://www.decathlon.com.tr/p/kadin-tenis-atleti-ttk-light/_/R-p-346575?mc=8913849&c=MAV%C4%B0",
+        "our_url": "https://tennis24shop.com/?p=82109",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=82109",
+        "our_price_lir": 760,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "XS": 99,
             "S": 99,
             "M": 99,
             "L": 99,
