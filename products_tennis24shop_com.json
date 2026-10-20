@@ -4090,10 +4090,10 @@
         "our_price_lir": 4490,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی/سفید": 998,
+            "مشکی/سفید": 999,
             "XS": 999,
             "S": 999,
-            "M": 998
+            "M": 999
         }
     },
     {
@@ -9607,7 +9607,7 @@
             "37": 0,
             "38": 999,
             "39": 0,
-            "40": 0,
+            "40": 999,
             "35.5": 999,
             "37.5": 0,
             "39.5": 0
@@ -10840,7 +10840,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 0,
-            "40.5": 0,
+            "40.5": 999,
             "41.5": 0,
             "42": 0,
             "42.5": 999,
@@ -12539,7 +12539,7 @@
         "our_url": "https://tennis24shop.com/?p=68169",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68169",
         "our_price_lir": 4559,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "41.5": 0,
             "44": 0,
@@ -12548,7 +12548,7 @@
             "46": 0,
             "42": 0,
             "40.5": 0,
-            "43.5": 0,
+            "43.5": 999,
             "40": 0,
             "38": 0,
             "39": 0,
@@ -34407,7 +34407,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-mavi-buz-beyazi-ts500/_/R-p-301723?mc=8882111&c=BEYAZ_MAV%C4%B0",
         "our_url": "https://tennis24shop.com/?p=78391",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78391",
-        "our_price_lir": 2750,
+        "our_price_lir": 2190,
         "our_stock_status": "instock",
         "our_sizes": {
             "سفید و آبی": 0,
@@ -35077,13 +35077,13 @@
         "our_price_lir": 870,
         "our_stock_status": "instock",
         "our_sizes": {
-            "طوسی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99,
-            "خاکستری": 99
+            "طوسی": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5,
+            "2XL": 5,
+            "خاکستری": 5
         }
     },
     {
@@ -35096,11 +35096,11 @@
         "our_price_lir": 1790,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سفید": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     },
     {
@@ -35113,11 +35113,11 @@
         "our_price_lir": 1290,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
+            "آبی": 5,
             "XS": 0,
-            "S": 99,
-            "M": 99,
-            "L": 99,
+            "S": 5,
+            "M": 5,
+            "L": 5,
             "XL": 0
         }
     },
@@ -35153,7 +35153,7 @@
             "قهوه‌ای": 0,
             "123-130cm-سال8-7": 5,
             "131-140cm-سال9-8": 5,
-            "141-150cm-سال11-10": 5,
+            "141-150cm-سال11-10": 0,
             "151-160cm-سال13-12": 5,
             "161-172cm-سال15-14": 5,
             "10": 0,
@@ -35206,12 +35206,12 @@
         "our_price_lir": 760,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سبز": 5,
+            "XS": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     },
     {
@@ -35224,12 +35224,12 @@
         "our_price_lir": 650,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سبز": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "سبز": 5,
+            "XS": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     },
     {
@@ -35242,12 +35242,12 @@
         "our_price_lir": 760,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "آبی": 5,
+            "XS": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     },
     {
@@ -35260,11 +35260,11 @@
         "our_price_lir": 760,
         "our_stock_status": "instock",
         "our_sizes": {
-            "بنفش": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99
+            "بنفش": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     }
 ]
