@@ -4181,7 +4181,7 @@
             "40": 0,
             "41": 0,
             "42": 0,
-            "43": 0,
+            "43": 999,
             "44": 0,
             "45": 0,
             "46": 0,
@@ -4737,13 +4737,13 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "41": 0,
-            "44.5": 999,
+            "44.5": 0,
             "45.5": 999,
             "39": 0,
             "40": 0,
             "42": 0,
             "43": 0,
-            "44": 0,
+            "44": 999,
             "45": 0,
             "46": 0,
             "38.5": 0,
@@ -4782,7 +4782,7 @@
             "44.5": 999,
             "41": 0,
             "44": 999,
-            "42.5": 0
+            "42.5": 999
         }
     },
     {
@@ -10460,12 +10460,12 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
-            "XS": 999,
+            "XS": 0,
             "M": 999,
             "L": 999,
             "XL": 999,
-            "2XL": 999,
-            "657": 999
+            "2XL": 0,
+            "657": 0
         },
         "secondary_url": "https://www.yuxel.com.tr/nikecourt-dri-fit-victory-18-cm-tenis-sortu-fd5380-657"
     },
@@ -13255,7 +13255,7 @@
         "our_url": "https://tennis24shop.com/?p=37135",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=37135",
         "our_price_lir": 40,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13299,7 +13299,7 @@
         "our_url": "https://tennis24shop.com/?p=19548",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19548",
         "our_price_lir": 60,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13310,7 +13310,7 @@
         "our_url": "https://tennis24shop.com/?p=19544",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19544",
         "our_price_lir": 1095,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13321,7 +13321,7 @@
         "our_url": "https://tennis24shop.com/?p=19540",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19540",
         "our_price_lir": 60,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13343,7 +13343,7 @@
         "our_url": "https://tennis24shop.com/?p=19531",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19531",
         "our_price_lir": 120,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13354,7 +13354,7 @@
         "our_url": "https://tennis24shop.com/?p=19528",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=19528",
         "our_price_lir": 120,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -13365,10 +13365,10 @@
         "our_url": "https://tennis24shop.com/?p=17262",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=17262",
         "our_price_lir": 250,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "توت وحشی": 5,
-            "لیمویی": 5
+            "توت وحشی": 0,
+            "لیمویی": 0
         }
     },
     {
@@ -14014,7 +14014,7 @@
         "our_url": "https://tennis24shop.com/?p=21913",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=21913",
         "our_price_lir": 990,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -15522,7 +15522,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "47": 0,
-            "40.5": 999,
+            "40.5": 0,
             "41": 0,
             "42.5": 999,
             "44": 999,
@@ -23132,7 +23132,7 @@
         "our_url": "https://tennis24shop.com/?p=15277",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=15277",
         "our_price_lir": 4190,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -23143,7 +23143,7 @@
         "our_url": "https://tennis24shop.com/?p=15272",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=15272",
         "our_price_lir": 2890,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -23154,7 +23154,7 @@
         "our_url": "https://tennis24shop.com/?p=14812",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14812",
         "our_price_lir": 4190,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -23249,7 +23249,7 @@
         "our_url": "https://tennis24shop.com/?p=55159",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55159",
         "our_price_lir": 75,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -23434,7 +23434,7 @@
         "our_url": "https://tennis24shop.com/?p=55758",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55758",
         "our_price_lir": 65,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -29306,7 +29306,7 @@
             "26": 5,
             "27": 0,
             "28": 0,
-            "29": 0,
+            "29": 5,
             "30": 5,
             "31": 5,
             "32": 5,
@@ -35041,11 +35041,11 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "سفید": 0,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5,
+            "2XL": 5,
             "3XL": 0
         }
     },
@@ -35059,13 +35059,13 @@
         "our_price_lir": 590,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99,
-            "آبی": 99
+            "سرمه‌ای": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5,
+            "2XL": 5,
+            "آبی": 5
         }
     },
     {
@@ -35154,7 +35154,7 @@
             "قهوه‌ای": 0,
             "123-130cm-سال8-7": 5,
             "131-140cm-سال9-8": 5,
-            "141-150cm-سال11-10": 0,
+            "141-150cm-سال11-10": 5,
             "151-160cm-سال13-12": 5,
             "161-172cm-سال15-14": 5,
             "10": 0,
@@ -35316,10 +35316,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "مشکی": 0,
-            "XS": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
+            "XS": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
             "XL": 0
         }
     },
@@ -35333,9 +35333,9 @@
         "our_price_lir": 870,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "2XL": 99
+            "سفید": 5,
+            "S": 5,
+            "2XL": 5
         }
     },
     {
@@ -35348,12 +35348,12 @@
         "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99
+            "مشکی": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5,
+            "2XL": 5
         }
     },
     {
@@ -35366,12 +35366,12 @@
         "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99
+            "آبی": 5,
+            "S": 0,
+            "M": 5,
+            "L": 5,
+            "XL": 5,
+            "2XL": 5
         }
     },
     {
@@ -35384,12 +35384,12 @@
         "our_price_lir": 1290,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 99,
-            "XS / W26 L30": 99,
-            "S / W28 L31": 99,
-            "M / W30 L31": 99,
-            "L / W33 L31": 99,
-            "XL / W35 L31": 99
+            "مشکی": 5,
+            "XS / W26 L30": 5,
+            "S / W28 L31": 5,
+            "M / W30 L31": 5,
+            "L / W33 L31": 5,
+            "XL / W35 L31": 5
         }
     }
 ]
