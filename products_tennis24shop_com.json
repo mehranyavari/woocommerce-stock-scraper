@@ -9489,7 +9489,7 @@
         "our_price_lir": 1099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
+            "L": 0,
             "M": 999,
             "S": 999,
             "102": 0,
@@ -9506,7 +9506,7 @@
         "our_price_lir": 1099,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
+            "L": 0,
             "M": 999,
             "S": 999,
             "701": 0,
@@ -15674,7 +15674,7 @@
             "XL": 0,
             "L": 999,
             "S": 999,
-            "M": 0
+            "M": 999
         }
     },
     {
@@ -18240,14 +18240,14 @@
         "our_url": "https://tennis24shop.com/?p=48600",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48600",
         "our_price_lir": 4799,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "41": 0,
             "42": 0,
             "42.5": 0,
             "43": 0,
             "44": 0,
-            "45": 0,
+            "45": 999,
             "46": 0
         },
         "secondary_url": "https://www.sportive.com.tr/nike-court-vision-lo-erkek-kahverengi-sneaker-ayakkabi-hm9862-200-3/?integration_renk=N14"
@@ -21746,7 +21746,7 @@
         "our_price_lir": 2800,
         "our_stock_status": "instock",
         "our_sizes": {
-            "M": 999,
+            "M": 0,
             "S": 999,
             "XS": 999,
             "010": 999,
@@ -28689,7 +28689,7 @@
         "our_price_lir": 3239,
         "our_stock_status": "instock",
         "our_sizes": {
-            "40": 999,
+            "40": 0,
             "39": 0,
             "38": 999,
             "41": 999,
@@ -29689,7 +29689,7 @@
             "37.5": 999,
             "39": 99,
             "39.5": 0,
-            "38": 0
+            "38": 999
         },
         "secondary_url": "https://www.boyner.com.tr/asics-padel-ayakkabisi-beyaz-pembe-kadin-1042a285-250-gel-resolution-x-padel-p-15977853?magaza=boyner"
     },
@@ -29865,7 +29865,7 @@
             "41": 999,
             "42": 999,
             "42.5": 0,
-            "43": 999,
+            "43": 0,
             "44": 999,
             "44.5": 999,
             "45": 999,
@@ -30878,7 +30878,7 @@
         "our_price_lir": 9990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "41": 999,
+            "41": 0,
             "40.5": 999,
             "40": 999,
             "39": 999,
@@ -33629,7 +33629,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "سبز مالاکایت": 999,
-            "S": 999,
+            "S": 0,
             "M": 999,
             "L": 999,
             "XL": 999
