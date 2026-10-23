@@ -44,12 +44,12 @@
         "our_price_lir": 990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 0,
+            "آبی": 5,
             "113-122cm-سال6-5": 5,
             "123-130cm-سال8-7": 5,
             "131-140cm-سال9-8": 5,
             "141-148cm-سال11-10": 5,
-            "149-159cm-سال13-12": 0
+            "149-159cm-سال13-12": 5
         }
     },
     {
@@ -181,9 +181,9 @@
         "our_price_lir": 490,
         "our_stock_status": "instock",
         "our_sizes": {
-            "39/42": 4,
+            "39/42": 5,
             "43/46": 5,
-            "35/38": 5
+            "35/38": 0
         }
     },
     {
@@ -219,10 +219,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "40": 5,
-            "39": 5,
-            "38": 5,
-            "37": 5,
-            "36": 5,
+            "39": 0,
+            "38": 0,
+            "37": 0,
+            "36": 0,
             "41": 5
         }
     },
@@ -1676,7 +1676,7 @@
         "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 4,
+            "L": 5,
             "M": 5,
             "S": 5,
             "XL": 0,
@@ -8377,7 +8377,7 @@
         "our_sizes": {
             "گریپ 0": 5,
             "گریپ 1": 5,
-            "گریپ 2": 5,
+            "گریپ 2": 4,
             "گریپ3": 0
         }
     },
@@ -35537,5 +35537,71 @@
         "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.raketci.com/urun/nike-club-unisex-tenis-sapkasi-mavi/"
+    },
+    {
+        "id": 84230,
+        "title": "پلوشرت تنیس مردانه نایک  Court Advantage Dri-Fit – مشکی",
+        "sku": "FZ6907-010",
+        "url": "https://www.sportive.com.tr/nike-court-advantage-dri-fit-erkek-siyah-tenis-polo-yaka-t-shirt-fz6907-010/?integration_renk=N02",
+        "our_url": "https://tennis24shop.com/?p=84230",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84230",
+        "our_price_lir": 3314,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 99,
+            "M": 99
+        },
+        "secondary_url": "https://www.raketci.com/urun/nikecourt-advantage-erkek-tenis-polosu-siyah/"
+    },
+    {
+        "id": 84246,
+        "title": "پلوشرت تنیس مردانه نایک Court Advantage Dri-Fit  – سبز",
+        "sku": "FZ6907-303",
+        "url": "https://www.sportive.com.tr/nike-court-advantage-dri-fit-erkek-siyah-tenis-polo-yaka-t-shirt-fz6907-010/?integration_renk=N05",
+        "our_url": "https://tennis24shop.com/?p=84246",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84246",
+        "our_price_lir": 3314,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 99,
+            "S": 99,
+            "L": 99,
+            "XL": 99
+        }
+    },
+    {
+        "id": 84264,
+        "title": "هودی تنیس بدون آستین مردانه  نایک  Court Slam   – بنفش",
+        "sku": "IF1938-522",
+        "url": "https://www.sportive.com.tr/nike-court-slam-sleeveless-pullover-erkek-mor-tenis-sweatshirt-if1938-522-1/",
+        "our_url": "https://tennis24shop.com/?p=84264",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84264",
+        "our_price_lir": 6119,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "بنفش": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        },
+        "secondary_url": "https://www.tenisburada.com/nikecourt-slam-paris-erkek-tenis-kolsuz-kapusonlu-sweatshirt-if1938-522"
+    },
+    {
+        "id": 84295,
+        "title": "هودی تنیس بدون آستین مردانه  نایک  Court Slam – خاکستری",
+        "sku": "IF1938-060",
+        "url": "https://www.sportive.com.tr/nike-court-slam-sleeveless-pullover-erkek-gri-tenis-sweatshirt-if1938-060-1/",
+        "our_url": "https://tennis24shop.com/?p=84295",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84295",
+        "our_price_lir": 6119,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "خاکستری": 99,
+            "S": 99,
+            "M": 99,
+            "L": 99,
+            "XL": 99
+        }
     }
 ]
