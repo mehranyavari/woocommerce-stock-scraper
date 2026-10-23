@@ -1425,7 +1425,7 @@
         "our_price_lir": 4299,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S": 999,
+            "S": 0,
             "M": 0,
             "10": 0,
             "XS": 0,
@@ -2038,11 +2038,11 @@
         "url": "https://www.tenisshop.com/nikecourt-heritage-dri-fit-fransiz-havlu-kumasi-erkek-kapusonlu-tenis-sweatshirtu-4453",
         "our_url": "https://tennis24shop.com/?p=54414",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54414",
-        "our_price_lir": 4699,
+        "our_price_lir": 4700,
         "our_stock_status": "instock",
         "our_sizes": {
             "S": 999,
-            "M": 0,
+            "M": 999,
             "L": 0,
             "XL": 0,
             "661": 0,
@@ -7798,7 +7798,7 @@
         "our_sizes": {
             "S": 999,
             "M": 0,
-            "L": 999,
+            "L": 0,
             "XL": 999
         }
     },
@@ -8377,7 +8377,7 @@
         "our_sizes": {
             "گریپ 0": 5,
             "گریپ 1": 5,
-            "گریپ 2": 4,
+            "گریپ 2": 5,
             "گریپ3": 0
         }
     },
@@ -8789,7 +8789,7 @@
             "42": 999,
             "44": 999,
             "45": 999,
-            "46": 999,
+            "46": 0,
             "47": 0,
             "45.5": 999,
             "39": 0,
@@ -13026,9 +13026,9 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XS": 5,
-            "S": 5,
+            "S": 0,
             "M": 0,
-            "L": 5,
+            "L": 0,
             "XL": 5
         }
     },
@@ -13120,7 +13120,7 @@
         "our_price_lir": 350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "2XL": 5,
+            "2XL": 0,
             "XL": 0,
             "L": 0,
             "M": 5,
@@ -15376,7 +15376,7 @@
         "our_url": "https://tennis24shop.com/?p=81219",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81219",
         "our_price_lir": 650,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -21001,7 +21001,7 @@
         "our_url": "https://tennis24shop.com/?p=22094",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=22094",
         "our_price_lir": 650,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -25293,7 +25293,7 @@
             "44.5": 999,
             "45.5": 999,
             "44": 999,
-            "43": 999,
+            "43": 0,
             "40": 0,
             "45": 0,
             "46": 0,
@@ -26350,7 +26350,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "45.5": 999,
-            "45": 0,
+            "45": 999,
             "44.5": 0,
             "44": 999,
             "43": 0,
@@ -27059,11 +27059,11 @@
         "our_url": "https://tennis24shop.com/?p=36868",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=36868",
         "our_price_lir": 2700,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
             "S": 0,
-            "XS": 0,
+            "XS": 999,
             "M": 0,
             "XL": 0
         }
@@ -27767,10 +27767,10 @@
         "our_url": "https://tennis24shop.com/?p=40963",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=40963",
         "our_price_lir": 5899,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "onbackorder",
         "our_sizes": {
             "39": 0,
-            "42": 0,
+            "42": 999,
             "42.5": 0,
             "41": 0,
             "47": 0,
@@ -28302,7 +28302,7 @@
         "our_sizes": {
             "S": 0,
             "M": 999,
-            "L": 999,
+            "L": 0,
             "XL": 0,
             "2XL": 0,
             "XS": 0
@@ -29034,7 +29034,7 @@
             "39": 0,
             "38.5": 0,
             "38": 999,
-            "37.5": 999,
+            "37.5": 0,
             "36.5": 999,
             "41": 999,
             "42": 0,
@@ -32820,7 +32820,7 @@
             "44": 999,
             "45": 999,
             "40": 999,
-            "44.5": 999
+            "44.5": 0
         },
         "secondary_url": "https://www.opsarsport.com/urun/nike-vapor-12-toprak-kort-clay-erkek-tenis-ayakkabisi"
     },
@@ -34050,7 +34050,7 @@
         "our_sizes": {
             "پیش‌فرض": 0,
             "36": 0,
-            "37": 999,
+            "37": 0,
             "37.5": 999,
             "38": 0,
             "39": 0,
@@ -34534,7 +34534,7 @@
             "42": 999,
             "42.5": 999,
             "43": 999,
-            "44": 999,
+            "44": 0,
             "45": 999
         }
     },
@@ -35152,7 +35152,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "آبی": 5,
-            "XS": 0,
+            "XS": 5,
             "S": 5,
             "M": 5,
             "L": 5,
@@ -35315,12 +35315,12 @@
         "our_price_lir": 760,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی": 5,
+            "مشکی": 0,
             "XS": 5,
             "S": 5,
             "M": 5,
             "L": 5,
-            "XL": 5
+            "XL": 0
         }
     },
     {
@@ -35533,9 +35533,11 @@
         "url": "https://www.sportive.com.tr/nike-club-unstructured-unisex-mavi-tenis-sapka-iq1321-417/",
         "our_url": "https://tennis24shop.com/?p=84216",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84216",
-        "our_price_lir": 1401,
+        "our_price_lir": 1649,
         "our_stock_status": "instock",
-        "our_sizes": [],
+        "our_sizes": {
+            "2": 999
+        },
         "secondary_url": "https://www.raketci.com/urun/nike-club-unisex-tenis-sapkasi-mavi/"
     },
     {
@@ -35602,6 +35604,21 @@
             "M": 99,
             "L": 99,
             "XL": 99
+        }
+    },
+    {
+        "id": 84315,
+        "title": "لباس تنیس زنانه نایک – مشکی",
+        "sku": "IH3765-010",
+        "url": "https://www.sportive.com.tr/nike-court-slam-kadin-siyah-tenis-elbisesi-ih3765-010-1/",
+        "our_url": "https://tennis24shop.com/?p=84315",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84315",
+        "our_price_lir": 6714,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 99,
+            "S": 99,
+            "M": 99
         }
     }
 ]
