@@ -53,16 +53,16 @@
         }
     },
     {
-        "id": 84436,
-        "title": "جلیقه تنیس زنانه نایک مدل Court Collection Fleece کد IM9416-658 – زرشکی",
-        "sku": "IM9416-658",
-        "url": "https://www.sportive.com.tr/nike-court-collection-fleece-kadin-bordo-tenis-yelek-im9416-658/",
-        "our_url": "https://tennis24shop.com/?p=84436",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84436",
-        "our_price_lir": 4589,
+        "id": 84463,
+        "title": "دامن تنیس زنانه نایک مدل Court Slam Dri-Fit High-Rise کد II3469-006 – سبز",
+        "sku": "II3469-006",
+        "url": "https://www.sportive.com.tr/nike-court-slam-dri-fit-high-rise-kadin-yesil-tenis-etegi-ii3469-006/",
+        "our_url": "https://tennis24shop.com/?p=84463",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84463",
+        "our_price_lir": 4419,
         "our_stock_status": "instock",
         "our_sizes": {
-            "زرشکی": 99,
+            "سبز": 99,
             "XS": 99,
             "S": 99,
             "M": 99
@@ -1957,11 +1957,12 @@
         "our_price_lir": 4000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
             "XS": 999,
             "S": 999,
-            "M": 0
-        }
+            "M": 0,
+            "L": 999
+        },
+        "secondary_url": "https://www.sportive.com.tr/nike-court-ace-advantage-dri-fit-pileli-kadin-beyaz-tenis-etegi-fz6512-100-1/"
     },
     {
         "id": 54302,
@@ -7228,7 +7229,7 @@
         "our_sizes": {
             "L": 0,
             "S": 999,
-            "M": 0,
+            "M": 999,
             "XL": 0
         }
     },
@@ -14522,7 +14523,8 @@
             "XS": 999,
             "S": 999,
             "M": 999
-        }
+        },
+        "secondary_url": "https://www.sportive.com.tr/nike-court-ace-advantage-dri-fit-pileli-kadin-mavi-tenis-etegi-fz6512-417/"
     },
     {
         "id": 75352,
@@ -14893,15 +14895,15 @@
         "url": "https://www.sportive.com.tr/nike-court-advantage-dri-fit-erkek-beyaz-tenis-polo-yaka-t-shirt-fz6907-100/",
         "our_url": "https://tennis24shop.com/?p=79810",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=79810",
-        "our_price_lir": 3314,
+        "our_price_lir": 3900,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 99,
-            "S": 99,
-            "M": 99,
-            "L": 99,
-            "XL": 99,
-            "2XL": 99
+            "سفید": 0,
+            "S": 0,
+            "M": 999,
+            "L": 999,
+            "XL": 0,
+            "2XL": 0
         },
         "secondary_url": "https://www.raketci.com/urun/nikecourt-advantage-erkek-tenis-polosu-beyaz/"
     },
@@ -35690,6 +35692,22 @@
             "M": 99,
             "L": 99,
             "XS": 99
+        }
+    },
+    {
+        "id": 84436,
+        "title": "جلیقه تنیس زنانه نایک Court Collection Fleece  – زرشکی",
+        "sku": "IM9416-658",
+        "url": "https://www.sportive.com.tr/nike-court-collection-fleece-kadin-bordo-tenis-yelek-im9416-658/",
+        "our_url": "https://tennis24shop.com/?p=84436",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=84436",
+        "our_price_lir": 4589,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "زرشکی": 99,
+            "XS": 99,
+            "S": 99,
+            "M": 99
         }
     }
 ]
