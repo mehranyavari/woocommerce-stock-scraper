@@ -328,6 +328,99 @@ async function scrapeKorayspor(browser, url) {
 // ==========================================
 // 🛒 اسکرپر استاندارد (سایر سایت‌ها)
 // ==========================================
+// Sportive publishes the discounted offer in Offer.price while exposing the
+// original retail price as a Schema.org StrikethroughPrice specification.
+async function scrapeSportive(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: CONFIG.PAGE_TIMEOUT });
+        await page.waitForFunction(() =>
+            document.querySelector('script[type="application/ld+json"]') ||
+            document.querySelector('.product-offer-pill'), { timeout: 20000 }
+        ).catch(() => {});
+        await new Promise(resolve => setTimeout(resolve, CONFIG.WAIT_AFTER_LOAD));
+
+        const result = await page.evaluate(() => {
+            const products = [];
+            for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
+                try {
+                    const parsed = JSON.parse(script.textContent || '');
+                    const nodes = Array.isArray(parsed) ? parsed : (Array.isArray(parsed['@graph']) ? parsed['@graph'] : [parsed]);
+                    for (const node of nodes) {
+                        const types = Array.isArray(node?.['@type']) ? node['@type'] : [node?.['@type']];
+                        if (types.includes('Product')) products.push(node);
+                    }
+                } catch (_) {}
+            }
+
+            const product = products.find(item => item.name && item.offers) || products[0];
+            const offers = Array.isArray(product?.offers) ? product.offers : [product?.offers];
+            let regularPrice = null;
+            let offerPrice = null;
+            for (const offer of offers) {
+                const specs = Array.isArray(offer?.priceSpecification) ? offer.priceSpecification : [offer?.priceSpecification];
+                const original = specs.find(spec => /strikethroughprice/i.test(String(spec?.priceType || '')));
+                if (original?.price && Number(original.price) > 0) {
+                    regularPrice = original.price;
+                    offerPrice = offer.price || null;
+                    break;
+                }
+            }
+
+            // Sportive's public OG price is its non-discount retail price.
+            const ogRetailPrice = document.querySelector('meta[property="og:price:amount"]')?.content || '';
+            if (!regularPrice && Number(ogRetailPrice) > 0) regularPrice = ogRetailPrice;
+            if (!regularPrice) {
+                const current = offers.find(offer => Number(offer?.price) > 0)?.price;
+                if (current) regularPrice = current;
+            }
+
+            const stocks = {};
+            const sizePattern = /^(?:XS|S|M|L|XL|XXL|XXXL|2XL|3XL|4XL|5XL|\d{2}(?:[.,]\d)?|\d{1,2}\s*[-/]\s*\d{1,2})$/i;
+            for (const element of document.querySelectorAll('button, [role="button"], [role="radio"], [role="option"]')) {
+                const text = (element.getAttribute('aria-label') || element.getAttribute('data-size') || element.innerText || '').trim().replace(/\s+/g, ' ');
+                if (!sizePattern.test(text)) continue;
+                const classes = typeof element.className === 'string' ? element.className : '';
+                const soldOut = element.disabled || element.getAttribute('aria-disabled') === 'true' ||
+                    /disabled|sold.?out|out.?of.?stock|unavailable|passive/i.test(classes) ||
+                    element.getAttribute('data-test-id') === 'out_of_stock';
+                stocks[text] = Math.max(stocks[text] || 0, soldOut ? 0 : 1);
+            }
+
+            return {
+                regularPrice,
+                offerPrice,
+                stocks,
+                inStock: offers.some(offer => /InStock/i.test(String(offer?.availability || '')))
+            };
+        });
+        await page.close();
+
+        const stocks = {};
+        for (const [size, quantity] of Object.entries(result.stocks || {})) {
+            const normalized = normalizeSize(size, new URL(url).hostname);
+            if (normalized) stocks[normalized] = quantity;
+        }
+        if (!Object.keys(stocks).length) {
+            return { success: false, error: 'Sportive: no size availability was exposed; skipping price/stock update' };
+        }
+
+        const regular = parseTurkishPrice(result.regularPrice);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (!regular) return { success: false, error: 'Sportive: original retail price was not verified' };
+        if (offer && offer >= regular) offer = null;
+        console.log(`  ✅ Sportive URL Scraped: Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(stocks)}`);
+        return { success: true, stocks, regular_price: regular, offer_price: offer };
+    } catch (error) {
+        try { await page.close(); } catch (_) {}
+        return { success: false, error: 'Sportive Error: ' + error.message };
+    }
+}
+
 async function scrapeProduct(browser, productObj, isSecondary = false) {
     const urlLabel = isSecondary ? "Secondary URL" : "Primary URL";
     console.log(`Scraping ${urlLabel} for product ${productObj.id}: ${productObj.url}`);
@@ -1519,7 +1612,10 @@ async function processProduct(browser, product) {
     let secondaryData = { success: false, error: "No Secondary URL", stocks: {} };
 
     if (product.url) {
-        if (product.url.toLowerCase().includes('decathlon')) {
+        if (/sportive\.com\.tr/i.test(product.url)) {
+            console.log(`Scraping Primary URL for product ${product.id} (Sportive Engine)`);
+            primaryData = await scrapeSportive(browser, product.url);
+        } else if (product.url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Primary URL for product ${product.id} (Decathlon Engine)`);
             primaryData = await scrapeDecathlon(browser, product.url);
         } else if (product.url.toLowerCase().includes('korayspor')) {
@@ -1561,7 +1657,10 @@ async function processProduct(browser, product) {
     }
 
     if (product.secondary_url) {
-        if (product.secondary_url.toLowerCase().includes('decathlon')) {
+        if (/sportive\.com\.tr/i.test(product.secondary_url)) {
+            console.log(`Scraping Secondary URL for product ${product.id} (Sportive Engine)`);
+            secondaryData = await scrapeSportive(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('decathlon')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Decathlon Engine)`);
             secondaryData = await scrapeDecathlon(browser, product.secondary_url);
         } else if (product.secondary_url.toLowerCase().includes('korayspor')) {
