@@ -592,7 +592,7 @@
     "name": "10294 LEGO Icons Titanik",
     "price": 42999,
     "in_stock": true,
-    "quantity": 51
+    "quantity": 50
   },
   "10297": {
     "id": "10297",
@@ -655,7 +655,7 @@
     "name": "10307 LEGO® Icons Eyfel Kulesi",
     "price": 39999,
     "in_stock": true,
-    "quantity": 13
+    "quantity": 12
   },
   "10308": {
     "id": "10308",
@@ -1383,7 +1383,7 @@
     "name": "10460 LEGO® DUPLO Yeşil Yapım Plakası (Zemin)",
     "price": 749,
     "in_stock": true,
-    "quantity": 8
+    "quantity": 21
   },
   "10461": {
     "id": "10461",
@@ -1474,7 +1474,7 @@
     "name": "10474 LEGO® DUPLO® Yaratıcı Araçlar",
     "price": 1159,
     "in_stock": true,
-    "quantity": 30
+    "quantity": 29
   },
   "10475": {
     "id": "10475",
@@ -1495,7 +1495,7 @@
     "name": "10477 LEGO® DUPLO® 3’ü 1 Arada Yaratıcı Sevimli Hayvanlar",
     "price": 579,
     "in_stock": true,
-    "quantity": 54
+    "quantity": 53
   },
   "10478": {
     "id": "10478",
@@ -2643,7 +2643,7 @@
     "name": "21333 LEGO Ideas Vincent van Gogh - Yıldızlı Gece",
     "price": 10499,
     "in_stock": true,
-    "quantity": 28
+    "quantity": 27
   },
   "21335": {
     "id": "21335",
@@ -3189,7 +3189,7 @@
     "name": "30675 LEGO® Ninjago Turnuva Eğitim Alanı",
     "price": 299,
     "in_stock": true,
-    "quantity": 24
+    "quantity": 23
   },
   "30676": {
     "id": "30676",
@@ -3301,7 +3301,7 @@
     "name": "30694 LEGO® City Uzay Bilim Robotu",
     "price": 299,
     "in_stock": true,
-    "quantity": 12
+    "quantity": 11
   },
   "30695": {
     "id": "30695",
@@ -3343,7 +3343,7 @@
     "name": "30700 LEGO® NINJAGO® Arin ile Ejderinsan Savaşı",
     "price": 299,
     "in_stock": true,
-    "quantity": 632
+    "quantity": 631
   },
   "30701": {
     "id": "30701",
@@ -4945,8 +4945,8 @@
     "id": "42146",
     "name": "42146 LEGO® Technic Liebherr Paletli Vinç LR 13000",
     "price": 43999,
-    "in_stock": true,
-    "quantity": 1
+    "in_stock": false,
+    "quantity": 0
   },
   "42148": {
     "id": "42148",
@@ -5282,7 +5282,7 @@
     "name": "42210 LEGO® Technic Daha Hızlı Daha Öfkeli Nissan Skyline GT-R (R34) Araba",
     "price": 8499,
     "in_stock": true,
-    "quantity": 2
+    "quantity": 1
   },
   "42211": {
     "id": "42211",
@@ -5884,7 +5884,7 @@
     "name": "42666 LEGO® Friends Kedi Doğum Günü Partisi ve Ağaç Ev",
     "price": 1799,
     "in_stock": true,
-    "quantity": 12
+    "quantity": 11
   },
   "42669": {
     "id": "42669",
@@ -6171,7 +6171,7 @@
     "name": "43014 LEGO® Editions Scuderia Ferrari HP Charles Leclerc Kaskı",
     "price": 5399,
     "in_stock": true,
-    "quantity": 162
+    "quantity": 161
   },
   "43015": {
     "id": "43015",
@@ -6255,14 +6255,14 @@
     "name": "43032 LEGO® Editions FIFA World Cup 2026™ Resmi Amblemi",
     "price": 1459,
     "in_stock": true,
-    "quantity": 8
+    "quantity": 7
   },
   "43033": {
     "id": "43033",
     "name": "43033 LEGO® Editions 2026 ABD Futbol Milli Takım Forması",
     "price": 1459,
     "in_stock": true,
-    "quantity": 282
+    "quantity": 281
   },
   "43206": {
     "id": "43206",
@@ -8712,7 +8712,7 @@
     "name": "71862 LEGO® NINJAGO® Lloyd’un Ejderha Robotu Savaş Paketi",
     "price": 579,
     "in_stock": true,
-    "quantity": 68
+    "quantity": 67
   },
   "71863": {
     "id": "71863",
@@ -8872,8 +8872,8 @@
     "id": "75325",
     "name": "75325 LEGO Star Wars™ Mandalorian’ın N-1 Starfighter™’ı",
     "price": 3899,
-    "in_stock": false,
-    "quantity": 0
+    "in_stock": true,
+    "quantity": 1
   },
   "75328": {
     "id": "75328",
@@ -10595,7 +10595,7 @@
     "name": "76449 LEGO® Harry Potter™ Isıran Canavar Kitap",
     "price": 3599,
     "in_stock": true,
-    "quantity": 3
+    "quantity": 2
   },
   "76450": {
     "id": "76450",
@@ -11358,7 +11358,7 @@
     "name": "77117 LEGO® Sonic the Hedgehog™ Sonic: Şimşek Araba",
     "price": 579,
     "in_stock": true,
-    "quantity": 157
+    "quantity": 143
   },
   "77118": {
     "id": "77118",
@@ -11407,7 +11407,7 @@
     "name": "77241 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Honda S2000",
     "price": 1699,
     "in_stock": true,
-    "quantity": 573
+    "quantity": 571
   },
   "77242": {
     "id": "77242",
@@ -11449,7 +11449,7 @@
     "name": "77247 LEGO® Speed Champions KICK Sauber F1® Team C44 Yarış Arabası",
     "price": 1699,
     "in_stock": true,
-    "quantity": 162
+    "quantity": 161
   },
   "77248": {
     "id": "77248",
@@ -11672,8 +11672,8 @@
     "id": "80046",
     "name": "80046 LEGO® Monkie Kid Monkie Kid’in Bulut Zeplini",
     "price": 3299,
-    "in_stock": true,
-    "quantity": 1
+    "in_stock": false,
+    "quantity": 0
   },
   "80047": {
     "id": "80047",
@@ -13248,7 +13248,7 @@
     "name": "11610-07029 Herschel Classic™ Hip Pack - Garden Floral",
     "price": 3999,
     "in_stock": true,
-    "quantity": 5
+    "quantity": 6
   },
   "11610-07028": {
     "id": "11610-07028",
