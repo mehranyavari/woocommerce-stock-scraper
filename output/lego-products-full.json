@@ -42,7 +42,7 @@
     "sku": "10294",
     "price": 42999,
     "offer_price": null,
-    "quantity": 50,
+    "quantity": 49,
     "in_stock": true,
     "url": "https://lego.tr/product/10294-lego-icons-titanik",
     "category": "LEGO® Icons"
@@ -594,7 +594,7 @@
     "sku": "60469",
     "price": 5399,
     "offer_price": null,
-    "quantity": 6,
+    "quantity": 5,
     "in_stock": true,
     "url": "https://lego.tr/product/60469-lego-city-merkez-tren-istasyonu",
     "category": "City"
@@ -654,7 +654,7 @@
     "sku": "60474",
     "price": 1899,
     "offer_price": 1329,
-    "quantity": 172,
+    "quantity": 171,
     "in_stock": true,
     "url": "https://lego.tr/product/60474-lego-city-vcarb-ve-sauber-yaris-arabali-f1-gridi",
     "category": "City"
@@ -930,7 +930,7 @@
     "sku": "30665",
     "price": 299,
     "offer_price": null,
-    "quantity": 9,
+    "quantity": 8,
     "in_stock": true,
     "url": "https://lego.tr/product/30665-lego-city-yavru-goril-karsilasmasi",
     "category": "City"
@@ -1638,8 +1638,8 @@
     "sku": "30664",
     "price": 299,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/30664-lego-city-polis-arazi-araci",
     "category": "City"
   },
@@ -2394,7 +2394,7 @@
     "sku": "854236",
     "price": 379,
     "offer_price": null,
-    "quantity": 398,
+    "quantity": 397,
     "in_stock": true,
     "url": "https://lego.tr/product/854236-lego-star-wars-darth-vader-anahtarlik",
     "category": "Anahtarlıklar"
@@ -3942,8 +3942,8 @@
     "sku": "42175",
     "price": 12199,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/42175-lego-technic-volvo-fmx-kamyon-ve-ec230-elektrikli-ekskavator",
     "category": "Technic™"
   },
@@ -4626,8 +4626,8 @@
     "sku": "40620",
     "price": 1399,
     "offer_price": null,
-    "quantity": 1,
-    "in_stock": true,
+    "quantity": 0,
+    "in_stock": false,
     "url": "https://lego.tr/product/40620-lego-disney-classic-cruella-ile-malefiz",
     "category": "BrickHeadz"
   },
@@ -5502,7 +5502,7 @@
     "sku": "71823",
     "price": 649,
     "offer_price": null,
-    "quantity": 3,
+    "quantity": 2,
     "in_stock": true,
     "url": "https://lego.tr/product/71823-lego-ninjago-kainin-ejderha-spinjitzu-topaci",
     "category": "NINJAGO®"
@@ -5946,7 +5946,7 @@
     "sku": "71829",
     "price": 1159,
     "offer_price": null,
-    "quantity": 30,
+    "quantity": 29,
     "in_stock": true,
     "url": "https://lego.tr/product/71829-lego-ninjago-lloydun-yesil-orman-ejderhasi",
     "category": "NINJAGO®"
@@ -6810,7 +6810,7 @@
     "sku": "854235",
     "price": 379,
     "offer_price": null,
-    "quantity": 131,
+    "quantity": 130,
     "in_stock": true,
     "url": "https://lego.tr/product/854235-lego-super-heroes-batman-anahtarlik",
     "category": "Anahtarlıklar"
@@ -7146,7 +7146,7 @@
     "sku": "77247",
     "price": 1699,
     "offer_price": null,
-    "quantity": 159,
+    "quantity": 158,
     "in_stock": true,
     "url": "https://lego.tr/product/77247-lego-speed-champions-kick-sauber-f1-team-c44-yaris-arabasi",
     "category": "Speed Champions"
@@ -8822,38 +8822,38 @@
   {
     "id": "42653",
     "product_id": 7993,
-    "name": "لگو 42653 LEGO® Friends Müzik Mağazası ve Daire",
+    "name": "42653 LEGO® Friends Müzik Mağazası ve Daire",
     "sku": "42653",
-    "price": 0,
+    "price": 2999,
     "offer_price": null,
-    "quantity": 0,
-    "in_stock": false,
+    "quantity": 1,
+    "in_stock": true,
     "url": "https://lego.tr/product/42653-lego-friends-muzik-magazasi-ve-daire",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "42642",
     "product_id": 8001,
-    "name": "لگو 42642 LEGO® Friends Arkadaşlık Film Gecesi",
+    "name": "42642 LEGO® Friends Arkadaşlık Film Gecesi",
     "sku": "42642",
-    "price": 0,
+    "price": 869,
     "offer_price": null,
     "quantity": 0,
     "in_stock": false,
     "url": "https://lego.tr/product/42642-lego-friends-arkadaslik-film-gecesi",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "41760",
     "product_id": 8009,
-    "name": "لگو 41760 LEGO® Friends İglu Tatili Macerası",
+    "name": "41760 LEGO® Friends İglu Tatili Macerası",
     "sku": "41760",
-    "price": 0,
+    "price": 2399,
     "offer_price": null,
     "quantity": 0,
     "in_stock": false,
     "url": "https://lego.tr/product/41760-lego-friends-iglu-tatili-macerasi",
-    "category": "LEGO"
+    "category": "Friends"
   },
   {
     "id": "41756",
@@ -9642,7 +9642,7 @@
     "sku": "10362",
     "price": 4799,
     "offer_price": null,
-    "quantity": 2,
+    "quantity": 1,
     "in_stock": true,
     "url": "https://lego.tr/product/10362-lego-icons-fransiz-kafe",
     "category": "LEGO® Icons"
@@ -10818,7 +10818,7 @@
     "sku": "30707",
     "price": 299,
     "offer_price": null,
-    "quantity": 7,
+    "quantity": 6,
     "in_stock": true,
     "url": "https://lego.tr/product/30707-lego-marvel-venomun-muze-soygunu",
     "category": "Marvel"
@@ -10878,7 +10878,7 @@
     "sku": "76335",
     "price": 579,
     "offer_price": null,
-    "quantity": 4,
+    "quantity": 3,
     "in_stock": true,
     "url": "https://lego.tr/76335-lego-marvel-orumcek-adam-ghost-rider-motosikletine-karsi",
     "category": "Marvel"
@@ -11082,7 +11082,7 @@
     "sku": "854240",
     "price": 379,
     "offer_price": null,
-    "quantity": 13,
+    "quantity": 12,
     "in_stock": true,
     "url": "https://lego.tr/product/854240-lego-marvel-iron-man-anahtarlik",
     "category": "Anahtarlıklar"
@@ -13482,7 +13482,7 @@
     "sku": "10473",
     "price": 1799,
     "offer_price": null,
-    "quantity": 4,
+    "quantity": 1,
     "in_stock": true,
     "url": "https://lego.tr/10473-lego-duplo-hortumlu-itfaiye-araci-ve-itfaiyeci",
     "category": "LEGO® DUPLO®"
@@ -14346,7 +14346,7 @@
     "sku": "71497",
     "price": 6299,
     "offer_price": 3779,
-    "quantity": 32,
+    "quantity": 31,
     "in_stock": true,
     "url": "https://lego.tr/product/71497-lego-dreamzzz-cooperin-kaplan-robotu-ve-zeronun-hot-rod-arabasi",
     "category": "LEGO® DREAMZzz™"
@@ -15798,7 +15798,7 @@
     "sku": "854302",
     "price": 379,
     "offer_price": null,
-    "quantity": 207,
+    "quantity": 205,
     "in_stock": true,
     "url": "https://lego.tr/product/854302-lego-sonic-shadow-the-hedgehog-anahtarlik",
     "category": "Anahtarlıklar"
@@ -16170,7 +16170,7 @@
     "sku": "11603-07029",
     "price": 5399,
     "offer_price": 2700,
-    "quantity": 99,
+    "quantity": 98,
     "in_stock": true,
     "url": "https://lego.tr/product/11603-07029-herschel-classic-backpack-garden-floral",
     "category": "LEGO® Herschel"
@@ -16182,7 +16182,7 @@
     "sku": "11612-07029",
     "price": 5999,
     "offer_price": 3000,
-    "quantity": 121,
+    "quantity": 120,
     "in_stock": true,
     "url": "https://lego.tr/product/11612-07029-herschel-retreat-tote-garden-floral",
     "category": "LEGO® Herschel"
@@ -16314,7 +16314,7 @@
     "sku": "30142-07029",
     "price": 2199,
     "offer_price": 1100,
-    "quantity": 27,
+    "quantity": 26,
     "in_stock": true,
     "url": "https://lego.tr/product/30142-07029-settlement-pencil-case-garden-floral",
     "category": "LEGO® Herschel"
@@ -16350,7 +16350,7 @@
     "sku": "11610-07029",
     "price": 3999,
     "offer_price": 2000,
-    "quantity": 6,
+    "quantity": 4,
     "in_stock": true,
     "url": "https://lego.tr/product/11610-07029-herschel-classic-hip-pack-garden-floral",
     "category": "LEGO® Herschel"
@@ -18462,7 +18462,7 @@
     "sku": "40573",
     "price": 2839,
     "offer_price": null,
-    "quantity": 371,
+    "quantity": 370,
     "in_stock": true,
     "url": "https://lego.tr/product/40573-lego-iconic-yilbasi-agaci",
     "category": "Botanical Collection"
@@ -18918,7 +18918,7 @@
     "sku": "11503",
     "price": 5399,
     "offer_price": 3779,
-    "quantity": 202,
+    "quantity": 201,
     "in_stock": true,
     "url": "https://lego.tr/11503-lego-botanicals-cicek-duvari",
     "category": "Botanical Collection"
@@ -18954,7 +18954,7 @@
     "sku": "11510",
     "price": 2999,
     "offer_price": null,
-    "quantity": 309,
+    "quantity": 308,
     "in_stock": true,
     "url": "https://lego.tr/11510-lego-botanicals-manolya-dallari",
     "category": "Botanical Collection"
@@ -19362,7 +19362,7 @@
     "sku": "31376",
     "price": 579,
     "offer_price": null,
-    "quantity": 235,
+    "quantity": 234,
     "in_stock": true,
     "url": "https://lego.tr/31376-lego-creator-sevimli-hamster-ile-cicek",
     "category": "Creator 3-in-1"
@@ -19614,7 +19614,7 @@
     "sku": "40867",
     "price": 1399,
     "offer_price": null,
-    "quantity": 12,
+    "quantity": 11,
     "in_stock": true,
     "url": "https://lego.tr/40867-lego-iconic-love-harfleri",
     "category": "LEGO Iconic"
@@ -20082,7 +20082,7 @@
     "sku": "42693",
     "price": 1799,
     "offer_price": null,
-    "quantity": 20,
+    "quantity": 19,
     "in_stock": true,
     "url": "https://lego.tr/42693-lego-friends-yaratici-cicek-dukkani",
     "category": "Friends"
@@ -20754,7 +20754,7 @@
     "sku": "60485",
     "price": 579,
     "offer_price": 405,
-    "quantity": 43,
+    "quantity": 42,
     "in_stock": true,
     "url": "https://lego.tr/60485-lego-city-hot-rod",
     "category": "City"
@@ -21966,7 +21966,7 @@
     "sku": "71862",
     "price": 579,
     "offer_price": null,
-    "quantity": 67,
+    "quantity": 66,
     "in_stock": true,
     "url": "https://lego.tr/71862-lego-ninjago-lloydun-ejderha-robotu-savas-paketi",
     "category": "NINJAGO®"
@@ -22242,7 +22242,7 @@
     "sku": "76478",
     "price": 7299,
     "offer_price": null,
-    "quantity": 8,
+    "quantity": 7,
     "in_stock": true,
     "url": "https://lego.tr/76478-lego-harry-potter-kitaplik-dekoru-dumbledoreun-ofisi",
     "category": "Harry Potter™"
@@ -22446,7 +22446,7 @@
     "sku": "20368-2607",
     "price": 1999,
     "offer_price": null,
-    "quantity": 16,
+    "quantity": 15,
     "in_stock": true,
     "url": "https://lego.tr/20368-2607-3-parca-seyahat-duzenleyici-seti-renkli-lego-yapim-parcasi",
     "category": " LEGO® Çantalar"
@@ -22614,7 +22614,7 @@
     "sku": "20375-2607",
     "price": 1699,
     "offer_price": null,
-    "quantity": 30,
+    "quantity": 29,
     "in_stock": true,
     "url": "https://lego.tr/20375-2607-colorblock-sirt-cantasi-renkli-lego-yapim-parcasi",
     "category": " LEGO® Çantalar"
