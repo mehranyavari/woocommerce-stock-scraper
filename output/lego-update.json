@@ -43,8 +43,8 @@
     "id": "42210",
     "product_id": 1122,
     "price": 8499,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42210 LEGO® Technic Daha Hızlı Daha Öfkeli Nissan Skyline GT-R (R34) Araba"
   },
   {
@@ -60,7 +60,7 @@
     "product_id": 1145,
     "price": 3599,
     "in_stock": true,
-    "quantity": 9,
+    "quantity": 8,
     "name": "76303 LEGO® DC Batman™ Tumbler, Two-Face™ ve Joker™’e Karşı"
   },
   {
@@ -292,7 +292,7 @@
     "product_id": 1484,
     "price": 1159,
     "in_stock": true,
-    "quantity": 11,
+    "quantity": 10,
     "name": "60451 LEGO® City Acil Yardım Ambulansı"
   },
   {
@@ -380,7 +380,7 @@
     "product_id": 1564,
     "price": 6699,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 3,
     "name": "60471 LEGO® City Kutup Kaşifi Laboratuvar Kamyonu"
   },
   {
@@ -1380,7 +1380,7 @@
     "product_id": 2698,
     "price": 869,
     "in_stock": true,
-    "quantity": 22,
+    "quantity": 21,
     "name": "75411 LEGO® Star Wars™ Darth Maul™ Robotu"
   },
   {
@@ -3380,7 +3380,7 @@
     "product_id": 4988,
     "price": 1459,
     "in_stock": true,
-    "quantity": 45,
+    "quantity": 44,
     "name": "43271 LEGO® │ Disney Lucky ve Penny 101 Dalmaçyalı Köpek Yavruları"
   },
   {
@@ -3748,7 +3748,7 @@
     "product_id": 5354,
     "price": 579,
     "in_stock": true,
-    "quantity": 31,
+    "quantity": 30,
     "name": "71838 LEGO® NINJAGO® Kai'nin Motosiklet Hız Yarışı"
   },
   {
@@ -4228,7 +4228,7 @@
     "product_id": 5929,
     "price": 12199,
     "in_stock": true,
-    "quantity": 5,
+    "quantity": 4,
     "name": "31215 LEGO® Art Vincent van Gogh – Ayçiçekleri"
   },
   {
@@ -4524,7 +4524,7 @@
     "product_id": 6250,
     "price": 6099,
     "in_stock": true,
-    "quantity": 3,
+    "quantity": 2,
     "name": "76304 LEGO® DC Batman Forever™ Batmobile™"
   },
   {
@@ -6539,8 +6539,8 @@
     "id": "10323",
     "product_id": 8637,
     "price": 16999,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "10323 LEGO® Icons PAC-MAN Oyun Konsolu"
   },
   {
@@ -6628,7 +6628,7 @@
     "product_id": 8731,
     "price": 939,
     "in_stock": true,
-    "quantity": 53,
+    "quantity": 52,
     "name": "40725 LEGO® Botanicals Kiraz Çiçekleri"
   },
   {
@@ -6715,8 +6715,8 @@
     "id": "4907",
     "product_id": 8828,
     "price": 2999,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "10281 LEGO® Botanicals Bonsai Ağacı"
   },
   {
@@ -8068,7 +8068,7 @@
     "product_id": 10267,
     "price": 8199,
     "in_stock": true,
-    "quantity": 3,
+    "quantity": 2,
     "name": "21343 LEGO® Ideas Viking Köyü"
   },
   {
@@ -8180,7 +8180,7 @@
     "product_id": 10388,
     "price": 939,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "40800 LEGO® ONE PIECE Palyaço Buggy Figürü"
   },
   {
@@ -8219,8 +8219,8 @@
     "id": "40631",
     "product_id": 10426,
     "price": 1599,
-    "in_stock": true,
-    "quantity": 3,
+    "in_stock": false,
+    "quantity": 0,
     "name": "40631 LEGO® BrickHeadz Gri Gandalf ile Balrog™"
   },
   {
@@ -8252,7 +8252,7 @@
     "product_id": 10494,
     "price": 2399,
     "in_stock": true,
-    "quantity": 6,
+    "quantity": 5,
     "name": "31165 LEGO® Creator Vahşi Hayvanlar: Panda Ailesi"
   },
   {
@@ -8852,7 +8852,7 @@
     "product_id": 11062,
     "price": 2399,
     "in_stock": true,
-    "quantity": 36,
+    "quantity": 35,
     "name": "10426 LEGO® DUPLO Tren Köprüsü ve Rayları Ek Macera Seti"
   },
   {
@@ -8860,7 +8860,7 @@
     "product_id": 11069,
     "price": 1159,
     "in_stock": true,
-    "quantity": 67,
+    "quantity": 66,
     "name": "10425 LEGO® DUPLO Tren Tüneli ve Rayları Ek Macera Seti"
   },
   {
@@ -9196,7 +9196,7 @@
     "product_id": 11379,
     "price": 1199,
     "in_stock": true,
-    "quantity": 6,
+    "quantity": 5,
     "name": "10931 LEGO® DUPLO® Town Kamyon ve Paletli Kazıcı"
   },
   {
@@ -12340,7 +12340,7 @@
     "product_id": 15856,
     "price": 1799,
     "in_stock": true,
-    "quantity": 16,
+    "quantity": 15,
     "name": "10343 LEGO® Botanicals Mini Orkide"
   },
   {
@@ -12900,7 +12900,7 @@
     "product_id": 16731,
     "price": 12199,
     "in_stock": true,
-    "quantity": 80,
+    "quantity": 79,
     "name": "31220 LEGO® Art Claude Monet – Nilüfer Gölü Üzerinde Köprü"
   },
   {
@@ -12924,7 +12924,7 @@
     "product_id": 16755,
     "price": 2099,
     "in_stock": true,
-    "quantity": 32,
+    "quantity": 31,
     "name": "31378 LEGO® Creator Uzay Keşif Teleskobu"
   },
   {
@@ -13540,7 +13540,7 @@
     "product_id": 17361,
     "price": 5399,
     "in_stock": true,
-    "quantity": 331,
+    "quantity": 330,
     "name": "43022 LEGO® Editions Scuderia Ferrari HP Lewis Hamilton Kaskı"
   },
   {
@@ -13796,7 +13796,7 @@
     "product_id": 17620,
     "price": 1799,
     "in_stock": true,
-    "quantity": 12,
+    "quantity": 11,
     "name": "60480 LEGO® City Sarı Kazıcı Yükleyici"
   },
   {
@@ -14115,8 +14115,8 @@
     "id": "71861",
     "product_id": 17982,
     "price": 18199,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "71861 LEGO® NINJAGO® Eski Şehir 15. Yıl Dönümü"
   },
   {
@@ -14228,7 +14228,7 @@
     "product_id": 18159,
     "price": 869,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 3,
     "name": "75448 LEGO® Star Wars™ Klon Şok Trooper™ Robotu"
   },
   {
@@ -14644,7 +14644,7 @@
     "product_id": 18704,
     "price": 579,
     "in_stock": true,
-    "quantity": 66,
+    "quantity": 65,
     "name": "71862 LEGO® NINJAGO® Lloyd’un Ejderha Robotu Savaş Paketi"
   },
   {
@@ -15076,7 +15076,7 @@
     "product_id": 19058,
     "price": 1699,
     "in_stock": true,
-    "quantity": 29,
+    "quantity": 28,
     "name": "20375-2607 Colorblock Sırt Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15204,7 +15204,7 @@
     "product_id": 19405,
     "price": 8499,
     "in_stock": true,
-    "quantity": 26,
+    "quantity": 25,
     "name": "11381 LEGO® Icons Jaguar E-Type"
   },
   {
@@ -15300,7 +15300,7 @@
     "product_id": 19498,
     "price": 2199,
     "in_stock": true,
-    "quantity": 55,
+    "quantity": 54,
     "name": "40872 LEGO® LEGO Iconic Cadılar Bayramı Bal Kabağı Feneri"
   },
   {
@@ -15364,7 +15364,7 @@
     "product_id": 19558,
     "price": 10299,
     "in_stock": true,
-    "quantity": 31,
+    "quantity": 30,
     "name": "72051 LEGO® Super Mario™ Donkey Kong™ Video Oyunu"
   },
   {
