@@ -257,11 +257,11 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 5,
             "37": 5,
             "38": 5,
             "39": 5,
-            "40": 0,
+            "40": 5,
             "41": 5
         }
     },
@@ -1556,14 +1556,10 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "S / W 30 L 33": 5,
+            "2XL / W41 L34": 5,
+            "L / W 34 L 34": 5,
             "M / W 32 L 33": 5,
-            "XL / W 37 L 34": 5,
-            "2XL / W 41 L 34": 5,
-            "S / W30 L33": 5,
-            "M / W32 L33": 5,
-            "L / W34 L34": 5,
-            "XL / W37 L34": 5,
-            "2XL / W41 L34": 5
+            "XL / W37 L34": 5
         }
     },
     {
@@ -1576,14 +1572,11 @@
         "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
-            "S / W 30 L 33": 5,
-            "M / W 32 L 33": 5,
-            "XL / W 37 L 34": 5,
-            "S / W30 L33": 5,
-            "XL / W37 L34": 5,
             "M / W32 L33": 5,
+            "S / W30 L33": 5,
             "L / W34 L34": 5,
-            "2XL / W41 L34": 5
+            "XL / W37 L34": 5,
+            "2XL / W 41 L 34": 5
         }
     },
     {
@@ -1596,11 +1589,8 @@
         "our_price_lir": 1190,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L / W 34 L 34": 5,
             "M / W 32 L 33": 5,
             "S / W 30 L 33": 5,
-            "XL / W 37 L 34": 5,
-            "S / W30 L33": 5,
             "XL / W37 L34": 5,
             "L / W34 L34": 5,
             "2XL / W41 L34": 5
@@ -2966,7 +2956,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 5,
+            "35/38": 0,
             "39/42": 5,
             "43/46": 5
         }
@@ -3025,7 +3015,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-yuvarlak-yaka-tenis-tisortu-kahverengi-tts-dry-jr/_/R-p-352819?mc=8968220&c=KAHVERENG%C4%B0",
         "our_url": "https://tennis24shop.com/?p=65915",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65915",
-        "our_price_lir": 710,
+        "our_price_lir": 490,
         "our_stock_status": "instock",
         "our_sizes": {
             "123-130cm-سال8-7": 5,
@@ -3667,7 +3657,7 @@
         "url": "https://www.decathlon.com.tr/p/cocuk-tenis-tisortu-koyu-mavi-light/_/R-p-347275?mc=8968222&c=KAHVERENG%C4%B0",
         "our_url": "https://tennis24shop.com/?p=73105",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73105",
-        "our_price_lir": 1090,
+        "our_price_lir": 490,
         "our_stock_status": "instock",
         "our_sizes": {
             "123-130cm-سال8-7": 0,
@@ -3737,9 +3727,9 @@
         "our_url": "https://tennis24shop.com/?p=73179",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73179",
         "our_price_lir": 440,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "35/38": 5,
+            "35/38": 0,
             "39/42": 0,
             "43/46": 0
         }
@@ -5963,7 +5953,7 @@
             "41": 999,
             "42": 999,
             "42.5": 999,
-            "43": 0,
+            "43": 999,
             "44": 0,
             "45": 0,
             "38.5": 0,
@@ -6116,7 +6106,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-big-low-erkek-beyaz-sneaker/355152-150/",
         "our_url": "https://tennis24shop.com/?p=48686",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48686",
-        "our_price_lir": 2659,
+        "our_price_lir": 7499,
         "our_stock_status": "instock",
         "our_sizes": {
             "44.5": 0,
@@ -6594,14 +6584,14 @@
         "our_price_lir": 8999,
         "our_stock_status": "onbackorder",
         "our_sizes": {
-            "42": 999,
+            "42": 0,
             "45": 999,
             "44.5": 0
         }
     },
     {
         "id": 50003,
-        "title": "کفش تنیس مردانه اسیکس - Asics Court FF 3 Novak Clay- سرمه ای/خاکستری",
+        "title": "کفش تنیس مردانه اسیکس - Asics Court FF 3 Novak - Clay- سرمه ای/خاکستری",
         "sku": "1041A371-403",
         "url": "https://www.opsarsport.com/urun/asics-court-ff-3-novak-toprak-tenis-ayakkabisi-2",
         "our_url": "https://tennis24shop.com/?p=50003",
@@ -6764,7 +6754,7 @@
     },
     {
         "id": 50600,
-        "title": "کفش تنیس مردانه اسیکس - ASICS Court Ff 3 Novak Clay Night Energy - مشکی",
+        "title": "کفش تنیس مردانه اسیکس - ASICS Court Ff 3 Novak Night Energy- Clay- مشکی",
         "sku": "1041A537-960",
         "url": "https://www.opsarsport.com/urun/asics-court-ff-3-novak-toprak-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=50600",
@@ -8445,7 +8435,7 @@
         "our_url": "https://tennis24shop.com/?p=53890",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53890",
         "our_price_lir": 1990,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -8797,7 +8787,7 @@
         "our_sizes": {
             "41": 0,
             "42": 999,
-            "42.5": 999,
+            "42.5": 0,
             "43": 0,
             "44.5": 999,
             "46": 0,
@@ -8877,7 +8867,7 @@
         "our_url": "https://tennis24shop.com/?p=55159",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=55159",
         "our_price_lir": 75,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -9127,7 +9117,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "35.5": 0,
-            "36": 999,
+            "36": 0,
             "37.5": 0,
             "38": 0,
             "38.5": 999,
@@ -9441,7 +9431,7 @@
         "our_sizes": {
             "2XL": 0,
             "XL": 5,
-            "L": 5,
+            "L": 0,
             "M": 5,
             "S": 5
         }
@@ -10422,8 +10412,8 @@
     },
     {
         "id": 58880,
-        "title": "کفش تنیس مردانه اسیکس - Asics GEL-RESOLUTION X Clay - خاکستری",
-        "sku": "1041A485",
+        "title": "کفش تنیس مردانه اسیکس - Asics GEL-RESOLUTION X  - Clay - خاکستری",
+        "sku": "1041A485-402",
         "url": "https://www.tenisburada.com/asics-gel-resolution-x-erkek-toprak-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=58880",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=58880",
@@ -11025,7 +11015,7 @@
         "our_url": "https://tennis24shop.com/?p=65328",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65328",
         "our_price_lir": 4190,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -11136,7 +11126,7 @@
         "url": "https://www.decathlon.com.tr/p/tenis-sapkasi-58-cm-yesil-tc-500/_/R-p-302625?mc=8975284&c=MOR",
         "our_url": "https://tennis24shop.com/?p=65492",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65492",
-        "our_price_lir": 430,
+        "our_price_lir": 290,
         "our_stock_status": "instock",
         "our_sizes": []
     },
@@ -11749,23 +11739,18 @@
         "id": 66371,
         "title": "کفش تنیس زنانه اسیکس - Asics COURT FF 3- سفید/خاکستری",
         "sku": "1042A220-107",
-        "url": "https://www.asics.com.tr/court-ff-3-1243",
+        "url": "https://www.raketci.com/urun/asics-court-ff-3-kadin-tenis-ayakkabisi-1042a220-107/",
         "our_url": "https://tennis24shop.com/?p=66371",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66371",
         "our_price_lir": 10999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35.5": 0,
             "37": 0,
-            "37.5": 0,
-            "38": 0,
-            "40": 0,
+            "37.5": 99,
+            "38": 99,
+            "40": 99,
             "39": 0,
-            "39.5": 0,
-            "۳۶": 0,
-            "42": 0,
-            "40.5": 0,
-            "41.5": 0
+            "39.5": 99
         },
         "secondary_url": "https://www.asics.com.tr/court-ff-3-1243"
     },
@@ -11810,7 +11795,7 @@
             "39": 0,
             "40": 0,
             "40.5": 0,
-            "36": 999,
+            "36": 0,
             "42": 999,
             "41.5": 999,
             "35.5": 0,
@@ -12261,7 +12246,7 @@
         "our_url": "https://tennis24shop.com/?p=67600",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67600",
         "our_price_lir": 2050,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -12330,18 +12315,18 @@
         "our_url": "https://tennis24shop.com/?p=67652",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67652",
         "our_price_lir": 5590,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "40": 0,
+            "40": 5,
             "40⅔": 0,
             "41 ⅓": 0,
             "42": 0,
             "42 ⅔": 0,
             "43": 0,
-            "44": 0,
+            "44": 5,
             "44⅔": 0,
             "45 ⅓": 0,
-            "46": 0,
+            "46": 5,
             "46⅔": 0,
             "48": 0,
             "45.5": 0,
@@ -12459,8 +12444,8 @@
         "our_price_lir": 9999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
-            "37": 0,
+            "36": 99,
+            "37": 99,
             "37.5": 999,
             "38": 999,
             "39": 999,
@@ -12608,7 +12593,7 @@
         "our_sizes": {
             "40.5": 0,
             "41.5": 999,
-            "42": 999,
+            "42": 0,
             "42.5": 0,
             "43.5": 999,
             "44": 999,
@@ -13120,7 +13105,7 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "2XL": 5,
+            "2XL": 0,
             "XL": 5,
             "L": 5,
             "M": 5,
@@ -13863,7 +13848,7 @@
             "44": 0,
             "44.5": 999,
             "45": 999,
-            "45.5": 999,
+            "45.5": 0,
             "46": 999,
             "47": 0,
             "47.5": 0
@@ -14139,7 +14124,7 @@
         "our_price_lir": 4100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 999,
+            "L": 998,
             "M": 999,
             "XL": 999,
             "L.": 0,
@@ -14401,7 +14386,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "38": 5,
-            "40": 5
+            "40": 0
         }
     },
     {
@@ -15071,27 +15056,6 @@
             "M": 999,
             "L": 999,
             "XL": 999
-        }
-    },
-    {
-        "id": 80198,
-        "title": "کفش تنیس زنانه اسیکس  Asics GEL-RESOLUTION X – سفید/قهوه‌ای تیره",
-        "sku": "1042A279-106-5H",
-        "url": "https://www.asics.com.tr/gel-resolution-x-1912",
-        "our_url": "https://tennis24shop.com/?p=80198",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=80198",
-        "our_price_lir": 9999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "پیش‌فرض": 999,
-            "36": 999,
-            "37": 999,
-            "37.5": 999,
-            "38": 999,
-            "39": 999,
-            "39.5": 999,
-            "40": 999,
-            "40.5": 999
         }
     },
     {
@@ -17605,7 +17569,7 @@
         "our_url": "https://tennis24shop.com/?p=10227",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=10227",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -17917,7 +17881,6 @@
         "our_price_lir": 5499,
         "our_stock_status": "instock",
         "our_sizes": {
-            "38": 0,
             "39": 999
         }
     },
@@ -19068,7 +19031,7 @@
         "our_price_lir": 3100,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 999,
+            "36": 0,
             "۳۶": 0,
             "38": 0,
             "39": 0,
@@ -22311,7 +22274,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "46": 999,
-            "45": 999,
+            "45": 0,
             "44.5": 999,
             "44": 999,
             "43.5": 999,
@@ -22538,7 +22501,7 @@
             "L": 999,
             "XS": 999,
             "S": 999,
-            "M": 999
+            "M": 0
         }
     },
     {
@@ -24464,7 +24427,7 @@
     },
     {
         "id": 28386,
-        "title": "کفش تنیس مردانه اسیکس Asics Court FF3 Novak CLAY- سرمه ای",
+        "title": "کفش تنیس مردانه اسیکس -Asics Court FF3 Novak - CLAY- سرمه ای",
         "sku": "1041A362-961",
         "url": "https://www.opsarsport.com/urun/asics-court-ff-3-novak-toprak-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=28386",
@@ -26579,13 +26542,13 @@
         "our_url": "https://tennis24shop.com/?p=34720",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=34720",
         "our_price_lir": 2900,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "30": 0,
             "31": 0,
             "32": 0,
             "33": 0,
-            "34": 999
+            "34": 0
         }
     },
     {
@@ -28212,7 +28175,7 @@
     {
         "id": 41389,
         "title": "کفش تنیس زنانه اسیکس - Asics Court FF3 - مشکی/صورتی",
-        "sku": "1042A220-500 -",
+        "sku": "1042A220-500",
         "url": "https://www.meritspor.com.tr/asics-court-ff-3-kadin-tenis-ayakkabisi-indigo-fog-white",
         "our_url": "https://tennis24shop.com/?p=41389",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=41389",
@@ -29089,7 +29052,7 @@
     {
         "id": 42511,
         "title": "کفش تنیس زنانه اسیکس - Asics GEL-RESOLUTION X CLAY- بنفش",
-        "sku": "1042A277-500 -",
+        "sku": "1042A277-500",
         "url": "https://www.meritspor.com.tr/asics-gel-resolution-x-toprak-kort-clay-kadin-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=42511",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=42511",
@@ -29413,7 +29376,7 @@
             "42": 0,
             "41": 999,
             "40.5": 999,
-            "40": 0,
+            "40": 999,
             "45": 999,
             "43": 0,
             "45.5": 0
@@ -34065,7 +34028,7 @@
     {
         "id": 77227,
         "title": "کفش تنیس زنانه اسیکس – Asics GEL-RESOLUTION X CLAY  – سفید/نقرابی",
-        "sku": "1042A277-100-6",
+        "sku": "1042A277-100",
         "url": "https://www.asics.com.tr/gel-resolution-x-clay-2195",
         "our_url": "https://tennis24shop.com/?p=77227",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=77227",
@@ -34473,15 +34436,15 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-mavi-buz-beyazi-ts500/_/R-p-301723?mc=8882111&c=BEYAZ_MAV%C4%B0",
         "our_url": "https://tennis24shop.com/?p=78391",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78391",
-        "our_price_lir": 2190,
+        "our_price_lir": 1790,
         "our_stock_status": "instock",
         "our_sizes": {
             "سفید و آبی": 0,
             "40": 5,
-            "41": 5,
+            "41": 0,
             "42": 5,
             "43": 5,
-            "44": 5,
+            "44": 0,
             "45": 5,
             "46": 0
         }
@@ -35052,6 +35015,48 @@
         "secondary_url": "https://www.meritspor.com.tr/nike-vapor-pro-3-erkek-toprak-kort-clay-tenis-ayakkabisi-smokey-blue-"
     },
     {
+        "id": 81379,
+        "title": "کفش تنیس زنانه اسیکس مدل GEL-RESOLUTION X CLAY – آبی/صورتی/سفید",
+        "sku": "1042A277-401",
+        "url": "https://www.tenisburada.com/asics-gel-resolution-x-kadin-toprak-kort-tenis-ayakkabisi-17786832043399",
+        "our_url": "https://tennis24shop.com/?p=81379",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81379",
+        "our_price_lir": 9190,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "36": 0,
+            "37": 99,
+            "38": 99,
+            "39": 99,
+            "40": 0,
+            "41": 0,
+            "37.5": 99,
+            "39.5": 99
+        },
+        "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-clay-kadin-tenis-ayakkabisi-1042a277-401/"
+    },
+    {
+        "id": 81393,
+        "title": "کفش تنیس زنانه اسیکس – Court FF 3 – Hard – سرخابی",
+        "sku": "1042A220-700",
+        "url": "https://www.tenisburada.com/asics-court-ff-3-sert-kort-kadin-tenis-ayakkabisi",
+        "our_url": "https://tennis24shop.com/?p=81393",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81393",
+        "our_price_lir": 9990,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "37.5": 99,
+            "پیش‌فرض": 0,
+            "37": 99,
+            "38": 99,
+            "39": 99,
+            "40": 0,
+            "39.5": 99,
+            "41.5": 98
+        }
+    },
+    {
         "id": 81405,
         "title": "کفش تنیس مردانه اسیکس  Court FF 3 Novak  – سفید",
         "sku": "1041A522-966",
@@ -35082,7 +35087,7 @@
     },
     {
         "id": 81430,
-        "title": "کفش تنیس مردانه اسیکس  Court FF 3 Novak – آبی",
+        "title": "کفش تنیس مردانه اسیکس – Court FF 3 Novak – Clay – آبی",
         "sku": "1041A521-965",
         "url": "https://www.tenisburada.com/asics-court-ff-3-novak-toprak-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=81430",
@@ -35108,6 +35113,26 @@
         }
     },
     {
+        "id": 81443,
+        "title": "کفش تنیس مردانه اسیکس  –COURT FF 3 NOVAK –Hard– آبی",
+        "sku": "1041A522-965",
+        "url": "https://www.tenisburada.com/asics-court-ff-3-novak-sert-kort-tenis-ayakkabisi",
+        "our_url": "https://tennis24shop.com/?p=81443",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81443",
+        "our_price_lir": 8999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "39": 99,
+            "39.5": 99,
+            "42.5": 99,
+            "43.5": 99,
+            "پیش‌فرض": 99,
+            "44": 99,
+            "44.5": 99
+        },
+        "secondary_url": "https://www.meritspor.com.tr/asics-court-ff-3-novak-erkek-tenis-ayakkabisi-tuna-bluesilver"
+    },
+    {
         "id": 81473,
         "title": "کفش تنیس مردانه اسیکس –  FF 3 Novak Djokovic – Hard – قرمز",
         "sku": "1041A363-961",
@@ -35131,6 +35156,24 @@
             "44.5": 999,
             "45": 999,
             "46": 0
+        }
+    },
+    {
+        "id": 81555,
+        "title": "دامن تنیس زنانه Decathlon TSkirt Dry Hip Ball – سبز",
+        "sku": "8968253",
+        "url": "https://www.decathlon.com.tr/p/tenis-etegi-kirik-beyaz-tskirt-dry-hip-ball/_/R-p-344617?mc=8968253&c=YEŞİL",
+        "our_url": "https://tennis24shop.com/?p=81555",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81555",
+        "our_price_lir": 640,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 5,
+            "XS": 5,
+            "S": 5,
+            "M": 5,
+            "L": 5,
+            "XL": 5
         }
     },
     {
@@ -35799,7 +35842,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "مشکی": 999,
-            "S": 999,
+            "S": 0,
             "L": 999,
             "XS": 999,
             "M": 0
@@ -35959,7 +36002,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 999,
-            "38": 999,
+            "38": 0,
             "39": 999,
             "40": 999,
             "35.5": 0,
@@ -35984,7 +36027,7 @@
             "پیش‌فرض": 999,
             "36.5": 999,
             "37.5": 999,
-            "38": 999,
+            "38": 0,
             "38.5": 999,
             "39": 999,
             "40": 999,
@@ -36272,5 +36315,107 @@
         "our_price_lir": 800,
         "our_stock_status": "instock",
         "our_sizes": []
+    },
+    {
+        "id": 85200,
+        "title": "کفش تنیس زنانه اسیکس مدل COURT FF 3 – صورتی",
+        "sku": "1042A220-701",
+        "url": "https://www.asics.com.tr/court-ff-3-1570",
+        "our_url": "https://tennis24shop.com/?p=85200",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=85200",
+        "our_price_lir": 11000,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "35.5": 99,
+            "36": 0,
+            "37": 0,
+            "37.5": 99,
+            "38": 0,
+            "39": 99,
+            "39.5": 99,
+            "40": 99,
+            "40.5": 0,
+            "41.5": 99,
+            "42": 99,
+            "42.5": 0
+        },
+        "secondary_url": "https://www.raketci.com/urun/asics-court-ff-3-kadin-tenis-ayakkabisi-1042a220-701/"
+    },
+    {
+        "id": 85231,
+        "title": "کفش تنیس زنانه اسیکس  GEL RESOLUTION X  – سفید",
+        "sku": "1042A279-104",
+        "url": "https://www.raketci.com/urun/asics-gel-resolution-x-kadin-tenis-ayakkabisi-1042a279-104/",
+        "our_url": "https://tennis24shop.com/?p=85231",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=85231",
+        "our_price_lir": 9199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "37.5": 99,
+            "37": 99,
+            "38": 99,
+            "39": 99,
+            "39.5": 99
+        }
+    },
+    {
+        "id": 85255,
+        "title": "کفش تنیس زنانه اسیکس  GEL-RESOLUTION X  – آبی",
+        "sku": "1042A279-401",
+        "url": "https://www.raketci.com/urun/asics-gel-resolution-x-sert-kort-kadin-tenis-ayakkabisi-1042a279-401/",
+        "our_url": "https://tennis24shop.com/?p=85255",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=85255",
+        "our_price_lir": 9199,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "37.5": 99,
+            "38": 99,
+            "40": 99,
+            "37": 0,
+            "39": 0,
+            "39.5": 0
+        }
+    },
+    {
+        "id": 85288,
+        "title": "کفش تنیس زنانه –  ASICS  GEL-RESOLUTION X Hard– سفید/نقرابی",
+        "sku": "5405872",
+        "url": "https://www.tenisburada.com/asics-gel-resolution-x-kadin-sert-kort",
+        "our_url": "https://tennis24shop.com/?p=85288",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=85288",
+        "our_price_lir": 9190,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "36": 0,
+            "37": 99,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "37.5": 99
+        }
+    },
+    {
+        "id": 85325,
+        "title": "کفش تنیس زنانه اسیکس  Solution Speed FF 2 – بنفش/سفید",
+        "sku": "1042A136-104",
+        "url": "https://www.tenisburada.com/asics-solution-speed-ff-2-kadin-tenis-ayakkabisi-1042a136-104",
+        "our_url": "https://tennis24shop.com/?p=85325",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=85325",
+        "our_price_lir": 5499,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 99,
+            "40": 0,
+            "41": 0
+        }
     }
 ]
