@@ -299,14 +299,14 @@
         "our_url": "https://tennis24shop.com/?p=2239",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2239",
         "our_price_lir": 2090,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "36": 5,
-            "37": 5,
-            "38": 5,
-            "39": 5,
-            "40": 5,
-            "41": 5
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
         }
     },
     {
@@ -3754,12 +3754,12 @@
         "our_url": "https://tennis24shop.com/?p=73164",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73164",
         "our_price_lir": 990,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "149-159cm-سال13-12": 5,
-            "141-148cm-سال11-10": 5,
-            "131-140cm-سال9-8": 5,
-            "123-130cm-سال8-7": 5,
+            "149-159cm-سال13-12": 0,
+            "141-148cm-سال11-10": 0,
+            "131-140cm-سال9-8": 0,
+            "123-130cm-سال8-7": 0,
             "161-172cm-سال15-14": 0
         }
     },
@@ -3771,9 +3771,9 @@
         "our_url": "https://tennis24shop.com/?p=73179",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73179",
         "our_price_lir": 440,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
+            "35/38": 5,
             "39/42": 0,
             "43/46": 0
         }
@@ -4414,7 +4414,7 @@
             "S": 999,
             "M": 999,
             "L": 999,
-            "XL": 999,
+            "XL": 0,
             "2XL": 999
         }
     },
@@ -4735,7 +4735,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "صورتی روشن": 999,
-            "XS": 999,
+            "XS": 0,
             "S": 999,
             "M": 999
         }
@@ -5998,7 +5998,7 @@
             "42": 999,
             "42.5": 999,
             "43": 999,
-            "44": 0,
+            "44": 999,
             "45": 0,
             "38.5": 0,
             "44.5": 0
@@ -6041,7 +6041,7 @@
             "45": 999,
             "43": 999,
             "44": 999,
-            "41": 0,
+            "41": 999,
             "42": 999,
             "42.5": 999,
             "46": 999
@@ -6150,7 +6150,7 @@
         "url": "https://www.intersport.com.tr/urun/nike-big-low-erkek-beyaz-sneaker/355152-150/",
         "our_url": "https://tennis24shop.com/?p=48686",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=48686",
-        "our_price_lir": 7499,
+        "our_price_lir": 2659,
         "our_stock_status": "instock",
         "our_sizes": {
             "44.5": 0,
@@ -7236,7 +7236,7 @@
         "our_sizes": {
             "S": 999,
             "XL": 0,
-            "M": 999,
+            "M": 0,
             "L": 0,
             "246": 0,
             "XS": 0
@@ -10122,7 +10122,7 @@
             "41": 0,
             "41.5": 999,
             "44": 0,
-            "44.5": 999,
+            "44.5": 0,
             "45": 999,
             "7سال": 0,
             "8 سال": 0,
@@ -10149,7 +10149,7 @@
         "our_price_lir": 5250,
         "our_stock_status": "instock",
         "our_sizes": {
-            "39.5": 999,
+            "39.5": 0,
             "40": 999,
             "41": 999,
             "41.5": 999,
@@ -10964,7 +10964,7 @@
             "44": 999,
             "44.5": 999,
             "45": 0,
-            "46": 999,
+            "46": 0,
             "47": 0,
             "49": 0,
             "50.5": 0,
@@ -11382,10 +11382,10 @@
         "our_url": "https://tennis24shop.com/?p=65697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65697",
         "our_price_lir": 2699,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "M": 999,
-            "S": 999,
+            "M": 0,
+            "S": 0,
             "XL": 0,
             "XS": 0,
             "L": 0
@@ -11450,7 +11450,7 @@
         "our_url": "https://tennis24shop.com/?p=65770",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65770",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -11756,19 +11756,20 @@
         "our_url": "https://tennis24shop.com/?p=66371",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=66371",
         "our_price_lir": 10999,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "37": 0,
             "37.5": 0,
-            "38": 0,
-            "40": 0,
+            "38": 999,
+            "40": 999,
             "39": 0,
-            "39.5": 0,
+            "39.5": 999,
             "۳۶": 0,
             "42": 0,
             "35.5": 0,
             "40.5": 0,
-            "41.5": 0
+            "41.5": 0,
+            "375": 999
         },
         "secondary_url": "https://www.asics.com.tr/court-ff-3-1243"
     },
@@ -12831,7 +12832,7 @@
             "44": 999,
             "43": 0,
             "42.5": 0,
-            "42": 999,
+            "42": 0,
             "41": 0,
             "47.5": 0,
             "49.5": 0,
@@ -13302,7 +13303,7 @@
             "41.5": 999,
             "42.5": 0,
             "43.5": 0,
-            "45": 999
+            "45": 0
         },
         "secondary_url": "https://www.opsarsport.com/urun/asics-court-ff-3-novak-sert-kort-tenis-ayakkabisi-2"
     },
@@ -14994,7 +14995,7 @@
         "our_price_lir": 8999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 999,
+            "پیش‌فرض": 0,
             "41.5": 0,
             "42": 999,
             "42.5": 999,
@@ -15002,7 +15003,7 @@
             "44": 999,
             "44.5": 999,
             "45": 0,
-            "46": 999,
+            "46": 0,
             "40": 0,
             "47": 0,
             "48": 0,
@@ -15399,7 +15400,7 @@
         "our_url": "https://tennis24shop.com/?p=81219",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81219",
         "our_price_lir": 650,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -19289,9 +19290,9 @@
         "our_url": "https://tennis24shop.com/?p=14994",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14994",
         "our_price_lir": 3100,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 999,
             "۳۶": 0,
             "38": 0,
             "39": 0,
@@ -21076,10 +21077,10 @@
         "our_url": "https://tennis24shop.com/?p=21596",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=21596",
         "our_price_lir": 4999,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "35.5": 0,
-            "37": 999,
+            "37": 0,
             "37.5": 0,
             "39.5": 0,
             "40": 0,
@@ -21262,7 +21263,7 @@
         "our_url": "https://tennis24shop.com/?p=22094",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=22094",
         "our_price_lir": 650,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -25385,7 +25386,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "42.5": 0,
-            "44": 0,
+            "44": 999,
             "44.5": 0,
             "45.5": 999,
             "40": 0,
@@ -29714,7 +29715,8 @@
             "41": 0,
             "42": 0,
             "47": 0,
-            "46.5": 0
+            "46.5": 0,
+            "300": 0
         },
         "secondary_url": "https://www.tenisshop.com/asigel-resolution-x-4078"
     },
@@ -31024,7 +31026,7 @@
         "our_url": "https://tennis24shop.com/?p=45631",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=45631",
         "our_price_lir": 7799,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": [],
         "secondary_url": "https://www.spx.com.tr/asics-gel-resolution-x-clay-erkek-yesil-tenis-ayakkabisi-yesil-1041a485-300-yes-1/?srsltid=AfmBOooQVyvPRcxyM6TIwQGu-0RESKbZteADrru3mPIkVDAkUZzf4-bQ"
     },
@@ -31244,7 +31246,7 @@
             "40.5": 0,
             "41": 0,
             "42.5": 999,
-            "44": 999,
+            "44": 0,
             "45": 0,
             "46": 999,
             "44.5": 0,
@@ -33718,7 +33720,7 @@
         "our_url": "https://tennis24shop.com/?p=75569",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=75569",
         "our_price_lir": 800,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -34044,7 +34046,7 @@
         "our_price_lir": 4999,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 999,
+            "پیش‌فرض": 0,
             "35.5": 999,
             "36": 0,
             "37": 0,
@@ -34056,7 +34058,7 @@
             "40.5": 0,
             "41.5": 0,
             "42": 0,
-            "42.5": 999
+            "42.5": 0
         }
     },
     {
@@ -34072,7 +34074,7 @@
             "پیش‌فرض": 999,
             "36": 0,
             "37": 0,
-            "37.5": 999,
+            "37.5": 0,
             "38": 0,
             "39": 0,
             "39.5": 0,
@@ -34270,7 +34272,7 @@
             "پیش‌فرض": 999,
             "37": 0,
             "37.5": 999,
-            "38": 0,
+            "38": 999,
             "39.5": 999,
             "40": 999,
             "39": 0,
@@ -34442,7 +34444,7 @@
             "37.5": 999,
             "38": 999,
             "39": 999,
-            "39.5": 999,
+            "39.5": 0,
             "40": 999
         }
     },
@@ -34462,7 +34464,7 @@
             "40": 0,
             "40.5": 0,
             "41.5": 0,
-            "42": 999,
+            "42": 0,
             "42.5": 0,
             "43.5": 0,
             "44": 0,
@@ -34952,7 +34954,7 @@
             "36": 99,
             "36.5": 99,
             "37.5": 99,
-            "38": 99,
+            "38": 98,
             "38.5": 99,
             "39": 99,
             "40": 99,
@@ -35099,12 +35101,12 @@
         "our_price_lir": 7118,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 998,
+            "پیش‌فرض": 999,
             "41": 999,
             "42": 999,
             "43": 999,
             "44": 999,
-            "45": 998
+            "45": 999
         }
     },
     {
@@ -35253,18 +35255,18 @@
         "url": "https://www.tenisburada.com/asics-gel-resolution-x-kadin-toprak-kort-tenis-ayakkabisi-17786832043399",
         "our_url": "https://tennis24shop.com/?p=81379",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81379",
-        "our_price_lir": 9190,
+        "our_price_lir": 9199,
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
             "36": 0,
-            "37": 99,
-            "38": 99,
-            "39": 99,
+            "37": 999,
+            "38": 999,
+            "39": 999,
             "40": 0,
             "41": 0,
-            "37.5": 99,
-            "39.5": 99
+            "37.5": 999,
+            "39.5": 999
         },
         "secondary_url": "https://www.raketci.com/urun/asics-gel-resolution-x-clay-kadin-tenis-ayakkabisi-1042a277-401/"
     },
@@ -35278,14 +35280,15 @@
         "our_price_lir": 9990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "37.5": 99,
+            "37.5": 999,
             "پیش‌فرض": 0,
-            "37": 99,
-            "38": 99,
-            "39": 99,
+            "37": 999,
+            "38": 999,
+            "39": 999,
             "40": 0,
-            "39.5": 99,
-            "41.5": 98
+            "39.5": 999,
+            "41.5": 999,
+            "40.5": 0
         }
     },
     {
@@ -35351,16 +35354,22 @@
         "url": "https://www.tenisburada.com/asics-court-ff-3-novak-sert-kort-tenis-ayakkabisi",
         "our_url": "https://tennis24shop.com/?p=81443",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=81443",
-        "our_price_lir": 8999,
+        "our_price_lir": 9000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "39": 99,
-            "39.5": 99,
-            "42.5": 99,
-            "43.5": 99,
-            "پیش‌فرض": 99,
-            "44": 99,
-            "44.5": 99
+            "39": 999,
+            "39.5": 999,
+            "42.5": 999,
+            "43.5": 999,
+            "پیش‌فرض": 999,
+            "44": 999,
+            "44.5": 999,
+            "40": 0,
+            "42": 0,
+            "45": 0,
+            "46": 0,
+            "41.5": 0,
+            "40.5": 0
         },
         "secondary_url": "https://www.meritspor.com.tr/asics-court-ff-3-novak-erkek-tenis-ayakkabisi-tuna-bluesilver"
     },
@@ -36519,18 +36528,19 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "35.5": 99,
+            "35.5": 999,
             "36": 0,
             "37": 0,
-            "37.5": 99,
+            "37.5": 999,
             "38": 0,
-            "39": 99,
-            "39.5": 99,
-            "40": 99,
+            "39": 999,
+            "39.5": 999,
+            "40": 999,
             "40.5": 0,
-            "41.5": 99,
-            "42": 99,
-            "42.5": 0
+            "41.5": 999,
+            "42": 999,
+            "42.5": 0,
+            "375": 999
         },
         "secondary_url": "https://www.raketci.com/urun/asics-court-ff-3-kadin-tenis-ayakkabisi-1042a220-701/"
     },
@@ -36544,12 +36554,13 @@
         "our_price_lir": 9199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 99,
-            "37.5": 99,
-            "37": 99,
-            "38": 99,
-            "39": 99,
-            "39.5": 99
+            "پیش‌فرض": 999,
+            "37.5": 0,
+            "37": 999,
+            "38": 999,
+            "39": 999,
+            "39.5": 999,
+            "375": 999
         }
     },
     {
@@ -36563,12 +36574,13 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "پیش‌فرض": 0,
-            "37.5": 99,
-            "38": 99,
-            "40": 99,
+            "37.5": 0,
+            "38": 999,
+            "40": 999,
             "37": 0,
             "39": 0,
-            "39.5": 0
+            "39.5": 0,
+            "375": 999
         }
     },
     {
@@ -36583,12 +36595,13 @@
         "our_sizes": {
             "پیش‌فرض": 0,
             "36": 0,
-            "37": 99,
+            "37": 999,
             "38": 0,
             "39": 0,
             "40": 0,
             "41": 0,
-            "37.5": 99
+            "37.5": 999,
+            "39.5": 0
         }
     },
     {
@@ -36605,9 +36618,14 @@
             "36": 0,
             "37": 0,
             "38": 0,
-            "39": 99,
+            "39": 999,
             "40": 0,
-            "41": 0
+            "41": 0,
+            "42": 0,
+            "37.5": 0,
+            "39.5": 0,
+            "40.5": 0,
+            "41.5": 0
         }
     },
     {
