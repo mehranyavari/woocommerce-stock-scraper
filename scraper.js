@@ -1595,6 +1595,212 @@ async function scrapeCourtmax(browser, url) {
     }
 }
 
+// ==========================================
+// 👟 اسکرپر مخصوص SPX (Akinon)
+// صفحات محصول ?format=json می‌دهند. موجودی هر سایز در
+// variants[attribute_key=integration_first_size].options[].product.stock است.
+// سایزهایی که SPX عرضه نمی‌کند در خروجی نمی‌آیند؛ سایز تمام‌شده ۰ است.
+// ==========================================
+function parseSpxJson(text) {
+    if (!text || typeof text !== 'string') return null;
+    const cleaned = text.replace(/^\uFEFF/, '').trim();
+    let data;
+    try {
+        data = JSON.parse(cleaned);
+    } catch (e) {
+        const start = cleaned.indexOf('{');
+        const end = cleaned.lastIndexOf('}');
+        if (start === -1 || end <= start) return null;
+        try {
+            data = JSON.parse(cleaned.slice(start, end + 1));
+        } catch (err) {
+            return null;
+        }
+    }
+    if (!data || !data.product || typeof data.product !== 'object') return null;
+
+    const variants = Array.isArray(data.variants) ? data.variants : [];
+    const sizeVariant = variants.find(v => v && v.attribute_key === 'integration_first_size')
+        || variants.find(v => {
+            if (!v) return false;
+            const key = String(v.attribute_key || '');
+            const name = String(v.attribute_name || '');
+            if (/color|renk/i.test(key) || /color|renk/i.test(name)) return false;
+            return /size|beden/i.test(key) || /size|beden/i.test(name);
+        });
+
+    const options = sizeVariant && Array.isArray(sizeVariant.options) ? sizeVariant.options : [];
+    const stocks = {};
+
+    const quantityOf = (option) => {
+        const product = (option && option.product) || {};
+        const raw = product.stock;
+        if (raw !== undefined && raw !== null && String(raw).trim() !== '') {
+            const qty = parseInt(raw, 10);
+            if (!isNaN(qty)) return qty > 0 ? qty : 0;
+        }
+        return option && option.in_stock ? 1 : 0;
+    };
+
+    if (options.length) {
+        options.forEach(option => {
+            const label = String((option && (option.label || option.value)) || '').trim();
+            if (!label) return;
+            stocks[label] = Math.max(stocks[label] || 0, quantityOf(option));
+        });
+        if (!Object.keys(stocks).length) return null;
+    } else {
+        stocks['Standart'] = quantityOf({ in_stock: data.product.in_stock || data.in_stock, product: data.product });
+    }
+
+    const product = data.product;
+    const hasRetail = product.retail_price !== undefined && product.retail_price !== null && product.retail_price !== '';
+    const hasCurrent = product.price !== undefined && product.price !== null && product.price !== '';
+    let regularPrice = null;
+    let offerPrice = null;
+    if (hasRetail && hasCurrent) {
+        regularPrice = product.retail_price;
+        offerPrice = product.price;
+    } else if (hasCurrent || hasRetail) {
+        regularPrice = hasCurrent ? product.price : product.retail_price;
+    } else if (options.length) {
+        for (const option of options) {
+            const variantProduct = option && option.product;
+            if (!variantProduct) continue;
+            if (variantProduct.retail_price || variantProduct.price) {
+                regularPrice = variantProduct.retail_price || variantProduct.price;
+                offerPrice = variantProduct.retail_price ? variantProduct.price : null;
+                break;
+            }
+        }
+    }
+
+    return { success: true, stocks, regularPrice, offerPrice, source: 'json' };
+}
+
+function extractSpxDom() {
+    const stocks = {};
+    const nodes = document.querySelectorAll('a.product__size-variant.js-variant');
+    nodes.forEach(anchor => {
+        const sizeEl = anchor.querySelector('.product__variant--size');
+        const label = (anchor.getAttribute('data-variant-value') || (sizeEl && sizeEl.textContent) || anchor.textContent || '').trim();
+        if (!label || label.length > 20) return;
+        const text = (anchor.textContent || '').toLowerCase();
+        const soldOut = anchor.classList.contains('disabled')
+            || anchor.getAttribute('aria-disabled') === 'true'
+            || text.includes('tükendi')
+            || text.includes('tukendi');
+        stocks[label] = Math.max(stocks[label] || 0, soldOut ? 0 : 1);
+    });
+
+    let regularPrice = null;
+    let offerPrice = null;
+    const scripts = document.querySelectorAll('script');
+    for (const script of scripts) {
+        const src = script.textContent || '';
+        if (!src.includes('unit_price')) continue;
+        const unit = src.match(/"unit_price"\s*:\s*([0-9]+(?:\.[0-9]+)?)/);
+        const sale = src.match(/"unit_sale_price"\s*:\s*([0-9]+(?:\.[0-9]+)?)/);
+        if (unit) {
+            regularPrice = unit[1];
+            offerPrice = sale ? sale[1] : null;
+            break;
+        }
+    }
+    if (!regularPrice) {
+        const priceEl = document.querySelector('.product__price');
+        if (priceEl && priceEl.textContent.trim()) regularPrice = priceEl.textContent.trim();
+    }
+    if (!regularPrice) {
+        const og = document.querySelector('meta[property="og:price:amount"]');
+        if (og && og.content) regularPrice = og.content;
+    }
+
+    if (!Object.keys(stocks).length) {
+        const cartBtn = document.querySelector('.off-stock button, button.pz-button__add-to-cart');
+        if (cartBtn) {
+            const text = (cartBtn.textContent || '').toLowerCase();
+            const soldOut = cartBtn.disabled || text.includes('tükendi') || text.includes('tukendi');
+            stocks['Standart'] = soldOut ? 0 : 1;
+        }
+    }
+
+    if (!Object.keys(stocks).length) return { success: false, error: 'SPX size variants not found' };
+    return { success: true, stocks, regularPrice, offerPrice, source: 'dom' };
+}
+
+async function scrapeSpx(browser, url) {
+    const page = await browser.newPage();
+    try {
+        if (useProxy) {
+            await page.authenticate({ username: 'mehran', password: 'mehran75' });
+        }
+
+        const productUrl = new URL(url);
+        productUrl.hash = '';
+
+        await page.goto(productUrl.toString(), { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+        const title = ((await page.title()) || '').toLowerCase();
+        if (title.includes('just a moment') || title.includes('attention required') || title.includes('cloudflare') || title.includes('bir dakika') || title.includes('lütfen')) {
+            await waitForCloudflare(page, 30000);
+        }
+
+        const hostname = (() => {
+            try { return new URL(page.url()).hostname; } catch (e) { return productUrl.hostname; }
+        })();
+
+        const fetched = await page.evaluate(async () => {
+            try {
+                const target = new URL(location.href);
+                target.searchParams.set('format', 'json');
+                const response = await fetch(target.toString(), {
+                    credentials: 'same-origin',
+                    headers: { 'Accept': 'application/json' }
+                });
+                return { ok: response.ok, status: response.status, text: await response.text() };
+            } catch (error) {
+                return { ok: false, status: 0, error: String(error), text: '' };
+            }
+        });
+
+        let result = (fetched && fetched.ok) ? parseSpxJson(fetched.text) : null;
+        if (!result || !result.success) {
+            const dom = await page.evaluate(extractSpxDom);
+            if (dom && dom.success) result = dom;
+        }
+
+        if (!result || !result.success) {
+            const reason = (fetched && (fetched.error || (fetched.ok ? 'unrecognized product JSON' : ('HTTP ' + fetched.status)))) || 'product data not found';
+            return { success: false, error: 'SPX Error: ' + reason };
+        }
+
+        const normalizedStocks = {};
+        for (const [rawSize, stock] of Object.entries(result.stocks || {})) {
+            const normalized = normalizeSize(rawSize, hostname);
+            if (!normalized) continue;
+            const qty = Number(stock);
+            normalizedStocks[normalized] = Math.max(normalizedStocks[normalized] || 0, Number.isFinite(qty) && qty > 0 ? qty : 0);
+        }
+
+        if (!Object.keys(normalizedStocks).length) {
+            return { success: false, error: 'SPX Error: no sizes found' };
+        }
+
+        const regular = parseTurkishPrice(result.regularPrice);
+        let offer = parseTurkishPrice(result.offerPrice);
+        if (offer && regular && offer >= regular) offer = null;
+        if (!regular) return { success: false, error: 'SPX Error: price not found' };
+
+        console.log(`  ✅ SPX URL Scraped (${result.source || 'json'}): Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+    } catch (error) {
+        return { success: false, error: 'SPX Error: ' + error.message };
+    } finally {
+        try { await page.close(); } catch (e) {}
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     const reg = typeof scrapeData.regular_price === 'number' ? scrapeData.regular_price : parseFloat(scrapeData.regular_price) || 0;
@@ -1651,6 +1857,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('courtmax.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (Courtmax Engine)`);
             primaryData = await scrapeCourtmax(browser, product.url);
+        } else if (product.url.toLowerCase().includes('spx.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (SPX Engine)`);
+            primaryData = await scrapeSpx(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -1696,6 +1905,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('courtmax.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (Courtmax Engine)`);
             secondaryData = await scrapeCourtmax(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('spx.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (SPX Engine)`);
+            secondaryData = await scrapeSpx(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
@@ -1880,7 +2092,17 @@ async function main() {
     console.log('🎉 تمام سایت‌ها با موفقیت پردازش شدند.');
 }
 
-main().catch(error => {
-    console.error('Fatal error:', error);
-    process.exit(1);
-});
+if (require.main === module) {
+    main().catch(error => {
+        console.error('Fatal error:', error);
+        process.exit(1);
+    });
+}
+
+module.exports = {
+    scrapeSpx,
+    parseSpxJson,
+    extractSpxDom,
+    normalizeSize,
+    parseTurkishPrice
+};
