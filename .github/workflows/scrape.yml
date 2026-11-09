@@ -5,12 +5,21 @@ on:
   schedule:
     - cron: '0 */6 * * *'
   
-  # امکان اجرای دستی
+  # امکان اجرای دستی. only_domain خالی = همان رفتار کامل زمان‌بندی‌شده
   workflow_dispatch:
+    inputs:
+      only_domain:
+        description: 'Only this supplier domain, e.g. spx.com.tr. Leave empty to scrape all products.'
+        required: false
+        default: ''
+        type: string
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    env:
+      # Scheduled runs have no inputs; an empty value keeps the full scrape.
+      ONLY_DOMAIN: ${{ github.event_name == 'workflow_dispatch' && inputs.only_domain || '' }}
     
     steps:
       - name: Checkout repository
@@ -41,7 +50,12 @@ jobs:
           git add stock-data*.json
           
           # کامیت کردن فایل‌ها در صورت وجود تغییرات
-          git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Update stock data for all sites - $(date '+%Y-%m-%d %H:%M:%S')"
+          if [ -n "$ONLY_DOMAIN" ]; then
+            COMMIT_MSG="🔄 Update stock data for ${ONLY_DOMAIN} - $(date '+%Y-%m-%d %H:%M:%S')"
+          else
+            COMMIT_MSG="🔄 Update stock data for all sites - $(date '+%Y-%m-%d %H:%M:%S')"
+          fi
+          git diff --quiet && git diff --staged --quiet || git commit -m "$COMMIT_MSG"
           
           # پوش کردن به مخزن
           git pull --rebase --autostash origin main

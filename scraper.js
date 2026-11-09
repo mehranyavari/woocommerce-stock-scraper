@@ -23,6 +23,69 @@ function getArgs() {
     return args;
 }
 
+// ONLY_DOMAIN limits a manual run to one supplier. Empty means every product.
+// Matching is on the source hostname (primary or secondary), not the store URL.
+function normalizeDomainFilter(raw) {
+    const value = String(raw || '').trim().toLowerCase();
+    if (!value) return '';
+    let host = value;
+    if (host.includes('://')) {
+        try {
+            host = new URL(host).hostname.toLowerCase();
+        } catch (e) {
+            return '';
+        }
+    }
+    host = host.split('/')[0].split('?')[0].split('#')[0].replace(/^\.+/, '').replace(/\.$/, '');
+    if (host.startsWith('www.')) host = host.slice(4);
+    return host;
+}
+
+function hostnameOf(rawUrl) {
+    try {
+        return new URL(String(rawUrl)).hostname.toLowerCase();
+    } catch (e) {
+        return '';
+    }
+}
+
+function urlMatchesDomain(rawUrl, domain) {
+    const host = hostnameOf(rawUrl);
+    if (!host || !domain) return false;
+    const bare = host.startsWith('www.') ? host.slice(4) : host;
+    return bare === domain || bare.endsWith('.' + domain);
+}
+
+function productMatchesDomain(product, domain) {
+    if (!domain) return true;
+    if (!product) return false;
+    return urlMatchesDomain(product.url, domain) || urlMatchesDomain(product.secondary_url, domain);
+}
+
+function selectProductsForRun(products, options = {}) {
+    let selected = Array.isArray(products) ? products.slice() : [];
+    if (options.targetIds) {
+        const idSet = new Set(options.targetIds.map(id => String(id).trim()));
+        selected = selected.filter(p => idSet.has(String(p.id)));
+    }
+    const onlyDomain = normalizeDomainFilter(options.onlyDomain);
+    if (onlyDomain) {
+        selected = selected.filter(p => productMatchesDomain(p, onlyDomain));
+    }
+    return selected;
+}
+
+function applyScrapedProduct(results, product, result) {
+    const id = product.id;
+    const isSkipped = result && result.error && String(result.error).includes('Skipped');
+    if (isSkipped) {
+        if (results[id]) delete results[id];
+        return 'skipped';
+    }
+    results[id] = result;
+    return result && result.success ? 'success' : 'fail';
+}
+
 function normalizeSize(rawSize, hostname) {
     const trimmed = String(rawSize).trim();
     if (!trimmed) return null;
@@ -1988,6 +2051,7 @@ async function main() {
     const args = getArgs();
     useProxy = args.proxy !== 'false' && !process.argv.includes('--no-proxy');
     const targetIds = args.ids ? args.ids.split(',').map(id => id.trim()) : null;
+    const onlyDomain = normalizeDomainFilter(process.env.ONLY_DOMAIN);
 
     const files = fs.readdirSync('.').filter(fn => fn.startsWith('products_') && fn.endsWith('.json'));
 
@@ -1997,6 +2061,7 @@ async function main() {
     }
 
     console.log(`🔌 Proxy Enabled: ${useProxy}`);
+    if (onlyDomain) console.log(`🎯 Only domain: ${onlyDomain}`);
 
     const launchArgs = [];
     if (useProxy) {
@@ -2043,9 +2108,17 @@ async function main() {
             continue;
         }
 
-        if (targetIds) {
-            products = products.filter(p => targetIds.includes(String(p.id)));
-            if (products.length === 0) continue;
+        const selected = selectProductsForRun(products, { targetIds, onlyDomain });
+        const filtering = Boolean(targetIds) || Boolean(onlyDomain);
+        if (filtering && selected.length === 0) {
+            if (onlyDomain) {
+                console.log(`⏭️ No ${onlyDomain} products in ${file}; leaving ${outputFile} unchanged.`);
+            }
+            continue;
+        }
+        products = selected;
+        if (onlyDomain) {
+            console.log(`🎯 ${products.length} products match ${onlyDomain}. Other stock records stay as they are.`);
         }
 
         const results = { ...currentData };
@@ -2061,19 +2134,16 @@ async function main() {
 
             const chunkPromises = chunk.map(async (product) => {
                 const result = await processProduct(browser, product);
-                const isSkipped = result.error && result.error.toString().includes('Skipped');
+                const status = applyScrapedProduct(results, product, result);
 
-                if (isSkipped) {
-                    if (results[product.id]) delete results[product.id];
+                if (status === 'skipped') {
                     console.log(`⏩ Skipped & Removed: ${product.id}`);
                     skippedCount++;
+                } else if (status === 'success') {
+                    successCount++;
                 } else {
-                    results[product.id] = result;
-                    if (result.success) successCount++;
-                    else {
-                        failCount++;
-                        console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
-                    }
+                    failCount++;
+                    console.log(`⚠️ Failed: ${product.id} -> ${result.error}`);
                 }
             });
 
@@ -2104,5 +2174,9 @@ module.exports = {
     parseSpxJson,
     extractSpxDom,
     normalizeSize,
-    parseTurkishPrice
+    parseTurkishPrice,
+    normalizeDomainFilter,
+    productMatchesDomain,
+    selectProductsForRun,
+    applyScrapedProduct
 };
