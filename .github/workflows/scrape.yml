@@ -20,6 +20,8 @@ jobs:
     env:
       # Scheduled runs have no inputs; an empty value keeps the full scrape.
       ONLY_DOMAIN: ${{ github.event_name == 'workflow_dispatch' && inputs.only_domain || '' }}
+      # Optional. Used only for spx.com.tr. Example: http://USER:PASS@VPS:3128 or socks5://USER:PASS@VPS:1080
+      SPX_PROXY_URL: ${{ secrets.SPX_PROXY_URL }}
     
     steps:
       - name: Checkout repository

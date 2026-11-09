@@ -1,4 +1,8 @@
 const fs = require('fs');
+const http = require('http');
+const https = require('https');
+const net = require('net');
+const tls = require('tls');
 const { connect } = require('puppeteer-real-browser');
 
 let useProxy = true;
@@ -1792,7 +1796,425 @@ function extractSpxDom() {
     return { success: true, stocks, regularPrice, offerPrice, source: 'dom' };
 }
 
+const SPX_HEADER_SETS = [
+    {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Accept': 'application/json,text/html;q=0.8,*/*;q=0.5',
+        'Accept-Language': 'tr-TR,tr;q=0.9,en;q=0.8'
+    },
+    {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+        'Accept': '*/*',
+        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7'
+    }
+];
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function isSpxNetworkError(error) {
+    const msg = String((error && (error.code || error.message)) || error || '');
+    return /timed out|timeout|ETIMEDOUT|ECONNRESET|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|EHOSTUNREACH|ENETUNREACH|ECONNABORTED|socket hang up|ERR_TIMED_OUT|EPIPE/i.test(msg);
+}
+
+function decodeProxyPart(value) {
+    try { return decodeURIComponent(value || ''); } catch (e) { return value || ''; }
+}
+
+function spxSetupHint(error) {
+    if (String(process.env.SPX_PROXY_URL || '').trim()) return '';
+    if (!isSpxNetworkError(error)) return '';
+    return ' Set repository secret SPX_PROXY_URL to a proxy that can reach www.spx.com.tr (http://USER:PASS@HOST:PORT or socks5://USER:PASS@HOST:PORT).';
+}
+
+function onceWithTimeout(emitter, event, timeoutMs, message) {
+    return new Promise((resolve, reject) => {
+        let settled = false;
+        const timer = setTimeout(() => {
+            if (settled) return;
+            settled = true;
+            if (emitter.destroy) emitter.destroy();
+            reject(Object.assign(new Error(message), { code: 'ETIMEDOUT' }));
+        }, timeoutMs);
+        const finish = (err) => {
+            if (settled) return;
+            settled = true;
+            clearTimeout(timer);
+            if (err) reject(err);
+            else resolve();
+        };
+        emitter.once(event, () => finish());
+        emitter.once('error', finish);
+    });
+}
+
+function createByteReader(socket) {
+    let buffer = Buffer.alloc(0);
+    const waiters = [];
+    const onData = (chunk) => {
+        buffer = Buffer.concat([buffer, chunk]);
+        while (waiters.length && buffer.length >= waiters[0].n) {
+            const waiter = waiters.shift();
+            const out = buffer.slice(0, waiter.n);
+            buffer = buffer.slice(waiter.n);
+            waiter.resolve(out);
+        }
+    };
+    const onError = (err) => {
+        waiters.splice(0).forEach(waiter => waiter.reject(err));
+    };
+    socket.on('data', onData);
+    socket.on('error', onError);
+    return {
+        read(n) {
+            if (buffer.length >= n) {
+                const out = buffer.slice(0, n);
+                buffer = buffer.slice(n);
+                return Promise.resolve(out);
+            }
+            return new Promise((resolve, reject) => waiters.push({ n, resolve, reject }));
+        },
+        detach() {
+            socket.removeListener('data', onData);
+            socket.removeListener('error', onError);
+            if (buffer.length) socket.unshift(buffer);
+            buffer = Buffer.alloc(0);
+        }
+    };
+}
+
+function httpConnect(proxy, host, port, timeoutMs) {
+    return new Promise((resolve, reject) => {
+        const secureProxy = proxy.protocol === 'https:';
+        const headers = { Host: host + ':' + port };
+        const user = decodeProxyPart(proxy.username);
+        if (user) {
+            const pass = decodeProxyPart(proxy.password);
+            headers['Proxy-Authorization'] = 'Basic ' + Buffer.from(user + ':' + pass).toString('base64');
+        }
+        const req = (secureProxy ? https : http).request({
+            host: proxy.hostname,
+            port: proxy.port || (secureProxy ? 443 : 80),
+            method: 'CONNECT',
+            path: host + ':' + port,
+            headers,
+            timeout: timeoutMs
+        });
+        req.once('connect', (res, socket) => {
+            if (res.statusCode !== 200) {
+                socket.destroy();
+                reject(new Error('SPX proxy CONNECT failed: HTTP ' + res.statusCode));
+                return;
+            }
+            socket.resume();
+            resolve(socket);
+        });
+        req.once('timeout', () => req.destroy(Object.assign(new Error('SPX proxy timed out'), { code: 'ETIMEDOUT' })));
+        req.once('error', reject);
+        req.end();
+    });
+}
+
+async function socks5Connect(proxy, host, port, timeoutMs) {
+    const socket = net.connect({ host: proxy.hostname, port: Number(proxy.port || 1080) });
+    const timer = setTimeout(() => {
+        socket.destroy(Object.assign(new Error('SPX proxy timed out'), { code: 'ETIMEDOUT' }));
+    }, timeoutMs);
+    try {
+        await onceWithTimeout(socket, 'connect', timeoutMs, 'SPX proxy timed out');
+        const reader = createByteReader(socket);
+        const user = decodeProxyPart(proxy.username);
+        const pass = decodeProxyPart(proxy.password);
+        socket.write(user ? Buffer.from([0x05, 0x01, 0x02]) : Buffer.from([0x05, 0x01, 0x00]));
+        const greeting = await reader.read(2);
+        if (greeting[0] !== 0x05) throw new Error('SPX proxy is not SOCKS5');
+        if (greeting[1] === 0x02) {
+            const userBuf = Buffer.from(user);
+            const passBuf = Buffer.from(pass);
+            socket.write(Buffer.concat([Buffer.from([0x01, userBuf.length]), userBuf, Buffer.from([passBuf.length]), passBuf]));
+            const auth = await reader.read(2);
+            if (auth[1] !== 0x00) throw new Error('SPX proxy authentication failed');
+        } else if (greeting[1] !== 0x00) {
+            throw new Error('SPX proxy has no supported auth method');
+        }
+        const hostBuf = Buffer.from(host);
+        const request = Buffer.alloc(7 + hostBuf.length);
+        request[0] = 0x05;
+        request[1] = 0x01;
+        request[2] = 0x00;
+        request[3] = 0x03;
+        request[4] = hostBuf.length;
+        hostBuf.copy(request, 5);
+        request.writeUInt16BE(port, 5 + hostBuf.length);
+        socket.write(request);
+        const head = await reader.read(4);
+        if (head[1] !== 0x00) throw new Error('SPX proxy CONNECT failed: SOCKS ' + head[1]);
+        if (head[3] === 0x01) await reader.read(6);
+        else if (head[3] === 0x04) await reader.read(18);
+        else if (head[3] === 0x03) {
+            const len = (await reader.read(1))[0];
+            await reader.read(len + 2);
+        } else {
+            throw new Error('SPX proxy returned an unknown address');
+        }
+        reader.detach();
+        return socket;
+    } catch (error) {
+        socket.destroy();
+        throw error;
+    } finally {
+        clearTimeout(timer);
+    }
+}
+
+function tlsWrap(socket, servername, timeoutMs) {
+    return new Promise((resolve, reject) => {
+        const tlsSocket = tls.connect({ socket, servername });
+        const timer = setTimeout(() => {
+            tlsSocket.destroy();
+            reject(Object.assign(new Error('SPX TLS timed out'), { code: 'ETIMEDOUT' }));
+        }, timeoutMs);
+        tlsSocket.once('secureConnect', () => { clearTimeout(timer); resolve(tlsSocket); });
+        tlsSocket.once('error', (err) => { clearTimeout(timer); reject(err); });
+    });
+}
+
+function readHttpResponse(socket, timeoutMs) {
+    return new Promise((resolve, reject) => {
+        const chunks = [];
+        let done = false;
+        const timer = setTimeout(() => finish(Object.assign(new Error('SPX request timed out'), { code: 'ETIMEDOUT' })), timeoutMs);
+        const finish = (err, value) => {
+            if (done) return;
+            done = true;
+            clearTimeout(timer);
+            socket.removeListener('data', onData);
+            socket.removeListener('end', onEnd);
+            socket.removeListener('error', onError);
+            if (err) {
+                socket.destroy();
+                reject(err);
+            } else {
+                socket.destroy();
+                resolve(value);
+            }
+        };
+        const onError = (err) => finish(err);
+        const onEnd = () => parse(true);
+        const onData = (chunk) => { chunks.push(chunk); parse(false); };
+        socket.on('data', onData);
+        socket.on('end', onEnd);
+        socket.on('error', onError);
+
+        function parse(ended) {
+            if (done) return;
+            const buf = Buffer.concat(chunks);
+            const sep = buf.indexOf('\r\n\r\n');
+            if (sep === -1) {
+                if (ended) finish(new Error('SPX response ended before headers'));
+                return;
+            }
+            const headerText = buf.slice(0, sep).toString('utf8');
+            const lines = headerText.split('\r\n');
+            const status = parseInt((lines[0] || '').split(' ')[1], 10);
+            const headers = {};
+            lines.slice(1).forEach(line => {
+                const idx = line.indexOf(':');
+                if (idx === -1) return;
+                headers[line.slice(0, idx).trim().toLowerCase()] = line.slice(idx + 1).trim();
+            });
+            const rawBody = buf.slice(sep + 4);
+            let body = null;
+            if (/chunked/i.test(headers['transfer-encoding'] || '')) {
+                body = decodeChunked(rawBody);
+                if (!body && !ended) return;
+                if (!body) return finish(new Error('SPX response truncated'));
+            } else if (headers['content-length'] != null) {
+                const len = parseInt(headers['content-length'], 10);
+                if (rawBody.length < len) {
+                    if (ended) return finish(new Error('SPX response truncated'));
+                    return;
+                }
+                body = rawBody.slice(0, len);
+            } else if (ended) {
+                body = rawBody;
+            } else {
+                return;
+            }
+            finish(null, { status, headers, body: body.toString('utf8') });
+        }
+    });
+}
+
+function decodeChunked(buf) {
+    const parts = [];
+    let offset = 0;
+    while (offset < buf.length) {
+        const lineEnd = buf.indexOf('\r\n', offset);
+        if (lineEnd === -1) return null;
+        const size = parseInt(buf.slice(offset, lineEnd).toString('utf8').split(';')[0], 16);
+        if (isNaN(size)) return null;
+        if (size === 0) return Buffer.concat(parts);
+        const start = lineEnd + 2;
+        if (buf.length < start + size + 2) return null;
+        parts.push(buf.slice(start, start + size));
+        offset = start + size + 2;
+    }
+    return null;
+}
+
+function directGet(target, headers, timeoutMs) {
+    return new Promise((resolve, reject) => {
+        const req = https.request({
+            hostname: target.hostname,
+            port: target.port || 443,
+            path: (target.pathname || '/') + target.search,
+            method: 'GET',
+            headers: Object.assign({ Host: target.hostname, Connection: 'close', 'Accept-Encoding': 'identity' }, headers),
+            timeout: timeoutMs
+        }, (res) => {
+            const chunks = [];
+            res.on('data', chunk => chunks.push(chunk));
+            res.on('end', () => {
+                const headersOut = {};
+                Object.entries(res.headers).forEach(([key, value]) => {
+                    headersOut[key.toLowerCase()] = Array.isArray(value) ? value.join(', ') : String(value);
+                });
+                resolve({ status: res.statusCode, headers: headersOut, body: Buffer.concat(chunks).toString('utf8') });
+            });
+        });
+        req.once('timeout', () => req.destroy(Object.assign(new Error('SPX request timed out'), { code: 'ETIMEDOUT' })));
+        req.once('error', reject);
+        req.end();
+    });
+}
+
+async function proxiedGet(target, proxyUrl, headers, timeoutMs) {
+    let proxy;
+    try {
+        proxy = new URL(proxyUrl);
+    } catch (e) {
+        throw new Error('SPX_PROXY_URL is not a valid URL');
+    }
+    const kind = proxy.protocol.replace(':', '').toLowerCase();
+    const port = Number(target.port || 443);
+    let socket;
+    if (kind === 'http' || kind === 'https') {
+        socket = await httpConnect(proxy, target.hostname, port, timeoutMs);
+    } else if (kind.startsWith('socks')) {
+        socket = await socks5Connect(proxy, target.hostname, port, timeoutMs);
+    } else {
+        throw new Error('SPX_PROXY_URL must start with http:// or socks5://');
+    }
+    const tlsSocket = await tlsWrap(socket, target.hostname, timeoutMs);
+    const headerLines = Object.entries(Object.assign({
+        Host: target.hostname,
+        Connection: 'close',
+        'Accept-Encoding': 'identity'
+    }, headers)).map(([key, value]) => key + ': ' + value).join('\r\n');
+    const path = (target.pathname || '/') + target.search;
+    tlsSocket.write('GET ' + path + ' HTTP/1.1\r\n' + headerLines + '\r\n\r\n');
+    return readHttpResponse(tlsSocket, timeoutMs);
+}
+
+async function fetchSpxFollowing(startUrl, proxyUrl, headers, timeoutMs) {
+    let current = new URL(startUrl);
+    for (let hop = 0; hop < 5; hop++) {
+        const response = proxyUrl
+            ? await proxiedGet(current, proxyUrl, headers, timeoutMs)
+            : await directGet(current, headers, timeoutMs);
+        if ([301, 302, 303, 307, 308].includes(response.status) && response.headers.location) {
+            current = new URL(response.headers.location, current);
+            if (/spx\.com\.tr$/i.test(current.hostname.replace(/^www\./, ''))) {
+                current.searchParams.set('format', 'json');
+            }
+            continue;
+        }
+        if (response.status === 429 || response.status === 503) {
+            throw Object.assign(new Error('SPX HTTP ' + response.status), { code: 'ECONNRESET' });
+        }
+        return response;
+    }
+    throw new Error('SPX redirected too many times');
+}
+
+async function fetchSpxWithRetries(startUrl, proxyUrl) {
+    let lastError;
+    for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+            const response = await fetchSpxFollowing(startUrl, proxyUrl, SPX_HEADER_SETS[attempt % SPX_HEADER_SETS.length], 15000);
+            response.via = proxyUrl ? 'json-proxy' : 'json-direct';
+            return response;
+        } catch (error) {
+            lastError = error;
+            if (!isSpxNetworkError(error) || attempt === 2) break;
+            await sleep(1000 * (attempt + 1));
+        }
+    }
+    throw lastError;
+}
+
+async function fetchSpxProduct(rawUrl) {
+    const target = new URL(rawUrl);
+    target.hash = '';
+    target.searchParams.set('format', 'json');
+    const proxyUrl = String(process.env.SPX_PROXY_URL || '').trim();
+    if (proxyUrl) {
+        try {
+            return await fetchSpxWithRetries(target, proxyUrl);
+        } catch (proxyError) {
+            try {
+                return await fetchSpxWithRetries(target, '');
+            } catch (directError) {
+                throw new Error('proxy: ' + proxyError.message + ' | direct: ' + directError.message);
+            }
+        }
+    }
+    return fetchSpxWithRetries(target, '');
+}
+
+function finalizeSpxResult(result, hostname) {
+    const normalizedStocks = {};
+    for (const [rawSize, stock] of Object.entries(result.stocks || {})) {
+        const normalized = normalizeSize(rawSize, hostname);
+        if (!normalized) continue;
+        const qty = Number(stock);
+        normalizedStocks[normalized] = Math.max(normalizedStocks[normalized] || 0, Number.isFinite(qty) && qty > 0 ? qty : 0);
+    }
+    if (!Object.keys(normalizedStocks).length) {
+        return { success: false, error: 'SPX Error: no sizes found' };
+    }
+    const regular = parseTurkishPrice(result.regularPrice);
+    let offer = parseTurkishPrice(result.offerPrice);
+    if (offer && regular && offer >= regular) offer = null;
+    if (!regular) return { success: false, error: 'SPX Error: price not found' };
+    console.log(`  ✅ SPX URL Scraped (${result.source || 'json'}): Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+    return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+}
+
+async function scrapeSpxByFetch(url) {
+    let response;
+    try {
+        response = await fetchSpxProduct(url);
+    } catch (error) {
+        return { success: false, error: 'SPX Error: ' + error.message + spxSetupHint(error) };
+    }
+    const parsed = parseSpxJson(response.body);
+    if (!parsed || !parsed.success) return null;
+    parsed.source = response.via || 'json';
+    let hostname = 'www.spx.com.tr';
+    try { hostname = new URL(url).hostname; } catch (e) {}
+    return finalizeSpxResult(parsed, hostname);
+}
+
 async function scrapeSpx(browser, url) {
+    const fetched = await scrapeSpxByFetch(url);
+    if (fetched) return fetched;
+    if (!browser) {
+        return { success: false, error: 'SPX Error: product JSON was not returned' };
+    }
+
     const page = await browser.newPage();
     try {
         if (useProxy) {
@@ -1813,7 +2235,7 @@ async function scrapeSpx(browser, url) {
             try { return new URL(page.url()).hostname; } catch (e) { return productUrl.hostname; }
         })();
 
-        const fetched = await page.evaluate(async () => {
+        const pageFetch = await page.evaluate(async () => {
             try {
                 const target = new URL(location.href);
                 target.searchParams.set('format', 'json');
@@ -1827,36 +2249,18 @@ async function scrapeSpx(browser, url) {
             }
         });
 
-        let result = (fetched && fetched.ok) ? parseSpxJson(fetched.text) : null;
+        let result = (pageFetch && pageFetch.ok) ? parseSpxJson(pageFetch.text) : null;
         if (!result || !result.success) {
             const dom = await page.evaluate(extractSpxDom);
             if (dom && dom.success) result = dom;
         }
 
         if (!result || !result.success) {
-            const reason = (fetched && (fetched.error || (fetched.ok ? 'unrecognized product JSON' : ('HTTP ' + fetched.status)))) || 'product data not found';
+            const reason = (pageFetch && (pageFetch.error || (pageFetch.ok ? 'unrecognized product JSON' : ('HTTP ' + pageFetch.status)))) || 'product data not found';
             return { success: false, error: 'SPX Error: ' + reason };
         }
 
-        const normalizedStocks = {};
-        for (const [rawSize, stock] of Object.entries(result.stocks || {})) {
-            const normalized = normalizeSize(rawSize, hostname);
-            if (!normalized) continue;
-            const qty = Number(stock);
-            normalizedStocks[normalized] = Math.max(normalizedStocks[normalized] || 0, Number.isFinite(qty) && qty > 0 ? qty : 0);
-        }
-
-        if (!Object.keys(normalizedStocks).length) {
-            return { success: false, error: 'SPX Error: no sizes found' };
-        }
-
-        const regular = parseTurkishPrice(result.regularPrice);
-        let offer = parseTurkishPrice(result.offerPrice);
-        if (offer && regular && offer >= regular) offer = null;
-        if (!regular) return { success: false, error: 'SPX Error: price not found' };
-
-        console.log(`  ✅ SPX URL Scraped (${result.source || 'json'}): Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
-        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+        return finalizeSpxResult(result, hostname);
     } catch (error) {
         return { success: false, error: 'SPX Error: ' + error.message };
     } finally {
@@ -2178,5 +2582,6 @@ module.exports = {
     normalizeDomainFilter,
     productMatchesDomain,
     selectProductsForRun,
-    applyScrapedProduct
+    applyScrapedProduct,
+    spxSetupHint
 };
