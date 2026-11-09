@@ -7644,7 +7644,7 @@
     },
     "regular_price": 6000,
     "offer_price": null,
-    "lastUpdated": "2026-11-08T22:54:18.527Z"
+    "lastUpdated": "2026-11-09T06:58:48.881Z"
   },
   "34433": {
     "id": 34433,
@@ -11701,13 +11701,9 @@
   },
   "45631": {
     "id": 45631,
-    "success": true,
-    "stocks": {
-      "Standart": 1
-    },
-    "regular_price": 7799,
-    "offer_price": null,
-    "lastUpdated": "2026-11-09T00:15:21.109Z"
+    "success": false,
+    "error": "Primary: Raketci Error: Navigation timeout of 60000 ms exceeded | Secondary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/asics-gel-resolution-x-clay-erkek-yesil-tenis-ayakkabisi-yesil-1041a485-300-yes-1/?srsltid=AfmBOooQVyvPRcxyM6TIwQGu-0RESKbZteADrru3mPIkVDAkUZzf4-bQ",
+    "lastUpdated": "2026-11-09T06:59:39.487Z"
   },
   "45651": {
     "id": 45651,
@@ -19635,9 +19631,19 @@
   },
   "69778": {
     "id": 69778,
-    "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-08T22:42:30.858Z"
+    "success": true,
+    "stocks": {
+      "41": 3,
+      "42": 0,
+      "43": 2,
+      "44": 2,
+      "45": 0,
+      "42.5": 3,
+      "44.5": 2
+    },
+    "regular_price": 15000,
+    "offer_price": null,
+    "lastUpdated": "2026-11-09T06:58:26.517Z"
   },
   "70089": {
     "id": 70089,
@@ -21263,74 +21269,74 @@
   "75712": {
     "id": 75712,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:03.531Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-fire-clay-kadin-pembe-tenis-ayakkabisi-pembe-3wf30591088-153/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T06:59:49.573Z"
   },
   "75742": {
     "id": 75742,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:03.410Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-fire-kadin-tenis-ayakkabisi-renkli-3wf30032626-100/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T06:59:49.906Z"
   },
   "75763": {
     "id": 75763,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:03.282Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-3-kadin-beyaz-tenis-ayakkabisi-beyaz-3wg10316030-whit/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T06:59:49.892Z"
   },
   "75786": {
     "id": 75786,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:15.593Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-2-kadin-mavi-tenis-ayakkabisi-mavi-3we10333496-37/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:00.001Z"
   },
   "75808": {
     "id": 75808,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:15.853Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-3-gri-erkek-tenis-ayakkabi-gri-3mg10366031-12719-1/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:00.314Z"
   },
   "75831": {
     "id": 75831,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:13.683Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-fire-erkek-tenis-ayakkabisi-beyaz-3mf30102626-100/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:00.329Z"
   },
   "75876": {
     "id": 75876,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:28.873Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-2-erkek-tenis-ayakkabisi-mavi-3me10303496-37/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:10.442Z"
   },
   "75915": {
     "id": 75915,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:27.890Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-adv-pro-clay-erkek-yesil-tenis-ayakkabisi-yesil-3mf10974470-300-1/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:10.777Z"
   },
   "75941": {
     "id": 75941,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:25.982Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-adv-pro-erkek-tenis-ayakkabisi-renkli-3mf10274875-100-1/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:10.761Z"
   },
   "76008": {
     "id": 76008,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:41.149Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-clubhouse-pro-erkek-tenis-ayakkabisi-renkli-3md30034768-100/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:21.180Z"
   },
   "76029": {
     "id": 76029,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:41.005Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-fire-erkek-mavi-tenis-ayakkabi-mavi-3mf30105165-37/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:20.869Z"
   },
   "76050": {
     "id": 76050,
     "success": false,
-    "error": "Primary: Variable 'productDetailModel' NOT found | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-09T00:33:39.318Z"
+    "error": "Primary: SPX Error: net::ERR_TIMED_OUT at https://www.spx.com.tr/on-the-roger-pro-fire-erkek-tenis-ayakkabisi-pembe-3mf30103606-153/ | Secondary: No Secondary URL",
+    "lastUpdated": "2026-11-09T07:00:21.233Z"
   },
   "76333": {
     "id": 76333,
