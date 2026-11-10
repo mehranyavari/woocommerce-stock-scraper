@@ -310,12 +310,12 @@
         "our_price_lir": 2090,
         "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
-            "37": 0,
+            "36": 5,
+            "37": 5,
             "38": 5,
-            "39": 0,
-            "40": 0,
-            "41": 0
+            "39": 5,
+            "40": 5,
+            "41": 5
         }
     },
     {
@@ -3403,13 +3403,13 @@
         "our_url": "https://tennis24shop.com/?p=67375",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=67375",
         "our_price_lir": 870,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "L": 5,
-            "M": 5,
-            "S": 5,
-            "XL": 5,
-            "2XL": 5
+            "L": 0,
+            "M": 0,
+            "S": 0,
+            "XL": 0,
+            "2XL": 0
         }
     },
     {
@@ -9660,7 +9660,6 @@
         "our_price_lir": 6250,
         "our_stock_status": "instock",
         "our_sizes": {
-            "۳۶": 999,
             "37": 0,
             "38": 999,
             "39": 0,
@@ -9681,7 +9680,6 @@
         "our_price_lir": 7600,
         "our_stock_status": "instock",
         "our_sizes": {
-            "۳۶": 999,
             "37": 999,
             "38": 999,
             "39": 999,
@@ -9690,7 +9688,8 @@
             "35.5": 999,
             "37.5": 999,
             "39.5": 999,
-            "41.5": 999
+            "41.5": 999,
+            "36": 999
         },
         "secondary_url": "https://www.meritspor.com.tr/k-swiss-hypercourt-supreme-2-kadin-tenis-ayakkabisi-beyaz-mavi-pembe"
     },
@@ -10132,7 +10131,7 @@
             "41.5": 999,
             "44": 0,
             "44.5": 0,
-            "45": 999,
+            "45": 998,
             "7سال": 0,
             "8 سال": 0,
             "9سال": 0,
