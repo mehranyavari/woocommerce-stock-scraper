@@ -102,6 +102,10 @@ function normalizeSize(rawSize, hostname) {
         return (fractionMatch[1] + ' ' + fractionMatch[2].replace('-', '')).replace(/\s+/g, ' ');
     }
 
+    // Raketci slugs such as "us7.eur38" or "us6.5-eur37-5": the EU size follows "eur".
+    const euMatch = trimmed.match(/eur?[\s._-]*(\d{2})(?:[.,_-](\d))?(?!\d)/i);
+    if (euMatch) return euMatch[2] ? euMatch[1] + '.' + euMatch[2] : euMatch[1];
+
     const numbers = trimmed.match(/\b(\d+([.,]\d+)?)\b/g);
     if (numbers && numbers.length > 0) {
         const parsed = numbers.map(n => parseFloat(n.replace(',', '.')));
@@ -445,7 +449,9 @@ async function scrapeSportive(browser, url) {
             const stocks = {};
             const sizePattern = /^(?:XS|S|M|L|XL|XXL|XXXL|2XL|3XL|4XL|5XL|\d{2}(?:[.,]\d)?|\d{1,2}\s*[-/]\s*\d{1,2})$/i;
             for (const element of document.querySelectorAll('button, [role="button"], [role="radio"], [role="option"]')) {
-                const text = (element.getAttribute('aria-label') || element.getAttribute('data-size') || element.innerText || '').trim().replace(/\s+/g, ' ');
+                // Low-stock sizes carry a badge in the button text, e.g. "36,5 Son Ürün" / "38 Son 2 Ürün".
+                const text = (element.getAttribute('aria-label') || element.getAttribute('data-size') || element.innerText || '')
+                    .trim().replace(/\s+/g, ' ').replace(/\s*Son\s*(?:\d+\s*)?Ürün.*$/i, '').trim();
                 if (!sizePattern.test(text)) continue;
                 const classes = typeof element.className === 'string' ? element.className : '';
                 const soldOut = element.disabled || element.getAttribute('aria-disabled') === 'true' ||
