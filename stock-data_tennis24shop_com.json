@@ -13238,7 +13238,7 @@
     },
     "regular_price": 4999,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T01:30:20.654Z"
+    "lastUpdated": "2026-11-10T09:13:01.357Z"
   },
   "48580": {
     "id": 48580,
@@ -13258,9 +13258,19 @@
   },
   "48600": {
     "id": 48600,
-    "success": false,
-    "error": "Primary: Intersport Error: Execution context was destroyed, most likely because of a navigation. | Secondary: Sportive: no size availability was exposed; skipping price/stock update",
-    "lastUpdated": "2026-11-10T01:30:41.925Z"
+    "success": true,
+    "stocks": {
+      "41": 0,
+      "42": 0,
+      "43": 0,
+      "44": 0,
+      "45": 1,
+      "46": 0,
+      "42.5": 0
+    },
+    "regular_price": 4799,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:13:28.654Z"
   },
   "48624": {
     "id": 48624,
@@ -13303,7 +13313,7 @@
     },
     "regular_price": 2659,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T01:31:04.140Z"
+    "lastUpdated": "2026-11-10T09:13:27.722Z"
   },
   "48669": {
     "id": 48669,
@@ -13319,7 +13329,7 @@
     },
     "regular_price": 3359,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T01:31:02.928Z"
+    "lastUpdated": "2026-11-10T09:13:26.934Z"
   },
   "48686": {
     "id": 48686,
@@ -15691,7 +15701,7 @@
     },
     "regular_price": 4499,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T01:09:41.785Z"
+    "lastUpdated": "2026-11-10T09:13:07.804Z"
   },
   "54302": {
     "id": 54302,
@@ -17912,7 +17922,7 @@
     "stocks": {},
     "regular_price": 899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T01:14:57.971Z"
+    "lastUpdated": "2026-11-10T09:13:00.962Z"
   },
   "66103": {
     "id": 66103,
@@ -18855,8 +18865,8 @@
     "id": 68052,
     "success": true,
     "stocks": {
-      "36": 0,
-      "37": 0,
+      "36": 1,
+      "37": 1,
       "38": 1,
       "39": 1,
       "40": 1,
@@ -18868,7 +18878,7 @@
     },
     "regular_price": 9999,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T02:05:59.097Z"
+    "lastUpdated": "2026-11-10T09:13:54.046Z"
   },
   "68085": {
     "id": 68085,
@@ -19883,14 +19893,14 @@
       "38": 4,
       "39": 4,
       "40": 1,
-      "36.5": 0,
+      "36.5": 1,
       "37.5": 2,
       "38.5": 4,
       "40.5": 0
     },
     "regular_price": 7800,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T02:12:48.455Z"
+    "lastUpdated": "2026-11-10T09:13:47.646Z"
   },
   "72505": {
     "id": 72505,
@@ -20643,15 +20653,15 @@
     "id": 74572,
     "success": true,
     "stocks": {
-      "XS": 0,
-      "S": 0,
+      "S": 1,
       "M": 1,
-      "L": 0,
-      "XL": 0
+      "XL": 1,
+      "XS": 0,
+      "L": 0
     },
     "regular_price": 4999,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T03:55:57.928Z"
+    "lastUpdated": "2026-11-10T09:14:18.173Z"
   },
   "74589": {
     "id": 74589,
@@ -21110,7 +21120,7 @@
     },
     "regular_price": 4500,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T02:15:22.772Z"
+    "lastUpdated": "2026-11-10T09:13:49.417Z"
   },
   "75352": {
     "id": 75352,
@@ -22969,6 +22979,7 @@
     "success": true,
     "stocks": {
       "S": 1,
+      "M": 1,
       "L": 1,
       "XL": 1,
       "m": 1,
@@ -22978,7 +22989,7 @@
     },
     "regular_price": 3899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T02:18:20.749Z"
+    "lastUpdated": "2026-11-10T09:14:14.296Z"
   },
   "79827": {
     "id": 79827,
@@ -23827,7 +23838,7 @@
     },
     "regular_price": 8399,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:06:35.010Z"
+    "lastUpdated": "2026-11-10T09:14:02.578Z"
   },
   "84216": {
     "id": 84216,
@@ -23838,7 +23849,7 @@
     },
     "regular_price": 1649,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:06:45.788Z"
+    "lastUpdated": "2026-11-10T09:14:37.543Z"
   },
   "84230": {
     "id": 84230,
@@ -23852,33 +23863,40 @@
   },
   "84246": {
     "id": 84246,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:06:53.983Z"
+    "success": true,
+    "stocks": {
+      "S": 1
+    },
+    "regular_price": 3899,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:14:26.290Z"
   },
   "84264": {
     "id": 84264,
     "success": true,
     "stocks": {
       "S": 1,
+      "XL": 1,
       "XS": 0,
+      "M": 1,
+      "L": 1
+    },
+    "regular_price": 7199,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:14:42.873Z"
+  },
+  "84295": {
+    "id": 84295,
+    "success": true,
+    "stocks": {
+      "S": 1,
       "M": 1,
       "L": 1,
       "XL": 1
     },
     "regular_price": 7199,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:10.170Z"
-  },
-  "84295": {
-    "id": 84295,
-    "success": true,
-    "stocks": {
-      "S": 1
-    },
-    "regular_price": 7199,
-    "offer_price": null,
-    "lastUpdated": "2026-11-10T04:06:54.195Z"
+    "lastUpdated": "2026-11-10T09:14:51.284Z"
   },
   "84315": {
     "id": 84315,
@@ -23889,7 +23907,7 @@
     },
     "regular_price": 7899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:18.332Z"
+    "lastUpdated": "2026-11-10T09:14:51.094Z"
   },
   "84353": {
     "id": 84353,
@@ -23900,18 +23918,24 @@
     },
     "regular_price": 3899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:29.037Z"
+    "lastUpdated": "2026-11-10T09:15:02.143Z"
   },
   "84386": {
     "id": 84386,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:07:18.717Z"
+    "success": true,
+    "stocks": {
+      "M": 1,
+      "L": 1
+    },
+    "regular_price": 3899,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:15:10.561Z"
   },
   "84398": {
     "id": 84398,
     "success": true,
     "stocks": {
+      "XS": 1,
       "S": 1,
       "M": 1,
       "xs": 1,
@@ -23920,7 +23944,7 @@
     },
     "regular_price": 7899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:48.058Z"
+    "lastUpdated": "2026-11-10T09:15:21.352Z"
   },
   "84415": {
     "id": 84415,
@@ -23932,7 +23956,7 @@
     },
     "regular_price": 7899,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:37.299Z"
+    "lastUpdated": "2026-11-10T09:15:10.308Z"
   },
   "84436": {
     "id": 84436,
@@ -23940,11 +23964,12 @@
     "stocks": {
       "XS": 1,
       "S": 1,
-      "M": 1
+      "M": 1,
+      "L": 1
     },
     "regular_price": 5399,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:07:37.407Z"
+    "lastUpdated": "2026-11-10T09:15:29.682Z"
   },
   "84463": {
     "id": 84463,
@@ -23958,7 +23983,7 @@
     },
     "regular_price": 5199,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:07.838Z"
+    "lastUpdated": "2026-11-10T09:15:40.432Z"
   },
   "84482": {
     "id": 84482,
@@ -23966,29 +23991,35 @@
     "stocks": {
       "M": 1,
       "L": 1,
+      "XL": 1,
       "m": 1,
       "l": 1
     },
     "regular_price": 3599,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:07.407Z"
+    "lastUpdated": "2026-11-10T09:15:41.198Z"
   },
   "84501": {
     "id": 84501,
     "success": true,
     "stocks": {
+      "XS": 1,
+      "S": 1,
+      "M": 1,
       "L": 1,
       "xs": 1
     },
     "regular_price": 3299,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:07.660Z"
+    "lastUpdated": "2026-11-10T09:16:00.520Z"
   },
   "84519": {
     "id": 84519,
     "success": true,
     "stocks": {
       "XS": 1,
+      "S": 1,
+      "M": 1,
       "L": 1,
       "m": 1,
       "s": 1,
@@ -23996,25 +24027,40 @@
     },
     "regular_price": 3299,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:26.665Z"
+    "lastUpdated": "2026-11-10T09:16:00.475Z"
   },
   "84537": {
     "id": 84537,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:08:16.052Z"
+    "success": true,
+    "stocks": {
+      "S": 1,
+      "XL": 1
+    },
+    "regular_price": 3599,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:15:49.883Z"
   },
   "84571": {
     "id": 84571,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:08:16.266Z"
+    "success": true,
+    "stocks": {
+      "XL": 1
+    },
+    "regular_price": 5799,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:16:08.765Z"
   },
   "84587": {
     "id": 84587,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:08:34.845Z"
+    "success": true,
+    "stocks": {
+      "M": 1,
+      "L": 1,
+      "XL": 1
+    },
+    "regular_price": 5799,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:16:08.740Z"
   },
   "84604": {
     "id": 84604,
@@ -24026,32 +24072,33 @@
     "id": 84686,
     "success": true,
     "stocks": {
-      "5": 1,
-      "39": 1,
-      "40": 1,
-      "us7.eur38": 1,
-      "us8.eur39": 1
-    },
-    "regular_price": 7799,
-    "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:56.218Z"
-  },
-  "84708": {
-    "id": 84708,
-    "success": true,
-    "stocks": {
-      "5": 1,
+      "36": 1,
+      "38": 1,
       "39": 1,
       "40": 1,
       "36.5": 1,
       "37.5": 1,
       "38.5": 1,
-      "us7.eur38": 1,
-      "us8.eur39": 1
+      "35.5": 1
+    },
+    "regular_price": 7799,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:16:19.806Z"
+  },
+  "84708": {
+    "id": 84708,
+    "success": true,
+    "stocks": {
+      "38": 1,
+      "39": 1,
+      "40": 1,
+      "36.5": 1,
+      "37.5": 1,
+      "38.5": 1
     },
     "regular_price": 9999,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:56.105Z"
+    "lastUpdated": "2026-11-10T09:16:38.821Z"
   },
   "84742": {
     "id": 84742,
@@ -24062,15 +24109,15 @@
       "39": 1,
       "40": 1,
       "41": 0,
+      "36.5": 1,
       "37.5": 1,
       "38.5": 1,
       "35.5": 1,
-      "36.5": 2,
       "40.5": 2
     },
     "regular_price": 10000,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:08:55.163Z"
+    "lastUpdated": "2026-11-10T09:16:36.484Z"
   },
   "84764": {
     "id": 84764,
@@ -24089,111 +24136,119 @@
     },
     "regular_price": 9000,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:09:13.909Z"
+    "lastUpdated": "2026-11-10T09:16:38.407Z"
   },
   "84788": {
     "id": 84788,
     "success": true,
     "stocks": {
-      "5": 1,
-      "us10.eur44": 1
+      "42": 1,
+      "43": 1,
+      "44": 1,
+      "45": 1,
+      "44.5": 1,
+      "42.5": 1
     },
     "regular_price": 9599,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:09:14.936Z"
+    "lastUpdated": "2026-11-10T09:16:57.460Z"
   },
   "84808": {
     "id": 84808,
     "success": true,
     "stocks": {
-      "5": 1,
+      "40": 1,
+      "41": 1,
+      "42": 1,
       "43": 1,
+      "44": 1,
       "45": 1,
-      "us10.eur44": 1,
-      "us11.eur45": 1,
-      "us12.eur46": 1
+      "46": 1,
+      "44.5": 1,
+      "42.5": 1,
+      "45.5": 1
     },
     "regular_price": 7699,
     "offer_price": null,
-    "lastUpdated": "2026-11-10T04:09:15.935Z"
+    "lastUpdated": "2026-11-10T09:16:58.455Z"
   },
   "84926": {
     "id": 84926,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:26.074Z"
+    "lastUpdated": "2026-11-10T09:16:47.646Z"
   },
   "84934": {
     "id": 84934,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:26.225Z"
+    "lastUpdated": "2026-11-10T09:17:06.292Z"
   },
   "84942": {
     "id": 84942,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:34.126Z"
+    "lastUpdated": "2026-11-10T09:17:06.508Z"
   },
   "84951": {
     "id": 84951,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:34.318Z"
+    "lastUpdated": "2026-11-10T09:17:07.119Z"
   },
   "84958": {
     "id": 84958,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:34.617Z"
+    "lastUpdated": "2026-11-10T09:17:14.986Z"
   },
   "84966": {
     "id": 84966,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:42.730Z"
+    "lastUpdated": "2026-11-10T09:17:15.620Z"
   },
   "84974": {
     "id": 84974,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:42.694Z"
+    "lastUpdated": "2026-11-10T09:17:15.721Z"
   },
   "84991": {
     "id": 84991,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:43.219Z"
+    "lastUpdated": "2026-11-10T09:17:23.991Z"
   },
   "84997": {
     "id": 84997,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:51.416Z"
+    "lastUpdated": "2026-11-10T09:17:24.016Z"
   },
   "85003": {
     "id": 85003,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:51.479Z"
+    "lastUpdated": "2026-11-10T09:17:24.379Z"
   },
   "85011": {
     "id": 85011,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:51.645Z"
+    "lastUpdated": "2026-11-10T09:17:32.547Z"
   },
   "85017": {
     "id": 85017,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:59.583Z"
+    "lastUpdated": "2026-11-10T09:17:32.513Z"
   },
   "85023": {
     "id": 85023,
     "success": false,
     "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:09:59.611Z"
+    "lastUpdated": "2026-11-10T09:17:32.704Z"
   },
   "85200": {
     "id": 85200,
@@ -24577,14 +24632,23 @@
   },
   "86189": {
     "id": 86189,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:11:58.770Z"
+    "success": true,
+    "stocks": {
+      "M": 1
+    },
+    "regular_price": 5999,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:17:40.886Z"
   },
   "86205": {
     "id": 86205,
-    "success": false,
-    "error": "Primary: Sportive: no size availability was exposed; skipping price/stock update | Secondary: No Secondary URL",
-    "lastUpdated": "2026-11-10T04:12:06.963Z"
+    "success": true,
+    "stocks": {
+      "S": 1,
+      "M": 1
+    },
+    "regular_price": 5999,
+    "offer_price": null,
+    "lastUpdated": "2026-11-10T09:17:41.103Z"
   }
 }
