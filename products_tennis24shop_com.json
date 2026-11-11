@@ -19418,9 +19418,9 @@
         "our_url": "https://tennis24shop.com/?p=14994",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=14994",
         "our_price_lir": 3100,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "36": 0,
+            "36": 999,
             "۳۶": 0,
             "38": 0,
             "39": 0,
@@ -34660,7 +34660,7 @@
             "37": 999,
             "37.5": 999,
             "38": 999,
-            "39": 999,
+            "39": 998,
             "39.5": 999,
             "40": 999
         }
@@ -37084,6 +37084,22 @@
             "آبی": 999,
             "S": 999,
             "M": 999
+        }
+    },
+    {
+        "id": 86505,
+        "title": "کفش تنیس زنانه بابولات  Jet Mach 3 All Court  – سفید/آبی",
+        "sku": "31S23630-1055",
+        "url": "https://www.meritspor.com.tr/babolat-jet-mach-3-all-court-kadin-tenis-ayakkabisi-beyaz-mavi",
+        "our_url": "https://tennis24shop.com/?p=86505",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86505",
+        "our_price_lir": 4240,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "38.5": 0,
+            "39": 0,
+            "41": 999,
+            "42": 999
         }
     }
 ]
