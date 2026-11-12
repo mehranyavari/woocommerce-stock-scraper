@@ -15555,7 +15555,7 @@
     },
     {
         "id": 85560,
-        "title": "شلوار ورزشی بچگانه نایک Nike Park 20 Fleece  – سرمه‌ای/سفید",
+        "title": "شلوار تنیس بچگانه نایک Nike Park 20 Fleece  – سرمه‌ای",
         "sku": "CW6909-451",
         "url": "https://www.meritspor.com.tr/nike-park-20-cocuk-esofman-alti-lacivert",
         "our_url": "https://tennis24shop.com/?p=85560",
@@ -15563,16 +15563,15 @@
         "our_price_lir": 2399,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سرمه‌ای/سفید": 0,
-            "141-150cm-سال11-10": 0,
-            "149-159cm-سال13-12": 0,
+            "سال12-10": 999,
+            "سال10-8": 999,
             "10": 999,
             "12": 999
         }
     },
     {
         "id": 85577,
-        "title": "لگ ورزشی دخترانه نایک Nike Sportswear Classic  – مشکی/سفید",
+        "title": "شلوار تنیس دخترانه نایک Nike Sportswear Classic  – مشکی/سفید",
         "sku": "FZ5585-010",
         "url": "https://www.meritspor.com.tr/nike-sportswear-classic-yuksek-belli-bol-paca-kiz-cocuk-tayti",
         "our_url": "https://tennis24shop.com/?p=85577",
@@ -15580,13 +15579,9 @@
         "our_price_lir": 2000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "مشکی/سفید": 0,
-            "123-130cm-سال8-7": 0,
-            "141-150cm-سال11-10": 0,
-            "149-159cm-سال13-12": 0,
-            "8": 999,
-            "010": 999,
-            "12": 999
+            "سال10-8": 999,
+            "سال8-6": 999,
+            "سال12-10": 999
         }
     },
     {
@@ -37100,6 +37095,21 @@
             "39": 0,
             "41": 999,
             "42": 999
+        }
+    },
+    {
+        "id": 86533,
+        "title": "سویشرت تنیس بچگانه نایک  Therma-FIT  – مشکی",
+        "sku": "FZ5323-010",
+        "url": "https://www.meritspor.com.tr/nike-therma-fit-kislik-genc-cocuk-kapusonlu-antrenman-ustu",
+        "our_url": "https://tennis24shop.com/?p=86533",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86533",
+        "our_price_lir": 2700,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "-سال8-6": 99,
+            "مشکی/سفید": 0,
+            "010": 0
         }
     }
 ]
