@@ -2979,7 +2979,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
+            "35/38": 5,
             "39/42": 5,
             "43/46": 5
         }
@@ -3009,7 +3009,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
+            "35/38": 5,
             "39/42": 5,
             "43/46": 5
         }
@@ -12897,8 +12897,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "41": 5,
-            "42": 0,
-            "43": 0,
+            "42": 5,
+            "43": 5,
             "44": 0,
             "45": 0,
             "46": 0
@@ -12988,11 +12988,11 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "2XL": 99,
-            "XL": 99,
-            "L": 99,
-            "M": 99,
-            "S": 99
+            "2XL": 5,
+            "XL": 5,
+            "L": 5,
+            "M": 5,
+            "S": 5
         }
     },
     {
@@ -13187,7 +13187,7 @@
         "our_sizes": {
             "2XL": 0,
             "XL": 5,
-            "L": 5,
+            "L": 0,
             "M": 0,
             "S": 5
         }
@@ -13450,7 +13450,7 @@
             "30": 0,
             "31": 0,
             "32": 0,
-            "33": 5,
+            "33": 0,
             "34": 5,
             "35": 5,
             "36": 5,
@@ -14429,10 +14429,10 @@
         "our_url": "https://tennis24shop.com/?p=35917",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=35917",
         "our_price_lir": 2350,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "38": 5,
-            "40": 5
+            "38": 0,
+            "40": 0
         }
     },
     {
@@ -17297,9 +17297,9 @@
         "our_url": "https://tennis24shop.com/?p=8322",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=8322",
         "our_price_lir": 4300,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "46": 999,
+            "46": 0,
             "45": 0,
             "6": 0,
             "7سال": 0,
@@ -17336,7 +17336,7 @@
         "our_url": "https://tennis24shop.com/?p=8347",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=8347",
         "our_price_lir": 5000,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "45": 0,
             "6": 0,
@@ -17360,8 +17360,9 @@
             "41.5": 0,
             "42.5": 0,
             "43.5": 0,
-            "44.5": 0,
-            "46.5": 0
+            "44.5": 999,
+            "46.5": 999,
+            "44": 999
         }
     },
     {
@@ -18969,13 +18970,13 @@
         "url": "https://www.meritspor.com.tr/asics-court-ff-2-kadin-tenis-ayakkabisi-turkuaz",
         "our_url": "https://tennis24shop.com/?p=13364",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=13364",
-        "our_price_lir": 4400,
-        "our_stock_status": "outofstock",
+        "our_price_lir": 4900,
+        "our_stock_status": "instock",
         "our_sizes": {
             "37": 0,
             "38": 0,
             "39": 0,
-            "40": 0,
+            "40": 999,
             "37.5": 0,
             "39.5": 0,
             "40.5": 0,
