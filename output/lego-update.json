@@ -28,7 +28,7 @@
     "product_id": 670,
     "price": 42999,
     "in_stock": true,
-    "quantity": 14,
+    "quantity": 13,
     "name": "10294 LEGO Icons Titanik"
   },
   {
@@ -67,8 +67,8 @@
     "id": "77242",
     "product_id": 1170,
     "price": 1699,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "77242 LEGO® Speed Champions Ferrari SF-24 F1® Yarış Arabası"
   },
   {
@@ -332,7 +332,7 @@
     "product_id": 1524,
     "price": 5099,
     "in_stock": true,
-    "quantity": 7,
+    "quantity": 6,
     "name": "60444 LEGO® City F1® Garajı ve Mercedes-AMG ve Alpine Arabaları"
   },
   {
@@ -780,7 +780,7 @@
     "product_id": 2109,
     "price": 1799,
     "in_stock": true,
-    "quantity": 30,
+    "quantity": 29,
     "name": "60454 LEGO® City Tatil Macera Karavanı"
   },
   {
@@ -1404,7 +1404,7 @@
     "product_id": 2716,
     "price": 379,
     "in_stock": true,
-    "quantity": 255,
+    "quantity": 254,
     "name": "854312 LEGO® Star Wars™ R2-D2™ Anahtarlık"
   },
   {
@@ -1580,7 +1580,7 @@
     "product_id": 2931,
     "price": 2999,
     "in_stock": true,
-    "quantity": 38,
+    "quantity": 30,
     "name": "75358 LEGO® Star Wars™ Tenoo Jedi Temple™"
   },
   {
@@ -1596,7 +1596,7 @@
     "product_id": 2942,
     "price": 379,
     "in_stock": true,
-    "quantity": 334,
+    "quantity": 333,
     "name": "854236 LEGO® Star Wars™ Darth Vader™ Anahtarlık"
   },
   {
@@ -1676,7 +1676,7 @@
     "product_id": 3050,
     "price": 1999,
     "in_stock": true,
-    "quantity": 8,
+    "quantity": 7,
     "name": "75378 LEGO® Star Wars™ BARC Motoru Kaçışı"
   },
   {
@@ -1844,7 +1844,7 @@
     "product_id": 3253,
     "price": 379,
     "in_stock": true,
-    "quantity": 320,
+    "quantity": 321,
     "name": "853946 Stormtrooper Anahtarlık"
   },
   {
@@ -1852,7 +1852,7 @@
     "product_id": 3258,
     "price": 379,
     "in_stock": true,
-    "quantity": 57,
+    "quantity": 56,
     "name": "853449 Yoda Anahtarlık"
   },
   {
@@ -2259,8 +2259,8 @@
     "id": "42214",
     "product_id": 3742,
     "price": 10999,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42214 LEGO® Technic Lamborghini Revuelto Süper Spor Araba"
   },
   {
@@ -2268,7 +2268,7 @@
     "product_id": 3750,
     "price": 3599,
     "in_stock": true,
-    "quantity": 100,
+    "quantity": 73,
     "name": "42213 LEGO® Technic Ford Bronco® SUV"
   },
   {
@@ -2276,15 +2276,15 @@
     "product_id": 3758,
     "price": 6099,
     "in_stock": true,
-    "quantity": 3,
+    "quantity": 1,
     "name": "42211 LEGO® Technic Lunar Outpost™ Ay Gezgini Uzay Aracı"
   },
   {
     "id": "42202",
     "product_id": 3766,
     "price": 12199,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42202 LEGO® Technic Ducati Panigale V4 S Motosiklet"
   },
   {
@@ -2316,7 +2316,7 @@
     "product_id": 3798,
     "price": 1649,
     "in_stock": true,
-    "quantity": 5,
+    "quantity": 1,
     "name": "42198 LEGO® Technic Arazi Uçağı"
   },
   {
@@ -2348,7 +2348,7 @@
     "product_id": 3827,
     "price": 3599,
     "in_stock": true,
-    "quantity": 185,
+    "quantity": 167,
     "name": "42208 LEGO® Technic Aston Martin Valkyrie"
   },
   {
@@ -2363,16 +2363,16 @@
     "id": "42206",
     "product_id": 3843,
     "price": 13999,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42206 LEGO® Technic Oracle Red Bull Racing RB20 F1 Araba"
   },
   {
     "id": "42205",
     "product_id": 3851,
     "price": 3599,
-    "in_stock": true,
-    "quantity": 3,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42205 LEGO® Technic Chevrolet Corvette Stingray"
   },
   {
@@ -2540,7 +2540,7 @@
     "product_id": 4071,
     "price": 579,
     "in_stock": true,
-    "quantity": 6,
+    "quantity": 1,
     "name": "42225 LEGO® Technic Sarı Motosiklet"
   },
   {
@@ -2564,7 +2564,7 @@
     "product_id": 4095,
     "price": 649,
     "in_stock": true,
-    "quantity": 36,
+    "quantity": 20,
     "name": "42163 LEGO® Technic Ağır İş Buldozeri"
   },
   {
@@ -2579,8 +2579,8 @@
     "id": "42212",
     "product_id": 4111,
     "price": 3599,
-    "in_stock": true,
-    "quantity": 3,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42212 LEGO® Technic Ferrari FXX K"
   },
   {
@@ -2644,7 +2644,7 @@
     "product_id": 4175,
     "price": 3199,
     "in_stock": true,
-    "quantity": 10,
+    "quantity": 4,
     "name": "42173 LEGO® Technic Koenigsegg Jesko Absolut Gri Hiper Araba"
   },
   {
@@ -2932,7 +2932,7 @@
     "product_id": 4464,
     "price": 5399,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "43268 LEGO® │ Disney Lilo ve Stiç Plaj Evi"
   },
   {
@@ -2988,7 +2988,7 @@
     "product_id": 4600,
     "price": 4199,
     "in_stock": true,
-    "quantity": 40,
+    "quantity": 20,
     "name": "43279 LEGO® │ Disney WALL-E ve EVE"
   },
   {
@@ -3004,7 +3004,7 @@
     "product_id": 4616,
     "price": 2199,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "43273 LEGO® │ Disney 2025 Yılbaşı Takvimi"
   },
   {
@@ -3284,7 +3284,7 @@
     "product_id": 4929,
     "price": 1699,
     "in_stock": true,
-    "quantity": 33,
+    "quantity": 32,
     "name": "40861 LEGO® Disney Classic Sulley, Mike ve Boo Figürleri"
   },
   {
@@ -3380,7 +3380,7 @@
     "product_id": 4988,
     "price": 1459,
     "in_stock": true,
-    "quantity": 8,
+    "quantity": 7,
     "name": "43271 LEGO® │ Disney Lucky ve Penny 101 Dalmaçyalı Köpek Yavruları"
   },
   {
@@ -3812,7 +3812,7 @@
     "product_id": 5474,
     "price": 1999,
     "in_stock": true,
-    "quantity": 30,
+    "quantity": 29,
     "name": "854258 LEGO® NINJAGO Kınlı Çapraz Katanalar"
   },
   {
@@ -4396,7 +4396,7 @@
     "product_id": 6092,
     "price": 2999,
     "in_stock": true,
-    "quantity": 23,
+    "quantity": 11,
     "name": "10698 LEGO Classic Büyük Boy Yaratıcı Yapım Kutusu"
   },
   {
@@ -4524,7 +4524,7 @@
     "product_id": 6250,
     "price": 6099,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "76304 LEGO® DC Batman Forever™ Batmobile™"
   },
   {
@@ -4540,7 +4540,7 @@
     "product_id": 6281,
     "price": 379,
     "in_stock": true,
-    "quantity": 72,
+    "quantity": 71,
     "name": "854235 LEGO® Super Heroes Batman™ Anahtarlık"
   },
   {
@@ -4620,7 +4620,7 @@
     "product_id": 6379,
     "price": 4799,
     "in_stock": true,
-    "quantity": 50,
+    "quantity": 41,
     "name": "21064 LEGO® Architecture Paris – Aşıklar Şehri"
   },
   {
@@ -4740,7 +4740,7 @@
     "product_id": 6521,
     "price": 1699,
     "in_stock": true,
-    "quantity": 607,
+    "quantity": 602,
     "name": "77241 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Honda S2000"
   },
   {
@@ -4764,7 +4764,7 @@
     "product_id": 6546,
     "price": 1699,
     "in_stock": true,
-    "quantity": 117,
+    "quantity": 113,
     "name": "77247 LEGO® Speed Champions KICK Sauber F1® Team C44 Yarış Arabası"
   },
   {
@@ -4868,7 +4868,7 @@
     "product_id": 6699,
     "price": 1699,
     "in_stock": true,
-    "quantity": 65,
+    "quantity": 64,
     "name": "77244 LEGO® Speed Champions Mercedes-AMG F1® W15 Yarış Arabası"
   },
   {
@@ -4892,7 +4892,7 @@
     "product_id": 6724,
     "price": 1699,
     "in_stock": true,
-    "quantity": 311,
+    "quantity": 251,
     "name": "76917 LEGO® Speed Champions Daha Hızlı Daha Öfkeli Nissan Skyline GT-R (R34)"
   },
   {
@@ -5036,7 +5036,7 @@
     "product_id": 6956,
     "price": 2399,
     "in_stock": true,
-    "quantity": 11,
+    "quantity": 7,
     "name": "42650 LEGO® Friends Evcil Hayvan Aksesuar Dükkanı"
   },
   {
@@ -5844,7 +5844,7 @@
     "product_id": 7930,
     "price": 4199,
     "in_stock": true,
-    "quantity": 140,
+    "quantity": 124,
     "name": "42652 LEGO® Friends Arkadaşlık Ağaç Ev Buluşma Yeri"
   },
   {
@@ -5867,8 +5867,8 @@
     "id": "42661",
     "product_id": 7954,
     "price": 2399,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42661 LEGO® Friends Tek Boynuzlu At ve Peri ile Kostüm Partisi"
   },
   {
@@ -6306,17 +6306,17 @@
   {
     "id": "11371",
     "product_id": 8409,
-    "price": 15499,
+    "price": 0,
     "in_stock": true,
-    "quantity": 30,
-    "name": "11371 LEGO® Icons Alışveriş Caddesi"
+    "quantity": 1,
+    "name": "İÇİNİZDEKİ NEŞEYİ UYANDIRIN"
   },
   {
     "id": "10366",
     "product_id": 8416,
     "price": 27499,
     "in_stock": true,
-    "quantity": 82,
+    "quantity": 20,
     "name": "10366 LEGO® Icons Tropikal Akvaryum"
   },
   {
@@ -6324,7 +6324,7 @@
     "product_id": 8423,
     "price": 22999,
     "in_stock": true,
-    "quantity": 20,
+    "quantity": 16,
     "name": "10356 LEGO® Icons Star Trek: U.S.S. Enterprise NCC-1701-D™"
   },
   {
@@ -6564,7 +6564,7 @@
     "product_id": 8661,
     "price": 6099,
     "in_stock": true,
-    "quantity": 433,
+    "quantity": 432,
     "name": "10340 LEGO® Botanicals Çelenk"
   },
   {
@@ -6804,7 +6804,7 @@
     "product_id": 8917,
     "price": 15499,
     "in_stock": true,
-    "quantity": 5,
+    "quantity": 3,
     "name": "10312 LEGO® Icons Caz Kulübü"
   },
   {
@@ -6908,7 +6908,7 @@
     "product_id": 9053,
     "price": 379,
     "in_stock": true,
-    "quantity": 386,
+    "quantity": 385,
     "name": "854316 LEGO® Jurassic World Yavru Ankylosaurus Anahtarlık"
   },
   {
@@ -6988,7 +6988,7 @@
     "product_id": 9128,
     "price": 15299,
     "in_stock": true,
-    "quantity": 19,
+    "quantity": 13,
     "name": "76968 LEGO® Jurassic World Dinozor Fosilleri: Tyrannosaurus rex"
   },
   {
@@ -7252,7 +7252,7 @@
     "product_id": 9442,
     "price": 579,
     "in_stock": true,
-    "quantity": 8,
+    "quantity": 4,
     "name": "76335 LEGO® | Marvel Örümcek Adam, Ghost Rider Motosikletine Karşı"
   },
   {
@@ -7292,7 +7292,7 @@
     "product_id": 9480,
     "price": 229,
     "in_stock": true,
-    "quantity": 1108,
+    "quantity": 1104,
     "name": "71050 LEGO® Minifigures Örümcek Adam: Örümcek Evrenine Geçiş"
   },
   {
@@ -7300,7 +7300,7 @@
     "product_id": 9488,
     "price": 7099,
     "in_stock": true,
-    "quantity": 34,
+    "quantity": 33,
     "name": "76266 LEGO® Marvel Endgame Son Savaş"
   },
   {
@@ -7380,7 +7380,7 @@
     "product_id": 9563,
     "price": 2399,
     "in_stock": true,
-    "quantity": 13,
+    "quantity": 12,
     "name": "76254 LEGO® Marvel Bebek Rocket’in Gemisi"
   },
   {
@@ -7460,7 +7460,7 @@
     "product_id": 9656,
     "price": 379,
     "in_stock": true,
-    "quantity": 621,
+    "quantity": 620,
     "name": "854296 LEGO® Marvel Rocket Rakun Anahtarlık"
   },
   {
@@ -7524,7 +7524,7 @@
     "product_id": 9694,
     "price": 2399,
     "in_stock": true,
-    "quantity": 5,
+    "quantity": 4,
     "name": "76278 LEGO® Marvel Rocket'in Warbird Aracı Ronan’a Karşı"
   },
   {
@@ -7612,7 +7612,7 @@
     "product_id": 9773,
     "price": 3599,
     "in_stock": true,
-    "quantity": 3,
+    "quantity": 2,
     "name": "76327 LEGO® Marvel Iron Man MK4 Büstü"
   },
   {
@@ -7876,7 +7876,7 @@
     "product_id": 10068,
     "price": 18199,
     "in_stock": true,
-    "quantity": 108,
+    "quantity": 27,
     "name": "21363 LEGO® Ideas Define Avcıları"
   },
   {
@@ -7884,7 +7884,7 @@
     "product_id": 10075,
     "price": 13499,
     "in_stock": true,
-    "quantity": 11,
+    "quantity": 9,
     "name": "21360 LEGO® LEGO Ideas Willy Wonka ve Çikolata Fabrikası"
   },
   {
@@ -8140,7 +8140,7 @@
     "product_id": 10351,
     "price": 1499,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 2,
     "name": "40803 LEGO® BrickHeadz Optimus Prime Robot ve Araç"
   },
   {
@@ -8380,7 +8380,7 @@
     "product_id": 10610,
     "price": 299,
     "in_stock": true,
-    "quantity": 553,
+    "quantity": 522,
     "name": "30692 LEGO® Creator 3’ü 1 Arada Noel Baba ile Baca Eğlencesi"
   },
   {
@@ -8540,7 +8540,7 @@
     "product_id": 10777,
     "price": 1159,
     "in_stock": true,
-    "quantity": 23,
+    "quantity": 15,
     "name": "31147 LEGO® Creator Retro Fotoğraf Makinesi"
   },
   {
@@ -8596,7 +8596,7 @@
     "product_id": 10838,
     "price": 1799,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "31169 LEGO® Creator Çiçekli Daktilo"
   },
   {
@@ -8612,7 +8612,7 @@
     "product_id": 10854,
     "price": 1799,
     "in_stock": true,
-    "quantity": 33,
+    "quantity": 27,
     "name": "31172 LEGO® Creator Çiçekli Pikap"
   },
   {
@@ -8636,7 +8636,7 @@
     "product_id": 10873,
     "price": 579,
     "in_stock": true,
-    "quantity": 7,
+    "quantity": 3,
     "name": "31140 LEGO® Creator Sihirli Tek Boynuzlu At"
   },
   {
@@ -9500,7 +9500,7 @@
     "product_id": 11856,
     "price": 1159,
     "in_stock": true,
-    "quantity": 11,
+    "quantity": 5,
     "name": "11201 LEGO® Bluey Bluey ve Chloe ile Oyun Parkı Eğlencesi"
   },
   {
@@ -9564,7 +9564,7 @@
     "product_id": 11989,
     "price": 6299,
     "in_stock": true,
-    "quantity": 30,
+    "quantity": 22,
     "name": "71497 LEGO® DREAMZzz Cooper'ın Kaplan Robotu ve Zero'nun Hot Rod Arabası"
   },
   {
@@ -9572,7 +9572,7 @@
     "product_id": 11997,
     "price": 3099,
     "in_stock": true,
-    "quantity": 130,
+    "quantity": 110,
     "name": "71491 LEGO® DREAMZzz Mateo ve Z-Blob Aksiyon Yarış Arabası"
   },
   {
@@ -9700,7 +9700,7 @@
     "product_id": 12111,
     "price": 12999,
     "in_stock": true,
-    "quantity": 37,
+    "quantity": 33,
     "name": "71486 LEGO® DREAMZzz Nocturnia Kalesi"
   },
   {
@@ -9723,8 +9723,8 @@
     "id": "71483",
     "product_id": 12143,
     "price": 2799,
-    "in_stock": true,
-    "quantity": 3,
+    "in_stock": false,
+    "quantity": 0,
     "name": "71483 LEGO® DREAMZzz Never Cadısı’nın Kabus Yaratıkları"
   },
   {
@@ -9732,7 +9732,7 @@
     "product_id": 12151,
     "price": 2499,
     "in_stock": true,
-    "quantity": 36,
+    "quantity": 24,
     "name": "71481 LEGO® DREAMZzz Izzie'nin Düş Hayvanları"
   },
   {
@@ -10540,7 +10540,7 @@
     "product_id": 12917,
     "price": 1799,
     "in_stock": true,
-    "quantity": 7,
+    "quantity": 1,
     "name": "77002 LEGO® Sonic Cyclone, Metal Sonic’e Karşı"
   },
   {
@@ -10564,7 +10564,7 @@
     "product_id": 12937,
     "price": 379,
     "in_stock": true,
-    "quantity": 1215,
+    "quantity": 1214,
     "name": "854239 LEGO® Sonic Sonic the Hedgehog™ Anahtarlık"
   },
   {
@@ -10628,7 +10628,7 @@
     "product_id": 12992,
     "price": 4199,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 1,
     "name": "77006 LEGO® Sonic the Hedgehog™ Sonic Takımı Komuta Kamyonu"
   },
   {
@@ -10636,7 +10636,7 @@
     "product_id": 13000,
     "price": 2399,
     "in_stock": true,
-    "quantity": 5,
+    "quantity": 1,
     "name": "77005 LEGO® Sonic the Hedgehog™ Knuckles, Dr. Eggman’ın Egg Crusher Robotuna Karşı"
   },
   {
@@ -10756,7 +10756,7 @@
     "product_id": 13395,
     "price": 7499,
     "in_stock": true,
-    "quantity": 135,
+    "quantity": 134,
     "name": "11606-07028 Herschel Heritage™ Tote - Abstract Bricks"
   },
   {
@@ -10764,7 +10764,7 @@
     "product_id": 13400,
     "price": 8499,
     "in_stock": true,
-    "quantity": 79,
+    "quantity": 76,
     "name": "11607-07028 Herschel Heritage™ Duffle - Abstract Bricks"
   },
   {
@@ -10780,7 +10780,7 @@
     "product_id": 13408,
     "price": 5399,
     "in_stock": true,
-    "quantity": 93,
+    "quantity": 91,
     "name": "11603-07029 Herschel Classic™ Backpack - Garden Floral"
   },
   {
@@ -10796,7 +10796,7 @@
     "product_id": 13417,
     "price": 5599,
     "in_stock": true,
-    "quantity": 84,
+    "quantity": 83,
     "name": "11604-07028 Herschel Classic™ XL Backpack - Abstract Bricks"
   },
   {
@@ -10804,7 +10804,7 @@
     "product_id": 13422,
     "price": 4199,
     "in_stock": true,
-    "quantity": 96,
+    "quantity": 94,
     "name": "11601-07028 Herschel Heritage™ Crossbody - Abstract Bricks"
   },
   {
@@ -10812,7 +10812,7 @@
     "product_id": 13426,
     "price": 5399,
     "in_stock": true,
-    "quantity": 53,
+    "quantity": 52,
     "name": "11603-07028 Herschel Classic™ Backpack - Abstract Bricks"
   },
   {
@@ -10860,7 +10860,7 @@
     "product_id": 13450,
     "price": 4299,
     "in_stock": true,
-    "quantity": 64,
+    "quantity": 62,
     "name": "11615-07032 Herschel Heritage™ Kids Backpack - Scavenger Hunt Bricks"
   },
   {
@@ -10884,7 +10884,7 @@
     "product_id": 13464,
     "price": 3999,
     "in_stock": true,
-    "quantity": 115,
+    "quantity": 114,
     "name": "11609-07029 Herschel Classic™ Crossbody - Garden Floral"
   },
   {
@@ -10908,15 +10908,15 @@
     "product_id": 13477,
     "price": 3999,
     "in_stock": true,
-    "quantity": 6,
+    "quantity": 5,
     "name": "11610-07028 Herschel Classic™ Hip Pack - Abstract Bricks"
   },
   {
     "id": "11604-07029",
     "product_id": 13481,
     "price": 5599,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "11604-07029 Herschel Classic™ XL Backpack - Garden Floral"
   },
   {
@@ -11012,7 +11012,7 @@
     "product_id": 13562,
     "price": 699,
     "in_stock": true,
-    "quantity": 10,
+    "quantity": 9,
     "name": "853235 2x2 LEGO Kutu Mavi V46"
   },
   {
@@ -12028,7 +12028,7 @@
     "product_id": 13970,
     "price": 3699,
     "in_stock": true,
-    "quantity": 146,
+    "quantity": 144,
     "name": "20205B-0354 2x2 LEGO® Yapım Parçası Sırt Çantası - Siyah - Çok Renkli"
   },
   {
@@ -12036,7 +12036,7 @@
     "product_id": 13976,
     "price": 3699,
     "in_stock": true,
-    "quantity": 42,
+    "quantity": 41,
     "name": "20205B-0140 2x2 LEGO® Yapım Parçası Sırt Çantası - Koyu Mavi"
   },
   {
@@ -12044,7 +12044,7 @@
     "product_id": 13982,
     "price": 3699,
     "in_stock": true,
-    "quantity": 22,
+    "quantity": 21,
     "name": "20205B-0023 2x2 LEGO® Yapım Parçası Sırt Çantası - Mavi"
   },
   {
@@ -12052,7 +12052,7 @@
     "product_id": 13988,
     "price": 3699,
     "in_stock": true,
-    "quantity": 39,
+    "quantity": 38,
     "name": "20205B-0021 2x2 LEGO® Yapım Parçası Sırt Çantası - Kırmızı"
   },
   {
@@ -12148,7 +12148,7 @@
     "product_id": 15601,
     "price": 379,
     "in_stock": true,
-    "quantity": 526,
+    "quantity": 525,
     "name": "854158 LEGO® Iconic Fransız Buldoğu Adam Anahtarlık"
   },
   {
@@ -12164,7 +12164,7 @@
     "product_id": 15616,
     "price": 379,
     "in_stock": true,
-    "quantity": 94,
+    "quantity": 92,
     "name": "850808 Anahtarlık 2x4 Altın V121"
   },
   {
@@ -12212,7 +12212,7 @@
     "product_id": 15643,
     "price": 379,
     "in_stock": true,
-    "quantity": 563,
+    "quantity": 562,
     "name": "853571 Hot Dog Guy Anahtarlık"
   },
   {
@@ -12340,7 +12340,7 @@
     "product_id": 15856,
     "price": 1799,
     "in_stock": true,
-    "quantity": 8,
+    "quantity": 7,
     "name": "10343 LEGO® Botanicals Mini Orkide"
   },
   {
@@ -12524,7 +12524,7 @@
     "product_id": 16384,
     "price": 1159,
     "in_stock": true,
-    "quantity": 19,
+    "quantity": 11,
     "name": "11209 LEGO® Disney Junior Marvel Ultron Iron Man’e Karşı"
   },
   {
@@ -12564,7 +12564,7 @@
     "product_id": 16423,
     "price": 4499,
     "in_stock": true,
-    "quantity": 111,
+    "quantity": 110,
     "name": "11373 LEGO® Icons Yüzüklerin Efendisi: Sauron'un Miğferi"
   },
   {
@@ -12612,7 +12612,7 @@
     "product_id": 16519,
     "price": 5399,
     "in_stock": true,
-    "quantity": 134,
+    "quantity": 133,
     "name": "11503 LEGO® Botanicals Çiçek Duvarı"
   },
   {
@@ -12644,7 +12644,7 @@
     "product_id": 16551,
     "price": 2399,
     "in_stock": true,
-    "quantity": 19,
+    "quantity": 18,
     "name": "11511 LEGO® Botanicals Nilüferler"
   },
   {
@@ -12652,7 +12652,7 @@
     "product_id": 16559,
     "price": 869,
     "in_stock": true,
-    "quantity": 265,
+    "quantity": 225,
     "name": "11514 LEGO® Botanicals Kozmos Çiçekleri"
   },
   {
@@ -12764,7 +12764,7 @@
     "product_id": 16659,
     "price": 299,
     "in_stock": true,
-    "quantity": 208,
+    "quantity": 207,
     "name": "30718 LEGO® Creator Mırmır Pati Kar Macerası"
   },
   {
@@ -12812,7 +12812,7 @@
     "product_id": 16683,
     "price": 299,
     "in_stock": true,
-    "quantity": 38,
+    "quantity": 37,
     "name": "30725 LEGO® | Marvel Örümcek Adam, Anti Venom Soygununa Karşı"
   },
   {
@@ -12868,7 +12868,7 @@
     "product_id": 16711,
     "price": 299,
     "in_stock": true,
-    "quantity": 866,
+    "quantity": 864,
     "name": "30734 LEGO® Speed Champions Mini F1 ACADEMY™ Arabası"
   },
   {
@@ -12916,7 +12916,7 @@
     "product_id": 16747,
     "price": 579,
     "in_stock": true,
-    "quantity": 19,
+    "quantity": 3,
     "name": "31377 LEGO® Creator Kaplumbağa ile Nilüfer Çiçeği"
   },
   {
@@ -12938,10 +12938,10 @@
   {
     "id": "31380",
     "product_id": 16771,
-    "price": 0,
+    "price": 1159,
     "in_stock": true,
-    "quantity": 1,
-    "name": "İÇİNİZDEKİ NEŞEYİ UYANDIRIN"
+    "quantity": 5,
+    "name": "31380 LEGO® Creator Retro Oyun Konsolu"
   },
   {
     "id": "31381",
@@ -13092,7 +13092,7 @@
     "product_id": 16918,
     "price": 2799,
     "in_stock": true,
-    "quantity": 18,
+    "quantity": 16,
     "name": "40878 LEGO® BrickHeadz Ninja Kaplumbağalar Figürleri"
   },
   {
@@ -13116,7 +13116,7 @@
     "product_id": 16937,
     "price": 2599,
     "in_stock": true,
-    "quantity": 12,
+    "quantity": 11,
     "name": "40920 LEGO® Looney Tunes Bugs Bunny"
   },
   {
@@ -13131,8 +13131,8 @@
     "id": "40922",
     "product_id": 16952,
     "price": 1159,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "40922 LEGO® Disney Classic Lilo ve Stiç: Angel"
   },
   {
@@ -13171,8 +13171,8 @@
     "id": "42219",
     "product_id": 16990,
     "price": 1799,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42219 LEGO® Technic Monster Jam™ Grave Digger™ Ateş ve Buz"
   },
   {
@@ -13196,7 +13196,7 @@
     "product_id": 17014,
     "price": 4499,
     "in_stock": true,
-    "quantity": 122,
+    "quantity": 110,
     "name": "42223 LEGO® Technic 1966 Ford GT40 MKII Yarış Arabası"
   },
   {
@@ -13244,15 +13244,15 @@
     "product_id": 17061,
     "price": 3899,
     "in_stock": true,
-    "quantity": 290,
+    "quantity": 278,
     "name": "42241 LEGO® Technic Yeşil Bugatti Chiron Pur Sport Hiper Araba"
   },
   {
     "id": "42242",
     "product_id": 17069,
     "price": 7299,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42242 LEGO® Technic Vinçli Mercedes-Benz Unimog U 5023"
   },
   {
@@ -13260,7 +13260,7 @@
     "product_id": 17077,
     "price": 579,
     "in_stock": true,
-    "quantity": 207,
+    "quantity": 187,
     "name": "42675 LEGO® Friends Tek Boynuzlu At Pasta Dağıtım Arabası"
   },
   {
@@ -13292,7 +13292,7 @@
     "product_id": 17108,
     "price": 1459,
     "in_stock": true,
-    "quantity": 10,
+    "quantity": 2,
     "name": "42679 LEGO® Friends Heartlake Şehri Tavşan Oteli"
   },
   {
@@ -13300,7 +13300,7 @@
     "product_id": 17116,
     "price": 1159,
     "in_stock": true,
-    "quantity": 19,
+    "quantity": 7,
     "name": "42680 LEGO® Friends Heartlake Şehri Marketi"
   },
   {
@@ -13388,7 +13388,7 @@
     "product_id": 17204,
     "price": 1799,
     "in_stock": true,
-    "quantity": 3,
+    "quantity": 2,
     "name": "42693 LEGO® Friends Yaratıcı Çiçek Dükkanı"
   },
   {
@@ -13420,7 +13420,7 @@
     "product_id": 17236,
     "price": 2999,
     "in_stock": true,
-    "quantity": 2,
+    "quantity": 1,
     "name": "42697 LEGO® Friends Yaratıcı Bebek Evi Bavulu"
   },
   {
@@ -13492,7 +13492,7 @@
     "product_id": 17308,
     "price": 1799,
     "in_stock": true,
-    "quantity": 58,
+    "quantity": 54,
     "name": "43012 LEGO® Editions Cristiano Ronaldo – Unutulmaz Futbol Anları"
   },
   {
@@ -13540,7 +13540,7 @@
     "product_id": 17361,
     "price": 5399,
     "in_stock": true,
-    "quantity": 316,
+    "quantity": 315,
     "name": "43022 LEGO® Editions Scuderia Ferrari HP Lewis Hamilton Kaskı"
   },
   {
@@ -13564,7 +13564,7 @@
     "product_id": 17393,
     "price": 1459,
     "in_stock": true,
-    "quantity": 78,
+    "quantity": 74,
     "name": "43032 LEGO® Editions FIFA World Cup 2026™ Resmi Amblemi"
   },
   {
@@ -13572,7 +13572,7 @@
     "product_id": 17401,
     "price": 1459,
     "in_stock": true,
-    "quantity": 346,
+    "quantity": 307,
     "name": "43033 LEGO® Editions 2026 ABD Futbol Milli Takım Forması"
   },
   {
@@ -13732,7 +13732,7 @@
     "product_id": 17561,
     "price": 9099,
     "in_stock": true,
-    "quantity": 38,
+    "quantity": 35,
     "name": "43300 LEGO® │ Disney Ayı Winnie"
   },
   {
@@ -13788,7 +13788,7 @@
     "product_id": 17616,
     "price": 1159,
     "in_stock": true,
-    "quantity": 342,
+    "quantity": 310,
     "name": "60479 LEGO® City Polis Mahkum Nakliye Aracı"
   },
   {
@@ -13811,8 +13811,8 @@
     "id": "60482",
     "product_id": 17632,
     "price": 579,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "60482 LEGO® City Araçlar – İtfaiye Kamyonu"
   },
   {
@@ -13827,16 +13827,16 @@
     "id": "60484",
     "product_id": 17644,
     "price": 579,
-    "in_stock": true,
-    "quantity": 1,
+    "in_stock": false,
+    "quantity": 0,
     "name": "60484 LEGO® City Araçlar – Video Oyunu Yarış Arabası"
   },
   {
     "id": "60485",
     "product_id": 17652,
     "price": 579,
-    "in_stock": true,
-    "quantity": 5,
+    "in_stock": false,
+    "quantity": 0,
     "name": "60485 LEGO® City Hot Rod"
   },
   {
@@ -13924,7 +13924,7 @@
     "product_id": 17752,
     "price": 1159,
     "in_stock": true,
-    "quantity": 48,
+    "quantity": 24,
     "name": "60498 LEGO® City Traktör"
   },
   {
@@ -14132,7 +14132,7 @@
     "product_id": 18065,
     "price": 10999,
     "in_stock": true,
-    "quantity": 95,
+    "quantity": 94,
     "name": "72050 LEGO® Super Mario™ Mario Kart™ – Luigi ve Mach 8"
   },
   {
@@ -14148,7 +14148,7 @@
     "product_id": 18081,
     "price": 12199,
     "in_stock": true,
-    "quantity": 51,
+    "quantity": 49,
     "name": "72152 LEGO® Pokémon Pikachu ve Poké Topu"
   },
   {
@@ -14172,7 +14172,7 @@
     "product_id": 18105,
     "price": 1799,
     "in_stock": true,
-    "quantity": 141,
+    "quantity": 129,
     "name": "75437 LEGO® Star Wars™ Cobb Vanth'ın Hız Motoru"
   },
   {
@@ -14187,16 +14187,16 @@
     "id": "75443",
     "product_id": 18120,
     "price": 1159,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "75443 LEGO® Star Wars™ Grogu'nun Yuvası"
   },
   {
     "id": "75444",
     "product_id": 18128,
     "price": 2699,
-    "in_stock": true,
-    "quantity": 5,
+    "in_stock": false,
+    "quantity": 0,
     "name": "75444 LEGO® Star Wars™ AT-RT™ Saldırısı"
   },
   {
@@ -14227,8 +14227,8 @@
     "id": "75448",
     "product_id": 18159,
     "price": 869,
-    "in_stock": true,
-    "quantity": 3,
+    "in_stock": false,
+    "quantity": 0,
     "name": "75448 LEGO® Star Wars™ Klon Şok Trooper™ Robotu"
   },
   {
@@ -14291,8 +14291,8 @@
     "id": "76337",
     "product_id": 18213,
     "price": 869,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "76337 LEGO® | Marvel Miles Morales Robotu, Örümcek Adam 2099’a Karşı"
   },
   {
@@ -14356,7 +14356,7 @@
     "product_id": 18312,
     "price": 3599,
     "in_stock": true,
-    "quantity": 192,
+    "quantity": 176,
     "name": "76464 LEGO® Harry Potter™ Kazan: Gizli İksir Sınıfı"
   },
   {
@@ -14396,7 +14396,7 @@
     "product_id": 18426,
     "price": 1699,
     "in_stock": true,
-    "quantity": 101,
+    "quantity": 100,
     "name": "77252 LEGO® Speed Champions F1® Filminden APXGP Team Yarış Arabası"
   },
   {
@@ -14556,7 +14556,7 @@
     "product_id": 18617,
     "price": 12799,
     "in_stock": true,
-    "quantity": 88,
+    "quantity": 401,
     "name": "11374 LEGO® Icons Pinball (Tilt) Oyun Makinesi"
   },
   {
@@ -14572,7 +14572,7 @@
     "product_id": 18632,
     "price": 5399,
     "in_stock": true,
-    "quantity": 294,
+    "quantity": 293,
     "name": "43017 LEGO® Editions McLaren Mastercard F1® Team Oscar Piastri Kaskı"
   },
   {
@@ -14580,7 +14580,7 @@
     "product_id": 18640,
     "price": 5399,
     "in_stock": true,
-    "quantity": 328,
+    "quantity": 326,
     "name": "43023 LEGO® Editions McLaren Mastercard F1® Team Lando Norris Kaskı"
   },
   {
@@ -14588,7 +14588,7 @@
     "product_id": 18648,
     "price": 2999,
     "in_stock": true,
-    "quantity": 191,
+    "quantity": 179,
     "name": "60496 LEGO® City Araçlarla Pizza Dağıtım Deneyimi"
   },
   {
@@ -14836,7 +14836,7 @@
     "product_id": 18890,
     "price": 869,
     "in_stock": true,
-    "quantity": 4,
+    "quantity": 1,
     "name": "77079 LEGO® Fortnite® Domates Kafa"
   },
   {
@@ -14852,7 +14852,7 @@
     "product_id": 18906,
     "price": 6099,
     "in_stock": true,
-    "quantity": 11,
+    "quantity": 7,
     "name": "77081 LEGO® Fortnite® PİSİKOPAT"
   },
   {
@@ -14860,7 +14860,7 @@
     "product_id": 18914,
     "price": 12199,
     "in_stock": true,
-    "quantity": 39,
+    "quantity": 37,
     "name": "77082 LEGO® Fortnite® Müzikal Mağara"
   },
   {
@@ -14916,7 +14916,7 @@
     "product_id": 18965,
     "price": 2299,
     "in_stock": true,
-    "quantity": 95,
+    "quantity": 93,
     "name": "20376-2607 Explorer Sırt Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -14924,7 +14924,7 @@
     "product_id": 18968,
     "price": 2299,
     "in_stock": true,
-    "quantity": 10,
+    "quantity": 9,
     "name": "20376-2611 Explorer Sırt Çantası - Kırmızı LEGO® Yapım Parçası"
   },
   {
@@ -14956,7 +14956,7 @@
     "product_id": 18984,
     "price": 1299,
     "in_stock": true,
-    "quantity": 17,
+    "quantity": 16,
     "name": "20281-2611 Orta Boy Çocuk Sırt Çantası - Kırmızı LEGO® Yapım Parçası"
   },
   {
@@ -14964,7 +14964,7 @@
     "product_id": 18988,
     "price": 1999,
     "in_stock": true,
-    "quantity": 12,
+    "quantity": 10,
     "name": "20368-2607 3 Parça Seyahat Düzenleyici Seti - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -14980,7 +14980,7 @@
     "product_id": 19004,
     "price": 999,
     "in_stock": true,
-    "quantity": 85,
+    "quantity": 83,
     "name": "20369-2607 Yuvarlak Çapraz Çanta - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15012,7 +15012,7 @@
     "product_id": 19022,
     "price": 1199,
     "in_stock": true,
-    "quantity": 7,
+    "quantity": 5,
     "name": "20371-2607 Çok Amaçlı Seyahat ve Aksesuar Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15044,7 +15044,7 @@
     "product_id": 19042,
     "price": 1099,
     "in_stock": true,
-    "quantity": 7,
+    "quantity": 6,
     "name": "20373-2607 Büyük Boy Çapraz Çanta - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15076,7 +15076,7 @@
     "product_id": 19058,
     "price": 1699,
     "in_stock": true,
-    "quantity": 58,
+    "quantity": 56,
     "name": "20375-2607 Colorblock Sırt Çantası - Renkli LEGO® Yapım Parçası"
   },
   {
@@ -15116,7 +15116,7 @@
     "product_id": 19086,
     "price": 1499,
     "in_stock": true,
-    "quantity": 42,
+    "quantity": 40,
     "name": "20320-0001 Premium 1x1 Mini LEGO® Yapım Parçası Çapraz Çanta - Beyaz"
   },
   {
@@ -15124,7 +15124,7 @@
     "product_id": 19090,
     "price": 1499,
     "in_stock": true,
-    "quantity": 212,
+    "quantity": 210,
     "name": "20320-0354 Premium 1x1 Mini LEGO® Yapım Parçası Çapraz Çanta - Siyah - Çok Renkli"
   },
   {
@@ -15140,7 +15140,7 @@
     "product_id": 19098,
     "price": 1499,
     "in_stock": true,
-    "quantity": 56,
+    "quantity": 54,
     "name": "20322-0026 1x1 LEGO® Yapım Parçası Kendinden Kılıflı Tote Çanta - Siyah"
   },
   {
@@ -15203,8 +15203,8 @@
     "id": "11381",
     "product_id": 19405,
     "price": 8499,
-    "in_stock": true,
-    "quantity": 17,
+    "in_stock": false,
+    "quantity": 0,
     "name": "11381 LEGO® Icons Jaguar E-Type"
   },
   {
@@ -15244,7 +15244,7 @@
     "product_id": 19444,
     "price": 18199,
     "in_stock": true,
-    "quantity": 31,
+    "quantity": 30,
     "name": "21067 LEGO® Architecture Tower Bridge"
   },
   {
@@ -15347,8 +15347,8 @@
     "id": "42238",
     "product_id": 19542,
     "price": 2999,
-    "in_stock": true,
-    "quantity": 4,
+    "in_stock": false,
+    "quantity": 0,
     "name": "42238 LEGO® Technic Ducati Desmo450 MX Factory Motosiklet"
   },
   {
@@ -15372,7 +15372,7 @@
     "product_id": 19566,
     "price": 4199,
     "in_stock": true,
-    "quantity": 42,
+    "quantity": 41,
     "name": "72150 LEGO® Pokémon™ Munchlax"
   },
   {
@@ -15499,16 +15499,16 @@
     "id": "77119",
     "product_id": 19692,
     "price": 1799,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "77119 LEGO® Sonic the Hedgehog™ Tails'in Tornado-1 Uçağı"
   },
   {
     "id": "77120",
     "product_id": 19700,
     "price": 2999,
-    "in_stock": true,
-    "quantity": 2,
+    "in_stock": false,
+    "quantity": 0,
     "name": "77120 LEGO® Sonic the Hedgehog™ Shadow'un Robotu G.U.N. Askerine Karşı"
   },
   {
