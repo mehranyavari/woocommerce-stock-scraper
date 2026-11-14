@@ -156,24 +156,6 @@
         }
     },
     {
-        "id": 86602,
-        "title": "کاپشن ورزشی پسرانه نایک مدل Dri-FIT Dokuma کد DO7095-010 – مشکی",
-        "sku": "DO7095-010",
-        "url": "https://www.meritspor.com.tr/nike-dri-fit-dokuma-erkek-cocuk-antrenman-ceketi-siyah",
-        "our_url": "https://tennis24shop.com/?p=86602",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86602",
-        "our_price_lir": 2799,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "مشکی": 0,
-            "XS": 99,
-            "XL": 99,
-            "S": 0,
-            "M": 0,
-            "L": 0
-        }
-    },
-    {
         "id": 1294,
         "title": "جوراب تنیس ساق کوتاه دکتلون DECATHLON RS 500 پک سه تایی - مشکی",
         "sku": "8379844",
@@ -1630,7 +1612,7 @@
             "2XL / W41 L34": 5,
             "L / W 34 L 34": 5,
             "M / W 32 L 33": 5,
-            "XL / W37 L34": 5
+            "XL / W37 L34": 4
         }
     },
     {
@@ -1646,7 +1628,7 @@
             "M / W32 L33": 5,
             "S / W30 L33": 5,
             "L / W34 L34": 5,
-            "XL / W37 L34": 5,
+            "XL / W37 L34": 4,
             "2XL / W 41 L 34": 5
         }
     },
@@ -37182,6 +37164,24 @@
             "سال10-8": 99,
             "سال15-14": 99,
             "سال12-10": 0
+        }
+    },
+    {
+        "id": 86602,
+        "title": "سویشرت پسرانه نایک  Dri-FIT Dokuma  – مشکی",
+        "sku": "DO7095-010",
+        "url": "https://www.meritspor.com.tr/nike-dri-fit-dokuma-erkek-cocuk-antrenman-ceketi-siyah",
+        "our_url": "https://tennis24shop.com/?p=86602",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86602",
+        "our_price_lir": 2800,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "مشکی": 0,
+            "XS": 99,
+            "XL": 99,
+            "S": 0,
+            "M": 0,
+            "L": 0
         }
     }
 ]
