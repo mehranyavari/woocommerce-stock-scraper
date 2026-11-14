@@ -32903,14 +32903,14 @@
         "our_url": "https://tennis24shop.com/?p=73564",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73564",
         "our_price_lir": 2090,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "چند رنگ": 0,
             "40": 0,
-            "41": 0,
+            "41": 99,
             "42": 0,
             "43": 0,
-            "44": 0,
+            "44": 99,
             "45": 0,
             "46": 0
         }
@@ -37100,7 +37100,7 @@
     },
     {
         "id": 86533,
-        "title": "سویشرت تنیس بچگانه نایک  Therma-FIT  – مشکی",
+        "title": "سویشرت تنیس بچه گانه نایک  Therma-FIT  – مشکی",
         "sku": "FZ5323-010",
         "url": "https://www.meritspor.com.tr/nike-therma-fit-kislik-genc-cocuk-kapusonlu-antrenman-ustu",
         "our_url": "https://tennis24shop.com/?p=86533",
@@ -37182,6 +37182,66 @@
             "S": 0,
             "M": 0,
             "L": 0
+        }
+    },
+    {
+        "id": 86622,
+        "title": "سویشرت پسرانه نایک  Park 20  – سفید",
+        "sku": "CW6896-101",
+        "url": "https://www.meritspor.com.tr/nike-park-20-cocuk-kapusonlu-sweatshirt-beyaz",
+        "our_url": "https://tennis24shop.com/?p=86622",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86622",
+        "our_price_lir": 2800,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سفید": 99,
+            "149-159cm-سال13-12": 99
+        }
+    },
+    {
+        "id": 86637,
+        "title": "سویشرت تنیس بچه گانه نایک Park 20 – آبی",
+        "sku": "CW6896-463",
+        "url": "https://www.meritspor.com.tr/nike-park-20-cocuk-kapusonlu-sweatshirt-mavi",
+        "our_url": "https://tennis24shop.com/?p=86637",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86637",
+        "our_price_lir": 2899,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "آبی": 99,
+            "سال8-6": 99,
+            "سال12-10": 99,
+            "-سال13-12": 99,
+            "سال15-14": 99
+        }
+    },
+    {
+        "id": 86655,
+        "title": "سویشرت تنیس بچه گانه نایک Park 20 – سرمه‌ای",
+        "sku": "CW6896-451",
+        "url": "https://www.meritspor.com.tr/nike-park-20-cocuk-kapusonlu-sweatshirt-lacivert",
+        "our_url": "https://tennis24shop.com/?p=86655",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86655",
+        "our_price_lir": 3479,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سرمه‌ای": 99,
+            "سال12-10": 99,
+            "سال13-12": 99
+        }
+    },
+    {
+        "id": 86669,
+        "title": "سویشرت بچه گانه نایک  Park 20 – سبز",
+        "sku": "CW6896-302",
+        "url": "https://www.meritspor.com.tr/nike-park-20-cocuk-kapusonlu-sweatshirt-yesil",
+        "our_url": "https://tennis24shop.com/?p=86669",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86669",
+        "our_price_lir": 2900,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "سبز": 99,
+            "سال8-6": 99
         }
     }
 ]
