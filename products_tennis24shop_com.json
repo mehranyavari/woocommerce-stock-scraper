@@ -305,7 +305,7 @@
         "our_sizes": {
             "39/42": 5,
             "43/46": 5,
-            "35/38": 0
+            "35/38": 5
         }
     },
     {
@@ -1283,9 +1283,9 @@
         "our_url": "https://tennis24shop.com/?p=53023",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=53023",
         "our_price_lir": 690,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "123-130cm-سال8-7": 5
+            "123-130cm-سال8-7": 0
         }
     },
     {
@@ -1777,10 +1777,10 @@
         "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 0,
-            "M": 0,
-            "S": 0,
-            "XL": 0,
+            "L": 5,
+            "M": 5,
+            "S": 5,
+            "XL": 5,
             "XS": 5
         }
     },
