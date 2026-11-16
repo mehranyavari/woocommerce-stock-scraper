@@ -156,25 +156,6 @@
         }
     },
     {
-        "id": 86813,
-        "title": "کفش تنیس زنانه On مدل The Roger Pro 3 کد 3WG10732890 – مشکی",
-        "sku": "3WG10732890",
-        "url": "https://www.high5.com.tr/p-on-the-roger-pro-3-clay-kadin-siyah-tenis-ayakkabisi-3wg10732890?_gl=1*1yxltd3*_up*MQ..*_ga*NTkwODU5NTQuMTc5NDgwNTgzMA..*_ga_8SBDZEKC2K*czE3OTQ4MDU4MjkkbzEkZzAkdDE3OTQ4MDU4MjkkajYwJGwwJGgw",
-        "our_url": "https://tennis24shop.com/?p=86813",
-        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86813",
-        "our_price_lir": 7999,
-        "our_stock_status": "instock",
-        "our_sizes": {
-            "پیش‌فرض": 99,
-            "36": 99,
-            "37": 99,
-            "38": 99,
-            "39": 99,
-            "40": 99,
-            "41": 99
-        }
-    },
-    {
         "id": 1294,
         "title": "جوراب تنیس ساق کوتاه دکتلون DECATHLON RS 500 پک سه تایی - مشکی",
         "sku": "8379844",
@@ -19469,7 +19450,7 @@
             "42.5": 0,
             "44.5": 999,
             "45.5": 0,
-            "۳۶": 0,
+            "۳۶": 999,
             "38": 999,
             "36.5": 999,
             "37.5": 999
@@ -34131,16 +34112,16 @@
         "our_price_lir": 12000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 0,
-            "41": 0,
-            "42": 0,
-            "42.5": 0,
-            "43": 0,
-            "44": 0,
-            "44.5": 0,
-            "45": 0,
-            "46": 0,
-            "47": 0
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
+            "44": 99,
+            "44.5": 99,
+            "45": 99,
+            "46": 99,
+            "47": 99
         }
     },
     {
@@ -34160,9 +34141,11 @@
             "43": 999,
             "44": 999,
             "44.5": 999,
-            "45": 0,
-            "46": 999
-        }
+            "45": 999,
+            "46": 999,
+            "45.5": 999
+        },
+        "secondary_url": "https://www.high5.com.tr/p-on-the-roger-pro-fire-erkek-turkuaz-tenis-ayakkabisi-3mf30105165"
     },
     {
         "id": 76050,
@@ -34174,17 +34157,18 @@
         "our_price_lir": 15000,
         "our_stock_status": "instock",
         "our_sizes": {
-            "پیش‌فرض": 0,
-            "41": 0,
-            "42": 0,
-            "42.5": 0,
-            "43": 0,
+            "پیش‌فرض": 99,
+            "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99,
             "44": 999,
-            "44.5": 0,
-            "45": 0,
-            "46": 0,
-            "47": 0
-        }
+            "44.5": 999,
+            "45": 999,
+            "46": 99,
+            "47": 99
+        },
+        "secondary_url": "https://www.high5.com.tr/p-on-the-roger-pro-fire-erkek-pembe-tenis-ayakkabisi-3mf30103606"
     },
     {
         "id": 76509,
@@ -37381,6 +37365,49 @@
             "40": 99,
             "40.5": 99,
             "41": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99
+        }
+    },
+    {
+        "id": 86813,
+        "title": "کفش تنیس زنانه آن راجر Clay– The Roger Pro 3 – مشکی",
+        "sku": "3WG10732890",
+        "url": "https://www.high5.com.tr/p-on-the-roger-pro-3-clay-kadin-siyah-tenis-ayakkabisi-3wg10732890?_gl=1*1yxltd3*_up*MQ..*_ga*NTkwODU5NTQuMTc5NDgwNTgzMA..*_ga_8SBDZEKC2K*czE3OTQ4MDU4MjkkbzEkZzAkdDE3OTQ4MDU4MjkkajYwJGwwJGgw",
+        "our_url": "https://tennis24shop.com/?p=86813",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86813",
+        "our_price_lir": 7999,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 99,
+            "40": 99,
+            "41": 99,
+            "40.5": 99,
+            "42": 99,
+            "42.5": 99,
+            "43": 99
+        }
+    },
+    {
+        "id": 86844,
+        "title": "کفش تنیس زنانه آن راجر Clay – On The Roger Adv Pro  – بنفش",
+        "sku": "3WF10714877",
+        "url": "https://www.spx.com.tr/on-the-roger-adv-pro-clay-kadin-tenis-ayakkabisi-mor-3wf10714877-39/",
+        "our_url": "https://tennis24shop.com/?p=86844",
+        "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=86844",
+        "our_price_lir": 12000,
+        "our_stock_status": "instock",
+        "our_sizes": {
+            "پیش‌فرض": 99,
+            "39": 0,
+            "40": 0,
+            "40.5": 0,
+            "41": 0,
             "42": 99,
             "42.5": 99,
             "43": 99
