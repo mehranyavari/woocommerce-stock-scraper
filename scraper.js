@@ -1870,6 +1870,112 @@ async function scrapeSpx(browser, url) {
     }
 }
 
+// ==========================================
+// 🚀 اسکرپر مخصوص های‌فایو (high5.com.tr)
+// ==========================================
+// high5 یک سایت Next.js است؛ دیتای محصول (قیمت و موجودی هر سایز) داخل RSC payload
+// خود صفحه قرار دارد و نیازی به مرورگر نیست. آی‌پی VPS توسط CloudFront های‌فایو
+// بلاک می‌شود، پس صفحه اول از مسیر ورکر Cloudflare پروژه (sport24-proxy) گرفته
+// می‌شود و اگر نشد، فچ مستقیم امتحان می‌شود.
+const HIGH5_PROXY_BASE = 'https://sport24-proxy.mehranyavari877.workers.dev/?url=';
+
+async function fetchHigh5Html(url) {
+    const headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+        'Accept-Language': 'tr-TR,tr;q=0.9'
+    };
+    const attempts = [url, HIGH5_PROXY_BASE + encodeURIComponent(url)];
+    let lastError = '';
+    for (const target of attempts) {
+        try {
+            const res = await fetch(target, { headers, redirect: 'follow' });
+            const text = await res.text();
+            if (res.ok && text && text.includes('self.__next_f')) return text;
+            lastError = 'HTTP ' + res.status;
+        } catch (e) {
+            lastError = e.message;
+        }
+    }
+    throw new Error('صفحه high5 دریافت نشد (' + lastError + ')');
+}
+
+function parseHigh5Data(html) {
+    // بخشی از دیتا (JSON-LD) داخل RSC به‌صورت escape‌شده می‌آید؛ اول unescape می‌کنیم.
+    html = String(html).replace(/\\"/g, '"');
+    const out = { price: null, oldPrice: null, sizes: [] };
+    let m = html.match(/"offers":\{"@type":"Offer","price":([\d.]+)/);
+    if (m) out.price = parseFloat(m[1]);
+    if (!out.price) {
+        m = html.match(/"priceValue":([\d.]+)/);
+        if (m) out.price = parseFloat(m[1]);
+    }
+    m = html.match(/"oldPriceValue":([\d.]+)/);
+    if (m) out.oldPrice = parseFloat(m[1]);
+
+    // دو شکل مختلف payload دیده شده؛ هر دو الگو خوانده و بر اساس سایز ادغام می‌شوند.
+    const bySize = new Map();
+    const addSize = (size, stock) => {
+        size = String(size || '').trim();
+        if (!size) return;
+        const qty = Number.isFinite(stock) && stock > 0 ? stock : 0;
+        bySize.set(size, Math.max(bySize.get(size) || 0, qty));
+    };
+
+    const variantRe = /"stockQuantity":(\d+),"stockStatus":"(\d+)","barcode":"[^"]*","variantId":"\d+","stockCode":"[^"]*"[^}]*?"size":"([^"]+)"/g;
+    let v;
+    while ((v = variantRe.exec(html)) !== null) {
+        addSize(v[3], v[2] === '1' ? parseInt(v[1], 10) : 0);
+    }
+
+    const varianterRe = /"gtin":"[^"]*","inStock":(true|false),"stock":(\d+),"varianterAttributes":\[\{"attributeName":"(?:Beden|Numara)","attributeId":"[^"]+","name":"([^"]+)"\}\]/g;
+    while ((v = varianterRe.exec(html)) !== null) {
+        addSize(v[3], v[1] === 'true' ? parseInt(v[2], 10) : 0);
+    }
+
+    out.sizes = [...bySize.entries()].map(([size, stock]) => ({ size, stock }));
+    return out;
+}
+
+async function scrapeHigh5(browser, url) {
+    try {
+        const html = await fetchHigh5Html(url);
+        if (/request blocked/i.test(html) && !html.includes('self.__next_f')) {
+            return { success: false, error: 'High5 Error: blocked by CloudFront' };
+        }
+
+        const data = parseHigh5Data(html);
+        if (!data.price) {
+            return { success: false, error: 'High5 Error: price not found' };
+        }
+
+        const normalizedStocks = {};
+        for (const variant of data.sizes) {
+            const normalized = normalizeSize(variant.size, 'www.high5.com.tr');
+            if (!normalized) continue;
+            const qty = Number(variant.stock);
+            normalizedStocks[normalized] = Math.max(normalizedStocks[normalized] || 0, Number.isFinite(qty) && qty > 0 ? qty : 0);
+        }
+
+        if (!Object.keys(normalizedStocks).length) {
+            return { success: false, error: 'High5 Error: no sizes found' };
+        }
+
+        let regular = parseTurkishPrice(data.price);
+        let offer = null;
+        const old = parseTurkishPrice(data.oldPrice);
+        if (old && regular && old > regular) {
+            offer = regular;
+            regular = old;
+        }
+        if (!regular) return { success: false, error: 'High5 Error: price not found' };
+
+        console.log(`  ✅ High5 URL Scraped: Regular: ${regular}₺, Offer: ${offer || '-'}₺, Stock: ${JSON.stringify(normalizedStocks)}`);
+        return { success: true, stocks: normalizedStocks, regular_price: regular, offer_price: offer };
+    } catch (error) {
+        return { success: false, error: 'High5 Error: ' + error.message };
+    }
+}
+
 function getEffectivePrice(scrapeData) {
     if (!scrapeData || !scrapeData.success) return 0;
     const reg = typeof scrapeData.regular_price === 'number' ? scrapeData.regular_price : parseFloat(scrapeData.regular_price) || 0;
@@ -1929,6 +2035,9 @@ async function processProduct(browser, product) {
         } else if (product.url.toLowerCase().includes('spx.com.tr')) {
             console.log(`Scraping Primary URL for product ${product.id} (SPX Engine)`);
             primaryData = await scrapeSpx(browser, product.url);
+        } else if (product.url.toLowerCase().includes('high5.com.tr')) {
+            console.log(`Scraping Primary URL for product ${product.id} (High5 Engine)`);
+            primaryData = await scrapeHigh5(browser, product.url);
         } else {
             primaryData = await scrapeProduct(browser, { id: product.id, url: product.url }, false);
         }
@@ -1977,6 +2086,9 @@ async function processProduct(browser, product) {
         } else if (product.secondary_url.toLowerCase().includes('spx.com.tr')) {
             console.log(`Scraping Secondary URL for product ${product.id} (SPX Engine)`);
             secondaryData = await scrapeSpx(browser, product.secondary_url);
+        } else if (product.secondary_url.toLowerCase().includes('high5.com.tr')) {
+            console.log(`Scraping Secondary URL for product ${product.id} (High5 Engine)`);
+            secondaryData = await scrapeHigh5(browser, product.secondary_url);
         } else {
             secondaryData = await scrapeProduct(browser, { id: product.id, url: product.secondary_url }, true);
         }
@@ -2176,6 +2288,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+    scrapeHigh5,
     scrapeSpx,
     parseSpxJson,
     extractSpxDom,
