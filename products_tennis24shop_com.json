@@ -8704,7 +8704,7 @@
         "our_url": "https://tennis24shop.com/?p=54720",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54720",
         "our_price_lir": 990,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -9281,7 +9281,7 @@
         "our_url": "https://tennis24shop.com/?p=56452",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=56452",
         "our_price_lir": 4990,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -10828,7 +10828,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "XL": 5,
-            "L": 5,
+            "L": 0,
             "M": 5,
             "S": 5,
             "2XL": 0
@@ -11070,10 +11070,10 @@
         "our_url": "https://tennis24shop.com/?p=65380",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65380",
         "our_price_lir": 230,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
             "39/42": 0,
-            "43/46": 0,
+            "43/46": 5,
             "35/38": 0
         }
     },
@@ -13154,8 +13154,8 @@
             "2XL": 5,
             "XL": 5,
             "L": 5,
-            "M": 0,
-            "S": 5
+            "M": 5,
+            "S": 0
         }
     },
     {
@@ -13186,7 +13186,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "2XL": 0,
-            "XL": 5,
+            "XL": 0,
             "L": 0,
             "M": 0,
             "S": 5
@@ -30656,7 +30656,7 @@
         "our_sizes": {
             "36": 5,
             "37": 5,
-            "38": 4,
+            "38": 5,
             "35": 0
         }
     },
@@ -35771,12 +35771,12 @@
         "our_price_lir": 760,
         "our_stock_status": "instock",
         "our_sizes": {
-            "آبی": 5,
+            "آبی": 0,
             "XS": 5,
             "S": 5,
             "M": 5,
             "L": 5,
-            "XL": 5
+            "XL": 0
         }
     },
     {
@@ -35843,7 +35843,7 @@
             "S": 5,
             "M": 5,
             "L": 0,
-            "XL": 5,
+            "XL": 0,
             "2XL": 5
         }
     },
