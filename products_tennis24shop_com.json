@@ -315,7 +315,7 @@
         "our_url": "https://tennis24shop.com/?p=1843",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=1843",
         "our_price_lir": 820,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -10580,7 +10580,7 @@
         "our_price_lir": 230,
         "our_stock_status": "instock",
         "our_sizes": {
-            "35/38": 0,
+            "35/38": 5,
             "39/42": 5,
             "43/46": 5
         }
@@ -11455,7 +11455,7 @@
         "our_url": "https://tennis24shop.com/?p=65759",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65759",
         "our_price_lir": 220,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -32922,16 +32922,16 @@
         "our_url": "https://tennis24shop.com/?p=73564",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=73564",
         "our_price_lir": 2090,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": {
-            "چند رنگ": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "44": 0,
-            "45": 0,
-            "46": 0
+            "چند رنگ": 5,
+            "40": 5,
+            "41": 5,
+            "42": 5,
+            "43": 5,
+            "44": 5,
+            "45": 5,
+            "46": 5
         }
     },
     {
@@ -34830,16 +34830,16 @@
         "our_url": "https://tennis24shop.com/?p=78391",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=78391",
         "our_price_lir": 1790,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "سفید و آبی": 5,
-            "40": 5,
-            "41": 5,
-            "42": 5,
-            "43": 5,
-            "44": 5,
-            "45": 5,
-            "46": 5
+            "سفید و آبی": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
         }
     },
     {
@@ -35628,7 +35628,7 @@
             "S": 5,
             "M": 5,
             "L": 5,
-            "XL": 5,
+            "XL": 0,
             "2XL": 5,
             "خاکستری": 5
         }
@@ -35643,11 +35643,11 @@
         "our_price_lir": 1790,
         "our_stock_status": "instock",
         "our_sizes": {
-            "سفید": 5,
+            "سفید": 0,
             "S": 5,
             "M": 5,
             "L": 5,
-            "XL": 5
+            "XL": 0
         }
     },
     {
