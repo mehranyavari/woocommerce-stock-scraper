@@ -3092,7 +3092,7 @@
             "123-130cm-سال8-7": 5,
             "131-140cm-سال9-8": 5,
             "141-150cm-سال11-10": 5,
-            "151-160cm-سال13-12": 0,
+            "151-160cm-سال13-12": 5,
             "161-172cm-سال15-14": 0,
             "113-122cm-سال6-5": 5
         }
@@ -3901,7 +3901,7 @@
         "our_price_lir": 195,
         "our_stock_status": "instock",
         "our_sizes": {
-            "27/30": 5,
+            "27/30": 0,
             "31/34": 5,
             "35/38": 5
         }
@@ -3918,7 +3918,7 @@
         "our_sizes": {
             "43/46": 5,
             "39/42": 5,
-            "35/38": 5
+            "35/38": 0
         }
     },
     {
@@ -8799,7 +8799,7 @@
         "our_url": "https://tennis24shop.com/?p=54778",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=54778",
         "our_price_lir": 490,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -10733,7 +10733,7 @@
         "url": "https://www.decathlon.com.tr/p/erkek-tenis-ayakkabisi-tum-zeminler-beyaz-unrupt-pro/_/R-p-359716?mc=8977352&c=S%C4%B0YAH_BEYAZ",
         "our_url": "https://tennis24shop.com/?p=64759",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=64759",
-        "our_price_lir": 5290,
+        "our_price_lir": 5490,
         "our_stock_status": "instock",
         "our_sizes": {
             "42": 5,
@@ -10845,8 +10845,8 @@
         "our_price_lir": 920,
         "our_stock_status": "instock",
         "our_sizes": {
-            "XL": 5,
-            "L": 0,
+            "XL": 0,
+            "L": 5,
             "M": 5,
             "S": 5,
             "2XL": 0
@@ -11167,7 +11167,7 @@
         "our_url": "https://tennis24shop.com/?p=65492",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65492",
         "our_price_lir": 290,
-        "our_stock_status": "outofstock",
+        "our_stock_status": "instock",
         "our_sizes": []
     },
     {
@@ -11455,7 +11455,7 @@
         "our_url": "https://tennis24shop.com/?p=65759",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=65759",
         "our_price_lir": 220,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -12892,7 +12892,7 @@
         "url": "https://www.decathlon.com.tr/p/yetiskin-tenis-ayakkabisi-siyah-kuikma-comfort/_/R-p-365263?mc=8977729&c=S%C4%B0YAH_GR%C4%B0",
         "our_url": "https://tennis24shop.com/?p=68697",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=68697",
-        "our_price_lir": 2690,
+        "our_price_lir": 2490,
         "our_stock_status": "instock",
         "our_sizes": {
             "41": 5,
@@ -12918,7 +12918,7 @@
             "42": 5,
             "43": 0,
             "44": 5,
-            "45": 5,
+            "45": 0,
             "46": 5
         }
     },
@@ -13044,7 +13044,7 @@
             "XL": 5,
             "L": 5,
             "M": 5,
-            "S": 0
+            "S": 5
         }
     },
     {
@@ -13169,10 +13169,10 @@
         "our_price_lir": 1350,
         "our_stock_status": "instock",
         "our_sizes": {
-            "2XL": 5,
+            "2XL": 0,
             "XL": 5,
             "L": 5,
-            "M": 5,
+            "M": 0,
             "S": 0
         }
     },
@@ -13240,7 +13240,7 @@
         "our_url": "https://tennis24shop.com/?p=69014",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=69014",
         "our_price_lir": 310,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -18887,10 +18887,14 @@
         "our_price_lir": 7199,
         "our_stock_status": "instock",
         "our_sizes": {
-            "42.5": 0,
+            "42.5": 999,
             "44.5": 999,
             "45": 999,
-            "45.5": 999
+            "45.5": 999,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "46": 0
         }
     },
     {
@@ -22190,7 +22194,7 @@
         "our_sizes": {
             "123-130cm-سال8-7": 5,
             "149-159cm-سال13-12": 5,
-            "131-140cm-سال9-8": 5,
+            "131-140cm-سال9-8": 0,
             "141-148cm-سال11-10": 5
         }
     },
