@@ -166,7 +166,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "سفید/زرد": 5,
-            "30": 0,
+            "30": 5,
             "31": 0,
             "32": 5,
             "33": 5,
@@ -326,14 +326,14 @@
         "our_url": "https://tennis24shop.com/?p=2239",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2239",
         "our_price_lir": 2090,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "36": 5,
-            "37": 5,
-            "38": 5,
-            "39": 5,
-            "40": 5,
-            "41": 5
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
         }
     },
     {
@@ -582,7 +582,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "39/42": 5,
-            "35/38": 5,
+            "35/38": 0,
             "43/46": 5
         }
     },
@@ -1776,9 +1776,9 @@
         "our_price_lir": 1990,
         "our_stock_status": "instock",
         "our_sizes": {
-            "L": 5,
+            "L": 0,
             "M": 0,
-            "S": 0,
+            "S": 5,
             "XL": 5,
             "XS": 5
         }
