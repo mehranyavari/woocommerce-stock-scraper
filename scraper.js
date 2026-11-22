@@ -1877,14 +1877,14 @@ async function scrapeSpx(browser, url) {
 // خود صفحه قرار دارد و نیازی به مرورگر نیست. آی‌پی VPS توسط CloudFront های‌فایو
 // بلاک می‌شود، پس صفحه اول از مسیر ورکر Cloudflare پروژه (sport24-proxy) گرفته
 // می‌شود و اگر نشد، فچ مستقیم امتحان می‌شود.
-const HIGH5_PROXY_BASE = 'https://sport24-proxy.mehranyavari877.workers.dev/?url=';
+const HIGH5_PROXY_BASE = 'https://sport24-proxy.mehranyavari877.workers.dev/';
 
 async function fetchHigh5Html(url) {
     const headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36',
         'Accept-Language': 'tr-TR,tr;q=0.9'
     };
-    const attempts = [url, HIGH5_PROXY_BASE + encodeURIComponent(url)];
+    const attempts = [url, HIGH5_PROXY_BASE + url];
     let lastError = '';
     for (const target of attempts) {
         try {
