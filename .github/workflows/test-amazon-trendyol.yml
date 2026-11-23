@@ -1,0 +1,32 @@
+name: Test Amazon TR + Trendyol egress
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/test-amazon-trendyol.yml'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Egress info
+        run: |
+          echo "== egress IP/country =="
+          curl -s --max-time 20 https://ipinfo.io/json || true
+          echo
+      - name: Probe targets
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+          probe () {
+            name="$1"; url="$2"
+            code=$(curl -s -o /tmp/page.html -w '%{http_code}' --max-time 40 -A "$UA" -H 'Accept-Language: tr-TR,tr;q=0.9' "$url")
+            size=$(wc -c < /tmp/page.html)
+            echo "== $name -> HTTP $code, $size bytes =="
+            if grep -qi 'zgünüz\|cs_503\|Robot Check\|captcha' /tmp/page.html; then echo "VERDICT: BLOCKED/ERROR PAGE"; fi
+            grep -o 'LEGO[^<"]\{0,60\}' /tmp/page.html | head -3 || true
+            grep -oE '[0-9]{1,3}\.[0-9]{3},[0-9]{2}\s?TL|[0-9.]+ TL' /tmp/page.html | head -5 || true
+            echo
+          }
+          probe 'amazon-search-10295' 'https://www.amazon.com.tr/s?k=LEGO+10295'
+          probe 'amazon-search-75387' 'https://www.amazon.com.tr/s?k=LEGO+75387'
+          probe 'trendyol-search-76974' 'https://www.trendyol.com/sr?q=76974'
+          probe 'legotr-10295' 'https://lego.tr/product/lego-technic-porsche-911-gt3-rs-10295'
