@@ -326,14 +326,14 @@
         "our_url": "https://tennis24shop.com/?p=2239",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=2239",
         "our_price_lir": 2090,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
-            "36": 5,
-            "37": 5,
-            "38": 5,
-            "39": 5,
-            "40": 5,
-            "41": 5
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
         }
     },
     {
@@ -582,7 +582,7 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "39/42": 5,
-            "35/38": 5,
+            "35/38": 0,
             "43/46": 5
         }
     },
@@ -605,7 +605,7 @@
         "our_url": "https://tennis24shop.com/?p=3653",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3653",
         "our_price_lir": 390,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": []
     },
     {
@@ -616,14 +616,14 @@
         "our_url": "https://tennis24shop.com/?p=3732",
         "our_edit_url": "https://tennis24shop.com/wp-admin/post.php?action=edit&post=3732",
         "our_price_lir": 738,
-        "our_stock_status": "instock",
+        "our_stock_status": "outofstock",
         "our_sizes": {
             "2XS": 0,
-            "XS": 5,
-            "S": 5,
-            "M": 5,
-            "L": 5,
-            "XL": 5
+            "XS": 0,
+            "S": 0,
+            "M": 0,
+            "L": 0,
+            "XL": 0
         }
     },
     {
@@ -1777,8 +1777,8 @@
         "our_stock_status": "instock",
         "our_sizes": {
             "L": 0,
-            "M": 0,
-            "S": 5,
+            "M": 5,
+            "S": 0,
             "XL": 5,
             "XS": 5
         }
@@ -3734,7 +3734,7 @@
             "123-130cm-سال8-7": 0,
             "131-140cm-سال9-8": 5,
             "141-150cm-سال11-10": 5,
-            "151-160cm-سال13-12": 0,
+            "151-160cm-سال13-12": 5,
             "161-172cm-سال15-14": 0
         }
     },
